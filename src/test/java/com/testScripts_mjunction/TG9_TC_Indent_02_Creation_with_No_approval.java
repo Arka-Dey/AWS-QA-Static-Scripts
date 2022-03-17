@@ -36,11 +36,11 @@ public class TG9_TC_Indent_02_Creation_with_No_approval extends BaseClass_Web{
 	
 	@Parameters("TestcaseNo")
 	@Test(description = "Indent_creation_with_No_approval")
-	public void Indent_creation_with_No_approval_TG8(String no) throws Throwable {
+	public void Indent_creation_with_No_approval_TG9(String no) throws Throwable {
 		System.out.println("Entered in the Test method..................");
 		try {
 			pdfResultReport.readTestDataFile(System.getProperty("user.dir").replace("\\", "/")
-					+ "/Resources/TG8_Testdata_static_scripts.xls", no);
+					+ "/Resources/TG9_Testdata_static_scripts.xls", no);
 		} catch (Exception e) {
 			System.out.println("Unable to read the data from excel file");
 		}
@@ -56,12 +56,10 @@ public class TG9_TC_Indent_02_Creation_with_No_approval extends BaseClass_Web{
 		etendercomponentobj.openURL();
 		rfqfromintendcomponentobj.IndentcreatorLogin();
 		rfqfromintendcomponentobj.navigateToIndentCreation();
-		rfqfromintendcomponentobj.IndentTG8_General_Info_tabvalidation("Indent Purchase Contract V-004");
-		rfqfromintendcomponentobj.IndentTG8_Indent_Details_tabvalidation();
-		rfqfromintendcomponentobj.IndentTG8_Eligibility_Criteria_tabvalidation();
-		rfqfromintendcomponentobj.IndentTG8_BOM_Item_tabvalidation();
-		rfqfromintendcomponentobj.IndentTG8_technical_Specification_tabvalidation();
-		rfqfromintendcomponentobj.IndentTG1_Annexures_tabvalidation();
+		rfqfromintendcomponentobj.IndentTG9_General_Info_tabvalidation("SUPPLY INDENT_2.4");
+		rfqfromintendcomponentobj.TG9_Indnet_attachments();
+		rfqfromintendcomponentobj.IndentTG9_indent_items_tabvalidation();
+		rfqfromintendcomponentobj.IndentTG9_BOM_Item_tabvalidation();
 		rfqfromintendcomponentobj.IndentTG1_Submit();
 		rfqfromintendcomponentobj.SystemIndentNoSave();
 		rfqfromintendcomponentobj.NoApproval_IndentWF();

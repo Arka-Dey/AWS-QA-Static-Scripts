@@ -5,10 +5,13 @@ import org.openqa.selenium.By;
 public class TenderCreation_Locators {
 
 	public By login = By.xpath("//img[contains(@src,'icon-login')]");
-	public By userName = By.xpath("//input[@name='userCode'][@type='text']");
-	public By password = By.xpath("//input[@placeholder='Password']");
+	public By userName = By.xpath("//input[@title='Username'][@type='text']");
+	//public By userName = By.xpath("//input[@name='userCode'][@type='text']");
+	public By password = By.xpath("//input[@name='passcode'][@type='password']");
+	//public By password = By.xpath("//input[@placeholder='Password']");
 	public By Captcha_Login = By.xpath("//input[@name='captcha' and @ng-model = 'login.captcha']");
-	public By okButton = By.xpath("//button[@id='login']");
+	public By okButton = By.xpath("//button[@title='Login'][@type='submit']");
+	//public By okButton = By.xpath("//button[@id='login']");
 	public By dashboardIcon = By.xpath("//i[@class='fa fa-laptop title_icon']");
 	public By tendersIcon = By.xpath("//span[contains(text(),'Tender(s)')]//parent::a//i[@class='fa fa-tasks']");
 	public By tenderList = By.xpath("//a[contains(@ng-click,'tender/listTender')]");
@@ -3583,6 +3586,39 @@ public By Accommodationandfoodserviceactivities = By.xpath("//span[text()='Accom
 	public By QuotationAttachment_TG8 = By.xpath("//h2[contains(text(),'Quotation Attachment')]");
 	public By TenderAttachment_TG8 = By.xpath("//h2[contains(text(),'Tender Attachment')]");
 	public By SupplierSpecificAttachment_TG8 = By.xpath("//h2[contains(text(),'Supplier Specific Attachment')]");
+	
+	//Indent_attachment_TG9 added on 04-12-21
+	public By IndentAttachmentTab=By.xpath("//a[@id='indent_attachment']");
+	public By AddAttachment= By.xpath("//button[@ng-click='openAttachmentModal()']/i");
+	public By IndentLabel= By.xpath("//table[1]/tbody[1]/tr[1]/td[1]/div[1]/div[1]/div[1]/div[2]/form[1]/table[1]/tbody[1]/tr[2]/td[1]/div[1]/input[@id='indent_attachment.label.0']");
+	public By IndentAttachments= By.xpath("//input[@ng-click='aaaa()'] [@type='file']");
+	public By OkAttach= By.xpath("//button[@id='add-authorRow']");
+	
+	//Indent Items_TG9 added on 041221
+	public By IndentItemTab= By.xpath("//a[@id='ihb']");
+	public By AddIndentItems= By.xpath("//button[@ng-click='addRowForDynamicTabularTemplate(templateIndex)']");
+	public By TG9_IndentNumber= By.xpath("//input[@id='ihb.Indentno.0']");
+	public By DateOfRequirement= By.xpath("//input[@id='ihb.DOR.0']");
+	public By Department= By.xpath("//input[@id='ihb.Dept.0']");
+	public By IndentDate= By.xpath("//input[@id='ihb.Indent.0']");
+	
+	//BOM Items_TG9 added on 041221
+	
+	public By BOMitemsTab= By.xpath("//a[text()='BOM Items']");
+	public By ItemCode= By.xpath("//input[@name='item_code']");
+	public By BudgetHead= By.xpath("//input[@name='budget'] [@type='text']");
+	public By ItemName= By.xpath("//input[@name='item_name']");
+	public By ItemDescription= By.xpath("//textarea[@id='bpplindent.indent_desc.0']");
+	public By brand= By.xpath("//input[@id='bpplindent.brand.0']");
+	public By UOM= By.xpath("//select[@id='bpplindent.uom.0']");
+	public By ItemQuantity= By.xpath("//input[@id='bpplindent.item_qty.0']");
+	public By QuantityInStore= By.xpath("//input[@id='bpplindent.QIS.0']");
+	public By QuantityRequire= By.xpath("//input[@id='bpplindent.QR.0']");
+	public By LastPurchasePrice= By.xpath("//input[@id='bpplindent.LPP.0']");
+	public By EstimatedPrice= By.xpath("//input[@id='bpplindent.estimat_price.0']");
+	public By SORRate= By.xpath("//input[@id='bpplindent.sor_rate.0']");
+	
+
 	
 }
 

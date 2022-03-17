@@ -7,7 +7,7 @@
         <parameter name="browserName" value="windowschrome"></parameter>
         <classes>
            <parameter name="TestcaseNo" value="24"></parameter>   
-            <class name="com.testScripts_mjunction.TG8_TC_Indent_07_Assignment_Process_Revert_to_Indent_creator" />
+            <class name="com.testScripts_mjunction.TG9_TC_Indent_07_Assignment_Process_Revert_to_Indent_creator" />
         </classes>
     </test> 
 </suite>

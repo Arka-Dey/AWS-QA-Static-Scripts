@@ -7,7 +7,7 @@
         <parameter name="browserName" value="windowschrome"></parameter>
         <classes>
            <parameter name="TestcaseNo" value="21"></parameter>   
-            <class name="com.testScripts_mjunction.TG8_TC_Indent_04_Mark_for_RFQ_functionality" />
+            <class name="com.testScripts_mjunction.TG9_TC_Indent_04_Mark_for_RFQ_functionality" />
         </classes>
     </test> 
 </suite>

@@ -6,18 +6,18 @@
   </listeners>
   <test thread-count="5" name="Test(failed)">
     <parameter name="browserName" value="windowschrome"/>
-    <parameter name="TestcaseNo" value="36"/>
+    <parameter name="TestcaseNo" value="23"/>
     <classes>
-      <class name="com.testScripts_mjunction.TenderWithCompletedStatusWorkFlowWithThreeBiddersTest">
+      <class name="com.testScripts_mjunction.TG9_TC_Indent_06_Assignment_Process_Assign_approver">
         <methods>
           <include name="setUpSuiteDetails"/>
-          <include name="tenderWithCompletedStatusWorkFlowWithThreeBiddersTest" invocation-numbers="0"/>
+          <include name="BeforeClass"/>
+          <include name="Verifying_indent_AssignmentProcess_assignApprover_TG8" invocation-numbers="0"/>
           <include name="afterSuite"/>
           <include name="captureDesc"/>
-          <include name="BeforeClass"/>
           <include name="afterClass"/>
         </methods>
-      </class> <!-- com.testScripts_mjunction.TenderWithCompletedStatusWorkFlowWithThreeBiddersTest -->
+      </class> <!-- com.testScripts_mjunction.TG9_TC_Indent_06_Assignment_Process_Assign_approver -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

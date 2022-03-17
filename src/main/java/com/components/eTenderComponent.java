@@ -166,12 +166,12 @@ public class eTenderComponent extends BaseClass_Web {
 	public void tendercreatorLogin() throws Throwable {
 		try {
 			log.info("started executing the method:: tendercreatorLogin");
-			click(tendercreationlocators.login, "login");
+			//click(tendercreationlocators.login, "login"); // edited on 201221
 			set(tendercreationlocators.userName, pdfResultReport.testData.get("TenderCreatorUserName"), "userName");
 			waitForObj(5000);
 			set(tendercreationlocators.password, pdfResultReport.testData.get("AppPassword"), "password");
 			//Handle fixed Captcha (06/11/2020)
-			set(tendercreationlocators.Captcha_Login, "1234", "Login_Captcha");
+			//set(tendercreationlocators.Captcha_Login, "1234", "Login_Captcha"); // edited on 201221
 			//Wait statement (Added to handle Captcha temporarily in AWS QA (19/10/2020))
 			//waitForObj(50000);
 			click(tendercreationlocators.okButton, "okButton");

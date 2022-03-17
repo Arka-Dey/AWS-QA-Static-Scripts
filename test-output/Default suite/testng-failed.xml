@@ -3,16 +3,16 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.testScripts_mjunction.TG7_TC_Evaluation_10_Openingapproval_Y_Evaluationapproval_N">
+      <class name="com.testScripts_mjunction.TG9_TC_Indent_01_Creation_with_approval">
         <methods>
-          <include name="Tender_Evaluation_with_OpeningApproval_Y_Evaluationapproval_N_TG7"/>
+          <include name="Indent_creation_with_approval_TG8"/>
           <include name="setUpSuiteDetails"/>
+          <include name="BeforeClass"/>
           <include name="afterSuite"/>
           <include name="captureDesc"/>
-          <include name="BeforeClass"/>
           <include name="afterClass"/>
         </methods>
-      </class> <!-- com.testScripts_mjunction.TG7_TC_Evaluation_10_Openingapproval_Y_Evaluationapproval_N -->
+      </class> <!-- com.testScripts_mjunction.TG9_TC_Indent_01_Creation_with_approval -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

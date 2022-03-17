@@ -3,8 +3,11 @@ package com.components;
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Function;
@@ -13,8 +16,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import com.baseClasses.BaseClass_Web;
@@ -837,12 +842,12 @@ public class RfqFromIndentComponent extends BaseClass_Web {
 	public void IndentapproverLogin() throws Throwable {
 		try {
 			log.info("started executing the method:: IndentapproverLogin");
-			click(tendercreationlocators.login, "login");
+			//click(tendercreationlocators.login, "login"); // commented on 201221
 			set(tendercreationlocators.userName, pdfResultReport.testData.get("IndentApproverUserName"), "userName");
 			waitForObj(5000);
 			set(tendercreationlocators.password, pdfResultReport.testData.get("AppPassword"), "password");
 			//Handle fixed Captcha (06/11/2020)
-			set(tendercreationlocators.Captcha_Login, "1234", "Login_Captcha");
+			//set(tendercreationlocators.Captcha_Login, "1234", "Login_Captcha");  // commented on 201221
 			click(tendercreationlocators.okButton, "okButton");
 			waitForElement(tendercreationlocators.dashboardIcon, 5000);
 			pdfResultReport.addStepDetails("Indent approver login", "Indent approver must be sucessfully logged in",
@@ -859,12 +864,12 @@ public class RfqFromIndentComponent extends BaseClass_Web {
 	public void IndentcreatorLogin() throws Throwable {
 		try {
 			log.info("started executing the method:: IndentcreatorLogin");
-			click(tendercreationlocators.login, "login");
+			//click(tendercreationlocators.login, "login"); // edited on 30-11-21
 			set(tendercreationlocators.userName, pdfResultReport.testData.get("IndentCreatorUserName"), "userName");
 			waitForObj(5000);
 			set(tendercreationlocators.password, pdfResultReport.testData.get("AppPassword"), "password");
 			//Handle fixed Captcha (06/11/2020)
-			set(tendercreationlocators.Captcha_Login, "1234", "Login_Captcha");
+			//set(tendercreationlocators.Captcha_Login, "1234", "Login_Captcha"); // edited on 30-11-21
 			click(tendercreationlocators.okButton, "okButton");
 			waitForElement(tendercreationlocators.dashboardIcon, 5000);
 			pdfResultReport.addStepDetails("Indent creator login", "Indent creator must be sucessfully logged in",
@@ -1013,6 +1018,167 @@ public class RfqFromIndentComponent extends BaseClass_Web {
 			}
 		}
 		
+		//General Information tab validation for Indent TG1 (02/12/2021)
+				public void IndentTG9_General_Info_tabvalidation(String TemplateGroup)
+						throws Exception {
+					try {
+						log.info(
+								"started executing the method:: IndentTG1_General_Info_tabvalidation()");
+						waitForElement(tendercreationlocators.Indent_TG_select, 5000);
+						waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
+						select(tendercreationlocators.Indent_TG_select, TemplateGroup);
+						waitForElementToBeVisible(tendercreationlocators.Indent_TG_View);
+						String Indent_Ref_No = "IndentRef_";
+						int getrandomInterger = getrandomInterger(10000, 1000000000);
+						Indent_Ref_No = Indent_Ref_No.concat(String.valueOf(getrandomInterger));
+						set(tendercreationlocators.IndentRefNo, Indent_Ref_No, "IndentReferenceNumber");
+						select(tendercreationlocators.IndentCategory, "Default_cat");
+						select(tendercreationlocators.IndentCurrency, pdfResultReport.testData.get("Indent_Geninfo_Currency"));
+						set(tendercreationlocators.EstimatedPrice_Indent, pdfResultReport.testData.get("SORRate"), "EstimatedPrice_Indent");
+						select(tendercreationlocators.ProcMode_Indent, pdfResultReport.testData.get("Indent_Geninfo_ProcMode"));
+						scrollToElement(tendercreationlocators.GenDesc_Indent);
+						set(tendercreationlocators.GenDesc_Indent,
+								pdfResultReport.testData.get("Indent_Geninfo_Desc"), "GenDesc_Indent");
+						scrollToTopOfThePage();
+						click(tendercreationlocators.Savebtn_Indent, "Savebtn_Indent");
+						waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
+						waitForObj(5000);
+						/*
+						 * waitForElementToBeVisible(tendercreationlocators.indentDetailsTab_TG8);
+						 * waitForElementToBeClickable(tendercreationlocators.indentDetailsTab_TG8);
+						 */
+						
+						pdfResultReport.addStepDetails("IndentTG1_General_Info_tabvalidation",
+								"Should save generalInfo tab fields during indent creation", "Sucessfully saved generalInfo tab fields during indent creation " + " ", "Pass",
+								"Y");
+						log.info(
+								"completed executing the method:: IndentTG1_General_Info_tabvalidation");
+
+					} catch (Exception e) {
+
+						log.fatal("Not able to save generalInfo tab fields" + e.getMessage());
+						pdfResultReport.addStepDetails("IndentTG8_General_Info_tabvalidation",
+								"Should save generalInfo tab fields during indent creation", "Unable to save generalInfo tab fields during indent creation" + e.getMessage(),
+								"Fail", "N");
+					}
+				}
+				
+				//added on 04-12-21
+				
+				public static void waitForSpinnerToDisappear() {
+					WebDriver driver = ThreadLocalWebdriver.getDriver();
+					WebDriverWait wait = new WebDriverWait(driver, 100);
+					wait.until(ExpectedConditions.invisibilityOf(driver.findElement(By.xpath("//div[@id='spinnerholder']"))));
+				}
+				
+				//added on 04-12-21
+				public void TG9_Indnet_attachments() throws Throwable {
+					try {
+						log.info("started executing the method:: TG9_Indnet_attachments");
+						waitForElement(tendercreationlocators.IndentAttachmentTab, 5000);
+						click(tendercreationlocators.IndentAttachmentTab, "IndentAttachmentTab");
+						waitForSpinnerToDisappear();
+						click(tendercreationlocators.AddAttachment, "AddAttachment");
+						set(tendercreationlocators.IndentLabel, pdfResultReport.testData.get("Attachments-Label"), "label");
+						set(tendercreationlocators.IndentAttachments, System.getProperty("user.dir") + "\\MediaFiles\\rfqCreation.xlsx",
+								"fileName");
+						click(tendercreationlocators.OkAttach, "attachmentOKbutton");
+						waitForObj(2000);
+						JSClick(tendercreationlocators.savebutton, "savebutton");
+
+						waitForSpinnerToDisappear();
+						pdfResultReport.addStepDetails("Successfully Created Indent",
+								"Indent must be created successfully using Indnet_attachment as template group ",
+								"Indent is created successfully using Supply_Indnet_2.4 as template group" + " ",
+								"Pass", "Y");
+						log.info("completed executing the method:: Indnet_attachment");
+					} catch (Exception e) {
+						log.fatal("Not able to create tender" + e.getMessage());
+						pdfResultReport.addStepDetails("Not able to create tender",
+								"Not able to create Indent using Supply_Indnet_2.4 as template group",
+								"Unable to create Indent using Supply_Indnet_2.4 as template group"
+										+ e.getMessage(),
+								"Fail", "N");
+					}
+					
+				}
+		
+				//Indent Items tab validation for Indent TG9 (04/12/2021)
+				public void IndentTG9_indent_items_tabvalidation()
+						throws Exception {
+					try {
+						log.info(
+								"started executing the method:: indent_items_tabvalidation()");
+						waitForElement(tendercreationlocators.IndentItemTab, 5000);
+						click(tendercreationlocators.IndentItemTab, "IndentItemTab");
+						waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
+						waitForObj(1000);
+						click(tendercreationlocators.AddIndentItems, "AddIndentItems");
+						//set(tendercreationlocators.TG9_IndentNumber, pdfResultReport.testData.get("ItemCode"), "TG9_IndentNumber");
+						DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy hh.mm aa");
+				    	String dateString = dateFormat.format(new Date()).toString();
+						set(tendercreationlocators.DateOfRequirement, dateString, "DateOfRequirement");
+						set(tendercreationlocators.Department, pdfResultReport.testData.get("AnnexuresType_TG1AnnexuresTab"), "Department");
+						set(tendercreationlocators.IndentDate, dateString, "IndentDate");
+						click(tendercreationlocators.Savebtn_Indent, "Savebtn_Indent");
+						waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
+						waitForObj(3000);
+						pdfResultReport.addStepDetails("indent_items_tabvalidation",
+								"Should save indent_items tab fields during indent creation", "Sucessfully saved Technical Specification tab fields during indent creation " + " ", "Pass",
+								"Y");
+						log.info(
+								"completed executing the method:: indent_items_tabvalidation");
+
+					} catch (Exception e) {
+						log.fatal("Not able to save Technical Specification tab fields" + e.getMessage());
+						pdfResultReport.addStepDetails("indent_items_tabvalidation",
+								"Should save indent_items tab fields during indent creation", "Unable to save indent_items tab fields during indent creation" + e.getMessage(),
+								"Fail", "N");
+					}
+				}
+				
+				
+				//BOM Item tab validation for Indent TG8 (01/06/2021)
+				public void IndentTG9_BOMitems_tabvalidation()
+						throws Exception {
+					try {
+						log.info(
+								"started executing the method:: IndentTG8_BOM_Item_tabvalidation()");
+						waitForElementToBeClickable(tendercreationlocators.BOMitemsTab);
+						//waitForElement(tendercreationlocators.bomItems_TG8, 5000);
+						click(tendercreationlocators.BOMitemsTab, "BOMitemsTab");
+						waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
+						waitForObj(1000);
+						click(tendercreationlocators.addNonSORitemsIndent_TG8, "addNonSORitemsIndent_TG8");
+						set(tendercreationlocators.itemCodeIndet_TG8, pdfResultReport.testData.get("ItemCode_TG1BOMItemTab"), "ItemCode_TG8BOMItemTab");
+						set(tendercreationlocators.itemNameIndent_TG8, pdfResultReport.testData.get("ItemName_TG1BOMItemTab"), "ItemName_TG8BOMItemTab");
+						select(tendercreationlocators.unitIndent_TG8, pdfResultReport.testData.get("unitIndent_TG8"));
+						set(tendercreationlocators.qtyIndent_TG8, pdfResultReport.testData.get("Qty_TG1BOMItemTab"), "Qty_TG8BOMItemTab");
+						scrollToElement(tendercreationlocators.unitRateIndent_TG8);
+						set(tendercreationlocators.unitRateIndent_TG8, pdfResultReport.testData.get("UnitRate_TG1BOMItemTab"), "UnitRate_TG8BOMItemTab");
+						scrollToElement(tendercreationlocators.gstIndent_TG8);
+						set(tendercreationlocators.gstIndent_TG8, pdfResultReport.testData.get("GSTPercent_TG1BOMItemTab"), "GSTPercent_TG8BOMItemTab");
+						scrollToElement(tendercreationlocators.consigneeIndent_TG8);
+						select(tendercreationlocators.consigneeIndent_TG8, pdfResultReport.testData.get("consigneeIndent_TG8"));
+						scrollToTopOfThePage();
+						click(tendercreationlocators.Savebtn_Indent, "Savebtn_Indent");
+						waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
+						waitForObj(5000);
+						pdfResultReport.addStepDetails("IndentTG1_BOM_Item_tabvalidation",
+								"Should save BOM Item tab fields during indent creation", "Sucessfully saved BOM Item tab fields during indent creation " + " ", "Pass",
+								"Y");
+						log.info(
+								"completed executing the method:: IndentTG1_BOM_Item_tabvalidation");
+
+					} catch (Exception e) {
+
+						log.fatal("Not able to save BOM Item tab fields" + e.getMessage());
+						pdfResultReport.addStepDetails("IndentTG8_BOM_Item_tabvalidation",
+								"Should save BOM Item tab fields during indent creation", "Unable to save BOM Item tab fields during indent creation" + e.getMessage(),
+								"Fail", "N");
+					}
+				}
+				
 	//Indent Details tab validation for Indent TG1 (27/01/2021)
 	public void IndentTG1_Indent_Details_tabvalidation()
 			throws Exception {
@@ -1215,6 +1381,54 @@ public class RfqFromIndentComponent extends BaseClass_Web {
 			}
 		}
 		
+		
+		//BOM Item tab validation for Indent TG8 (01/06/2021)
+		public void IndentTG9_BOM_Item_tabvalidation()
+				throws Exception {
+			try {
+				log.info(
+						"started executing the method:: IndentTG9_BOM_Item_tabvalidation()");
+				waitForElementToBeClickable(tendercreationlocators.BOMitemsTab);
+				//waitForElement(tendercreationlocators.bomItems_TG8, 5000);
+				click(tendercreationlocators.BOMitemsTab, "BOMitemsTab");
+				waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
+				waitForObj(1000);
+				click(tendercreationlocators.addNonSORitemsIndent_TG8, "addNonSORitemsIndent_TG8");
+				set(tendercreationlocators.ItemCode, pdfResultReport.testData.get("ItemCode_TG1BOMItemTab"), "ItemCode");
+				set(tendercreationlocators.BudgetHead, pdfResultReport.testData.get("ItemName_TG1BOMItemTab"), "BudgetHead");
+				set(tendercreationlocators.ItemName, pdfResultReport.testData.get("ItemName_TG1BOMItemTab"), "ItemName");
+				set(tendercreationlocators.ItemDescription, pdfResultReport.testData.get("ItemName_TG1BOMItemTab"), "ItemDescription");
+				set(tendercreationlocators.brand, pdfResultReport.testData.get("ItemName_TG1BOMItemTab"), "brand");
+				select(tendercreationlocators.UOM, pdfResultReport.testData.get("UOM"));
+				set(tendercreationlocators.ItemQuantity, pdfResultReport.testData.get("Qty_TG1BOMItemTab"), "ItemQuantity");
+				scrollToElement(tendercreationlocators.QuantityInStore);
+				set(tendercreationlocators.QuantityInStore, pdfResultReport.testData.get("UnitRate_TG1BOMItemTab"), "QuantityInStore");
+				scrollToElement(tendercreationlocators.QuantityRequire);
+				set(tendercreationlocators.QuantityRequire, pdfResultReport.testData.get("GSTPercent_TG1BOMItemTab"), "QuantityRequire");
+				scrollToElement(tendercreationlocators.LastPurchasePrice);
+				set(tendercreationlocators.LastPurchasePrice, pdfResultReport.testData.get("GSTPercent_TG1BOMItemTab"), "LastPurchasePrice");
+				scrollToElement(tendercreationlocators.EstimatedPrice);
+				set(tendercreationlocators.EstimatedPrice, pdfResultReport.testData.get("GSTPercent_TG1BOMItemTab"), "EstimatedPrice");
+				scrollToElement(tendercreationlocators.SORRate);
+				set(tendercreationlocators.SORRate, pdfResultReport.testData.get("GSTPercent_TG1BOMItemTab"), "SORRate");
+				scrollToTopOfThePage();
+				click(tendercreationlocators.Savebtn_Indent, "Savebtn_Indent");
+				waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
+				waitForObj(5000);
+				pdfResultReport.addStepDetails("IndentTG1_BOM_Item_tabvalidation",
+						"Should save BOM Item tab fields during indent creation", "Sucessfully saved BOM Item tab fields during indent creation " + " ", "Pass",
+						"Y");
+				log.info(
+						"completed executing the method:: IndentTG1_BOM_Item_tabvalidation");
+
+			} catch (Exception e) {
+
+				log.fatal("Not able to save BOM Item tab fields" + e.getMessage());
+				pdfResultReport.addStepDetails("IndentTG8_BOM_Item_tabvalidation",
+						"Should save BOM Item tab fields during indent creation", "Unable to save BOM Item tab fields during indent creation" + e.getMessage(),
+						"Fail", "N");
+			}
+		}
 	//BOM Services tab validation for Indent TG1 (27/01/2021)
 	public void IndentTG1_BOM_Services_tabvalidation()
 			throws Exception {
@@ -1710,7 +1924,7 @@ public class RfqFromIndentComponent extends BaseClass_Web {
 	public void VerifyIndentStatus(String indentstatus) throws Throwable {
 		try {
 			log.info("started executing the method:: VerifyIndentStatus");
-
+			waitForObj(5000);
 			String txt = text(tendercreationlocators.IndentStatus_ListPage).trim();
 			if(txt.equalsIgnoreCase(indentstatus))
 			{
@@ -1965,12 +2179,12 @@ public class RfqFromIndentComponent extends BaseClass_Web {
 	public void AssignedUserLogin() throws Throwable {
 		try {
 			log.info("started executing the method:: AssignedUserLogin");
-			click(tendercreationlocators.login, "login");
+			//click(tendercreationlocators.login, "login"); //edited on 201221
 			set(tendercreationlocators.userName, pdfResultReport.testData.get("IndentAssign_LoginUsername"), "userName");
 			waitForObj(5000);
 			set(tendercreationlocators.password, pdfResultReport.testData.get("AppPassword"), "password");
 			//Handle fixed Captcha (06/11/2020)
-			set(tendercreationlocators.Captcha_Login, "1234", "Login_Captcha");
+			//set(tendercreationlocators.Captcha_Login, "1234", "Login_Captcha"); ////edited on 201221
 			//Wait statement (Added to handle Captcha temporarily in AWS QA (19/10/2020))
 			//waitForObj(50000);
 			click(tendercreationlocators.okButton, "okButton");

@@ -7,7 +7,7 @@
         <parameter name="browserName" value="windowschrome"></parameter>
         <classes>
            <parameter name="TestcaseNo" value="22"></parameter>   
-            <class name="com.testScripts_mjunction.TG8_TC_Indent_05_Assignment_Process_Self_Claim" />
+            <class name="com.testScripts_mjunction.TG9_TC_Indent_05_Assignment_Process_Self_Claim" />
         </classes>
     </test> 
 </suite>

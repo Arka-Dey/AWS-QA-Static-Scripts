@@ -7,7 +7,7 @@
         <parameter name="browserName" value="windowschrome"></parameter>
         <classes>
            <parameter name="TestcaseNo" value="20"></parameter>   
-            <class name="com.testScripts_mjunction.TG8_TC_Indent_03_Creation_with_approval_Reviewed_to_creator" />
+            <class name="com.testScripts_mjunction.TG9_TC_Indent_03_Creation_with_approval_Reviewed_to_creator" />
         </classes>
     </test> 
 </suite>
