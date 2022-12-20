@@ -871,7 +871,8 @@ public class RfqFromIndentComponent extends BaseClass_Web {
 			//Handle fixed Captcha (06/11/2020)
 			//set(tendercreationlocators.Captcha_Login, "1234", "Login_Captcha"); // edited on 30-11-21
 			click(tendercreationlocators.okButton, "okButton");
-			waitForElement(tendercreationlocators.dashboardIcon, 5000);
+			//waitForElement(tendercreationlocators.dashboardIcon, 5000); //commented on 110722
+			waitForElement(tendercreationlocators.dashboardIconnew, 5000);
 			pdfResultReport.addStepDetails("Indent creator login", "Indent creator must be sucessfully logged in",
 					"Successfully logged in as indent creator" + " ", "Pass", "Y");
 			log.info("completed executing the method:: IndentcreatorLogin");
@@ -907,18 +908,46 @@ public class RfqFromIndentComponent extends BaseClass_Web {
 					"Unable to navigate to the indent list" + e.getMessage(), "Fail", "N");
 		}
 	}
+	
+	//Navigate to Indent Creation page (11/07/2022)
+		public void navigateToIndentCreationNew() throws Throwable {
+			try {
+				log.info("started executing the method:: navigateToIndentCreation");
+				// mouseOver(tendercreationlocators.tendersIcon);
+				JSClick(tendercreationlocators.mainMenuIcon, "mainMenuIcon");
+				mouseOver(tendercreationlocators.Requisition);
+				JSClick(tendercreationlocators.CreateIndent, "CreateIndent");
+				//WebDriver driver = ThreadLocalWebdriver.getDriver();
+				checkPageIsReady();
+				waitForElementToBeVisible(tendercreationlocators.GIindent);
+				//waitTillSpinnerDisable(driver, tendercreationlocators.LoadingBy);
+				waitForObj(3000);
 
+				pdfResultReport.addStepDetails("Navigate to indent creation", "Indent creation must be navigated successfully",
+						"Successfully navigated to Indent creation page" + " ", "Pass", "Y");
+				log.info("completed executing the method:: navigateToIndentCreation");
+
+			} catch (Exception e) {
+				log.fatal("Unable to navigate to the indent creation" + e.getMessage());
+				pdfResultReport.addStepDetails("Navigate to indent creation", "Not able to navigate to the indent creation",
+						"Unable to navigate to the indent creation" + e.getMessage(), "Fail", "N");
+			}
+		}
+		
 	//Navigate to Indent Creation page (21/01/2021)
 	public void navigateToIndentCreation() throws Throwable {
 		try {
 			log.info("started executing the method:: navigateToIndentCreation");
+			//Click on menu button (141222)
+			JSClick(tendercreationlocators.mainMenuIcon, "MenuIcon");
+			mouseOver(tendercreationlocators.Requisition);
 			// mouseOver(tendercreationlocators.tendersIcon);
 			JSClick(tendercreationlocators.IndentIcon, "IndentIcon");
-			JSClick(tendercreationlocators.IndentCreation, "IndentCreation");
 			WebDriver driver = ThreadLocalWebdriver.getDriver();
 			checkPageIsReady();
-			waitForElementToBeVisible(tendercreationlocators.Lbl_IndentCreation);
-			waitTillSpinnerDisable(driver, tendercreationlocators.LoadingBy);
+			waitForElementToBeVisible(tendercreationlocators.CreateIndent);
+			JSClick(tendercreationlocators.CreateIndent, "CreateIndent"); //updated on 141222
+			//waitTillSpinnerDisable(driver, tendercreationlocators.LoadingBy);
 			waitForObj(3000);
 
 			pdfResultReport.addStepDetails("Navigate to indent creation", "Indent creation must be navigated successfully",
@@ -933,31 +962,38 @@ public class RfqFromIndentComponent extends BaseClass_Web {
 	}
 	//General Information tab validation for Indent TG1 (27/01/2021)
 	public void IndentTG1_General_Info_tabvalidation(String TemplateGroup)
-			throws Exception {
+			throws Throwable {
 		try {
 			log.info(
 					"started executing the method:: IndentTG1_General_Info_tabvalidation()");
-			waitForElement(tendercreationlocators.Indent_TG_select, 5000);
-			waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
+			//waitForElement(tendercreationlocators.Indent_TG_select, 5000);
+			//waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
 			select(tendercreationlocators.Indent_TG_select, TemplateGroup);
-			waitForElementToBeVisible(tendercreationlocators.Indent_TG_View);
+			//waitForElementToBeVisible(tendercreationlocators.Indent_TG_View);
 			String Indent_Ref_No = "IndentRef_";
 			int getrandomInterger = getrandomInterger(10000, 1000000000);
 			Indent_Ref_No = Indent_Ref_No.concat(String.valueOf(getrandomInterger));
 			set(tendercreationlocators.IndentRefNo, Indent_Ref_No, "IndentReferenceNumber");
-			set(tendercreationlocators.GenDesc_Indent,
-					pdfResultReport.testData.get("Indent_Geninfo_Desc"), "GenDesc_Indent");
+			set(tendercreationlocators.GenDesc_Indent, pdfResultReport.testData.get("Indent_Geninfo_Desc"), "GenDesc_Indent");
 			select(tendercreationlocators.GenInfo_NormalEmergency_Indent, "Normal");
 			select(tendercreationlocators.IndentCategory, "Default_cat");
 			select(tendercreationlocators.IndentCurrency, pdfResultReport.testData.get("Indent_Geninfo_Currency"));
 			select(tendercreationlocators.ProcMode_Indent, pdfResultReport.testData.get("Indent_Geninfo_ProcMode"));
 			set(tendercreationlocators.GenInfo_Remarks_Indent, pdfResultReport.testData.get("Indent_Geninfo_Remarks"), "GenInfo_Remarks_Indent");
 			scrollToTopOfThePage();
-			click(tendercreationlocators.Savebtn_Indent, "Savebtn_Indent");
-			waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
-			waitForObj(5000);
-			waitForElementToBeVisible(tendercreationlocators.IndentDetailsTab);
-			waitForElementToBeClickable(tendercreationlocators.IndentDetailsTab);
+			/*
+			 * click(tendercreationlocators.Savebtn_Indent, "Savebtn_Indent");
+			 * waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(),
+			 * tendercreationlocators.LoadingBy); waitForObj(5000);
+			 * waitForElementToBeVisible(tendercreationlocators.IndentDetailsTab);
+			 * waitForElementToBeClickable(tendercreationlocators.IndentDetailsTab);
+			 */
+			//Modified on 130722
+			waitForObj(2000);
+			click(tendercreationlocators.Savebtn_IndentNew, "savebutton");
+			waitForObj(2000);
+			JSClick(tendercreationlocators.IndentSuccessOK, "IndentSuccess");
+			waitForObj(2000);
 			
 			pdfResultReport.addStepDetails("IndentTG1_General_Info_tabvalidation",
 					"Should save generalInfo tab fields during indent creation", "Sucessfully saved generalInfo tab fields during indent creation " + " ", "Pass",
@@ -1063,6 +1099,56 @@ public class RfqFromIndentComponent extends BaseClass_Web {
 					}
 				}
 				
+				
+			//General Information tab validation for Indent TG1 (11/07/2022)
+				public void IndentTG9_General_Info_tabvalidationNew(String TemplateGroup)
+						throws Throwable {
+					try {
+						log.info(
+								"started executing the method:: IndentTG9_General_Info_tabvalidation()");
+						//waitForElement(tendercreationlocators.Indent_TG_select, 5000);
+						//waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
+						select(tendercreationlocators.Indent_TG_select, TemplateGroup);
+						waitForObj(2000);
+						//waitForElementToBeVisible(tendercreationlocators.Indent_TG_View);
+						String Indent_Ref_No = "IndentRef_";
+						int getrandomInterger = getrandomInterger(10000, 1000000000);
+						Indent_Ref_No = Indent_Ref_No.concat(String.valueOf(getrandomInterger));
+						set(tendercreationlocators.IndentRefNo, Indent_Ref_No, "IndentReferenceNumber");
+						select(tendercreationlocators.IndentCategory, "Default_cat");
+						select(tendercreationlocators.IndentCurrency, pdfResultReport.testData.get("Indent_Geninfo_Currency"));
+						set(tendercreationlocators.EstimatedPrice_Indent, pdfResultReport.testData.get("SORRate"), "EstimatedPrice_Indent");
+						select(tendercreationlocators.ProcMode_Indent, pdfResultReport.testData.get("Indent_Geninfo_ProcMode"));
+						scrollToElement(tendercreationlocators.GenDesc_Indent);
+						set(tendercreationlocators.GenDesc_Indent,
+								pdfResultReport.testData.get("Indent_Geninfo_Desc"), "GenDesc_Indent");
+						scrollToTopOfThePage();
+						click(tendercreationlocators.Savebtn_IndentNew, "savebutton");
+						waitForObj(3000);
+						JSClick(tendercreationlocators.IndentSuccessOK, "IndentSuccess");
+						waitForObj(2000);
+						//waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
+						
+						/*
+						 * waitForElementToBeVisible(tendercreationlocators.indentDetailsTab_TG8);
+						 * waitForElementToBeClickable(tendercreationlocators.indentDetailsTab_TG8);
+						 */
+						
+						pdfResultReport.addStepDetails("IndentTG1_General_Info_tabvalidation",
+								"Should save generalInfo tab fields during indent creation", "Sucessfully saved generalInfo tab fields during indent creation " + " ", "Pass",
+								"Y");
+						log.info(
+								"completed executing the method:: IndentTG1_General_Info_tabvalidation");
+
+					} catch (Exception e) {
+
+						log.fatal("Not able to save generalInfo tab fields" + e.getMessage());
+						pdfResultReport.addStepDetails("IndentTG8_General_Info_tabvalidation",
+								"Should save generalInfo tab fields during indent creation", "Unable to save generalInfo tab fields during indent creation" + e.getMessage(),
+								"Fail", "N");
+					}
+				}
+				
 				//added on 04-12-21
 				
 				public static void waitForSpinnerToDisappear() {
@@ -1072,21 +1158,30 @@ public class RfqFromIndentComponent extends BaseClass_Web {
 				}
 				
 				//added on 04-12-21
+				
+				public static void waitForSpinnerToDisappearNew() {
+					WebDriver driver = ThreadLocalWebdriver.getDriver();
+					WebDriverWait wait = new WebDriverWait(driver, 100);
+					wait.until(ExpectedConditions.invisibilityOf(driver.findElement(By.xpath("//div[contains(text(),'Please Wait')]"))));
+				}
+				//added on 04-12-21 //modified on 120722
 				public void TG9_Indnet_attachments() throws Throwable {
 					try {
 						log.info("started executing the method:: TG9_Indnet_attachments");
 						waitForElement(tendercreationlocators.IndentAttachmentTab, 5000);
+						waitForObj(2000);
 						click(tendercreationlocators.IndentAttachmentTab, "IndentAttachmentTab");
-						waitForSpinnerToDisappear();
+						//waitForSpinnerToDisappear();
+						waitForObj(2000);
 						click(tendercreationlocators.AddAttachment, "AddAttachment");
 						set(tendercreationlocators.IndentLabel, pdfResultReport.testData.get("Attachments-Label"), "label");
 						set(tendercreationlocators.IndentAttachments, System.getProperty("user.dir") + "\\MediaFiles\\rfqCreation.xlsx",
 								"fileName");
 						click(tendercreationlocators.OkAttach, "attachmentOKbutton");
 						waitForObj(2000);
-						JSClick(tendercreationlocators.savebutton, "savebutton");
-
-						waitForSpinnerToDisappear();
+						JSClick(tendercreationlocators.savebuttonNew, "savebutton");
+						waitForObj(2000);
+						waitForSpinnerToDisappearNew();
 						pdfResultReport.addStepDetails("Successfully Created Indent",
 								"Indent must be created successfully using Indnet_attachment as template group ",
 								"Indent is created successfully using Supply_Indnet_2.4 as template group" + " ",
@@ -1111,8 +1206,8 @@ public class RfqFromIndentComponent extends BaseClass_Web {
 								"started executing the method:: indent_items_tabvalidation()");
 						waitForElement(tendercreationlocators.IndentItemTab, 5000);
 						click(tendercreationlocators.IndentItemTab, "IndentItemTab");
-						waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
-						waitForObj(1000);
+						//waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
+						waitForObj(2000);
 						click(tendercreationlocators.AddIndentItems, "AddIndentItems");
 						//set(tendercreationlocators.TG9_IndentNumber, pdfResultReport.testData.get("ItemCode"), "TG9_IndentNumber");
 						DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy hh.mm aa");
@@ -1120,9 +1215,10 @@ public class RfqFromIndentComponent extends BaseClass_Web {
 						set(tendercreationlocators.DateOfRequirement, dateString, "DateOfRequirement");
 						set(tendercreationlocators.Department, pdfResultReport.testData.get("AnnexuresType_TG1AnnexuresTab"), "Department");
 						set(tendercreationlocators.IndentDate, dateString, "IndentDate");
-						click(tendercreationlocators.Savebtn_Indent, "Savebtn_Indent");
-						waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
-						waitForObj(3000);
+						click(tendercreationlocators.savebuttonNew, "savebutton");
+						waitForSpinnerToDisappearNew();
+						//waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
+						waitForObj(2000);
 						pdfResultReport.addStepDetails("indent_items_tabvalidation",
 								"Should save indent_items tab fields during indent creation", "Sucessfully saved Technical Specification tab fields during indent creation " + " ", "Pass",
 								"Y");
@@ -1188,8 +1284,8 @@ public class RfqFromIndentComponent extends BaseClass_Web {
 			waitForElement(tendercreationlocators.IndentDetailsTab, 5000);
 			waitForObj(2000);
 			click(tendercreationlocators.IndentDetailsTab, "IndentDetailsTab");
-			waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
-			waitForObj(1000);
+			//waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
+			waitForObj(2000);
 			select(tendercreationlocators.TypeOfService_TG1IndentDetailsTab, pdfResultReport.testData.get("TypeOfService_TG1IndentDetailsTab"));
 			select(tendercreationlocators.Capital_TG1IndentDetailsTab, pdfResultReport.testData.get("Capital_TG1IndentDetailsTab"));
 			select(tendercreationlocators.ModeOfDespatch_TG1IndentDetailsTab, pdfResultReport.testData.get("ModeOfDespatch_TG1IndentDetailsTab"));
@@ -1199,9 +1295,9 @@ public class RfqFromIndentComponent extends BaseClass_Web {
 			select(tendercreationlocators.BasisOfPriceEstimation_TG1IndentDetailsTab, pdfResultReport.testData.get("BasisOfPriceEstimation_TG1IndentDetailsTab"));
 			select(tendercreationlocators.PreBidMeeting_TG1IndentDetailsTab, pdfResultReport.testData.get("PreBidMeeting_TG1IndentDetailsTab"));
 			scrollToTopOfThePage();
-			click(tendercreationlocators.Savebtn_Indent, "Savebtn_Indent");
-			waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
-			waitForObj(5000);
+			click(tendercreationlocators.savebuttonNew, "Savebtn_Indent");
+			//waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
+			waitForObj(4000);
 			pdfResultReport.addStepDetails("IndentTG1_Indent_Details_tabvalidation",
 					"Should save IndentDetails tab fields during indent creation", "Sucessfully saved IndentDetails tab fields during indent creation " + " ", "Pass",
 					"Y");
@@ -1283,13 +1379,13 @@ public class RfqFromIndentComponent extends BaseClass_Web {
 					"started executing the method:: IndentTG1_Other_Information_tabvalidation()");
 			waitForElement(tendercreationlocators.TG1OtherinformationTab, 5000);
 			click(tendercreationlocators.TG1OtherinformationTab, "TG1OtherinformationTab");
-			waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
-			waitForObj(1000);
+			//waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
+			waitForObj(3000);
 			select(tendercreationlocators.WorkofContract_TG1OtherinformationTab, pdfResultReport.testData.get("WorkofContract_TG1OtherinformationTab"));
 			select(tendercreationlocators.PartySite_TG1OtherinformationTab, pdfResultReport.testData.get("PartySite_TG1OtherinformationTab"));
 			scrollToTopOfThePage();
-			click(tendercreationlocators.Savebtn_Indent, "Savebtn_Indent");
-			waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
+			click(tendercreationlocators.Savebtn_IndentNew1, "Savebtn_Indent");
+			//waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
 			waitForObj(5000);
 			pdfResultReport.addStepDetails("IndentTG1_Other_Information_tabvalidation",
 					"Should save Other Information tab fields during indent creation", "Sucessfully saved Other Information tab fields during indent creation " + " ", "Pass",
@@ -1305,7 +1401,7 @@ public class RfqFromIndentComponent extends BaseClass_Web {
 					"Fail", "N");
 		}
 	}
-	//BOM Item tab validation for Indent TG1 (27/01/2021)
+	//BOM Item tab validation for Indent TG1 (27/01/2021) //modified on 130722
 	public void IndentTG1_BOM_Item_tabvalidation()
 			throws Exception {
 		try {
@@ -1313,8 +1409,8 @@ public class RfqFromIndentComponent extends BaseClass_Web {
 					"started executing the method:: IndentTG1_BOM_Item_tabvalidation()");
 			waitForElement(tendercreationlocators.TG1IndentBOMItemTab, 5000);
 			click(tendercreationlocators.TG1IndentBOMItemTab, "TG1IndentBOMItemTab");
-			waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
-			waitForObj(1000);
+			//waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
+			waitForObj(3000);
 			click(tendercreationlocators.AddNonSORItemBtn_TG1BOMItemTab, "AddNonSORItemBtn_TG1BOMItemTab");
 			set(tendercreationlocators.ItemCode_TG1BOMItemTab, pdfResultReport.testData.get("ItemCode_TG1BOMItemTab"), "ItemCode_TG1BOMItemTab");
 			set(tendercreationlocators.ItemName_TG1BOMItemTab, pdfResultReport.testData.get("ItemName_TG1BOMItemTab"), "ItemName_TG1BOMItemTab");
@@ -1322,9 +1418,13 @@ public class RfqFromIndentComponent extends BaseClass_Web {
 			set(tendercreationlocators.Qty_TG1BOMItemTab, pdfResultReport.testData.get("Qty_TG1BOMItemTab"), "Qty_TG1BOMItemTab");
 			set(tendercreationlocators.UnitRate_TG1BOMItemTab, pdfResultReport.testData.get("UnitRate_TG1BOMItemTab"), "UnitRate_TG1BOMItemTab");
 			set(tendercreationlocators.GSTPercent_TG1BOMItemTab, pdfResultReport.testData.get("GSTPercent_TG1BOMItemTab"), "GSTPercent_TG1BOMItemTab");
-			click(tendercreationlocators.Savebtn_Indent, "Savebtn_Indent");
-			waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
-			waitForObj(5000);
+			click(tendercreationlocators.AddNonSORItemBtn_TG1BOMItemTab, "AddNonSORItemBtn_TG1BOMItemTab");
+			waitForObj(1000);
+			click(tendercreationlocators.AddInputAlert, "AddInputAlert");
+			waitForObj(1000);
+			click(tendercreationlocators.Savebtn_IndentNew1, "Savebtn_Indent");
+			//waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
+			waitForObj(3000);
 			pdfResultReport.addStepDetails("IndentTG1_BOM_Item_tabvalidation",
 					"Should save BOM Item tab fields during indent creation", "Sucessfully saved BOM Item tab fields during indent creation " + " ", "Pass",
 					"Y");
@@ -1391,8 +1491,8 @@ public class RfqFromIndentComponent extends BaseClass_Web {
 				waitForElementToBeClickable(tendercreationlocators.BOMitemsTab);
 				//waitForElement(tendercreationlocators.bomItems_TG8, 5000);
 				click(tendercreationlocators.BOMitemsTab, "BOMitemsTab");
-				waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
-				waitForObj(1000);
+				//waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
+				waitForObj(2000);
 				click(tendercreationlocators.addNonSORitemsIndent_TG8, "addNonSORitemsIndent_TG8");
 				set(tendercreationlocators.ItemCode, pdfResultReport.testData.get("ItemCode_TG1BOMItemTab"), "ItemCode");
 				set(tendercreationlocators.BudgetHead, pdfResultReport.testData.get("ItemName_TG1BOMItemTab"), "BudgetHead");
@@ -1412,9 +1512,9 @@ public class RfqFromIndentComponent extends BaseClass_Web {
 				scrollToElement(tendercreationlocators.SORRate);
 				set(tendercreationlocators.SORRate, pdfResultReport.testData.get("GSTPercent_TG1BOMItemTab"), "SORRate");
 				scrollToTopOfThePage();
-				click(tendercreationlocators.Savebtn_Indent, "Savebtn_Indent");
-				waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
-				waitForObj(5000);
+				click(tendercreationlocators.savebuttonNew, "savebutton");
+				//waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
+				waitForObj(3000);
 				pdfResultReport.addStepDetails("IndentTG1_BOM_Item_tabvalidation",
 						"Should save BOM Item tab fields during indent creation", "Sucessfully saved BOM Item tab fields during indent creation " + " ", "Pass",
 						"Y");
@@ -1437,8 +1537,8 @@ public class RfqFromIndentComponent extends BaseClass_Web {
 					"started executing the method:: IndentTG1_BOM_Services_tabvalidation()");
 			waitForElement(tendercreationlocators.TG1IndentBOMServicesTab, 5000);
 			click(tendercreationlocators.TG1IndentBOMServicesTab, "TG1IndentBOMServicesTab");
-			waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
-			waitForObj(1000);
+			//waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
+			waitForObj(3000);
 			click(tendercreationlocators.AddNonSORItemBtn_TG1BOMServicesTab, "AddNonSORItemBtn_TG1BOMServicesTab");
 			set(tendercreationlocators.ItemCode_TG1BOMServicesTab, pdfResultReport.testData.get("ItemCode_TG1BOMServicesTab"), "ItemCode_TG1BOMServicesTab");
 			set(tendercreationlocators.ItemName_TG1BOMServicesTab, pdfResultReport.testData.get("ItemName_TG1BOMServicesTab"), "ItemName_TG1BOMServicesTab");
@@ -1446,8 +1546,8 @@ public class RfqFromIndentComponent extends BaseClass_Web {
 			set(tendercreationlocators.Qty_TG1BOMServicesTab, pdfResultReport.testData.get("Qty_TG1BOMServicesTab"), "Qty_TG1BOMServicesTab");
 			set(tendercreationlocators.UnitRate_TG1BOMServicesTab, pdfResultReport.testData.get("UnitRate_TG1BOMServicesTab"), "UnitRate_TG1BOMServicesTab");
 			set(tendercreationlocators.GSTPercent_TG1BOMServicesTab, pdfResultReport.testData.get("GSTPercent_TG1BOMServicesTab"), "GSTPercent_TG1BOMServicesTab");
-			click(tendercreationlocators.Savebtn_Indent, "Savebtn_Indent");
-			waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
+			click(tendercreationlocators.Savebtn_IndentNew1, "Savebtn_Indent");
+			//waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
 			waitForObj(3000);
 			pdfResultReport.addStepDetails("IndentTG1_BOM_Services_tabvalidation",
 					"Should save BOM Services tab fields during indent creation", "Sucessfully saved BOM Services tab fields during indent creation " + " ", "Pass",
@@ -1470,10 +1570,12 @@ public class RfqFromIndentComponent extends BaseClass_Web {
 			log.info(
 					"started executing the method:: IndentTG1_EstimationSheet_tabvalidation()");
 			waitForElement(tendercreationlocators.TG1IndentEstimationSheetTab, 5000);
-			click(tendercreationlocators.NextTabLink_Indent, "NextTabLink_Indent");
+			//click(tendercreationlocators.NextTabLink_Indent, "NextTabLink_Indent");
 			click(tendercreationlocators.TG1IndentEstimationSheetTab, "TG1IndentEstimationSheetTab");
-			waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
-			waitForObj(1000);
+			//waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
+			
+			click(tendercreationlocators.Savebtn_IndentNew1, "Savebtn_Indent");
+			waitForObj(2000);
 			pdfResultReport.addStepDetails("IndentTG1_EstimationSheet_tabvalidation",
 					"Should save Estimation Sheet tab fields during indent creation", "Sucessfully saved Estimation Sheet tab fields during indent creation " + " ", "Pass",
 					"Y");
@@ -1496,13 +1598,13 @@ public class RfqFromIndentComponent extends BaseClass_Web {
 					"started executing the method:: IndentTG1_technical_Specification_tabvalidation()");
 			waitForElement(tendercreationlocators.TG1IndentTechnicalSpecificationTab, 5000);
 			click(tendercreationlocators.TG1IndentTechnicalSpecificationTab, "TG1IndentTechnicalSpecificationTab");
-			waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
-			waitForObj(1000);
+			//waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
+			waitForObj(2000);
 			click(tendercreationlocators.Addbtn_TG1TechnicalSpecificationTab, "Addbtn_TG1TechnicalSpecificationTab");
 			set(tendercreationlocators.ClauseNo_TG1TechnicalSpecificationTab, pdfResultReport.testData.get("ClauseNo_TG1TechnicalSpecificationTab"), "ClauseNo_TG1TechnicalSpecificationTab");
 			set(tendercreationlocators.ClauseHeaderTitle_TG1TechnicalSpecificationTab, pdfResultReport.testData.get("ClauseHeaderTitle_TG1TechnicalSpecificationTab"), "ClauseHeaderTitle_TG1TechnicalSpecificationTab");
-			click(tendercreationlocators.Savebtn_Indent, "Savebtn_Indent");
-			waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
+			click(tendercreationlocators.Savebtn_IndentNew1, "Savebtn_Indent");
+			//waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
 			waitForObj(3000);
 			pdfResultReport.addStepDetails("IndentTG1_technical_Specification_tabvalidation",
 					"Should save Technical Specification tab fields during indent creation", "Sucessfully saved Technical Specification tab fields during indent creation " + " ", "Pass",
@@ -1588,18 +1690,22 @@ public class RfqFromIndentComponent extends BaseClass_Web {
 					"started executing the method:: IndentTG1_Annexures_tabvalidation()");
 			waitForElement(tendercreationlocators.TG1IndentAnnexuresTab, 500);
 			click(tendercreationlocators.TG1IndentAnnexuresTab, "TG1IndentAnnexuresTab");
-			waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
-			waitForObj(1000);
-			click(tendercreationlocators.Addbtn_TG1AnnexuresTab, "Addbtn_TG1AnnexuresTab");
-			waitForElement(tendercreationlocators.AddAtachmentLbl_TG1AnnexuresTab, 500);
-			select(tendercreationlocators.AnnexuresType_TG1AnnexuresTab, pdfResultReport.testData.get("AnnexuresType_TG1AnnexuresTab"));
-			set(tendercreationlocators.AttachFile_TG1AnnexuresTab, System.getProperty("user.dir") + "\\MediaFiles\\rfqCreation.xlsx","fileName");
-			click(tendercreationlocators.OKBtn_TG1AnnexuresTab, "OKBtn_TG1AnnexuresTab");
-			waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
-			waitForObj(500);
-			click(tendercreationlocators.Savebtn_Indent, "Savebtn_Indent");
-			waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
-			waitForObj(500);
+			//waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
+			waitForObj(3000);
+			click(tendercreationlocators.AddAttachment, "Addbtn_TG1AnnexuresTab");
+			/*
+			 * waitForElement(tendercreationlocators.AddAtachmentLbl_TG1AnnexuresTab, 500);
+			 * select(tendercreationlocators.AnnexuresType_TG1AnnexuresTab,
+			 * pdfResultReport.testData.get("AnnexuresType_TG1AnnexuresTab"));
+			 */
+			//commented on 140722
+			set(tendercreationlocators.IndentAttachments, System.getProperty("user.dir") + "\\MediaFiles\\rfqCreation.xlsx","fileName");
+			click(tendercreationlocators.OkAttach, "OKBtn_TG1AnnexuresTab");
+			//waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
+			waitForObj(3000);
+			click(tendercreationlocators.Savebtn_IndentNew1, "Savebtn_Indent");
+			//waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
+			waitForObj(3000);
 			pdfResultReport.addStepDetails("IndentTG1_Annexures_tabvalidation",
 					"Should save Annexures tab fields during indent creation", "Sucessfully saved Annexures tab fields during indent creation " + " ", "Pass",
 					"Y");
@@ -1613,15 +1719,15 @@ public class RfqFromIndentComponent extends BaseClass_Web {
 					"Fail", "N");
 		}
 	}
-	//Submit Indent TG1 (28/01/2021)
+	//Submit Indent TG1 (28/01/2021) // modified on 120722
 	public void IndentTG1_Submit()
 			throws Exception {
 		try {
 			log.info(
 					"started executing the method:: IndentTG1_Submit()");
-			click(tendercreationlocators.Submitbtn_Indent, "Submitbtn_Indent");
-			waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
-			waitForObj(1000);
+			click(tendercreationlocators.Submitbtn_IndentNew, "Submitbtn_Indent");
+			//waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
+			waitForObj(2000);
 			waitForElement(tendercreationlocators.Lbl_SendforApproval_Indent, 500);
 			pdfResultReport.addStepDetails("IndentTG1_Submit",
 					"Should click submit button during indent creation", "Sucessfully clicked submit button during indent creation " + " ", "Pass",
@@ -1643,6 +1749,13 @@ public class RfqFromIndentComponent extends BaseClass_Web {
 		System.out.println(SystemIndentnoLocatorText);
 		return SystemIndentnoLocatorText;
 	}
+	//Saving system indent no (14/07/2022)
+		public String SystemIndentNoSaveNew() throws Throwable {
+			log.info("started executing the method:: SystemIndentNoSave");
+			SystemIndentnoLocatorText = text(tendercreationlocators.SystemIndentNo).replace("Indent No. : ", "").trim();
+			System.out.println(SystemIndentnoLocatorText);
+			return SystemIndentnoLocatorText;
+		}
 	//Userdefined Indent workflow send for approval page (28/01/2021)
 	public void AddSingleUsersForSequentialApproval_IndentWF() throws Throwable {
 		try {
@@ -1676,9 +1789,9 @@ public class RfqFromIndentComponent extends BaseClass_Web {
 					"Pass", "Y");
 			waitForObj(2000);
 			click(tendercreationlocators.Btn_SendforApproval_Indent, "Btn_SendforApproval_Indent");
-			waitForElementToBeVisible(tendercreationlocators.Lbl_IndentList);
-			waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
-			waitForObj(2000);
+			waitForElementToBeVisible(tendercreationlocators.myindent);
+			//waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
+			waitForObj(4000);
 			pdfResultReport.addStepDetails("AddSingleUsersForSequentialApproval_IndentWF",
 					"Must Submit the Indent With Seq Flow ",
 					"Sucessfully Submitted Indent With Seq Flow "
@@ -1696,6 +1809,8 @@ public class RfqFromIndentComponent extends BaseClass_Web {
                        Assert.fail("Failed Due to " + e.getMessage());
 		}
 	}
+	
+	
 	//Navigating pending indent list during indent approval in indent approver login (28/01/2021)
 	public void GoToApprovalworkFlowPendingindentAndSearchTheIndent() throws Throwable {
 		try {
@@ -1924,7 +2039,7 @@ public class RfqFromIndentComponent extends BaseClass_Web {
 	public void VerifyIndentStatus(String indentstatus) throws Throwable {
 		try {
 			log.info("started executing the method:: VerifyIndentStatus");
-			waitForObj(5000);
+			waitForObj(2000);
 			String txt = text(tendercreationlocators.IndentStatus_ListPage).trim();
 			if(txt.equalsIgnoreCase(indentstatus))
 			{

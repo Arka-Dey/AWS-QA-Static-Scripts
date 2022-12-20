@@ -55,7 +55,7 @@ public class TG5_TC_Indent_01_Creation_with_approval extends BaseClass_Web{
 //Creating a new Indent with sequential 1 approver userdefined WF
 		etendercomponentobj.openURL();
 		rfqfromintendcomponentobj.IndentcreatorLogin();
-		rfqfromintendcomponentobj.navigateToIndentCreation();
+		rfqfromintendcomponentobj.navigateToIndentCreationNew();
 		rfqfromintendcomponentobj.IndentTG1_General_Info_tabvalidation("Indigenous Indent (Supply Only) V-004");
 		rfqfromintendcomponentobj.IndentTG1_Indent_Details_tabvalidation();
 		rfqfromintendcomponentobj.IndentTG1_Other_Information_tabvalidation();
@@ -64,7 +64,7 @@ public class TG5_TC_Indent_01_Creation_with_approval extends BaseClass_Web{
 		rfqfromintendcomponentobj.IndentTG1_technical_Specification_tabvalidation();
 		rfqfromintendcomponentobj.IndentTG1_Annexures_tabvalidation();
 		rfqfromintendcomponentobj.IndentTG1_Submit();
-		rfqfromintendcomponentobj.SystemIndentNoSave();
+		rfqfromintendcomponentobj.SystemIndentNoSaveNew();
 		rfqfromintendcomponentobj.AddSingleUsersForSequentialApproval_IndentWF();
 		rfqfromintendcomponentobj.navigateToIndentListing();
 		rfqfromintendcomponentobj.enterIndentNoInSearch();

@@ -65,9 +65,9 @@ public class TG1_TC_Indent_01_Creation_with_approval extends BaseClass_Web{
 		rfqfromintendcomponentobj.IndentTG1_technical_Specification_tabvalidation();
 		rfqfromintendcomponentobj.IndentTG1_Annexures_tabvalidation();
 		rfqfromintendcomponentobj.IndentTG1_Submit();
-		rfqfromintendcomponentobj.SystemIndentNoSave();
+		rfqfromintendcomponentobj.SystemIndentNoSaveNew();
 		rfqfromintendcomponentobj.AddSingleUsersForSequentialApproval_IndentWF();
-		rfqfromintendcomponentobj.navigateToIndentListing();
+		//rfqfromintendcomponentobj.navigateToIndentListing();
 		rfqfromintendcomponentobj.enterIndentNoInSearch();
 		rfqfromintendcomponentobj.VerifyIndentStatus("Pending For Approval");
 		etendercomponentobj.tenderLogout();

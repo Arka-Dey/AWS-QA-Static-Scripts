@@ -55,8 +55,8 @@ public class TG9_TC_Indent_01_Creation_with_approval extends BaseClass_Web{
 //Creating a new Indent with sequential 1 approver userdefined WF
 		etendercomponentobj.openURL();
 		rfqfromintendcomponentobj.IndentcreatorLogin();
-		rfqfromintendcomponentobj.navigateToIndentCreation();
-		rfqfromintendcomponentobj.IndentTG9_General_Info_tabvalidation("SUPPLY INDENT_2.4");
+		rfqfromintendcomponentobj.navigateToIndentCreationNew();
+		rfqfromintendcomponentobj.IndentTG9_General_Info_tabvalidationNew("SUPPLY INDENT_2.4");
 		rfqfromintendcomponentobj.TG9_Indnet_attachments();
 		rfqfromintendcomponentobj.IndentTG9_indent_items_tabvalidation();
 		rfqfromintendcomponentobj.IndentTG9_BOM_Item_tabvalidation();
