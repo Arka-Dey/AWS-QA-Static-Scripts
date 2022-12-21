@@ -2963,7 +2963,7 @@ public By Accommodationandfoodserviceactivities = By.xpath("//span[text()='Accom
 	//Indent BOM Item tab for TG1
 	public By TG1IndentBOMItemTab = By.xpath("//button[@id='rdcis_bom_supply_final-tab']"); //modified on 130722
 	public By AddNonSORItemBtn_TG1BOMItemTab = By.xpath("//div[@id='rfqItemtabl2-rdcis_bom_supply_final']/div/button[1]"); //modified on 130722
-	public By AddInputAlert = By.xpath("//mat-dialog-actions //div[contains(@class, 'text-center mb-4')] //button[contains(@class, '')]"); //modified on 201222
+	public By AddInputAlert = By.xpath("//mat-dialog-actions //div[contains(@class, 'text-center mb-4')] //button[contains(text(), 'Ok')]"); //modified on 201222
 	public By ItemCode_TG1BOMItemTab = By.xpath("//input[@id='rdcis_bom_supply_final.item_code.0']");
 	public By ItemName_TG1BOMItemTab = By.xpath("//input[@id='rdcis_bom_supply_final.item_name.0']");
 	public By UOM_TG1BOMItemTab = By.xpath("//select[@name='rdcis_bom_supply_final_uom']");
@@ -2971,8 +2971,8 @@ public By Accommodationandfoodserviceactivities = By.xpath("//span[text()='Accom
 	public By UnitRate_TG1BOMItemTab = By.xpath("//input[@id='rdcis_bom_supply_final.sor_rate.0']");
 	public By GSTPercent_TG1BOMItemTab = By.xpath("//input[@id='rdcis_bom_supply_final.gst.0']");
 	//Indent BOM Services Tab for TG1
-	public By TG1IndentBOMServicesTab = By.xpath("//div[@id='rfqItemtabl2-rdcis_bom_servce_cc_final']/div[1]/button[1]");
-	public By AddNonSORItemBtn_TG1BOMServicesTab = By.xpath("//a[@data-target='#myModalalRfqNonSorItem-rdcis_bom_servce_cc_final']//button[@type='button']");
+	public By TG1IndentBOMServicesTab = By.xpath("//button[@id='rdcis_bom_servce_cc_final-tab']");
+	public By AddNonSORItemBtn_TG1BOMServicesTab = By.xpath("//div[@id='rfqItemtabl2-rdcis_bom_servce_cc_final']/div[1]/button[1]"); // updated on 201222
 	public By ItemCode_TG1BOMServicesTab = By.xpath("//input[@id='rdcis_bom_servce_cc_final.item_code.0']");
 	public By ItemName_TG1BOMServicesTab = By.xpath("//input[@id='rdcis_bom_servce_cc_final.item_name.0']");
 	public By UOM_TG1BOMServicesTab = By.xpath("//select[@name='rdcis_bom_servce_cc_final_uom']");
@@ -3001,8 +3001,8 @@ public By Accommodationandfoodserviceactivities = By.xpath("//span[text()='Accom
 	public By Lbl_SendforApproval_Indent = By.xpath("//app-workflowmodal[@class='ng-star-inserted']/div/div/h5"); //modified on 140722
 	public By SystemIndentNo = By.xpath("//div[@class='lthpTitle']/div[1]/div[1]");
 	public By UserDefinedWFchkbox_Indent = By.xpath("//div[@class='d-sm-flex justify-content-sm-start align-items-center']/label[2]/span"); //modified on 140722
-	public By NotReqdWFchkbox_Indent = By.xpath("//div[contains(@class,'modalsnd-main fade in')]//input[@id='appNo']");
-	public By CompleteIndentbtn = By.xpath("//button[normalize-space()='Complete Indent']");
+	public By NotReqdWFchkbox_Indent = By.xpath("//input[@id='appNo']/following-sibling::span");
+	public By CompleteIndentbtn = By.xpath("//mat-dialog-actions //div[contains(@class, 'text-center mb-4')]/button[2]");
 	public By NoOfIndentRowinApproval = By.xpath("//table[@id='approver']/tbody/tr"); //modified on 140722
 	public By cancelUser1_Indent = By.xpath("//a[@class='tblCirBtnSm tblCross blu ng-star-inserted']"); //modified on 140722
 	//public By userAdd_Indent = By.xpath("//table[@id='approver']/thead/tr[1]/th[7]/div/button[@id='addApprovertc']");
@@ -3016,7 +3016,7 @@ public By Accommodationandfoodserviceactivities = By.xpath("//span[text()='Accom
 	public By Btn_SendforApproval_Indent = By.xpath("//*[@id='mat-dialog-2']/app-workflowmodal/div/mat-dialog-actions/div/button[2]");
 
 	public By IndentListLink = By.xpath("//a[normalize-space()='Indent List']");
-	public By Lbl_IndentList = By.xpath("//h3[@class='page-header box_shadow']");
+	public By Lbl_IndentList = By.xpath("//button[@id='nav-my-indent-tab']");
 	public By myindent= By.xpath("//button[@id='nav-my-indent-tab']");
 	public By IndentRowResult (String indentno) {return By.xpath("//table[contains(@id,'myTablebyrTl00')]//tr[@class='ng-scope']//td[contains(@title,'"+indentno+"')]");}
 	public By IndentRowResultFromIndent (String indentno) {return By.xpath("//td[contains(@title,'"+indentno+"')]");}

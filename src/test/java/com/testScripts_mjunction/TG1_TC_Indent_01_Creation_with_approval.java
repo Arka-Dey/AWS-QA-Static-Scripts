@@ -68,7 +68,7 @@ public class TG1_TC_Indent_01_Creation_with_approval extends BaseClass_Web{
 		rfqfromintendcomponentobj.SystemIndentNoSaveNew();
 		rfqfromintendcomponentobj.AddSingleUsersForSequentialApproval_IndentWF();
 		//rfqfromintendcomponentobj.navigateToIndentListing();
-		rfqfromintendcomponentobj.enterIndentNoInSearch();
+		//rfqfromintendcomponentobj.enterIndentNoInSearch();
 		rfqfromintendcomponentobj.VerifyIndentStatus("Pending For Approval");
 		etendercomponentobj.tenderLogout();
 		

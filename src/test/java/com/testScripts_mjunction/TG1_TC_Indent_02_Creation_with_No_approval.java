@@ -65,10 +65,10 @@ public class TG1_TC_Indent_02_Creation_with_No_approval extends BaseClass_Web{
 		rfqfromintendcomponentobj.IndentTG1_technical_Specification_tabvalidation();
 		rfqfromintendcomponentobj.IndentTG1_Annexures_tabvalidation();
 		rfqfromintendcomponentobj.IndentTG1_Submit();
-		rfqfromintendcomponentobj.SystemIndentNoSave();
+		rfqfromintendcomponentobj.SystemIndentNoSaveNew();
 		rfqfromintendcomponentobj.NoApproval_IndentWF();
-		rfqfromintendcomponentobj.navigateToIndentListing();
-		rfqfromintendcomponentobj.enterIndentNoInSearch();
+		//rfqfromintendcomponentobj.navigateToIndentListing();
+		//rfqfromintendcomponentobj.enterIndentNoInSearch();
 		rfqfromintendcomponentobj.VerifyIndentStatus("Completed");
 		etendercomponentobj.tenderLogout();
 	}

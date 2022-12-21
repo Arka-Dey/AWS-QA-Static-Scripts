@@ -1418,11 +1418,11 @@ public class RfqFromIndentComponent extends BaseClass_Web {
 			set(tendercreationlocators.Qty_TG1BOMItemTab, pdfResultReport.testData.get("Qty_TG1BOMItemTab"), "Qty_TG1BOMItemTab");
 			set(tendercreationlocators.UnitRate_TG1BOMItemTab, pdfResultReport.testData.get("UnitRate_TG1BOMItemTab"), "UnitRate_TG1BOMItemTab");
 			set(tendercreationlocators.GSTPercent_TG1BOMItemTab, pdfResultReport.testData.get("GSTPercent_TG1BOMItemTab"), "GSTPercent_TG1BOMItemTab");
-			click(tendercreationlocators.AddNonSORItemBtn_TG1BOMItemTab, "AddNonSORItemBtn_TG1BOMItemTab");
-			waitForObj(1000);
-			click(tendercreationlocators.AddInputAlert, "AddInputAlert");
 			waitForObj(1000);
 			click(tendercreationlocators.Savebtn_IndentNew1, "Savebtn_Indent");
+			waitForObj(2000);
+			click(tendercreationlocators.AddInputAlert, "AddInputAlert");
+			
 			//waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
 			waitForObj(3000);
 			pdfResultReport.addStepDetails("IndentTG1_BOM_Item_tabvalidation",
@@ -2074,7 +2074,7 @@ public class RfqFromIndentComponent extends BaseClass_Web {
 			waitForObj(2000);
 			click(tendercreationlocators.CompleteIndentbtn, "CompleteIndentbtn");
 			waitForElementToBeVisible(tendercreationlocators.Lbl_IndentList);
-			waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
+			//waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
 			waitForObj(2000);
 			pdfResultReport.addStepDetails("NoApproval_IndentWF",
 					"Must Submit the Indent With approval flow not required ",
