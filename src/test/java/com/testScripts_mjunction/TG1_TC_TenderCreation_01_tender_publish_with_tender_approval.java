@@ -60,27 +60,29 @@ public class TG1_TC_TenderCreation_01_tender_publish_with_tender_approval extend
 		rfqfromintendcomponentobj.IndentTG1_technical_Specification_tabvalidation();
 		rfqfromintendcomponentobj.IndentTG1_Annexures_tabvalidation();
 		rfqfromintendcomponentobj.IndentTG1_Submit();
-		rfqfromintendcomponentobj.SystemIndentNoSave();
+		rfqfromintendcomponentobj.SystemIndentNoSaveNew();
 		rfqfromintendcomponentobj.NoApproval_IndentWF();
-		rfqfromintendcomponentobj.navigateToIndentListing();
+		//rfqfromintendcomponentobj.navigateToIndentListing();
 		rfqfromintendcomponentobj.enterIndentNoInSearch();
 		rfqfromintendcomponentobj.VerifyIndentStatus("Completed");
 
 	//Mark the created indent 'Marked for RFQ'
 		rfqfromintendcomponentobj.Indent_Mark_for_RFQ_functionality();
-		rfqfromintendcomponentobj.enterIndentNoInSearch();
+		rfqfromintendcomponentobj.enterIndentNoForSearch();
 		rfqfromintendcomponentobj.VerifyIndentStatus("Marked For RFQ");
 		etendercomponentobj.tenderLogout();
+		
 		
 	//Indent assignment Process (self claim)
 		etendercomponentobj.tendercreatorLogin();
 		rfqfromintendcomponentobj.navigateToIndentAssignment();
-		rfqfromintendcomponentobj.enterIndentNoInSearch();
+		rfqfromintendcomponentobj.enterIndentNoForSearch();
 		rfqfromintendcomponentobj.Verify_Indent_Assignment_self_Claim();
-		rfqfromintendcomponentobj.enterIndentNoInSearch();
+		//rfqfromintendcomponentobj.enterIndentNoForSearch();
 		rfqfromintendcomponentobj.VerifyIndentStatus_AssignmentListPage("Assigned");
 		rfqfromintendcomponentobj.navigateToCreateRFQFromIndentPage();
 		rfqfromintendcomponentobj.enterIndentNoInSearch_RFQfromIndentPage();
+		
 		
 	//Create and publish RFQ from indent
 		rfqfromintendcomponentobj.Create_RFQ_From_Indent("Indigenous Tender (Supply & Service Both) V-1.0");
@@ -89,12 +91,12 @@ public class TG1_TC_TenderCreation_01_tender_publish_with_tender_approval extend
 		etendercomponentobj.tenderIdSave();
 		etendercomponentobj.AddTwoUsersForSequentialApproval();
 		etendercomponentobj.enterTenderIdInSearch();
-		etendercomponentobj.tenderLogout();
+		etendercomponentobj.tenderLogoutOld();
 		
 	//verifying pending tender in 2nd approver login	
 		etendercomponentobj.tenderApprover2Login();
 		etendercomponentobj.Verifying_Pendingtender_sequentialWF();
-		etendercomponentobj.tenderLogout();
+		etendercomponentobj.tenderLogoutOld();
 		
 		
 	//approving pending tender in 1st approver login	
@@ -103,7 +105,7 @@ public class TG1_TC_TenderCreation_01_tender_publish_with_tender_approval extend
 		etendercomponentobj.clickDetailLinkInApprovalListPage();
 		etendercomponentobj.TG1_tenderApprover_dynamicity();
 		etendercomponentobj.ApproverOverAllComentWithTenderHasBeenApproved();
-		etendercomponentobj.tenderLogout();
+		etendercomponentobj.tenderLogoutOld();
 		
 	//approving pending tender in 2nd approver login	
 		etendercomponentobj.tenderApprover2Login();
@@ -111,14 +113,14 @@ public class TG1_TC_TenderCreation_01_tender_publish_with_tender_approval extend
 		etendercomponentobj.clickDetailLinkInApprovalListPage();
 		etendercomponentobj.TG1_tenderApprover_dynamicity();
 		etendercomponentobj.ApproverOverAllComentWithTenderHasBeenApproved();
-		etendercomponentobj.tenderLogout();
+		etendercomponentobj.tenderLogoutOld();
 		
 	//verifying Published tender status 
 		etendercomponentobj.tendercreatorLogin();
 		etendercomponentobj.navigateToTenderListing();
 		etendercomponentobj.enterTenderIdInSearch();
-		etendercomponentobj.checkTenderStatusAndTenderStage();
-		etendercomponentobj.tenderLogout();
+		etendercomponentobj.checkTenderStatusAndTenderStage("Published");
+		etendercomponentobj.tenderLogoutOld();
 		
 	}
 

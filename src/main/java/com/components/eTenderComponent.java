@@ -1117,12 +1117,12 @@ public class eTenderComponent extends BaseClass_Web {
 	public void tenderApproverLogin() throws Throwable {
 		try {
 			log.info("started executing the method:: tenderApproverLogin");
-			click(tendercreationlocators.login, "login");
+			//click(tendercreationlocators.login, "login");
 			set(tendercreationlocators.userName, pdfResultReport.testData.get("TenderApproverUserName"), "userName");
 			waitForObj(5000);
 			set(tendercreationlocators.password, pdfResultReport.testData.get("AppPassword"), "password");
 			//Handle fixed Captcha (06/11/2020)
-			set(tendercreationlocators.Captcha_Login, "1234", "Login_Captcha");
+			//set(tendercreationlocators.Captcha_Login, "1234", "Login_Captcha");
 			click(tendercreationlocators.okButton, "okButton");
 			waitForObj(10000);
 			pdfResultReport.addStepDetails("Tender creator login", "Tender approver must be sucessfully logged in",
@@ -1139,12 +1139,12 @@ public class eTenderComponent extends BaseClass_Web {
 	public void tenderApprover2Login() throws Throwable {
 		try {
 			log.info("started executing the method:: tenderApproverLogin");
-			click(tendercreationlocators.login, "login");
+			//click(tendercreationlocators.login, "login");
 			set(tendercreationlocators.userName, pdfResultReport.testData.get("TenderApprover2UserName"), "userName");
 			waitForObj(2000);
 			set(tendercreationlocators.password, pdfResultReport.testData.get("AppPassword"), "password");
 			//Handle fixed Captcha (06/11/2020)
-			set(tendercreationlocators.Captcha_Login, "1234", "Login_Captcha");
+			//set(tendercreationlocators.Captcha_Login, "1234", "Login_Captcha");
 			click(tendercreationlocators.okButton, "okButton");
 			waitForElement(tendercreationlocators.dashboardIcon, 5000);
 			pdfResultReport.addStepDetails("Tender Approver2 login", "Tender approver2 must be sucessfully logged in",
@@ -1161,11 +1161,32 @@ public class eTenderComponent extends BaseClass_Web {
 	public void tenderLogout() throws Throwable {
 		try {
 			log.info("started executing the method:: tendercreatorLogout");
-			waitForObj(5000);
+			waitForObj(2000);
 
 			JSClick(tendercreationlocators.logoutOption, "logoutOption");
 			click(tendercreationlocators.logout, "logout");
 			click(tendercreationlocators.logoutConfirmation, "logoutConfirmation");
+			ThreadLocalWebdriver.getDriver().navigate().to("https://epsnewprodaws.mjunction.in/EPSV2Web/");
+			waitForObj(10000);
+			pdfResultReport.addStepDetails("Tender creator logout", "Tender creator must be sucessfully logout",
+					"Successfully logout" + " ", "Pass", "Y");
+			log.info("completed executing the method:: tendercreatorLogout");
+
+		} catch (Exception e) {
+			log.fatal("Unable to logout as tender creator" + e.getMessage());
+			pdfResultReport.addStepDetails("Tender creator logout", "Tender creator is not logged out",
+					"Unable to logout as tender creator" + e.getMessage(), "Fail", "N");
+		}
+	}
+	
+	public void tenderLogoutOld() throws Throwable {
+		try {
+			log.info("started executing the method:: tendercreatorLogout");
+			waitForObj(2000);
+
+			JSClick(tendercreationlocators.logoutOptionOld, "logoutOption");
+			click(tendercreationlocators.logoutOld, "logout");
+			click(tendercreationlocators.logoutConfirmationOld, "logoutConfirmation");
 			ThreadLocalWebdriver.getDriver().navigate().to("https://epsnewprodaws.mjunction.in/EPSV2Web/");
 			waitForObj(10000);
 			pdfResultReport.addStepDetails("Tender creator logout", "Tender creator must be sucessfully logout",
@@ -4000,6 +4021,44 @@ public class eTenderComponent extends BaseClass_Web {
 	 * @throws Exception
 	 * 
 	 */
+	
+	//Added on 060123 by Arka
+	public void checkTenderStatusAndTenderStage(String Stage) throws Exception {
+		try {
+
+			WebElement Tenderstatus = ThreadLocalWebdriver.getDriver()
+					.findElement(tendercreationlocators.tenderCreatedStatus);
+			WebDriverWait wait = new WebDriverWait(ThreadLocalWebdriver.getDriver(), 60);
+			wait.until(ExpectedConditions.textToBePresentInElement(Tenderstatus, Tenderstatus.getText()));
+			String tenderStatus = text(tendercreationlocators.tenderCreatedStatus);
+
+			if (tenderStatus.trim().equalsIgnoreCase(Stage)) {
+				System.out.println("Tender Status is in published mode");
+			
+			}
+
+			/*
+			 * WebElement bidpublishStage = ThreadLocalWebdriver.getDriver()
+			 * .findElement(tendercreationlocators.bidpublishStage);
+			 * 
+			 * if (bidpublishStage.getAttribute("class").trim().contains("grnBtn")) {
+			 * System.out.println("stage mode is in Published mode" +
+			 * bidpublishStage.getAttribute("class").trim()); } else { System.out.println(
+			 * "stage mode is in not in Published mode" +
+			 * bidpublishStage.getAttribute("class").trim()); }
+			 */
+			pdfResultReport.addStepDetails("Successfully shown Tender status as published",
+					"Tender status must be shown as published using tenderStatusAndTenderStage",
+					"Tender status must be shown as published using tenderStatusAndTenderStage" + " ", "Pass", "Y");
+			log.info("completed executing the method:: tenderStatusAndTenderStage");
+		} catch (Exception e) {
+			log.fatal("Unable to show the status" + e.getMessage());
+			pdfResultReport.addStepDetails("Unable to show the status",
+					"Not able to show the tender status using tenderStatusAndTenderStage",
+					"Unable to show the status using tenderStatusAndTenderStage" + e.getMessage(), "Fail", "N");
+		}
+	}
+	
 	public void checkTenderStatusAndTenderStage() throws Exception {
 		try {
 
@@ -4009,18 +4068,21 @@ public class eTenderComponent extends BaseClass_Web {
 			wait.until(ExpectedConditions.textToBePresentInElement(Tenderstatus, Tenderstatus.getText()));
 			String tenderStatus = text(tendercreationlocators.tenderCreatedStatus);
 
-			if (tenderStatus.trim().equalsIgnoreCase("Published"))
+			if (tenderStatus.trim().equalsIgnoreCase("Published")) {
 				System.out.println("Tender Status is in published mode");
-
-			WebElement bidpublishStage = ThreadLocalWebdriver.getDriver()
-					.findElement(tendercreationlocators.bidpublishStage);
-
-			if (bidpublishStage.getAttribute("class").trim().contains("grnBtn")) {
-				System.out.println("stage mode is in Published mode" + bidpublishStage.getAttribute("class").trim());
-			} else {
-				System.out.println(
-						"stage mode is in not in Published mode" + bidpublishStage.getAttribute("class").trim());
+			
 			}
+
+			/*
+			 * WebElement bidpublishStage = ThreadLocalWebdriver.getDriver()
+			 * .findElement(tendercreationlocators.bidpublishStage);
+			 * 
+			 * if (bidpublishStage.getAttribute("class").trim().contains("grnBtn")) {
+			 * System.out.println("stage mode is in Published mode" +
+			 * bidpublishStage.getAttribute("class").trim()); } else { System.out.println(
+			 * "stage mode is in not in Published mode" +
+			 * bidpublishStage.getAttribute("class").trim()); }
+			 */
 			pdfResultReport.addStepDetails("Successfully shown Tender status as published",
 					"Tender status must be shown as published using tenderStatusAndTenderStage",
 					"Tender status must be shown as published using tenderStatusAndTenderStage" + " ", "Pass", "Y");
@@ -9885,12 +9947,14 @@ public class eTenderComponent extends BaseClass_Web {
 	public void clickSubmitBtn() throws Exception {
 		try {
 			log.info("started executing the method:: clickSubmitBtn");
-
+			waitForElementToBeVisible(tendercreationlocators.submitbutton);
 			click(tendercreationlocators.submitbutton, "submitbutton");
 
 			waitForSpinnerToDisappear();
+			waitForObj(2000);
 
-			waitForElementToBeVisible(tendercreationlocators.sendForApprovalNotRequired);
+			waitForElementToBeVisible(tendercreationlocators.SubmitFromPreview);
+			click(tendercreationlocators.SubmitFromPreview, "SubmitFromPreview");
 
 			pdfResultReport.addStepDetails("clickSubmitBtn",
 					"Should click Submit Btn and  Send For Approval Pop Up should Appear",
@@ -9917,12 +9981,11 @@ public class eTenderComponent extends BaseClass_Web {
 			click(tendercreationlocators.sendForApprovalNotRequired, "sendForApprovalNotRequired");
 
 			JSClick(tendercreationlocators.sendForApprovalSubmit, "sendForApprovalSubmit");
-
+			waitForSpinnerToDisappear();
 			WebDriverWait wait = new WebDriverWait(driver, 100);
-
 			wait.until(ExpectedConditions.visibilityOfElementLocated(tendercreationlocators.PendingTab_MyTender_tenderlistpage));
 
-			waitTillSpinnerDisable(driver, tendercreationlocators.LoadingBy);
+			//waitTillSpinnerDisable(driver, tendercreationlocators.LoadingBy);
 			waitForObj(4000);
 			pdfResultReport.addStepDetails("sendForNoApproval_validation",
 					"Should click SendForApproval and Navigate to Tender List Page",
@@ -12217,26 +12280,50 @@ public class eTenderComponent extends BaseClass_Web {
 		try {
 			log.info(
 					"started executing the method:: AddTwoUsersForSequentialApproval");
+			waitForElementToBeClickable(tendercreationlocators.Userdefined_tender);
 			click(tendercreationlocators.Userdefined_tender, "Userdefined");
 			click(tendercreationlocators.sectionWiseComments_tender, "sectionWiseComments");
 			//need loop if the the user not added previously
-			waitForObj(3000);
-			click(tendercreationlocators.cancelUser1_tender, "cancelUser1");
-			waitForObj(2000);
-			click(tendercreationlocators.cancelUser1_tender, "cancelUser1");
-			waitForObj(2000);
+			waitForObj(1000);
+			
+			//if statement and loop added on 06-01-23 by Arka
+			waitForElementToBeVisible(tendercreationlocators.cancelUser1_tender);
+			 if (ThreadLocalWebdriver.getDriver().findElement(tendercreationlocators.cancelUser1_tender).isDisplayed()) {
+				 int iRowCount=1;
+				 while(iRowCount==1) {
+					 click(tendercreationlocators.cancelUser1_tender, "cancelUser1");
+					 waitForObj(2000);
+					 List<WebElement> iRows = ThreadLocalWebdriver.getDriver().findElements(tendercreationlocators.cancelUser1_tender);
+					 iRowCount = iRows.size();
+				  } 
+			 }
+			
+			
+			/*
+			 * click(tendercreationlocators.cancelUser1_tender, "cancelUser1");
+			 * waitForObj(2000); click(tendercreationlocators.cancelUser1_tender,
+			 * "cancelUser1"); waitForObj(2000);
+			 */
+			
+			waitForElementToBeClickable(tendercreationlocators.userAdd_tender);
 			click(tendercreationlocators.userAdd_tender, "userAdd");
-			waitForObj(2000);
+			
+			waitForElementToBeClickable(tendercreationlocators.user1_tender);
 			set(tendercreationlocators.user1_tender, pdfResultReport.testData.get("UserTenderApprover1"), "user1");
-			waitForObj(2000);
+			
+			waitForElementToBeClickable(tendercreationlocators.approverType1_p_tender);
 			select(tendercreationlocators.approverType1_p_tender, pdfResultReport.testData.get("ApprovalType2"));
-			waitForObj(2000);
+			
+			waitForElementToBeClickable(tendercreationlocators.userAdd_tender);
 			click(tendercreationlocators.userAdd_tender, "userAdd");
-			waitForObj(2000);
+
+			waitForElementToBeClickable(tendercreationlocators.user2_tender);
 			set(tendercreationlocators.user2_tender, pdfResultReport.testData.get("UserTenderApprover2"), "user2");
-			waitForObj(2000);
+
+			waitForElementToBeClickable(tendercreationlocators.approverType2_p_tender);
 			select(tendercreationlocators.approverType2_p_tender, pdfResultReport.testData.get("ApprovalType2"));
-			waitForObj(2000);
+
+			waitForElementToBeClickable(tendercreationlocators.comments_tender);
 			set(tendercreationlocators.comments_tender, pdfResultReport.testData.get("UserDefinedApprover-Comments"),
 					"comments");
 			pdfResultReport.addStepDetails("AddTwoUsersForSequentialApproval",
@@ -12244,12 +12331,12 @@ public class eTenderComponent extends BaseClass_Web {
 					"Sequential Approval selected Sucessfully"
 							+ " ",
 					"Pass", "Y");
-			waitForObj(2000);
+			waitForElementToBeClickable(tendercreationlocators.sendForApproval_tender);
 			click(tendercreationlocators.sendForApproval_tender, "sendForApproval");
 			
 			waitForElementToBeVisible(tendercreationlocators.defaultCatBy);
 			
-			waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
+			//waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
 			
 			waitForObj(2000);
 			pdfResultReport.addStepDetails("AddTwoUsersForSequentialApproval",
@@ -12274,18 +12361,20 @@ public class eTenderComponent extends BaseClass_Web {
 		try {
 			log.info("started executing the method:: Verifying_Pendingtender_sequentialWF");
 			
-			JSClick(tendercreationlocators.workFlow, "workFlow");
+			JSClick(tendercreationlocators.mainMenuIcon, "MenuIcon");
+			mouseOver(tendercreationlocators.MyTask);
 			waitForObj(2000);
 			JSClick(tendercreationlocators.pending, "pending");
+			
 		
 		
 			waitForElementToBeVisible(tendercreationlocators.Tenderlink_approver_tender);
 			
-			waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
+			//waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
 			
 			waitForObj(2000);
-			
 			set(tendercreationlocators.search, tenderReferenceNoLocatorText, "search");
+			//set(tendercreationlocators.search, tenderReferenceNoLocatorText, "search");
 			
 			WebDriver driver = ThreadLocalWebdriver.getDriver();
 			
@@ -12325,13 +12414,14 @@ public class eTenderComponent extends BaseClass_Web {
 		try {
 			log.info("started executing the method:: GoToApprovalworkFlowPendingTendersAndSearchTheTender");
 			
-			JSClick(tendercreationlocators.workFlow, "workFlow");
+			JSClick(tendercreationlocators.mainMenuIcon, "MenuIcon");
+			mouseOver(tendercreationlocators.MyTask);
 			waitForObj(2000);
 			JSClick(tendercreationlocators.pending, "pending");
 		
 			waitForElementToBeVisible(tendercreationlocators.Tenderlink_approver_tender);
 			
-			waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
+			//waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
 			
 			waitForObj(2000);
 			

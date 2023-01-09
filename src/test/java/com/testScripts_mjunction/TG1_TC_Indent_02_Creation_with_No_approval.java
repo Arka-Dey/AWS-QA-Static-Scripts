@@ -68,7 +68,7 @@ public class TG1_TC_Indent_02_Creation_with_No_approval extends BaseClass_Web{
 		rfqfromintendcomponentobj.SystemIndentNoSaveNew();
 		rfqfromintendcomponentobj.NoApproval_IndentWF();
 		//rfqfromintendcomponentobj.navigateToIndentListing();
-		//rfqfromintendcomponentobj.enterIndentNoInSearch();
+		rfqfromintendcomponentobj.enterIndentNoInSearch();
 		rfqfromintendcomponentobj.VerifyIndentStatus("Completed");
 		etendercomponentobj.tenderLogout();
 	}

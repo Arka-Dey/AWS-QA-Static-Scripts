@@ -259,7 +259,7 @@ import org.openqa.selenium.WebElement;
 		return flag;
 	}
 
-	public  void JSSend(By locator, String locatorName, String Value)	throws Throwable {
+	public  void JSSend(By locator, String Value, String locatorName)	throws Throwable {
 		
 		try {
 			WebElement element = ThreadLocalWebdriver.getDriver().findElement(locator);
@@ -1113,7 +1113,7 @@ import org.openqa.selenium.WebElement;
 		}
 	public void waitForElementToBeVisible(By locator)
 	{
-		WebDriverWait wait= new WebDriverWait(ThreadLocalWebdriver.getDriver(), 100);
+		WebDriverWait wait= new WebDriverWait(ThreadLocalWebdriver.getDriver(), 1000);
 		
 		wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
 	}
@@ -1129,7 +1129,7 @@ import org.openqa.selenium.WebElement;
 	
 	public void waitForElementToBeClickable(By locator)
 	{
-		WebDriverWait wait= new WebDriverWait(ThreadLocalWebdriver.getDriver(), 100);
+		WebDriverWait wait= new WebDriverWait(ThreadLocalWebdriver.getDriver(), 20000);
 		
 		wait.until(ExpectedConditions.elementToBeClickable(locator));
 	}

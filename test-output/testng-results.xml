@@ -2,57 +2,57 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Suite" duration-ms="276205" started-at="2022-12-20T18:48:42 IST" finished-at="2022-12-20T18:53:18 IST">
+  <suite name="Suite" duration-ms="573735" started-at="2023-01-06T00:47:30 IST" finished-at="2023-01-06T00:57:04 IST">
     <groups>
     </groups>
-    <test name="Test" duration-ms="276205" started-at="2022-12-20T18:48:42 IST" finished-at="2022-12-20T18:53:18 IST">
-      <class name="com.testScripts_mjunction.TG1_TC_Indent_02_Creation_with_No_approval">
-        <test-method status="PASS" signature="setUpSuiteDetails(org.testng.ITestContext)[pri:0, instance:com.testScripts_mjunction.TG1_TC_Indent_02_Creation_with_No_approval@71a794e5]" name="setUpSuiteDetails" is-config="true" duration-ms="158" started-at="2022-12-20T18:48:42 IST" finished-at="2022-12-20T18:48:42 IST">
+    <test name="Test" duration-ms="573735" started-at="2023-01-06T00:47:30 IST" finished-at="2023-01-06T00:57:04 IST">
+      <class name="com.testScripts_mjunction.TG1_TC_Indent_08_Create_RFQ_from_Indent">
+        <test-method status="PASS" signature="setUpSuiteDetails(org.testng.ITestContext)[pri:0, instance:com.testScripts_mjunction.TG1_TC_Indent_08_Create_RFQ_from_Indent@71a794e5]" name="setUpSuiteDetails" is-config="true" duration-ms="158" started-at="2023-01-06T00:47:30 IST" finished-at="2023-01-06T00:47:30 IST">
           <params>
             <param index="0">
               <value>
-                <![CDATA[org.testng.TestRunner@341672e]]>
+                <![CDATA[org.testng.TestRunner@2c99c8d]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpSuiteDetails -->
-        <test-method status="PASS" signature="BeforeClass()[pri:0, instance:com.testScripts_mjunction.TG1_TC_Indent_02_Creation_with_No_approval@71a794e5]" name="BeforeClass" is-config="true" duration-ms="3050" started-at="2022-12-20T18:48:42 IST" finished-at="2022-12-20T18:48:45 IST">
+        <test-method status="PASS" signature="BeforeClass()[pri:0, instance:com.testScripts_mjunction.TG1_TC_Indent_08_Create_RFQ_from_Indent@71a794e5]" name="BeforeClass" is-config="true" duration-ms="3060" started-at="2023-01-06T00:47:31 IST" finished-at="2023-01-06T00:47:34 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- BeforeClass -->
-        <test-method status="PASS" signature="captureDesc(java.lang.reflect.Method)[pri:0, instance:com.testScripts_mjunction.TG1_TC_Indent_02_Creation_with_No_approval@71a794e5]" name="captureDesc" is-config="true" duration-ms="0" started-at="2022-12-20T18:48:45 IST" finished-at="2022-12-20T18:48:45 IST">
+        <test-method status="PASS" signature="captureDesc(java.lang.reflect.Method)[pri:0, instance:com.testScripts_mjunction.TG1_TC_Indent_08_Create_RFQ_from_Indent@71a794e5]" name="captureDesc" is-config="true" duration-ms="0" started-at="2023-01-06T00:47:34 IST" finished-at="2023-01-06T00:47:34 IST">
           <params>
             <param index="0">
               <value>
-                <![CDATA[public void com.testScripts_mjunction.TG1_TC_Indent_02_Creation_with_No_approval.Indent_creation_with_No_approval(java.lang.String) throws java.lang.Throwable]]>
+                <![CDATA[public void com.testScripts_mjunction.TG1_TC_Indent_08_Create_RFQ_from_Indent.Verifying_Create_TFQ_from_indent(java.lang.String) throws java.lang.Throwable]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- captureDesc -->
-        <test-method status="PASS" signature="Indent_creation_with_No_approval(java.lang.String)[pri:0, instance:com.testScripts_mjunction.TG1_TC_Indent_02_Creation_with_No_approval@71a794e5]" name="Indent_creation_with_No_approval" duration-ms="265969" started-at="2022-12-20T18:48:45 IST" description="Indent_creation_with_No_approval" finished-at="2022-12-20T18:53:11 IST">
+        <test-method status="PASS" signature="Verifying_Create_TFQ_from_indent(java.lang.String)[pri:0, instance:com.testScripts_mjunction.TG1_TC_Indent_08_Create_RFQ_from_Indent@71a794e5]" name="Verifying_Create_TFQ_from_indent" duration-ms="561918" started-at="2023-01-06T00:47:34 IST" description="Verifying_Create_RFQ_from_indent" finished-at="2023-01-06T00:56:55 IST">
           <params>
             <param index="0">
               <value>
-                <![CDATA[19]]>
+                <![CDATA[25]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- Indent_creation_with_No_approval -->
-        <test-method status="PASS" signature="afterClass()[pri:0, instance:com.testScripts_mjunction.TG1_TC_Indent_02_Creation_with_No_approval@71a794e5]" name="afterClass" is-config="true" duration-ms="3894" started-at="2022-12-20T18:53:14 IST" finished-at="2022-12-20T18:53:18 IST">
+        </test-method> <!-- Verifying_Create_TFQ_from_indent -->
+        <test-method status="PASS" signature="afterClass()[pri:0, instance:com.testScripts_mjunction.TG1_TC_Indent_08_Create_RFQ_from_Indent@71a794e5]" name="afterClass" is-config="true" duration-ms="5520" started-at="2023-01-06T00:56:59 IST" finished-at="2023-01-06T00:57:04 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterClass -->
-        <test-method status="PASS" signature="afterSuite()[pri:0, instance:com.testScripts_mjunction.TG1_TC_Indent_02_Creation_with_No_approval@71a794e5]" name="afterSuite" is-config="true" duration-ms="33" started-at="2022-12-20T18:53:21 IST" finished-at="2022-12-20T18:53:21 IST">
+        <test-method status="PASS" signature="afterSuite()[pri:0, instance:com.testScripts_mjunction.TG1_TC_Indent_08_Create_RFQ_from_Indent@71a794e5]" name="afterSuite" is-config="true" duration-ms="23" started-at="2023-01-06T00:57:04 IST" finished-at="2023-01-06T00:57:04 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterSuite -->
-      </class> <!-- com.testScripts_mjunction.TG1_TC_Indent_02_Creation_with_No_approval -->
+      </class> <!-- com.testScripts_mjunction.TG1_TC_Indent_08_Create_RFQ_from_Indent -->
     </test> <!-- Test -->
   </suite> <!-- Suite -->
 </testng-results>
