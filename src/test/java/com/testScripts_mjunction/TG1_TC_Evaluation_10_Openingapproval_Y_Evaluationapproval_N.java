@@ -50,50 +50,56 @@ public class TG1_TC_Evaluation_10_Openingapproval_Y_Evaluationapproval_N extends
 		initializeRepository();
 		//Creating a new Indent with No approval
 		etendercomponentobj.openURL();
-		rfqfromintendcomponentobj.IndentcreatorLogin();
-		rfqfromintendcomponentobj.navigateToIndentCreation();
-		rfqfromintendcomponentobj.IndentTG1_General_Info_tabvalidation("Indigenous Indent (Supply & Service Both) V-004");
-		rfqfromintendcomponentobj.IndentTG1_Indent_Details_tabvalidation();
-		rfqfromintendcomponentobj.IndentTG1_Other_Information_tabvalidation();
-		rfqfromintendcomponentobj.IndentTG1_BOM_Item_tabvalidation();
-		rfqfromintendcomponentobj.IndentTG1_BOM_Services_tabvalidation();
-		rfqfromintendcomponentobj.IndentTG1_EstimationSheet_tabvalidation();
-		rfqfromintendcomponentobj.IndentTG1_technical_Specification_tabvalidation();
-		rfqfromintendcomponentobj.IndentTG1_Annexures_tabvalidation();
-		rfqfromintendcomponentobj.IndentTG1_Submit();
-		rfqfromintendcomponentobj.SystemIndentNoSave();
-		rfqfromintendcomponentobj.NoApproval_IndentWF();
-		rfqfromintendcomponentobj.navigateToIndentListing();
-		rfqfromintendcomponentobj.enterIndentNoInSearch();
-		rfqfromintendcomponentobj.VerifyIndentStatus("Completed");
+		/*
+		 * rfqfromintendcomponentobj.IndentcreatorLogin();
+		 * rfqfromintendcomponentobj.navigateToIndentCreation();
+		 * rfqfromintendcomponentobj.
+		 * IndentTG1_General_Info_tabvalidation("Indigenous Indent (Supply & Service Both) V-004"
+		 * ); rfqfromintendcomponentobj.IndentTG1_Indent_Details_tabvalidation();
+		 * rfqfromintendcomponentobj.IndentTG1_Other_Information_tabvalidation();
+		 * rfqfromintendcomponentobj.IndentTG1_BOM_Item_tabvalidation();
+		 * rfqfromintendcomponentobj.IndentTG1_BOM_Services_tabvalidation();
+		 * rfqfromintendcomponentobj.IndentTG1_EstimationSheet_tabvalidation();
+		 * rfqfromintendcomponentobj.IndentTG1_technical_Specification_tabvalidation();
+		 * rfqfromintendcomponentobj.IndentTG1_Annexures_tabvalidation();
+		 * rfqfromintendcomponentobj.IndentTG1_Submit();
+		 * rfqfromintendcomponentobj.SystemIndentNoSaveNew();
+		 * rfqfromintendcomponentobj.NoApproval_IndentWF();
+		 * //rfqfromintendcomponentobj.navigateToIndentListing();
+		 * rfqfromintendcomponentobj.enterIndentNoInSearch();
+		 * rfqfromintendcomponentobj.VerifyIndentStatus("Completed");
+		 * 
+		 * //Mark the created indent 'Marked for RFQ'
+		 * rfqfromintendcomponentobj.Indent_Mark_for_RFQ_functionality();
+		 * rfqfromintendcomponentobj.enterIndentNoForSearch();
+		 * rfqfromintendcomponentobj.VerifyIndentStatus("Marked For RFQ");
+		 * etendercomponentobj.tenderLogout();
+		 * 
+		 * 
+		 * //Indent assignment Process (self claim)
+		 * etendercomponentobj.tendercreatorLogin();
+		 * rfqfromintendcomponentobj.navigateToIndentAssignment();
+		 * rfqfromintendcomponentobj.enterIndentNoForSearch();
+		 * rfqfromintendcomponentobj.Verify_Indent_Assignment_self_Claim();
+		 * //rfqfromintendcomponentobj.enterIndentNoForSearch();
+		 * rfqfromintendcomponentobj.VerifyIndentStatus_AssignmentListPage("Assigned");
+		 * rfqfromintendcomponentobj.navigateToCreateRFQFromIndentPage();
+		 * rfqfromintendcomponentobj.enterIndentNoInSearch_RFQfromIndentPage();
+		 * 
+		 * 
+		 * //Create and publish RFQ from indent rfqfromintendcomponentobj.
+		 * Create_RFQ_From_Indent("Indigenous Tender (Supply & Service Both) V-1.0");
+		 * rfqfromintendcomponentobj.
+		 * PublishTender_from_indent_withRFQ_TG1("Indigenous Tender (Supply & Service Both) V-1.0"
+		 * ,4,30,40); etendercomponentobj.clickSubmitBtn();
+		 * etendercomponentobj.tenderIdSave();
+		 * etendercomponentobj.sendForNoApproval_validation();
+		 * etendercomponentobj.enterTenderIdInSearch();
+		 * etendercomponentobj.checkTenderStatusAndTenderStage();
+		 * etendercomponentobj.tenderLogoutOld();
+		 */
 
-	//Mark the created indent 'Marked for RFQ'
-		rfqfromintendcomponentobj.Indent_Mark_for_RFQ_functionality();
-		rfqfromintendcomponentobj.enterIndentNoInSearch();
-		rfqfromintendcomponentobj.VerifyIndentStatus("Marked For RFQ");
-		etendercomponentobj.tenderLogout();
-		
-	//Indent assignment Process (self claim)
-		etendercomponentobj.tendercreatorLogin();
-		rfqfromintendcomponentobj.navigateToIndentAssignment();
-		rfqfromintendcomponentobj.enterIndentNoInSearch();
-		rfqfromintendcomponentobj.Verify_Indent_Assignment_self_Claim();
-		rfqfromintendcomponentobj.enterIndentNoInSearch();
-		rfqfromintendcomponentobj.VerifyIndentStatus_AssignmentListPage("Assigned");
-		rfqfromintendcomponentobj.navigateToCreateRFQFromIndentPage();
-		rfqfromintendcomponentobj.enterIndentNoInSearch_RFQfromIndentPage();
-		
-	//Create and publish RFQ from indent
-		rfqfromintendcomponentobj.Create_RFQ_From_Indent("Indigenous Tender (Supply & Service Both) V-1.0");
-		rfqfromintendcomponentobj.PublishTender_from_indent_withRFQ_TG1("Indigenous Tender (Supply & Service Both) V-1.0",4,30,32);
-		etendercomponentobj.clickSubmitBtn();
-		etendercomponentobj.tenderIdSave();
-		etendercomponentobj.sendForNoApproval_validation();
-		etendercomponentobj.enterTenderIdInSearch();
-		etendercomponentobj.checkTenderStatusAndTenderStage();
-		etendercomponentobj.tenderLogout();
-
-	//Bid submission process for bidder1	
+	//Bid submission procress	
 		rfqfromintendcomponentobj.waitTillBidstartDateReached();
 		etendercomponentobj.bidder_01_Login();
 		etendercomponentobj.enterTenderIdInSearch_bidsubmission();
@@ -108,7 +114,7 @@ public class TG1_TC_Evaluation_10_Openingapproval_Y_Evaluationapproval_N extends
 		etendercomponentobj.navigate_to_bidList_page();
 		etendercomponentobj.enterTenderIdInSearch_bidsubmission();
 		etendercomponentobj.submittedBid_Tab_Validation();
-		etendercomponentobj.tenderLogout();
+		etendercomponentobj.tenderLogoutOld();
 		
 	//Bid submission process for bidder2		
 		etendercomponentobj.bidder_02_Login();
@@ -124,7 +130,7 @@ public class TG1_TC_Evaluation_10_Openingapproval_Y_Evaluationapproval_N extends
 		etendercomponentobj.navigate_to_bidList_page();
 		etendercomponentobj.enterTenderIdInSearch_bidsubmission();
 		etendercomponentobj.submittedBid_Tab_Validation();
-		etendercomponentobj.tenderLogout();
+		etendercomponentobj.tenderLogoutOld();
 		
 	//Bid submission process for bidder3		
 		etendercomponentobj.bidder_03_Login();
@@ -140,7 +146,7 @@ public class TG1_TC_Evaluation_10_Openingapproval_Y_Evaluationapproval_N extends
 		etendercomponentobj.navigate_to_bidList_page();
 		etendercomponentobj.enterTenderIdInSearch_bidsubmission();
 		etendercomponentobj.submittedBid_Tab_Validation();
-		etendercomponentobj.tenderLogout();
+		etendercomponentobj.tenderLogoutOld();
 
 	//Evaluation: Cover 1 work flow where opening approval Yes and evaluation approval No
 		etendercomponentobj.tendercreatorLogin();

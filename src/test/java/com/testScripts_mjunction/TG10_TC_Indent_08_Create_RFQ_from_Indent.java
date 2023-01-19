@@ -12,10 +12,11 @@ import com.baseClasses.ThreadLocalWebdriver;
 import com.components.RfqFromIndentComponent;
 import com.components.eTenderComponent;
 
-public class TG1_TC_TenderCreation_02_tender_reject_during_tender_approval extends BaseClass_Web{
+public class TG10_TC_Indent_08_Create_RFQ_from_Indent extends BaseClass_Web{
 	
-	public eTenderComponent etendercomponentobj = new eTenderComponent(pdfResultReport);
+	public eTenderComponent etendercomponentobj =new eTenderComponent(pdfResultReport);
 	public RfqFromIndentComponent rfqfromintendcomponentobj = new RfqFromIndentComponent(pdfResultReport);
+	
 
 	/**
 	 * TestScript Environment Details
@@ -34,8 +35,8 @@ public class TG1_TC_TenderCreation_02_tender_reject_during_tender_approval exten
 	
 	
 	@Parameters("TestcaseNo")
-	@Test(description = "TenderReject_after_tender_approval_tender_from_indent")
-	public void TenderReject_after_tender_approval_TG1(String no) throws Throwable {
+	@Test(description = "Verifying_Create_RFQ_from_indent")
+	public void Verifying_Create_TFQ_from_indent(String no) throws Throwable {
 		System.out.println("Entered in the Test method..................");
 		try {
 			pdfResultReport.readTestDataFile(System.getProperty("user.dir").replace("\\", "/")
@@ -51,7 +52,7 @@ public class TG1_TC_TenderCreation_02_tender_reject_during_tender_approval exten
 		driver.manage().timeouts().pageLoadTimeout(100, TimeUnit.SECONDS);	
 		
 		initializeRepository();
-	//Creating a new Indent with No approval
+//Creating a new Indent with No approval
 		etendercomponentobj.openURL();
 		rfqfromintendcomponentobj.IndentcreatorLogin();
 		rfqfromintendcomponentobj.navigateToIndentCreation();
@@ -76,7 +77,6 @@ public class TG1_TC_TenderCreation_02_tender_reject_during_tender_approval exten
 		rfqfromintendcomponentobj.VerifyIndentStatus("Marked For RFQ");
 		etendercomponentobj.tenderLogout();
 		
-		
 	//Indent assignment Process (self claim)
 		etendercomponentobj.tendercreatorLogin();
 		rfqfromintendcomponentobj.navigateToIndentAssignment();
@@ -87,37 +87,16 @@ public class TG1_TC_TenderCreation_02_tender_reject_during_tender_approval exten
 		rfqfromintendcomponentobj.navigateToCreateRFQFromIndentPage();
 		rfqfromintendcomponentobj.enterIndentNoInSearch_RFQfromIndentPage();
 		
-		
 	//Create and publish RFQ from indent
 		rfqfromintendcomponentobj.Create_RFQ_From_Indent("Indigenous Tender (Supply & Service Both) V-1.0");
-		rfqfromintendcomponentobj.PublishTender_from_indent_withRFQ_TG1("Indigenous Tender (Supply & Service Both) V-1.0",22,30,40);
+		rfqfromintendcomponentobj.PublishTender_from_indent_withRFQ_TG1("Indigenous Tender (Supply & Service Both) V-1.0",9,15,20);
+		//Clicking on submit button and verify tender status
 		etendercomponentobj.clickSubmitBtn();
 		etendercomponentobj.tenderIdSave();
-		etendercomponentobj.AddTwoUsersForSequentialApproval();
+		etendercomponentobj.sendForNoApproval_validation();
 		etendercomponentobj.enterTenderIdInSearch();
+		etendercomponentobj.checkTenderStatusAndTenderStage();
 		etendercomponentobj.tenderLogoutOld();
-		
-		
-	//Reviewing pending tender in 1st approver login	
-		etendercomponentobj.tenderApproverLogin();
-		etendercomponentobj.GoToApprovalworkFlowPendingTendersAndSearchTheTender();
-		etendercomponentobj.clickDetailLinkInApprovalListPage();
-		etendercomponentobj.TG1_tenderApprover_dynamicityNew();
-		etendercomponentobj.ReviewTender_withoverall_comment();
-		etendercomponentobj.tenderLogoutOld();
-		
-	//verifying pending tender in 2nd approver login	
-		etendercomponentobj.tenderApprover2Login();
-		etendercomponentobj.Verifying_Pendingtender_sequentialWF();
-		etendercomponentobj.tenderLogoutOld();
-		
-	//verifying Draft tender status 
-		etendercomponentobj.tendercreatorLogin();
-		etendercomponentobj.navigateToTenderListing();
-		etendercomponentobj.enterTenderIdInSearch();
-		etendercomponentobj.checkDraft_tenderstatus_after_review();
-		etendercomponentobj.tenderLogoutOld();
-		
 	}
 
 }

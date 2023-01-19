@@ -11,8 +11,10 @@ public class TenderCreation_Locators {
 	//public By password = By.xpath("//input[@placeholder='Password']");
 	public By Captcha_Login = By.xpath("//input[@name='captcha' and @ng-model = 'login.captcha']");
 	public By okButton = By.xpath("//button[@title='Login'][@type='submit']");
-	public By dashboardIcon = By.xpath("//h3[contains(@class, 'page-header box_shadow page-header-ex ng-binding')]");
+	//public By dashboardIcon = By.xpath("//h3[contains(@class, 'page-header box_shadow page-header-ex ng-binding')]");
+	public By dashboardIcon = By.xpath("//body/section[@id='container']/section[@id='main-content-nw']/section[1]/div[1]/div[1]/div[1]/h3[1]");
 	public By dashboardIconnew = By.xpath("//button[normalize-space()='Site Map']");
+	public By TenderListIcon = By.xpath("/html[1]/body[1]/section[2]/section[1]/div[1]/div[1]/h3[1]");
 	public By tendersIcon = By.xpath("//span[contains(text(),'Tender(s)')]//parent::a//i[@class='fa fa-tasks']");
 	public By tenderList = By.xpath("//a[contains(@ng-click,'tender/listTender')]");
 	public By PendingTab_MyTender_tenderlistpage = By.xpath("//div[contains(@id,'myTender')]//a[normalize-space()='Pending']");
@@ -279,11 +281,13 @@ public class TenderCreation_Locators {
 	public By Approvebutton_tender = By.xpath("//button[normalize-space()='Approve']");
 	public By Tenderlink_approver_tender = By.xpath("//a[normalize-space()='Tender']");
 	public By CloseWF_tender = By.xpath("//button[normalize-space()='Close Workflow']");
+	public By EndWF_tender = By.xpath("//button[normalize-space()='End Workflow']");
 	public By Conf_YesbuttonWF_tender = By.xpath("//button[@class='btn btn-primary'][normalize-space()='Yes']");
+	public By Conf_YesbuttonWF_tenderNew = By.xpath("//div[@id='AnnotateExtensionToastDiv']//following-sibling::div[contains(@class,'bootbox modal fade in')]//div[contains(@class, 'modal-footer')]/button[2]");
 	public By Reviewbutton_tender = By.xpath("//button[normalize-space()='Review']");
 	public By Conf_Ok_button = By.xpath("//button[normalize-space()='OK']");
 	public By AlertYesbtn_Corrigendum = By.xpath("//button[normalize-space()='Yes']//i[@class='fa fa-check']");
-	public By BidNo_bidsubmission = By.xpath("//tr[contains(@ng-repeat,\"bid in submittedBidList\")]/td[4]");
+	public By BidNo_bidsubmission = By.xpath("//tr[contains(@ng-repeat,'bid in submittedBidList')]/td[5]");
 	public By BidNo_Draftbid_bidsubmission = By.xpath("//tr[contains(@ng-repeat,\"bid in draftBidList\")]/td[4]");
 	public By BidNo_Withdrawbid_bidsubmission = By.xpath("//tr[contains(@ng-repeat,\"bid in withdrawBidList\")]/td[4]");
 	public By Geninfotab_bidsubmission = By.xpath("//a[@id='quot_gen_info']");
@@ -367,8 +371,7 @@ public class TenderCreation_Locators {
 	public By closeButton = By.xpath("//div[@id='myModaliview']//button[text()='Close']");
 	public By bidSubmissionTransaction = By.xpath("//i[@class='fa fa-users']");
 	public By bidSubmissionTenderListing = By.xpath("//a[contains(text(),'Tender Listing')]");
-	public By bidsubmissionSearchByKeyword = By
-			.xpath("//form[contains(@class,'form-horizontal')]//div[@class='row']//input[@placeholder='Search By Keywords']");
+	public By bidsubmissionSearchByKeyword = By.xpath("//form[contains(@class,'form-horizontal')]//div[@class='row']//input[@placeholder='Search By Keywords']");
 
 	public By bidSubmission_Bid = By.xpath("//a[contains(@id,'interst123') and contains(text(),'Bid')]");
 	public By acceptOrDeclineTitle = By
@@ -392,7 +395,7 @@ public class TenderCreation_Locators {
 	public By errorMessage_QRC_bidSubmission = By
 			.xpath("//h3[@class='ng-binding' and contains(text(),'Errors in General Information')]");
 	public By alertClose_QRC_bidSubmission = By
-			.xpath("//div[@class='modal-footer']//button[contains(@ng-click,'clearAlertMessages()')]");
+			.xpath("//body/section[@id='container']/section[@id='main-content-nw']/div[@id='alertMessageModal']/div[1]/div[1]/div[3]/button[2]");
 	// mandatory field validation
 	public By technicalAlertTab_bidSubmission = By
 			.xpath("//strong[@class='ng-binding' and contains(text(),'Technical Tab was saved successfully!')]");
@@ -2922,6 +2925,8 @@ public By Accommodationandfoodserviceactivities = By.xpath("//span[text()='Accom
 	public By mainMenuIconSub = By.xpath("//button[@class='menuBtn']");
 	public By Requisition = By.xpath("//a[contains(text(),'Requisition')]");
 	public By Enquiry = By.xpath("//a[normalize-space()='Enquiry']");
+	public By AllEnquiry = By.xpath("//a[normalize-space()='All Enquires']");
+	public By AllQuotation = By.xpath("//span[contains(text(),'All Quotations')]");
 	public By MyTask= By.xpath("//a[contains(text(), 'My Task')]");
 	public By IndentIcon = By.xpath("//span[contains(text(),'All Indents')]");   
 	public By IndentCreation = By.xpath("//a[normalize-space()='Indent Creation']");
@@ -2959,10 +2964,25 @@ public By Accommodationandfoodserviceactivities = By.xpath("//span[text()='Accom
 	public By NoOfYear_TG1IndentDetailsTab = By.xpath("//input[@id='rdcis_indnt_dtls_final_mm.dys_Month_Year.0']");
 	public By BasisOfPriceEstimation_TG1IndentDetailsTab = By.xpath("//select[@name='rdcis_indnt_dtls_final_mm_Basis_f_Prce_Estimtn']");
 	public By PreBidMeeting_TG1IndentDetailsTab = By.xpath("//select[@name='rdcis_indnt_dtls_final_mm_Pre_Bid_Meeting']");
+	
+	//Indent Details tab for TG10
+	public By IndentDetailsTab_TG10 = By.xpath("//button[@id='rdcis_indnt_dtls_final_cc-tab']");
+	public By TypeOfService_TG1IndentDetailsTab_TG10 = By.xpath("//select[@name='rdcis_indnt_dtls_final_cc_Type_of_Service_Work']");
+	public By Capital_TG1IndentDetailsTab_TG10 = By.xpath("//select[@name='rdcis_indnt_dtls_final_cc_Nature_of_Indent']");
+	public By ModeOfDespatch_TG1IndentDetailsTab_TG10 = By.xpath("//select[@name='rdcis_indnt_dtls_final_cc_Mode_of_Dispatch']");
+	public By PlaceOfDelivery_TG1IndentDetailsTab_TG10 = By.xpath("//select[@name='rdcis_indnt_dtls_final_cc_Place_of_Delivery']");
+	public By DeiveryPeriod_TG1IndentDetailsTab_TG10 = By.xpath("//select[@name='rdcis_indnt_dtls_final_cc_Contrct_dlivry_priod']");
+	public By NoOfYear_TG1IndentDetailsTab_TG10 = By.xpath("//input[@id='rdcis_indnt_dtls_final_cc.dys_Month_Year.0']");
+	public By BasisOfPriceEstimation_TG1IndentDetailsTab_TG10 = By.xpath("//select[@name='rdcis_indnt_dtls_final_cc_Basis_f_Prce_Estimtn']");
+	public By PreBidMeeting_TG1IndentDetailsTab_TG10 = By.xpath("//select[@name='rdcis_indnt_dtls_final_cc_Pre_Bid_Meeting']");
 	//Indent Other Information tab for TG1
 	public By TG1OtherinformationTab = By.xpath("//button[@id='rdcis_other_info_final-tab']");
 	public By WorkofContract_TG1OtherinformationTab = By.xpath("//select[@name='rdcis_other_info_final_Works_Contract']");
 	public By PartySite_TG1OtherinformationTab = By.xpath("//select[@name='rdcis_other_info_final_Partys_Site']");
+	//Indent Other Information tab for TG10
+	public By TG10OtherinformationTab = By.xpath("//button[@id='rdcis_other_info_final_cc-tab']");
+	public By WorkofContract_TG10OtherinformationTab = By.xpath("//select[@name='rdcis_other_info_final_cc_Works_Contract']");
+	public By PartySite_TG10OtherinformationTab = By.xpath("//select[@name='rdcis_other_info_final_cc_Works_Contract']");
 	//Indent BOM Item tab for TG1
 	public By TG1IndentBOMItemTab = By.xpath("//button[@id='rdcis_bom_supply_final-tab']"); //modified on 130722
 	public By AddNonSORItemBtn_TG1BOMItemTab = By.xpath("//div[@id='rfqItemtabl2-rdcis_bom_supply_final']/div/button[1]"); //modified on 130722
@@ -2981,7 +3001,7 @@ public By Accommodationandfoodserviceactivities = By.xpath("//span[text()='Accom
 	public By GSTPercent_TG1BOMItemTab (int lineNumber) { return	 By.xpath("//input[@id='rdcis_bom_supply_final.gst."+lineNumber+"']");}
 	//Indent BOM Services Tab for TG1
 	public By TG1IndentBOMServicesTab = By.xpath("//button[@id='rdcis_bom_servce_cc_final-tab']");
-	public By AddNonSORItemBtn_TG1BOMServicesTab = By.xpath("//div[@id='rfqItemtabl2-rdcis_bom_servce_cc_final']/div[1]/button[1]"); // updated on 201222
+	public By AddNonSORItemBtn_TG1BOMServicesTab = By.xpath("//div[@id='rfqItemtabl2-rdcis_bom_servce_cc_final']/div[2]/button[1]"); // updated on 201222
 	public By ItemCode_TG1BOMServicesTab = By.xpath("//input[@id='rdcis_bom_servce_cc_final.item_code.0']");
 	public By ItemCode_TG1BOMServicesTab (int lineNumber) { return	 By.xpath("//input[@id='rdcis_bom_servce_cc_final.item_code."+lineNumber+"']");}
 	public By ItemName_TG1BOMServicesTab = By.xpath("//input[@id='rdcis_bom_servce_cc_final.item_name.0']");
@@ -2996,13 +3016,33 @@ public By Accommodationandfoodserviceactivities = By.xpath("//span[text()='Accom
 	public By GSTPercent_TG1BOMServicesTab (int lineNumber) { return	 By.xpath("//input[@id='rdcis_bom_servce_cc_final.gst."+lineNumber+"']");}
 
 	public By NextTabLink_Indent = By.xpath("//a[normalize-space()='Next']");
+	
+	//Indent BOM Services Tab for TG10
+	public By TG10IndentBOMServicesTab = By.xpath("//button[@id='bom_car_hiring-tab']");
+	public By AddNonSORItemBtn_TG10BOMServicesTab = By.xpath("//div[@id='rfqItemtabl2-bom_car_hiring']/div[2]/button[1]"); // updated on 201222
+	public By ItemCode_TG10BOMServicesTab (int lineNumber) { return	 By.xpath("//input[@id='bom_car_hiring.item_code."+lineNumber+"']");}
+	public By ItemName_TG10BOMServicesTab (int lineNumber) { return	 By.xpath("//input[@id='bom_car_hiring.item_name."+lineNumber+"']");}
+	public By Qty_TG10BOMServicesTab (int lineNumber) { return	 By.xpath("//input[@id='bom_car_hiring.item_qty."+lineNumber+"']");}
+	public By Per_Month_TG10Expected_Movement (int lineNumber) { return	 By.xpath("//input[@id='bom_car_hiring.Expected_Movement."+lineNumber+"']");}
+	public By UOM_TG10BOMServicesTab (int lineNumber) { return	 By.xpath("//tbody/tr["+lineNumber+"]/td[8]/span[1]/span[1]/app-custom-input[1]/div[1]/div[1]/select[1]");}
+	public By NatureOfDuty_TG10 (int lineNumber) { return	 By.xpath("//tbody/tr["+lineNumber+"]/td[5]/span[1]/span[1]/app-custom-input[1]/div[1]/div[1]/select[1]");}
+	public By SORRate_TG10BOMServicesTab (int lineNumber) { return	 By.xpath("//input[@id='bom_car_hiring.sor_rate."+lineNumber+"']");}
 	//Indent Estimation sheet tab for TG1
 	public By TG1IndentEstimationSheetTab = By.xpath("//button[@id='indent_estmtn_sheet_final-tab']");
+	//Indent Estimation sheet tab for TG10
+	public By TG10IndentEstimationSheetTab = By.xpath("//button[@id='car_hiring_cost_estimate-tab']");
+	public By TG10GST = By.xpath("//input[@id='car_hiring_cost_estimate.Sub_Total_GST_persnt.0']");
+	public By TG10Parking_Toll_Tax = By.xpath("//input[@id='car_hiring_cost_estimate.Parking_n_TollTax.0']");
 	//Indent Technical Specification tab for TG1
 	public By TG1IndentTechnicalSpecificationTab = By.xpath("//button[@id='rdcis_cmpl_tech_spe_final-tab']");
 	public By Addbtn_TG1TechnicalSpecificationTab = By.xpath("//div[@class='table-responsive ng-star-inserted']/div/button[1]");
 	public By ClauseNo_TG1TechnicalSpecificationTab = By.xpath("//input[@id='rdcis_cmpl_tech_spe_final.Clause_subcla_No.0']");
 	public By ClauseHeaderTitle_TG1TechnicalSpecificationTab = By.xpath("//input[@id='rdcis_cmpl_tech_spe_final.Clause_Header_Title.0']");
+	//Indent Eligibility Criteria tab for TG10
+	public By TG10IndentTechnicalSpecificationTab = By.xpath("//button[@id='compln_tech_spec_cc_final-tab']");
+	public By Addbtn_TG10TechnicalSpecificationTab = By.xpath("//div[@class='table-responsive ng-star-inserted']/div/button[1]");
+	public By ClauseNo_TG10TechnicalSpecificationTab = By.xpath("//input[@id='compln_tech_spec_cc_final.Clause_subcla_No.0']");
+	public By ClauseHeaderTitle_TG10TechnicalSpecificationTab = By.xpath("//input[@id='compln_tech_spec_cc_final.Clause_Header_Title.0']");
 	//Indent Annexures tab for TG1
 	public By TG1IndentAnnexuresTab = By.xpath("//button[@id='indent_attachment-tab']");
 	public By Addbtn_TG1AnnexuresTab = By.xpath("//button[@class='btn btn-primary btn-circle btn-lg btn-lg-sub pull-right margadj']");
@@ -3011,7 +3051,6 @@ public By Accommodationandfoodserviceactivities = By.xpath("//span[text()='Accom
 	public By InpuFilename_TG1AnnexuresTab = By.xpath("//div[contains(@class,'modal fade in')]//input[@id='indent_attachment.file_name.0']");
 	public By AttachFile_TG1AnnexuresTab = By.xpath("//input[contains(@ng-click,'aaaa()')]");
 	public By OKBtn_TG1AnnexuresTab = By.xpath("//button[@id='add-authorRow']");
-	
 	//Indent workflow page
 	public By Lbl_SendforApproval_Indent = By.xpath("//app-workflowmodal[@class='ng-star-inserted']/div/div/h5"); //modified on 140722
 	public By SystemIndentNo = By.xpath("//div[@class='lthpTitle']/div[1]/div[1]");
@@ -3028,7 +3067,8 @@ public By Accommodationandfoodserviceactivities = By.xpath("//span[text()='Accom
 	//public By CommentsArea_Indent = By.xpath("//div[contains(@class,'modalsnd-main fade in')]//textarea[@name='approvalComment']");
 	public By CommentsArea_Indent = By.xpath("//textarea[@id='mytextarea']"); //added on 220722
 	//public By Btn_SendforApproval_Indent = By.xpath("//div[@id='myModalss']//button[@id='dyantc']");
-	public By Btn_SendforApproval_Indent = By.xpath("//*[@id='mat-dialog-2']/app-workflowmodal/div/mat-dialog-actions/div/button[2]");
+	//public By Btn_SendforApproval_Indent = By.xpath("//*[@id='mat-dialog-2']/app-workflowmodal/div/mat-dialog-actions/div/button[2]");
+	public By Btn_SendforApproval_Indent = By.xpath("//button[contains(@class, 'btn modalBtnBlue mx-2 mb-2 mb-sm-0 ng-star-inserted')]//span[contains(text(), 'Send For Approval')]");
 
 	public By IndentListLink = By.xpath("//a[normalize-space()='Indent List']");
 	public By Lbl_IndentList = By.xpath("//button[@id='nav-my-indent-tab']");
@@ -3142,6 +3182,8 @@ public By Accommodationandfoodserviceactivities = By.xpath("//span[text()='Accom
 	public By TenderAttachment_subtabLnk_BidSubmission_TG1 = By.xpath("//a[normalize-space()='Tender Attachment']");
 	public By ActionbtnBidderspecificAttachment_BidSubmission_TG1 = By.xpath("//td[@class='ng-scope']//button[@type='button']");
 	public By UploadBidderspecificAttachment_BidSubmission_TG1 = By.xpath("//input[@id='bidderInput_0']");
+	public By UploadFromEbriefcase_TG1 = By.xpath("//a[@id='ebriefcase_attachment_0']");
+	public By AddEbriefcaseFile_TG1 = By.xpath("//button[@id='add-authorRow']");
 	//Technical Tab
 	public By TechnicaltabLnk_BidSubmission_TG1 = By.xpath("//a[@id='tech_quotaton_bom_service']");
 	//Specifications and Technical Requirements Compliance tab
@@ -3190,30 +3232,39 @@ public By Accommodationandfoodserviceactivities = By.xpath("//span[text()='Accom
 	public By SavePaymentBtn_Paymenttab_BidSubmission_TG1 = By.xpath("//button[normalize-space()='Save Payment']");
 	//RFQ Item tab
 	public By RFQItemtabLnk_BidSubmission_TG1 = By.xpath("//a[@id='rdcis_quotaton_bom_servce']");
+	public By RFQItemRowCount_TG1 = By.xpath("//input[contains(@id, 'rdcis_quotaton_bom_servce.Unit_Rate')]");
 	public By UnitRateTxt_RFQItemtab_BidSubmission_TG1 = By.xpath("//input[@id='rdcis_quotaton_bom_servce.Unit_Rate.0']");
+	public By UnitRateTxt_RFQItemtab_BidSubmission_TG1(int lineitem) {return By.xpath("//input[@id='rdcis_quotaton_bom_servce.Unit_Rate."+lineitem+"']");}
 	public By CGSTTxt_RFQItemtab_BidSubmission_TG1 = By.xpath("//input[@id='rdcis_quotaton_bom_servce.cgst_per.0']");
+	public By CGSTTxt_RFQItemtab_BidSubmission_TG1(int lineitem) {return By.xpath("//input[@id='rdcis_quotaton_bom_servce.cgst_per."+lineitem+"']");}
 	public By SGSTTxt_RFQItemtab_BidSubmission_TG1 = By.xpath("//input[@id='rdcis_quotaton_bom_servce.sgst_per.0']");
+	public By SGSTTxt_RFQItemtab_BidSubmission_TG1(int lineitem) {return By.xpath("//input[@id='rdcis_quotaton_bom_servce.sgst_per."+lineitem+"']");}
 	//BOQ Mandatory tab
 	public By BOQMandatorytabLnk_BidSubmission_TG1 = By.xpath("//a[@id='rdcis_quotaton_bom_supply']");
+	public By BOMMandatoryRowCount_TG1 = By.xpath("//input[contains(@id,'rdcis_quotaton_bom_supply.Unit_Rate')]");
 	public By UnitRateTxt_BOQMandatorytab_BidSubmission_TG1 = By.xpath("//input[@id='rdcis_quotaton_bom_supply.Unit_Rate.0']");
+	public By UnitRateTxt_BOQMandatorytab_BidSubmission_TG1(int lineitem) {return By.xpath("//input[@id='rdcis_quotaton_bom_supply.Unit_Rate."+lineitem+"']");}
 	public By CGSTTxt_BOQMandatorytab_BidSubmission_TG1 = By.xpath("//input[@id='rdcis_quotaton_bom_supply.cgst_per.0']");
+	public By CGSTTxt_BOQMandatorytab_BidSubmission_TG1(int lineitem) {return By.xpath("//input[@id='rdcis_quotaton_bom_supply.cgst_per."+lineitem+"']");}
 	public By SGSTTxt_BOQMandatorytab_BidSubmission_TG1 = By.xpath("//input[@id='rdcis_quotaton_bom_supply.sgst_per.0']");
+	public By SGSTTxt_BOQMandatorytab_BidSubmission_TG1(int lineitem) {return By.xpath("//input[@id='rdcis_quotaton_bom_supply.sgst_per."+lineitem+"']");}
 	//Preview All page
 	public By GeneralInfo_PreviwAllPage_TG1 = By.xpath("//div[@id='myModalprev_bid' and contains(@class,'fade in')]//h2[normalize-space()='General Information']");
-	public By Terms_Conditions_PreviwAllPage_TG1 = By.xpath("(//div[@id='myModalprev_bid' and contains(@class,'fade in')]//h2[normalize-space()='Terms and Conditions'])[1]");
-	public By Technical_ComplianceTable_PreviwAllPage_TG1 = By.xpath("(//div[@id='myModalprev_bid' and contains(@class,'fade in')]//h2[normalize-space()='Technical Compliance Table'])[1]");
+	public By Terms_Conditions_PreviwAllPage_TG1 = By.xpath("(//div[@id='myModalprev_bid' and contains(@class,'fade in')]//h2[normalize-space()='Terms and Conditions'])[2]");
+	public By Technical_ComplianceTable_PreviwAllPage_TG1 = By.xpath("(//div[@id='myModalprev_bid' and contains(@class,'fade in')]//h2[normalize-space()='Technical Compliance Table'])[2]");
 	public By Tender_Attachment_PreviwAllPage_TG1 = By.xpath("//div[@id='myModalprev_bid' and contains(@class,'fade in')]//h2[normalize-space()='Tender Attachment']");
-	public By BidderSpecAttachment_PreviwAllPage_TG1 = By.xpath("//div[@id='myModalprev_bid' and contains(@class,'fade in')]//h2[normalize-space()='Bidder Specific Attachment']");
-	public By Technical_PreviwAllPage_TG1 = By.xpath("(//div[@id='myModalprev_bid' and contains(@class,'fade in')]//h2[normalize-space()='Technical'])[1]");
-	public By SpecTechReq_PreviwAllPage_TG1 = By.xpath("(//div[@id='myModalprev_bid' and contains(@class,'fade in')]//h2[contains(text(),'Specifications and Technical Requirements Complian')])[1]");
+	public By BidderSpecAttachment_PreviwAllPage_TG1 = By.xpath("//div[@id='myModalprev_bid' and contains(@class,'fade in')]//h2[normalize-space()='Supplier Specific Attachment']");
+	public By Technical_PreviwAllPage_TG1 = By.xpath("(//div[@id='myModalprev_bid' and contains(@class,'fade in')]//h2[normalize-space()='Technical'])[2]");
+	public By SpecTechReq_PreviwAllPage_TG1 = By.xpath("(//div[@id='myModalprev_bid' and contains(@class,'fade in')]//h2[contains(text(),'Specifications and Technical Requirements Complian')])[2]");
 	public By CommercialParam_PreviwAllPage_TG1 = By.xpath("//div[@id='myModalprev_bid' and contains(@class,'fade in')]//h2[normalize-space()='Commercial Parameters Compliance']");
 	public By GeneralReq_PreviwAllPage_TG1 = By.xpath("//div[@id='myModalprev_bid' and contains(@class,'fade in')]//h2[normalize-space()='General Requirement Equiptment Details']");
 	public By OtherClauses_PreviwAllPage_TG1 = By.xpath("//div[@id='myModalprev_bid' and contains(@class,'fade in')]//h2[normalize-space()='Other Clauses']");
 	public By PaymentDetails_PreviwAllPage_TG1 = By.xpath("//div[@id='myModalprev_bid' and contains(@class,'fade in')]//h2[normalize-space()='Payment Details']");
-	public By RFQItem_PreviwAllPage_TG1 = By.xpath("(//div[@id='myModalprev_bid' and contains(@class,'fade in')]//h2[normalize-space()='RFQ Item'])[1]");
-	public By BOQMan_PreviwAllPage_TG1 = By.xpath("(//div[@id='myModalprev_bid' and contains(@class,'fade in')]//h2[normalize-space()='BOQ (Mandatory)'])[1]");
+	public By RFQItem_PreviwAllPage_TG1 = By.xpath("(//div[@id='myModalprev_bid' and contains(@class,'fade in')]//h2[normalize-space()='RFQ Item'])[2]");
+	public By BOQMan_PreviwAllPage_TG1 = By.xpath("(//div[@id='myModalprev_bid' and contains(@class,'fade in')]//h2[normalize-space()='BOQ (Mandatory)'])[2]");
 	//Tender Preview bid list page
-	public By PreviewAll_TenderPreviewBidListPage_TG1 = By.xpath("//div[@id='myModalprev' and contains(@class,'fade in')]");
+	//public By PreviewAll_TenderPreviewBidListPage_TG1 = By.xpath("//div[@id='myModalprev' and contains(@class,'fade in')]");
+	public By PreviewAll_TenderPreviewBidListPage_TG1 = By.xpath("//body/section[@id='main-content-nw']/section[1]/div[1]/div[1]/div[7]/div[1]/div[1]/div[1]/h3[1]");
 	public By GeneralInfo_TenderPreviewBidListPage_TG1 = By.xpath("//div[@id='myModalprev' and contains(@class,'fade in')]//div[normalize-space()='General Information']");
 	public By Terms_Conditions_TenderPreviewBidListPage_TG1 = By.xpath("//div[@id='myModalprev' and contains(@class,'fade in')]//div[normalize-space()='Terms and Conditions']");
 	public By GeneralReq_TenderPreviewBidListPage_TG1 = By.xpath("//div[@id='myModalprev' and contains(@class,'fade in')]//div[normalize-space()='General Requirement Equiptment Details']");

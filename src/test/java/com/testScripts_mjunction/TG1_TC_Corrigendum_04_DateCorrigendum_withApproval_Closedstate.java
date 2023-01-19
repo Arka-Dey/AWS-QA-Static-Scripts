@@ -60,27 +60,29 @@ public class TG1_TC_Corrigendum_04_DateCorrigendum_withApproval_Closedstate exte
 		rfqfromintendcomponentobj.IndentTG1_technical_Specification_tabvalidation();
 		rfqfromintendcomponentobj.IndentTG1_Annexures_tabvalidation();
 		rfqfromintendcomponentobj.IndentTG1_Submit();
-		rfqfromintendcomponentobj.SystemIndentNoSave();
+		rfqfromintendcomponentobj.SystemIndentNoSaveNew();
 		rfqfromintendcomponentobj.NoApproval_IndentWF();
-		rfqfromintendcomponentobj.navigateToIndentListing();
+		//rfqfromintendcomponentobj.navigateToIndentListing();
 		rfqfromintendcomponentobj.enterIndentNoInSearch();
 		rfqfromintendcomponentobj.VerifyIndentStatus("Completed");
 
 	//Mark the created indent 'Marked for RFQ'
 		rfqfromintendcomponentobj.Indent_Mark_for_RFQ_functionality();
-		rfqfromintendcomponentobj.enterIndentNoInSearch();
+		rfqfromintendcomponentobj.enterIndentNoForSearch();
 		rfqfromintendcomponentobj.VerifyIndentStatus("Marked For RFQ");
 		etendercomponentobj.tenderLogout();
+		
 		
 	//Indent assignment Process (self claim)
 		etendercomponentobj.tendercreatorLogin();
 		rfqfromintendcomponentobj.navigateToIndentAssignment();
-		rfqfromintendcomponentobj.enterIndentNoInSearch();
+		rfqfromintendcomponentobj.enterIndentNoForSearch();
 		rfqfromintendcomponentobj.Verify_Indent_Assignment_self_Claim();
-		rfqfromintendcomponentobj.enterIndentNoInSearch();
+		//rfqfromintendcomponentobj.enterIndentNoForSearch();
 		rfqfromintendcomponentobj.VerifyIndentStatus_AssignmentListPage("Assigned");
 		rfqfromintendcomponentobj.navigateToCreateRFQFromIndentPage();
 		rfqfromintendcomponentobj.enterIndentNoInSearch_RFQfromIndentPage();
+		
 		
 	//Create and publish RFQ from indent
 		rfqfromintendcomponentobj.Create_RFQ_From_Indent("Indigenous Tender (Supply & Service Both) V-1.0");
@@ -90,7 +92,7 @@ public class TG1_TC_Corrigendum_04_DateCorrigendum_withApproval_Closedstate exte
 		etendercomponentobj.sendForNoApproval_validation();
 		etendercomponentobj.enterTenderIdInSearch();
 		etendercomponentobj.checkTenderStatusAndTenderStage();
-		etendercomponentobj.tenderLogout();
+		etendercomponentobj.tenderLogoutOld();
 		
 	//Date corrigendum during Closed tender status
 		etendercomponentobj.waitTillBidDuetDateReached();
@@ -100,13 +102,13 @@ public class TG1_TC_Corrigendum_04_DateCorrigendum_withApproval_Closedstate exte
 		etendercomponentobj.datecorrigendum();
 		etendercomponentobj.corrigendumSaveButton();
 		etendercomponentobj.modifyDateScheduleTemplate1(20,30);  
-		etendercomponentobj.AddTwoUsersForSequentialApproval();
-		etendercomponentobj.tenderLogout();
+		etendercomponentobj.AddTwoUsersForSequentialCorrigendumApproval();
+		etendercomponentobj.tenderLogoutOld();
 		
 	//verifying pending corrigendum in 2nd approver login	
 		etendercomponentobj.tenderApprover2Login();
 		etendercomponentobj.Verifying_Pendingtender_Corrigendumtab_sequentialWF();
-		etendercomponentobj.tenderLogout();
+		etendercomponentobj.tenderLogoutOld();
 	
 	//Verifying pending corrigendum in 1st approver login and approve the corrigendum 
 		etendercomponentobj.tenderApproverLogin();
@@ -114,7 +116,7 @@ public class TG1_TC_Corrigendum_04_DateCorrigendum_withApproval_Closedstate exte
 		etendercomponentobj.clickDetailLinkInApprovalListPage_CorrigendumApproval();
 		etendercomponentobj.provideApproverCommentsForDateScheduleTab();
 		etendercomponentobj.ApproverOverAllComentWithCorrigendumHasBeenApproved();
-		etendercomponentobj.tenderLogout();
+		etendercomponentobj.tenderLogoutOld();
 		
 	//Verifying pending corrigendum in 2nd approver login and approve the corrigendum 
 		etendercomponentobj.tenderApprover2Login();
@@ -122,7 +124,7 @@ public class TG1_TC_Corrigendum_04_DateCorrigendum_withApproval_Closedstate exte
 		etendercomponentobj.clickDetailLinkInApprovalListPage_CorrigendumApproval();
 		etendercomponentobj.provideApproverCommentsForDateScheduleTab();
 		etendercomponentobj.ApproverOverAllComentWithCorrigendumHasBeenApproved();
-		etendercomponentobj.tenderLogout();
+		etendercomponentobj.tenderLogoutOld();
 		
 	//Verifying Corrigendum status and corrigendum history
 		etendercomponentobj.tendercreatorLogin();
@@ -133,7 +135,7 @@ public class TG1_TC_Corrigendum_04_DateCorrigendum_withApproval_Closedstate exte
 		etendercomponentobj.corrigendumNumber_Hyperlink_Validation();
 		etendercomponentobj.corrigendumHistory_Hyperlink_Validation();
 		etendercomponentobj.checkLive_tenderstatus_after_corrigendum();
-		etendercomponentobj.tenderLogout();
+		etendercomponentobj.tenderLogoutOld();
 	}
 
 }

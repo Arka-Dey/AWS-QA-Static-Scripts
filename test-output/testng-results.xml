@@ -1,58 +1,107 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+<testng-results skipped="0" failed="1" ignored="0" total="1" passed="0">
   <reporter-output>
   </reporter-output>
-  <suite name="Suite" duration-ms="573735" started-at="2023-01-06T00:47:30 IST" finished-at="2023-01-06T00:57:04 IST">
+  <suite name="Suite" duration-ms="249107" started-at="2023-01-18T17:25:49 IST" finished-at="2023-01-18T17:29:58 IST">
     <groups>
     </groups>
-    <test name="Test" duration-ms="573735" started-at="2023-01-06T00:47:30 IST" finished-at="2023-01-06T00:57:04 IST">
-      <class name="com.testScripts_mjunction.TG1_TC_Indent_08_Create_RFQ_from_Indent">
-        <test-method status="PASS" signature="setUpSuiteDetails(org.testng.ITestContext)[pri:0, instance:com.testScripts_mjunction.TG1_TC_Indent_08_Create_RFQ_from_Indent@71a794e5]" name="setUpSuiteDetails" is-config="true" duration-ms="158" started-at="2023-01-06T00:47:30 IST" finished-at="2023-01-06T00:47:30 IST">
+    <test name="Test" duration-ms="249107" started-at="2023-01-18T17:25:49 IST" finished-at="2023-01-18T17:29:58 IST">
+      <class name="com.testScripts_mjunction.TG1_TC_Indent_01_Creation_with_approval">
+        <test-method status="PASS" signature="setUpSuiteDetails(org.testng.ITestContext)[pri:0, instance:com.testScripts_mjunction.TG1_TC_Indent_01_Creation_with_approval@71a794e5]" name="setUpSuiteDetails" is-config="true" duration-ms="138" started-at="2023-01-18T17:25:48 IST" finished-at="2023-01-18T17:25:49 IST">
           <params>
             <param index="0">
               <value>
-                <![CDATA[org.testng.TestRunner@2c99c8d]]>
+                <![CDATA[org.testng.TestRunner@2f4919b0]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpSuiteDetails -->
-        <test-method status="PASS" signature="BeforeClass()[pri:0, instance:com.testScripts_mjunction.TG1_TC_Indent_08_Create_RFQ_from_Indent@71a794e5]" name="BeforeClass" is-config="true" duration-ms="3060" started-at="2023-01-06T00:47:31 IST" finished-at="2023-01-06T00:47:34 IST">
+        <test-method status="PASS" signature="BeforeClass()[pri:0, instance:com.testScripts_mjunction.TG1_TC_Indent_01_Creation_with_approval@71a794e5]" name="BeforeClass" is-config="true" duration-ms="3037" started-at="2023-01-18T17:25:49 IST" finished-at="2023-01-18T17:25:52 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- BeforeClass -->
-        <test-method status="PASS" signature="captureDesc(java.lang.reflect.Method)[pri:0, instance:com.testScripts_mjunction.TG1_TC_Indent_08_Create_RFQ_from_Indent@71a794e5]" name="captureDesc" is-config="true" duration-ms="0" started-at="2023-01-06T00:47:34 IST" finished-at="2023-01-06T00:47:34 IST">
+        <test-method status="PASS" signature="captureDesc(java.lang.reflect.Method)[pri:0, instance:com.testScripts_mjunction.TG1_TC_Indent_01_Creation_with_approval@71a794e5]" name="captureDesc" is-config="true" duration-ms="0" started-at="2023-01-18T17:25:52 IST" finished-at="2023-01-18T17:25:52 IST">
           <params>
             <param index="0">
               <value>
-                <![CDATA[public void com.testScripts_mjunction.TG1_TC_Indent_08_Create_RFQ_from_Indent.Verifying_Create_TFQ_from_indent(java.lang.String) throws java.lang.Throwable]]>
+                <![CDATA[public void com.testScripts_mjunction.TG1_TC_Indent_01_Creation_with_approval.Indent_creation_with_approval(java.lang.String) throws java.lang.Throwable]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- captureDesc -->
-        <test-method status="PASS" signature="Verifying_Create_TFQ_from_indent(java.lang.String)[pri:0, instance:com.testScripts_mjunction.TG1_TC_Indent_08_Create_RFQ_from_Indent@71a794e5]" name="Verifying_Create_TFQ_from_indent" duration-ms="561918" started-at="2023-01-06T00:47:34 IST" description="Verifying_Create_RFQ_from_indent" finished-at="2023-01-06T00:56:55 IST">
+        <test-method status="FAIL" signature="Indent_creation_with_approval(java.lang.String)[pri:0, instance:com.testScripts_mjunction.TG1_TC_Indent_01_Creation_with_approval@71a794e5]" name="Indent_creation_with_approval" duration-ms="241366" started-at="2023-01-18T17:25:52 IST" description="Indent_creation_with_approval" finished-at="2023-01-18T17:29:53 IST">
           <params>
             <param index="0">
               <value>
-                <![CDATA[25]]>
+                <![CDATA[18]]>
               </value>
             </param>
           </params>
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[Error Message : Error in selecting value from dropdown: Cannot locate element with text: INR - INDIAN RUPEE
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'MJLT-1563', ip: '192.168.29.182', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_351'
+Driver info: driver.version: unknown]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: Error Message : Error in selecting value from dropdown: Cannot locate element with text: INR - INDIAN RUPEE
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'MJLT-1563', ip: '192.168.29.182', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_351'
+Driver info: driver.version: unknown
+at com.baseClasses.AutomationException.<init>(AutomationException.java:11)
+at com.baseClasses.BaseClass_Web.select(BaseClass_Web.java:139)
+at com.components.RfqFromIndentComponent.IndentTG1_General_Info_tabvalidation(RfqFromIndentComponent.java:1010)
+at com.testScripts_mjunction.TG1_TC_Indent_01_Creation_with_approval.Indent_creation_with_approval(TG1_TC_Indent_01_Creation_with_approval.java:59)
+at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+at java.lang.reflect.Method.invoke(Unknown Source)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
+at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.util.ArrayList.forEach(Unknown Source)
+at org.testng.TestRunner.privateRun(TestRunner.java:794)
+at org.testng.TestRunner.run(TestRunner.java:596)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+at org.testng.TestNG.runSuites(TestNG.java:1063)
+at org.testng.TestNG.run(TestNG.java:1031)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- Verifying_Create_TFQ_from_indent -->
-        <test-method status="PASS" signature="afterClass()[pri:0, instance:com.testScripts_mjunction.TG1_TC_Indent_08_Create_RFQ_from_Indent@71a794e5]" name="afterClass" is-config="true" duration-ms="5520" started-at="2023-01-06T00:56:59 IST" finished-at="2023-01-06T00:57:04 IST">
+        </test-method> <!-- Indent_creation_with_approval -->
+        <test-method status="PASS" signature="afterClass()[pri:0, instance:com.testScripts_mjunction.TG1_TC_Indent_01_Creation_with_approval@71a794e5]" name="afterClass" is-config="true" duration-ms="1376" started-at="2023-01-18T17:29:56 IST" finished-at="2023-01-18T17:29:58 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterClass -->
-        <test-method status="PASS" signature="afterSuite()[pri:0, instance:com.testScripts_mjunction.TG1_TC_Indent_08_Create_RFQ_from_Indent@71a794e5]" name="afterSuite" is-config="true" duration-ms="23" started-at="2023-01-06T00:57:04 IST" finished-at="2023-01-06T00:57:04 IST">
+        <test-method status="PASS" signature="afterSuite()[pri:0, instance:com.testScripts_mjunction.TG1_TC_Indent_01_Creation_with_approval@71a794e5]" name="afterSuite" is-config="true" duration-ms="23" started-at="2023-01-18T17:29:58 IST" finished-at="2023-01-18T17:29:58 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterSuite -->
-      </class> <!-- com.testScripts_mjunction.TG1_TC_Indent_08_Create_RFQ_from_Indent -->
+      </class> <!-- com.testScripts_mjunction.TG1_TC_Indent_01_Creation_with_approval -->
     </test> <!-- Test -->
   </suite> <!-- Suite -->
 </testng-results>

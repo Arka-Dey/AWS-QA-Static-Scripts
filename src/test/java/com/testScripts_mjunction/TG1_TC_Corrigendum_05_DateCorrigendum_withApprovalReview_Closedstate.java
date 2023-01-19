@@ -46,7 +46,6 @@ public class TG1_TC_Corrigendum_05_DateCorrigendum_withApprovalReview_Closedstat
         driver.manage().timeouts().implicitlyWait(100, TimeUnit.SECONDS);
 		driver.manage().timeouts().pageLoadTimeout(100, TimeUnit.SECONDS);	
 		initializeRepository();
-	//Creating a new Indent with No approval
 		etendercomponentobj.openURL();
 		rfqfromintendcomponentobj.IndentcreatorLogin();
 		rfqfromintendcomponentobj.navigateToIndentCreation();
@@ -59,27 +58,29 @@ public class TG1_TC_Corrigendum_05_DateCorrigendum_withApprovalReview_Closedstat
 		rfqfromintendcomponentobj.IndentTG1_technical_Specification_tabvalidation();
 		rfqfromintendcomponentobj.IndentTG1_Annexures_tabvalidation();
 		rfqfromintendcomponentobj.IndentTG1_Submit();
-		rfqfromintendcomponentobj.SystemIndentNoSave();
+		rfqfromintendcomponentobj.SystemIndentNoSaveNew();
 		rfqfromintendcomponentobj.NoApproval_IndentWF();
-		rfqfromintendcomponentobj.navigateToIndentListing();
+		//rfqfromintendcomponentobj.navigateToIndentListing();
 		rfqfromintendcomponentobj.enterIndentNoInSearch();
 		rfqfromintendcomponentobj.VerifyIndentStatus("Completed");
 
 	//Mark the created indent 'Marked for RFQ'
 		rfqfromintendcomponentobj.Indent_Mark_for_RFQ_functionality();
-		rfqfromintendcomponentobj.enterIndentNoInSearch();
+		rfqfromintendcomponentobj.enterIndentNoForSearch();
 		rfqfromintendcomponentobj.VerifyIndentStatus("Marked For RFQ");
 		etendercomponentobj.tenderLogout();
+		
 		
 	//Indent assignment Process (self claim)
 		etendercomponentobj.tendercreatorLogin();
 		rfqfromintendcomponentobj.navigateToIndentAssignment();
-		rfqfromintendcomponentobj.enterIndentNoInSearch();
+		rfqfromintendcomponentobj.enterIndentNoForSearch();
 		rfqfromintendcomponentobj.Verify_Indent_Assignment_self_Claim();
-		rfqfromintendcomponentobj.enterIndentNoInSearch();
+		//rfqfromintendcomponentobj.enterIndentNoForSearch();
 		rfqfromintendcomponentobj.VerifyIndentStatus_AssignmentListPage("Assigned");
 		rfqfromintendcomponentobj.navigateToCreateRFQFromIndentPage();
 		rfqfromintendcomponentobj.enterIndentNoInSearch_RFQfromIndentPage();
+		
 		
 	//Create and publish RFQ from indent
 		rfqfromintendcomponentobj.Create_RFQ_From_Indent("Indigenous Tender (Supply & Service Both) V-1.0");
@@ -89,7 +90,7 @@ public class TG1_TC_Corrigendum_05_DateCorrigendum_withApprovalReview_Closedstat
 		etendercomponentobj.sendForNoApproval_validation();
 		etendercomponentobj.enterTenderIdInSearch();
 		etendercomponentobj.checkTenderStatusAndTenderStage();
-		etendercomponentobj.tenderLogout();
+		etendercomponentobj.tenderLogoutOld();
 		
 	//Date corrigendum during Closed tender status
 		etendercomponentobj.waitTillBidDuetDateReached();
@@ -99,8 +100,8 @@ public class TG1_TC_Corrigendum_05_DateCorrigendum_withApprovalReview_Closedstat
 		etendercomponentobj.datecorrigendum();
 		etendercomponentobj.corrigendumSaveButton();
 		etendercomponentobj.modifyDateScheduleTemplate1(20,30);  
-		etendercomponentobj.AddTwoUsersForSequentialApproval();
-		etendercomponentobj.tenderLogout();
+		etendercomponentobj.AddTwoUsersForSequentialCorrigendumApproval();
+		etendercomponentobj.tenderLogoutOld();
 	
 	//Verifying pending corrigendum in 1st approver login and send back the corrigendum to tender creator
 		etendercomponentobj.tenderApproverLogin();
@@ -108,19 +109,19 @@ public class TG1_TC_Corrigendum_05_DateCorrigendum_withApprovalReview_Closedstat
 		etendercomponentobj.clickDetailLinkInApprovalListPage_CorrigendumApproval();
 		etendercomponentobj.provideApproverCommentsForDateScheduleTab();
 		etendercomponentobj.Reject_Corrigendum_with_overallcomment();
-		etendercomponentobj.tenderLogout();
+		etendercomponentobj.tenderLogoutOld();
 		
 	//verifying pending corrigendum in 2nd approver login	
 		etendercomponentobj.tenderApprover2Login();
 		etendercomponentobj.Verifying_Pendingtender_Corrigendumtab_sequentialWF();
-		etendercomponentobj.tenderLogout();
+		etendercomponentobj.tenderLogoutOld();
 
 	//Verifying Corrigendum status changed to No from initiated
 		etendercomponentobj.tendercreatorLogin();
 		etendercomponentobj.navigateToTenderListing();
 		etendercomponentobj.enterTenderIdInSearch();
 		etendercomponentobj.Verifying_corrigendumStatus_No();
-		etendercomponentobj.tenderLogout();
+		etendercomponentobj.tenderLogoutOld();
 	}
 
 }

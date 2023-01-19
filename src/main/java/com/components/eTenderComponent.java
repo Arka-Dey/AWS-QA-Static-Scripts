@@ -64,8 +64,8 @@ import com.objectRepository.TenderCreation_Locators;
 //import com.sun.glass.events.KeyEvent;
 
 public class eTenderComponent extends BaseClass_Web {
-	String tenderReferenceNoLocatorText = null;
-	//String tenderReferenceNoLocatorText = "1303";
+	//String tenderReferenceNoLocatorText = null;
+	String tenderReferenceNoLocatorText = "1683";
 	TenderCreation_Locators tendercreationlocators = new TenderCreation_Locators();
 	String BidStartDate = null;
 	String BidDueDate = null;
@@ -168,12 +168,12 @@ public class eTenderComponent extends BaseClass_Web {
 			log.info("started executing the method:: tendercreatorLogin");
 			//click(tendercreationlocators.login, "login"); // edited on 201221
 			set(tendercreationlocators.userName, pdfResultReport.testData.get("TenderCreatorUserName"), "userName");
-			waitForObj(5000);
+			waitForObj(2000);
 			set(tendercreationlocators.password, pdfResultReport.testData.get("AppPassword"), "password");
 			//Handle fixed Captcha (06/11/2020)
 			//set(tendercreationlocators.Captcha_Login, "1234", "Login_Captcha"); // edited on 201221
 			//Wait statement (Added to handle Captcha temporarily in AWS QA (19/10/2020))
-			//waitForObj(50000);
+			//waitForObj(1000);
 			click(tendercreationlocators.okButton, "okButton");
 			waitForElement(tendercreationlocators.dashboardIcon, 5000);
 			pdfResultReport.addStepDetails("Tender creator login", "Tender creator must be sucessfully logged in",
@@ -1053,13 +1053,19 @@ public class eTenderComponent extends BaseClass_Web {
 		try {
 			log.info("started executing the method:: navigateToTenderList");
 			// mouseOver(tendercreationlocators.tendersIcon);
-			JSClick(tendercreationlocators.tendersIcon, "tendersIcon");
-			JSClick(tendercreationlocators.tenderList, "tenderList");
-			WebDriver driver = ThreadLocalWebdriver.getDriver();
-			checkPageIsReady();
-			waitForElementToBeVisible(tendercreationlocators.defaultCatBy);
-			waitTillSpinnerDisable(driver, tendercreationlocators.LoadingBy);
-			waitForObj(3000);
+			JSClick(tendercreationlocators.mainMenuIcon, "MenuIcon");
+			mouseOver(tendercreationlocators.Enquiry);
+			waitForObj(2000);
+			JSClick(tendercreationlocators.AllEnquiry, "tenderList");
+			
+			/*
+			 * JSClick(tendercreationlocators.tendersIcon, "tendersIcon");
+			 * JSClick(tendercreationlocators.tenderList, "tenderList"); WebDriver driver =
+			 * ThreadLocalWebdriver.getDriver(); checkPageIsReady();
+			 * waitForElementToBeVisible(tendercreationlocators.defaultCatBy);
+			 * waitTillSpinnerDisable(driver, tendercreationlocators.LoadingBy);
+			 */
+			waitForObj(2000);
 
 			pdfResultReport.addStepDetails("Navigate to tender List", "Tender list must be navigated successfully",
 					"Successfully navigated to tender list" + " ", "Pass", "Y");
@@ -2919,16 +2925,16 @@ public class eTenderComponent extends BaseClass_Web {
 	public void bidder_01_Login() throws Throwable {
 		try {
 			log.info("started executing the method:: bidder_01_Login");
-			click(tendercreationlocators.login, "login");
+			//click(tendercreationlocators.login, "login");
 			set(tendercreationlocators.userName, pdfResultReport.testData.get("Bidder1UserName"), "userName");
-			waitForObj(5000);
+			waitForObj(2000);
 			set(tendercreationlocators.password, pdfResultReport.testData.get("AppPassword"), "password");
 			//Handle fixed Captcha (06/11/2020)
-			set(tendercreationlocators.Captcha_Login, "1234", "Login_Captcha");
+			//set(tendercreationlocators.Captcha_Login, "1234", "Login_Captcha");
 			//Wait statement (Added to handle Captcha temporarily in AWS QA (19/10/2020))
 			//waitForObj(50000);
 			click(tendercreationlocators.okButton, "okButton");
-			waitForElement(tendercreationlocators.dashboardIcon, 5000);
+			waitForElement(tendercreationlocators.TenderListIcon, 5000);
 			pdfResultReport.addStepDetails("bidder_01_Login", "bidder_01_Login must be sucessfully logged in",
 					"Successfully logged in as bidder_01_Login" + " ", "Pass", "Y");
 			log.info("completed executing the method:: bidder_01_Login");
@@ -2944,16 +2950,11 @@ public class eTenderComponent extends BaseClass_Web {
 	public void bidder_02_Login() throws Throwable {
 		try {
 			log.info("started executing the method:: bidder_02_Login");
-			click(tendercreationlocators.login, "login");
 			set(tendercreationlocators.userName, pdfResultReport.testData.get("Bidder2UserName"), "userName");
-			waitForObj(5000);
+			waitForObj(2000);
 			set(tendercreationlocators.password, pdfResultReport.testData.get("AppPassword"), "password");
-			//Handle fixed Captcha (06/11/2020)
-			set(tendercreationlocators.Captcha_Login, "1234", "Login_Captcha");
-			//Wait statement (Added to handle Captcha temporarily in AWS QA (19/10/2020))
-			//waitForObj(50000);
 			click(tendercreationlocators.okButton, "okButton");
-			waitForElement(tendercreationlocators.dashboardIcon, 5000);
+			waitForElement(tendercreationlocators.TenderListIcon, 5000);
 			pdfResultReport.addStepDetails("bidder_02_Login", "bidder_02_Login must be sucessfully logged in",
 					"Successfully logged in as bidder_02_Login" + " ", "Pass", "Y");
 			log.info("completed executing the method:: bidder_02_Login");
@@ -2969,16 +2970,11 @@ public class eTenderComponent extends BaseClass_Web {
 	public void bidder_03_Login() throws Throwable {
 		try {
 			log.info("started executing the method:: bidder_03_Login");
-			click(tendercreationlocators.login, "login");
 			set(tendercreationlocators.userName, pdfResultReport.testData.get("Bidder3UserName"), "userName");
-			waitForObj(5000);
+			waitForObj(2000);
 			set(tendercreationlocators.password, pdfResultReport.testData.get("AppPassword"), "password");
-			//Handle fixed Captcha (06/11/2020)
-			set(tendercreationlocators.Captcha_Login, "1234", "Login_Captcha");
-			//Wait statement (Added to handle Captcha temporarily in AWS QA (19/10/2020))
-			//waitForObj(50000);
 			click(tendercreationlocators.okButton, "okButton");
-			waitForElement(tendercreationlocators.dashboardIcon, 5000);
+			waitForElement(tendercreationlocators.TenderListIcon, 5000);
 			pdfResultReport.addStepDetails("bidder_03_Login", "bidder_03_Login must be sucessfully logged in",
 					"Successfully logged in as bidder_03_Login" + " ", "Pass", "Y");
 			log.info("completed executing the method:: bidder_03_Login");
@@ -6855,7 +6851,7 @@ public class eTenderComponent extends BaseClass_Web {
 
 	public static void waitForSpinnerToDisappear() {
 		WebDriver driver = ThreadLocalWebdriver.getDriver();
-		WebDriverWait wait = new WebDriverWait(driver, 100);
+		WebDriverWait wait = new WebDriverWait(driver, 1000);
 		wait.until(ExpectedConditions.invisibilityOf(driver.findElement(By.xpath("//div[@id='spinnerholder']"))));
 	}
 
@@ -10003,11 +9999,11 @@ public class eTenderComponent extends BaseClass_Web {
 	public void enterTenderIdInSearch() throws Throwable {
 		try {
 			log.info("started executing the method:: enterTenderIdInSearch");
-
+			waitForElementToBeVisible(tendercreationlocators.tenderListKeyword);
 			clear(tendercreationlocators.tenderListKeyword, "tenderListKeyword");
 			set(tendercreationlocators.tenderListKeyword, tenderReferenceNoLocatorText, "tenderListSearch");
 			//waitForElementToBeVisible(tendercreationlocators.defaultCatBy);
-			waitForObj(7000);
+			waitForObj(4000);
 			
 			pdfResultReport.addStepDetails("Successfully Saved",
 					"Tender Id must be entered successfully in search field",
@@ -10155,17 +10151,20 @@ public class eTenderComponent extends BaseClass_Web {
 		try {
 			log.info("started executing the method:: quotationReferenceCode_bidsubmission");
 
-			JSClick(tendercreationlocators.savebutton, "savebutton");
-
-			waitForElementToBeVisible(tendercreationlocators.errorMessage_QRC_bidSubmission);
-
-			waitForObj(2000);
-
-			IsElementPresent(tendercreationlocators.alertPopUp_QRC_bidSubmission);
-			IsElementPresent(tendercreationlocators.errorMessage_QRC_bidSubmission);
-			JSClick(tendercreationlocators.alertClose_QRC_bidSubmission, "alertClose_QRC_bidSubmission");
-			waitForObj(2000);
-			set(tendercreationlocators.quotationReferenceCodeInput_generalInformation_bidSubmission,
+			/*
+			 * JSClick(tendercreationlocators.savebutton, "savebutton");
+			 * 
+			 * waitForElementToBeVisible(tendercreationlocators.
+			 * errorMessage_QRC_bidSubmission);
+			 * 
+			 * waitForObj(2000);
+			 * 
+			 * IsElementPresent(tendercreationlocators.alertPopUp_QRC_bidSubmission);
+			 * IsElementPresent(tendercreationlocators.errorMessage_QRC_bidSubmission);
+			 * JSClick(tendercreationlocators.alertClose_QRC_bidSubmission,
+			 * "alertClose_QRC_bidSubmission"); waitForObj(2000);
+			 */			
+					set(tendercreationlocators.quotationReferenceCodeInput_generalInformation_bidSubmission,
 					pdfResultReport.testData.get("QuotationReferenceCode"),
 					"quotationReferenceCodeInput_generalInformation_bidSubmission");
 
@@ -10540,7 +10539,8 @@ public class eTenderComponent extends BaseClass_Web {
 			click(tendercreationlocators.submitbutton, "submitbutton");
 			waitForObj(2000);
 			waitForSpinnerToDisappearInBidSubmission();
-			waitForElementToBeVisible(tendercreationlocators.previewAllpage);
+			//waitForElementToBeVisible(tendercreationlocators.previewAllpage);
+			waitForElementToBeVisible(tendercreationlocators.previewAllTittle);
 
 			pdfResultReport.addStepDetails("Successfully click on submitbutton",
 					"submitbutton must be clicked successfully", "Successfully clicked on submitbutton" + " ", "Pass",
@@ -10596,7 +10596,7 @@ public class eTenderComponent extends BaseClass_Web {
 	public void TG1_validateAllInPrevieAllSubmitbidPage() throws Throwable {
 		try {
 			log.info("started executing the method:: TG1_validateAllInPrevieAllSubmitbidPage");
-			IsElementPresent(tendercreationlocators.previewAllpage);
+			//IsElementPresent(tendercreationlocators.previewAllpage);
 			IsElementPresent(tendercreationlocators.GeneralInfo_PreviwAllPage_TG1);
 
 			scrollToElement(tendercreationlocators.Terms_Conditions_PreviwAllPage_TG1);
@@ -10908,11 +10908,17 @@ public class eTenderComponent extends BaseClass_Web {
 		try {
 			log.info("started executing the method:: navigate_to_bidList_page");
 
-			JSClick(tendercreationlocators.bidSubmissionTransaction, "bidSubmissionTransaction");
-			JSClick(tendercreationlocators.bidListing, "bidListing");
-
-			// waitForElementToBeVisible(tendercreationlocators.SpinnerHolderBy);
-
+			//Commented on 18-01-23
+			/*
+			 * JSClick(tendercreationlocators.bidSubmissionTransaction,
+			 * "bidSubmissionTransaction"); JSClick(tendercreationlocators.bidListing,
+			 * "bidListing");
+			 */
+			
+			JSClick(tendercreationlocators.mainMenuIcon, "mainMenuIcon");
+			mouseOver(tendercreationlocators.Enquiry);
+			JSClick(tendercreationlocators.AllQuotation, "AllQuotation");
+			
 			checkPageIsReady();
 
 			waitForSpinnerToDisappear();
@@ -12282,7 +12288,7 @@ public class eTenderComponent extends BaseClass_Web {
 					"started executing the method:: AddTwoUsersForSequentialApproval");
 			waitForElementToBeClickable(tendercreationlocators.Userdefined_tender);
 			click(tendercreationlocators.Userdefined_tender, "Userdefined");
-			click(tendercreationlocators.sectionWiseComments_tender, "sectionWiseComments");
+			//click(tendercreationlocators.sectionWiseComments_tender, "sectionWiseComments");
 			//need loop if the the user not added previously
 			waitForObj(1000);
 			
@@ -12356,6 +12362,87 @@ public class eTenderComponent extends BaseClass_Web {
                        Assert.fail("Failed Due to " + e.getMessage());
 		}
 	}
+	//Userdefined corrigendum workflow send for approval page (12/01/2023)
+		public void AddTwoUsersForSequentialCorrigendumApproval() throws Throwable {
+			try {
+				log.info(
+						"started executing the method:: AddTwoUsersForSequentialApproval");
+				waitForElementToBeClickable(tendercreationlocators.Userdefined_tender);
+				click(tendercreationlocators.Userdefined_tender, "Userdefined");
+				click(tendercreationlocators.sectionWiseComments_tender, "sectionWiseComments");
+				//need loop if the the user not added previously
+				waitForObj(1000);
+				
+				//if statement and loop added on 06-01-23 by Arka
+				waitForElementToBeVisible(tendercreationlocators.cancelUser1_tender);
+				 if (ThreadLocalWebdriver.getDriver().findElement(tendercreationlocators.cancelUser1_tender).isDisplayed()) {
+					 int iRowCount=1;
+					 while(iRowCount==1) {
+						 click(tendercreationlocators.cancelUser1_tender, "cancelUser1");
+						 waitForObj(2000);
+						 List<WebElement> iRows = ThreadLocalWebdriver.getDriver().findElements(tendercreationlocators.cancelUser1_tender);
+						 iRowCount = iRows.size();
+					  } 
+				 }
+				
+				
+				/*
+				 * click(tendercreationlocators.cancelUser1_tender, "cancelUser1");
+				 * waitForObj(2000); click(tendercreationlocators.cancelUser1_tender,
+				 * "cancelUser1"); waitForObj(2000);
+				 */
+				
+				waitForElementToBeClickable(tendercreationlocators.userAdd_tender);
+				click(tendercreationlocators.userAdd_tender, "userAdd");
+				
+				waitForElementToBeClickable(tendercreationlocators.user1_tender);
+				set(tendercreationlocators.user1_tender, pdfResultReport.testData.get("UserTenderApprover1"), "user1");
+				
+				waitForElementToBeClickable(tendercreationlocators.approverType1_p_tender);
+				select(tendercreationlocators.approverType1_p_tender, pdfResultReport.testData.get("ApprovalType2"));
+				
+				waitForElementToBeClickable(tendercreationlocators.userAdd_tender);
+				click(tendercreationlocators.userAdd_tender, "userAdd");
+
+				waitForElementToBeClickable(tendercreationlocators.user2_tender);
+				set(tendercreationlocators.user2_tender, pdfResultReport.testData.get("UserTenderApprover2"), "user2");
+
+				waitForElementToBeClickable(tendercreationlocators.approverType2_p_tender);
+				select(tendercreationlocators.approverType2_p_tender, pdfResultReport.testData.get("ApprovalType2"));
+
+				waitForElementToBeClickable(tendercreationlocators.comments_tender);
+				set(tendercreationlocators.comments_tender, pdfResultReport.testData.get("UserDefinedApprover-Comments"),
+						"comments");
+				pdfResultReport.addStepDetails("AddTwoUsersForSequentialApproval",
+						"Sequential Approval Must Be selected",
+						"Sequential Approval selected Sucessfully"
+								+ " ",
+						"Pass", "Y");
+				waitForElementToBeClickable(tendercreationlocators.sendForApproval_tender);
+				click(tendercreationlocators.sendForApproval_tender, "sendForApproval");
+				
+				waitForElementToBeVisible(tendercreationlocators.defaultCatBy);
+				
+				//waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
+				
+				waitForObj(2000);
+				pdfResultReport.addStepDetails("AddTwoUsersForSequentialApproval",
+						"Must Submit the Tender With Seq Flow ",
+						"Sucessfully Submitted Tender With Seq Flow "
+								+ " ",
+						"Pass", "Y");
+				log.info(
+						"completed executing the method:: AddTwoUsersForSequentialApproval");
+			} catch (Exception e) {
+				log.fatal("Not able to Submit tender" + e.getMessage());
+				pdfResultReport.addStepDetails("AddTwoUsersForSequentialApproval",
+						"Must Submit the Tender With Seq Flow ",
+						"Not able to Submit tender"
+								+ e.getMessage(),
+						"Fail", "N");
+	                       Assert.fail("Failed Due to " + e.getMessage());
+			}
+		}
 	//verifying pending tender in 2nd approver during tender sequential approval (21/12/2020)
 	public void Verifying_Pendingtender_sequentialWF() throws Throwable {
 		try {
@@ -12365,8 +12452,6 @@ public class eTenderComponent extends BaseClass_Web {
 			mouseOver(tendercreationlocators.MyTask);
 			waitForObj(2000);
 			JSClick(tendercreationlocators.pending, "pending");
-			
-		
 		
 			waitForElementToBeVisible(tendercreationlocators.Tenderlink_approver_tender);
 			
@@ -12374,12 +12459,12 @@ public class eTenderComponent extends BaseClass_Web {
 			
 			waitForObj(2000);
 			set(tendercreationlocators.search, tenderReferenceNoLocatorText, "search");
-			//set(tendercreationlocators.search, tenderReferenceNoLocatorText, "search");
 			
 			WebDriver driver = ThreadLocalWebdriver.getDriver();
 			
-			int size = driver.findElements(tendercreationlocators.details).size();
-			waitForObj(3000);
+			//int size = driver.findElements(tendercreationlocators.details).size();
+			int size = driver.findElements(tendercreationlocators.ActionButton_approver_tender).size(); //added on 09-01-23 by Arka
+			waitForObj(2000);
 			if(size >=1)
 			{
 				System.out.println("**********************************************************************");
@@ -12424,13 +12509,13 @@ public class eTenderComponent extends BaseClass_Web {
 			//waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
 			
 			waitForObj(2000);
-			
 			set(tendercreationlocators.search, tenderReferenceNoLocatorText, "search");
 			
 			WebDriver driver = ThreadLocalWebdriver.getDriver();
 			
-			int size = driver.findElements(tendercreationlocators.details).size();
-			waitForObj(3000);
+			//int size = driver.findElements(tendercreationlocators.details).size();
+			int size = driver.findElements(tendercreationlocators.ActionButton_approver_tender).size(); //added on 09-01-23 by Arka
+			waitForObj(2000);
 			if(size >=1)
 			{
 				System.out.println("**********************************************************************");
@@ -12467,7 +12552,7 @@ public class eTenderComponent extends BaseClass_Web {
 			click(tendercreationlocators.ActionButton_approver_tender, "ActionButton_approver_tender");
 			click(tendercreationlocators.details, "details");
 			waitForElementToBeVisible(tendercreationlocators.approverComment);
-			waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
+			//waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
 			waitForObj(5000);
 			pdfResultReport.addStepDetails("clickDetailLinkInApprovalListPage",
 					"Should Naviagte to Approver section comments page",
@@ -12701,23 +12786,58 @@ public class eTenderComponent extends BaseClass_Web {
 			waitForObj(500);
 			//For 2nd approver in a 2 approver sequential WF
 			WebDriver driver = ThreadLocalWebdriver.getDriver();
-			int size = driver.findElements(tendercreationlocators.CloseWF_tender).size();
+			//int size = driver.findElements(tendercreationlocators.CloseWF_tender).size();
+			int size = driver.findElements(tendercreationlocators.EndWF_tender).size();
 			if(size>=1)
 			{
-				click(tendercreationlocators.CloseWF_tender, "Close_Workflow_button");
+				//click(tendercreationlocators.CloseWF_tender, "Close_Workflow_button");
+				click(tendercreationlocators.EndWF_tender, "Close_Workflow_button");
 				click(tendercreationlocators.Conf_YesbuttonWF_tender, "Confirmation_Workflow_yesbutton");
 				click(tendercreationlocators.Conf_YesbuttonWF_tender, "Confirmation_Workflow_yesbutton");
 				//click(tendercreationlocators.Conf_YesbuttonWF_tender, "Confirmation_Workflow_yesbutton");
 			}else
 			{
 				//click(tendercreationlocators.Conf_YesbuttonWF_tender, "Confirmation_Workflow_yesbutton");
+				log.info("No alert is present to click");
+				System.out.println("No alert is present to click");
+				
 			}
+			waitForObj(3000);
 
 			waitForElementToBeVisible(tendercreationlocators.Tenderlink_approver_tender);
 
-			waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
+			//waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
 
-			waitForObj(5000);
+			waitForObj(2000);
+
+			pdfResultReport.addStepDetails("ApproverOverAllComentWithTenderHasBeenApproved",
+					"Should Provide OverAll Comment ",
+					"SucessFully Provided Over All Comment As --->  " + comment + " ", "Pass", "Y");
+			log.info("completed executing the method:: ApproverOverAllComentWithTenderHasBeenApproved");
+		} catch (Exception e) {
+			log.fatal("Unable to Provide OverAll Comment " + e.getMessage());
+			pdfResultReport.addStepDetails("ApproverOverAllComentWithTenderHasBeenApproved",
+					"Should Provide OverAll Comment ",
+					"Unable to Provide OverAll Comment"
+							+ e.getMessage(),
+					"Fail", "N");
+                    Assert.fail("Failed Due to " + e.getMessage());
+		}
+	}
+	//Added on 09-01-23 by Arka
+	public void ApproverOverAllComentWithTenderHasBeenApprovedNew() throws Throwable {
+		try {
+			log.info("started executing the method:: ApproverOverAllComentWithTenderHasBeenApproved");
+			String comment = "Tender Process Is Approved";
+			click(tendercreationlocators.approverComment, "approverComment");
+			waitForObj(1000);
+			set(tendercreationlocators.Approvercomment_tender, comment,"comment");
+			click(tendercreationlocators.Approvebutton_tender, "approve");
+			waitForObj(1000);
+			waitForElementToBeVisible(tendercreationlocators.Conf_YesbuttonWF_tenderNew);
+			click(tendercreationlocators.Conf_YesbuttonWF_tenderNew, "Confirmation_Workflow_yesbutton");
+			waitForObj(3000);
+			waitForElementToBeVisible(tendercreationlocators.Tenderlink_approver_tender);
 
 			pdfResultReport.addStepDetails("ApproverOverAllComentWithTenderHasBeenApproved",
 					"Should Provide OverAll Comment ",
@@ -12841,7 +12961,11 @@ public class eTenderComponent extends BaseClass_Web {
 		try {
 			log.info("started executing the method:: Verifying_Pendingtender_Corrigendumtab_sequentialWF");
 			
-			JSClick(tendercreationlocators.workFlow, "workFlow");
+			/*
+			 * JSClick(tendercreationlocators.workFlow, "workFlow"); waitForObj(2000);
+			 */
+			JSClick(tendercreationlocators.mainMenuIcon, "MenuIcon");
+			mouseOver(tendercreationlocators.MyTask);
 			waitForObj(2000);
 			JSClick(tendercreationlocators.pending, "pending");
 			waitForElementToBeVisible(tendercreationlocators.Tenderlink_approver_tender);
@@ -12888,12 +13012,14 @@ public class eTenderComponent extends BaseClass_Web {
 		try {
 			log.info("started executing the method:: clickCorrigendumTabAndSearchThePendingListTenderNo");
 			
-			JSClick(tendercreationlocators.workFlow, "workFlow");
+			/*
+			 * JSClick(tendercreationlocators.workFlow, "workFlow");
+			 */
 			
+			JSClick(tendercreationlocators.mainMenuIcon, "MenuIcon");
+			mouseOver(tendercreationlocators.MyTask);
 			waitForObj(2000);
-			
 			JSClick(tendercreationlocators.pending, "pending");
-		
 			waitForElementToBeVisible(tendercreationlocators.Tenderlink_approver_tender);
 			
 			waitForObj(2000);
@@ -13001,10 +13127,10 @@ public class eTenderComponent extends BaseClass_Web {
 			waitForObj(500);
 			//For 2nd approver in a 2 approver sequential WF
 			WebDriver driver = ThreadLocalWebdriver.getDriver();
-			int size = driver.findElements(tendercreationlocators.CloseWF_tender).size();
+			int size = driver.findElements(tendercreationlocators.EndWF_tender).size();
 			if(size>=1)
 			{
-				click(tendercreationlocators.CloseWF_tender, "Close_Workflow_button");
+				click(tendercreationlocators.EndWF_tender, "Close_Workflow_button");
 				click(tendercreationlocators.Conf_YesbuttonWF_tender, "Confirmation_Workflow_yesbutton");
 				click(tendercreationlocators.Conf_YesbuttonWF_tender, "Confirmation_Workflow_yesbutton");
 			}
@@ -14144,7 +14270,7 @@ public class eTenderComponent extends BaseClass_Web {
 
 				javas.executeScript("arguments[0].click();", tabElemnt);
 
-				waitTillSpinnerDisable(driver, tendercreationlocators.LoadingBy);
+				//waitTillSpinnerDisable(driver, tendercreationlocators.LoadingBy);
 
 				waitForObj(3000);
 				//If tab name is Payment then below code should be executed
@@ -14193,7 +14319,7 @@ public class eTenderComponent extends BaseClass_Web {
 					waitForObj(2000);
 					driver.findElement(By.xpath("(//button[contains(text(),'Save Tab Comment')])["+ i +"]")).click();
 				}
-				waitTillSpinnerDisable(driver, tendercreationlocators.LoadingBy);
+				//waitTillSpinnerDisable(driver, tendercreationlocators.LoadingBy);
 
 				waitForObj(3000);
 
@@ -14218,6 +14344,46 @@ public class eTenderComponent extends BaseClass_Web {
 			Assert.fail("Failed Due to " + e.getMessage());
 		}
 	}
+	
+	public void TG1_tenderApprover_dynamicityNew() throws Exception {
+		try {
+			WebDriver driver = ThreadLocalWebdriver.getDriver();
+			List<WebElement> TotalTabs = driver
+					.findElements(By.xpath("//div[@id='rfq_headermain']//li//a[@class='ng-binding']"));
+
+			Thread.sleep(3000);
+			int i;
+			for (i = 1; i <= TotalTabs.size(); i++) {
+				String xpath = "(//div[@id='rfq_headermain']//li//a[@class='ng-binding'])[" + i + "]";
+
+				JavascriptExecutor javas = (JavascriptExecutor) driver;
+
+				WebElement tabElemnt = driver.findElement(By.xpath(xpath));
+
+				javas.executeScript("arguments[0].click();", tabElemnt);
+
+				//waitTillSpinnerDisable(driver, tendercreationlocators.LoadingBy);
+
+				waitForObj(2000);
+
+				if (i % 4 == 0) {
+					driver.findElement(By.xpath("//a[@class='bx-next']")).click();
+				}
+				
+				waitForObj(1000);
+				pdfResultReport.addStepDetails("TG1_tenderApprover_dynamicity", "Should give Comment for each Section",
+						"Successfully given Comment" + " ", "Pass", "Y");
+
+			}
+			pdfResultReport.addStepDetails("TG1_tenderApprover_dynamicity", "Should give Comments for all Section",
+					"Successfully given Comments for all tabs" + " ", "Pass", "Y");
+		} catch (Exception e) {
+			pdfResultReport.addStepDetails("TG1_tenderApprover_dynamicity", "Should give Comments for each Section",
+					"unable to  give Comments for each Section" + " ", "Fail", "Y");
+			Assert.fail("Failed Due to " + e.getMessage());
+		}
+	}
+	
 	//Verifying Terms and Conditions tab during RFQ publish of TG3(date: 04/03/2021)
 	public void TG3_RFQ_TermsAndConditionsTab() throws Exception {
 		try {

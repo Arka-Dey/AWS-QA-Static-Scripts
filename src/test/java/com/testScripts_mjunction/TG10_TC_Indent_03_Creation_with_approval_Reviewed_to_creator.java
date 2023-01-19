@@ -12,10 +12,11 @@ import com.baseClasses.ThreadLocalWebdriver;
 import com.components.RfqFromIndentComponent;
 import com.components.eTenderComponent;
 
-public class TG1_TC_TenderCreation_02_tender_reject_during_tender_approval extends BaseClass_Web{
+public class TG10_TC_Indent_03_Creation_with_approval_Reviewed_to_creator extends BaseClass_Web{
 	
-	public eTenderComponent etendercomponentobj = new eTenderComponent(pdfResultReport);
+	public eTenderComponent etendercomponentobj =new eTenderComponent(pdfResultReport);
 	public RfqFromIndentComponent rfqfromintendcomponentobj = new RfqFromIndentComponent(pdfResultReport);
+	
 
 	/**
 	 * TestScript Environment Details
@@ -34,8 +35,8 @@ public class TG1_TC_TenderCreation_02_tender_reject_during_tender_approval exten
 	
 	
 	@Parameters("TestcaseNo")
-	@Test(description = "TenderReject_after_tender_approval_tender_from_indent")
-	public void TenderReject_after_tender_approval_TG1(String no) throws Throwable {
+	@Test(description = "Indent_creation_with_approval_reviewed_toCreator")
+	public void Indent_creation_with_approval_Reviewed(String no) throws Throwable {
 		System.out.println("Entered in the Test method..................");
 		try {
 			pdfResultReport.readTestDataFile(System.getProperty("user.dir").replace("\\", "/")
@@ -51,7 +52,7 @@ public class TG1_TC_TenderCreation_02_tender_reject_during_tender_approval exten
 		driver.manage().timeouts().pageLoadTimeout(100, TimeUnit.SECONDS);	
 		
 		initializeRepository();
-	//Creating a new Indent with No approval
+//Creating a new Indent with sequential 1 approver userdefined WF
 		etendercomponentobj.openURL();
 		rfqfromintendcomponentobj.IndentcreatorLogin();
 		rfqfromintendcomponentobj.navigateToIndentCreation();
@@ -65,59 +66,25 @@ public class TG1_TC_TenderCreation_02_tender_reject_during_tender_approval exten
 		rfqfromintendcomponentobj.IndentTG1_Annexures_tabvalidation();
 		rfqfromintendcomponentobj.IndentTG1_Submit();
 		rfqfromintendcomponentobj.SystemIndentNoSaveNew();
-		rfqfromintendcomponentobj.NoApproval_IndentWF();
+		rfqfromintendcomponentobj.AddSingleUsersForSequentialApproval_IndentWF();
 		//rfqfromintendcomponentobj.navigateToIndentListing();
 		rfqfromintendcomponentobj.enterIndentNoInSearch();
-		rfqfromintendcomponentobj.VerifyIndentStatus("Completed");
-
-	//Mark the created indent 'Marked for RFQ'
-		rfqfromintendcomponentobj.Indent_Mark_for_RFQ_functionality();
-		rfqfromintendcomponentobj.enterIndentNoForSearch();
-		rfqfromintendcomponentobj.VerifyIndentStatus("Marked For RFQ");
+		rfqfromintendcomponentobj.VerifyIndentStatus("Pending For Approval");
 		etendercomponentobj.tenderLogout();
 		
-		
-	//Indent assignment Process (self claim)
-		etendercomponentobj.tendercreatorLogin();
-		rfqfromintendcomponentobj.navigateToIndentAssignment();
-		rfqfromintendcomponentobj.enterIndentNoForSearch();
-		rfqfromintendcomponentobj.Verify_Indent_Assignment_self_Claim();
-		//rfqfromintendcomponentobj.enterIndentNoForSearch();
-		rfqfromintendcomponentobj.VerifyIndentStatus_AssignmentListPage("Assigned");
-		rfqfromintendcomponentobj.navigateToCreateRFQFromIndentPage();
-		rfqfromintendcomponentobj.enterIndentNoInSearch_RFQfromIndentPage();
-		
-		
-	//Create and publish RFQ from indent
-		rfqfromintendcomponentobj.Create_RFQ_From_Indent("Indigenous Tender (Supply & Service Both) V-1.0");
-		rfqfromintendcomponentobj.PublishTender_from_indent_withRFQ_TG1("Indigenous Tender (Supply & Service Both) V-1.0",22,30,40);
-		etendercomponentobj.clickSubmitBtn();
-		etendercomponentobj.tenderIdSave();
-		etendercomponentobj.AddTwoUsersForSequentialApproval();
-		etendercomponentobj.enterTenderIdInSearch();
+		//Approve the created indent
+		rfqfromintendcomponentobj.IndentapproverLogin();
+		rfqfromintendcomponentobj.GoToApprovalworkFlowPendingindentAndSearchTheIndent();
+		rfqfromintendcomponentobj.clickDetailLinkInApprovalListPage();
+		rfqfromintendcomponentobj.ApproverReviewedIndent_withOverallComment();
 		etendercomponentobj.tenderLogoutOld();
 		
-		
-	//Reviewing pending tender in 1st approver login	
-		etendercomponentobj.tenderApproverLogin();
-		etendercomponentobj.GoToApprovalworkFlowPendingTendersAndSearchTheTender();
-		etendercomponentobj.clickDetailLinkInApprovalListPage();
-		etendercomponentobj.TG1_tenderApprover_dynamicityNew();
-		etendercomponentobj.ReviewTender_withoverall_comment();
-		etendercomponentobj.tenderLogoutOld();
-		
-	//verifying pending tender in 2nd approver login	
-		etendercomponentobj.tenderApprover2Login();
-		etendercomponentobj.Verifying_Pendingtender_sequentialWF();
-		etendercomponentobj.tenderLogoutOld();
-		
-	//verifying Draft tender status 
-		etendercomponentobj.tendercreatorLogin();
-		etendercomponentobj.navigateToTenderListing();
-		etendercomponentobj.enterTenderIdInSearch();
-		etendercomponentobj.checkDraft_tenderstatus_after_review();
-		etendercomponentobj.tenderLogoutOld();
-		
+		//Verifying the indent status after approval
+		rfqfromintendcomponentobj.IndentcreatorLogin();
+		rfqfromintendcomponentobj.navigateToIndentListing();
+		rfqfromintendcomponentobj.enterIndentNoInSearch();
+		rfqfromintendcomponentobj.VerifyIndentStatus("Draft");
+		etendercomponentobj.tenderLogout();
 	}
 
 }

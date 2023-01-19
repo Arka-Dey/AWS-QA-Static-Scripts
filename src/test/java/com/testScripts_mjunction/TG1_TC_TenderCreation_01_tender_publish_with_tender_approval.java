@@ -48,6 +48,7 @@ public class TG1_TC_TenderCreation_01_tender_publish_with_tender_approval extend
 		driver.manage().timeouts().pageLoadTimeout(100, TimeUnit.SECONDS);	
 		initializeRepository();
 	//Creating a new Indent with No approval
+		
 		etendercomponentobj.openURL();
 		rfqfromintendcomponentobj.IndentcreatorLogin();
 		rfqfromintendcomponentobj.navigateToIndentCreation();
@@ -93,7 +94,7 @@ public class TG1_TC_TenderCreation_01_tender_publish_with_tender_approval extend
 		etendercomponentobj.enterTenderIdInSearch();
 		etendercomponentobj.tenderLogoutOld();
 		
-	//verifying pending tender in 2nd approver login	
+		//verifying pending tender in 2nd approver login	
 		etendercomponentobj.tenderApprover2Login();
 		etendercomponentobj.Verifying_Pendingtender_sequentialWF();
 		etendercomponentobj.tenderLogoutOld();
@@ -103,7 +104,7 @@ public class TG1_TC_TenderCreation_01_tender_publish_with_tender_approval extend
 		etendercomponentobj.tenderApproverLogin();
 		etendercomponentobj.GoToApprovalworkFlowPendingTendersAndSearchTheTender();
 		etendercomponentobj.clickDetailLinkInApprovalListPage();
-		etendercomponentobj.TG1_tenderApprover_dynamicity();
+		etendercomponentobj.TG1_tenderApprover_dynamicityNew();
 		etendercomponentobj.ApproverOverAllComentWithTenderHasBeenApproved();
 		etendercomponentobj.tenderLogoutOld();
 		
@@ -111,7 +112,7 @@ public class TG1_TC_TenderCreation_01_tender_publish_with_tender_approval extend
 		etendercomponentobj.tenderApprover2Login();
 		etendercomponentobj.GoToApprovalworkFlowPendingTendersAndSearchTheTender();
 		etendercomponentobj.clickDetailLinkInApprovalListPage();
-		etendercomponentobj.TG1_tenderApprover_dynamicity();
+		etendercomponentobj.TG1_tenderApprover_dynamicityNew();
 		etendercomponentobj.ApproverOverAllComentWithTenderHasBeenApproved();
 		etendercomponentobj.tenderLogoutOld();
 		

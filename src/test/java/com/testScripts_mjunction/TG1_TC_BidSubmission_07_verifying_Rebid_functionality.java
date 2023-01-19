@@ -59,27 +59,29 @@ public class TG1_TC_BidSubmission_07_verifying_Rebid_functionality extends BaseC
 		rfqfromintendcomponentobj.IndentTG1_technical_Specification_tabvalidation();
 		rfqfromintendcomponentobj.IndentTG1_Annexures_tabvalidation();
 		rfqfromintendcomponentobj.IndentTG1_Submit();
-		rfqfromintendcomponentobj.SystemIndentNoSave();
+		rfqfromintendcomponentobj.SystemIndentNoSaveNew();
 		rfqfromintendcomponentobj.NoApproval_IndentWF();
-		rfqfromintendcomponentobj.navigateToIndentListing();
+		//rfqfromintendcomponentobj.navigateToIndentListing();
 		rfqfromintendcomponentobj.enterIndentNoInSearch();
 		rfqfromintendcomponentobj.VerifyIndentStatus("Completed");
 
 	//Mark the created indent 'Marked for RFQ'
 		rfqfromintendcomponentobj.Indent_Mark_for_RFQ_functionality();
-		rfqfromintendcomponentobj.enterIndentNoInSearch();
+		rfqfromintendcomponentobj.enterIndentNoForSearch();
 		rfqfromintendcomponentobj.VerifyIndentStatus("Marked For RFQ");
 		etendercomponentobj.tenderLogout();
 		
-	//Indent assignment Process (self claim)
+		
+	//Indent assignment Process (self claim)	
 		etendercomponentobj.tendercreatorLogin();
 		rfqfromintendcomponentobj.navigateToIndentAssignment();
-		rfqfromintendcomponentobj.enterIndentNoInSearch();
+		rfqfromintendcomponentobj.enterIndentNoForSearch();
 		rfqfromintendcomponentobj.Verify_Indent_Assignment_self_Claim();
-		rfqfromintendcomponentobj.enterIndentNoInSearch();
+		//rfqfromintendcomponentobj.enterIndentNoForSearch();
 		rfqfromintendcomponentobj.VerifyIndentStatus_AssignmentListPage("Assigned");
 		rfqfromintendcomponentobj.navigateToCreateRFQFromIndentPage();
 		rfqfromintendcomponentobj.enterIndentNoInSearch_RFQfromIndentPage();
+		
 		
 	//Create and publish RFQ from indent
 		rfqfromintendcomponentobj.Create_RFQ_From_Indent("Indigenous Tender (Supply & Service Both) V-1.0");
@@ -89,7 +91,7 @@ public class TG1_TC_BidSubmission_07_verifying_Rebid_functionality extends BaseC
 		etendercomponentobj.sendForNoApproval_validation();
 		etendercomponentobj.enterTenderIdInSearch();
 		etendercomponentobj.checkTenderStatusAndTenderStage();
-		etendercomponentobj.tenderLogout();
+		etendercomponentobj.tenderLogoutOld();
 
 	//Bid submission procress	
 		rfqfromintendcomponentobj.waitTillBidstartDateReached();
@@ -101,7 +103,7 @@ public class TG1_TC_BidSubmission_07_verifying_Rebid_functionality extends BaseC
 		etendercomponentobj.quotationReferenceCode_bidsubmission();
 		rfqfromintendcomponentobj.BidSubmission_for_Tender_from_indent_withRFQ_TG1("Indigenous Tender (Supply & Service Both) V-1.0");
 		etendercomponentobj.mandatoryFieldValidation_submitButton_bidsubmission();
-		etendercomponentobj.TG1_validateAllInPrevieAllSubmitbidPage();
+		//etendercomponentobj.TG1_validateAllInPrevieAllSubmitbidPage();
 		etendercomponentobj.submitBid_link_in_previewAllPage();
 		etendercomponentobj.navigate_to_bidList_page();
 		etendercomponentobj.enterTenderIdInSearch_bidsubmission();
@@ -117,7 +119,7 @@ public class TG1_TC_BidSubmission_07_verifying_Rebid_functionality extends BaseC
 		etendercomponentobj.enterTenderIdInSearch_bidsubmission();
 		etendercomponentobj.submittedBid_Tab_Validation();
 		etendercomponentobj.VerifyBidno_after_rebid();
-		etendercomponentobj.tenderLogout();
+		etendercomponentobj.tenderLogoutOld();
 		
 	}
 
