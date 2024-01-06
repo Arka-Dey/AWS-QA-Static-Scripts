@@ -59,7 +59,7 @@ public class TG1_TC_BidSubmission_09_verifying_Withdraw_functionality extends Ba
 		rfqfromintendcomponentobj.IndentTG1_technical_Specification_tabvalidation();
 		rfqfromintendcomponentobj.IndentTG1_Annexures_tabvalidation();
 		rfqfromintendcomponentobj.IndentTG1_Submit();
-		rfqfromintendcomponentobj.SystemIndentNoSave();
+		rfqfromintendcomponentobj.SystemIndentNoSaveNew();
 		rfqfromintendcomponentobj.NoApproval_IndentWF();
 		rfqfromintendcomponentobj.navigateToIndentListing();
 		rfqfromintendcomponentobj.enterIndentNoInSearch();
@@ -71,15 +71,16 @@ public class TG1_TC_BidSubmission_09_verifying_Withdraw_functionality extends Ba
 		rfqfromintendcomponentobj.VerifyIndentStatus("Marked For RFQ");
 		etendercomponentobj.tenderLogout();
 		
-	//Indent assignment Process (self claim)
+	//Indent assignment Process (self claim)	
 		etendercomponentobj.tendercreatorLogin();
 		rfqfromintendcomponentobj.navigateToIndentAssignment();
-		rfqfromintendcomponentobj.enterIndentNoInSearch();
+		rfqfromintendcomponentobj.enterIndentNoForSearch();
 		rfqfromintendcomponentobj.Verify_Indent_Assignment_self_Claim();
-		rfqfromintendcomponentobj.enterIndentNoInSearch();
+		//rfqfromintendcomponentobj.enterIndentNoForSearch();
 		rfqfromintendcomponentobj.VerifyIndentStatus_AssignmentListPage("Assigned");
 		rfqfromintendcomponentobj.navigateToCreateRFQFromIndentPage();
 		rfqfromintendcomponentobj.enterIndentNoInSearch_RFQfromIndentPage();
+	
 		
 	//Create and publish RFQ from indent
 		rfqfromintendcomponentobj.Create_RFQ_From_Indent("Indigenous Tender (Supply & Service Both) V-1.0");
@@ -89,7 +90,7 @@ public class TG1_TC_BidSubmission_09_verifying_Withdraw_functionality extends Ba
 		etendercomponentobj.sendForNoApproval_validation();
 		etendercomponentobj.enterTenderIdInSearch();
 		etendercomponentobj.checkTenderStatusAndTenderStage();
-		etendercomponentobj.tenderLogout();
+		etendercomponentobj.tenderLogoutOld();
 
 	//Bid submission process
 		rfqfromintendcomponentobj.waitTillBidstartDateReached();
@@ -115,7 +116,7 @@ public class TG1_TC_BidSubmission_09_verifying_Withdraw_functionality extends Ba
 		etendercomponentobj.withdrawnBid_Tab_Validation();
 		etendercomponentobj.VerifyBidno_withdrawbid(); 
 		etendercomponentobj.VerifyBidsubmission_after_WithdrawBid();
-		etendercomponentobj.tenderLogout();
+		etendercomponentobj.tenderLogoutOld();
 
 	}
 

@@ -969,7 +969,7 @@ import org.openqa.selenium.WebElement;
 		
 	
 		//*******************END********************************Added for mjunction project
-				public void switchToBrowser(String paramString)
+	public void switchToBrowser(String paramString)
 	{
 		try{
 			winHandleBefore = ThreadLocalWebdriver.getDriver().getWindowHandle();
@@ -1113,7 +1113,7 @@ import org.openqa.selenium.WebElement;
 		}
 	public void waitForElementToBeVisible(By locator)
 	{
-		WebDriverWait wait= new WebDriverWait(ThreadLocalWebdriver.getDriver(), 1000);
+		WebDriverWait wait= new WebDriverWait(ThreadLocalWebdriver.getDriver(), 2000);
 		
 		wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
 	}
@@ -1129,7 +1129,7 @@ import org.openqa.selenium.WebElement;
 	
 	public void waitForElementToBeClickable(By locator)
 	{
-		WebDriverWait wait= new WebDriverWait(ThreadLocalWebdriver.getDriver(), 20000);
+		WebDriverWait wait= new WebDriverWait(ThreadLocalWebdriver.getDriver(), 2000);
 		
 		wait.until(ExpectedConditions.elementToBeClickable(locator));
 	}

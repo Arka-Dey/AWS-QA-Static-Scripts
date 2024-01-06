@@ -50,6 +50,7 @@ public class TG1_TC_Evaluation_10_Openingapproval_Y_Evaluationapproval_N extends
 		initializeRepository();
 		//Creating a new Indent with No approval
 		etendercomponentobj.openURL();
+		
 		/*
 		 * rfqfromintendcomponentobj.IndentcreatorLogin();
 		 * rfqfromintendcomponentobj.navigateToIndentCreation();
@@ -97,57 +98,60 @@ public class TG1_TC_Evaluation_10_Openingapproval_Y_Evaluationapproval_N extends
 		 * etendercomponentobj.enterTenderIdInSearch();
 		 * etendercomponentobj.checkTenderStatusAndTenderStage();
 		 * etendercomponentobj.tenderLogoutOld();
+		 * 
+		 * 
+		 * //Bid submission procress
+		 * rfqfromintendcomponentobj.waitTillBidstartDateReached();
+		 * etendercomponentobj.bidder_01_Login();
+		 * etendercomponentobj.enterTenderIdInSearch_bidsubmission();
+		 * etendercomponentobj.navigateToActionDropdown_bidsubmission();
+		 * etendercomponentobj.newTermsAndServicesCheckBox_bidsubmission();
+		 * etendercomponentobj.TG1_generalInformationPageValidation_bidsubmission();
+		 * etendercomponentobj.quotationReferenceCode_bidsubmission();
+		 * rfqfromintendcomponentobj.
+		 * BidSubmission_for_Tender_from_indent_withRFQ_TG1("Indigenous Tender (Supply & Service Both) V-1.0"
+		 * ); etendercomponentobj.mandatoryFieldValidation_submitButton_bidsubmission();
+		 * etendercomponentobj.TG1_validateAllInPrevieAllSubmitbidPage();
+		 * etendercomponentobj.submitBid_link_in_previewAllPage();
+		 * etendercomponentobj.navigate_to_bidList_page();
+		 * etendercomponentobj.enterTenderIdInSearch_bidsubmission();
+		 * etendercomponentobj.submittedBid_Tab_Validation();
+		 * etendercomponentobj.tenderLogoutOld();
+		 * 
+		 * //Bid submission process for bidder2 etendercomponentobj.bidder_02_Login();
+		 * etendercomponentobj.enterTenderIdInSearch_bidsubmission();
+		 * etendercomponentobj.navigateToActionDropdown_bidsubmission();
+		 * etendercomponentobj.newTermsAndServicesCheckBox_bidsubmission();
+		 * etendercomponentobj.TG1_generalInformationPageValidation_bidsubmission();
+		 * etendercomponentobj.quotationReferenceCode_bidsubmission();
+		 * rfqfromintendcomponentobj.
+		 * BidSubmission_for_Tender_from_indent_withRFQ_TG1("Indigenous Tender (Supply & Service Both) V-1.0"
+		 * ); etendercomponentobj.mandatoryFieldValidation_submitButton_bidsubmission();
+		 * etendercomponentobj.TG1_validateAllInPrevieAllSubmitbidPage();
+		 * etendercomponentobj.submitBid_link_in_previewAllPage();
+		 * etendercomponentobj.navigate_to_bidList_page();
+		 * etendercomponentobj.enterTenderIdInSearch_bidsubmission();
+		 * etendercomponentobj.submittedBid_Tab_Validation();
+		 * etendercomponentobj.tenderLogoutOld();
+		 * 
+		 * //Bid submission process for bidder3 etendercomponentobj.bidder_03_Login();
+		 * etendercomponentobj.enterTenderIdInSearch_bidsubmission();
+		 * etendercomponentobj.navigateToActionDropdown_bidsubmission();
+		 * etendercomponentobj.newTermsAndServicesCheckBox_bidsubmission();
+		 * etendercomponentobj.TG1_generalInformationPageValidation_bidsubmission();
+		 * etendercomponentobj.quotationReferenceCode_bidsubmission();
+		 * rfqfromintendcomponentobj.
+		 * BidSubmission_for_Tender_from_indent_withRFQ_TG1("Indigenous Tender (Supply & Service Both) V-1.0"
+		 * ); etendercomponentobj.mandatoryFieldValidation_submitButton_bidsubmission();
+		 * etendercomponentobj.TG1_validateAllInPrevieAllSubmitbidPage();
+		 * etendercomponentobj.submitBid_link_in_previewAllPage();
+		 * etendercomponentobj.navigate_to_bidList_page();
+		 * etendercomponentobj.enterTenderIdInSearch_bidsubmission();
+		 * etendercomponentobj.submittedBid_Tab_Validation();
+		 * etendercomponentobj.tenderLogoutOld();
 		 */
-
-	//Bid submission procress	
-		rfqfromintendcomponentobj.waitTillBidstartDateReached();
-		etendercomponentobj.bidder_01_Login();
-		etendercomponentobj.enterTenderIdInSearch_bidsubmission();
-		etendercomponentobj.navigateToActionDropdown_bidsubmission();
-		etendercomponentobj.newTermsAndServicesCheckBox_bidsubmission();
-		etendercomponentobj.TG1_generalInformationPageValidation_bidsubmission();
-		etendercomponentobj.quotationReferenceCode_bidsubmission();
-		rfqfromintendcomponentobj.BidSubmission_for_Tender_from_indent_withRFQ_TG1("Indigenous Tender (Supply & Service Both) V-1.0");
-		etendercomponentobj.mandatoryFieldValidation_submitButton_bidsubmission();
-		etendercomponentobj.TG1_validateAllInPrevieAllSubmitbidPage();
-		etendercomponentobj.submitBid_link_in_previewAllPage();
-		etendercomponentobj.navigate_to_bidList_page();
-		etendercomponentobj.enterTenderIdInSearch_bidsubmission();
-		etendercomponentobj.submittedBid_Tab_Validation();
-		etendercomponentobj.tenderLogoutOld();
 		
-	//Bid submission process for bidder2		
-		etendercomponentobj.bidder_02_Login();
-		etendercomponentobj.enterTenderIdInSearch_bidsubmission();
-		etendercomponentobj.navigateToActionDropdown_bidsubmission();
-		etendercomponentobj.newTermsAndServicesCheckBox_bidsubmission();
-		etendercomponentobj.TG1_generalInformationPageValidation_bidsubmission();
-		etendercomponentobj.quotationReferenceCode_bidsubmission();
-		rfqfromintendcomponentobj.BidSubmission_for_Tender_from_indent_withRFQ_TG1("Indigenous Tender (Supply & Service Both) V-1.0");
-		etendercomponentobj.mandatoryFieldValidation_submitButton_bidsubmission();
-		etendercomponentobj.TG1_validateAllInPrevieAllSubmitbidPage();
-		etendercomponentobj.submitBid_link_in_previewAllPage();
-		etendercomponentobj.navigate_to_bidList_page();
-		etendercomponentobj.enterTenderIdInSearch_bidsubmission();
-		etendercomponentobj.submittedBid_Tab_Validation();
-		etendercomponentobj.tenderLogoutOld();
 		
-	//Bid submission process for bidder3		
-		etendercomponentobj.bidder_03_Login();
-		etendercomponentobj.enterTenderIdInSearch_bidsubmission();
-		etendercomponentobj.navigateToActionDropdown_bidsubmission();
-		etendercomponentobj.newTermsAndServicesCheckBox_bidsubmission();
-		etendercomponentobj.TG1_generalInformationPageValidation_bidsubmission();
-		etendercomponentobj.quotationReferenceCode_bidsubmission();
-		rfqfromintendcomponentobj.BidSubmission_for_Tender_from_indent_withRFQ_TG1("Indigenous Tender (Supply & Service Both) V-1.0");
-		etendercomponentobj.mandatoryFieldValidation_submitButton_bidsubmission();
-		etendercomponentobj.TG1_validateAllInPrevieAllSubmitbidPage();
-		etendercomponentobj.submitBid_link_in_previewAllPage();
-		etendercomponentobj.navigate_to_bidList_page();
-		etendercomponentobj.enterTenderIdInSearch_bidsubmission();
-		etendercomponentobj.submittedBid_Tab_Validation();
-		etendercomponentobj.tenderLogoutOld();
-
 	//Evaluation: Cover 1 work flow where opening approval Yes and evaluation approval No
 		etendercomponentobj.tendercreatorLogin();
 		rfqfromintendcomponentobj.waitTillBidDuetDateReached();
@@ -156,14 +160,14 @@ public class TG1_TC_Evaluation_10_Openingapproval_Y_Evaluationapproval_N extends
 		etendercomponentobj.enterTenderIdInSearch();
 		etendercomponentobj.clickEvaluationSettingsLink();
 		//Set the schedule opening date and time
-		etendercomponentobj.ScheduleOpening_Evaluationsettings(4);
+		//etendercomponentobj.ScheduleOpening_Evaluationsettings(4);
 		etendercomponentobj.selectYesForApprovalAndEvaluationRequired();
 		etendercomponentobj.selectBidOpeningAndProvideCommentsForBidOpeningApproval();
 		etendercomponentobj.SendForApprovalInEvaluationsetting();
 		etendercomponentobj.enterTenderIdInSearch();
 		etendercomponentobj.checktenderStatusIsInOpening();
 		etendercomponentobj.checktenderStageIsInPendingForOpeningApprovalCover1("Cover 1");
-		etendercomponentobj.tenderLogout();
+		etendercomponentobj.tenderLogoutOld();
 		
 		//Waiting for schedule opening time reached
 		etendercomponentobj.waitTillScheduleOpeningDateReached();
@@ -174,7 +178,7 @@ public class TG1_TC_Evaluation_10_Openingapproval_Y_Evaluationapproval_N extends
 		etendercomponentobj.validateBidOpeningApprovalpage("Cover 1", "3", "3");
 		etendercomponentobj.provideApproverCommentInCommentsection();
 		etendercomponentobj.clickApproveBtnAndCheckTenderIsDisplayingOrNotInTenderOpeningTab();
-		etendercomponentobj.tenderLogout(); 
+		etendercomponentobj.tenderLogoutOld(); 
 		
 		//Tender creator decrypt and evaluate the bid
 		etendercomponentobj.tendercreatorLogin();
@@ -209,7 +213,7 @@ public class TG1_TC_Evaluation_10_Openingapproval_Y_Evaluationapproval_N extends
 		etendercomponentobj.enterTenderIdInSearch();
 		etendercomponentobj.checktenderStatusIsInevaluationState();
 		etendercomponentobj.checktenderStageIsInPendingForOpeningApprovalCover1("Cover 2");
-		etendercomponentobj.tenderLogout();
+		etendercomponentobj.tenderLogoutOld();
 		
 		//Waiting for schedule opening time reached
 		etendercomponentobj.waitTillScheduleOpeningDateReached();
@@ -220,7 +224,7 @@ public class TG1_TC_Evaluation_10_Openingapproval_Y_Evaluationapproval_N extends
 		etendercomponentobj.validateBidOpeningApprovalpage("Cover 2", "3", "3");
 		etendercomponentobj.provideApproverCommentInCommentsection();
 		etendercomponentobj.clickApproveBtnAndCheckTenderIsDisplayingOrNotInTenderOpeningTab();
-		etendercomponentobj.tenderLogout();
+		etendercomponentobj.tenderLogoutOld();
 		
 		//Tender creator decrypt and evaluate the bid
 		etendercomponentobj.tendercreatorLogin();
@@ -246,7 +250,7 @@ public class TG1_TC_Evaluation_10_Openingapproval_Y_Evaluationapproval_N extends
 		//Checking tender status Completed
 		etendercomponentobj.enterTenderIdInSearch();
 		etendercomponentobj.checktenderStatusIsIncompletedState();
-		etendercomponentobj.tenderLogout();
+		etendercomponentobj.tenderLogoutOld();
 		
 	}
 }

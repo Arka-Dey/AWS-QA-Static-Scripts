@@ -6,18 +6,18 @@
   </listeners>
   <test thread-count="5" name="Test(failed)">
     <parameter name="browserName" value="windowschrome"/>
-    <parameter name="TestcaseNo" value="18"/>
+    <parameter name="TestcaseNo" value="25"/>
     <classes>
-      <class name="com.testScripts_mjunction.TG1_TC_Indent_01_Creation_with_approval">
+      <class name="com.testScripts_mjunction.TG1_TC_Indent_04_Create_RFQ_from_Indent">
         <methods>
           <include name="setUpSuiteDetails"/>
           <include name="BeforeClass"/>
-          <include name="Indent_creation_with_approval" invocation-numbers="0"/>
+          <include name="Verifying_Create_TFQ_from_indent" invocation-numbers="0"/>
           <include name="afterSuite"/>
           <include name="captureDesc"/>
           <include name="afterClass"/>
         </methods>
-      </class> <!-- com.testScripts_mjunction.TG1_TC_Indent_01_Creation_with_approval -->
+      </class> <!-- com.testScripts_mjunction.TG1_TC_Indent_04_Create_RFQ_from_Indent -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

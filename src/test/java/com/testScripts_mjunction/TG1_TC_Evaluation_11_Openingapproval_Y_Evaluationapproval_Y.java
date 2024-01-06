@@ -94,6 +94,48 @@ public class TG1_TC_Evaluation_11_Openingapproval_Y_Evaluationapproval_Y extends
 		etendercomponentobj.enterTenderIdInSearch();
 		etendercomponentobj.checkTenderStatusAndTenderStage();
 		etendercomponentobj.tenderLogoutOld();
+		
+	//Date corrigendum during Live tender status
+				etendercomponentobj.waitTillBidstartDateReached();
+				etendercomponentobj.tendercreatorLogin();
+				etendercomponentobj.navigateToTenderListing();
+				etendercomponentobj.enterTenderIdInSearch();
+				etendercomponentobj.datecorrigendum();
+				etendercomponentobj.corrigendumSaveButton();
+				etendercomponentobj.modifyDateScheduleTemplate1(	30,35);  
+				etendercomponentobj.AddTwoUsersForSequentialCorrigendumApproval();
+				etendercomponentobj.tenderLogoutOld();
+				
+			//verifying pending corrigendum in 2nd approver login	
+				etendercomponentobj.tenderApprover2Login();
+				etendercomponentobj.Verifying_Pendingtender_Corrigendumtab_sequentialWF();
+				etendercomponentobj.tenderLogoutOld();
+			
+			//Verifying pending corrigendum in 1st approver login and approve the corrigendum 
+				etendercomponentobj.tenderApproverLogin();
+				etendercomponentobj.clickCorrigendumTabAndSearchThePendingListTenderNo();
+				etendercomponentobj.clickDetailLinkInApprovalListPage_CorrigendumApproval();
+				etendercomponentobj.provideApproverCommentsForDateScheduleTab();
+				etendercomponentobj.ApproverOverAllComentWithCorrigendumHasBeenApproved();
+				etendercomponentobj.tenderLogoutOld();
+				
+			//Verifying pending corrigendum in 2nd approver login and approve the corrigendum 
+				etendercomponentobj.tenderApprover2Login();
+				etendercomponentobj.clickCorrigendumTabAndSearchThePendingListTenderNo();
+				etendercomponentobj.clickDetailLinkInApprovalListPage_CorrigendumApproval();
+				etendercomponentobj.provideApproverCommentsForDateScheduleTab();
+				etendercomponentobj.ApproverOverAllComentWithCorrigendumHasBeenApproved();
+				etendercomponentobj.tenderLogoutOld();
+				
+			//Verifying Corrigendum status and corrigendum history
+				etendercomponentobj.tendercreatorLogin();
+				etendercomponentobj.navigateToTenderListing();
+				etendercomponentobj.enterTenderIdInSearch();
+				etendercomponentobj.corrigendumStatus();
+				etendercomponentobj.corrigendumStatus_Yes_Hyperlink_Validation();
+				etendercomponentobj.corrigendumNumber_Hyperlink_Validation();
+				etendercomponentobj.corrigendumHistory_Hyperlink_Validation();
+				etendercomponentobj.tenderLogoutOld();
 
 	//Bid submission procress	
 		rfqfromintendcomponentobj.waitTillBidstartDateReached();

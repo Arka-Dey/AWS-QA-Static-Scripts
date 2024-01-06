@@ -69,18 +69,29 @@ public class PostTenderComponent extends BaseClass_Web {
 
 	public void super_Admin_Login() throws Throwable {
 		try {
+			// commented on 251123
+			/*
+			 * log.info("started executing the method:: super_Admin_Login");
+			 * click(tendercreationlocators.login, "login");
+			 * set(tendercreationlocators.userName,
+			 * pdfResultReport.testData.get("SuperAdminUserName"), "userName");
+			 * waitForObj(2000); set(tendercreationlocators.password,
+			 * pdfResultReport.testData.get("AppPassword"), "password"); //Handle fixed
+			 * Captcha (06/11/2020) set(tendercreationlocators.Captcha_Login, "1234",
+			 * "Login_Captcha"); //Added to handle Captcha manually //waitForObj(40000);
+			 * click(tendercreationlocators.okButton, "okButton");
+			 * 
+			 * waitForElement(tendercreationlocators.dashboardIcon, 50);
+			 */
+			
+			// added new script on 251123
 			log.info("started executing the method:: super_Admin_Login");
-			click(tendercreationlocators.login, "login");
 			set(tendercreationlocators.userName, pdfResultReport.testData.get("SuperAdminUserName"), "userName");
-			waitForObj(2000);
+			waitForObj(5000);
 			set(tendercreationlocators.password, pdfResultReport.testData.get("AppPassword"), "password");
-			//Handle fixed Captcha (06/11/2020)
-			set(tendercreationlocators.Captcha_Login, "1234", "Login_Captcha");
-			//Added to handle Captcha manually
-			//waitForObj(40000);
 			click(tendercreationlocators.okButton, "okButton");
-
-			waitForElement(tendercreationlocators.dashboardIcon, 50);
+			
+			waitForElement(tendercreationlocators.dashboardIconnew, 5000);
 
 			pdfResultReport.addStepDetails("super_Admin_Login", "Super admin user must be login sucessfully",
 					"Successfully logged in as Super admin user" + " ", "Pass", "Y");
@@ -170,9 +181,9 @@ public class PostTenderComponent extends BaseClass_Web {
 		try {
 			log.info("started executing the method::  enterCompletedTenderId");
 
-			clear(tendercreationlocators.tenderListKeyword, "tenderListKeyword");
+			clear(tendercreationlocators.TypeYourKeywordSN, "tenderListKeyword");
 
-			set(tendercreationlocators.tenderListKeyword, eTenderComponent.getDataFromPropertiesFile(),
+			set(tendercreationlocators.TypeYourKeywordSN, eTenderComponent.getDataFromPropertiesFile(),
 					"enterCompleted_TenderId");
 
 			waitForObj(5000);
@@ -1253,6 +1264,7 @@ public class PostTenderComponent extends BaseClass_Web {
 		try {
 			log.info("started executing the method:: createSanctionNote");
 			JSClick(tendercreationlocators.SN_stage, "SN_stage");
+			checkPageIsReady();
 			waitForElementToBeVisible(tendercreationlocators.createSanctionNote);
 			waitForObj(5000);
 			JSClick(tendercreationlocators.createSanctionNote, "createSanctionNote");
@@ -1349,22 +1361,35 @@ public class PostTenderComponent extends BaseClass_Web {
 
 	public void clickPostTenderProcessLink() throws Throwable {
 		try {
-			log.info("started executing the method:: clickPostTenderProcessLink");
-
-			click(tendercreationlocators.tendersIcon, "tendersIcon");
-			waitForObj(2000);
-
-			JSClick(tendercreationlocators.postTenderProcessBy, "postTenderProcessBy");
-
-			waitForObj(3000);
-
+			//commented on 251123
+			
+			/*
+			 * log.info("started executing the method:: clickPostTenderProcessLink");
+			 * 
+			 * click(tendercreationlocators.tendersIcon, "tendersIcon"); waitForObj(2000);
+			 * 
+			 * JSClick(tendercreationlocators.postTenderProcessBy, "postTenderProcessBy");
+			 * 
+			 * waitForObj(3000);
+			 * 
+			 * checkPageIsReady();
+			 * 
+			 * waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(),
+			 * tendercreationlocators.LoadingBy);
+			 * 
+			 * waitForElementToBeVisible(By.xpath("//*[@id='myTablebyrTl00']/tbody/tr[1]"));
+			 * 
+			 * waitForObj(5000);
+			 */
+			
+			// newly added script on 251123
+			log.info("started executing the method:: navigateToIndentCreation");
+			JSClick(tendercreationlocators.mainMenuIcon, "MenuIcon");
+			mouseOver(tendercreationlocators.Enquiry);
+			JSClick(tendercreationlocators.AllSanctionsFromRFx, "AllSanctionsFromRFx");
 			checkPageIsReady();
-
-			waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
-
-			waitForElementToBeVisible(By.xpath("//*[@id='myTablebyrTl00']/tbody/tr[1]"));
-
-			waitForObj(5000);
+			waitForElementToBeVisible(tendercreationlocators.TypeYourKeywordSN);
+			
 
 			pdfResultReport.addStepDetails("clickPostTenderProcessLink", "Should navigate to Complete Tender List page",
 					"SucessFully navigated to Complete Tender List page" + " ", "Pass", "Y");
@@ -1414,6 +1439,7 @@ public class PostTenderComponent extends BaseClass_Web {
 		eTenderComponent.updateDataIntoPropertyFile("sanctionoteDocnum", documentNumberText);
 		return documentNumberText;
 	}
+	
 
 	public void CreateSanctionNoteWithPredefinedApproval() throws Throwable {
 		try {
@@ -1981,16 +2007,17 @@ public class PostTenderComponent extends BaseClass_Web {
 	public void SanctionsupplierSelection() throws Throwable {
 		try {
 			log.info("started executing the method:: sanctionReferenceNumber");
-			waitForObj(20000);
-			etendercomponentobj.waitForSpinnerToDisappear();
-			waitForObj(20000);
+			//waitForObj(20000);
+			//etendercomponentobj.waitForSpinnerToDisappear();
+			//waitForObj(20000);
+			
 			JSClick(tendercreationlocators.ALLsupplierSelectionCheckBox, "supplierSelectionCheckBox");
 			waitForObj(2000);
 			JSClick(tendercreationlocators.ALLsupplierSelectionCheckBox, "supplierSelectionCheckBox");
 			waitForObj(2000);
-			JSClick(tendercreationlocators.ALLsupplierSelectionCheckBox, "supplierSelectionCheckBox");
+			JSClick(tendercreationlocators.L1supplierSelectionCheckBox, "L1supplierSelectionCheckBox");
 
-			waitForObj(5000);
+			waitForObj(3000);
 			pdfResultReport.addStepDetails("supplierSelection", "supplier must be selected sucessfully",
 					"Successfully selected supplier " + " ", "Pass", "Y");
 			log.info("completed executing the method:: supplierSelection");
@@ -7443,21 +7470,26 @@ public class PostTenderComponent extends BaseClass_Web {
 	public void ScantionComment_recommendationTab() throws Throwable {
 		try {
 			log.info("started executing the method:: provideComment_recommendationTab");
-			click(tendercreationlocators.saveSanction, "saveSanction");
-			waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
-			Thread.sleep(5000);
+			
+			//Commented on 261123
+			/*
+			 * click(tendercreationlocators.saveSanction, "saveSanction");
+			 * waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(),
+			 * tendercreationlocators.LoadingBy); Thread.sleep(5000);
+			 */
+			
 			JSClick(tendercreationlocators.recommendationTab, "recommendationTab");
-			Thread.sleep(10000);
-			JSClick(By.xpath("//*[@aria-label='Bold']"), "overallComment");
+			waitForObj(3000);
+			//JSClick(By.xpath("//*[@aria-label='Bold']"), "overallComment");
 			WebElement iframele = ThreadLocalWebdriver.getDriver().findElement(By.xpath("//iframe[@id='txtArea_ifr']"));
 			switchframe(iframele);
-			Thread.sleep(10000);
+			waitForObj(3000);
 			set(tendercreationlocators.recommendationComment, "overallComment_currentPart", "recommendationComment");
 			switchToDefaultFrame();
-			Thread.sleep(5000);
-			click(tendercreationlocators.saveSanction, "saveSanction");
-			Thread.sleep(10000);
-			waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
+			waitForObj(3000);
+			JSClick(tendercreationlocators.saveSanction, "saveSanction");
+			waitForObj(8000);
+			//waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
 
 			pdfResultReport.addStepDetails("provideComment_recommendationTab",
 					"Comment must be pass under recommendation tab successfully",
@@ -7474,12 +7506,15 @@ public class PostTenderComponent extends BaseClass_Web {
 	public void enterDocumentNoInSearch() throws Throwable {
 		try {
 			log.info("started executing the method:: enterDocumentNoInSearch");
+			
 			waitForElement(tendercreationlocators.typeAnyKeyword, 30);
-			waitForObj(5000);
+			click(tendercreationlocators.SNcompletedList, "SNcompletedList");
+			waitForObj(2000);
 			clear(tendercreationlocators.typeAnyKeyword, "typeAnyKeyword");
-			set(tendercreationlocators.typeAnyKeyword, eTenderComponent.getDataFromPropertiesFile("sanctionoteDocnum"),
-					"typeAnyKeyword");
-			waitForObj(5000);
+			waitForObj(2000);
+			set(tendercreationlocators.typeAnyKeyword, eTenderComponent.getDataFromPropertiesFile("sanctionReferenceNumber"), "typeAnyKeyword");
+			//set(tendercreationlocators.typeAnyKeyword, documentNumberText, "typeAnyKeyword");
+			waitForObj(6000);
 			pdfResultReport.addStepDetails("enterDocumentNoInSearch", "Document No must be enter successfully",
 					"Successfully entered document No" + " ", "Pass", "Y");
 			log.info("completed executing the method:: enterDocumentNoInSearch");
@@ -7493,7 +7528,7 @@ public class PostTenderComponent extends BaseClass_Web {
 	public void clickOnSubmitButton() throws Throwable {
 		try {
 			log.info("started executing the method:: clickOnSubmitButton");
-			waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
+			//waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
 			JSClick(tendercreationlocators.submit, "submit");
 			pdfResultReport.addStepDetails("clickOnSubmitButton", "Submit button must be click successfully",
 					"Successfully clicked on submit button" + " ", "Pass", "Y");
@@ -7519,7 +7554,8 @@ public class PostTenderComponent extends BaseClass_Web {
 					"Sanction reference number must be pass sucessfully",
 					"Successfully passed sanction reference number " + " ", "Pass", "Y");
 			click(tendercreationlocators.sanctionRefNo_Submit, "sanctionRefNo_Submit");
-			waitForObj(20000);
+			checkPageIsReady();
+			waitForObj(6000);
 			log.info("completed executing the method:: sanctionReferenceNumber");
 		} catch (Exception e) {
 			log.fatal("Unable to pass sanction reference number " + e.getMessage());
@@ -7652,13 +7688,13 @@ public class PostTenderComponent extends BaseClass_Web {
 			log.info("started executing the method:: sendForApproval");
 			JSClick(tendercreationlocators.sendForApprovalNotRequired_SN, "sendForApprovalNotRequired_SN");
 			JSClick(tendercreationlocators.sendForApprovalSubmit, "sendForApprovalSubmit");
-			pdfResultReport.addStepDetails("sendForApproval", "sendForApproval must be validate successfully",
-					"Successfully validated sendForApproval" + " ", "Pass", "Y");
+			pdfResultReport.addStepDetails("NotsendForApproval", "NotsendForApproval must be validate successfully",
+					"Successfully validated NotsendForApproval" + " ", "Pass", "Y");
 			log.info("completed executing the method:: sendForApproval");
 			WebDriverWait wait = new WebDriverWait(ThreadLocalWebdriver.getDriver(), 100);
 			wait.until(ExpectedConditions.visibilityOfElementLocated(
 					By.xpath("//*[@id='myTabContent']/child::div/child::div/table/tbody/tr[2]")));
-			waitForObj(5000);
+			waitForObj(3000);
 			pdfResultReport.addStepDetails("sendForApproval", "sendForApproval must be validate successfully",
 					"Successfully validated sendForApproval" + " ", "Pass", "Y");
 			log.info("completed executing the method:: sendForApproval");
@@ -8122,8 +8158,9 @@ public class PostTenderComponent extends BaseClass_Web {
 		try {
 			log.info("started executing the method:: itemAllotment_TCS");
 			waitForObj(5000);
-			click(tendercreationlocators.plusIcon_TCS, "plusIcon_TCS");
+			click(tendercreationlocators.Biddername, "plusIcon_TCS");
 			waitForObj(3000);
+			click(tendercreationlocators.termsAndConditioncheckBox_TCS, "termsAndConditioncheckBox_TCS");
 			click(tendercreationlocators.termsAndConditioncheckBox_TCS, "termsAndConditioncheckBox_TCS");
 			waitForObj(3000);
 			click(tendercreationlocators.boqCheckbox_TCS, "boqCheckbox_TCS");
@@ -8172,6 +8209,33 @@ public class PostTenderComponent extends BaseClass_Web {
 					"Unable to change Supplier Quoted Quantity" + e.getMessage(), "Fail", "N");
 		}
 	}
+	
+	public void ScantionSupplierDetails() throws Throwable {
+		try {
+			log.info("started executing the method:: itemAllotment_L1");
+			waitForObj(5000);
+			click(tendercreationlocators.Biddername, "plusIcon_L1");
+			waitForObj(3000);
+			scrollToElement(tendercreationlocators.termsAndConditioncheckBox);
+			waitForObj(3000);
+			scrollToElement(tendercreationlocators.boqCheckbox);
+			waitForObj(3000);
+			scrollToElement(tendercreationlocators.Exceptions);
+			waitForObj(3000);
+			
+			pdfResultReport.addStepDetails("itemAllotment_L1", "Supplier Quoted details verified sucessfully",
+					"Successfully changed Supplier Quoted Quantity" + " ", "Pass", "Y");
+
+			waitForObj(2000);
+			log.info("completed executing the method:: itemAllotment_L1");
+			waitForObj(5000);
+		} catch (Exception e) {
+			log.fatal("Unable to change Supplier Quoted Quantity" + e.getMessage());
+			pdfResultReport.addStepDetails("itemAllotment_L1", "Supplier Quoted Quantity must be change sucessfully",
+					"Unable to change Supplier Quoted Quantity" + e.getMessage(), "Fail", "N");
+		}
+	}
+
 
 	public void verifyDraftStage() throws Throwable {
 		try {
@@ -8198,17 +8262,21 @@ public class PostTenderComponent extends BaseClass_Web {
 			log.info("started executing the method:: SanctionItemsAllotment");
 			waitForObj(5000);
 			String bidder = text(tendercreationlocators.Biddername);
-			if (bidder.equalsIgnoreCase("TCS")) {
-				waitForObj(3000);
-				ScantionitemAllotment_TCS();
-				waitForObj(3000);
-				ScantionitemAllotment_CTS();
-			} else if (bidder.equalsIgnoreCase("CTS")) {
-				waitForObj(3000);
-				ScantionitemAllotment_CTS();
-				waitForObj(3000);
-				ScantionitemAllotment_TCS();
-			}
+			
+			//commented on 261123
+			/*
+			 * if (bidder.equalsIgnoreCase("Sanction Note details of: TCS")) {
+			 * waitForObj(3000); ScantionitemAllotment_TCS(); waitForObj(3000);
+			 * ScantionitemAllotment_CTS(); } else if
+			 * (bidder.equalsIgnoreCase("Sanction Note details of: CTS")) {
+			 * waitForObj(3000); ScantionitemAllotment_CTS(); waitForObj(3000);
+			 * ScantionitemAllotment_TCS(); }
+			 */
+			
+			//Add new script on 261123
+				ScantionSupplierDetails();
+
+		
 
 			waitForObj(5000);
 			pdfResultReport.addStepDetails("SanctionItemsAllotment", "supplier must be selected sucessfully",

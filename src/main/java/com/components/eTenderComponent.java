@@ -64,8 +64,8 @@ import com.objectRepository.TenderCreation_Locators;
 //import com.sun.glass.events.KeyEvent;
 
 public class eTenderComponent extends BaseClass_Web {
-	//String tenderReferenceNoLocatorText = null;
-	String tenderReferenceNoLocatorText = "1683";
+	String tenderReferenceNoLocatorText = null;
+	//String tenderReferenceNoLocatorText = "1697";
 	TenderCreation_Locators tendercreationlocators = new TenderCreation_Locators();
 	String BidStartDate = null;
 	String BidDueDate = null;
@@ -167,13 +167,16 @@ public class eTenderComponent extends BaseClass_Web {
 		try {
 			log.info("started executing the method:: tendercreatorLogin");
 			//click(tendercreationlocators.login, "login"); // edited on 201221
+			waitForElementToBeVisible(tendercreationlocators.userName);
 			set(tendercreationlocators.userName, pdfResultReport.testData.get("TenderCreatorUserName"), "userName");
-			waitForObj(2000);
+			//waitForObj(2000);
+			waitForElementToBeVisible(tendercreationlocators.password);
 			set(tendercreationlocators.password, pdfResultReport.testData.get("AppPassword"), "password");
 			//Handle fixed Captcha (06/11/2020)
 			//set(tendercreationlocators.Captcha_Login, "1234", "Login_Captcha"); // edited on 201221
 			//Wait statement (Added to handle Captcha temporarily in AWS QA (19/10/2020))
 			//waitForObj(1000);
+			waitForElementToBeClickable(tendercreationlocators.okButton);
 			click(tendercreationlocators.okButton, "okButton");
 			waitForElement(tendercreationlocators.dashboardIcon, 5000);
 			pdfResultReport.addStepDetails("Tender creator login", "Tender creator must be sucessfully logged in",
@@ -5451,13 +5454,14 @@ public class eTenderComponent extends BaseClass_Web {
 
 	/**
 	 * @author venkatesh jujjuru
-	 * @throws Exception
+	 * @throws Throwable 
 	 */
-	public void selectYesForApprovalAndEvaluationRequired() throws Exception {
+	public void selectYesForApprovalAndEvaluationRequired() throws Throwable {
 		try {
 			log.info("started executing the method:: selectYesForApprovalAndEvaluationRequired");
-
-			click(tendercreationlocators.ApproverSelectYES_Evaluation, "ApproverSelectYES_Evaluation");
+			waitForObj(3000);
+			JSClick(tendercreationlocators.ApproverSelectYES_Evaluation, "ApproverSelectYES_Evaluation");
+			//click(tendercreationlocators.ApproverSelectYES_Evaluation, "ApproverSelectYES_Evaluation");
 
 			pdfResultReport.addStepDetails("selectYesForApprovalAndEvaluationRequired",
 					"should select Yes for approval and evaluation required ",
@@ -5473,22 +5477,26 @@ public class eTenderComponent extends BaseClass_Web {
 
 	/**
 	 * @author venkatesh jujjuru
-	 * @throws Exception
+	 * @throws Throwable 
 	 */
-	public void selectBidOpeningAndProvideCommentsForBidOpeningApproval() throws Exception {
+	public void selectBidOpeningAndProvideCommentsForBidOpeningApproval() throws Throwable{
 		try {
 			log.info("started executing the method:: selectBidOpeningAndProvideCommentsForBidOpeningApproval");
-
-			click(tendercreationlocators.bidOpenBy, "bidOpenBy");
-			waitForObj(5000);
-			click(tendercreationlocators.Workflowtype_Evaluation, "Workflowtype_Evaluation");
-			waitForElementToBeVisible(tendercreationlocators.AddApprover_Evaluation);
-			click(tendercreationlocators.AddApprover_Evaluation, "AddApprover_Evaluation");
 			waitForObj(1000);
-			set(tendercreationlocators.OpeningUser1_Evaluation, pdfResultReport.testData.get("TenderOpening_Approver1_name"), "OpeningUser1_Evaluation");
+			click(tendercreationlocators.bidOpeningCBox, "Select_bidOpeningCBox");
 			waitForObj(2000);
-			select(tendercreationlocators.OpeningApprovalType1_Evaluation, pdfResultReport.testData.get("TenderOpening_ApprovalType1"));
+			click(tendercreationlocators.Workflowtype_Userdefined, "Workflowtype_Userdefined");
 			set(tendercreationlocators.commentSectionBy, "Sending for approval to Approval user", "commentSectionBy");
+			scrollToElement(tendercreationlocators.AddApprover_Button);
+			//waitForElementToBeVisible(tendercreationlocators.AddApprover_Button);
+			JSClick(tendercreationlocators.AddApprover_Button, "AddApprover_Button");
+			waitForObj(1000);
+			scrollToElement(tendercreationlocators.OpeningUser1_Evaluation);
+			//set(tendercreationlocators.OpeningUser1_Evaluation, pdfResultReport.testData.get("TenderOpening_Approver1_name"), "OpeningUser1_Evaluation");
+			set(tendercreationlocators.OpeningUser1_Evaluation, "Tender Approver1  test (snehashis.mukherjee@mjunction.in)-TEST_AUTOMATION", "OpeningUser1_Evaluation");
+			waitForObj(1000);
+			select(tendercreationlocators.OpeningApprovalType, pdfResultReport.testData.get("TenderOpening_ApprovalType1"));
+			
 
 			pdfResultReport.addStepDetails("selectBidOpeningAndProvideCommentsForBidOpeningApproval",
 					"should select BidOpening And Provide Comments For BidOpening Approval",
@@ -9946,11 +9954,12 @@ public class eTenderComponent extends BaseClass_Web {
 			waitForElementToBeVisible(tendercreationlocators.submitbutton);
 			click(tendercreationlocators.submitbutton, "submitbutton");
 
-			waitForSpinnerToDisappear();
-			waitForObj(2000);
+			//waitForSpinnerToDisappear();
+			//waitForObj(2000);
 
-			waitForElementToBeVisible(tendercreationlocators.SubmitFromPreview);
-			click(tendercreationlocators.SubmitFromPreview, "SubmitFromPreview");
+			waitForElementToBeClickable(tendercreationlocators.SubmitFromPreview_Backup);
+			scrollToElement(tendercreationlocators.SubmitFromPreview_Backup);
+			click(tendercreationlocators.SubmitFromPreview_Backup, "SubmitFromPreview");
 
 			pdfResultReport.addStepDetails("clickSubmitBtn",
 					"Should click Submit Btn and  Send For Approval Pop Up should Appear",
@@ -9982,7 +9991,7 @@ public class eTenderComponent extends BaseClass_Web {
 			wait.until(ExpectedConditions.visibilityOfElementLocated(tendercreationlocators.PendingTab_MyTender_tenderlistpage));
 
 			//waitTillSpinnerDisable(driver, tendercreationlocators.LoadingBy);
-			waitForObj(4000);
+			waitForObj(2000);
 			pdfResultReport.addStepDetails("sendForNoApproval_validation",
 					"Should click SendForApproval and Navigate to Tender List Page",
 					"Successfully clicked SendForApproval btn and Navigated to Tender List Page" + " ", "Pass", "Y");
@@ -11164,7 +11173,7 @@ public class eTenderComponent extends BaseClass_Web {
 	public void SendForApprovalInEvaluationsetting() throws Throwable {
 		try {
 			log.info("started executing the method:: SendForApprovalInEvaluationsetting");
-
+			scrollToElement(tendercreationlocators.evaluation_sendForApproval);
 			JSClick(tendercreationlocators.evaluation_sendForApproval, "evaluation_sendForApproval");
 			waitForObj(2000);
 			waitForElementToBeVisible(tendercreationlocators.defaultCatBy);
@@ -14072,10 +14081,18 @@ public class eTenderComponent extends BaseClass_Web {
 	public void VerifyBidsubmission_after_WithdrawBid() throws Throwable {
 		try {	
 		log.info("started executing the method:: VerifyBidsubmission_after_WithdrawBid");
-		JSClick(tendercreationlocators.bidSubmissionTransaction, "bidSubmissionTransaction");
-		JSClick(tendercreationlocators.bidSubmissionTenderListing, "bidSubmissionTenderListing");
-		waitForObj(5000);
-		waitForElementToBeVisible(tendercreationlocators.Livetab_bidsubmission);
+		JSClick(tendercreationlocators.mainMenuIcon, "MenuIcon");
+		mouseOver(tendercreationlocators.Enquiry);
+		waitForObj(2000);
+		JSClick(tendercreationlocators.AllEnquiry, "AllEnquiry");
+			/*
+			 * JSClick(tendercreationlocators.bidSubmissionTransaction,
+			 * "bidSubmissionTransaction");
+			 * JSClick(tendercreationlocators.bidSubmissionTenderListing,
+			 * "bidSubmissionTenderListing");
+			 */
+		waitForObj(3000);
+		//waitForElementToBeVisible(tendercreationlocators.Livetab_bidsubmission);
 		set(tendercreationlocators.bidsubmissionSearchByKeyword, tenderReferenceNoLocatorText, "tenderListSearch");
 		waitForObj(2000);
 		click(tendercreationlocators.action, "action");

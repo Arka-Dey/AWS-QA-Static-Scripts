@@ -3,16 +3,16 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.testScripts_mjunction.TG1_TC_BidSubmission_06_BidSubmitted_withonebidder">
+      <class name="com.testScripts_mjunction.TC_EPS_PO_40_VerifyTheMailContentOfPOReviewedToCreatorTest">
         <methods>
           <include name="setUpSuiteDetails"/>
           <include name="BeforeClass"/>
-          <include name="Bid_submisison_with_onebidder"/>
+          <include name="validateTheMailContentOfPOReviewedToCreator"/>
           <include name="afterSuite"/>
           <include name="captureDesc"/>
           <include name="afterClass"/>
         </methods>
-      </class> <!-- com.testScripts_mjunction.TG1_TC_BidSubmission_06_BidSubmitted_withonebidder -->
+      </class> <!-- com.testScripts_mjunction.TC_EPS_PO_40_VerifyTheMailContentOfPOReviewedToCreatorTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
