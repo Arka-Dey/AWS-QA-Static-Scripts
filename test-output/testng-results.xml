@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+<testng-results skipped="0" failed="1" ignored="0" total="1" passed="0">
   <reporter-output>
   </reporter-output>
-  <suite name="Suite" duration-ms="498842" started-at="2024-01-05T17:33:44 IST" finished-at="2024-01-05T17:42:03 IST">
+  <suite name="Suite" duration-ms="140468" started-at="2024-01-07T16:47:01 IST" finished-at="2024-01-07T16:49:21 IST">
     <groups>
     </groups>
-    <test name="Test" duration-ms="498842" started-at="2024-01-05T17:33:44 IST" finished-at="2024-01-05T17:42:03 IST">
+    <test name="Test" duration-ms="140468" started-at="2024-01-07T16:47:01 IST" finished-at="2024-01-07T16:49:21 IST">
       <class name="com.testScripts_mjunction.TG1_TC_Indent_01_Creation_with_approval">
-        <test-method status="PASS" signature="setUpSuiteDetails(org.testng.ITestContext)[pri:0, instance:com.testScripts_mjunction.TG1_TC_Indent_01_Creation_with_approval@71a794e5]" name="setUpSuiteDetails" is-config="true" duration-ms="343" started-at="2024-01-05T17:33:44 IST" finished-at="2024-01-05T17:33:44 IST">
+        <test-method status="PASS" signature="setUpSuiteDetails(org.testng.ITestContext)[pri:0, instance:com.testScripts_mjunction.TG1_TC_Indent_01_Creation_with_approval@71a794e5]" name="setUpSuiteDetails" is-config="true" duration-ms="327" started-at="2024-01-07T16:47:00 IST" finished-at="2024-01-07T16:47:01 IST">
           <params>
             <param index="0">
               <value>
-                <![CDATA[org.testng.TestRunner@5f025000]]>
+                <![CDATA[org.testng.TestRunner@1cefc4b3]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpSuiteDetails -->
-        <test-method status="PASS" signature="BeforeClass()[pri:0, instance:com.testScripts_mjunction.TG1_TC_Indent_01_Creation_with_approval@71a794e5]" name="BeforeClass" is-config="true" duration-ms="3044" started-at="2024-01-05T17:33:44 IST" finished-at="2024-01-05T17:33:48 IST">
+        <test-method status="PASS" signature="BeforeClass()[pri:0, instance:com.testScripts_mjunction.TG1_TC_Indent_01_Creation_with_approval@71a794e5]" name="BeforeClass" is-config="true" duration-ms="3049" started-at="2024-01-07T16:47:01 IST" finished-at="2024-01-07T16:47:04 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- BeforeClass -->
-        <test-method status="PASS" signature="captureDesc(java.lang.reflect.Method)[pri:0, instance:com.testScripts_mjunction.TG1_TC_Indent_01_Creation_with_approval@71a794e5]" name="captureDesc" is-config="true" duration-ms="0" started-at="2024-01-05T17:33:48 IST" finished-at="2024-01-05T17:33:48 IST">
+        <test-method status="PASS" signature="captureDesc(java.lang.reflect.Method)[pri:0, instance:com.testScripts_mjunction.TG1_TC_Indent_01_Creation_with_approval@71a794e5]" name="captureDesc" is-config="true" duration-ms="1" started-at="2024-01-07T16:47:04 IST" finished-at="2024-01-07T16:47:04 IST">
           <params>
             <param index="0">
               <value>
@@ -33,7 +33,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- captureDesc -->
-        <test-method status="PASS" signature="Indent_creation_with_approval(java.lang.String)[pri:0, instance:com.testScripts_mjunction.TG1_TC_Indent_01_Creation_with_approval@71a794e5]" name="Indent_creation_with_approval" duration-ms="482894" started-at="2024-01-05T17:33:48 IST" description="Indent_creation_with_approval" finished-at="2024-01-05T17:41:50 IST">
+        <test-method status="FAIL" signature="Indent_creation_with_approval(java.lang.String)[pri:0, instance:com.testScripts_mjunction.TG1_TC_Indent_01_Creation_with_approval@71a794e5]" name="Indent_creation_with_approval" duration-ms="126737" started-at="2024-01-07T16:47:04 IST" description="Indent_creation_with_approval" finished-at="2024-01-07T16:49:10 IST">
           <params>
             <param index="0">
               <value>
@@ -41,14 +41,71 @@
               </value>
             </param>
           </params>
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[Error Message : Error in entering the text in element: no such element: Unable to locate element: {"method":"xpath","selector":"//input[@title='Username'][@type='text']"}
+  (Session info: chrome=120.0.6099.199)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'MJLT-1563', ip: '192.168.1.3', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_351'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 120.0.6099.199, chrome: {chromedriverVersion: 119.0.6045.105 (38c72552c5e..., userDataDir: C:\Users\ARKA~1.DEY\AppData...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:64088}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: a1571654a639b35fde1dbddaa2920c5d
+*** Element info: {Using=xpath, value=//input[@title='Username'][@type='text']}]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: Error Message : Error in entering the text in element: no such element: Unable to locate element: {"method":"xpath","selector":"//input[@title='Username'][@type='text']"}
+  (Session info: chrome=120.0.6099.199)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'MJLT-1563', ip: '192.168.1.3', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_351'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 120.0.6099.199, chrome: {chromedriverVersion: 119.0.6045.105 (38c72552c5e..., userDataDir: C:\Users\ARKA~1.DEY\AppData...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:64088}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: a1571654a639b35fde1dbddaa2920c5d
+*** Element info: {Using=xpath, value=//input[@title='Username'][@type='text']}
+at com.baseClasses.AutomationException.<init>(AutomationException.java:11)
+at com.baseClasses.BaseClass_Web.set(BaseClass_Web.java:102)
+at com.components.RfqFromIndentComponent.IndentcreatorLogin(RfqFromIndentComponent.java:914)
+at com.testScripts_mjunction.TG1_TC_Indent_01_Creation_with_approval.Indent_creation_with_approval(TG1_TC_Indent_01_Creation_with_approval.java:57)
+at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+at java.lang.reflect.Method.invoke(Unknown Source)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
+at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.util.ArrayList.forEach(Unknown Source)
+at org.testng.TestRunner.privateRun(TestRunner.java:794)
+at org.testng.TestRunner.run(TestRunner.java:596)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+at org.testng.TestNG.runSuites(TestNG.java:1063)
+at org.testng.TestNG.run(TestNG.java:1031)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Indent_creation_with_approval -->
-        <test-method status="PASS" signature="afterClass()[pri:0, instance:com.testScripts_mjunction.TG1_TC_Indent_01_Creation_with_approval@71a794e5]" name="afterClass" is-config="true" duration-ms="9273" started-at="2024-01-05T17:41:54 IST" finished-at="2024-01-05T17:42:03 IST">
+        <test-method status="PASS" signature="afterClass()[pri:0, instance:com.testScripts_mjunction.TG1_TC_Indent_01_Creation_with_approval@71a794e5]" name="afterClass" is-config="true" duration-ms="6895" started-at="2024-01-07T16:49:14 IST" finished-at="2024-01-07T16:49:21 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterClass -->
-        <test-method status="PASS" signature="afterSuite()[pri:0, instance:com.testScripts_mjunction.TG1_TC_Indent_01_Creation_with_approval@71a794e5]" name="afterSuite" is-config="true" duration-ms="50" started-at="2024-01-05T17:42:03 IST" finished-at="2024-01-05T17:42:03 IST">
+        <test-method status="PASS" signature="afterSuite()[pri:0, instance:com.testScripts_mjunction.TG1_TC_Indent_01_Creation_with_approval@71a794e5]" name="afterSuite" is-config="true" duration-ms="52" started-at="2024-01-07T16:49:21 IST" finished-at="2024-01-07T16:49:21 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterSuite -->

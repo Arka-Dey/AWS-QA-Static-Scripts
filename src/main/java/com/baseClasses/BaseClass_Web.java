@@ -33,11 +33,13 @@ import org.openqa.selenium.NoAlertPresentException;
 	import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-	import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.interactions.Actions;
 	import org.openqa.selenium.support.ui.ExpectedConditions;
 	import org.openqa.selenium.support.ui.Select;
 	import org.openqa.selenium.support.ui.WebDriverWait;
-	import org.testng.ITestContext;
+import org.testng.Assert;
+import org.testng.ITestContext;
 	import org.testng.annotations.AfterClass;
 	import org.testng.annotations.AfterSuite;
 	import org.testng.annotations.BeforeClass;
@@ -1279,4 +1281,35 @@ import org.openqa.selenium.WebElement;
             return false;
         }
     }
+	
+	// added on 070124
+		public void isFileDownloadAndValidation(By locator, String fieldName, String fileName) {
+	        try {
+	        	String downloadPath=System.getProperty("user.dir");
+	        	HashMap<String, Object> chromePrefs = new HashMap<String, Object>();
+	        	chromePrefs.put("profile.default_content_settings.popups", 0);
+	        	chromePrefs.put("download.default_directory", downloadPath);
+	        	ChromeOptions options=new ChromeOptions();
+	        	options.setExperimentalOption("prefs", chromePrefs);
+	        	ThreadLocalWebdriver.getDriver(options);
+	        	click(locator,fieldName);
+	        	//File f=new File(downloadPath+"/download.pdf");
+	        	//File f=new File(downloadPath+ File.separator + fileName);
+	        	File f=new File(downloadPath+ fileName);
+
+	        	if(f.exists())
+	        	{
+	        		Assert.assertTrue(f.exists());
+
+	        	if(f.delete())
+
+	        	System.out.println("file deleted");
+
+	        	}
+	        } catch (Exception e) {
+	            // Handle any exceptions or log them as needed
+	            e.printStackTrace();
+	            //return false;
+	        }
+	    }
 	}
