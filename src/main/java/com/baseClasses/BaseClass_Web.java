@@ -1251,4 +1251,32 @@ import org.openqa.selenium.WebElement;
 			e.printStackTrace();
 		}
 	}
+	
+	// added on 070124
+	public boolean isElementTextPresent(By locator, String expectedText) {
+        try {
+        	WebDriver driver = ThreadLocalWebdriver.getDriver();
+            WebElement element = driver.findElement(locator);
+            String actualText = element.getText().trim();
+            return actualText.equals(expectedText);
+        } catch (Exception e) {
+            // Handle any exceptions or log them as needed
+            e.printStackTrace();
+            return false;
+        }
+    }
+	
+	// added on 070124
+	public boolean isElementAttributeEqual(By locator, String attributeName, String expectedValue) {
+        try {
+        	WebDriver driver = ThreadLocalWebdriver.getDriver();
+            WebElement element = driver.findElement(locator);
+            String actualValue = element.getAttribute(attributeName).trim();
+            return actualValue.equals(expectedValue);
+        } catch (Exception e) {
+            // Handle any exceptions or log them as needed
+            e.printStackTrace();
+            return false;
+        }
+    }
 	}
