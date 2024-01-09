@@ -2,71 +2,43 @@
 <testng-results skipped="0" failed="1" ignored="0" total="1" passed="0">
   <reporter-output>
   </reporter-output>
-  <suite name="Suite" duration-ms="140468" started-at="2024-01-07T16:47:01 IST" finished-at="2024-01-07T16:49:21 IST">
+  <suite name="Suite" duration-ms="3285292" started-at="2024-01-09T12:57:41 IST" finished-at="2024-01-09T13:52:27 IST">
     <groups>
     </groups>
-    <test name="Test" duration-ms="140468" started-at="2024-01-07T16:47:01 IST" finished-at="2024-01-07T16:49:21 IST">
-      <class name="com.testScripts_mjunction.TG1_TC_Indent_01_Creation_with_approval">
-        <test-method status="PASS" signature="setUpSuiteDetails(org.testng.ITestContext)[pri:0, instance:com.testScripts_mjunction.TG1_TC_Indent_01_Creation_with_approval@71a794e5]" name="setUpSuiteDetails" is-config="true" duration-ms="327" started-at="2024-01-07T16:47:00 IST" finished-at="2024-01-07T16:47:01 IST">
+    <test name="Test" duration-ms="3285292" started-at="2024-01-09T12:57:41 IST" finished-at="2024-01-09T13:52:27 IST">
+      <class name="com.testScripts_mjunction.TG1_TC_TenderCreation_01_tender_publish_with_tender_approval">
+        <test-method status="PASS" signature="setUpSuiteDetails(org.testng.ITestContext)[pri:0, instance:com.testScripts_mjunction.TG1_TC_TenderCreation_01_tender_publish_with_tender_approval@71a794e5]" name="setUpSuiteDetails" is-config="true" duration-ms="319" started-at="2024-01-09T12:57:41 IST" finished-at="2024-01-09T12:57:41 IST">
           <params>
             <param index="0">
               <value>
-                <![CDATA[org.testng.TestRunner@1cefc4b3]]>
+                <![CDATA[org.testng.TestRunner@46d148bd]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpSuiteDetails -->
-        <test-method status="PASS" signature="BeforeClass()[pri:0, instance:com.testScripts_mjunction.TG1_TC_Indent_01_Creation_with_approval@71a794e5]" name="BeforeClass" is-config="true" duration-ms="3049" started-at="2024-01-07T16:47:01 IST" finished-at="2024-01-07T16:47:04 IST">
+        <test-method status="PASS" signature="BeforeClass()[pri:0, instance:com.testScripts_mjunction.TG1_TC_TenderCreation_01_tender_publish_with_tender_approval@71a794e5]" name="BeforeClass" is-config="true" duration-ms="3032" started-at="2024-01-09T12:57:41 IST" finished-at="2024-01-09T12:57:44 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- BeforeClass -->
-        <test-method status="PASS" signature="captureDesc(java.lang.reflect.Method)[pri:0, instance:com.testScripts_mjunction.TG1_TC_Indent_01_Creation_with_approval@71a794e5]" name="captureDesc" is-config="true" duration-ms="1" started-at="2024-01-07T16:47:04 IST" finished-at="2024-01-07T16:47:04 IST">
+        <test-method status="FAIL" signature="Tenderpublished_after_tender_approval_TG1(java.lang.String)[pri:0, instance:com.testScripts_mjunction.TG1_TC_TenderCreation_01_tender_publish_with_tender_approval@71a794e5]" name="Tenderpublished_after_tender_approval_TG1" duration-ms="3262395" started-at="2024-01-09T12:57:44 IST" description="Tenderpublished_after_tender_approval_tender_from_indent" finished-at="2024-01-09T13:52:07 IST">
           <params>
             <param index="0">
               <value>
-                <![CDATA[public void com.testScripts_mjunction.TG1_TC_Indent_01_Creation_with_approval.Indent_creation_with_approval(java.lang.String) throws java.lang.Throwable]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- captureDesc -->
-        <test-method status="FAIL" signature="Indent_creation_with_approval(java.lang.String)[pri:0, instance:com.testScripts_mjunction.TG1_TC_Indent_01_Creation_with_approval@71a794e5]" name="Indent_creation_with_approval" duration-ms="126737" started-at="2024-01-07T16:47:04 IST" description="Indent_creation_with_approval" finished-at="2024-01-07T16:49:10 IST">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[18]]>
+                <![CDATA[1]]>
               </value>
             </param>
           </params>
           <exception class="java.lang.AssertionError">
             <message>
-              <![CDATA[Error Message : Error in entering the text in element: no such element: Unable to locate element: {"method":"xpath","selector":"//input[@title='Username'][@type='text']"}
-  (Session info: chrome=120.0.6099.199)
-For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
-Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
-System info: host: 'MJLT-1563', ip: '192.168.1.3', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_351'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 120.0.6099.199, chrome: {chromedriverVersion: 119.0.6045.105 (38c72552c5e..., userDataDir: C:\Users\ARKA~1.DEY\AppData...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:64088}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: a1571654a639b35fde1dbddaa2920c5d
-*** Element info: {Using=xpath, value=//input[@title='Username'][@type='text']}]]>
+              <![CDATA[Failed Due to Expected condition failed: waiting for visibility of element located by By.xpath: //a[normalize-space()='Tender'] (tried for 2000 second(s) with 500 milliseconds interval)]]>
             </message>
             <full-stacktrace>
-              <![CDATA[java.lang.AssertionError: Error Message : Error in entering the text in element: no such element: Unable to locate element: {"method":"xpath","selector":"//input[@title='Username'][@type='text']"}
-  (Session info: chrome=120.0.6099.199)
-For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
-Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
-System info: host: 'MJLT-1563', ip: '192.168.1.3', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_351'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 120.0.6099.199, chrome: {chromedriverVersion: 119.0.6045.105 (38c72552c5e..., userDataDir: C:\Users\ARKA~1.DEY\AppData...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:64088}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: a1571654a639b35fde1dbddaa2920c5d
-*** Element info: {Using=xpath, value=//input[@title='Username'][@type='text']}
-at com.baseClasses.AutomationException.<init>(AutomationException.java:11)
-at com.baseClasses.BaseClass_Web.set(BaseClass_Web.java:102)
-at com.components.RfqFromIndentComponent.IndentcreatorLogin(RfqFromIndentComponent.java:914)
-at com.testScripts_mjunction.TG1_TC_Indent_01_Creation_with_approval.Indent_creation_with_approval(TG1_TC_Indent_01_Creation_with_approval.java:57)
+              <![CDATA[java.lang.AssertionError: Failed Due to Expected condition failed: waiting for visibility of element located by By.xpath: //a[normalize-space()='Tender'] (tried for 2000 second(s) with 500 milliseconds interval)
+at org.testng.Assert.fail(Assert.java:99)
+at com.components.eTenderComponent.ApproverOverAllComentWithTenderHasBeenApproved(eTenderComponent.java:12833)
+at com.testScripts_mjunction.TG1_TC_TenderCreation_01_tender_publish_with_tender_approval.Tenderpublished_after_tender_approval_TG1(TG1_TC_TenderCreation_01_tender_publish_with_tender_approval.java:115)
 at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
@@ -100,16 +72,27 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
           </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- Indent_creation_with_approval -->
-        <test-method status="PASS" signature="afterClass()[pri:0, instance:com.testScripts_mjunction.TG1_TC_Indent_01_Creation_with_approval@71a794e5]" name="afterClass" is-config="true" duration-ms="6895" started-at="2024-01-07T16:49:14 IST" finished-at="2024-01-07T16:49:21 IST">
+        </test-method> <!-- Tenderpublished_after_tender_approval_TG1 -->
+        <test-method status="PASS" signature="captureDesc(java.lang.reflect.Method)[pri:0, instance:com.testScripts_mjunction.TG1_TC_TenderCreation_01_tender_publish_with_tender_approval@71a794e5]" name="captureDesc" is-config="true" duration-ms="0" started-at="2024-01-09T12:57:44 IST" finished-at="2024-01-09T12:57:44 IST">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.testScripts_mjunction.TG1_TC_TenderCreation_01_tender_publish_with_tender_approval.Tenderpublished_after_tender_approval_TG1(java.lang.String) throws java.lang.Throwable]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- captureDesc -->
+        <test-method status="PASS" signature="afterClass()[pri:0, instance:com.testScripts_mjunction.TG1_TC_TenderCreation_01_tender_publish_with_tender_approval@71a794e5]" name="afterClass" is-config="true" duration-ms="16461" started-at="2024-01-09T13:52:10 IST" finished-at="2024-01-09T13:52:27 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterClass -->
-        <test-method status="PASS" signature="afterSuite()[pri:0, instance:com.testScripts_mjunction.TG1_TC_Indent_01_Creation_with_approval@71a794e5]" name="afterSuite" is-config="true" duration-ms="52" started-at="2024-01-07T16:49:21 IST" finished-at="2024-01-07T16:49:21 IST">
+        <test-method status="PASS" signature="afterSuite()[pri:0, instance:com.testScripts_mjunction.TG1_TC_TenderCreation_01_tender_publish_with_tender_approval@71a794e5]" name="afterSuite" is-config="true" duration-ms="59" started-at="2024-01-09T13:52:27 IST" finished-at="2024-01-09T13:52:27 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterSuite -->
-      </class> <!-- com.testScripts_mjunction.TG1_TC_Indent_01_Creation_with_approval -->
+      </class> <!-- com.testScripts_mjunction.TG1_TC_TenderCreation_01_tender_publish_with_tender_approval -->
     </test> <!-- Test -->
   </suite> <!-- Suite -->
 </testng-results>

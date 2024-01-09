@@ -64,8 +64,8 @@ import com.objectRepository.TenderCreation_Locators;
 //import com.sun.glass.events.KeyEvent;
 
 public class eTenderComponent extends BaseClass_Web {
-	String tenderReferenceNoLocatorText = null;
-	//String tenderReferenceNoLocatorText = "1697";
+	//String tenderReferenceNoLocatorText = null;
+	String tenderReferenceNoLocatorText = "1659";
 	TenderCreation_Locators tendercreationlocators = new TenderCreation_Locators();
 	String BidStartDate = null;
 	String BidDueDate = null;
