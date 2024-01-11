@@ -2,57 +2,57 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Suite" duration-ms="498842" started-at="2024-01-05T17:33:44 IST" finished-at="2024-01-05T17:42:03 IST">
+  <suite name="Suite" duration-ms="477811" started-at="2024-01-10T17:41:02 IST" finished-at="2024-01-10T17:48:59 IST">
     <groups>
     </groups>
-    <test name="Test" duration-ms="498842" started-at="2024-01-05T17:33:44 IST" finished-at="2024-01-05T17:42:03 IST">
-      <class name="com.testScripts_mjunction.TG1_TC_Indent_01_Creation_with_approval">
-        <test-method status="PASS" signature="setUpSuiteDetails(org.testng.ITestContext)[pri:0, instance:com.testScripts_mjunction.TG1_TC_Indent_01_Creation_with_approval@71a794e5]" name="setUpSuiteDetails" is-config="true" duration-ms="343" started-at="2024-01-05T17:33:44 IST" finished-at="2024-01-05T17:33:44 IST">
+    <test name="Test" duration-ms="477811" started-at="2024-01-10T17:41:02 IST" finished-at="2024-01-10T17:48:59 IST">
+      <class name="com.testScripts_mjunction.TG1_TC_TenderCreation_01_tender_publish_with_tender_approval">
+        <test-method status="PASS" signature="setUpSuiteDetails(org.testng.ITestContext)[pri:0, instance:com.testScripts_mjunction.TG1_TC_TenderCreation_01_tender_publish_with_tender_approval@71a794e5]" name="setUpSuiteDetails" is-config="true" duration-ms="302" started-at="2024-01-10T17:41:01 IST" finished-at="2024-01-10T17:41:02 IST">
           <params>
             <param index="0">
               <value>
-                <![CDATA[org.testng.TestRunner@5f025000]]>
+                <![CDATA[org.testng.TestRunner@424de326]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpSuiteDetails -->
-        <test-method status="PASS" signature="BeforeClass()[pri:0, instance:com.testScripts_mjunction.TG1_TC_Indent_01_Creation_with_approval@71a794e5]" name="BeforeClass" is-config="true" duration-ms="3044" started-at="2024-01-05T17:33:44 IST" finished-at="2024-01-05T17:33:48 IST">
+        <test-method status="PASS" signature="BeforeClass()[pri:0, instance:com.testScripts_mjunction.TG1_TC_TenderCreation_01_tender_publish_with_tender_approval@71a794e5]" name="BeforeClass" is-config="true" duration-ms="3044" started-at="2024-01-10T17:41:02 IST" finished-at="2024-01-10T17:41:05 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- BeforeClass -->
-        <test-method status="PASS" signature="captureDesc(java.lang.reflect.Method)[pri:0, instance:com.testScripts_mjunction.TG1_TC_Indent_01_Creation_with_approval@71a794e5]" name="captureDesc" is-config="true" duration-ms="0" started-at="2024-01-05T17:33:48 IST" finished-at="2024-01-05T17:33:48 IST">
+        <test-method status="PASS" signature="Tenderpublished_after_tender_approval_TG1(java.lang.String)[pri:0, instance:com.testScripts_mjunction.TG1_TC_TenderCreation_01_tender_publish_with_tender_approval@71a794e5]" name="Tenderpublished_after_tender_approval_TG1" duration-ms="461443" started-at="2024-01-10T17:41:05 IST" description="Tenderpublished_after_tender_approval_tender_from_indent" finished-at="2024-01-10T17:48:46 IST">
           <params>
             <param index="0">
               <value>
-                <![CDATA[public void com.testScripts_mjunction.TG1_TC_Indent_01_Creation_with_approval.Indent_creation_with_approval(java.lang.String) throws java.lang.Throwable]]>
+                <![CDATA[1]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Tenderpublished_after_tender_approval_TG1 -->
+        <test-method status="PASS" signature="captureDesc(java.lang.reflect.Method)[pri:0, instance:com.testScripts_mjunction.TG1_TC_TenderCreation_01_tender_publish_with_tender_approval@71a794e5]" name="captureDesc" is-config="true" duration-ms="0" started-at="2024-01-10T17:41:05 IST" finished-at="2024-01-10T17:41:05 IST">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.testScripts_mjunction.TG1_TC_TenderCreation_01_tender_publish_with_tender_approval.Tenderpublished_after_tender_approval_TG1(java.lang.String) throws java.lang.Throwable]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- captureDesc -->
-        <test-method status="PASS" signature="Indent_creation_with_approval(java.lang.String)[pri:0, instance:com.testScripts_mjunction.TG1_TC_Indent_01_Creation_with_approval@71a794e5]" name="Indent_creation_with_approval" duration-ms="482894" started-at="2024-01-05T17:33:48 IST" description="Indent_creation_with_approval" finished-at="2024-01-05T17:41:50 IST">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[18]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- Indent_creation_with_approval -->
-        <test-method status="PASS" signature="afterClass()[pri:0, instance:com.testScripts_mjunction.TG1_TC_Indent_01_Creation_with_approval@71a794e5]" name="afterClass" is-config="true" duration-ms="9273" started-at="2024-01-05T17:41:54 IST" finished-at="2024-01-05T17:42:03 IST">
+        <test-method status="PASS" signature="afterClass()[pri:0, instance:com.testScripts_mjunction.TG1_TC_TenderCreation_01_tender_publish_with_tender_approval@71a794e5]" name="afterClass" is-config="true" duration-ms="9934" started-at="2024-01-10T17:48:49 IST" finished-at="2024-01-10T17:48:59 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterClass -->
-        <test-method status="PASS" signature="afterSuite()[pri:0, instance:com.testScripts_mjunction.TG1_TC_Indent_01_Creation_with_approval@71a794e5]" name="afterSuite" is-config="true" duration-ms="50" started-at="2024-01-05T17:42:03 IST" finished-at="2024-01-05T17:42:03 IST">
+        <test-method status="PASS" signature="afterSuite()[pri:0, instance:com.testScripts_mjunction.TG1_TC_TenderCreation_01_tender_publish_with_tender_approval@71a794e5]" name="afterSuite" is-config="true" duration-ms="67" started-at="2024-01-10T17:48:59 IST" finished-at="2024-01-10T17:48:59 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterSuite -->
-      </class> <!-- com.testScripts_mjunction.TG1_TC_Indent_01_Creation_with_approval -->
+      </class> <!-- com.testScripts_mjunction.TG1_TC_TenderCreation_01_tender_publish_with_tender_approval -->
     </test> <!-- Test -->
   </suite> <!-- Suite -->
 </testng-results>
