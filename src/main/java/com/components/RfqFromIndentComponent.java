@@ -21,6 +21,7 @@ import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.asserts.SoftAssert;
 
 import com.baseClasses.BaseClass_Web;
 import com.baseClasses.PDFResultReport;
@@ -30,6 +31,7 @@ import com.objectRepository.TenderCreation_Locators;
 public class RfqFromIndentComponent extends BaseClass_Web {
 
 	TenderCreation_Locators tendercreationlocators = new TenderCreation_Locators();
+	SoftAssert softAssert = new SoftAssert();
 	public eTenderComponent etendercomponentobj = new eTenderComponent(pdfResultReport);
 	
 	//String SystemIndentnoLocatorText = null;
@@ -1045,6 +1047,8 @@ public class RfqFromIndentComponent extends BaseClass_Web {
 			click(tendercreationlocators.Savebtn_IndentNew, "savebutton");
 			
 			//JSClick(tendercreationlocators.IndentSuccessOK, "IndentSuccess");
+			
+			
 			waitForElementToBeClickable(tendercreationlocators.IndentSuccessOK);
 			//click(tendercreationlocators.IndentSuccessOK, "IndentSuccess");
 			JSClick(tendercreationlocators.IndentSuccessOK, "IndentSuccess");
