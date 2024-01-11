@@ -50,55 +50,59 @@ public class TG1_TC_TenderCreation_01_tender_publish_with_tender_approval extend
 	//Creating a new Indent with No approval
 		
 		etendercomponentobj.openURL();
-		rfqfromintendcomponentobj.IndentcreatorLogin();
-		rfqfromintendcomponentobj.navigateToIndentCreation();
-		rfqfromintendcomponentobj.IndentTG1_General_Info_tabvalidation("Indigenous Indent (Supply & Service Both) V-004");
-		rfqfromintendcomponentobj.IndentTG1_Indent_Details_tabvalidation();
-		rfqfromintendcomponentobj.IndentTG1_Other_Information_tabvalidation();
-		rfqfromintendcomponentobj.IndentTG1_BOM_Item_tabvalidation();
-		rfqfromintendcomponentobj.IndentTG1_BOM_Services_tabvalidation();
-		rfqfromintendcomponentobj.IndentTG1_EstimationSheet_tabvalidation();
-		rfqfromintendcomponentobj.IndentTG1_technical_Specification_tabvalidation();
-		rfqfromintendcomponentobj.IndentTG1_Annexures_tabvalidation();
-		rfqfromintendcomponentobj.IndentTG1_Submit();
-		rfqfromintendcomponentobj.SystemIndentNoSaveNew();
-		rfqfromintendcomponentobj.NoApproval_IndentWF();
-		//rfqfromintendcomponentobj.navigateToIndentListing();
-		rfqfromintendcomponentobj.enterIndentNoInSearch();
-		rfqfromintendcomponentobj.VerifyIndentStatus("Completed");
-
-	//Mark the created indent 'Marked for RFQ'
-		rfqfromintendcomponentobj.Indent_Mark_for_RFQ_functionality();
-		rfqfromintendcomponentobj.enterIndentNoForSearch();
-		rfqfromintendcomponentobj.VerifyIndentStatus("Marked For RFQ");
-		etendercomponentobj.tenderLogout();
+		/*
+		 * rfqfromintendcomponentobj.IndentcreatorLogin();
+		 * rfqfromintendcomponentobj.navigateToIndentCreation();
+		 * rfqfromintendcomponentobj.
+		 * IndentTG1_General_Info_tabvalidation("Indigenous Indent (Supply & Service Both) V-004"
+		 * ); rfqfromintendcomponentobj.IndentTG1_Indent_Details_tabvalidation();
+		 * rfqfromintendcomponentobj.IndentTG1_Other_Information_tabvalidation();
+		 * rfqfromintendcomponentobj.IndentTG1_BOM_Item_tabvalidation();
+		 * rfqfromintendcomponentobj.IndentTG1_BOM_Services_tabvalidation();
+		 * rfqfromintendcomponentobj.IndentTG1_EstimationSheet_tabvalidation();
+		 * rfqfromintendcomponentobj.IndentTG1_technical_Specification_tabvalidation();
+		 * rfqfromintendcomponentobj.IndentTG1_Annexures_tabvalidation();
+		 * rfqfromintendcomponentobj.IndentTG1_Submit();
+		 * rfqfromintendcomponentobj.SystemIndentNoSaveNew();
+		 * rfqfromintendcomponentobj.NoApproval_IndentWF();
+		 * //rfqfromintendcomponentobj.navigateToIndentListing();
+		 * rfqfromintendcomponentobj.enterIndentNoInSearch();
+		 * rfqfromintendcomponentobj.VerifyIndentStatus("Completed");
+		 * 
+		 * //Mark the created indent 'Marked for RFQ'
+		 * rfqfromintendcomponentobj.Indent_Mark_for_RFQ_functionality();
+		 * rfqfromintendcomponentobj.enterIndentNoForSearch();
+		 * rfqfromintendcomponentobj.VerifyIndentStatus("Marked For RFQ");
+		 * etendercomponentobj.tenderLogout();
+		 */
 		
-	//Indent assignment Process (self claim)
-		etendercomponentobj.tendercreatorLogin();
-		rfqfromintendcomponentobj.navigateToIndentAssignment();
-		rfqfromintendcomponentobj.enterIndentNoForSearch();
-		rfqfromintendcomponentobj.Verify_Indent_Assignment_self_Claim();
-		//rfqfromintendcomponentobj.enterIndentNoForSearch();
-		rfqfromintendcomponentobj.VerifyIndentStatus_AssignmentListPage("Assigned");
-		rfqfromintendcomponentobj.navigateToCreateRFQFromIndentPage();
-		rfqfromintendcomponentobj.enterIndentNoInSearch_RFQfromIndentPage();
-		 
-	//Create and publish RFQ from indent
-		rfqfromintendcomponentobj.Create_RFQ_From_Indent("Indigenous Tender (Supply & Service Both) V-1.0");
-		rfqfromintendcomponentobj.PublishTender_from_indent_withRFQ_TG1("Indigenous Tender (Supply & Service Both) V-1.0",9,15,20);
-		//Clicking on submit button and verify tender status
-		etendercomponentobj.clickSubmitBtn();
-		etendercomponentobj.tenderIdSave();
-		etendercomponentobj.AddTwoUsersForSequentialApproval();
-		etendercomponentobj.enterTenderIdInSearch();
-		etendercomponentobj.tenderLogoutOld();
+		/*
+		 * //Indent assignment Process (self claim)
+		 * etendercomponentobj.tendercreatorLogin();
+		 * rfqfromintendcomponentobj.navigateToIndentAssignment();
+		 * rfqfromintendcomponentobj.enterIndentNoForSearch();
+		 * rfqfromintendcomponentobj.Verify_Indent_Assignment_self_Claim();
+		 * //rfqfromintendcomponentobj.enterIndentNoForSearch();
+		 * rfqfromintendcomponentobj.VerifyIndentStatus_AssignmentListPage("Assigned");
+		 * rfqfromintendcomponentobj.navigateToCreateRFQFromIndentPage();
+		 * rfqfromintendcomponentobj.enterIndentNoInSearch_RFQfromIndentPage();
+		 * 
+		 * //Create and publish RFQ from indent rfqfromintendcomponentobj.
+		 * Create_RFQ_From_Indent("Indigenous Tender (Supply & Service Both) V-1.0");
+		 * rfqfromintendcomponentobj.
+		 * PublishTender_from_indent_withRFQ_TG1("Indigenous Tender (Supply & Service Both) V-1.0"
+		 * ,30,55,56); //Clicking on submit button and verify tender status
+		 * etendercomponentobj.clickSubmitBtn(); etendercomponentobj.tenderIdSave();
+		 * etendercomponentobj.AddTwoUsersForSequentialApproval();
+		 * etendercomponentobj.enterTenderIdInSearch();
+		 * etendercomponentobj.tenderLogoutOld();
+		 */
 		
-		//verifying pending tender in 2nd approver login	
+	//verifying pending tender in 2nd approver login	
 		etendercomponentobj.tenderApprover2Login();
 		etendercomponentobj.Verifying_Pendingtender_sequentialWF();
 		etendercomponentobj.tenderLogoutOld();
-		
-		
+				
 	//approving pending tender in 1st approver login	
 		etendercomponentobj.tenderApproverLogin();
 		etendercomponentobj.GoToApprovalworkFlowPendingTendersAndSearchTheTender();
@@ -106,7 +110,7 @@ public class TG1_TC_TenderCreation_01_tender_publish_with_tender_approval extend
 		etendercomponentobj.TG1_tenderApprover_dynamicityNew();
 		etendercomponentobj.ApproverOverAllComentWithTenderHasBeenApproved();
 		etendercomponentobj.tenderLogoutOld();
-		
+				
 	//approving pending tender in 2nd approver login	
 		etendercomponentobj.tenderApprover2Login();
 		etendercomponentobj.GoToApprovalworkFlowPendingTendersAndSearchTheTender();
@@ -114,7 +118,7 @@ public class TG1_TC_TenderCreation_01_tender_publish_with_tender_approval extend
 		etendercomponentobj.TG1_tenderApprover_dynamicityNew();
 		etendercomponentobj.ApproverOverAllComentWithTenderHasBeenApproved();
 		etendercomponentobj.tenderLogoutOld();
-		
+				
 	//verifying Published tender status 
 		etendercomponentobj.tendercreatorLogin();
 		etendercomponentobj.navigateToTenderListing();

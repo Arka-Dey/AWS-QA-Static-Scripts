@@ -33,7 +33,7 @@ public class RfqFromIndentComponent extends BaseClass_Web {
 	public eTenderComponent etendercomponentobj = new eTenderComponent(pdfResultReport);
 	
 	//String SystemIndentnoLocatorText = null;
-	String SystemIndentnoLocatorText = "1616";
+	String SystemIndentnoLocatorText = "1627";
 	public RfqFromIndentComponent(PDFResultReport pdfresultReport) {
 
 		this.pdfResultReport = pdfresultReport;

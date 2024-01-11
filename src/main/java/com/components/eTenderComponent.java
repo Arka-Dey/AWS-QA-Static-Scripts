@@ -64,8 +64,8 @@ import com.objectRepository.TenderCreation_Locators;
 //import com.sun.glass.events.KeyEvent;
 
 public class eTenderComponent extends BaseClass_Web {
-	//String tenderReferenceNoLocatorText = null;
-	String tenderReferenceNoLocatorText = "1659";
+	String tenderReferenceNoLocatorText = null;
+	//String tenderReferenceNoLocatorText = "1705";
 	TenderCreation_Locators tendercreationlocators = new TenderCreation_Locators();
 	String BidStartDate = null;
 	String BidDueDate = null;
@@ -1128,7 +1128,8 @@ public class eTenderComponent extends BaseClass_Web {
 			log.info("started executing the method:: tenderApproverLogin");
 			//click(tendercreationlocators.login, "login");
 			set(tendercreationlocators.userName, pdfResultReport.testData.get("TenderApproverUserName"), "userName");
-			waitForObj(5000);
+			//waitForObj(5000);
+			waitForElementToBeVisible(tendercreationlocators.password);
 			set(tendercreationlocators.password, pdfResultReport.testData.get("AppPassword"), "password");
 			//Handle fixed Captcha (06/11/2020)
 			//set(tendercreationlocators.Captcha_Login, "1234", "Login_Captcha");
@@ -1150,7 +1151,8 @@ public class eTenderComponent extends BaseClass_Web {
 			log.info("started executing the method:: tenderApproverLogin");
 			//click(tendercreationlocators.login, "login");
 			set(tendercreationlocators.userName, pdfResultReport.testData.get("TenderApprover2UserName"), "userName");
-			waitForObj(2000);
+			//waitForObj(2000);
+			waitForElementToBeVisible(tendercreationlocators.password);
 			set(tendercreationlocators.password, pdfResultReport.testData.get("AppPassword"), "password");
 			//Handle fixed Captcha (06/11/2020)
 			//set(tendercreationlocators.Captcha_Login, "1234", "Login_Captcha");
@@ -12297,28 +12299,18 @@ public class eTenderComponent extends BaseClass_Web {
 					"started executing the method:: AddTwoUsersForSequentialApproval");
 			waitForElementToBeClickable(tendercreationlocators.Userdefined_tender);
 			click(tendercreationlocators.Userdefined_tender, "Userdefined");
-			//click(tendercreationlocators.sectionWiseComments_tender, "sectionWiseComments");
-			//need loop if the the user not added previously
-			waitForObj(1000);
 			
-			//if statement and loop added on 06-01-23 by Arka
-			waitForElementToBeVisible(tendercreationlocators.cancelUser1_tender);
-			 if (ThreadLocalWebdriver.getDriver().findElement(tendercreationlocators.cancelUser1_tender).isDisplayed()) {
-				 int iRowCount=1;
-				 while(iRowCount==1) {
-					 click(tendercreationlocators.cancelUser1_tender, "cancelUser1");
-					 waitForObj(2000);
-					 List<WebElement> iRows = ThreadLocalWebdriver.getDriver().findElements(tendercreationlocators.cancelUser1_tender);
-					 iRowCount = iRows.size();
-				  } 
-			 }
+			List<WebElement> iRows = ThreadLocalWebdriver.getDriver().findElements(tendercreationlocators.cancelUser1_tender);
+			int iRowCount = iRows.size();
 			
 			
-			/*
-			 * click(tendercreationlocators.cancelUser1_tender, "cancelUser1");
-			 * waitForObj(2000); click(tendercreationlocators.cancelUser1_tender,
-			 * "cancelUser1"); waitForObj(2000);
-			 */
+				while(iRowCount!= 0)
+				{
+					waitForObj(1000);
+					click(tendercreationlocators.cancelUser1_tender, "cancelUser1_tender");
+					waitForObj(1000);
+					iRowCount = ThreadLocalWebdriver.getDriver().findElements(tendercreationlocators.cancelUser1_tender).size();
+					}
 			
 			waitForElementToBeClickable(tendercreationlocators.userAdd_tender);
 			click(tendercreationlocators.userAdd_tender, "userAdd");
