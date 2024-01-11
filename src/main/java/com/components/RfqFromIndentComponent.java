@@ -2135,7 +2135,7 @@ public class RfqFromIndentComponent extends BaseClass_Web {
 							+ " ",
 					"Pass", "Y");
 			waitForObj(2000);
-			click(tendercreationlocators.Btn_SendforApproval_Indent, "Btn_SendforApproval_Indent");
+			JSClick(tendercreationlocators.Btn_SendforApproval_Indent, "Btn_SendforApproval_Indent");
 			waitForElementToBeVisible(tendercreationlocators.myindent);
 			//waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
 			waitForObj(4000);
