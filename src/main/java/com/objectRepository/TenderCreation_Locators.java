@@ -108,6 +108,7 @@ public class TenderCreation_Locators {
 	public By BOQMadatoryItemdescription_tender2creationbydutta = By.xpath("//input[@id='boq.item_name.0']");
 
 	public By previewButton = By.xpath("//button[@data-original-title='Preview']");
+	public By indentByPreviewComment = By.xpath("(//span[@class='comments'])[1]");
 	public By previewAllTittle = By.xpath("//*[contains(text(),' Preview All')]");
 	public By previewAllpage = By.xpath("//div[@id='myModalprev_bid' and contains(@class,'fade in')]");
 	public By previewoteOpenTender = By.xpath("//label[contains(text(),'OTE-Open Tender')]");
@@ -2967,6 +2968,7 @@ public By Accommodationandfoodserviceactivities = By.xpath("//span[text()='Accom
 	public By Savebtn_Indent = By.xpath("//button[@data-original-title='Save']");
 	public By Savebtn_IndentNew = By.xpath("//fa-icon[@class='ng-fa-icon']/parent::button[@theme='light']");
 	public By Savebtn_IndentNew1 = By.xpath("//section[@class='contentSection']/div/div/button[2]");
+	public By IndentSuccessMessage = By.xpath("//div[@class='customCls']");
 	public By IndentSuccessOK = By.xpath("(//button[normalize-space()='Ok'])[2]");
 	public By Submitbtn_Indent = By.xpath("//button[@ng-click=\"isIndentApprovable('submit')\"]");
 	public By Submitbtn_IndentNew = By.xpath("//section[@class='contentSection']/div/div/button[3]");
@@ -3344,6 +3346,7 @@ public By Accommodationandfoodserviceactivities = By.xpath("//span[text()='Accom
 	public By Actionbtn_IndentApprover_Backup = By.xpath("(//button[@id='menu1'])[1]");
 	public By Detailbtn_IndentApprover = By.xpath("//a[normalize-space()='Details']");
 	public By sectionWiseView_IndentApprover = By.xpath("//ul[@class='dropdown-menu extended logout big_actv']/li[1]/a");
+	public By IndentCreatorCommentInApprover = By.xpath("//span[@class='comments']");
 	public By sectionWiseView_IndentApprover_Backup = By.xpath("(//ul[@class='dropdown-menu extended logout big_actv']/li[1]/a)[1]");
 	public By recallByPreviousApprover = By.xpath("(//a[@data-target='#recallModal'])[1]");
 	public By recallCommentSection = By.xpath("//body/section[@id='main-content-nw']/section[1]/div[1]/div[1]/div[6]/div[1]/div[1]/div[1]/div[1]/textarea[1]");

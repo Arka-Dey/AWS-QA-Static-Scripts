@@ -21,6 +21,7 @@ import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.asserts.SoftAssert;
 
 import com.baseClasses.BaseClass_Web;
 import com.baseClasses.PDFResultReport;
@@ -31,9 +32,10 @@ public class RfqFromIndentComponent extends BaseClass_Web {
 
 	TenderCreation_Locators tendercreationlocators = new TenderCreation_Locators();
 	public eTenderComponent etendercomponentobj = new eTenderComponent(pdfResultReport);
-	
-	//String SystemIndentnoLocatorText = null;
-	String SystemIndentnoLocatorText = "1627";
+	SoftAssert softAssert=new SoftAssert();
+	String SystemIndentnoLocatorText = null;
+	//String SystemIndentnoLocatorText = "1627";
+	String expectedSuccessMessage= null;
 	public RfqFromIndentComponent(PDFResultReport pdfresultReport) {
 
 		this.pdfResultReport = pdfresultReport;
@@ -1042,9 +1044,32 @@ public class RfqFromIndentComponent extends BaseClass_Web {
 			 */
 			//Modified on 130722
 			waitForObj(2000);
-			click(tendercreationlocators.Savebtn_IndentNew, "savebutton");
 			
+			click(tendercreationlocators.Savebtn_IndentNew, "savebutton");
+			//created by @Pavel 11012024
+			try {
+				
+		if(isElementTextPresent(tendercreationlocators.IndentSuccessMessage, "General Information page is saved successfully and the new Indent No. "+getPRNumberFromString(tendercreationlocators.IndentSuccessMessage)+" is successfully generated.")==true)
+		{
+			
+			pdfResultReport.addStepDetails("IndentTG1_General_Info_tabvalidation",
+					"Should get success message with indent number", "Sucessfully saved generalInfo tab fields during indent creation " + " ", "Pass",
+					"Y");
+			log.info(
+					"completed executing the method:: IndentTG1_General_Info_tabvalidation");
+
+		}
+			}
+			catch (Exception e) {
+				pdfResultReport.addStepDetails("IndentTG1_General_Info_tabvalidation", "Should get success message with indent number",
+						"Unable to unable to get proper message" + e.getMessage(), "Fail", "N");
+			}
+			
+		
 			//JSClick(tendercreationlocators.IndentSuccessOK, "IndentSuccess");
+			//softAssert.assertEquals("General Information page is saved successfully and the new Indent No. 1623 is successfully generated.",tendercreationlocators.IndentSuccessMessage);
+			
+			
 			waitForElementToBeClickable(tendercreationlocators.IndentSuccessOK);
 			//click(tendercreationlocators.IndentSuccessOK, "IndentSuccess");
 			JSClick(tendercreationlocators.IndentSuccessOK, "IndentSuccess");
@@ -2392,10 +2417,31 @@ public class RfqFromIndentComponent extends BaseClass_Web {
 		public void Forward_IndentWF_With_ParallelApprovalType() throws Throwable {
 			try {
 				log.info("started executing the method:: ApproverOverAllComentWithIndentHasBeenApproved");
+				
+					
+				
 				String comment = "Indent Process Is Approved";
 				click(tendercreationlocators.LblAppCmnt_IndentApprover, "LblAppCmnt_IndentApprover");
 				waitForObj(1000);
 				scrollToElement(tendercreationlocators.AppComments_Indent);
+				
+				//created by @Pavel on 11012024
+				try {
+					if((text(tendercreationlocators.IndentCreatorCommentInApprover)).equals(text(tendercreationlocators.indentByPreviewComment)))
+						pdfResultReport.addStepDetails("ApproverComment Section",
+								"Indent creator comment should be same in approver section",
+								"indent creator comment is  " +text(tendercreationlocators.IndentCreatorCommentInApprover)+ " ", "Pass", "Y");
+						log.info("completed executing the method:: indent creator comment and approver side indent creator comment are same");
+					} catch (Exception e) {
+						log.fatal("indent creator comment and approver side indent creator comments mismatched" + e.getMessage());
+						pdfResultReport.addStepDetails("ApproverComment Section",
+								"Indent creator comment should be same in approver section",
+								"Indent creator comment is different"
+										+ e.getMessage(),
+								"Fail", "N");
+			                   
+					}	
+				
 				//SSJSSend(tendercreationlocators.AppComments_Indent,"AppComments_Indent", comment);
 				set(tendercreationlocators.AppComments_Indent, comment,"AppComments_Indent");
 				//click(tendercreationlocators.ApproveBtn_Indent, "approve");

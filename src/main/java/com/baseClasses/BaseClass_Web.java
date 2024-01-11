@@ -46,6 +46,8 @@ import org.testng.ITestContext;
 	import org.testng.annotations.BeforeMethod;
 	import org.testng.annotations.BeforeSuite;
 	import org.testng.annotations.Test;
+
+import com.itextpdf.text.pdf.PdfStructTreeController.returnType;
 	
 	public class BaseClass_Web {
 		
@@ -1267,6 +1269,18 @@ import org.testng.ITestContext;
             return false;
         }
     }
+	
+	public String getPRNumberFromString(By locator) {
+       
+        	WebDriver driver = ThreadLocalWebdriver.getDriver();
+            WebElement element = driver.findElement(locator);
+            String actualText = element.getText().trim();
+            String[] words= actualText.split("Indent No.");
+    	    String[] splitted=words[1].split(" is successfully");
+    	   String prNo= splitted[0].trim();
+    	   return prNo;
+        } 
+    
 	
 	// added on 070124
 	public boolean isElementAttributeEqual(By locator, String attributeName, String expectedValue) {
