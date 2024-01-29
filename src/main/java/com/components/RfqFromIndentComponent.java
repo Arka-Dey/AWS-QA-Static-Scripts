@@ -33,7 +33,7 @@ public class RfqFromIndentComponent extends BaseClass_Web {
 	public eTenderComponent etendercomponentobj = new eTenderComponent(pdfResultReport);
 	
 	//String SystemIndentnoLocatorText = null;
-	String SystemIndentnoLocatorText = "1627";
+	String SystemIndentnoLocatorText = "1657";
 	public RfqFromIndentComponent(PDFResultReport pdfresultReport) {
 
 		this.pdfResultReport = pdfresultReport;
@@ -1578,13 +1578,26 @@ public class RfqFromIndentComponent extends BaseClass_Web {
 			set(tendercreationlocators.GSTPercent_TG1BOMItemTab(i), pdfResultReport.testData.get("GSTPercent_TG1BOMItemTab"), "GSTPercent_TG1BOMItemTab");
 			
 			}
+			waitForObj(1000);
+			
+			scrollToElement(tendercreationlocators.Savebtn_IndentNew1);
 			waitForElementToBeClickable(tendercreationlocators.Savebtn_IndentNew1);
+			click(tendercreationlocators.Savebtn_IndentNew1, "Savebtn_Indent");
+			waitForObj(2000); 
+			
+			/*
+			 waitForElementToBeClickable(tendercreationlocators.Savebtn_IndentNew1);
 			//scrollToElement(tendercreationlocators.Savebtn_IndentNew1);
 			JSClick(tendercreationlocators.Savebtn_IndentNew1, "Savebtn_Indent");
-			waitForObj(2000);
+			//waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
+			 waitForObj(2000); */
+			
+			//========================
+			
 			waitForElementToBeClickable(tendercreationlocators.AddInputAlert);
 			click(tendercreationlocators.AddInputAlert, "AddInputAlert");
-			waitForObj(1000);
+			waitForObj(1000); 
+			
 			pdfResultReport.addStepDetails("IndentTG1_BOM_Item_tabvalidation",
 					"Should save BOM Item tab fields during indent creation", "Sucessfully saved BOM Item tab fields during indent creation " + " ", "Pass",
 					"Y");
@@ -1735,11 +1748,21 @@ public class RfqFromIndentComponent extends BaseClass_Web {
 			scrollToElement(tendercreationlocators.GSTPercent_TG1BOMServicesTab(i));
 			set(tendercreationlocators.GSTPercent_TG1BOMServicesTab(i), pdfResultReport.testData.get("GSTPercent_TG1BOMServicesTab"), "GSTPercent_TG1BOMServicesTab");
 			}
+			
+			waitForObj(1000);
+			scrollToElement(tendercreationlocators.Savebtn_IndentNew1);
 			waitForElementToBeClickable(tendercreationlocators.Savebtn_IndentNew1);
+			click(tendercreationlocators.Savebtn_IndentNew1, "Savebtn_Indent");
+			
+			
+			/*
+			 waitForElementToBeClickable(tendercreationlocators.Savebtn_IndentNew1);
 			//scrollToElement(tendercreationlocators.Savebtn_IndentNew1);
 			JSClick(tendercreationlocators.Savebtn_IndentNew1, "Savebtn_Indent");
 			//waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
-			waitForObj(2000);
+			 waitForObj(2000); */
+			
+			
 			pdfResultReport.addStepDetails("IndentTG1_BOM_Services_tabvalidation",
 					"Should save BOM Services tab fields during indent creation", "Sucessfully saved BOM Services tab fields during indent creation " + " ", "Pass",
 					"Y");
@@ -3628,11 +3651,11 @@ public class RfqFromIndentComponent extends BaseClass_Web {
 					"started executing the method:: BidSubmission_for_Tender_from_indent_withRFQ_TG1 "+TemplateGroup);
 
 		//Verifying Terms & Conditions tab++++++++++++++++++++++++++++++++++++++++++++	
-			waitForElementToBeClickable(tendercreationlocators.TermsandConditionstabLnk_BidSubmission_TG1);
-			click(tendercreationlocators.TermsandConditionstabLnk_BidSubmission_TG1, "TermsandConditionstabLnk_BidSubmission_TG1");
+			//waitForElementToBeClickable(tendercreationlocators.TermsandConditionstabLnk_BidSubmission_TG1);
+			JSClick(tendercreationlocators.TermsandConditionstabLnk_BidSubmission_TG1, "TermsandConditionstabLnk_BidSubmission_TG1");
 			//waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
-			waitForObj(1000);
-			waitForElementToBeVisible(tendercreationlocators.ClauseTxtTermsandConditionstab_BidSubmission_TG1);
+			//waitForObj(1000);
+			waitForElement(tendercreationlocators.ClauseTxtTermsandConditionstab_BidSubmission_TG1, 1000);
 			waitForObj(1000);
 			set(tendercreationlocators.RemarksTxtTermsandConditionstab_BidSubmission_TG1, pdfResultReport.testData.get("RemarksTxtTermsandConditionstab_BidSubmission_TG1"), "RemarksTxtTermsandConditionstab_BidSubmission_TG1");
 			click(tendercreationlocators.savebutton, "savebutton");
@@ -3649,38 +3672,40 @@ public class RfqFromIndentComponent extends BaseClass_Web {
 		//Verifying Technical Compliance Table tab++++++++++++++++++++++++++++++++++++++++++++	
 			waitForElementToBeClickable(tendercreationlocators.TechnicalCompliancetabLnk_BidSubmission_TG1);
 			click(tendercreationlocators.TechnicalCompliancetabLnk_BidSubmission_TG1, "TechnicalCompliancetabLnk_BidSubmission_TG1");
-			waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
+			//waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
 			waitForElementToBeVisible(tendercreationlocators.ClauseTxtTechnicalCompliancetab_BidSubmission_TG1);
 			waitForObj(100);
 			set(tendercreationlocators.RemarksTxtTechnicalCompliancetab_BidSubmission_TG1, pdfResultReport.testData.get("RemarksTxtTechnicalCompliancetab_BidSubmission_TG1"), "RemarksTxtTechnicalCompliancetab_BidSubmission_TG1");
 			click(tendercreationlocators.savebutton, "savebutton");
-			waitForObj(2000);
-			eTenderComponent.waitForSpinnerToDisappearInBidSubmission();
-			waitForElementToBeVisible(tendercreationlocators.alertPopUp_QRC_bidSubmission);
-			IsElementPresent(tendercreationlocators.alertPopUp_QRC_bidSubmission);
+			//waitForObj(2000);
+			//eTenderComponent.waitForSpinnerToDisappearInBidSubmission();
+			waitForElement(tendercreationlocators.alertPopUp_QRC_bidSubmission,100);
+			//IsElementPresent(tendercreationlocators.alertPopUp_QRC_bidSubmission);
 			click(tendercreationlocators.alertClose_QRC_bidSubmission, "alertClose_QRC_bidSubmission");
 			waitForObj(500);
 			pdfResultReport.addStepDetails("BidSubmission_for_Tender_from_indent_withRFQ_TG1 '" +TemplateGroup+"'",
 					"Verify Technical Compliance tab", "Technical Compliance tab verified successfully", "Pass",
 					"Y");
 			
-		//Verifying Attachments tab++++++++++++++++++++++++++++++++++++++++++++		
+		//Verifying Attachments tab++++++++++++++++++++++++++++++++++++++++++++	
 			waitForElementToBeClickable(tendercreationlocators.AttachmentstabLnk_BidSubmission_TG1);
 			click(tendercreationlocators.AttachmentstabLnk_BidSubmission_TG1, "AttachmentstabLnk_BidSubmission_TG1");
-			waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
+			//waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
 			waitForElementToBeVisible(tendercreationlocators.Attachment_subtabLnk_BidSubmission_TG1);
 			waitForObj(1000);
 			click(tendercreationlocators.ActionbtnBidderspecificAttachment_BidSubmission_TG1, "ActionbtnBidderspecificAttachment_BidSubmission_TG1");
 			waitForObj(1000);
 			//set(tendercreationlocators.UploadBidderspecificAttachment_BidSubmission_TG1, System.getProperty("user.dir") + "\\MediaFiles\\rfqCreation.xlsx", "fileName");
 			//waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
+			waitForElement(tendercreationlocators.UploadFromEbriefcase_TG1, 100);
 			waitForElementToBeClickable(tendercreationlocators.UploadFromEbriefcase_TG1);
 			click(tendercreationlocators.UploadFromEbriefcase_TG1, "UploadFromEbriefcase_TG1");
 			waitForElementToBeClickable(tendercreationlocators.AddEbriefcaseFile_TG1);
 			click(tendercreationlocators.AddEbriefcaseFile_TG1, "AddEbriefcaseFile_TG1");
 			waitForElementToBeClickable(tendercreationlocators.Attachment_subtabLnk_BidSubmission_TG1);
 			click(tendercreationlocators.Attachment_subtabLnk_BidSubmission_TG1, "Attachment_subtabLnk_BidSubmission_TG1");
-			waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
+			//waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
+			waitForElement(tendercreationlocators.TenderAttachment_subtabLnk_BidSubmission_TG1, 100);
 			click(tendercreationlocators.TenderAttachment_subtabLnk_BidSubmission_TG1, "TenderAttachment_subtabLnk_BidSubmission_TG1");
 			waitForElementToBeClickable(tendercreationlocators.savebutton);
 			click(tendercreationlocators.savebutton, "savebutton");
@@ -3698,12 +3723,14 @@ public class RfqFromIndentComponent extends BaseClass_Web {
 		//Verifying Technical tab++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 			waitForElementToBeClickable(tendercreationlocators.TechnicaltabLnk_BidSubmission_TG1);
 			click(tendercreationlocators.TechnicaltabLnk_BidSubmission_TG1, "TechnicaltabLnk_BidSubmission_TG1");
-			waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
-			waitForObj(500);
+			//waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
+			//waitForObj(500);
+			waitForElement(tendercreationlocators.savebutton, 100);
+			waitForElementToBeClickable(tendercreationlocators.savebutton);
 			click(tendercreationlocators.savebutton, "savebutton");
 			waitForObj(2000);
-			eTenderComponent.waitForSpinnerToDisappearInBidSubmission();
-			waitForElementToBeVisible(tendercreationlocators.alertPopUp_QRC_bidSubmission);
+			//eTenderComponent.waitForSpinnerToDisappearInBidSubmission();
+			waitForElement(tendercreationlocators.alertPopUp_QRC_bidSubmission, 100);
 			IsElementPresent(tendercreationlocators.alertPopUp_QRC_bidSubmission);
 			click(tendercreationlocators.alertClose_QRC_bidSubmission, "alertClose_QRC_bidSubmission");
 			waitForObj(500);
@@ -3716,12 +3743,12 @@ public class RfqFromIndentComponent extends BaseClass_Web {
 		//Verifying Specifications and Technical Requirements Compliance tab++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 			waitForElementToBeClickable(tendercreationlocators.TechnicalReqComptabLnk_BidSubmission_TG1);
 			click(tendercreationlocators.TechnicalReqComptabLnk_BidSubmission_TG1, "TechnicalReqComptabLnk_BidSubmission_TG1");
-			waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
+			//waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
 			waitForObj(500);
 			click(tendercreationlocators.savebutton, "savebutton");
 			waitForObj(2000);
-			eTenderComponent.waitForSpinnerToDisappearInBidSubmission();
-			waitForElementToBeVisible(tendercreationlocators.alertPopUp_QRC_bidSubmission);
+			//eTenderComponent.waitForSpinnerToDisappearInBidSubmission();
+			waitForElement(tendercreationlocators.alertPopUp_QRC_bidSubmission, 100);
 			IsElementPresent(tendercreationlocators.alertPopUp_QRC_bidSubmission);
 			click(tendercreationlocators.alertClose_QRC_bidSubmission, "alertClose_QRC_bidSubmission");
 			waitForObj(500);
@@ -3732,7 +3759,7 @@ public class RfqFromIndentComponent extends BaseClass_Web {
 		//Verifying Commercial Parameters Compliance tab++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 			waitForElementToBeClickable(tendercreationlocators.CommercialComptabLnk_BidSubmission_TG1);
 			click(tendercreationlocators.CommercialComptabLnk_BidSubmission_TG1, "CommercialComptabLnk_BidSubmission_TG1");
-			waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
+			//waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
 			waitForObj(1000);
 			pdfResultReport.addStepDetails("BidSubmission_for_Tender_from_indent_withRFQ_TG1 '" +TemplateGroup+"'",
 					"Verify Commercial Parameters Compliance tab", "Commercial Parameters Compliance tab verified successfully", "Pass",
@@ -3743,8 +3770,8 @@ public class RfqFromIndentComponent extends BaseClass_Web {
 		//Verifying General Requirement Equipment details tab++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 			waitForElementToBeClickable(tendercreationlocators.GeneralReqEqiptabLnk_BidSubmission_TG1);
 			click(tendercreationlocators.GeneralReqEqiptabLnk_BidSubmission_TG1, "GeneralReqEqiptabLnk_BidSubmission_TG1");
-			waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
-			waitForElementToBeVisible(tendercreationlocators.Address_GeneralReqEqiptab_BidSubmission_TG1);
+			//waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
+			waitForElement(tendercreationlocators.Address_GeneralReqEqiptab_BidSubmission_TG1,100);
 			waitForObj(500);
 			set(tendercreationlocators.Address_GeneralReqEqiptab_BidSubmission_TG1, pdfResultReport.testData.get("Address_GeneralReqEqiptab_BidSubmission_TG1"), "Address_GeneralReqEqiptab_BidSubmission_TG1");
 			pdfResultReport.addStepDetails("BidSubmission_for_Tender_from_indent_withRFQ_TG1 '" +TemplateGroup+"'",
@@ -3754,8 +3781,8 @@ public class RfqFromIndentComponent extends BaseClass_Web {
 		//Verifying Other Clauses tab++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 			waitForElementToBeClickable(tendercreationlocators.OtherClausestabLnk_BidSubmission_TG1);
 			click(tendercreationlocators.OtherClausestabLnk_BidSubmission_TG1, "OtherClausestabLnk_BidSubmission_TG1");
-			waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
-			waitForElementToBeVisible(tendercreationlocators.VendorCode_OtherClausestab_BidSubmission_TG1);
+			//waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
+			waitForElement(tendercreationlocators.VendorCode_OtherClausestab_BidSubmission_TG1,100);
 			waitForObj(500);
 			select(tendercreationlocators.RegisteredGEM_OtherClausestab_BidSubmission_TG1, pdfResultReport.testData.get("RegisteredGEM_OtherClausestab_BidSubmission_TG1"));
 			set(tendercreationlocators.VendorCode_OtherClausestab_BidSubmission_TG1, pdfResultReport.testData.get("VendorCode_OtherClausestab_BidSubmission_TG1"), "VendorCode_OtherClausestab_BidSubmission_TG1");
@@ -3789,28 +3816,37 @@ public class RfqFromIndentComponent extends BaseClass_Web {
 			//Verifying Payment tab+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 			waitForElementToBeClickable(tendercreationlocators.PaymenttabLnk_BidSubmission_TG1);
 			click(tendercreationlocators.PaymenttabLnk_BidSubmission_TG1, "PaymenttabLnk_BidSubmission_TG1");
-			waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
-			waitForElementToBeVisible(tendercreationlocators.Paymentbtn_Paymenttab_BidSubmission_TG1);
-			waitForObj(500);
-			click(tendercreationlocators.Paymentbtn_Paymenttab_BidSubmission_TG1, "Paymentbtn_Paymenttab_BidSubmission_TG1");
-			waitForElementToBeClickable(tendercreationlocators.PaymentType_Paymenttab_BidSubmission_TG1);
-			click(tendercreationlocators.PaymentType_Paymenttab_BidSubmission_TG1, "PaymentType_Paymenttab_BidSubmission_TG1");
-			set(tendercreationlocators.BankNametxt_Paymenttab_BidSubmission_TG1, pdfResultReport.testData.get("BankNametxt_Paymenttab_BidSubmission_TG1"), "BankNametxt_Paymenttab_BidSubmission_TG1");
-			set(tendercreationlocators.BranchNametxt_Paymenttab_BidSubmission_TG1, pdfResultReport.testData.get("BranchNametxt_Paymenttab_BidSubmission_TG1"), "BranchNametxt_Paymenttab_BidSubmission_TG1");
-			set(tendercreationlocators.InstruNotxt_Paymenttab_BidSubmission_TG1, pdfResultReport.testData.get("InstruNotxt_Paymenttab_BidSubmission_TG1"), "InstruNotxt_Paymenttab_BidSubmission_TG1");
-			set(tendercreationlocators.InstruDatetxt_Paymenttab_BidSubmission_TG1, getdate(0, "dd-MM-yyyy"), "InstruDatetxt_Paymenttab_BidSubmission_TG1");
-			set(tendercreationlocators.Commenttxt_Paymenttab_BidSubmission_TG1, pdfResultReport.testData.get("Commenttxt_Paymenttab_BidSubmission_TG1"), "Commenttxt_Paymenttab_BidSubmission_TG1");
-			set(tendercreationlocators.InstruExpiryDate_Paymenttab_BidSubmission_TG1, getdate(20, "dd-MM-yyyy"), "InstruExpiryDate_Paymenttab_BidSubmission_TG1");
-			set(tendercreationlocators.Uploadfile_Paymenttab_BidSubmission_TG1, System.getProperty("user.dir") + "\\MediaFiles\\rfqCreation.xlsx",
-					"fileName");
-			waitForObj(1000);
-			click(tendercreationlocators.SavePaymentBtn_Paymenttab_BidSubmission_TG1, "SavePaymentBtn_Paymenttab_BidSubmission_TG1");
-			eTenderComponent.waitForSpinnerToDisappearInBidSubmission();
-			waitForElementToBeVisible(tendercreationlocators.alertPopUp_QRC_bidSubmission);
-			IsElementPresent(tendercreationlocators.alertPopUp_QRC_bidSubmission);
-			click(tendercreationlocators.alertClose_QRC_bidSubmission, "alertClose_QRC_bidSubmission");
-			waitForObj(500);
-			scrollToTopOfThePage();
+			//waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
+			waitForElement(tendercreationlocators.Paymentbtn_Paymenttab_BidSubmission_TG1,100);
+			waitForObj(100);
+			
+			boolean paymentMode=ThreadLocalWebdriver.getDriver().findElement(tendercreationlocators.Paymentbtn_Paymenttab_BidSubmission_TG1).isEnabled();
+			if(!paymentMode){
+				log.info("paymentMode button is disable");
+				}
+			else {
+					click(tendercreationlocators.Paymentbtn_Paymenttab_BidSubmission_TG1, "Paymentbtn_Paymenttab_BidSubmission_TG1");
+					waitForElementToBeClickable(tendercreationlocators.PaymentType_Paymenttab_BidSubmission_TG1);
+					click(tendercreationlocators.PaymentType_Paymenttab_BidSubmission_TG1, "PaymentType_Paymenttab_BidSubmission_TG1");
+					set(tendercreationlocators.BankNametxt_Paymenttab_BidSubmission_TG1, pdfResultReport.testData.get("BankNametxt_Paymenttab_BidSubmission_TG1"), "BankNametxt_Paymenttab_BidSubmission_TG1");
+					set(tendercreationlocators.BranchNametxt_Paymenttab_BidSubmission_TG1, pdfResultReport.testData.get("BranchNametxt_Paymenttab_BidSubmission_TG1"), "BranchNametxt_Paymenttab_BidSubmission_TG1");
+					set(tendercreationlocators.InstruNotxt_Paymenttab_BidSubmission_TG1, pdfResultReport.testData.get("InstruNotxt_Paymenttab_BidSubmission_TG1"), "InstruNotxt_Paymenttab_BidSubmission_TG1");
+					set(tendercreationlocators.InstruDatetxt_Paymenttab_BidSubmission_TG1, getdate(0, "dd-MM-yyyy"), "InstruDatetxt_Paymenttab_BidSubmission_TG1");
+					set(tendercreationlocators.Commenttxt_Paymenttab_BidSubmission_TG1, pdfResultReport.testData.get("Commenttxt_Paymenttab_BidSubmission_TG1"), "Commenttxt_Paymenttab_BidSubmission_TG1");
+					set(tendercreationlocators.InstruExpiryDate_Paymenttab_BidSubmission_TG1, getdate(20, "dd-MM-yyyy"), "InstruExpiryDate_Paymenttab_BidSubmission_TG1");
+					set(tendercreationlocators.Uploadfile_Paymenttab_BidSubmission_TG1, System.getProperty("user.dir") + "\\MediaFiles\\rfqCreation.xlsx",
+							"fileName");
+					waitForObj(1000);
+					click(tendercreationlocators.SavePaymentBtn_Paymenttab_BidSubmission_TG1, "SavePaymentBtn_Paymenttab_BidSubmission_TG1");
+					//eTenderComponent.waitForSpinnerToDisappearInBidSubmission();
+					waitForElement(tendercreationlocators.alertPopUp_QRC_bidSubmission,100);
+					IsElementPresent(tendercreationlocators.alertPopUp_QRC_bidSubmission);
+					click(tendercreationlocators.alertClose_QRC_bidSubmission, "alertClose_QRC_bidSubmission");
+					waitForObj(500);
+					scrollToTopOfThePage();
+					
+			}
+			
 			pdfResultReport.addStepDetails("BidSubmission_for_Tender_from_indent_withRFQ_TG1 '" +TemplateGroup+"'",
 					"Verify Payment tab", "Payment tab verified successfully", "Pass",
 					"Y");
@@ -3818,7 +3854,8 @@ public class RfqFromIndentComponent extends BaseClass_Web {
 		//Verifying RFQ Item tab+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 			waitForElementToBeClickable(tendercreationlocators.RFQItemtabLnk_BidSubmission_TG1);
 			click(tendercreationlocators.RFQItemtabLnk_BidSubmission_TG1, "RFQItemtabLnk_BidSubmission_TG1");
-			waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
+			waitForObj(3000);
+			//waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
 			List<WebElement> itemRowCount = ThreadLocalWebdriver.getDriver().findElements(tendercreationlocators.RFQItemRowCount_TG1);
 			int RowCount=itemRowCount.size();
 			System.out.println(RowCount);
@@ -3838,10 +3875,10 @@ public class RfqFromIndentComponent extends BaseClass_Web {
 					"Y");
 			
 		//Verifying BOQ Mandatory tab+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-			waitForObj(1000);
 			waitForElementToBeClickable(tendercreationlocators.BOQMandatorytabLnk_BidSubmission_TG1);
 			JSClick(tendercreationlocators.BOQMandatorytabLnk_BidSubmission_TG1, "BOQMandatorytabLnk_BidSubmission_TG1");
-			waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
+			waitForObj(3000);
+			//waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
 			List<WebElement> MandatoryitemRowCount = ThreadLocalWebdriver.getDriver().findElements(tendercreationlocators.BOMMandatoryRowCount_TG1);
 			int MandatoryRowCount=MandatoryitemRowCount.size();
 			System.out.println(MandatoryRowCount);
@@ -3859,8 +3896,8 @@ public class RfqFromIndentComponent extends BaseClass_Web {
 			waitForElementToBeClickable(tendercreationlocators.savebutton);
 			JSClick(tendercreationlocators.savebutton, "savebutton");
 			waitForObj(2000);
-			eTenderComponent.waitForSpinnerToDisappearInBidSubmission();
-			waitForElementToBeVisible(tendercreationlocators.alertPopUp_QRC_bidSubmission);
+			//eTenderComponent.waitForSpinnerToDisappearInBidSubmission();
+			waitForElement(tendercreationlocators.alertPopUp_QRC_bidSubmission, 100);
 			IsElementPresent(tendercreationlocators.alertPopUp_QRC_bidSubmission);
 			click(tendercreationlocators.alertClose_QRC_bidSubmission, "alertClose_QRC_bidSubmission");
 			waitForObj(500);

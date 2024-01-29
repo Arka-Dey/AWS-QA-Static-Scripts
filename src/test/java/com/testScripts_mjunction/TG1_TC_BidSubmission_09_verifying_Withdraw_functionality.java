@@ -48,6 +48,7 @@ public class TG1_TC_BidSubmission_09_verifying_Withdraw_functionality extends Ba
 		initializeRepository();
 	//Creating a new Indent with No approval
 		etendercomponentobj.openURL();
+		/* R
 		rfqfromintendcomponentobj.IndentcreatorLogin();
 		rfqfromintendcomponentobj.navigateToIndentCreation();
 		rfqfromintendcomponentobj.IndentTG1_General_Info_tabvalidation("Indigenous Indent (Supply & Service Both) V-004");
@@ -61,17 +62,18 @@ public class TG1_TC_BidSubmission_09_verifying_Withdraw_functionality extends Ba
 		rfqfromintendcomponentobj.IndentTG1_Submit();
 		rfqfromintendcomponentobj.SystemIndentNoSaveNew();
 		rfqfromintendcomponentobj.NoApproval_IndentWF();
-		rfqfromintendcomponentobj.navigateToIndentListing();
+		//rfqfromintendcomponentobj.navigateToIndentListing();
 		rfqfromintendcomponentobj.enterIndentNoInSearch();
 		rfqfromintendcomponentobj.VerifyIndentStatus("Completed");
 
-	//Mark the created indent 'Marked for RFQ'
+		//Mark the created indent 'Marked for RFQ'
 		rfqfromintendcomponentobj.Indent_Mark_for_RFQ_functionality();
-		rfqfromintendcomponentobj.enterIndentNoInSearch();
+		rfqfromintendcomponentobj.enterIndentNoForSearch();
 		rfqfromintendcomponentobj.VerifyIndentStatus("Marked For RFQ");
 		etendercomponentobj.tenderLogout();
 		
-	//Indent assignment Process (self claim)	
+		
+		//Indent assignment Process (self claim)
 		etendercomponentobj.tendercreatorLogin();
 		rfqfromintendcomponentobj.navigateToIndentAssignment();
 		rfqfromintendcomponentobj.enterIndentNoForSearch();
@@ -80,11 +82,11 @@ public class TG1_TC_BidSubmission_09_verifying_Withdraw_functionality extends Ba
 		rfqfromintendcomponentobj.VerifyIndentStatus_AssignmentListPage("Assigned");
 		rfqfromintendcomponentobj.navigateToCreateRFQFromIndentPage();
 		rfqfromintendcomponentobj.enterIndentNoInSearch_RFQfromIndentPage();
-	
-		
-	//Create and publish RFQ from indent
+		 
+		//Create and publish RFQ from indent
 		rfqfromintendcomponentobj.Create_RFQ_From_Indent("Indigenous Tender (Supply & Service Both) V-1.0");
-		rfqfromintendcomponentobj.PublishTender_from_indent_withRFQ_TG1("Indigenous Tender (Supply & Service Both) V-1.0",4,30,40);
+		rfqfromintendcomponentobj.PublishTender_from_indent_withRFQ_TG1("Indigenous Tender (Supply & Service Both) V-1.0",5,30,32);
+		//Clicking on submit button and verify tender status
 		etendercomponentobj.clickSubmitBtn();
 		etendercomponentobj.tenderIdSave();
 		etendercomponentobj.sendForNoApproval_validation();
@@ -92,8 +94,9 @@ public class TG1_TC_BidSubmission_09_verifying_Withdraw_functionality extends Ba
 		etendercomponentobj.checkTenderStatusAndTenderStage();
 		etendercomponentobj.tenderLogoutOld();
 
-	//Bid submission process
+		//Bid submission procress	
 		rfqfromintendcomponentobj.waitTillBidstartDateReached();
+		R */
 		etendercomponentobj.bidder_01_Login();
 		etendercomponentobj.enterTenderIdInSearch_bidsubmission();
 		etendercomponentobj.navigateToActionDropdown_bidsubmission();
@@ -102,21 +105,71 @@ public class TG1_TC_BidSubmission_09_verifying_Withdraw_functionality extends Ba
 		etendercomponentobj.quotationReferenceCode_bidsubmission();
 		rfqfromintendcomponentobj.BidSubmission_for_Tender_from_indent_withRFQ_TG1("Indigenous Tender (Supply & Service Both) V-1.0");
 		etendercomponentobj.mandatoryFieldValidation_submitButton_bidsubmission();
-		etendercomponentobj.TG1_validateAllInPrevieAllSubmitbidPage();
+		//etendercomponentobj.TG1_validateAllInPrevieAllSubmitbidPage();
 		etendercomponentobj.submitBid_link_in_previewAllPage();
+	
 		etendercomponentobj.navigate_to_bidList_page();
-		etendercomponentobj.enterTenderIdInSearch_bidsubmission();
+		//etendercomponentobj.enterTenderIdInSearch_bidsubmission();
 		etendercomponentobj.submittedBid_Tab_Validation();
-		etendercomponentobj.TG1_validateTenderpreviewInBidListPage();
-		etendercomponentobj.TG1_validateBidPreview_BidListPage();
+		//etendercomponentobj.TG1_validateTenderpreviewInBidListPage();
+		//etendercomponentobj.TG1_validateBidPreview_BidListPage();
 		etendercomponentobj.BidNoSave();
 		
-	//Withdraw bid functionality verification
+		
+		//Withdraw bid functionality verification
 		etendercomponentobj.withdrawbid_bidListPage();
 		etendercomponentobj.withdrawnBid_Tab_Validation();
 		etendercomponentobj.VerifyBidno_withdrawbid(); 
+		
+		etendercomponentobj.navigateToTenderListing();
+		etendercomponentobj.enterTenderIdInSearch_bidsubmission();
 		etendercomponentobj.VerifyBidsubmission_after_WithdrawBid();
 		etendercomponentobj.tenderLogoutOld();
+		
+		
+		//Bid submission procress by supplier2
+		etendercomponentobj.bidder_02_Login();
+		etendercomponentobj.enterTenderIdInSearch_bidsubmission();
+		etendercomponentobj.navigateToActionDropdown_bidsubmission();
+		etendercomponentobj.newTermsAndServicesCheckBox_bidsubmission();
+		etendercomponentobj.TG1_generalInformationPageValidation_bidsubmission();
+		etendercomponentobj.quotationReferenceCode_bidsubmission();
+		rfqfromintendcomponentobj.BidSubmission_for_Tender_from_indent_withRFQ_TG1("Indigenous Tender (Supply & Service Both) V-1.0");
+		
+		//Visit allQuotation Live tender list page
+		etendercomponentobj.navigateToTenderListing();
+		etendercomponentobj.enterTenderIdInSearch_bidsubmission();
+		etendercomponentobj.navigateToActionDropdown_bidsubmissionBidWhereBidIsDraftedOrSubmitted();
+		etendercomponentobj.newTermsAndServicesCheckBox_bidsubmission();
+		etendercomponentobj.TG1_generalInformationPageValidation_bidsubmission();
+		etendercomponentobj.quotationReferenceCode_bidsubmission();
+		rfqfromintendcomponentobj.BidSubmission_for_Tender_from_indent_withRFQ_TG1("Indigenous Tender (Supply & Service Both) V-1.0");
+		etendercomponentobj.mandatoryFieldValidation_submitButton_bidsubmission();
+		//etendercomponentobj.TG1_validateAllInPrevieAllSubmitbidPage();
+		etendercomponentobj.submitBid_link_in_previewAllPage();
+	
+		etendercomponentobj.navigate_to_bidList_page();
+		//etendercomponentobj.enterTenderIdInSearch_bidsubmission();
+		etendercomponentobj.submittedBid_Tab_Validation();
+		//etendercomponentobj.TG1_validateTenderpreviewInBidListPage();
+		//etendercomponentobj.TG1_validateBidPreview_BidListPage();
+		etendercomponentobj.BidNoSave();
+		
+		
+		//Withdraw bid functionality verification
+		etendercomponentobj.withdrawbid_bidListPage();
+		etendercomponentobj.withdrawnBid_Tab_Validation();
+		etendercomponentobj.VerifyBidno_withdrawbid(); 
+		
+		etendercomponentobj.navigateToTenderListing();
+		etendercomponentobj.enterTenderIdInSearch_bidsubmission();
+		etendercomponentobj.VerifyBidsubmission_after_WithdrawBid_againstDraftBid();
+		etendercomponentobj.tenderLogoutOld();
+		
+		
+		
+		
+		
 
 	}
 

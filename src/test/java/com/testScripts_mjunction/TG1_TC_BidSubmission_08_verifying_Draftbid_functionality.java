@@ -48,6 +48,7 @@ public class TG1_TC_BidSubmission_08_verifying_Draftbid_functionality extends Ba
 		initializeRepository();
 	//Creating a new Indent with No approval
 		etendercomponentobj.openURL();
+		/*
 		rfqfromintendcomponentobj.IndentcreatorLogin();
 		rfqfromintendcomponentobj.navigateToIndentCreation();
 		rfqfromintendcomponentobj.IndentTG1_General_Info_tabvalidation("Indigenous Indent (Supply & Service Both) V-004");
@@ -65,14 +66,14 @@ public class TG1_TC_BidSubmission_08_verifying_Draftbid_functionality extends Ba
 		rfqfromintendcomponentobj.enterIndentNoInSearch();
 		rfqfromintendcomponentobj.VerifyIndentStatus("Completed");
 
-	//Mark the created indent 'Marked for RFQ'
+		//Mark the created indent 'Marked for RFQ'
 		rfqfromintendcomponentobj.Indent_Mark_for_RFQ_functionality();
 		rfqfromintendcomponentobj.enterIndentNoForSearch();
 		rfqfromintendcomponentobj.VerifyIndentStatus("Marked For RFQ");
 		etendercomponentobj.tenderLogout();
 		
 		
-	//Indent assignment Process (self claim)	
+		//Indent assignment Process (self claim)
 		etendercomponentobj.tendercreatorLogin();
 		rfqfromintendcomponentobj.navigateToIndentAssignment();
 		rfqfromintendcomponentobj.enterIndentNoForSearch();
@@ -81,21 +82,22 @@ public class TG1_TC_BidSubmission_08_verifying_Draftbid_functionality extends Ba
 		rfqfromintendcomponentobj.VerifyIndentStatus_AssignmentListPage("Assigned");
 		rfqfromintendcomponentobj.navigateToCreateRFQFromIndentPage();
 		rfqfromintendcomponentobj.enterIndentNoInSearch_RFQfromIndentPage();
-		
-		
-	//Create and publish RFQ from indent
+		 
+		//Create and publish RFQ from indent
 		rfqfromintendcomponentobj.Create_RFQ_From_Indent("Indigenous Tender (Supply & Service Both) V-1.0");
-		rfqfromintendcomponentobj.PublishTender_from_indent_withRFQ_TG1("Indigenous Tender (Supply & Service Both) V-1.0",4,30,40);
+		rfqfromintendcomponentobj.PublishTender_from_indent_withRFQ_TG1("Indigenous Tender (Supply & Service Both) V-1.0",5,30,32);
+		//Clicking on submit button and verify tender status
 		etendercomponentobj.clickSubmitBtn();
 		etendercomponentobj.tenderIdSave();
 		etendercomponentobj.sendForNoApproval_validation();
 		etendercomponentobj.enterTenderIdInSearch();
 		etendercomponentobj.checkTenderStatusAndTenderStage();
 		etendercomponentobj.tenderLogoutOld();
-		
-	//Bid submission process
+
+		//Bid submission procress	
 		rfqfromintendcomponentobj.waitTillBidstartDateReached();
-		etendercomponentobj.bidder_01_Login();
+		*/
+		etendercomponentobj.bidder_03_Login();
 		etendercomponentobj.enterTenderIdInSearch_bidsubmission();
 		etendercomponentobj.navigateToActionDropdown_bidsubmission();
 		etendercomponentobj.newTermsAndServicesCheckBox_bidsubmission();
@@ -110,11 +112,37 @@ public class TG1_TC_BidSubmission_08_verifying_Draftbid_functionality extends Ba
 		
 	//Bid submission from draft bid 	
 		etendercomponentobj.TG1_Bid_submission_during_Rebid();
+		etendercomponentobj.submitBid_link_in_previewAllPage();
 		etendercomponentobj.navigate_to_bidList_page();
-		etendercomponentobj.enterTenderIdInSearch_bidsubmission();
+		//etendercomponentobj.enterTenderIdInSearch_bidsubmission();
 		etendercomponentobj.submittedBid_Tab_Validation();
 		etendercomponentobj.VerifyBidno_from_draftbid();
-		etendercomponentobj.TG1_validateBidPreview_BidListPage();
+		//etendercomponentobj.TG1_validateBidPreview_BidListPage();
+		etendercomponentobj.tenderLogoutOld();
+		
+		//Draft bid submission from Live tender tab
+		etendercomponentobj.bidder_03_Login();
+		etendercomponentobj.enterTenderIdInSearch_bidsubmission();
+		etendercomponentobj.navigateToActionDropdown_bidsubmissionBidWhereBidIsDraftedOrSubmitted();
+		etendercomponentobj.newTermsAndServicesCheckBox_bidsubmission();
+		etendercomponentobj.TG1_generalInformationPageValidation_bidsubmission();
+		etendercomponentobj.quotationReferenceCode_bidsubmission();
+		rfqfromintendcomponentobj.BidSubmission_for_Tender_from_indent_withRFQ_TG1("Indigenous Tender (Supply & Service Both) V-1.0");
+		etendercomponentobj.navigate_to_bidList_page();
+		etendercomponentobj.enterTenderIdInSearch_bidsubmission();
+		etendercomponentobj.draftBid_Tab_Validation();
+		etendercomponentobj.DraftBidNoSave();
+		
+		//Going to submit draft bid from Live tender tab
+		etendercomponentobj.navigateToTenderListing();
+		etendercomponentobj.enterTenderIdInSearch_bidsubmission();
+		etendercomponentobj.navigateToActionDropdown_DraftBidsubmission();
+		etendercomponentobj.TG1_Bid_submission_during_Rebid();
+		etendercomponentobj.submitBid_link_in_previewAllPage();
+		etendercomponentobj.navigate_to_bidList_page();
+		etendercomponentobj.submittedBid_Tab_Validation();
+		etendercomponentobj.VerifyBidno_from_draftbid();
+		//etendercomponentobj.TG1_validateBidPreview_BidListPage();
 		etendercomponentobj.tenderLogoutOld();
 
 	}

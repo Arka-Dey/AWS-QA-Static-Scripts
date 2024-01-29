@@ -3,16 +3,16 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.testScripts_mjunction.TC_EPS_PO_40_VerifyTheMailContentOfPOReviewedToCreatorTest">
+      <class name="com.testScripts_mjunction.TG1_TC_BidSubmission_09_verifying_Withdraw_functionality">
         <methods>
           <include name="setUpSuiteDetails"/>
           <include name="BeforeClass"/>
-          <include name="validateTheMailContentOfPOReviewedToCreator"/>
           <include name="afterSuite"/>
           <include name="captureDesc"/>
+          <include name="Verifying_Withdrawbid_functionality"/>
           <include name="afterClass"/>
         </methods>
-      </class> <!-- com.testScripts_mjunction.TC_EPS_PO_40_VerifyTheMailContentOfPOReviewedToCreatorTest -->
+      </class> <!-- com.testScripts_mjunction.TG1_TC_BidSubmission_09_verifying_Withdraw_functionality -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

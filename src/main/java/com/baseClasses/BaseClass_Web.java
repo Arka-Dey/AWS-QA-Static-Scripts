@@ -407,6 +407,39 @@ import org.testng.ITestContext;
 			throw new AutomationException("Error during verifying the presence of Element: " + localRuntimeException.getMessage());
 		}
 	}
+	//added on 1601024
+	/*
+	 * public boolean IsElementPresentBoolean(By locator) throws Exception { boolean
+	 * foundAlert = false; try {
+	 * ThreadLocalWebdriver.getDriver().findElement(locator).isDisplayed();
+	 * log.info("Element is available : "+locator); foundAlert = true; } catch
+	 * (RuntimeException localRuntimeException) {
+	 * log.error("Element is not available : "+locator);
+	 * System.out.println("Error in verification of presense of element: " +
+	 * localRuntimeException.getMessage() + "Fail"); pdfResultReport.
+	 * addStepDetails("Error during verifying the presence of Element :",
+	 * "Error in element presence verification::",
+	 * "Error during the verification of element in DOM: " +
+	 * localRuntimeException.getMessage(), "FAIL","N"); throw new
+	 * AutomationException("Error during verifying the presence of Element: " +
+	 * localRuntimeException.getMessage()); } return foundAlert;
+	 * 
+	 * }
+	 */
+	public boolean IsElementPresentBoolean(By locator) throws Exception {
+		boolean foundAlert = false;
+		
+			if(ThreadLocalWebdriver.getDriver().findElement(locator).isDisplayed()) {
+				foundAlert = true;
+				log.info("Element is available : "+locator);
+			}
+			else {
+				foundAlert = false;
+				log.info("Element is not available : "+locator);
+			}
+			
+		return foundAlert;
+		}
 	
 	public int totalitemsdropdownlist(WebElement elem) throws AutomationException {
 		List<WebElement> dropdown_values = null;
@@ -1115,10 +1148,18 @@ import org.testng.ITestContext;
 		}
 	public void waitForElementToBeVisible(By locator)
 	{
-		WebDriverWait wait= new WebDriverWait(ThreadLocalWebdriver.getDriver(), 2000);
+		WebDriverWait wait= new WebDriverWait(ThreadLocalWebdriver.getDriver(), 20);
 		
 		wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
 	}
+	
+	public boolean isElementDisplayed(By locator, int timeoutInSeconds) {
+        	
+            WebDriverWait wait = new WebDriverWait(ThreadLocalWebdriver.getDriver(), timeoutInSeconds);
+            WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+            return element.isDisplayed();
+        
+    }
 	
 	
 	public void waitForElementToBeInvisible(By locator)
@@ -1131,7 +1172,7 @@ import org.testng.ITestContext;
 	
 	public void waitForElementToBeClickable(By locator)
 	{
-		WebDriverWait wait= new WebDriverWait(ThreadLocalWebdriver.getDriver(), 2000);
+		WebDriverWait wait= new WebDriverWait(ThreadLocalWebdriver.getDriver(), 20);
 		
 		wait.until(ExpectedConditions.elementToBeClickable(locator));
 	}
