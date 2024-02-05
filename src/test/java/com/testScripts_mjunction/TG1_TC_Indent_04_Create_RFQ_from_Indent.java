@@ -36,7 +36,7 @@ public class TG1_TC_Indent_04_Create_RFQ_from_Indent extends BaseClass_Web{
 	
 	@Parameters("TestcaseNo")
 	@Test(description = "Verifying_Create_RFQ_from_indent")
-	public void Verifying_Create_TFQ_from_indent(String no) throws Throwable {
+	public void Verifying_Create_RFQ_from_indent(String no) throws Throwable {
 		System.out.println("Entered in the Test method..................");
 		try {
 			pdfResultReport.readTestDataFile(System.getProperty("user.dir").replace("\\", "/")

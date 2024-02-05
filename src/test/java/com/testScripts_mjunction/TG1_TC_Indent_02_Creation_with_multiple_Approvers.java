@@ -37,7 +37,7 @@ public class TG1_TC_Indent_02_Creation_with_multiple_Approvers extends BaseClass
 	
 	@Parameters("TestcaseNo")
 	@Test(description = "Indent_creation_with_approval")
-	public void Indent_creation_with_approval(String no) throws Throwable {
+	public void Indent_creation_with_multiapproval(String no) throws Throwable {
 		System.out.println("Entered in the Test method..................");
 		try {
 			pdfResultReport.readTestDataFile(System.getProperty("user.dir").replace("\\", "/")
@@ -153,10 +153,15 @@ public class TG1_TC_Indent_02_Creation_with_multiple_Approvers extends BaseClass
 		rfqfromintendcomponentobj.enterIndentNoInSearch();
 		rfqfromintendcomponentobj.VerifyIndentStatus("Draft");
 		etendercomponentobj.tenderLogout();
+<<<<<<< HEAD
 		
 		
 		
 		
+=======
+				
+				
+>>>>>>> 94c02cb56a03c648b9f2ca4ea3c8abe30066a468
 		//Indent creator initiates WF again with 10 approvers in parallel and sequential but recall it after taking decision by some approvers
 		rfqfromintendcomponentobj.IndentcreatorLogin();
 		rfqfromintendcomponentobj.navigateToIndentListing();
@@ -166,7 +171,7 @@ public class TG1_TC_Indent_02_Creation_with_multiple_Approvers extends BaseClass
 		rfqfromintendcomponentobj.enterIndentNoInSearch();
 		rfqfromintendcomponentobj.VerifyIndentStatus("Pending For Approval");
 		etendercomponentobj.tenderLogout();
-		
+				
 		//Login with test_approver_01 (non coordinator)
 		rfqfromintendcomponentobj.IndentapproverLogin(pdfResultReport.testData.get("Approver1"));
 		rfqfromintendcomponentobj.GoToApprovalworkFlowPendingindentAndSearchTheIndent();

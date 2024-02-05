@@ -6,8 +6,13 @@
     <test name="Test">
         <parameter name="browserName" value="windowschrome"></parameter>
         <classes>
+<<<<<<<< HEAD:mjunctionTestNGXML/INDENT/RDCIS/TG1_TC_Indent_07_Creation_with_Predefined_approver.xml
            <parameter name="TestcaseNo" value="19"></parameter>   
             <class name="com.testScripts_mjunction.TG1_TC_Indent_07_Creation_with_Predefined_approval" />
+========
+           <parameter name="TestcaseNo" value="24"></parameter>   
+            <class name="com.testScripts_mjunction.TC_SN_01VerifyEndToEndWorkFlowOfSanctionNoteTest"/>
+>>>>>>>> 94c02cb56a03c648b9f2ca4ea3c8abe30066a468:mjunctionTestNGXML/SANCTION NOTE/RDCIS/TC_SN_01VerifyEndToEndWorkFlowOfSanctionNoteTest.xml
         </classes>
     </test> 
-</suite>
+</suite> 

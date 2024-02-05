@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Suite">
+<listeners>
+<listener class-name="com.baseClasses.Listener"></listener>
+</listeners>
+    <test name="Test">
+        <parameter name="browserName" value="windowschrome"></parameter>
+        <classes>
+<<<<<<<< HEAD:mjunctionTestNGXML/INDENT/RDCIS/TG1_TC_Indent_08_Multiple_approver_with_Branching.xml
+           <parameter name="TestcaseNo" value="19"></parameter>   
+            <class name="com.testScripts_mjunction.TG1_TC_Indent_08_Creation_with_multiple_Approvers_with_branching" />
+========
+           <parameter name="TestcaseNo" value="29"></parameter>   
+            <class name="com.testScripts_mjunction.TC_EPS_PO_02UserDefinedApprovalTest"/>
+>>>>>>>> 94c02cb56a03c648b9f2ca4ea3c8abe30066a468:mjunctionTestNGXML/Purchase Order/TC_EPS_PO_02UserDefinedApprovalTest.xml
+        </classes>
+    </test> 
+</suite> 
