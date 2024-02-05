@@ -34,7 +34,7 @@ public class RfqFromIndentComponent extends BaseClass_Web {
 
 	TenderCreation_Locators tendercreationlocators = new TenderCreation_Locators();
 	public eTenderComponent etendercomponentobj = new eTenderComponent(pdfResultReport);
-<<<<<<< HEAD
+
 	SoftAssert softAssert=new SoftAssert();
 	String SystemIndentnoLocatorText = null;
 	//String SystemIndentnoLocatorText = "1627";
@@ -42,11 +42,8 @@ public class RfqFromIndentComponent extends BaseClass_Web {
 	String TemplateGroup=null;
 	ArrayList<String> commentlist=new ArrayList<String>();
 	ArrayList<String> tabcontentList=new ArrayList<String>();
-=======
-	
-	//String SystemIndentnoLocatorText = null;
-	String SystemIndentnoLocatorText = "1657";
->>>>>>> 94c02cb56a03c648b9f2ca4ea3c8abe30066a468
+
+
 	public RfqFromIndentComponent(PDFResultReport pdfresultReport) {
 
 		this.pdfResultReport = pdfresultReport;
@@ -1639,14 +1636,11 @@ public class RfqFromIndentComponent extends BaseClass_Web {
 			
 			waitForElementToBeClickable(tendercreationlocators.AddInputAlert);
 			click(tendercreationlocators.AddInputAlert, "AddInputAlert");
-<<<<<<< HEAD
 			waitForObj(1000);
 	//		commentlist.add(text(tendercreationlocators.CommentsArea_IndentRTF));
 			tabcontentList.add(text(tendercreationlocators.tabContent));
-=======
 			waitForObj(1000); 
 			
->>>>>>> 94c02cb56a03c648b9f2ca4ea3c8abe30066a468
 			pdfResultReport.addStepDetails("IndentTG1_BOM_Item_tabvalidation",
 					"Should save BOM Item tab fields during indent creation", "Sucessfully saved BOM Item tab fields during indent creation " + " ", "Pass",
 					"Y");
@@ -1817,7 +1811,7 @@ public class RfqFromIndentComponent extends BaseClass_Web {
 			 waitForObj(2000); */
 			
 			
->>>>>>> 94c02cb56a03c648b9f2ca4ea3c8abe30066a468
+
 			pdfResultReport.addStepDetails("IndentTG1_BOM_Services_tabvalidation",
 					"Should save BOM Services tab fields during indent creation", "Sucessfully saved BOM Services tab fields during indent creation " + " ", "Pass",
 					"Y");

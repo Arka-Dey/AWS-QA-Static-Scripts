@@ -153,15 +153,7 @@ public class TG1_TC_Indent_02_Creation_with_multiple_Approvers extends BaseClass
 		rfqfromintendcomponentobj.enterIndentNoInSearch();
 		rfqfromintendcomponentobj.VerifyIndentStatus("Draft");
 		etendercomponentobj.tenderLogout();
-<<<<<<< HEAD
-		
-		
-		
-		
-=======
-				
-				
->>>>>>> 94c02cb56a03c648b9f2ca4ea3c8abe30066a468
+
 		//Indent creator initiates WF again with 10 approvers in parallel and sequential but recall it after taking decision by some approvers
 		rfqfromintendcomponentobj.IndentcreatorLogin();
 		rfqfromintendcomponentobj.navigateToIndentListing();

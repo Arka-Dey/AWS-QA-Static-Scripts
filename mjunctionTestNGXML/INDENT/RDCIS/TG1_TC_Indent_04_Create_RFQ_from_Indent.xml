@@ -7,7 +7,7 @@
         <parameter name="browserName" value="windowschrome"></parameter>
         <classes>
            <parameter name="TestcaseNo" value="25"></parameter>   
-            <class name="com.testScripts_mjunction.TG1_TC_Indent_05_Delete_Indent" />
+            <class name="com.testScripts_mjunction.TG1_TC_Indent_04_Create_RFQ_from_Indent" />
         </classes>
     </test> 
 </suite>

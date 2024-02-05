@@ -6,8 +6,8 @@
     <test name="Test">
         <parameter name="browserName" value="windowschrome"></parameter>
         <classes>
-           <parameter name="TestcaseNo" value="25"></parameter>   
-            <class name="com.testScripts_mjunction.TG1_TC_Indent_06_Cancel_Indent" />
+           <parameter name="TestcaseNo" value="8"></parameter>   
+            <class name="com.testScripts_mjunction.TG1_TC_BidSubmission_08_verifying_Draftbid_functionality" />
         </classes>
     </test> 
 </suite>

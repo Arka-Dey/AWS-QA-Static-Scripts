@@ -6,8 +6,8 @@
     <test name="Test">
         <parameter name="browserName" value="windowschrome"></parameter>
         <classes>
-           <parameter name="TestcaseNo" value="29"></parameter>   
-            <class name="com.testScripts_mjunction.TC_EPS_PO_02UserDefinedApprovalTest"/>
+           <parameter name="TestcaseNo" value="3"></parameter>   
+            <class name="com.testScripts_mjunction.TG1_TC_Corrigendum_03_DateCorrigendum_withApproval_Livestate" />
         </classes>
     </test> 
-</suite> 
+</suite>

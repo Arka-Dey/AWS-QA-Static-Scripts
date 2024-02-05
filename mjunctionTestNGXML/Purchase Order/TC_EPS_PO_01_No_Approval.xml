@@ -6,13 +6,8 @@
     <test name="Test">
         <parameter name="browserName" value="windowschrome"></parameter>
         <classes>
-<<<<<<<< HEAD:mjunctionTestNGXML/INDENT/RDCIS/TG1_TC_Indent_05_Delete_Indent.xml
-           <parameter name="TestcaseNo" value="25"></parameter>   
-            <class name="com.testScripts_mjunction.TG1_TC_Indent_04_Create_RFQ_from_Indent" />
-========
            <parameter name="TestcaseNo" value="8"></parameter>   
             <class name="com.testScripts_mjunction.TC_EPS_PO_01_No_Approval"/>
->>>>>>>> 94c02cb56a03c648b9f2ca4ea3c8abe30066a468:mjunctionTestNGXML/Purchase Order/TC_EPS_PO_01_No_Approval.xml
         </classes>
     </test> 
 </suite> 

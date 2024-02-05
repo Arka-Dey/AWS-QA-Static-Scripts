@@ -6,8 +6,8 @@
     <test name="Test">
         <parameter name="browserName" value="windowschrome"></parameter>
         <classes>
-           <parameter name="TestcaseNo" value="29"></parameter>   
-            <class name="com.testScripts_mjunction.TC_EPS_PO_02UserDefinedApprovalTest"/>
+           <parameter name="TestcaseNo" value="11"></parameter>   
+            <class name="com.testScripts_mjunction.TG1_TC_Evaluation_11_Openingapproval_Y_Evaluationapproval_Y" />
         </classes>
     </test> 
-</suite> 
+</suite>

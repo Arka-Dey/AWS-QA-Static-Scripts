@@ -6,8 +6,8 @@
     <test name="Test">
         <parameter name="browserName" value="windowschrome"></parameter>
         <classes>
-           <parameter name="TestcaseNo" value="29"></parameter>   
-            <class name="com.testScripts_mjunction.TC_EPS_PO_02UserDefinedApprovalTest"/>
+           <parameter name="TestcaseNo" value="9"></parameter>   
+            <class name="com.testScripts_mjunction.TG1_TC_BidSubmission_09_verifying_Withdraw_functionality" />
         </classes>
     </test> 
-</suite> 
+</suite>
