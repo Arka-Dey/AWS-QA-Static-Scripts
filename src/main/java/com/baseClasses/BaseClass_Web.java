@@ -454,6 +454,20 @@ import org.testng.ITestContext;
 		return dropdown_values.size();
 	}
 	
+	public int totalLocatorCount(By by) throws AutomationException {
+		List<WebElement> totalLocator_Count = null;
+		try {
+			WebDriver driver = ThreadLocalWebdriver.getDriver();
+			totalLocator_Count = driver.findElements(by);
+
+		} catch (RuntimeException localRuntimeException) {
+			System.out.println("Error in finding total no. totalLocator_Count: " + localRuntimeException.getMessage() + "Fail");
+			// PDFResultReport.addStepDetails("List box size", "Get the no of items available in the dropdown", "Error in finding total no. of elements in dropdown: " + localRuntimeException.getMessage(), "FAIL","N");
+			throw new AutomationException("Error in finding total no. totalLocator_Count: " + localRuntimeException.getMessage());
+		}
+		return totalLocator_Count.size();
+	}
+	
 	public static boolean ischeckboxcheckedbbydefault(WebElement elem) {
 		if (elem.getAttribute("checked") != null) {
 			return true;

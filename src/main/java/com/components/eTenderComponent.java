@@ -5217,6 +5217,34 @@ public class eTenderComponent extends BaseClass_Web {
 		return propertyValue;
 
 	}
+	
+	//added on 290124
+	public static String getDataFromPropertiesFile_New(String documentID) throws IOException {
+		FileInputStream fileReader = null;
+		Properties properties = null;
+		String propertyValue;
+		try {
+			final String filePath = System.getProperty("user.dir")
+					+ "//src//main//java//com//DataProperties//GeneralInfo.properties";
+
+			fileReader = new FileInputStream(filePath);
+
+			properties = new Properties();
+			properties.load(fileReader);
+
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		propertyValue = properties.getProperty(documentID);
+
+		fileReader.close();
+
+		return propertyValue;
+
+	}
 
 	public void updateDataIntoPropertyFile(String value) throws IOException {
 		FileOutputStream fileWriter = null;

@@ -2157,7 +2157,7 @@ public class RfqFromIndentComponent extends BaseClass_Web {
 			click(tendercreationlocators.Btn_SendforApproval_Indent, "Btn_SendforApproval_Indent");
 			waitForElementToBeVisible(tendercreationlocators.myindent);
 			//waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
-			waitForObj(4000);
+			waitForObj(10000);
 			pdfResultReport.addStepDetails("AddSingleUsersForSequentialApproval_IndentWF",
 					"Must Submit the Indent With Seq Flow ",
 					"Sucessfully Submitted Indent With Seq Flow "

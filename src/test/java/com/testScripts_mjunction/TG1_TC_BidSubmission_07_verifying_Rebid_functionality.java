@@ -48,7 +48,6 @@ public class TG1_TC_BidSubmission_07_verifying_Rebid_functionality extends BaseC
 		initializeRepository();
 	//Creating a new Indent with No approval
 		etendercomponentobj.openURL();
-		/*
 		rfqfromintendcomponentobj.IndentcreatorLogin();
 		rfqfromintendcomponentobj.navigateToIndentCreation();
 		rfqfromintendcomponentobj.IndentTG1_General_Info_tabvalidation("Indigenous Indent (Supply & Service Both) V-004");
@@ -96,7 +95,6 @@ public class TG1_TC_BidSubmission_07_verifying_Rebid_functionality extends BaseC
 
 		//Bid submission procress	
 		rfqfromintendcomponentobj.waitTillBidstartDateReached();
-		*/
 		etendercomponentobj.bidder_01_Login();
 		etendercomponentobj.enterTenderIdInSearch_bidsubmission();
 		etendercomponentobj.navigateToActionDropdown_bidsubmission();
