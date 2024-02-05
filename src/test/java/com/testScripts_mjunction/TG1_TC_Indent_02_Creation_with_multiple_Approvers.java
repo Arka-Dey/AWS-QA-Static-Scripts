@@ -57,7 +57,7 @@ public class TG1_TC_Indent_02_Creation_with_multiple_Approvers extends BaseClass
 		etendercomponentobj.openURL();
 		rfqfromintendcomponentobj.IndentcreatorLogin();
 		rfqfromintendcomponentobj.navigateToIndentCreation();
-		rfqfromintendcomponentobj.IndentTG1_General_Info_tabvalidation("Indigenous Indent (Supply & Service Both) V-004");
+		rfqfromintendcomponentobj.IndentTG1_General_Info_tabvalidation("Indigenous Indent (Supply & Service Both) V-004");	
 		rfqfromintendcomponentobj.IndentTG1_Indent_Details_tabvalidation();
 		rfqfromintendcomponentobj.IndentTG1_Other_Information_tabvalidation();
 		rfqfromintendcomponentobj.IndentTG1_BOM_Item_tabvalidation();
@@ -73,7 +73,7 @@ public class TG1_TC_Indent_02_Creation_with_multiple_Approvers extends BaseClass
 		rfqfromintendcomponentobj.VerifyIndentStatus("Pending For Approval");
 		etendercomponentobj.tenderLogout();
 		 
-		 
+		
 		
 		//Approve the created indent
 		rfqfromintendcomponentobj.IndentapproverLogin();
@@ -153,6 +153,8 @@ public class TG1_TC_Indent_02_Creation_with_multiple_Approvers extends BaseClass
 		rfqfromintendcomponentobj.enterIndentNoInSearch();
 		rfqfromintendcomponentobj.VerifyIndentStatus("Draft");
 		etendercomponentobj.tenderLogout();
+		
+		
 		
 		
 		//Indent creator initiates WF again with 10 approvers in parallel and sequential but recall it after taking decision by some approvers
@@ -325,7 +327,21 @@ public class TG1_TC_Indent_02_Creation_with_multiple_Approvers extends BaseClass
 		 rfqfromintendcomponentobj.navigateToIndentListing();
 		 rfqfromintendcomponentobj.enterIndentNoInSearch();
 		 rfqfromintendcomponentobj.VerifyIndentStatus("Completed");
+		 
+		//preview tab validation  validatePreviewData
+		 rfqfromintendcomponentobj.validatePreviewData();   //validate preview tab validation at creator end
 		 etendercomponentobj.tenderLogout();
+		 
+//		 //validate approver end preview data
+//		 rfqfromintendcomponentobj.IndentapproverLogin();
+//			rfqfromintendcomponentobj.GoToApprovalworkFlowCompletedindentAndSearchTheIndent();
+//			rfqfromintendcomponentobj.clickDetailLinkInApprovalListPage();
+//			rfqfromintendcomponentobj.validatePreviewData();
+//			 etendercomponentobj.tenderLogout();
+		 
+		 
+		 
+		 
 		 
 	}
 

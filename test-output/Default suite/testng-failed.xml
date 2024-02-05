@@ -3,7 +3,7 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.testScripts_mjunction.TG1_TC_Indent_02_Creation_with_multiple_Approvers">
+      <class name="com.testScripts_mjunction.TG1_TC_Indent_08_Creation_with_multiple_Approvers_with_branching">
         <methods>
           <include name="setUpSuiteDetails"/>
           <include name="Indent_creation_with_approval"/>
@@ -12,7 +12,7 @@
           <include name="BeforeClass"/>
           <include name="afterClass"/>
         </methods>
-      </class> <!-- com.testScripts_mjunction.TG1_TC_Indent_02_Creation_with_multiple_Approvers -->
+      </class> <!-- com.testScripts_mjunction.TG1_TC_Indent_08_Creation_with_multiple_Approvers_with_branching -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

@@ -12,7 +12,7 @@ import com.baseClasses.ThreadLocalWebdriver;
 import com.components.RfqFromIndentComponent;
 import com.components.eTenderComponent;
 
-public class TG1_TC_Indent_01_Creation_with_approval extends BaseClass_Web{
+public class TG1_TC_Indent_06_Cancel_Indent extends BaseClass_Web{
 	
 	public eTenderComponent etendercomponentobj =new eTenderComponent(pdfResultReport);
 	public RfqFromIndentComponent rfqfromintendcomponentobj = new RfqFromIndentComponent(pdfResultReport);
@@ -80,44 +80,23 @@ public class TG1_TC_Indent_01_Creation_with_approval extends BaseClass_Web{
 		rfqfromintendcomponentobj.ApproverOverAllComentWithIndentHasBeenApproved();
 		etendercomponentobj.tenderLogoutOld();
 		
-		//Verifying the indent status after approval
-		rfqfromintendcomponentobj.IndentcreatorLogin();
-		rfqfromintendcomponentobj.navigateToIndentListing();
-		rfqfromintendcomponentobj.enterIndentNoInSearch();
-		rfqfromintendcomponentobj.VerifyIndentStatus("Completed");
-		etendercomponentobj.tenderLogout();
-		
-		
-		
-		
-		
-		
-//		// validate Delete Indent feature
-//					etendercomponentobj.openURL();
-//					rfqfromintendcomponentobj.IndentcreatorLogin();
-//					rfqfromintendcomponentobj.navigateToIndentCreation();
-//					rfqfromintendcomponentobj.IndentTG1_General_Info_tabvalidation("Indigenous Indent (Supply & Service Both) V-004");
-//					rfqfromintendcomponentobj.validateDeleteIndentFeature();
-//					rfqfromintendcomponentobj.VerifyIndentStatus("Deleted");
-//					etendercomponentobj.tenderLogout();
-//			
-//					// cancel indent feature without approver
-//					rfqfromintendcomponentobj.IndentcreatorLogin();
-//				 rfqfromintendcomponentobj.navigateToIndentListing();
-//				 rfqfromintendcomponentobj.validateCancelIndentFeature();
-//					etendercomponentobj.tenderLogout();
-//
-//					rfqfromintendcomponentobj.IndentapproverLogin(pdfResultReport.testData.get("IndentApproverUserName"));
-//					rfqfromintendcomponentobj.cancelIndentTabAtApproverEnd();
-//					rfqfromintendcomponentobj.clickDetailLinkInApprovalListPageForCancelIndent();
-//					rfqfromintendcomponentobj.ApproverOverAllComentWithIndentHasBeenApprovedforCancelIndent();
-//					etendercomponentobj.tenderLogoutOld();			 
-//					
-//					rfqfromintendcomponentobj.IndentcreatorLogin();
-//					 rfqfromintendcomponentobj.navigateToIndentListing();
-//					 rfqfromintendcomponentobj.clickOnCancelledDeletedIndentTab();
-//					 rfqfromintendcomponentobj.VerifyIndentStatus_AssignmentListPageInCancelDeletedTab("Cancelled");
-//					 etendercomponentobj.tenderLogout();
+					// cancel indent feature without approver
+					rfqfromintendcomponentobj.IndentcreatorLogin();
+				 rfqfromintendcomponentobj.navigateToIndentListing();
+				 rfqfromintendcomponentobj.validateCancelIndentFeature();
+					etendercomponentobj.tenderLogout();
+
+					rfqfromintendcomponentobj.IndentapproverLogin(pdfResultReport.testData.get("IndentApproverUserName"));
+					rfqfromintendcomponentobj.cancelIndentTabAtApproverEnd();
+					rfqfromintendcomponentobj.clickDetailLinkInApprovalListPageForCancelIndent();
+					rfqfromintendcomponentobj.ApproverOverAllComentWithIndentHasBeenApprovedforCancelIndent();
+					etendercomponentobj.tenderLogoutOld();			 
+					
+					rfqfromintendcomponentobj.IndentcreatorLogin();
+					 rfqfromintendcomponentobj.navigateToIndentListing();
+					 rfqfromintendcomponentobj.clickOnCancelledDeletedIndentTab();
+					 rfqfromintendcomponentobj.VerifyIndentStatus_AssignmentListPageInCancelDeletedTab("Cancelled");
+					 etendercomponentobj.tenderLogout();
 	}
 
 }

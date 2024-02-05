@@ -133,6 +133,7 @@ import com.itextpdf.text.pdf.PdfStructTreeController.returnType;
 	public void select(By locator, String data) throws Exception {
 		try {
 			Select dropdown = new Select(ThreadLocalWebdriver.getDriver().findElement(locator));
+			waitForObj(1500);
 			dropdown.selectByVisibleText(data);
 			waitForObj(2000);
 			log.info("Selected the Value from the dropdown :"+locator);
@@ -1255,6 +1256,18 @@ import com.itextpdf.text.pdf.PdfStructTreeController.returnType;
 			e.printStackTrace();
 		}
 	}
+	//added @pavel
+	public void scrollToBottomOfThePage() {
+		try {
+		WebDriver driver = ThreadLocalWebdriver.getDriver();
+		((JavascriptExecutor) driver)
+	     .executeScript("window.scrollTo(0, document.body.scrollHeight)");
+	} catch (Exception e) {
+		
+		e.printStackTrace();
+	}
+	}
+	
 	
 	// added on 070124
 	public boolean isElementTextPresent(By locator, String expectedText) {
@@ -1326,4 +1339,25 @@ import com.itextpdf.text.pdf.PdfStructTreeController.returnType;
 	            //return false;
 	        }
 	    }
+//		//added by @Pavel 12/01/2024
+//		public boolean validatePreviewTabData(By locator, String expectedText) {
+//	        try {
+//	        	WebDriver driver = ThreadLocalWebdriver.getDriver();
+//	        	List<WebElement> listOfElements= driver.findElements(locator);
+//	         
+//	            
+//	            String actualText = listOfElements.get(1).getText().trim();
+//	            return actualText.equals(expectedText);
+//	            
+//	            
+//	    
+//	        } catch (Exception e) {
+//	            // Handle any exceptions or log them as needed
+//	            e.printStackTrace();
+//	            return false;
+//	        }
+//	    
+		
+	
+		
 	}

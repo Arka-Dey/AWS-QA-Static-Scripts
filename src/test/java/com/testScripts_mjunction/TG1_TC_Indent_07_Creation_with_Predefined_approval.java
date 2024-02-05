@@ -12,7 +12,7 @@ import com.baseClasses.ThreadLocalWebdriver;
 import com.components.RfqFromIndentComponent;
 import com.components.eTenderComponent;
 
-public class TG1_TC_Indent_01_Creation_with_approval extends BaseClass_Web{
+public class TG1_TC_Indent_07_Creation_with_Predefined_approval extends BaseClass_Web{
 	
 	public eTenderComponent etendercomponentobj =new eTenderComponent(pdfResultReport);
 	public RfqFromIndentComponent rfqfromintendcomponentobj = new RfqFromIndentComponent(pdfResultReport);
@@ -66,58 +66,47 @@ public class TG1_TC_Indent_01_Creation_with_approval extends BaseClass_Web{
 		rfqfromintendcomponentobj.IndentTG1_Annexures_tabvalidation();
 		rfqfromintendcomponentobj.IndentTG1_Submit();
 		rfqfromintendcomponentobj.SystemIndentNoSaveNew();
-		rfqfromintendcomponentobj.AddSingleUsersForSequentialApproval_IndentWF();
+		rfqfromintendcomponentobj.addPredefinedIndentApprover();
 		//rfqfromintendcomponentobj.navigateToIndentListing();
 		rfqfromintendcomponentobj.enterIndentNoInSearch();
 		rfqfromintendcomponentobj.VerifyIndentStatus("Pending For Approval");
 		etendercomponentobj.tenderLogout();
+	
 		
-		//Approve the created indent
-		rfqfromintendcomponentobj.IndentapproverLogin();
+		//S1 approver 
+		rfqfromintendcomponentobj.IndentapproverLogin(pdfResultReport.testData.get("IndentApproverUserName"));
 		rfqfromintendcomponentobj.GoToApprovalworkFlowPendingindentAndSearchTheIndent();
 		rfqfromintendcomponentobj.clickDetailLinkInApprovalListPage();
-		rfqfromintendcomponentobj.validateIndentdataAtApproverEnd();   //validate indent data at sectionWise view
+		rfqfromintendcomponentobj.Approve_Indent_by_NonCoordinators("Indent Process Is Approved by indent_approver_02"); 
+		etendercomponentobj.tenderLogoutOld();
+		
+		//S2 approver
+		rfqfromintendcomponentobj.IndentapproverLogin(pdfResultReport.testData.get("Approver1"));
+		rfqfromintendcomponentobj.GoToApprovalworkFlowPendingindentAndSearchTheIndent();
+		rfqfromintendcomponentobj.clickDetailLinkInApprovalListPage();
+		rfqfromintendcomponentobj.Approve_Indent_by_NonCoordinators("Indent Process Is Approved by test_approver_01"); 
+		etendercomponentobj.tenderLogoutOld();
+		
+		//P1 approver
+		rfqfromintendcomponentobj.IndentapproverLogin(pdfResultReport.testData.get("Approver2"));
+		rfqfromintendcomponentobj.GoToApprovalworkFlowPendingindentAndSearchTheIndent();
+		rfqfromintendcomponentobj.clickDetailLinkInApprovalListPage();
+		rfqfromintendcomponentobj.Approve_Indent_by_NonCoordinators("Indent Process Is Approved by test_approver_02"); 
+		etendercomponentobj.tenderLogoutOld();
+		
+		//P2 approver
+		rfqfromintendcomponentobj.IndentapproverLogin(pdfResultReport.testData.get("Approver3"));
+		rfqfromintendcomponentobj.GoToApprovalworkFlowPendingindentAndSearchTheIndent();
+		rfqfromintendcomponentobj.clickDetailLinkInApprovalListPage();
+		rfqfromintendcomponentobj.Approve_Indent_by_NonCoordinators("Indent Process Is Approved by test_approver_03"); 
+		etendercomponentobj.tenderLogoutOld();
+		
+		//P3 approver (C)
+		rfqfromintendcomponentobj.IndentapproverLogin(pdfResultReport.testData.get("Approver5"));
+		rfqfromintendcomponentobj.GoToApprovalworkFlowPendingindentAndSearchTheIndent();
+		rfqfromintendcomponentobj.clickDetailLinkInApprovalListPage();
 		rfqfromintendcomponentobj.ApproverOverAllComentWithIndentHasBeenApproved();
 		etendercomponentobj.tenderLogoutOld();
 		
-		//Verifying the indent status after approval
-		rfqfromintendcomponentobj.IndentcreatorLogin();
-		rfqfromintendcomponentobj.navigateToIndentListing();
-		rfqfromintendcomponentobj.enterIndentNoInSearch();
-		rfqfromintendcomponentobj.VerifyIndentStatus("Completed");
-		etendercomponentobj.tenderLogout();
-		
-		
-		
-		
-		
-		
-//		// validate Delete Indent feature
-//					etendercomponentobj.openURL();
-//					rfqfromintendcomponentobj.IndentcreatorLogin();
-//					rfqfromintendcomponentobj.navigateToIndentCreation();
-//					rfqfromintendcomponentobj.IndentTG1_General_Info_tabvalidation("Indigenous Indent (Supply & Service Both) V-004");
-//					rfqfromintendcomponentobj.validateDeleteIndentFeature();
-//					rfqfromintendcomponentobj.VerifyIndentStatus("Deleted");
-//					etendercomponentobj.tenderLogout();
-//			
-//					// cancel indent feature without approver
-//					rfqfromintendcomponentobj.IndentcreatorLogin();
-//				 rfqfromintendcomponentobj.navigateToIndentListing();
-//				 rfqfromintendcomponentobj.validateCancelIndentFeature();
-//					etendercomponentobj.tenderLogout();
-//
-//					rfqfromintendcomponentobj.IndentapproverLogin(pdfResultReport.testData.get("IndentApproverUserName"));
-//					rfqfromintendcomponentobj.cancelIndentTabAtApproverEnd();
-//					rfqfromintendcomponentobj.clickDetailLinkInApprovalListPageForCancelIndent();
-//					rfqfromintendcomponentobj.ApproverOverAllComentWithIndentHasBeenApprovedforCancelIndent();
-//					etendercomponentobj.tenderLogoutOld();			 
-//					
-//					rfqfromintendcomponentobj.IndentcreatorLogin();
-//					 rfqfromintendcomponentobj.navigateToIndentListing();
-//					 rfqfromintendcomponentobj.clickOnCancelledDeletedIndentTab();
-//					 rfqfromintendcomponentobj.VerifyIndentStatus_AssignmentListPageInCancelDeletedTab("Cancelled");
-//					 etendercomponentobj.tenderLogout();
 	}
-
 }

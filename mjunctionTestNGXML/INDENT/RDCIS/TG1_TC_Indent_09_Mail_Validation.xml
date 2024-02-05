@@ -6,8 +6,8 @@
     <test name="Test">
         <parameter name="browserName" value="windowschrome"></parameter>
         <classes>
-           <parameter name="TestcaseNo" value="25"></parameter>   
-            <class name="com.testScripts_mjunction.TG1_TC_Indent_05_Delete_Indent" />
+           <parameter name="TestcaseNo" value="18"></parameter>   
+            <class name="com.testScripts_mjunction.TG1_TC_Indent_09_Mail_Validation" />
         </classes>
     </test> 
 </suite>

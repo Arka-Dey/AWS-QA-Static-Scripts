@@ -1194,10 +1194,19 @@ public class eTenderComponent extends BaseClass_Web {
 		try {
 			log.info("started executing the method:: tendercreatorLogout");
 			waitForObj(2000);
-
+			if(ThreadLocalWebdriver.getDriver().findElement(By.xpath("//div[@id='overlay']")).isDisplayed())
+			{
+	
+				waitForElementToBeInvisible(tendercreationlocators.loadingOverlay);
+			}
 			JSClick(tendercreationlocators.logoutOptionOld, "logoutOption");
 			click(tendercreationlocators.logoutOld, "logout");
 			click(tendercreationlocators.logoutConfirmationOld, "logoutConfirmation");
+			if(ThreadLocalWebdriver.getDriver().findElement(By.xpath("//div[@id='overlay']")).isDisplayed())
+			{
+	
+				waitForElementToBeInvisible(tendercreationlocators.loadingOverlay);
+			}
 			ThreadLocalWebdriver.getDriver().navigate().to("https://epsnewprodaws.mjunction.in/EPSV2Web/");
 			waitForObj(10000);
 			pdfResultReport.addStepDetails("Tender creator logout", "Tender creator must be sucessfully logout",

@@ -2954,7 +2954,10 @@ public By Accommodationandfoodserviceactivities = By.xpath("//span[text()='Accom
 	public By Lbl_IndentCreation = By.xpath("//h3[normalize-space()='Indent Creation']");
 	public By Indent_TG_select = By.xpath("//select[@name='templateGroup']");
 	public By Indent_TG_View = By.xpath("//button[normalize-space()='View']");
-
+	public By Admin = By.xpath("//a[normalize-space()='Admin']");
+	public By mailHistory = By.xpath("//*[@id='subMenuBox3']/div/div/ul/li[2]/a");
+	
+	
 	//Indent General information page
 	public By IndentRefNo= By.xpath("//input[@id='indent_general_info.indent_ref_no.0']");
 	public By IndentCategory = By.xpath("//select[@name='indent_general_info_indent_category']");
@@ -2989,6 +2992,7 @@ public By Accommodationandfoodserviceactivities = By.xpath("//span[text()='Accom
 	public By TypeOfService_TG1IndentDetailsTab_TG10 = By.xpath("//select[@name='rdcis_indnt_dtls_final_cc_Type_of_Service_Work']");
 	public By Capital_TG1IndentDetailsTab_TG10 = By.xpath("//select[@name='rdcis_indnt_dtls_final_cc_Nature_of_Indent']");
 	public By ModeOfDespatch_TG1IndentDetailsTab_TG10 = By.xpath("//select[@name='rdcis_indnt_dtls_final_cc_Mode_of_Dispatch']");
+	public By ModeOfDespatchIfOther_TG1IndentDetailsTab_TG10 = By.xpath("//*[@id='rdcis_indnt_dtls_final_mm.Mode_Disp_Other.0']");
 	public By PlaceOfDelivery_TG1IndentDetailsTab_TG10 = By.xpath("//select[@name='rdcis_indnt_dtls_final_cc_Place_of_Delivery']");
 	public By DeiveryPeriod_TG1IndentDetailsTab_TG10 = By.xpath("//select[@name='rdcis_indnt_dtls_final_cc_Contrct_dlivry_priod']");
 	public By NoOfYear_TG1IndentDetailsTab_TG10 = By.xpath("//input[@id='rdcis_indnt_dtls_final_cc.dys_Month_Year.0']");
@@ -3070,6 +3074,7 @@ public By Accommodationandfoodserviceactivities = By.xpath("//span[text()='Accom
 	public By InpuFilename_TG1AnnexuresTab = By.xpath("//div[contains(@class,'modal fade in')]//input[@id='indent_attachment.file_name.0']");
 	public By AttachFile_TG1AnnexuresTab = By.xpath("//input[contains(@ng-click,'aaaa()')]");
 	public By OKBtn_TG1AnnexuresTab = By.xpath("//button[@id='add-authorRow']");
+	public By AnnexuresType = By.xpath("//*[@id='indent_attachment.label.0']");
 	//Indent workflow page
 	public By Lbl_SendforApproval_Indent = By.xpath("//app-workflowmodal[@class='ng-star-inserted']/div/div/h5"); //modified on 140722
 	public By SystemIndentNo = By.xpath("//div[@class='lthpTitle']/div[1]/div[1]");
@@ -3078,6 +3083,95 @@ public By Accommodationandfoodserviceactivities = By.xpath("//span[text()='Accom
 	public By CompleteIndentbtn = By.xpath("//button[contains(text(),'Submit')]");
 	public By NoOfIndentRowinApproval = By.xpath("//table[@id='approver']/tbody/tr"); //modified on 140722
 	public By cancelUser1_Indent = By.xpath("//a[@class='tblCirBtnSm tblCross blu ng-star-inserted']"); //modified on 140722
+	
+	//Indent preview page locator  @pavel 
+	public By generalTabPreviewData = By.xpath("//*[@class='col-xl-6 ng-star-inserted']/fieldset/div");
+	public By arrowIcon = By.xpath("//a[@name='add2Group']");
+	public By discussionSearchUser = By.xpath("(//input[@placeholder='Type any keyword'])[2]");
+	public By b1usercomment = By.xpath("//*[@id='buttonHolder']/tr/td[2]/div/textarea");
+	public By coordinatorCheckbox = By.xpath("//*[@id='approver']/tbody/tr[6]/td[5]/label/span");
+	public By minApprover = By.xpath("//*[@id='approver']/tbody/tr[6]/td[6]/span/input");
+	public By b2usercommnet = By.xpath("(//*[@id='buttonHolder']/tr/td[2]/div/textarea)[2]");
+	public By b3usercommnet = By.xpath("(//*[@id='buttonHolder']/tr/td[2]/div/textarea)[3]");
+	public By remarksforDiscussion = By.xpath("//textarea[@class='form-control ng-pristine ng-valid ng-touched']");
+	public By usernameatDiscussion = By.xpath("//*[contains(text(),'Username')]");
+	public By generalTab = By.xpath("(//div[@class='mat-tab-labels']/div/div)[1]");
+	public By templategroupnameInIndentPreview = By.xpath("//*[@id='_indent_general_info']/app-tab-preview/div/div/div/div/div[1]/fieldset/div[1]/span");
+	public By Indent_description_001 = By.xpath("//*[@class='col-xl-6 ng-star-inserted'][5]/fieldset/div");
+	public By NormalEmergency = By.xpath("//*[@id='_indent_general_info']/app-tab-preview/div/div/div/div/div[8]/fieldset/div");
+	public By indentCategory = By.xpath("//*[@id='_indent_general_info']/app-tab-preview/div/div/div/div/div[9]/fieldset/div");
+	public By indentCurrency = By.xpath("//*[@id='_indent_general_info']/app-tab-preview/div/div/div/div/div[11]/fieldset/div");
+	public By suggestedModeofTendering = By.xpath("//*[@id='_indent_general_info']/app-tab-preview/div/div/div/div/div[15]/fieldset/div");
+	public By remarkss = By.xpath("//*[@id='_indent_general_info']/app-tab-preview/div/div/div/div/div[17]/fieldset/div");
+	
+	public By indentDetailsPreviewTab = By.xpath("(//div[@class='mat-tab-labels']/div/div)[2]");
+	public By TypeofServiceWorkpreview = By.xpath("//*[@id='_rdcis_indnt_dtls_final_mm']/app-tab-preview/div/div/div/div/div[1]/fieldset/div");
+	public By CapitalRevenuepreview  = By.xpath("//*[@id='_rdcis_indnt_dtls_final_mm']/app-tab-preview/div/div/div/div/div[3]/fieldset/div");
+	public By ModeofDispatchpreview  = By.xpath("//*[@id='_rdcis_indnt_dtls_final_mm']/app-tab-preview/div/div/div/div/div[5]/fieldset/div");
+	public By PlaceofDeliverypreview  = By.xpath("//*[@id='_rdcis_indnt_dtls_final_mm']/app-tab-preview/div/div/div/div/div[7]/fieldset/div");
+	public By ContractCompletionDeliveryPeriodpreview  = By.xpath("//*[@id='_rdcis_indnt_dtls_final_mm']/app-tab-preview/div/div/div/div/div[9]/fieldset/div");
+	public By NumberofYearMonthDaypreview  = By.xpath("//*[@id='_rdcis_indnt_dtls_final_mm']/app-tab-preview/div/div/div/div/div[10]/fieldset/div");
+	public By BasisofPriceEstimationpreview  = By.xpath("//*[@id='_rdcis_indnt_dtls_final_mm']/app-tab-preview/div/div/div/div/div[21]/fieldset/div");
+	public By PreBidMeetingpreview  = By.xpath("//*[@id='_rdcis_indnt_dtls_final_mm']/app-tab-preview/div/div/div/div/div[22]/fieldset/div");
+	
+	public By otherInformationpreviewTab  = By.xpath("(//div[@class='mat-tab-labels']/div/div)[3]");
+	public By worksContractPreview  = By.xpath("//*[@id='_rdcis_other_info_final']/app-tab-preview/div/div/div/div/div[7]/fieldset/div");
+	public By partysitepreview  = By.xpath("//*[@id='_rdcis_other_info_final']/app-tab-preview/div/div/div/div/div[16]/fieldset/div");
+	
+	public By bomItempreviewTab  = By.xpath("(//div[@class='mat-tab-labels']/div/div)[4]");
+	
+	public By estimationsheetprevireTab  = By.xpath("(//div[@class='mat-tab-labels']/div/div)[6]");
+	
+	public By technicalSpecificationPreviewTab  = By.xpath("(//div[@class='mat-tab-labels']/div/div)[7]");
+	
+	public By clauseSubClauseNoPreview  = By.xpath("//*[@id='_rdcis_cmpl_tech_spe_final']/app-tab-preview/div/div[2]/table/tbody/tr/td[2]/div/span");
+	public By ClauseSubClauseHeaderTitlePreview  = By.xpath("//*[@id='_rdcis_cmpl_tech_spe_final']/app-tab-preview/div/div[2]/table/tbody/tr/td[3]/div/span");
+	
+	public By indentPreviewnextarrowbutton  = By.xpath("//*[@id='nav-tab']/mat-tab-group/mat-tab-header/div[3]");
+	
+	public By annexturetabpreview  = By.xpath("(//div[@class='mat-tab-labels']/div/div)[8]");
+	public By AnnexureTypepreview= By.xpath("//*[@id='_indent_attachment']/app-tab-preview/div/div[2]/table/tbody/tr/td[2]/div/span");
+	public By AnnexureAttachFilepreview= By.xpath("//*[@id='_indent_attachment']/app-tab-preview/div/div[2]/table/tbody/tr/td[3]/div/span[1]");
+	public By annextureDownloadButtonPreview= By.xpath("//*[@id='_indent_attachment']/app-tab-preview/div/div[2]/table/tbody/tr/td[3]/div/span[2]");
+	
+	public By indentByPreviewclosebutton= By.xpath("//button[@class='btn-close ms-sm-2']");
+	
+	public By approvalHistoryPreviewTab  = By.xpath("(//div[@class='mat-tab-labels']/div/div)[9]");
+	
+	public By allcommentsINPreviewByPage  = By.xpath("//span[@class='comments']");
+	
+	public By loadingOverlay  = By.xpath("//div[@id='overlay']");
+	
+	public By tabContent  = By.xpath("//div[@class='tab-content']");
+	
+	//delete Indent feature @pavel
+	public By indentlist  = By.xpath("(//li[@class='breadcrumb-item'])[2]/a");
+	public By deleteIndentLocator  = By.xpath("(//ul[@class='dropdown-menu customDroupDown show']/li/a)[4]");
+	public By deleteRemarks  = By.xpath("//*[@id='deletionRemarks']");
+	public By deleteindentAttachment  = By.xpath("//*[@class='customFile']");
+	public By submitbuttonIndentCancel  = By.xpath("//button[text()='Submit']");
+	public By indesntCancelSuccessMessageOkButton  = By.xpath("//button[@class='btn btn-primary']");
+	public By sendBack  = By.xpath("//*[@id='collapseAC']/div/div[2]/div[1]/button");
+	public By cancelIndent  = By.xpath("//ul[@class='dropdown-menu customDroupDown show']//*[text()[contains(.,'Cancel Indent')]]");
+	public By cancelIndentAttachFile  = By.xpath("//*[@id='cancelIndentAttachfile']");
+	public By cancelIndentReason  = By.xpath("//*[@id='cancellationReason']");
+	public By userdefineApprovalcancelindent  = By.xpath("//*[@id='staticBackdrop']/div/div/div[2]/div/div[2]/form/fieldset/div/div/div/div[2]/label/span");
+	public By sectionWiseCommentNoRadio = By.xpath("//*[@id='staticBackdrop']/div/div/div[2]/div/div[2]/form/div[3]/fieldset/div/div/label[2]/span");
+	public By canceluserinApprover = By.xpath("//a[@class='tblCirBtnSm tblCross blu']");
+	public By adduserIcon = By.xpath("//*[@class='mat-icon notranslate material-icons mat-icon-no-color']");
+	public By sendForCancellationApproval = By.xpath("//*[@id='dyantc']");
+	public By cancelledIndentTab = By.xpath("//*[@id='nav-cancelled-indent-tab']");
+	public By cancelIndentTabAtApproverEnd = By.xpath("//*[@id='cancelIndentTab']");
+	public By actionButtonCancelIndent = By.xpath("//*[@id='cancelIndent']/div/div/table/tbody/tr/td/div/button");
+	public By sectionWiseViewCancelIndent = By.xpath("//*[@id='myTable']/tbody/tr/td[9]/div/ul/li[1]/a");
+	public By cancelIndentStatus = By.xpath("//*[@id='nav-cancelled-indent']/div/table/tbody/tr[1]/td[7]");
+	public By indentTabs = By.xpath("//nav[@class='customTableTab']/div/button");
+	public By searchMail = By.xpath("//input[@placeholder='Subject/Event/To/Cc/Bcc']");
+	public By selectOrganization = By.xpath("//select[@name='templateGroup']");
+	public By preDefinedWorkflow = By.xpath("//div[@class='d-sm-flex justify-content-sm-start align-items-center']/label[1]/span");
+
+	public By mailTableBody = By.xpath("//table[@class='table table-striped table-advance table-hover fixed-header fontSizeClass']/tbody");
+	public By discussionButton = By.xpath("//*[@id='collapseAC']/div/div[2]/div[1]/button[3]");
 	//public By userAdd_Indent = By.xpath("//table[@id='approver']/thead/tr[1]/th[7]/div/button[@id='addApprovertc']");
 	public By userAdd_Indent = By.xpath("//th/a/fa-icon[@class='ng-fa-icon']"); //added on 220722
 	public By user1_Indent = By.xpath("//table[@id='approver']/tbody/tr[1]/td[2]/input");
@@ -3296,6 +3390,7 @@ public By Accommodationandfoodserviceactivities = By.xpath("//span[text()='Accom
 	public By SGSTTxt_BOQMandatorytab_BidSubmission_TG1 = By.xpath("//input[@id='rdcis_quotaton_bom_supply.sgst_per.0']");
 	public By SGSTTxt_BOQMandatorytab_BidSubmission_TG1(int lineitem) {return By.xpath("//input[@id='rdcis_quotaton_bom_supply.sgst_per."+lineitem+"']");}
 	//Preview All page
+	
 	public By GeneralInfo_PreviwAllPage_TG1 = By.xpath("//div[@id='myModalprev_bid' and contains(@class,'fade in')]//h2[normalize-space()='General Information']");
 	public By Terms_Conditions_PreviwAllPage_TG1 = By.xpath("(//div[@id='myModalprev_bid' and contains(@class,'fade in')]//h2[normalize-space()='Terms and Conditions'])[2]");
 	public By Technical_ComplianceTable_PreviwAllPage_TG1 = By.xpath("(//div[@id='myModalprev_bid' and contains(@class,'fade in')]//h2[normalize-space()='Technical Compliance Table'])[2]");
@@ -3368,6 +3463,7 @@ public By Accommodationandfoodserviceactivities = By.xpath("//span[text()='Accom
 	public By SuccessMsg_IndentApproval = By.xpath("//h5[text()='Success']");
 	public By ConfirmMsg_IndentSendBack = By.xpath("//p[text()='Confirm']");
 	public By OKBtn_IndentApproval = By.xpath("//div[@class='modal-footer'] //button");
+	public By okButton_approval = By.xpath("//*[@id='staticBackdrop']/div/div/div[3]/button");
 	public By OKBtn_IndentSendBack = By.xpath("//div[contains(@class, 'd-sm-flex justify-content-center justify-content-sm-start align-items-center ng-star-inserted')] /button[2]");
 	public By NoBtn_IndentApproval = By.xpath("//div[contains(@class, 'ms-sm-4 text-center text-sm-start')]/div[1]/button[1]");
 
