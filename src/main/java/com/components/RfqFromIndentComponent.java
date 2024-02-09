@@ -3933,10 +3933,7 @@ public class RfqFromIndentComponent extends BaseClass_Web {
 					waitForElement(tendercreationlocators.alertPopUp_QRC_bidSubmission,10000);
 					IsElementPresent(tendercreationlocators.alertPopUp_QRC_bidSubmission);
 					waitForElementToBeVisible(tendercreationlocators.alertClose_QRC_bidSubmission);
-<<<<<<< HEAD
 					click(tendercreationlocators.alertClose_QRC_bidSubmission, "alertClose_QRC_bidSubmission");
-=======
->>>>>>> ad519c3371e939eec2a3db6391343d7cd0862eac
 					waitForObj(2000);
 					scrollToTopOfThePage();
 						

@@ -328,7 +328,6 @@ public class TenderCreation_Locators {
 	//public By ScheduleOpening_Evaluation = By.xpath("//div[contains(@ng-model,'scheduleOpenDateField')]//input[@class='form-control']");
 	public By ScheduleOpening_Evaluation = By.xpath("//input[@id='mat-input-0']");
 	public By OpeningApprovalWFStatus_Evaluation = By.xpath("//td[normalize-space()='WIP']");
-	public By Payment_amountField_TG1 = By.xpath("//input[@ng-model='quotationFees.tranamount']");
 	public By OpeningApprovalComment_Evaluation = By.xpath("//label[text()='Approver Comment']//following-sibling::textarea");
 	public By OpeningApprovalAlert_Evaluation = By.xpath("//div[@class='bootbox-body']");
 	public By OpeningApprovalAlertConfirmbtn_Evaluation = By.xpath("//button[normalize-space()='Confirm']");
@@ -3561,13 +3560,11 @@ public By Accommodationandfoodserviceactivities = By.xpath("//span[text()='Accom
 	public By Commenttxt_Paymenttab_BidSubmission_TG1 = By.xpath("//div[@id='paySection']//input[@name='comment']");
 	public By InstruExpiryDate_Paymenttab_BidSubmission_TG1 = By.xpath("//div[@id='paySection']//input[@name='expiryDate']");
 	public By Uploadfile_Paymenttab_BidSubmission_TG1 = By.xpath("//input[@file-model='fileModel.offlinePaymentFile']");
-<<<<<<< HEAD
+
 	//public By SavePaymentBtn_Paymenttab_BidSubmission_TG1 = By.xpath("//button[normalize-space()='Save Payment']");
 	public By Payment_amountField_TG1 = By.xpath("//input[@ng-model='quotationFees.tranamount']");
 	public By SavePaymentBtn_Paymenttab_BidSubmission_TG1 = By.xpath("//div[@id='offline']/form/div[4]//button[contains(text(),'Save Payment')]");
-=======
-	public By SavePaymentBtn_Paymenttab_BidSubmission_TG1 = By.xpath("//div[@id='offline']/form/div[4]/button");
->>>>>>> ad519c3371e939eec2a3db6391343d7cd0862eac
+	
 	//RFQ Item tab
 	public By RFQItemtabLnk_BidSubmission_TG1 = By.xpath("//a[@id='rdcis_quotaton_bom_servce']");
 	public By RFQItemRowCount_TG1 = By.xpath("//input[contains(@id, 'rdcis_quotaton_bom_servce.Unit_Rate')]");
@@ -4078,11 +4075,9 @@ public By Accommodationandfoodserviceactivities = By.xpath("//span[text()='Accom
 	
 	public By snDetailsLink= By.xpath("//tbody/tr[1]/td[10]/div[1]/ul[1]/li[1]/a[1]");
 	public By snComment= By.xpath("//a[contains(text(),'Comment')]");
-<<<<<<< HEAD
 	public By poApproverComment= By.xpath("//strong[contains(text(),'Approver Comment')]");
-=======
 	public By detailsofCorrigendumNumber= By.xpath("//*[@id='staticBackdropLabel']");;
->>>>>>> ad519c3371e939eec2a3db6391343d7cd0862eac
+
 	
 
 	
