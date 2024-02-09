@@ -91,10 +91,10 @@ public class TG1_TC_BidSubmission_08_verifying_Draftbid_functionality extends Ba
 		etendercomponentobj.sendForNoApproval_validation();
 		etendercomponentobj.enterTenderIdInSearch();
 		etendercomponentobj.checkTenderStatusAndTenderStage();
-		etendercomponentobj.tenderLogoutOld();
+		etendercomponentobj.tenderLogout();
 
 		//Bid submission procress	
-		rfqfromintendcomponentobj.waitTillBidstartDateReached();
+		rfqfromintendcomponentobj.waitTillBidstartDateReached();   
 		etendercomponentobj.bidder_03_Login();
 		etendercomponentobj.enterTenderIdInSearch_bidsubmission();
 		etendercomponentobj.navigateToActionDropdown_bidsubmission();

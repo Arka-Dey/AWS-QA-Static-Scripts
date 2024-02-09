@@ -18,7 +18,7 @@ public class TenderCreation_Locators {
 	public By TenderListIcon = By.xpath("/html[1]/body[1]/section[2]/section[1]/div[1]/div[1]/h3[1]");
 	public By tendersIcon = By.xpath("//span[contains(text(),'Tender(s)')]//parent::a//i[@class='fa fa-tasks']");
 	public By tenderList = By.xpath("//a[contains(@ng-click,'tender/listTender')]");
-	public By PendingTab_MyTender_tenderlistpage = By.xpath("//div[contains(@id,'myTender')]//a[normalize-space()='Pending']");
+	public By PendingTab_MyTender_tenderlistpage = By.xpath("//*[@id='nav-01-tab']");
 	public By tendercreationPlusicon = By.xpath("//button[@data-original-title='Tender Creation']");
 	public By templateGroupdropdown = By.xpath("//select[@name='templateGroup']");
 	public By bitPartdropdown = By.xpath("//select[@name='bidPartNo']");
@@ -186,7 +186,11 @@ public class TenderCreation_Locators {
 	public By comment = By.xpath("//div[@id='collapse1']//textarea[@ng-model='approvalComment.approvalComment']");
 	public By approve = By.xpath("//button[@id='savePayment1_0']");
 	public By tenderListKeyword = By.xpath("(//input[@placeholder='Type any keyword'])[1]");
-	public By tenderCreatedStatus = By.xpath("//table[@id='myTablebyrTl00']/tbody[1]/tr[1]/td[7]/span[1]");
+	
+	//added by pavel 05-02-2024
+	public By tenderListPage = By.xpath("/html/body/app-root/div/div/div/app-tender-listing/section/div/div[1]/input");
+	
+	public By tenderCreatedStatus = By.xpath("//*[@id='inner-nav-01']/div/table/tbody/tr[1]/td[8]/span/span");
 	public By addBidders = By.xpath("//button[@type='button'][@ng-click='addVendor(generalInfo.tendertypeid)']");
 	public By bidderCompany_TechMahindra = By.xpath("//table[@id='vendorLst']/tbody/tr[2]/td[1]");
 	public By bidderCompany_TCS = By.xpath("//table[@id='vendorLst']/tbody/tr[3]/td[1]");
@@ -240,7 +244,8 @@ public class TenderCreation_Locators {
 	public By addSORItemQuantity = By
 			.xpath("//table[@id='rfqpopupTAble']/tbody/tr/td/input[@ng-model='item.quantity'] ");
 	public By addSORItemSave = By.xpath("//button[@id='saveRFQItemToTab']");
-	public By action = By.xpath("//button[contains(@data-toggle,'dropdown')]");
+	public By action = By.xpath("//*[@id='menu1']");
+	public By tenderlistingPageAction = By.xpath("//*[@id='inner-nav-01']/div/table/tbody/tr/td[10]/div/button");
 	public By action_SubmittedBid = By.xpath("//body[1]/section[2]/section[1]/div[1]/div[1]/form[3]/div[1]/div[1]/div[3]/div[2]/div[1]/div[1]/table[1]/tbody[1]/tr[1]/td[11]/div[1]//button[contains(@data-toggle,'dropdown')]");
 	public By corrigendumLink = By.xpath("//a[contains(text(),'Corrigendum')]");
 	public By corrigendumReferenceNumber = By.xpath("//input[@name='corriRefNo']");
@@ -256,13 +261,14 @@ public class TenderCreation_Locators {
 	public By corrigendumTab = By.xpath("//a[contains(text(),'Corrigendum')]");
 	public By dateScheduleComment = By.xpath("//textarea[@ng-model='template.tabWiseApproverComment']");
 	//public By corrigendumStatus = By.xpath("//table[@id='myTablebyrTl00']//td[@ng-if=\"(tender.isCorrigendum.toLowerCase()=='yes')\"]//a[contains(text(), 'Yes')]");
-	public By corrigendumStatus = By.xpath("//table[@id='myTablebyrTl00']/tbody/tr[1]/td[6]/a");
+	public By corrigendumStatus = By.xpath("//*[@id='inner-nav-01']/div/table/tbody/tr[1]/td[6]/a");
 	public By corrigendumStatusNo = By.xpath("//table[@id='myTablebyrTl00']/tbody/tr[1]/td[6]");
-	public By corrigendumStatusViewAll = By.xpath("//h3[contains(text(),'View All')]");
-	public By corrigendumNumber = By.xpath("(//tr[@ng-repeat='corrigendum in corriView']/td/label/a)[1]");
-	public By corrigendumHistory = By.xpath("//a[@name='deleteWork']");
-	public By corrigendumNewDateSchedule = By.xpath("//div[contains(text(),'new Date Schedule')]");
-	public By corrigendumOldDateSchedule = By.xpath("//div[contains(text(),'old Date Schedule')]");
+	public By corrigendumCoparison = By.xpath("//*[@id='mat-dialog-6']/app-corrigendum-history-modal/div/div[2]/section/div/table/tbody/tr/td[4]/a/fa-icon");
+	public By corrigendumNumber = By.xpath("//*[@id='mat-dialog-6']/app-corrigendum-history-modal/div/div[2]/section/div/table/tbody/tr/td[1]/a");
+	public By corrigendumHistory = By.xpath("//*[@id='staticBackdropLabel']");
+	public By corrigendumNumberClose = By.xpath("//*[@id='mat-dialog-15']/app-corrigendum-history-details-modal/div/mat-dialog-actions/div/button");
+	public By corrigendumNewDateSchedule = By.xpath("//*[contains(text(),'New Date Schedule')]");
+	public By corrigendumOldDateSchedule = By.xpath("//*[contains(text(),'Old Date Schedule')]");
 	public By corrigendumHistoryApprovalSection = By.xpath(
 			"//table[@class='table table-striped table-advance table-bordered']/tbody/tr/th[text()='Approval Section']");
 	public By corrigendumHistoryTenderNo = By
@@ -294,7 +300,7 @@ public class TenderCreation_Locators {
 	public By Conf_Ok_button = By.xpath("//button[normalize-space()='OK']");
 	public By AlertYesbtn_Corrigendum = By.xpath("//button[normalize-space()='Yes']//i[@class='fa fa-check']");
 	public By BidNo_bidsubmission = By.xpath("(//tr[contains(@ng-repeat,'bid in submittedBidList')]/td[5])[1]");
-	public By BidNo_Draftbid_bidsubmission = By.xpath("//tr[contains(@ng-repeat,\"bid in draftBidList\")]/td[4]");
+	public By BidNo_Draftbid_bidsubmission = By.xpath("//tr[contains(@ng-repeat,\"bid in draftBidList\")]/td[5]");
 	public By BidNo_Withdrawbid_bidsubmission = By.xpath("//tr[contains(@ng-repeat,\"bid in withdrawBidList\")]/td[4]");
 	public By Geninfotab_bidsubmission = By.xpath("//a[@id='quot_gen_info']");
 	public By Quot_ref_code_afterRebidPreview = By.xpath("(//label[contains(text(),'EditedQuotRefCode')])[1]");
@@ -321,6 +327,7 @@ public class TenderCreation_Locators {
 	//public By ScheduleOpening_Evaluation = By.xpath("//div[contains(@ng-model,'scheduleOpenDateField')]//input[@class='form-control']");
 	public By ScheduleOpening_Evaluation = By.xpath("//input[@id='mat-input-0']");
 	public By OpeningApprovalWFStatus_Evaluation = By.xpath("//td[normalize-space()='WIP']");
+	public By Payment_amountField_TG1 = By.xpath("//input[@ng-model='quotationFees.tranamount']");
 	public By OpeningApprovalComment_Evaluation = By.xpath("//label[text()='Approver Comment']//following-sibling::textarea");
 	public By OpeningApprovalAlert_Evaluation = By.xpath("//div[@class='bootbox-body']");
 	public By OpeningApprovalAlertConfirmbtn_Evaluation = By.xpath("//button[normalize-space()='Confirm']");
@@ -384,11 +391,12 @@ public class TenderCreation_Locators {
 	public By tenderListStatus_Draft = By.xpath("//span[text()='Draft  ']");
 	public By coordinatorFlag2 = By.xpath("//table[@id='approver']/tbody/tr[2]/td[5]//input");
 	public By label1 = By.xpath("(//input[@placeholder='Label'])[1]");
-	public By closeButton = By.xpath("//div[@id='myModaliview']//button[text()='Close']");
+	public By closeButton = By.xpath("//div[@class='text-center mb-4']/button");
 	public By bidSubmissionTransaction = By.xpath("//i[@class='fa fa-users']");
 	public By bidSubmissionTenderListing = By.xpath("//a[contains(text(),'Tender Listing')]");
 	public By bidsubmissionSearchByKeyword = By.xpath("//form[contains(@class,'form-horizontal')]//div[@class='row']//input[@placeholder='Search By Keywords']");
-
+	public By corrigendumClose = By.xpath("//*[@class='modal-footer']/div/button");
+	public By corrigendumNumberCloseButton = By.xpath("//*[@class='text-center mb-4']/button");
 	public By bidSubmission_Bid = By.xpath("//a[contains(@id,'interst123') and contains(text(),'Bid')]");
 	
 	//added on 190124
@@ -660,8 +668,7 @@ public class TenderCreation_Locators {
 
 	public By overallComment_currentPart = By.xpath("//iframe[@id='uiTinymce1_ifr']");
 	public By upload_editable = By.xpath("//input[@class='ng-isolate-scope']");
-	public By pendingForEvaluationApproval = By
-			.xpath("//button[@class='btn btn-primary btn-circle btn-lg btn-lg-sub2 grnBtn ng-scope ng-isolate-scope']");
+	public By pendingForEvaluationApproval = By.xpath("(//*[@id='clrcookie'])[1]");
 	public By bidDetailstenderId = By.xpath("(//strong[@class='ng-binding'])[1]");
 	public By bidDetailstenderStatus = By.xpath("(//strong[@class='ng-binding'])[2]");
 	public By TotalNoOfSubmittedBid = By.xpath("(//span[@class='ng-binding'])[2]");
@@ -690,13 +697,14 @@ public class TenderCreation_Locators {
 			"//strong[@class='ng-binding' and contains(text(),'CTS test (CTS_AUTO_01) is successfully Approved')]");
 	public By submit_biddetails = By.xpath("//button[@ng-click='validateDecryptedData();']");
 	public By tenderStatus_completed = By
-			.xpath("//span[@class='ng-binding ng-isolate-scope' and contains(text(),'Completed')]");
+			.xpath("//span[contains(text(),'Completed')]");
 	public By tenderStage_completed = By.xpath("//button[@data-original-title='Completed']");
 	public By completedtablnk = By.xpath("//a[normalize-space()='Completed']");
+	public By tenderListingCompletedTab = By.xpath("//*[@id='nav-02-tab']");
 	//public By evaluation_sendForApproval = By.xpath("//button[@data-original-title='Send For Approval']");
 	public By evaluation_sendForApproval = By.xpath("//button[@id='evaluStng']");
 	public By tenderStatus_evaluation = By
-			.xpath("//span[@class='ng-binding ng-isolate-scope' and contains(text(),'Evaluation')]");
+			.xpath("//span[contains(text(),'Evaluation ')]");
 
 	public By selectYesBy = By.xpath("//*[@type='radio' and @value='Y']");
 
@@ -719,7 +727,7 @@ public class TenderCreation_Locators {
 			.xpath("//*[@class='dropdown-menu open']//li/a/span[contains(text(),'Evaluator Test (EVALUATOR_01)')]");
 
 	public By tenderStatusInOpeningBy = By
-			.xpath("//span[@class='ng-binding ng-isolate-scope' and contains(text(),'Opening')]");
+			.xpath("//span[contains(text(),'Opening')]");
 
 	public By tenderStageApprovalCover1By = By
 			.xpath("//*[@data-original-title='Pending for opening Approval (Cover 1)']");
@@ -742,7 +750,7 @@ public class TenderCreation_Locators {
 
 	public By evaluationSettingspageEvaluationCommentBy = By.xpath("//*[@name='evaluationcomment']");
 
-	public By defaultCatBy = By.xpath("//table/tbody/tr[1]/td[text()='Default_cat']");
+	public By defaultCatBy = By.xpath("//*[@id='inner-nav-01']/div/table/tbody/tr[1]/td[7]/span");
 	public By MyTenderTab = By.xpath("//a[@id='myTab']");
 	public By supplier_standing = By.xpath("//section[contains(@class,'fixedHeader-table-section')]//table//th[contains(text(),'Suppliers Standing')]");
 
@@ -753,7 +761,7 @@ public class TenderCreation_Locators {
 	public By evaluation_approverOrEvaluatorRequired = By
 			.xpath("//label[contains(text(),'Approver/Evaluator required')]");
 	public By evaluation_scheduleOpening = By.xpath("//label[contains(text(),'Schedule Opening')]");
-	public By evaluationSettings = By.xpath("//a[contains(text(),'Evaluation Settings')]");
+	public By evaluationSettings = By.xpath("//a[contains(text(),' Evaluation Settings')]");
 	public By tenderStatus_closed = By
 			.xpath("//span[@class='ng-binding ng-isolate-scope' and contains(text(),'Closed')]");
 	public By evaluationTenderStatus_Completd = By.xpath("//span[text()='Completed  ']");
@@ -1625,7 +1633,7 @@ public class TenderCreation_Locators {
 	
 	
 	public By SubmitFromPreview = By.xpath("//button[@ng-if='submitForApproval']");
-	public By SubmitFromPreview_Backup = By.xpath("(//button[@ng-if='submitForApproval'])[2]");
+	public By SubmitFromPreview_Backup = By.xpath("//*[@id='tenderPreviewTabWise']/div/div/div[4]/button[1]");
 	public By sendForApprovalNotRequired = By.xpath("//div[contains(@id,'tenderApprovalModal')]//form[contains(@class,'ng-valid')]//input[@id='appNo']/parent::label/input");
 	public By sendForApprovalNotRequired_SN = By.xpath("//form[contains(@class,'ng-valid')]//input[@id='appNo']/parent::label/input");
 	public By DOPstatus = By.xpath("//td[text()='pooja']/following-sibling::td[2]");
@@ -3436,7 +3444,7 @@ public By Accommodationandfoodserviceactivities = By.xpath("//span[text()='Accom
 	//Pre-bid Discussion tab
 	public By PreBidDiscussiontabLnk_Tender_TG1 = By.xpath("//a[contains(text(),'Pre-bid Discussion')]");
 	//Payment tab
-	public By PaymentabLnk_Tender_TG1 = By.xpath("//a[normalize-space()='Payment']");
+	public By PaymentabLnk_Tender_TG1 = By.xpath("//a[contains(text(),'Payment')]");
 	public By PaymentType_Paymentab_Tender_TG1 = By.xpath("//select[@id='rfqpayment.payment_type.0']");
 	public By PaymentCurrency_Paymentab_Tender_TG1 = By.xpath("//select[@id='rfqpayment.payment_currency.0']");
 	public By PaymentAmount_Paymentab_Tender_TG1 = By.xpath("//input[@id='rfqpayment.amount.0']");
@@ -3521,7 +3529,7 @@ public By Accommodationandfoodserviceactivities = By.xpath("//span[text()='Accom
 	public By Commenttxt_Paymenttab_BidSubmission_TG1 = By.xpath("//div[@id='paySection']//input[@name='comment']");
 	public By InstruExpiryDate_Paymenttab_BidSubmission_TG1 = By.xpath("//div[@id='paySection']//input[@name='expiryDate']");
 	public By Uploadfile_Paymenttab_BidSubmission_TG1 = By.xpath("//input[@file-model='fileModel.offlinePaymentFile']");
-	public By SavePaymentBtn_Paymenttab_BidSubmission_TG1 = By.xpath("//button[normalize-space()='Save Payment']");
+	public By SavePaymentBtn_Paymenttab_BidSubmission_TG1 = By.xpath("//div[@id='offline']/form/div[4]/button");
 	//RFQ Item tab
 	public By RFQItemtabLnk_BidSubmission_TG1 = By.xpath("//a[@id='rdcis_quotaton_bom_servce']");
 	public By RFQItemRowCount_TG1 = By.xpath("//input[contains(@id, 'rdcis_quotaton_bom_servce.Unit_Rate')]");
@@ -4030,6 +4038,7 @@ public By Accommodationandfoodserviceactivities = By.xpath("//span[text()='Accom
 	
 	public By snDetailsLink= By.xpath("//tbody/tr[1]/td[10]/div[1]/ul[1]/li[1]/a[1]");
 	public By snComment= By.xpath("//a[contains(text(),'Comment')]");
+	public By detailsofCorrigendumNumber= By.xpath("//*[@id='staticBackdropLabel']");;
 	
 
 	

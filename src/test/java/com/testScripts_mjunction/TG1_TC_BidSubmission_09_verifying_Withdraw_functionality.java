@@ -91,7 +91,7 @@ public class TG1_TC_BidSubmission_09_verifying_Withdraw_functionality extends Ba
 		etendercomponentobj.sendForNoApproval_validation();
 		etendercomponentobj.enterTenderIdInSearch();
 		etendercomponentobj.checkTenderStatusAndTenderStage();
-		etendercomponentobj.tenderLogoutOld();
+		etendercomponentobj.tenderLogout();
 
 		//Bid submission procress	
 		rfqfromintendcomponentobj.waitTillBidstartDateReached();

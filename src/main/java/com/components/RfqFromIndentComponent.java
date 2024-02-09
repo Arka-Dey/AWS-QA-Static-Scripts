@@ -1053,7 +1053,7 @@ public class RfqFromIndentComponent extends BaseClass_Web {
 			//Modified on 130722
 			waitForObj(2000);
 			
-			click(tendercreationlocators.Savebtn_IndentNew, "savebutton");
+		//	click(tendercreationlocators.Savebtn_IndentNew, "savebutton");
 			//created by @Pavel 11012024
 			try {
 				
@@ -1510,7 +1510,7 @@ public class RfqFromIndentComponent extends BaseClass_Web {
 		try {
 			log.info(
 					"started executing the method:: IndentTG1_Other_Information_tabvalidation()");
-			waitForElement(tendercreationlocators.TG1OtherinformationTab, 5000);
+			waitForElement(tendercreationlocators.TG1OtherinformationTab, 50);
 			click(tendercreationlocators.TG1OtherinformationTab, "TG1OtherinformationTab");
 			//waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
 			waitForObj(3000);
@@ -1543,7 +1543,7 @@ public class RfqFromIndentComponent extends BaseClass_Web {
 			try {
 				log.info(
 						"started executing the method:: IndentTG1_Other_Information_tabvalidation()");
-				waitForElement(tendercreationlocators.TG10OtherinformationTab, 5000);
+				waitForElement(tendercreationlocators.TG10OtherinformationTab, 50);
 				click(tendercreationlocators.TG10OtherinformationTab, "TG1OtherinformationTab");
 				//waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
 				waitForObj(3000);
@@ -1644,8 +1644,7 @@ public class RfqFromIndentComponent extends BaseClass_Web {
 			pdfResultReport.addStepDetails("IndentTG1_BOM_Item_tabvalidation",
 					"Should save BOM Item tab fields during indent creation", "Sucessfully saved BOM Item tab fields during indent creation " + " ", "Pass",
 					"Y");
-			log.info(
-					"completed executing the method:: IndentTG1_BOM_Item_tabvalidation");
+			log.info(					"completed executing the method:: IndentTG1_BOM_Item_tabvalidation");
 
 		} catch (Exception e) {
 
@@ -1803,11 +1802,9 @@ public class RfqFromIndentComponent extends BaseClass_Web {
 			//scrollToElement(tendercreationlocators.Savebtn_IndentNew1);
 			JSClick(tendercreationlocators.Savebtn_IndentNew1, "Savebtn_Indent");
 			//waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
-<<<<<<< HEAD
 			waitForObj(2000);
-	//		commentlist.add(text(tendercreationlocators.CommentsArea_IndentRTF));
+			//commentlist.add(text(tendercreationlocators.CommentsArea_IndentRTF));
 			tabcontentList.add(text(tendercreationlocators.tabContent));
-=======
 			 waitForObj(2000); */
 			
 			
@@ -3667,6 +3664,7 @@ public class RfqFromIndentComponent extends BaseClass_Web {
 			click(tendercreationlocators.PaymentabLnk_Tender_TG1, "PaymentabLnk_Tender_TG1");
 			//waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
 			waitForObj(2000);
+			selectbyvalue(tendercreationlocators.PaymentCurrency_Paymentab_Tender_TG1, "string:INR");
 			set(tendercreationlocators.PaymentAmount_Paymentab_Tender_TG1, "1000", "PaymentAmount_Paymentab_Tender_TG1");
 			click(tendercreationlocators.OfflineNEFT_Paymentab_Tender_TG1, "OfflineNEFT_Paymentab_Tender_TG1");
 			click(tendercreationlocators.AddPayment_Paymentab_Tender_TG1, "AddPayment_Paymentab_Tender_TG1");
@@ -3900,6 +3898,7 @@ public class RfqFromIndentComponent extends BaseClass_Web {
 			set(tendercreationlocators.AnyotherFirmType_MSME_OtherClausestab_BidSubmission_TG1, pdfResultReport.testData.get("AnyotherFirmType_MSME_OtherClausestab_BidSubmission_TG1"), "AnyotherFirmType_MSME_OtherClausestab_BidSubmission_TG1");
 			select(tendercreationlocators.ScopeOfProc_MSME_OtherClausestab_BidSubmission_TG1, pdfResultReport.testData.get("ScopeOfProc_MSME_OtherClausestab_BidSubmission_TG1"));
 			select(tendercreationlocators.Certification_MSME_OtherClausestab_BidSubmission_TG1, pdfResultReport.testData.get("Certification_MSME_OtherClausestab_BidSubmission_TG1"));
+		waitForObj(1000);
 			scrollToTopOfThePage();
 			pdfResultReport.addStepDetails("BidSubmission_for_Tender_from_indent_withRFQ_TG1 '" +TemplateGroup+"'",
 					"Verify Other Clauses tab", "Other Clauses tab verified successfully", "Pass",
@@ -3927,16 +3926,21 @@ public class RfqFromIndentComponent extends BaseClass_Web {
 					set(tendercreationlocators.InstruDatetxt_Paymenttab_BidSubmission_TG1, getdate(0, "dd-MM-yyyy"), "InstruDatetxt_Paymenttab_BidSubmission_TG1");
 					set(tendercreationlocators.Commenttxt_Paymenttab_BidSubmission_TG1, pdfResultReport.testData.get("Commenttxt_Paymenttab_BidSubmission_TG1"), "Commenttxt_Paymenttab_BidSubmission_TG1");
 					set(tendercreationlocators.InstruExpiryDate_Paymenttab_BidSubmission_TG1, getdate(20, "dd-MM-yyyy"), "InstruExpiryDate_Paymenttab_BidSubmission_TG1");
-					set(tendercreationlocators.Uploadfile_Paymenttab_BidSubmission_TG1, System.getProperty("user.dir") + "\\MediaFiles\\rfqCreation.xlsx",
-							"fileName");
-					waitForObj(1000);
+					set(tendercreationlocators.Uploadfile_Paymenttab_BidSubmission_TG1, System.getProperty("user.dir") + "\\MediaFiles\\rfqCreation.xlsx", "fileName");
+					click(tendercreationlocators.Payment_amountField_TG1, "Payment_amountField_TG1");
+					
+					waitForObj(2000);
+					waitForElementToBeClickable(tendercreationlocators.SavePaymentBtn_Paymenttab_BidSubmission_TG1);
 					click(tendercreationlocators.SavePaymentBtn_Paymenttab_BidSubmission_TG1, "SavePaymentBtn_Paymenttab_BidSubmission_TG1");
+					
 					//eTenderComponent.waitForSpinnerToDisappearInBidSubmission();
-					waitForElement(tendercreationlocators.alertPopUp_QRC_bidSubmission,100);
+					waitForElement(tendercreationlocators.alertPopUp_QRC_bidSubmission,10000);
 					IsElementPresent(tendercreationlocators.alertPopUp_QRC_bidSubmission);
+					waitForElementToBeVisible(tendercreationlocators.alertClose_QRC_bidSubmission);
 					click(tendercreationlocators.alertClose_QRC_bidSubmission, "alertClose_QRC_bidSubmission");
-					waitForObj(500);
+					waitForObj(2000);
 					scrollToTopOfThePage();
+						
 					
 			}
 			
