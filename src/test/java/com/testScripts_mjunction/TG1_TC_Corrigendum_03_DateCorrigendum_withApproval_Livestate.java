@@ -93,7 +93,7 @@ public class TG1_TC_Corrigendum_03_DateCorrigendum_withApproval_Livestate extend
 		etendercomponentobj.sendForNoApproval_validation();
 		etendercomponentobj.enterTenderIdInSearch();
 		etendercomponentobj.checkTenderStatusAndTenderStage();
-		etendercomponentobj.tenderLogoutOld();
+		etendercomponentobj.tenderLogout();
 		
 	//Date corrigendum during Live tender status
 		etendercomponentobj.waitTillBidstartDateReached();
@@ -104,7 +104,7 @@ public class TG1_TC_Corrigendum_03_DateCorrigendum_withApproval_Livestate extend
 		etendercomponentobj.corrigendumSaveButton();
 		etendercomponentobj.modifyDateScheduleTemplate1(	30,35);  
 		etendercomponentobj.AddTwoUsersForSequentialCorrigendumApproval();
-		etendercomponentobj.tenderLogoutOld();
+		etendercomponentobj.tenderLogout();
 		
 	//verifying pending corrigendum in 2nd approver login	
 		etendercomponentobj.tenderApprover2Login();
@@ -134,8 +134,8 @@ public class TG1_TC_Corrigendum_03_DateCorrigendum_withApproval_Livestate extend
 		etendercomponentobj.corrigendumStatus();
 		etendercomponentobj.corrigendumStatus_Yes_Hyperlink_Validation();
 		etendercomponentobj.corrigendumNumber_Hyperlink_Validation();
-		etendercomponentobj.corrigendumHistory_Hyperlink_Validation();
-		etendercomponentobj.tenderLogoutOld();
+		etendercomponentobj.corrigendumComparison_Hyperlink_Validation();
+		etendercomponentobj.tenderLogout();
 	}
 
 }

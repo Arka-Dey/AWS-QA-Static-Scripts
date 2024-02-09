@@ -91,10 +91,10 @@ public class TG1_TC_BidSubmission_07_verifying_Rebid_functionality extends BaseC
 		etendercomponentobj.sendForNoApproval_validation();
 		etendercomponentobj.enterTenderIdInSearch();
 		etendercomponentobj.checkTenderStatusAndTenderStage();
-		etendercomponentobj.tenderLogoutOld();
+		etendercomponentobj.tenderLogout();
 
 		//Bid submission procress	
-		rfqfromintendcomponentobj.waitTillBidstartDateReached();
+		rfqfromintendcomponentobj.waitTillBidstartDateReached();    
 		etendercomponentobj.bidder_01_Login();
 		etendercomponentobj.enterTenderIdInSearch_bidsubmission();
 		etendercomponentobj.navigateToActionDropdown_bidsubmission();
@@ -121,6 +121,8 @@ public class TG1_TC_BidSubmission_07_verifying_Rebid_functionality extends BaseC
 		etendercomponentobj.submittedBid_Tab_Validation();
 		etendercomponentobj.VerifyBidno_after_rebid();
 		//etendercomponentobj.tenderLogoutOld();
+		
+		
 		
 		//Revise functionality verification
 		etendercomponentobj.navigateToTenderListing();

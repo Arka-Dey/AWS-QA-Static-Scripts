@@ -92,7 +92,7 @@ public class TG1_TC_TenderCreation_01_tender_publish_with_tender_approval extend
 		etendercomponentobj.tenderIdSave();
 		etendercomponentobj.AddTwoUsersForSequentialApproval();
 		etendercomponentobj.enterTenderIdInSearch();
-		etendercomponentobj.tenderLogoutOld();
+		etendercomponentobj.tenderLogout();
 		
 	//verifying pending tender in 2nd approver login	
 		etendercomponentobj.tenderApprover2Login();
@@ -120,7 +120,7 @@ public class TG1_TC_TenderCreation_01_tender_publish_with_tender_approval extend
 		etendercomponentobj.navigateToTenderListing();
 		etendercomponentobj.enterTenderIdInSearch();
 		etendercomponentobj.checkTenderStatusAndTenderStage("Published");
-		etendercomponentobj.tenderLogoutOld();
+		etendercomponentobj.tenderLogout();
 		
 	}
 

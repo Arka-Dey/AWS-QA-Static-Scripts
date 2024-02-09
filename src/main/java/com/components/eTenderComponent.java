@@ -64,8 +64,13 @@ import com.objectRepository.TenderCreation_Locators;
 //import com.sun.glass.events.KeyEvent;
 
 public class eTenderComponent extends BaseClass_Web {
+<<<<<<< HEAD
 	//String tenderReferenceNoLocatorText = null;
 	String tenderReferenceNoLocatorText = "1783";
+=======
+	String tenderReferenceNoLocatorText = null;
+//	String tenderReferenceNoLocatorText = "1747";
+>>>>>>> ad519c3371e939eec2a3db6391343d7cd0862eac
 	TenderCreation_Locators tendercreationlocators = new TenderCreation_Locators();
 	String BidStartDate = null;
 	String BidDueDate = null;
@@ -1131,6 +1136,9 @@ public class eTenderComponent extends BaseClass_Web {
 			//waitForObj(5000);
 			waitForElementToBeVisible(tendercreationlocators.password);
 			set(tendercreationlocators.password, pdfResultReport.testData.get("AppPassword"), "password");
+			pdfResultReport.addStepDetails("Tender creator login", "Entered Username and password",
+					"" + " ", "Pass", "Y");
+			log.info("completed executing the method:: tenderApproverLogin");
 			//Handle fixed Captcha (06/11/2020)
 			//set(tendercreationlocators.Captcha_Login, "1234", "Login_Captcha");
 			click(tendercreationlocators.okButton, "okButton");
@@ -1780,7 +1788,7 @@ public class eTenderComponent extends BaseClass_Web {
 	public void datecorrigendum() throws Throwable {
 		try {
 			log.info("started executing the method:: datecorrigendum");
-			click(tendercreationlocators.action, "action");
+			click(tendercreationlocators.tenderlistingPageAction, "action");
 			click(tendercreationlocators.corrigendumLink, "corrigendumLink");
 			waitForObj(3000);
 			set(tendercreationlocators.corrigendumReferenceNumber,
@@ -2034,8 +2042,8 @@ public class eTenderComponent extends BaseClass_Web {
 		try {
 			log.info("started executing the method:: corrigendumStatus_Yes_Hyperlink_Validation");
 			click(tendercreationlocators.corrigendumStatus, "corrigendumStatus");
-			waitForObj(10000);
-			IsElementPresent(tendercreationlocators.corrigendumStatusViewAll);
+			waitForObj(5000);
+			IsElementPresent(tendercreationlocators.corrigendumCoparison);
 			IsElementPresent(tendercreationlocators.corrigendumNumber);
 			IsElementPresent(tendercreationlocators.corrigendumHistory);
 			pdfResultReport.addStepDetails("ViewAll is present",
@@ -2056,17 +2064,18 @@ public class eTenderComponent extends BaseClass_Web {
 		try {
 			log.info("started executing the method:: corrigendumStatus_Yes_Hyperlink_Validation");
 			click(tendercreationlocators.corrigendumNumber, "corrigendumNumber");
-			waitForObj(10000);
-
-			IsElementPresent(tendercreationlocators.corrigendumNewDateSchedule);
-			IsElementPresent(tendercreationlocators.corrigendumOldDateSchedule);
-
+			waitForObj(5000);
+			
+			IsElementPresent(tendercreationlocators.detailsofCorrigendumNumber);
+		//	IsElementPresent(tendercreationlocators.corrigendumOldDateSchedule);
+			click(tendercreationlocators.corrigendumNumberCloseButton,"Corrigendum Number close");
+			waitForObj(2000);
 			pdfResultReport.addStepDetails("CorrigendumNumber is present",
 					"CorrigendumNumber is present is verified successfully using CorrigendumNumber_Hyperlink_Validation",
 					"CorrigendumNumber is present is verified using CorrigendumNumber_Hyperlink_Validation" + " ",
 					"Pass", "Y");
-			click(tendercreationlocators.previewAllOkButton_p, "previewAllOkButton_p");
-			waitForObj(3000);
+			//click(tendercreationlocators.previewAllOkButton_p, "previewAllOkButton_p");
+			//waitForObj(3000);
 			log.info("completed executing the method:: CorrigendumNumber_Hyperlink_Validation");
 		} catch (Exception e) {
 			log.fatal("Not able to see CorrigendumNumber" + e.getMessage());
@@ -3221,23 +3230,23 @@ public class eTenderComponent extends BaseClass_Web {
 		}
 	}
 
-	public void corrigendumHistory_Hyperlink_Validation() throws Throwable {
+	public void corrigendumComparison_Hyperlink_Validation() throws Throwable {
 
 		try {
 			log.info("started executing the method:: corrigendumHistory_Hyperlink_Validation");
-			click(tendercreationlocators.corrigendumHistory, "corrigendumHistory");
-			waitForObj(10000);
-			IsElementPresent(tendercreationlocators.corrigendumHistoryCorrigendumNumber);
-			IsElementPresent(tendercreationlocators.corrigendumHistoryTenderNo);
-			IsElementPresent(tendercreationlocators.corrigendumHistoryApprovalSection);
+			click(tendercreationlocators.corrigendumCoparison, "corrigendumComparison");
+			waitForObj(6000);
+			IsElementPresent(tendercreationlocators.corrigendumNewDateSchedule);
+			IsElementPresent(tendercreationlocators.corrigendumOldDateSchedule);
 
 			pdfResultReport.addStepDetails("corrigendumHistory is present",
 					"corrigendumHistory is present is verified successfully using corrigendumHistory_Hyperlink_Validation",
 					"corrigendumHistory is present is verified using corrigendumHistory_Hyperlink_Validation" + " ",
 					"Pass", "Y");
-			click(tendercreationlocators.close_history, "close_history");
-			click(tendercreationlocators.closeButton, "closeButton");
-			waitForObj(3000);
+			click(tendercreationlocators.corrigendumNumberCloseButton, "close_history");
+			waitForObj(2000);
+			click(tendercreationlocators.corrigendumClose, "closeButton");
+			waitForObj(2000);
 			log.info("completed executing the method:: corrigendumHistory_Hyperlink_Validation");
 		} catch (Exception e) {
 			log.fatal("Not able to see corrigendumHistory" + e.getMessage());
@@ -5163,7 +5172,7 @@ public class eTenderComponent extends BaseClass_Web {
 		try {
 			log.info("started executing the method:: checktenderStatusIsIncompletedState");
 			
-			click(tendercreationlocators.completedtablnk, "completedtablnk");
+			click(tendercreationlocators.tenderListingCompletedTab, "completedtablnk");
 			waitForObj(3000);
 			waitForElementToBeVisible(tendercreationlocators.tenderStatus_completed);
 			IsElementPresent(tendercreationlocators.tenderStatus_completed);
@@ -6044,6 +6053,7 @@ public class eTenderComponent extends BaseClass_Web {
 			JSClick(tendercreationlocators.TenEvalTab_Evaluation, "Tender_Evaluation");
 			waitForObj(1000);
 			set(tendercreationlocators.search, tenderReferenceNoLocatorText, "search");
+			waitForObj(2000);
 			IsElementPresent(tendercreationlocators.documentId_Evaluation);
 			IsElementPresent(tendercreationlocators.workFlowType_Evaluation);
 			IsElementPresent(tendercreationlocators.OpeningApprovalWFStatus_Evaluation);
@@ -6173,7 +6183,7 @@ public class eTenderComponent extends BaseClass_Web {
 			log.info("started executing the method:: checktenderStageIsInevaluationStage");
 
 			waitForObj(500);
-			IsElementPresent(tendercreationlocators.pendingForEvaluationApproval);
+			isElementDisplayed(tendercreationlocators.pendingForEvaluationApproval, 100);
 
 			pdfResultReport.addStepDetails("checktenderStageIsInevaluationState",
 					"Tender stage must be shown as evaluation", "Successfully shown Tender stage as evaluation" + " ",
@@ -10211,10 +10221,12 @@ public class eTenderComponent extends BaseClass_Web {
 
 	public void enterTenderIdInSearch() throws Throwable {
 		try {
-			log.info("started executing the method:: enterTenderIdInSearch");
-			waitForElementToBeVisible(tendercreationlocators.tenderListKeyword);
-			clear(tendercreationlocators.tenderListKeyword, "tenderListKeyword");
-			set(tendercreationlocators.tenderListKeyword, tenderReferenceNoLocatorText, "tenderListSearch");
+			log.info("started executing the method:: enterTenderIdInSearch");		
+			waitForObj(4000);
+			waitForElementToBeVisible(tendercreationlocators.tenderListPage);
+			
+			clear(tendercreationlocators.tenderListPage, "tenderListKeyword");
+			set(tendercreationlocators.tenderListPage, tenderReferenceNoLocatorText, "tenderListSearch");
 			//waitForElementToBeVisible(tendercreationlocators.defaultCatBy);
 			waitForObj(2000);
 			
@@ -11446,7 +11458,7 @@ public class eTenderComponent extends BaseClass_Web {
 		try {
 			log.info("started executing the method:: clickEvaluationSettingsLink");
 
-			click(tendercreationlocators.action, "action");
+			click(tendercreationlocators.tenderlistingPageAction, "action");
 			
 			waitForElementToBeClickable(tendercreationlocators.evaluationSettings);
 
@@ -11508,8 +11520,8 @@ public class eTenderComponent extends BaseClass_Web {
 			scrollToElement(tendercreationlocators.evaluation_sendForApproval);
 			JSClick(tendercreationlocators.evaluation_sendForApproval, "evaluation_sendForApproval");
 			//waitForObj(2000);
-			waitForElementToBeVisible(tendercreationlocators.MyTenderTab);
-
+			waitForElementToBeVisible(tendercreationlocators.tenderListPage);
+			waitForObj(4000);
 			pdfResultReport.addStepDetails("Successfully send for approval",
 					"send for approval must be done successfully InEvaluationsetting",
 					"Successfully done send for approval InEvaluationsetting" + " ", "Pass", "Y");
@@ -11525,7 +11537,7 @@ public class eTenderComponent extends BaseClass_Web {
 	public void clickPendingForEvaluationApprovalStage() throws Throwable {
 		try {
 			log.info("started executing the method:: pendingForEvaluationApprovalStage");
-
+			waitForObj(2000);
 			if (JSClick(tendercreationlocators.pendingForEvaluationApproval, "pendingForEvaluationApproval")) {
 				System.out.println("pendingForEvaluationApprovalstage is clicked");
 				waitForElementToBeVisible(tendercreationlocators.LblBiddername_Evaluation);
@@ -13676,6 +13688,10 @@ public class eTenderComponent extends BaseClass_Web {
 			//waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
 			waitForElementToBeVisible(tendercreationlocators.VendorCode_OtherClausestab_BidSubmission_TG1);
 			waitForObj(1000);
+			//Clicking on Next link to get the remaining tab
+			
+			click(tendercreationlocators.NextLnk_Tender_TG1, "NextLnk_Tender_TG1");
+			waitForObj(500);
 		//Verifying Payment tab+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 			waitForElementToBeClickable(tendercreationlocators.PaymenttabLnk_BidSubmission_TG1);
 			click(tendercreationlocators.PaymenttabLnk_BidSubmission_TG1, "PaymenttabLnk_BidSubmission_TG1");

@@ -6,8 +6,13 @@
     <test name="Test">
         <parameter name="browserName" value="windowschrome"></parameter>
         <classes>
+<<<<<<<< HEAD:mjunctionTestNGXML/INDENT/RDCIS/TG1_TC_Indent_09_Mail_Validation.xml
            <parameter name="TestcaseNo" value="18"></parameter>   
             <class name="com.testScripts_mjunction.TG1_TC_Indent_09_Mail_Validation" />
+========
+           <parameter name="TestcaseNo" value="25"></parameter>   
+            <class name="com.testScripts_mjunction.TG1_TC_Indent_06_Cancel_Indent" />
+>>>>>>>> ad519c3371e939eec2a3db6391343d7cd0862eac:mjunctionTestNGXML/INDENT/RDCIS/TG1_TC_Indent_06_Cancel_Indent.xml
         </classes>
     </test> 
 </suite>

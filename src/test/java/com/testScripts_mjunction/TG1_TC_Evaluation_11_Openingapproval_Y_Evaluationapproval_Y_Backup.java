@@ -12,7 +12,7 @@ import com.baseClasses.ThreadLocalWebdriver;
 import com.components.RfqFromIndentComponent;
 import com.components.eTenderComponent;
 
-public class TG1_TC_Evaluation_11_Openingapproval_Y_Evaluationapproval_Y extends BaseClass_Web{
+public class TG1_TC_Evaluation_11_Openingapproval_Y_Evaluationapproval_Y_Backup extends BaseClass_Web{
 	
 	public eTenderComponent etendercomponentobj = new eTenderComponent(pdfResultReport);
 	public RfqFromIndentComponent rfqfromintendcomponentobj = new RfqFromIndentComponent(pdfResultReport);
@@ -49,7 +49,7 @@ public class TG1_TC_Evaluation_11_Openingapproval_Y_Evaluationapproval_Y extends
 		driver.manage().timeouts().pageLoadTimeout(100, TimeUnit.SECONDS);	
 		initializeRepository();
 	//Creating a new Indent with No approval
-etendercomponentobj.openURL();
+		etendercomponentobj.openURL();
 		
 		rfqfromintendcomponentobj.IndentcreatorLogin();
 		rfqfromintendcomponentobj.navigateToIndentCreation();
