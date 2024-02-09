@@ -39,13 +39,11 @@ public class TC_EPS_PO_02UserDefinedApprovalTest extends BaseClass_Web {
 	}
 	  initializeRepository();
 	  etendercomponentobj.openURL();
-	   
-	  //===========================================Added on 310124
 	  
 	  posttendercomponentobj.sanction_Creator_Login();
 	  posttendercomponentobj.clickPostTenderProcessLink();
 	  posttendercomponentobj.enterCompleted_TenderId_new() ;
-	  /* Remove
+	  
 	  posttendercomponentobj.createSanctionNote();
 	  posttendercomponentobj.sanctionReferenceNumber();
 	  posttendercomponentobj.SanctionsupplierSelection();
@@ -53,7 +51,7 @@ public class TC_EPS_PO_02UserDefinedApprovalTest extends BaseClass_Web {
 	  posttendercomponentobj.ScantionComment_recommendationTab();
 	  posttendercomponentobj.clickOnSubmitButton();
 	  posttendercomponentobj.notSendForApproval();
-	  remove*/
+	  
 	  posttendercomponentobj.enterDocumentNoInSearch();
 	  
 	  posttendercomponentobj.issuePObuttonValidation();
@@ -61,22 +59,21 @@ public class TC_EPS_PO_02UserDefinedApprovalTest extends BaseClass_Web {
 	  posttendercomponentobj.Add_AllTemplate_Items_Submit();
 	  posttendercomponentobj.InitiatePOfromSN();
 	  posttendercomponentobj.EPS_PO_Submission();
-	
 	  posttendercomponentobj.POSaveandApproval();
-	  //posttendercomponentobj.savePoDocNumber();
 	  posttendercomponentobj.sendForApprovalUserDefinedSequential_pocreator();
+	  posttendercomponentobj.verifyPoRefNumberInPoListPage();
+	  posttendercomponentobj.verifyPOStatus("Pending for Approval");
+	  posttendercomponentobj.savePoDocNumberFromPoListpage();
 	  etendercomponentobj.tenderLogout();
 	  
-	  etendercomponentobj.assertFail(); 
-	  
 	  posttendercomponentobj.poApprover1Login();
-	  posttendercomponentobj.navigateToApprovalPendingPage();
+	  posttendercomponentobj.navigateToApprovalPendingPage(tendercreationobj.poTab);
 	  posttendercomponentobj.navigateToPurchaseOrderApproval();
 	  posttendercomponentobj.provide_PO_ApproverComment();
 	  posttendercomponentobj.purchaseOrderApproval();
-	  etendercomponentobj.tenderLogout();
+	  etendercomponentobj.tenderLogoutOld();
 	  
-	  etendercomponentobj.bidder_02_Login();
+	  etendercomponentobj.bidder_01_Login();
 	  posttendercomponentobj.navigateToPoListingWithBidderUser();
 	  posttendercomponentobj.searchThePoRefNoInPoListPage();
 	  posttendercomponentobj.clickAcceptPoInDropDown();
@@ -85,9 +82,12 @@ public class TC_EPS_PO_02UserDefinedApprovalTest extends BaseClass_Web {
 	  posttendercomponentobj.verifyPOStatusIsAccepted();
 	  etendercomponentobj.tenderLogout();
 	  
-	  posttendercomponentobj.super_Admin_Login();
+	  posttendercomponentobj.sanction_Creator_Login();
 	  posttendercomponentobj.navigateToPurchasrOrderList();
 	  posttendercomponentobj.verifyPOStatusIsAccepted();
+	  etendercomponentobj.tenderLogout();
+	  
+	  
 	 
 	}
 

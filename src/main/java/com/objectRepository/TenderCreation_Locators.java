@@ -149,6 +149,7 @@ public class TenderCreation_Locators {
 	public By workFlowStatus = By.xpath("//table[@id='myTable']/tbody/tr/td[6]");
 	public By details = By.xpath("//a[contains(text(),'Section Wise View')]");
 	public By sanctionTab = By.xpath("//a[contains(text(),'Sanction')]");
+	public By poTab = By.xpath("//li[@id='purchaseOrderTab']/a");
 	// Details page of Tender Approval Validation
 	// public By approverComment_GeneralInfromation =
 	// By.xpath("//a[contains(text(),'Details')]");
@@ -1126,6 +1127,10 @@ public class TenderCreation_Locators {
 	public By saveButton_PO = By.xpath("//h2[contains(text(), 'Order Creation')]//following-sibling::div/button[1]");
 	public By submitButton_PO = By.xpath("//h2[contains(text(), 'Order Creation')]//following-sibling::div/button[2]");
 	public By POExpiryDate = By.xpath("//input[@id='mat-input-2']");
+	public By poDocNo(String val) {
+
+		return By.xpath("//span[contains(text(),'" + val + "')]");
+	}
 
 	public By POAmendmentflagOption(String val) {
 
@@ -1133,6 +1138,7 @@ public class TenderCreation_Locators {
 	}
 	//=========PO Template Group(RDCIS supply and service template)
 	//General Information
+	public By poGIT = By.xpath("//div[contains(text(),'General Information')]");
 	public By orderNo = By.xpath("//input[@id='po_header_temp_u.po_no.0']");
 	public By POAmendmentflag = By.xpath("//select[@name='po_header_temp_u_po_amendment_flag']");
 	public By shipTo = By.xpath("//input[@id='po_header_temp_u.ship_to.0']");
@@ -1185,6 +1191,7 @@ public class TenderCreation_Locators {
 	
 	//Template Traverse button
 	public By ttB = By.xpath("//mat-tab-header/div[3]");
+	public By ttR = By.xpath("//mat-tab-header/div[1]");
 	
 	//Send for approval
 	public By sendForApprovalText = By.xpath("//span[contains(text(),'Send For Approval')]");
@@ -1210,12 +1217,13 @@ public class TenderCreation_Locators {
 	public By ApprovalNotReqd = By.xpath("(//input[@id='appNo'])[2]");
 	public By ApprovalNotReqd_ReleasePO = By.xpath("(//input[@id='appNo'])[1]");
 	public By ApprovalNotReqd_CancelPO = By.xpath("(//input[@id='appNo'])[1]");
-	public By SubmitApproval = By.xpath("(//button[normalize-space(text())='Submit'])[2]");
+	public By SubmitApproval = By.xpath("//div[@class='modal-footer']/div[1]/button[2]/span[contains(text(), 'Submit')]");
 
 	// venkatesh
 	public By poListingLinkBy = By.xpath("//a[contains(normalize-space(text()),'PO Listing')]");
 
 	public By poListPageRowBy = By.xpath("//*[@id='usrmntbLst']/tbody/tr[2]");
+	public By myPOTab = By.xpath("//button[@id='nav-my-indent-tab']");
 
 	public By acceptPOLinkBy = By.xpath("//*[@id='usrmntbLst']/tbody/tr/td/div/ul/li/a/i[@class='fa fa-check']");
 
@@ -1234,7 +1242,7 @@ public class TenderCreation_Locators {
 
 	public By poStatusAcceptedBy = By.xpath("//*[@id='usrmntbLst']/tbody/tr/td[normalize-space(text())='Accepted']");
 
-	// pooja
+	// Arka
 	public By supplierQuotedQuantity1_TCS = By
 			.xpath("(//a[contains(text(),'TCS')])[1]/../../..//input[@id='qi_boq.supquotequant.0']");
 	public By supplierQuotedQuantity2_TCS = By
@@ -1375,10 +1383,12 @@ public class TenderCreation_Locators {
 
 	public By bidderDetailTabBy = By.xpath("//a[text()='Bidder Details']");
 	public By Userdefined_po = By.xpath("//input[@id='appYes']/following-sibling::span");
+	public By notRequired_po = By.xpath("//input[@id='appNo']/following-sibling::span");
 	public By approvalType_Sequential = By.xpath("//input[@id='dvDes'][@value='S']");
 	public By addButton = By.xpath("//button[@ng-click='addRowForApproverAppend()']");
 	public By approvalConfirmPopUp = By.xpath("//div[contains(text(),'Status updated successfully!')]");
 	public By confirmOk = By.xpath("//button[contains(text(),'OK')]");
+	public By poStatus = By.xpath("//tbody/tr[1]/td[10]");
 	public By poStatusFilter = By.xpath("//*[@ng-model='poStatusFilter']");
 	public By poCategoryBy = By.xpath("//*[@ng-model='poCategoryFilter']");
 	public By poSource = By.xpath("//*[@ng-model='filter.poSourceFilter']");
@@ -1485,7 +1495,7 @@ public class TenderCreation_Locators {
 	public By View_PO_VAlue = By.xpath("(//b[text()='PO Value']/../../..//span)[1]");
 	public By View_PO_Amendment_Flag = By.xpath("(//b[text()='PO Amendment flag']/../../..//span)[1]");
 	public By View_PO_ref_NUM = By.xpath("(//b[text()='PO Ref No']/../../..//span)[1]");
-	// Prasad
+	// Arka1
 	public By SNo = By.xpath("//table[@id='usrmntbLst']/tbody/tr[1]/th[1]");
 	public By PRRFQSNNo = By.xpath("//table[@id='usrmntbLst']/tbody/tr[1]/th[2]");
 	public By PONo = By.xpath("//table[@id='usrmntbLst']/tbody/tr[1]/th[3]");
@@ -3104,6 +3114,27 @@ public By Accommodationandfoodserviceactivities = By.xpath("//span[text()='Accom
 	public By Admin = By.xpath("//a[normalize-space()='Admin']");
 	public By mailHistory = By.xpath("//*[@id='subMenuBox3']/div/div/ul/li[2]/a");
 	
+	//Supplier PO
+	public By order = By.xpath("//a[normalize-space()='Order']");
+	public By allOrders = By.xpath("//span[contains(text(),'All Orders')]");
+	public By poColumn = By.xpath("//thead/tr[1]/th[2]");
+	public By poSearchKeyword = By.xpath("//div[@class='tableWrap']/div[1]/input[@placeholder='Type Your Keyword']");
+	public By poAction = By.xpath("//div[@class='dropstart']/button");
+	public By acceptPO = By.xpath("//a[contains(text(), 'Accept PO')]");
+	public By poSummary = By.xpath("//a[contains(text(),'Summary')]");
+	public By poCommentTab = By.xpath("//a[contains(text(),'Comment')]");
+	public By poCommentTextArea = By.xpath("//textarea[@name='requiredFormMessage']");
+	public By poAcceptButton = By.xpath("//button[@ng-click='acceptPo()']");
+	public By poSaveButton = By.xpath("//button[@id='svact_tb1']");
+	public By poRejectButton = By.xpath("//button[@ng-click='goListPage()']");
+	public By poAcceptenceConfirm = By.xpath("//button[@data-bb-handler='confirm']");
+	public By poPuchaseOrderAcceptedMSG = By.xpath("//div[contains(text(),'Purchase order successfully accepted.')]");
+	public By poAcceptFinally = By.xpath("//button[contains(text(),'OK')]");
+	public By poAccetpedStatus = By.xpath("//td[contains(text(), 'Accepted')]");
+	
+	//Buyer PO list
+	public By orderFromMenu = By.xpath("//a[contains(text(),'Order')]");
+	//Lbl_IndentList (same locator as Indent)
 	
 	//Indent General information page
 	public By IndentRefNo= By.xpath("//input[@id='indent_general_info.indent_ref_no.0']");
@@ -3351,7 +3382,6 @@ public By Accommodationandfoodserviceactivities = By.xpath("//span[text()='Accom
 	public By Btn_Forward_Indent = By.xpath("//button[@id='dyantc']");
 	//public By Btn_SendforApproval_Indent = By.xpath("//*[@id='mat-dialog-2']/app-workflowmodal/div/mat-dialog-actions/div/button[2]");
 	public By Btn_SendforApproval_Indent = By.xpath("//button[contains(@class, 'btn modalBtnBlue mx-2 mb-2 mb-sm-0 ng-star-inserted')]//span[contains(text(), 'Send For Approval')]");
-
 	public By IndentListLink = By.xpath("//a[normalize-space()='Indent List']");
 	public By Lbl_IndentList = By.xpath("//button[@id='nav-my-indent-tab']");
 	public By myindent= By.xpath("//button[@id='nav-my-indent-tab']");
@@ -3373,6 +3403,8 @@ public By Accommodationandfoodserviceactivities = By.xpath("//span[text()='Accom
 	public By poOrder=By.xpath("//h5[@id='staticBackdropLabel']");
 	public By poSaveMSG=By.xpath("//h5[@id='staticBackdropLabel']");
 	public By confirmPOSaveMsg=By.xpath("//app-general-dialog[@class='ng-star-inserted']/div/div[3]/div//button[contains(text(),'Ok')]");
+	public By poSaveMsg=By.xpath("//mat-dialog-container[@id='mat-dialog-4']/app-general-dialog/div/div[2]//div[contains(text(),'Order has been saved successfully.')]");
+	public By poSubmitMsg=By.xpath("//mat-dialog-container[@id='mat-dialog-2']/app-general-dialog/div/div[2]//div[contains(text(),'Order has been submitted successfully.')]");
 	public By poReferenceNo=By.xpath("//label[contains(text(),'Reference No:')]//following-sibling::input");
 	public By PreviewCrossButton=By.xpath("//h5[@id='staticBackdropLabel']//following-sibling::div[1]/button");
 	public By Txt_TypeanyKeyword_Indent = By.xpath("//input[@placeholder='Type Your Keyword']");
@@ -3521,7 +3553,9 @@ public By Accommodationandfoodserviceactivities = By.xpath("//span[text()='Accom
 	public By Commenttxt_Paymenttab_BidSubmission_TG1 = By.xpath("//div[@id='paySection']//input[@name='comment']");
 	public By InstruExpiryDate_Paymenttab_BidSubmission_TG1 = By.xpath("//div[@id='paySection']//input[@name='expiryDate']");
 	public By Uploadfile_Paymenttab_BidSubmission_TG1 = By.xpath("//input[@file-model='fileModel.offlinePaymentFile']");
-	public By SavePaymentBtn_Paymenttab_BidSubmission_TG1 = By.xpath("//button[normalize-space()='Save Payment']");
+	//public By SavePaymentBtn_Paymenttab_BidSubmission_TG1 = By.xpath("//button[normalize-space()='Save Payment']");
+	public By Payment_amountField_TG1 = By.xpath("//input[@ng-model='quotationFees.tranamount']");
+	public By SavePaymentBtn_Paymenttab_BidSubmission_TG1 = By.xpath("//div[@id='offline']/form/div[4]//button[contains(text(),'Save Payment')]");
 	//RFQ Item tab
 	public By RFQItemtabLnk_BidSubmission_TG1 = By.xpath("//a[@id='rdcis_quotaton_bom_servce']");
 	public By RFQItemRowCount_TG1 = By.xpath("//input[contains(@id, 'rdcis_quotaton_bom_servce.Unit_Rate')]");
@@ -3608,6 +3642,8 @@ public By Accommodationandfoodserviceactivities = By.xpath("//span[text()='Accom
 	public By ReviewBackWF_Indent_to_Creator = By.xpath("//button[contains(text(), 'Indent Creator')]");
 	public By ForwardWF_Indent = By.xpath("//button[contains(text(),'Forward to Next Person')]");
 	public By CloseWFBtn_Indent = By.xpath("//button[text()='End Workflow']");
+	public By CloseWFBtn = By.xpath("//button[contains(text(), 'End Workflow')]");
+	public By ConfirmYESBtn_PO = By.xpath("//div[@class='modal-footer']//button[@data-bb-handler= 'yes']");
 	public By ConfirmYESBtn_Indent = By.xpath("//mat-dialog-container[@id='mat-dialog-1'] //p[@class='subInfotxt'] //following-sibling::div/button[2]");
 	public By ConfirmYESBtnNext_Indent = By.xpath("//p[text()='Are you really sure that you want to close the workflow?'] //following-sibling::div/button[2]");
 	public By ConfirmYESBtnFinal_Indent = By.xpath("//p[text()='Are you sure, you want to continue?'] //following-sibling::div/button[2]");
@@ -4030,6 +4066,7 @@ public By Accommodationandfoodserviceactivities = By.xpath("//span[text()='Accom
 	
 	public By snDetailsLink= By.xpath("//tbody/tr[1]/td[10]/div[1]/ul[1]/li[1]/a[1]");
 	public By snComment= By.xpath("//a[contains(text(),'Comment')]");
+	public By poApproverComment= By.xpath("//strong[contains(text(),'Approver Comment')]");
 	
 
 	

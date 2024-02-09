@@ -37,18 +37,12 @@ public class TC_EPS_PO_01_No_Approval extends BaseClass_Web {
 		System.out.println("Unable to read the data from excel file");
 	}
 	  
-		
-		
 	  initializeRepository();
-	 
-	 
 	  etendercomponentobj.openURL();
-	   
-	  //===========================================Added on 310124
-	  
 	  posttendercomponentobj.sanction_Creator_Login();
 	  posttendercomponentobj.clickPostTenderProcessLink();
 	  posttendercomponentobj.enterCompleted_TenderId_new() ;
+	 
 	  posttendercomponentobj.createSanctionNote();
 	  posttendercomponentobj.sanctionReferenceNumber();
 	  posttendercomponentobj.SanctionsupplierSelection();
@@ -56,6 +50,7 @@ public class TC_EPS_PO_01_No_Approval extends BaseClass_Web {
 	  posttendercomponentobj.ScantionComment_recommendationTab();
 	  posttendercomponentobj.clickOnSubmitButton();
 	  posttendercomponentobj.notSendForApproval();
+	
 	  posttendercomponentobj.enterDocumentNoInSearch();
 	  
 	  posttendercomponentobj.issuePObuttonValidation();
@@ -67,21 +62,24 @@ public class TC_EPS_PO_01_No_Approval extends BaseClass_Web {
 	  posttendercomponentobj.POSaveandApproval();
 	  //posttendercomponentobj.savePoDocNumber();
 	  posttendercomponentobj.ApprovalNotRequired();
+	  posttendercomponentobj.verifyPoRefNumberInPoListPage();
+	  posttendercomponentobj.verifyPOStatus("Pending for Acceptance");
+	  posttendercomponentobj.savePoDocNumberFromPoListpage();
 	  etendercomponentobj.tenderLogout();
 	  
-	  
-	  etendercomponentobj.bidder_02_Login();
+	  etendercomponentobj.bidder_01_Login();
 	  posttendercomponentobj.navigateToPoListingWithBidderUser();
-	  posttendercomponentobj.searchPoRefNoInPoListPage();
+	  posttendercomponentobj.searchThePoRefNoInPoListPage();
 	  posttendercomponentobj.clickAcceptPoInDropDown();
 	  posttendercomponentobj.verifySummaryTabAndEnterComment();
 	  posttendercomponentobj.clickAccepPotBtn();
 	  posttendercomponentobj.verifyPOStatusIsAccepted();
 	  etendercomponentobj.tenderLogout();
 	  
-	  posttendercomponentobj.super_Admin_Login();
+	  posttendercomponentobj.sanction_Creator_Login();
 	  posttendercomponentobj.navigateToPurchasrOrderList();
 	  posttendercomponentobj.verifyPOStatusIsAccepted();
+	  etendercomponentobj.tenderLogout();
 	 
 	  
 	  

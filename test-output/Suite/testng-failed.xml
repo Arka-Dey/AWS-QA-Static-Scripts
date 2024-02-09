@@ -6,32 +6,18 @@
   </listeners>
   <test thread-count="5" name="Test(failed)">
     <parameter name="browserName" value="windowschrome"/>
-<<<<<<< HEAD
-    <parameter name="TestcaseNo" value="18"/>
+    <parameter name="TestcaseNo" value="11"/>
     <classes>
-      <class name="com.testScripts_mjunction.TG1_TC_Indent_02_Creation_with_multiple_Approvers">
-        <methods>
-          <include name="setUpSuiteDetails"/>
-          <include name="Indent_creation_with_approval" invocation-numbers="0"/>
-=======
-    <parameter name="TestcaseNo" value="29"/>
-    <classes>
-      <class name="com.testScripts_mjunction.TC_EPS_PO_02UserDefinedApprovalTest">
+      <class name="com.testScripts_mjunction.TG1_TC_Evaluation_11_Openingapproval_Y_Evaluationapproval_Y_Backup">
         <methods>
           <include name="setUpSuiteDetails"/>
           <include name="BeforeClass"/>
->>>>>>> 94c02cb56a03c648b9f2ca4ea3c8abe30066a468
+          <include name="Tender_Evaluation_with_OpeningApproval_Y_Evaluationapproval_Y" invocation-numbers="0"/>
           <include name="afterSuite"/>
           <include name="captureDesc"/>
-          <include name="BeforeClass"/>
           <include name="afterClass"/>
-          <include name="f" invocation-numbers="0"/>
         </methods>
-<<<<<<< HEAD
-      </class> <!-- com.testScripts_mjunction.TG1_TC_Indent_02_Creation_with_multiple_Approvers -->
-=======
-      </class> <!-- com.testScripts_mjunction.TC_EPS_PO_02UserDefinedApprovalTest -->
->>>>>>> 94c02cb56a03c648b9f2ca4ea3c8abe30066a468
+      </class> <!-- com.testScripts_mjunction.TG1_TC_Evaluation_11_Openingapproval_Y_Evaluationapproval_Y_Backup -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

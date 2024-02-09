@@ -46,8 +46,11 @@ import com.objectRepository.TenderCreation_Locators;
 
 public class PostTenderComponent extends BaseClass_Web {
 	TenderCreation_Locators tendercreationlocators = new TenderCreation_Locators();
-	//String documentNumberText = null;
-	String documentNumberText = "43672";
+	String documentNumberText = null;
+	//String documentNumberText = "43650";
+	String poDocNum = "";
+	//String poDocNum = "1250";
+	String poReference= "";
 	String tenderReferenceNoLocatorText_sn = null;
 	eTenderComponent etendercomponentobj = new eTenderComponent(pdfResultReport);
 
@@ -159,18 +162,6 @@ public class PostTenderComponent extends BaseClass_Web {
 
 	public void sanction_Creator_Login() throws Throwable {
 		try {
-			/*
-			log.info("started executing the method:: sanction_Creator_Login");
-			click(tendercreationlocators.login, "login");
-			set(tendercreationlocators.userName, pdfResultReport.testData.get("SanctionNoteCreatorUserName"),
-					"userName");
-			waitForObj(2000);
-			set(tendercreationlocators.password, pdfResultReport.testData.get("AppPassword"), "password");
-			//Handle fixed Captcha (06/11/2020)
-			set(tendercreationlocators.Captcha_Login, "1234", "Login_Captcha");
-			click(tendercreationlocators.okButton, "okButton");
-			waitForElement(tendercreationlocators.tendersIcon, 50);
-			*/
 			
 			log.info("started executing the method:: sanction_Creator_Login");
 			waitForElementToBeVisible(tendercreationlocators.userName);
@@ -474,7 +465,8 @@ public class PostTenderComponent extends BaseClass_Web {
 		try {
 			log.info("started executing the method:: provideApproverComment");
 			JSClick(tendercreationlocators.snComment, "overallComment");
-			WebElement iframele = ThreadLocalWebdriver.getDriver().findElement(By.xpath("//iframe[@id='txtArea_ifr']"));
+			//WebElement iframele = ThreadLocalWebdriver.getDriver().findElement(By.xpath("//iframe[@id='txtArea_ifr']"));
+			WebElement iframele = ThreadLocalWebdriver.getDriver().findElement(By.xpath("//iframe[@id='commentData_ifr']"));
 			switchframe(iframele);
 			Thread.sleep(2000);
 			set(tendercreationlocators.recommendationComment, "overallComment_currentPart", "recommendationComment");
@@ -2543,7 +2535,7 @@ public class PostTenderComponent extends BaseClass_Web {
 			String PO = "PO_Ref_";
 			LocalDateTime localdatetime = LocalDateTime.now();
 			String currentDateTime = localdatetime.format(DateTimeFormatter.ofPattern("dd-MM-yyyy-HH-mm"));
-			String poReference = PO.concat(currentDateTime);
+			poReference = PO.concat(currentDateTime);
 			set(tendercreationlocators.poReferenceNo, poReference, "poReferenceNo");
 			waitForObj(1000);
 			eTenderComponent.updateDataIntoPropertyFile("POReferenceNum", poReference);
@@ -2838,22 +2830,26 @@ public class PostTenderComponent extends BaseClass_Web {
 		try {
 			log.info("started executing the method:: clickAccepPotBtn");
 
-			JSClick(tendercreationlocators.poAcceptBtnBy, "poAcceptBtnBy");
-
-			waitForObj(3000);
-
-			click(tendercreationlocators.acceptPurchaseOrderConfirmPopYesBtnBy,
-					"acceptPurchaseOrderConfirmPopYesBtnBy");
+			JSClick(tendercreationlocators.poAcceptButton, "poAcceptButton");
+			waitForElementToBeVisible(tendercreationlocators.poSaveButton);
+			click(tendercreationlocators.poAcceptenceConfirm, "acceptPurchaseOrderConfirmPopYesBtnBy");
+			click(tendercreationlocators.poPuchaseOrderAcceptedMSG, "poPuchaseOrderAcceptedMSG");
+			waitForElementToBeClickable(tendercreationlocators.poAcceptFinally);
+			click(tendercreationlocators.poAcceptFinally, "poAcceptFinally");
+			//eTenderComponent.waitForSpinnerToDisappear();
+			waitForElementToBeVisible(tendercreationlocators.poColumn);
+			
+			
 			pdfResultReport.addStepDetails("PO Sucessful Msg PopUp",
 					"Purchase order should be successfully PopUp should appear",
 					"Purchase order successfully accepted PopUp is dispalyed" + " ", "Pass", "Y");
+			/*
 			waitForObj(2000);
 			click(tendercreationlocators.acceptPurchaseOrderConfirmPopOKBtnBy, "acceptPurchaseOrderConfirmPopOKBtnBy");
-
 			waitForElementToBeVisible(tendercreationlocators.poListPageRowBy);
-
 			waitForObj(3000);
-
+			*/
+			
 			pdfResultReport.addStepDetails("clickAccepPotBtn", "Purchase order should be successfully accepted",
 					"Purchase order successfully accepted" + " ", "Pass", "Y");
 			log.info("completed executing the method:: clickAccepPotBtn");
@@ -3519,15 +3515,14 @@ public class PostTenderComponent extends BaseClass_Web {
 	public void poApprover1Login() throws Throwable {
 		try {
 			log.info("started executing the method:: poApprover1Login");
-			click(tendercreationlocators.login, "login");
-			waitForObj(3000);
-			set(tendercreationlocators.userName, pdfResultReport.testData.get("POApproverUserName1"), "userName");
+			waitForElementToBeVisible(tendercreationlocators.userName);
+			set(tendercreationlocators.userName, pdfResultReport.testData.get("POApproverUserName1"), "POApproverUserName");
+			waitForElementToBeVisible(tendercreationlocators.password);
 			set(tendercreationlocators.password, pdfResultReport.testData.get("AppPassword"), "password");
-			//Handle fixed Captcha (06/11/2020)
-			set(tendercreationlocators.Captcha_Login, "1234", "Login_Captcha");
+			waitForElementToBeClickable(tendercreationlocators.okButton);
 			click(tendercreationlocators.okButton, "okButton");
+			waitForElement(tendercreationlocators.dashboardIcon, 5000);
 
-			waitForObj(5000);
 			pdfResultReport.addStepDetails("poApprover1Login", "PO Approver must be sucessfully logged in",
 					"Successfully logged in as PO approver" + " ", "Pass", "Y");
 			log.info("completed executing the method:: poApprover1Login");
@@ -3542,14 +3537,17 @@ public class PostTenderComponent extends BaseClass_Web {
 	public void provide_PO_ApproverComment() throws Throwable {
 		try {
 			log.info("started executing the method:: provide_PO_ApproverComment");
-			JSClick(By.xpath("//*[@aria-label='Bold']"), "overallComment");
-			WebElement iframele = ThreadLocalWebdriver.getDriver()
-					.findElement(By.xpath("//iframe[@id='uiTinymce0_ifr']"));
+			
+			WebElement iframele = ThreadLocalWebdriver.getDriver().findElement(By.xpath("//iframe[@id='commentData_ifr']"));
 			switchframe(iframele);
-			// Thread.sleep(5000);
-			set(tendercreationlocators.recommendationComment, "Purchase Order Approval Approved",
-					"recommendationComment");
+			Thread.sleep(2000);
+			set(tendercreationlocators.recommendationComment, "overallComment_currentPart", "recommendationComment");
 			switchToDefaultFrame();
+			Thread.sleep(2000);
+			
+			scrollToElement(tendercreationlocators.poApproverComment);
+			JSClick(tendercreationlocators.poApproverComment, "Approver_Comment");
+			
 			// Thread.sleep(5000);
 			pdfResultReport.addStepDetails("provide_PO_ApproverComment", "Comment must be pass successfully",
 					"Successfully passed comment" + " ", "Pass", "Y");
@@ -3610,22 +3608,13 @@ public class PostTenderComponent extends BaseClass_Web {
 
 		try {
 			log.info("started executing the method:: navigateToPoListingWithBidderUser");
-
-			waitForObj(3000);
-			JSClick(tendercreationlocators.bidSubmissionTransaction, "bidSubmissionTransaction");
-
-			waitForObj(2000);
-
-			// click(tendercreationlocators.actionMenuDropDownBy,
-			// "actionMenuDropDownBy");
-
-			waitForObj(2000);
-
-			JSClick(tendercreationlocators.poListingLinkBy, "poListingLinkBy");
-
-			waitForElementToBeVisible(tendercreationlocators.poListPageRowBy);
-
-			waitForObj(3000);
+			waitForElement(tendercreationlocators.mainMenuIcon, 100);
+			JSClick(tendercreationlocators.mainMenuIcon, "mainMenuIcon");
+			mouseOver(tendercreationlocators.Enquiry);
+			JSClick(tendercreationlocators.allOrders, "allOrders");
+			//checkPageIsReady();
+			//eTenderComponent.waitForSpinnerToDisappear();
+			waitForElementToBeClickable(tendercreationlocators.poColumn);
 
 			pdfResultReport.addStepDetails("navigateToPoListingWithBidderUser",
 					"Must Navigate to Purchase Order List Page",
@@ -3643,17 +3632,11 @@ public class PostTenderComponent extends BaseClass_Web {
 		try {
 			log.info("started executing the method:: clickAcceptPoInDropDown");
 
-			click(tendercreationlocators.actionMenuDropDownBy_PO, "actionMenuDropDownBy_PO");
-
-			waitForObj(3000);
-
-			IsElementPresent(tendercreationlocators.acceptPOLinkBy);
-
-			JSClick(tendercreationlocators.acceptPOLinkBy, "acceptPOLinkBy");
-
-			waitForElementToBeVisible(tendercreationlocators.poDeatailsTabBy);
-
-			waitForObj(3000);
+			click(tendercreationlocators.poAction, "poAction");
+			IsElementPresent(tendercreationlocators.acceptPO);
+			JSClick(tendercreationlocators.acceptPO, "acceptPO");
+			eTenderComponent.waitForSpinnerToDisappear();
+			waitForElementToBeVisible(tendercreationlocators.poSummary);
 
 			pdfResultReport.addStepDetails("clickAcceptPoInDropDown", "Should navigate to Accept Purchase Order Page",
 					"Sucessfully navigated to Accept Purchase Order Page" + " ", "Pass", "Y");
@@ -3669,15 +3652,15 @@ public class PostTenderComponent extends BaseClass_Web {
 	public void verifyPOStatusIsAccepted() throws Exception {
 		try {
 			log.info("started executing the method:: verifyPOStatusIsAccepted");
-
+			/*
 			clear(tendercreationlocators.search, "Clear the po ref no search field");
-
 			set(tendercreationlocators.search, eTenderComponent.getDataFromPropertiesFile("POReferenceNum"),
 					"po ref no search field");
-
-			waitForObj(2000);
-
-			IsElementPresent(tendercreationlocators.poStatusAcceptedBy);
+			*/
+			waitForElementToBeClickable(tendercreationlocators.poSearchKeyword);
+			clear(tendercreationlocators.poSearchKeyword, "Clear the po no search field");
+			set(tendercreationlocators.poSearchKeyword, poDocNum, "po no search field");
+			IsElementPresent(tendercreationlocators.poAccetpedStatus);
 
 			waitForObj(2000);
 
@@ -3928,8 +3911,14 @@ public class PostTenderComponent extends BaseClass_Web {
 			//set(tendercreationlocators.CommentsArea_IndentRTF, pdfResultReport.testData.get("UserDefined_Approver_CommentsIndent"),"CommentsArea_Indent");
 			
 			JSClick(tendercreationlocators.Btn_SendforApproval_Indent, "sendForApprovalSubmit");
-			waitForElementToBeVisible(tendercreationlocators.poListPageRowBy);
-			waitForObj(5000);
+			
+			waitForElementToBeVisible(tendercreationlocators.poOrder);
+			//IsElementPresent(tendercreationlocators.poSubmitMsg);
+			click(tendercreationlocators.confirmPOSaveMsg, "POSUccessMsg");
+			
+			waitForElementToBeVisible(tendercreationlocators.myPOTab);
+		
+			waitForObj(2000);
 			pdfResultReport.addStepDetails("sendForApprovalUserDefinedSequential",
 					"sendForApproval must be validate successfully", "Successfully validated sendForApproval" + " ",
 					"Pass", "Y");
@@ -4200,11 +4189,16 @@ public class PostTenderComponent extends BaseClass_Web {
 		try {
 			log.info("started executing the method:: verifyPoRefNumberInPoListPage");
 
+			/*
 			String porefnum = "//tbody/tr/td/span[contains(text(),'{0}')]";
-
 			IsElementPresent(
 					By.xpath(porefnum.replace("{0}", eTenderComponent.getDataFromPropertiesFile("POReferenceNum"))));
-
+			*/
+			
+			set(tendercreationlocators.Txt_TypeanyKeyword_Indent, poReference, "poDocNum");
+			waitForObj(2000);
+			//IsElementPresent(tendercreationlocators.poDocNo(poReference));
+		
 			pdfResultReport.addStepDetails("verifyPoRefNumberInPoListPage",
 					"Should display Expected poref num in list page",
 					"Sucessfully displaying Expected poref num in list page" + " ", "Pass", "Y");
@@ -4216,6 +4210,7 @@ public class PostTenderComponent extends BaseClass_Web {
 					"Unable to display Expected poref num in list page" + e.getMessage(), "Fail", "N");
 		}
 	}
+	
 
 	public void verifyBidderCannotViewCancelledPOinCancelledPOTab(String SelectStatus) throws Exception {
 		try {
@@ -4289,16 +4284,18 @@ public class PostTenderComponent extends BaseClass_Web {
 	public void ApprovalNotRequired() throws Throwable {
 		try {
 			log.info("started executing the method:: ApprovalNotRequired");
-			click(tendercreationlocators.ApprovalNotReqd, "ApprovalNotReqd");
-			waitForObj(2000);
+			click(tendercreationlocators.notRequired_po, "ApprovalNotReqd");
+			waitForElementToBeClickable(tendercreationlocators.SubmitApproval);
 			click(tendercreationlocators.SubmitApproval, "SubmitApproval");
-			waitForElementToBeVisible(tendercreationlocators.poListPageRowBy);
-
-			waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
-
-			waitForObj(5000);
-			pdfResultReport.addStepDetails("ApprovalNotRequired", "Should navigate to PoListPage",
-					"Successfully navigated to PoListPage" + " ", "Pass", "Y");
+			
+			
+			waitForElementToBeVisible(tendercreationlocators.poOrder);
+			//IsElementPresent(tendercreationlocators.poSubmitMsg);
+			click(tendercreationlocators.confirmPOSaveMsg, "POSUccessMsg");
+			
+			waitForElementToBeVisible(tendercreationlocators.myPOTab);
+		
+			waitForObj(2000);
 
 			log.info("completed executing the method:: ApprovalNotRequired");
 		} catch (Exception e) {
@@ -4318,16 +4315,29 @@ public class PostTenderComponent extends BaseClass_Web {
 		
 			waitForElementToBeClickable(tendercreationlocators.sanctionTab);
 			
-			//=========================================================
-			/*
-			click(tendercreationlocators.workFlow, "workFlow");
-			click(tendercreationlocators.pending, "pending");
+			pdfResultReport.addStepDetails("navigateToApprovalPendingPage",
+					"Approval Pending page must be navigate successfully",
+					"Successfully navigated to Approval Pendong page" + " ", "Pass", "Y");
+			log.info("completed executing the method:: navigateToApprovalPendingPage");
 
-			waitForElementToBeVisible(By.xpath("(//*[@id='myTable']/tbody/tr[1]/td[1])[1]"));
-
-			waitForObj(5000);
-			*/
-			//============================================================
+		} catch (Exception e) {
+			log.fatal("Unable to navigate to Approval Pendong page" + e.getMessage());
+			pdfResultReport.addStepDetails("navigateToApprovalPendingPage",
+					"Approval Pending page must be navigate successfully",
+					"Unable to navigate to Approval Pendong page" + e.getMessage(), "Fail", "N");
+		}
+	}
+	
+	public void navigateToApprovalPendingPage(By by) throws Throwable {
+		try {
+			log.info("started executing the method:: navigateToApprovalPendingPage");
+			JSClick(tendercreationlocators.mainMenuIcon, "MenuIcon");
+			mouseOver(tendercreationlocators.MyTask);
+			waitForObj(2000);
+			JSClick(tendercreationlocators.pending, "pending");
+			eTenderComponent.waitForSpinnerToDisappear();
+			waitForElementToBeVisible(by);
+			//click(by, "PO_Tab");
 			
 			pdfResultReport.addStepDetails("navigateToApprovalPendingPage",
 					"Approval Pending page must be navigate successfully",
@@ -4362,24 +4372,29 @@ public class PostTenderComponent extends BaseClass_Web {
 	public void purchaseOrderApproval() throws Throwable {
 		try {
 			log.info("started executing the method:: purchaseOrderApproval");
-			highlight(tendercreationlocators.sanctionNoteEvaluationApprove);
+			scrollToElement(tendercreationlocators.sanctionNoteEvaluationApprove);
+			//highlight(tendercreationlocators.sanctionNoteEvaluationApprove);
 			pdfResultReport.addStepDetails("purchaseOrderApproval", "Approve button must be click sucessfully ",
 					"Successfully clicked on approve button" + " ", "Pass", "Y");
-			click(tendercreationlocators.sanctionNoteEvaluationApprove, "sanctionNoteEvaluationApprove");
+			JSClick(tendercreationlocators.sanctionNoteEvaluationApprove, "sanctionNoteEvaluationApprove");
 			waitForElementToBeVisible(tendercreationlocators.approveConfirm);
 			click(tendercreationlocators.approveConfirm, "approveConfirm");
-
+			waitForElementToBeVisible(tendercreationlocators.CloseWFBtn);
+			click(tendercreationlocators.CloseWFBtn, "CloseWF");
+			click(tendercreationlocators.ConfirmYESBtn_PO, "CloseWF");
+			click(tendercreationlocators.ConfirmYESBtn_PO, "CloseWF");
+			
 			waitForElementToBeVisible(tendercreationlocators.approvalConfirmPopUp);
 			waitForObj(2000);
 			IsElementPresent(tendercreationlocators.approvalConfirmPopUp);
+			
 			pdfResultReport.addStepDetails("purchaseOrderApproval",
 					"Status updated sucessfully popup must be validate sucessfully ",
 					"Successfully validate status updated sucessfully pop up" + " ", "Pass", "Y");
 			click(tendercreationlocators.confirmOk, "confirmOk");
-
-			waitForElementToBeVisible(By.xpath("(//*[@id='myTable']/tbody/tr[1]/td[1])[1]"));
-
-			waitForObj(5000);
+			waitForElement(tendercreationlocators.poTab, 10000);
+			//waitForElementToBeClickable(tendercreationlocators.poTab);
+			waitForObj(3000);
 			pdfResultReport.addStepDetails("purchaseOrderApproval", "Purchase order must be approve sucessfully ",
 					"Successfully approved Purchase order" + " ", "Pass", "Y");
 			log.info("completed executing the method:: purchaseOrderApproval");
@@ -4487,6 +4502,42 @@ public class PostTenderComponent extends BaseClass_Web {
 			pdfResultReport.addStepDetails("verifyPOStatusPendingForAcceptance",
 					"All Purchase Orders with Status as 'Pending For Acceptance' must be displayed",
 					"Unable to displayed PO with 'Pending For Acceptance' Status" + e.getMessage(), "Fail", "N");
+		}
+	}
+	
+	public void verifyPOStatus(String status) throws Throwable {
+		try {
+			log.info("started executing the method:: verifyPOStatus");
+			String poStatus= text(tendercreationlocators.poStatus).trim();
+			String statusTrim=status.trim();
+			System.out.println(poStatus);
+			System.out.println(statusTrim);
+			if(poStatus.equalsIgnoreCase(statusTrim)) {
+				
+				pdfResultReport.addStepDetails("verifyPOStatus '"+status+"'",
+						"All Purchase Orders with Status as '"+status+"' must be displayed",
+						"All Purchase Orders with Status as '"+status+"' are displayed successfull" + " ", "Pass",
+						"Y");
+			}
+			else {
+				pdfResultReport.addStepDetails("verifyPOStatusPendingForApproval",
+						"All Purchase Orders with Status as '"+status+"' must be displayed",
+						"Unable to displayed PO with ''"+status+"'' Status" + " ", "Fail", "N");
+			}
+			
+			
+			IsElementPresent(tendercreationlocators.poStatus);
+			waitForObj(2000);
+			pdfResultReport.addStepDetails("verifyPOStatus '"+status+"'",
+					"All Purchase Orders with Status as '"+status+"' must be displayed",
+					"All Purchase Orders with Status as '"+status+"' are displayed successfull" + " ", "Pass",
+					"Y");
+			log.info("completed executing the method:: verifyPOStatusPendingForApproval");
+		} catch (Exception e) {
+			log.fatal("Unable to displayed PO with 'Pending For Approval Status" + e.getMessage());
+			pdfResultReport.addStepDetails("verifyPOStatusPendingForApproval",
+					"All Purchase Orders with Status as '"+status+"' must be displayed",
+					"Unable to displayed PO with ''"+status+"'' Status" + e.getMessage(), "Fail", "N");
 		}
 	}
 
@@ -5351,21 +5402,18 @@ public class PostTenderComponent extends BaseClass_Web {
 	public void verifySummaryTabAndEnterComment() throws Exception {
 		try {
 			log.info("started executing the method:: verifySummaryTabAndEnterComment");
-
+			/*
 			JavascriptExecutor je = (JavascriptExecutor) ThreadLocalWebdriver.getDriver();
-
 			String poRefNo = (String) je
 					.executeScript("return document.getElementById('po_header_temp.po_ref_no.0').value;");
-
 			Assert.assertTrue(poRefNo.equalsIgnoreCase(eTenderComponent.getDataFromPropertiesFile("POReferenceNum")));
-
 			click(tendercreationlocators.aacceptPOCommentTabBy, "aacceptPOCommentTabBy");
-
 			waitForObj(3000);
-
-			set(tendercreationlocators.poObjCommentBy, "Accept Po", "poObjCommentBy");
-
-			waitForObj(3000);
+			*/
+			waitForElementToBeVisible(tendercreationlocators.poCommentTab);
+			click(tendercreationlocators.poCommentTab, "poCommentTab");
+			set(tendercreationlocators.poCommentTextArea, "Accept Po", "poCommentTextArea");
+			
 
 			pdfResultReport.addStepDetails("verifySummaryTabAndEnterComment",
 					"Acceptance functionality of PO by the bidder should be validated and enter comment",
@@ -5470,19 +5518,19 @@ public class PostTenderComponent extends BaseClass_Web {
 	public void searchThePoRefNoInPoListPage() throws Throwable {
 		try {
 			log.info("started executing the method:: searchThePoRefNoInPoListPage");
-
+			/*
 			String porefNumber = "//*[@id='usrmntbLst']/tbody/tr/td/span[contains(@ng-bind,'data.orgpoId') and contains(text(),'{0}')]";
-
 			clear(tendercreationlocators.search, "Clear the po ref no search field");
-
 			set(tendercreationlocators.search, eTenderComponent.getDataFromPropertiesFile("POReferenceNum"),
 					"po ref no search field");
-
 			IsElementPresent(
 					By.xpath(porefNumber.replace("{0}", eTenderComponent.getDataFromPropertiesFile("poDocNum"))));
-
-			waitForObj(5000);
-
+			*/
+			waitForElementToBeClickable(tendercreationlocators.poSearchKeyword);
+			clear(tendercreationlocators.poSearchKeyword, "Clear the po ref no search field");
+			set(tendercreationlocators.poSearchKeyword, poDocNum, "po ref no search field");
+			IsElementPresent(tendercreationlocators.poAction);
+			
 			pdfResultReport.addStepDetails("searchThePoRefNoInPoListPage",
 					"Created PO should be displayed in the PO listing page",
 					"Sucessfully Created PO is displaying in the po listing page" + " ", "Pass", "Y");
@@ -5600,13 +5648,14 @@ public class PostTenderComponent extends BaseClass_Web {
 	public void navigateToPurchasrOrderList() throws Throwable {
 		try {
 			log.info("started executing the method:: navigateToPurchasrOrderList");
-			JSClick(tendercreationlocators.purchaseOrder, "purchaseOrder");
+			waitForElement(tendercreationlocators.mainMenuIcon, 100);
+			JSClick(tendercreationlocators.mainMenuIcon, "mainMenuIcon");
+			mouseOver(tendercreationlocators.orderFromMenu);
+			JSClick(tendercreationlocators.allOrders, "allOrders");
+			//checkPageIsReady();
+			//eTenderComponent.waitForSpinnerToDisappear();
+			waitForElementToBeVisible(tendercreationlocators.Lbl_IndentList);
 			waitForObj(2000);
-			JSClick(tendercreationlocators.poListing, "poListing");
-			waitForObj(5000);
-			waitForElementToBeVisible(tendercreationlocators.poListPageRowBy);
-			waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
-			waitForObj(5000);
 			pdfResultReport.addStepDetails("navigateToPurchasrOrderList",
 					"Purchase Order List Page must be naviagte successfully",
 					"Successfully navigated to Purchase Order List Page" + " ", "Pass", "Y");
@@ -5738,19 +5787,22 @@ public class PostTenderComponent extends BaseClass_Web {
 		try {
 			log.info("started executing the method:: navigateToPurchaseOrderApproval");
 			waitForObj(5000);
-			set(tendercreationlocators.search, poDocNum, "enter PoDocNum");
+			set(tendercreationlocators.typeAnyKeyword1, poDocNum, "enter PoDocNum");
+			
 			pdfResultReport.addStepDetails("navigateToPurchaseOrderApproval",
 					"Purchase Order Approval page must be navigate sucessfully ",
 					"Successfully navigated to Purchase Order Approval page" + " ", "Pass", "Y");
-			waitForObj(10000);
-			click(tendercreationlocators.details, "details");
-			waitForElementToBeVisible(tendercreationlocators.podetails);
-			waitForObj(5000);
+			
+			click(tendercreationlocators.Actionbtn_IndentApprover_Backup, "Action_Button");
+			waitForElementToBeClickable(tendercreationlocators.snDetailsLink);
+			click(tendercreationlocators.snDetailsLink, "Details");
+			
 			pdfResultReport.addStepDetails("navigateToPurchaseOrderApproval",
 					"Purchase Order Approval page must be navigate sucessfully ",
 					"Successfully navigated to Purchase Order Approval page" + " ", "Pass", "Y");
-			click(tendercreationlocators.sanctionNoteEvaluationCommentTab, "sanctionNoteEvaluationCommentTab");
-			waitForObj(10000);
+			waitForElementToBeClickable(tendercreationlocators.snComment);
+			click(tendercreationlocators.snComment, "sanctionNoteEvaluationCommentTab");
+			waitForElementToBeClickable(tendercreationlocators.poApproverComment);
 			pdfResultReport.addStepDetails("navigateToPurchaseOrderApproval",
 					"Purchase Order Approval page must be navigate sucessfully ",
 					"Successfully navigated to Purchase Order Approval page" + " ", "Pass", "Y");
@@ -5858,8 +5910,6 @@ public class PostTenderComponent extends BaseClass_Web {
 		}
 	}
 
-	String poDocNum = "";
-
 	public String savePoDocNumber() throws Throwable {
 		log.info("started executing the method:: documentNoSave");
 		String text = text(tendercreationlocators.poDocumentNoBy);
@@ -5868,12 +5918,23 @@ public class PostTenderComponent extends BaseClass_Web {
 		eTenderComponent.updateDataIntoPropertyFile("poDocNum", poDocNum);
 		return poDocNum;
 	}
-	public String savePoDocNumberFromGIpage() throws Throwable {
+	public String savePoDocNumberFromPoListpage() throws Throwable {
 		log.info("started executing the method:: documentNoSave");
-		String text = text(tendercreationlocators.orderNo);
-		poDocNum = text.substring(0, text.lastIndexOf("(")).trim();
+		click(By.xpath("//div[@class='dropstart']/button"), "PO_Menu");
+		click(By.xpath("//div[@class='dropstart']/ul[1]/li[1]"), "View_PO");
+		By locatorHI=By.xpath("//span[contains(text(),'Header Information')]");
+		waitForElementToBeVisible(locatorHI);
+		By locatorPODoc=By.xpath("//div[@class='customHform']/div[1]/div[2]/fieldset/div[1]");
+		waitForElementToBeVisible(locatorPODoc);
+		poDocNum = text(locatorPODoc).trim();
+		//poDocNum = text.substring(0, text.lastIndexOf("(")).trim();
 		System.out.println(poDocNum);
 		eTenderComponent.updateDataIntoPropertyFile("poDocNum", poDocNum);
+		By closePOView=By.xpath("//div[@class='modal-header']/div[1]/button");
+		waitForElementToBeClickable(closePOView);
+		click(closePOView, "Close_View_PO");
+		waitForElementToBeVisible(tendercreationlocators.myPOTab);
+		
 		return poDocNum;
 	}
 
@@ -6112,6 +6173,7 @@ public class PostTenderComponent extends BaseClass_Web {
 					"Unable to navigate to PoListPage" + e.getMessage(), "Fail", "N");
 		}
 	}
+	
 
 	public void POSaveandApproval() throws Throwable {
 		try {
@@ -6122,6 +6184,7 @@ public class PostTenderComponent extends BaseClass_Web {
 			JSClick(tendercreationlocators.saveButton_PO, "saveButton_PO");
 			
 			waitForElementToBeVisible(tendercreationlocators.poOrder);
+			//IsElementPresent(tendercreationlocators.poSaveMsg);
 			click(tendercreationlocators.confirmPOSaveMsg, "POSUccessMsg");
 			
 			waitForElementToBeClickable(tendercreationlocators.submitButton_PO);
@@ -7867,12 +7930,14 @@ public class PostTenderComponent extends BaseClass_Web {
 		try {
 			log.info("started executing the method:: enterDocumentNoInSearch");
 			
-			//================remove the code
+			//================
+			/*
 			JSClick(tendercreationlocators.SN_stage, "SN_stage");
 			checkPageIsReady();
 			waitForElementToBeVisible(tendercreationlocators.createSanctionNote);
 			//waitForObj(5000);
 			waitForElementToBeClickable(tendercreationlocators.createSanctionNote);
+			*/
 			//====================================
 			
 			waitForElement(tendercreationlocators.typeAnyKeyword, 3000);
@@ -7884,14 +7949,11 @@ public class PostTenderComponent extends BaseClass_Web {
 			//set(tendercreationlocators.typeAnyKeyword, eTenderComponent.getDataFromPropertiesFile("sanctionReferenceNumber"), "typeAnyKeyword");
 			set(tendercreationlocators.typeAnyKeyword, documentNumberText, "typeAnyKeyword");
 			waitForObj(1000);
-			
-			//----------------
-			/* need to be uncommented 
+		
 			IsElementPresent(tendercreationlocators.SanctionDocumentID(documentNumberText));
 			IsElementPresent(tendercreationlocators.SanctionReferenceNumber(tenderReferenceNoLocatorText_sn));
 			waitForObj(1000);
-			*/
-			//-----------------
+			
 			pdfResultReport.addStepDetails("enterDocumentNoInSearch", "Document No must be enter successfully",
 					"Successfully entered document No" + " ", "Pass", "Y");
 			log.info("completed executing the method:: enterDocumentNoInSearch");

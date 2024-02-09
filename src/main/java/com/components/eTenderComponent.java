@@ -65,7 +65,7 @@ import com.objectRepository.TenderCreation_Locators;
 
 public class eTenderComponent extends BaseClass_Web {
 	//String tenderReferenceNoLocatorText = null;
-	String tenderReferenceNoLocatorText = "1699";
+	String tenderReferenceNoLocatorText = "1783";
 	TenderCreation_Locators tendercreationlocators = new TenderCreation_Locators();
 	String BidStartDate = null;
 	String BidDueDate = null;

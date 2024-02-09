@@ -50,6 +50,7 @@ public class TG1_TC_Evaluation_11_Openingapproval_Y_Evaluationapproval_Y_Backup 
 		initializeRepository();
 	//Creating a new Indent with No approval
 		etendercomponentobj.openURL();
+		/* remove
 		rfqfromintendcomponentobj.IndentcreatorLogin();
 		rfqfromintendcomponentobj.navigateToIndentCreation();
 		rfqfromintendcomponentobj.IndentTG1_General_Info_tabvalidation("Indigenous Indent (Supply & Service Both) V-004");
@@ -73,7 +74,6 @@ public class TG1_TC_Evaluation_11_Openingapproval_Y_Evaluationapproval_Y_Backup 
 		rfqfromintendcomponentobj.VerifyIndentStatus("Marked For RFQ");
 		etendercomponentobj.tenderLogout();
 		
-		
 		//Indent assignment Process (self claim)
 		etendercomponentobj.tendercreatorLogin();
 		rfqfromintendcomponentobj.navigateToIndentAssignment();
@@ -83,7 +83,7 @@ public class TG1_TC_Evaluation_11_Openingapproval_Y_Evaluationapproval_Y_Backup 
 		rfqfromintendcomponentobj.VerifyIndentStatus_AssignmentListPage("Assigned");
 		rfqfromintendcomponentobj.navigateToCreateRFQFromIndentPage();
 		rfqfromintendcomponentobj.enterIndentNoInSearch_RFQfromIndentPage();
-		 
+		
 		//Create and publish RFQ from indent
 		rfqfromintendcomponentobj.Create_RFQ_From_Indent("Indigenous Tender (Supply & Service Both) V-1.0");
 		rfqfromintendcomponentobj.PublishTender_from_indent_withRFQ_TG1("Indigenous Tender (Supply & Service Both) V-1.0",5,30,32);
@@ -97,6 +97,7 @@ public class TG1_TC_Evaluation_11_Openingapproval_Y_Evaluationapproval_Y_Backup 
 
 		//Bid submission procress	
 		rfqfromintendcomponentobj.waitTillBidstartDateReached();
+		
 		etendercomponentobj.bidder_01_Login();
 		etendercomponentobj.enterTenderIdInSearch_bidsubmission();
 		etendercomponentobj.navigateToActionDropdown_bidsubmission();
@@ -111,7 +112,9 @@ public class TG1_TC_Evaluation_11_Openingapproval_Y_Evaluationapproval_Y_Backup 
 		//etendercomponentobj.enterTenderIdInSearch_bidsubmission();
 		etendercomponentobj.submittedBid_Tab_Validation();
 		etendercomponentobj.tenderLogoutOld();
-				
+		Remove */
+		
+		
 		//Bid submission process for bidder2		
 		etendercomponentobj.bidder_02_Login();
 		etendercomponentobj.enterTenderIdInSearch_bidsubmission();
@@ -127,7 +130,8 @@ public class TG1_TC_Evaluation_11_Openingapproval_Y_Evaluationapproval_Y_Backup 
 		//etendercomponentobj.enterTenderIdInSearch_bidsubmission();
 		etendercomponentobj.submittedBid_Tab_Validation();
 		etendercomponentobj.tenderLogoutOld();
-			
+		etendercomponentobj.assertFail();
+		
 		//Bid submission process for bidder3		
 		etendercomponentobj.bidder_03_Login();
 		etendercomponentobj.enterTenderIdInSearch_bidsubmission();
