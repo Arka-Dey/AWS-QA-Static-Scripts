@@ -1,57 +1,47 @@
 package com.testScripts_mjunction;
 
-import java.util.concurrent.TimeUnit;
 
-import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterClass;
+import com.components.PostTenderComponent;
+import com.components.RfqFromIndentComponent;
+import com.components.eTenderComponent;
+import com.objectRepository.TenderCreation_Locators;
+
+import org.openqa.selenium.By;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import com.baseClasses.BaseClass_Web;
-import com.baseClasses.ThreadLocalWebdriver;
-import com.components.RfqFromIndentComponent;
 import com.components.eTenderComponent;
 
-public class TG1_TC_Evaluation_11_Openingapproval_Y_Evaluationapproval_Y_Backup extends BaseClass_Web{
-	
-	public eTenderComponent etendercomponentobj = new eTenderComponent(pdfResultReport);
-	public RfqFromIndentComponent rfqfromintendcomponentobj = new RfqFromIndentComponent(pdfResultReport);
 
-	/**
-	 * TestScript Environment Details
-	 * 
-	 * @throws Exception
-	 */
-	public void initializeRepository() throws Exception {
+public class TG1_TC_EPS_PO_01UserDefinedApprovalTest extends BaseClass_Web {
+
+	public eTenderComponent etendercomponentobj =new eTenderComponent(pdfResultReport);
+	public TenderCreation_Locators tendercreationobj =new TenderCreation_Locators(); 
+	public PostTenderComponent posttendercomponentobj =new PostTenderComponent(pdfResultReport);
+	public RfqFromIndentComponent rfqfromintendcomponentobj = new RfqFromIndentComponent(pdfResultReport);
+	
+	public void initializeRepository() throws Exception {		
 		reportDetails.put("Test Script Name", this.getClass().getSimpleName());
 		reportDetails.put("Test Script MyWorksshop Document ID", "Doc1234567");
-		reportDetails.put("Test Script Revision No", "1");
-		reportDetails.put("Test Author Name", "Venkatesh Jujjuru");
+		reportDetails.put("Test Script Revision No", "2");
+		reportDetails.put("Test Author Name", "Pooja");
 		reportDetails.put("Test Script Type", "Automated Testing");
 		reportDetails.put("Requirement Document ID of System", "Doc1234567");
 		reportDetails.put("Requirement ID", "US2202");
 	}
-	
-	
 	@Parameters("TestcaseNo")
-	@Test(description = "Tender_Evaluation_with_OpeningApproval_Y_Evaluationapproval_Y_RFQ_from_Indent")
-	public void Tender_Evaluation_with_OpeningApproval_Y_Evaluationapproval_Y(String no) throws Throwable {
-		System.out.println("Entered in the Test method..................");
-		try {
-			pdfResultReport.readTestDataFile(System.getProperty("user.dir").replace("\\", "/")
-					+ "/Resources/TG1_Testdata_static_scripts.xls", no);
-		} catch (Exception e) {
-			System.out.println("Unable to read the data from excel file");
-		}
-
-		WebDriver driver = ThreadLocalWebdriver.getDriver();
-        driver.manage().timeouts().implicitlyWait(100, TimeUnit.SECONDS);
-		driver.manage().timeouts().pageLoadTimeout(100, TimeUnit.SECONDS);	
-		initializeRepository();
-	//Creating a new Indent with No approval
-		etendercomponentobj.openURL();
-		
-		rfqfromintendcomponentobj.IndentcreatorLogin();
+	@Test(description = "Scenario:2 - Verify the functionality of End to End workflow of 'PO from Sanction note' with approval type 'User defined'")
+  public void f(String no) throws Throwable {
+	  System.out.println("Entered in the Test method..................");
+	  try {
+		pdfResultReport.readTestDataFile(System.getProperty("user.dir").replace("\\", "/")	+ "/Resources/TG1_Testdata_static_scripts.xls", no);
+	} catch (Exception e) {
+		System.out.println("Unable to read the data from excel file");
+	}
+	  initializeRepository();
+	  etendercomponentobj.openURL();
+	  rfqfromintendcomponentobj.IndentcreatorLogin();
 		rfqfromintendcomponentobj.navigateToIndentCreation();
 		rfqfromintendcomponentobj.IndentTG1_General_Info_tabvalidation("Indigenous Indent (Supply & Service Both) V-004");
 		rfqfromintendcomponentobj.IndentTG1_Indent_Details_tabvalidation();
@@ -154,25 +144,19 @@ public class TG1_TC_Evaluation_11_Openingapproval_Y_Evaluationapproval_Y_Backup 
 		rfqfromintendcomponentobj.waitTillBidOpentDateReached();
 		etendercomponentobj.navigateToTenderListing();
 		etendercomponentobj.enterTenderIdInSearch();
-		etendercomponentobj.clickEvaluationSettingsLink();
-				
-				
+		etendercomponentobj.clickEvaluationSettingsLink();		
 		//Set the schedule opening date and time
 		/*
-		 * etendercomponentobj.ScheduleOpening_Evaluationsettings(4); //Need to enable respective field
-		 */
-		 
-		
+		 etendercomponentobj.ScheduleOpening_Evaluationsettings(4); //Need to enable respective field
+		*/
 		etendercomponentobj.selectYesForApprovalAndEvaluationRequired();
 		etendercomponentobj.selectBidOpeningAndProvideCommentsForBidOpeningApproval();
 		etendercomponentobj.selectEvaluationAndProvideCommentsForBidOpeningApproval();
 		etendercomponentobj.SendForApprovalInEvaluationsetting();
-		
-		
 		//etendercomponentobj.checktenderStatusIsInOpening();
-	//	etendercomponentobj.checktenderStageIsInPendingForOpeningApprovalCover1("Cover 1");
+		//etendercomponentobj.checktenderStageIsInPendingForOpeningApprovalCover1("Cover 1");
 		etendercomponentobj.tenderLogout();
-		 
+		
 		//Waiting for schedule opening time reached
 		/*
 		etendercomponentobj.waitTillScheduleOpeningDateReached(); // dependent on method: ScheduleOpening_Evaluationsettings
@@ -187,34 +171,28 @@ public class TG1_TC_Evaluation_11_Openingapproval_Y_Evaluationapproval_Y_Backup 
 		etendercomponentobj.clickApproveBtnAndCheckTenderIsDisplayingOrNotInTenderOpeningTab();
 		etendercomponentobj.tenderLogoutOld();
 		 
-		
-		
-		//============change will be applied
 		//Tender creator decrypt the bid for all the bidder cover1
 		etendercomponentobj.tendercreatorLogin();
 		etendercomponentobj.navigateToTenderListing();
 		etendercomponentobj.enterTenderIdInSearch();
 		etendercomponentobj.checktenderStatusIsInevaluationState();
-	//	etendercomponentobj.checktenderStageIsInevaluationStage();
+		//etendercomponentobj.checktenderStageIsInevaluationStage();
 		etendercomponentobj.clickPendingForEvaluationApprovalStage();
 		etendercomponentobj.decryptingTheBidder();
 		etendercomponentobj.submitBidDetailPage();
-	//	etendercomponentobj.enterTenderIdInSearch();
-	//	etendercomponentobj.verifyTenderStageIsInFinalApprovalCover_1Or_Cover2();
+		//etendercomponentobj.enterTenderIdInSearch();
+		//etendercomponentobj.verifyTenderStageIsInFinalApprovalCover_1Or_Cover2();
 		etendercomponentobj.tenderLogout();
 		 	 
 		//Tender Evaluator evaluate(approve) the bid cover1
 		etendercomponentobj.evaluator1Login();
 		etendercomponentobj.validateTenderEvaluationTabDetails_WithEvaluatorUser();
 		etendercomponentobj.clickDetailsLink();
-		etendercomponentobj.evaluateSupplier("Tech Mahindra", "Approve", "Approve Tech Mahindra");
-		etendercomponentobj.evaluateSupplier("CTS", "Approve", "Approve CTS");
-		etendercomponentobj.evaluateSupplier("TCS", "Approve", "Approve TCS");
+		etendercomponentobj.evaluateSupplier("Tech Mahindra", "Approve", "Approve Tech Mahindra", 1);
+		etendercomponentobj.evaluateSupplier("CTS", "Approve", "Approve CTS", 1);
+		etendercomponentobj.evaluateSupplier("TCS", "Approve", "Approve TCS", 1);
 		etendercomponentobj.enterOverallComment_EvaluatorUser();
 		etendercomponentobj.tenderLogoutOld();
-		
-		
-		/* etendercomponentobj.assertFail(); */
 		
 		//============change will be applied
 		//Evaluation: Cover 2 work flow where opening approval Yes and evaluation approval Yes
@@ -234,11 +212,8 @@ public class TG1_TC_Evaluation_11_Openingapproval_Y_Evaluationapproval_Y_Backup 
 		etendercomponentobj.SendForApprovalInEvaluationsetting();
 		etendercomponentobj.enterTenderIdInSearch();
 		//etendercomponentobj.checktenderStatusIsInOpening(); //Issue raised, Defect ID: 136575
-	//	etendercomponentobj.checktenderStageIsInPendingForOpeningApprovalCover1("Cover 2");
+		//etendercomponentobj.checktenderStageIsInPendingForOpeningApprovalCover1("Cover 2");
 		etendercomponentobj.tenderLogout();
-		
-		//======================
-		
 		
 		//Waiting for schedule opening time reached
 		//etendercomponentobj.waitTillScheduleOpeningDateReached(); // dependent on method: ScheduleOpening_Evaluationsettings
@@ -251,8 +226,7 @@ public class TG1_TC_Evaluation_11_Openingapproval_Y_Evaluationapproval_Y_Backup 
 		etendercomponentobj.provideApproverCommentInCommentsection();
 		etendercomponentobj.clickApproveBtnAndCheckTenderIsDisplayingOrNotInTenderOpeningTab();
 		etendercomponentobj.tenderLogoutOld();
-	
-		//============change will be applied
+
 		//Tender creator decrypt the bid for all the bidder cover2
 		etendercomponentobj.tendercreatorLogin();
 		etendercomponentobj.navigateToTenderListing();
@@ -262,34 +236,77 @@ public class TG1_TC_Evaluation_11_Openingapproval_Y_Evaluationapproval_Y_Backup 
 		etendercomponentobj.clickPendingForEvaluationApprovalStage();
 		etendercomponentobj.decryptingTheBidder();
 		etendercomponentobj.submitBidDetailPage();
-//		etendercomponentobj.enterTenderIdInSearch();
-//		etendercomponentobj.verifyTenderStageIsInFinalApprovalCover_1Or_Cover2();
+		//etendercomponentobj.enterTenderIdInSearch();
+		//etendercomponentobj.verifyTenderStageIsInFinalApprovalCover_1Or_Cover2();
 		etendercomponentobj.tenderLogout();
 		
 		//Tender Evaluator evaluate(approve) the bid cover2
 		etendercomponentobj.evaluator1Login();
 		etendercomponentobj.validateTenderEvaluationTabDetails_WithEvaluatorUser();
 		etendercomponentobj.clickDetailsLink();
-		
-		//================
-		
-		etendercomponentobj.evaluateSupplier("Tech Mahindra", "Approve", "Approve Tech Mahindra");
-		etendercomponentobj.evaluateSupplier("CTS", "Approve", "Approve CTS");
-		etendercomponentobj.evaluateSupplier("TCS", "Approve", "Approve TCS");
-		
-		//=================
-		
+		etendercomponentobj.evaluateSupplier("Tech Mahindra", "Approve", "Approve Tech Mahindra", 2);
+		etendercomponentobj.evaluateSupplier("CTS", "Approve", "Approve CTS", 2);
+		etendercomponentobj.evaluateSupplier("TCS", "Approve", "Approve TCS", 2);
 		etendercomponentobj.enterOverallComment_EvaluatorUser();
 		etendercomponentobj.tenderLogoutOld();
 		
-		//============change will be applied
 		//Checking tender status Completed
 		etendercomponentobj.tendercreatorLogin();
 		etendercomponentobj.navigateToTenderListing();
 		etendercomponentobj.enterTenderIdInSearch();
 		etendercomponentobj.checktenderStatusIsIncompletedState();
-		etendercomponentobj.tenderLogout(); 
-		
-		
+		etendercomponentobj.tenderLogout();
+		  
+		//==========Create a new Sanction from a completed Tender=============
+	  posttendercomponentobj.sanction_Creator_Login();
+	  posttendercomponentobj.clickPostTenderProcessLink();
+	  posttendercomponentobj.enterCompleted_TenderId_new() ;
+	  
+	  posttendercomponentobj.createSanctionNote();
+	  posttendercomponentobj.sanctionReferenceNumber();
+	  posttendercomponentobj.SanctionsupplierSelection();
+	  posttendercomponentobj.SanctionItemsAllotment();
+	  posttendercomponentobj.ScantionComment_recommendationTab();
+	  posttendercomponentobj.clickOnSubmitButton();
+	  posttendercomponentobj.notSendForApproval();
+	  
+	  posttendercomponentobj.enterDocumentNoInSearch();
+	  
+	  posttendercomponentobj.issuePObuttonValidation();
+	  posttendercomponentobj.IssuePO_From_Completed_SNList();
+	  posttendercomponentobj.Add_AllTemplate_Items_Submit();
+	  posttendercomponentobj.InitiatePOfromSN();
+	  posttendercomponentobj.EPS_PO_Submission();
+	  posttendercomponentobj.POSaveandApproval();
+	  posttendercomponentobj.sendForApprovalUserDefinedSequential_pocreator();
+	  posttendercomponentobj.verifyPoRefNumberInPoListPage();
+	  posttendercomponentobj.verifyPOStatus("Pending for Approval");
+	  posttendercomponentobj.savePoDocNumberFromPoListpage();
+	  etendercomponentobj.tenderLogout();
+	  
+	  posttendercomponentobj.poApprover1Login();
+	  posttendercomponentobj.navigateToApprovalPendingPage(tendercreationobj.poTab);
+	  posttendercomponentobj.navigateToPurchaseOrderApproval();
+	  posttendercomponentobj.provide_PO_ApproverComment();
+	  posttendercomponentobj.purchaseOrderApproval();
+	  etendercomponentobj.tenderLogoutOld();
+	  
+	  etendercomponentobj.bidder_01_Login();
+	  posttendercomponentobj.navigateToPoListingWithBidderUser();
+	  posttendercomponentobj.searchThePoRefNoInPoListPage();
+	  posttendercomponentobj.clickAcceptPoInDropDown();
+	  posttendercomponentobj.verifySummaryTabAndEnterComment();
+	  posttendercomponentobj.clickAccepPotBtn();
+	  posttendercomponentobj.verifyPOStatusIsAccepted();
+	  etendercomponentobj.tenderLogout();
+	  
+	  posttendercomponentobj.sanction_Creator_Login();
+	  posttendercomponentobj.navigateToPurchasrOrderList();
+	  posttendercomponentobj.verifyPOStatusIsAccepted();
+	  etendercomponentobj.tenderLogout();
+	  
+	  
+	 
 	}
+
 }

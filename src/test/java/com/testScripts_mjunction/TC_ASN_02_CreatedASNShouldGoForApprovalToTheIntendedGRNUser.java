@@ -34,126 +34,172 @@ public class TC_ASN_02_CreatedASNShouldGoForApprovalToTheIntendedGRNUser extends
 		System.out.println("Entered in the Test method..................");
 		try {
 			pdfResultReport.readTestDataFile(System.getProperty("user.dir").replace("\\", "/")
-					+ "/Resources/TenderCreation_CreateNewRFQ_TestData_Vamshi.xls", no);
+					+ "/Resources/TenderCreation_CreateNewRFQ_TestData_pt2.xls", no);
 		} catch (Exception e) {
 			System.out.println("Unable to read the data from excel file");
 		}
 		initializeRepository();
-		etendercomponentobj.openURL();
-
-		etendercomponentobj.bidder_02_Login();
-		asngrnComponent.navigateToASNListInBidderLogin();
-		asngrnComponent.CreateASN();
-		asngrnComponent.SaveASN();
-		asngrnComponent.ASNNumberValidation();
-		asngrnComponent.ASNNumber();
-		asngrnComponent.TabMyInformation();
-		asngrnComponent.TabShipmentInformation("Patna");
-		asngrnComponent.TabWhatIamShippingWithBoxesOnly("20", "80", "AU");
-		asngrnComponent.TabDeliveryChallenChecklist();
-		asngrnComponent.TabInvoice("Invoice");
-		asngrnComponent.SaveASN();
-		asngrnComponent.SendForApproval();
-		asngrnComponent.navigateToASNListInBidderLogin();
-		asngrnComponent.verifyPreparedStatus("Prepared");
-		etendercomponentobj.tenderLogout();
-
-		// ASN Approver Login
-		asngrnComponent.ASNApproverLogin();
-		asngrnComponent.navigateToASNList();
-		asngrnComponent.verifyPreparedStatus("Prepared");
-		asngrnComponent.acceptOrRejectValidationButton();
-
-		// Rejected status
-		asngrnComponent.verifyRejectionValidation();
-		etendercomponentobj.tenderLogout();
-		etendercomponentobj.bidder_02_Login();
-		asngrnComponent.navigateToASNListInBidderLogin();
-		asngrnComponent.verifyRejectedStatus("Rejected");
-		asngrnComponent.editASN();
-		asngrnComponent.SendForApproval();
-		asngrnComponent.verifyPreparedStatus("Prepared");
-		etendercomponentobj.tenderLogout();
-
-		// ASN in Hold status
-		asngrnComponent.ASNApproverLogin();
-		asngrnComponent.navigateToASNList();
-		asngrnComponent.acceptOrRejectValidationButton();
-		asngrnComponent.verifyHoldValidation();
-		asngrnComponent.verifyHoldStatus("Hold");
-		asngrnComponent.navigateToASNList();
-		asngrnComponent.verifyApproveValidation();
-		etendercomponentobj.tenderLogout();
-
-		// ASN in Completed status
-		etendercomponentobj.bidder_02_Login();
-		asngrnComponent.navigateToASNListInBidderLogin();
-		asngrnComponent.verifyCompletedStatus("Completed");
-		etendercomponentobj.tenderLogout();
-
-		// ASN in completed after Inspection, create new PO
-		posttendercomponentobj.POCreatorLogin();
-		posttendercomponentobj.navigateToPurchasrOrderList();
-		posttendercomponentobj.sanctionNoteSelectionFunctionality();
-		posttendercomponentobj.enterSanctionRefNumber();
-		posttendercomponentobj.clickOnCreatePOLink();
-		posttendercomponentobj.TempleteGroup_and_Vendor_Selection_TCS();
-		posttendercomponentobj.Addquantity_Final_Items();
-		posttendercomponentobj.ProceedtoCreatePO();
-		posttendercomponentobj.CreatePOReferenceNum();
-		posttendercomponentobj.PODetailsTAB();
-		posttendercomponentobj.POAttachmentTAB();
-		posttendercomponentobj.POITemDetailsTAB();
-		posttendercomponentobj.POTRermsandConditionTAB();
-		posttendercomponentobj.POSaveandApproval();
-		posttendercomponentobj.savePoDocNumber();
-		posttendercomponentobj.ApprovalNotRequired();
-		etendercomponentobj.tenderLogout();
-
-		etendercomponentobj.bidder_02_Login();
-		posttendercomponentobj.navigateToPoListingWithBidderUser();
-		posttendercomponentobj.searchPoRefNoInPoListPage();
-		posttendercomponentobj.clickAcceptPoInDropDown();
-		posttendercomponentobj.verifySummaryTabAndEnterComment();
-		posttendercomponentobj.clickAccepPotBtn();
-		posttendercomponentobj.verifyPOStatusIsAccepted();
-		etendercomponentobj.tenderLogout();
-
-		// Create new ASN for new PO
-		etendercomponentobj.bidder_02_Login();
-		asngrnComponent.navigateToASNListInBidderLogin();
-		asngrnComponent.CreateASN();
-		asngrnComponent.SaveASN();
-		asngrnComponent.ASNNumberValidation();
-		asngrnComponent.ASNNumber();
-		asngrnComponent.TabMyInformation();
-		asngrnComponent.TabShipmentInformation("Patna");
-		asngrnComponent.TabWhatIamShippingWithBoxesOnly("20", "80", "AU");
-		asngrnComponent.TabDeliveryChallenChecklist();
-		asngrnComponent.TabInvoice("Invoice");
-		asngrnComponent.SaveASN();
-		asngrnComponent.SendForApproval();
-		// asngrnComponent.navigateToASNListInBidderLogin();
-		asngrnComponent.verifyPreparedStatus("Prepared");
-		etendercomponentobj.tenderLogout();
-
-		// Inspection status
-		asngrnComponent.ASNApproverLogin();
-		asngrnComponent.navigateToASNList();
-		asngrnComponent.verifyPreparedStatus("Prepared");
-		asngrnComponent.acceptOrRejectValidationButton();
-		asngrnComponent.verifyInspectValidation();
-		etendercomponentobj.tenderLogout();
-
-		asngrnComponent.ASNInspectorLogin();
-		asngrnComponent.navigateToASNInspectionList();
-		asngrnComponent.validateInpectionInInspectionLogin();
-		etendercomponentobj.tenderLogout();
-
-		etendercomponentobj.bidder_02_Login();
-		asngrnComponent.navigateToASNListInBidderLogin();
-		asngrnComponent.verifyCompletedStatus("Completed");
-		etendercomponentobj.tenderLogout();
+		  etendercomponentobj.openURL();
+		  posttendercomponentobj.sanction_Creator_Login();
+		  posttendercomponentobj.clickPostTenderProcessLink();
+		  posttendercomponentobj.enterCompleted_TenderId_new() ;
+		 
+		  posttendercomponentobj.createSanctionNote();
+		  posttendercomponentobj.sanctionReferenceNumber();
+		  //posttendercomponentobj.SanctionsupplierSelection();
+		  posttendercomponentobj.SanctionsupplierOrgNameWiseSelection("CTS");
+		  posttendercomponentobj.SanctionItemsAllotment();
+		  posttendercomponentobj.ScantionComment_recommendationTab();
+		  posttendercomponentobj.clickOnSubmitButton();
+		  posttendercomponentobj.notSendForApproval();
+		
+		  posttendercomponentobj.enterDocumentNoInSearch();
+		  
+		  posttendercomponentobj.issuePObuttonValidation();
+		  posttendercomponentobj.IssuePO_From_Completed_SNList();
+		  posttendercomponentobj.Add_AllTemplate_Items_Submit();
+		  posttendercomponentobj.InitiatePOfromSN();
+		  posttendercomponentobj.EPS_PO_Submission();
+		
+		  posttendercomponentobj.POSaveandApproval();
+		  //posttendercomponentobj.savePoDocNumber();
+		  posttendercomponentobj.ApprovalNotRequired();
+		  posttendercomponentobj.verifyPoRefNumberInPoListPage();
+		  posttendercomponentobj.verifyPOStatus("Pending for Acceptance");
+		  posttendercomponentobj.savePoDocNumberFromPoListpage();
+		  etendercomponentobj.tenderLogout();
+		  
+		  etendercomponentobj.bidder_01_Login();
+		  posttendercomponentobj.navigateToPoListingWithBidderUser();
+		  posttendercomponentobj.searchThePoRefNoInPoListPage();
+		  posttendercomponentobj.clickAcceptPoInDropDown();
+		  posttendercomponentobj.verifySummaryTabAndEnterComment();
+		  posttendercomponentobj.clickAccepPotBtn();
+		  posttendercomponentobj.verifyPOStatusIsAccepted();
+		  etendercomponentobj.tenderLogout();
+		  
+		  posttendercomponentobj.sanction_Creator_Login();
+		  posttendercomponentobj.navigateToPurchasrOrderList();
+		  posttendercomponentobj.verifyPOStatusIsAccepted();
+		  etendercomponentobj.tenderLogout();
+		 
+		  etendercomponentobj.bidder_01_Login();
+		  asngrnComponent.SelectASNModule();
+		  asngrnComponent.CreateASN();
+		  asngrnComponent.SaveASN();
+		  asngrnComponent.myInformationTab();
+		  //=========My Information Tab ==========
+		  	/*
+			ASN_GRNComponent.TabMyInformation();
+			ASN_GRNComponent.verifyMyInformationTabFieldsAutoPopulated();
+		   */
+		  //========================================
+		  asngrnComponent.TabShipmentInformation("Patna");
+		  asngrnComponent.TabWhatIamShippingWithBoxesOnly("10", "80", "AU");
+		  asngrnComponent.TabDeliveryChallenChecklist();
+		  asngrnComponent.TabInvoice("Invoice");
+		  asngrnComponent.SaveASN();
+		  asngrnComponent.SendForApproval();
+		  asngrnComponent.navigateToASNListInBidderLogin();
+		  asngrnComponent.verifyPreparedStatus("Prepared");
+		  etendercomponentobj.tenderLogout();
+		
+			// ASN Approver Login
+		  asngrnComponent.ASNApproverLogin();
+		  asngrnComponent.navigateToASNList();
+		  asngrnComponent.verifyPreparedStatus("Prepared");
+		  asngrnComponent.acceptOrRejectValidationButton();
+		
+			// Rejected status
+			asngrnComponent.verifyRejectionValidation();
+			etendercomponentobj.tenderLogout();
+			etendercomponentobj.bidder_02_Login();
+			asngrnComponent.navigateToASNListInBidderLogin();
+			asngrnComponent.verifyRejectedStatus("Rejected");
+			asngrnComponent.editASN();
+			asngrnComponent.SendForApproval();
+			asngrnComponent.verifyPreparedStatus("Prepared");
+			etendercomponentobj.tenderLogout();
+		
+			// ASN in Hold status
+			asngrnComponent.ASNApproverLogin();
+			asngrnComponent.navigateToASNList();
+			asngrnComponent.acceptOrRejectValidationButton();
+			asngrnComponent.verifyHoldValidation();
+			asngrnComponent.verifyHoldStatus("Hold");
+			asngrnComponent.navigateToASNList();
+			asngrnComponent.verifyApproveValidation();
+			etendercomponentobj.tenderLogout();
+		
+			// ASN in Completed status
+			etendercomponentobj.bidder_02_Login();
+			asngrnComponent.navigateToASNListInBidderLogin();
+			asngrnComponent.verifyCompletedStatus("Completed");
+			etendercomponentobj.tenderLogout();
+		
+			// ASN in completed after Inspection, create new PO
+			posttendercomponentobj.POCreatorLogin();
+			posttendercomponentobj.navigateToPurchasrOrderList();
+			posttendercomponentobj.sanctionNoteSelectionFunctionality();
+			posttendercomponentobj.enterSanctionRefNumber();
+			posttendercomponentobj.clickOnCreatePOLink();
+			posttendercomponentobj.TempleteGroup_and_Vendor_Selection_TCS();
+			posttendercomponentobj.Addquantity_Final_Items();
+			posttendercomponentobj.ProceedtoCreatePO();
+			posttendercomponentobj.CreatePOReferenceNum();
+			posttendercomponentobj.PODetailsTAB();
+			posttendercomponentobj.POAttachmentTAB();
+			posttendercomponentobj.POITemDetailsTAB();
+			posttendercomponentobj.POTRermsandConditionTAB();
+			posttendercomponentobj.POSaveandApproval();
+			posttendercomponentobj.savePoDocNumber();
+			posttendercomponentobj.ApprovalNotRequired();
+			etendercomponentobj.tenderLogout();
+		
+			etendercomponentobj.bidder_02_Login();
+			posttendercomponentobj.navigateToPoListingWithBidderUser();
+			posttendercomponentobj.searchPoRefNoInPoListPage();
+			posttendercomponentobj.clickAcceptPoInDropDown();
+			posttendercomponentobj.verifySummaryTabAndEnterComment();
+			posttendercomponentobj.clickAccepPotBtn();
+			posttendercomponentobj.verifyPOStatusIsAccepted();
+			etendercomponentobj.tenderLogout();
+		
+			// Create new ASN for new PO
+			etendercomponentobj.bidder_02_Login();
+			asngrnComponent.navigateToASNListInBidderLogin();
+			asngrnComponent.CreateASN();
+			asngrnComponent.SaveASN();
+			asngrnComponent.ASNNumberValidation();
+			asngrnComponent.ASNNumber();
+			asngrnComponent.TabMyInformation();
+			asngrnComponent.TabShipmentInformation("Patna");
+			asngrnComponent.TabWhatIamShippingWithBoxesOnly("20", "80", "AU");
+			asngrnComponent.TabDeliveryChallenChecklist();
+			asngrnComponent.TabInvoice("Invoice");
+			asngrnComponent.SaveASN();
+			asngrnComponent.SendForApproval();
+			// asngrnComponent.navigateToASNListInBidderLogin();
+			asngrnComponent.verifyPreparedStatus("Prepared");
+			etendercomponentobj.tenderLogout();
+		
+			// Inspection status
+			asngrnComponent.ASNApproverLogin();
+			asngrnComponent.navigateToASNList();
+			asngrnComponent.verifyPreparedStatus("Prepared");
+			asngrnComponent.acceptOrRejectValidationButton();
+			asngrnComponent.verifyInspectValidation();
+			etendercomponentobj.tenderLogout();
+		
+			asngrnComponent.ASNInspectorLogin();
+			asngrnComponent.navigateToASNInspectionList();
+			asngrnComponent.validateInpectionInInspectionLogin();
+			etendercomponentobj.tenderLogout();
+		
+			etendercomponentobj.bidder_02_Login();
+			asngrnComponent.navigateToASNListInBidderLogin();
+			asngrnComponent.verifyCompletedStatus("Completed");
+			etendercomponentobj.tenderLogout();
 	}
 
 }

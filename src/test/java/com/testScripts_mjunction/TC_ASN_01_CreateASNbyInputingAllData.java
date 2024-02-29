@@ -11,7 +11,7 @@ import com.components.eTenderComponent;
 
 public class TC_ASN_01_CreateASNbyInputingAllData extends BaseClass_Web {
 
-	PreConditionPo_SanctionCreation preConditionPo = new PreConditionPo_SanctionCreation(pdfResultReport);
+	public PreConditionPo_SanctionCreation preConditionPo = new PreConditionPo_SanctionCreation(pdfResultReport);
 	public eTenderComponent etendercomponentobj = new eTenderComponent(pdfResultReport);
 	public PostTenderComponent posttendercomponentobj = new PostTenderComponent(pdfResultReport);
 	public ASN_GRNComponent ASN_GRNComponent = new ASN_GRNComponent(pdfResultReport);
@@ -32,35 +32,87 @@ public class TC_ASN_01_CreateASNbyInputingAllData extends BaseClass_Web {
 	}
 
 	@Parameters("TestcaseNo")
-	@Test(description = "TC_ASN_06: Verify In My Information Tab The Supplier Fileds Will Be Auto Populaed")
-	public void ValidateMyInFormationTabFieldsAutoPopulated(String no) throws Throwable {
+	@Test(description = "TC_ASN_01: CreateASNbyInputingAllData")
+	public void CreateASNbyInputingAllData(String no) throws Throwable {
 		System.out.println("Entered in the Test method..................");
 		try {
 			pdfResultReport.readTestDataFile(System.getProperty("user.dir").replace("\\", "/")
-					+ "/Resources/TenderCreation_CreateNewRFQ_TestData_jit.xls", no);
+					+ "/Resources/TenderCreation_CreateNewRFQ_TestData_pt2.xls", no);
 		} catch (Exception e) {
 			System.out.println("Unable to read the data from excel file");
 		}
-
-		etendercomponentobj.openURL();
-
-		etendercomponentobj.bidder_02_Login();
-
-		ASN_GRNComponent.SelectASNModule();
-
-		ASN_GRNComponent.CreateASN();
-
-		ASN_GRNComponent.SaveASN();
-
-		ASN_GRNComponent.verifyMyInformationTabFieldsAutoPopulated();
-
-		ASN_GRNComponent.ASNListPage();
-
-		ASN_GRNComponent.SearchPoInASNList();
-
-		ASN_GRNComponent.VerifyDraftStatus();
-
-		etendercomponentobj.tenderLogout();
+		
+		  initializeRepository();
+		  etendercomponentobj.openURL();
+		  posttendercomponentobj.sanction_Creator_Login();
+		  posttendercomponentobj.clickPostTenderProcessLink();
+		  posttendercomponentobj.enterCompleted_TenderId_new() ;
+		 
+		  posttendercomponentobj.createSanctionNote();
+		  posttendercomponentobj.sanctionReferenceNumber();
+		  //posttendercomponentobj.SanctionsupplierSelection();
+		  posttendercomponentobj.SanctionsupplierOrgNameWiseSelection("CTS");
+		  posttendercomponentobj.SanctionItemsAllotment();
+		  posttendercomponentobj.ScantionComment_recommendationTab();
+		  posttendercomponentobj.clickOnSubmitButton();
+		  posttendercomponentobj.notSendForApproval();
+		
+		  posttendercomponentobj.enterDocumentNoInSearch();
+		  
+		  posttendercomponentobj.issuePObuttonValidation();
+		  posttendercomponentobj.IssuePO_From_Completed_SNList();
+		  posttendercomponentobj.Add_AllTemplate_Items_Submit();
+		  posttendercomponentobj.InitiatePOfromSN();
+		  posttendercomponentobj.EPS_PO_Submission();
+		
+		  posttendercomponentobj.POSaveandApproval();
+		  //posttendercomponentobj.savePoDocNumber();
+		  posttendercomponentobj.ApprovalNotRequired();
+		  posttendercomponentobj.verifyPoRefNumberInPoListPage();
+		  posttendercomponentobj.verifyPOStatus("Pending for Acceptance");
+		  posttendercomponentobj.savePoDocNumberFromPoListpage();
+		  etendercomponentobj.tenderLogout();
+		  
+		  etendercomponentobj.bidder_01_Login();
+		  posttendercomponentobj.navigateToPoListingWithBidderUser();
+		  posttendercomponentobj.searchThePoRefNoInPoListPage();
+		  posttendercomponentobj.clickAcceptPoInDropDown();
+		  posttendercomponentobj.verifySummaryTabAndEnterComment();
+		  posttendercomponentobj.clickAccepPotBtn();
+		  posttendercomponentobj.verifyPOStatusIsAccepted();
+		  etendercomponentobj.tenderLogout();
+		  
+		  posttendercomponentobj.sanction_Creator_Login();
+		  posttendercomponentobj.navigateToPurchasrOrderList();
+		  posttendercomponentobj.verifyPOStatusIsAccepted();
+		  etendercomponentobj.tenderLogout();
+		 
+		  etendercomponentobj.bidder_01_Login();
+		  ASN_GRNComponent.SelectASNModule();
+		  ASN_GRNComponent.CreateASN();
+		  ASN_GRNComponent.SaveASN();
+		  ASN_GRNComponent.myInformationTab();
+		  //=========My Information Tab ==========
+		  	/*
+			ASN_GRNComponent.TabMyInformation();
+			ASN_GRNComponent.verifyMyInformationTabFieldsAutoPopulated();
+		   */
+		  //========================================
+		  ASN_GRNComponent.TabShipmentInformation("Patna");
+		  ASN_GRNComponent.TabWhatIamShippingWithBoxesOnly("10", "80", "AU");
+		  ASN_GRNComponent.TabDeliveryChallenChecklist();
+		  ASN_GRNComponent.TabInvoice("Invoice");
+		  ASN_GRNComponent.SaveASN();
+		  ASN_GRNComponent.SubmitASN();
+		  /*
+		  ASN_GRNComponent.ASNListPage();
+		  ASN_GRNComponent.SearchPoInASNList();
+		  */
+		  ASN_GRNComponent.SearchASNRefInASNList();
+		  //ASN_GRNComponent.VerifyDraftStatus();
+		  ASN_GRNComponent.VerifyStatus("Completed");
+		  etendercomponentobj.tenderLogoutOld();
+		
 
 	}
 

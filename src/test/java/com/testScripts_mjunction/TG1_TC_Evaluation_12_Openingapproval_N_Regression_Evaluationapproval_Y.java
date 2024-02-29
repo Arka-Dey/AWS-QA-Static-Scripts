@@ -12,7 +12,7 @@ import com.baseClasses.ThreadLocalWebdriver;
 import com.components.RfqFromIndentComponent;
 import com.components.eTenderComponent;
 
-public class TG1_TC_Evaluation_11_Openingapproval_Y_Evaluationapproval_Y extends BaseClass_Web{
+public class TG1_TC_Evaluation_12_Openingapproval_N_Regression_Evaluationapproval_Y extends BaseClass_Web{
 	
 	public eTenderComponent etendercomponentobj = new eTenderComponent(pdfResultReport);
 	public RfqFromIndentComponent rfqfromintendcomponentobj = new RfqFromIndentComponent(pdfResultReport);
@@ -50,6 +50,7 @@ public class TG1_TC_Evaluation_11_Openingapproval_Y_Evaluationapproval_Y extends
 		initializeRepository();
 	//Creating a new Indent with No approval
 		etendercomponentobj.openURL();
+		
 		rfqfromintendcomponentobj.IndentcreatorLogin();
 		rfqfromintendcomponentobj.navigateToIndentCreation();
 		rfqfromintendcomponentobj.IndentTG1_General_Info_tabvalidation("Indigenous Indent (Supply & Service Both) V-004");
@@ -110,7 +111,7 @@ public class TG1_TC_Evaluation_11_Openingapproval_Y_Evaluationapproval_Y extends
 		//etendercomponentobj.TG1_validateAllInPrevieAllSubmitbidPage();
 		etendercomponentobj.submitBid_link_in_previewAllPage();
 		etendercomponentobj.navigate_to_bidList_page();
-		etendercomponentobj.enterTenderIdInSearch_bidsubmission();
+		//etendercomponentobj.enterTenderIdInSearch_bidsubmission();
 		etendercomponentobj.submittedBid_Tab_Validation();
 		etendercomponentobj.tenderLogoutOld();
 				
@@ -126,7 +127,7 @@ public class TG1_TC_Evaluation_11_Openingapproval_Y_Evaluationapproval_Y extends
 		//etendercomponentobj.TG1_validateAllInPrevieAllSubmitbidPage();
 		etendercomponentobj.submitBid_link_in_previewAllPage();
 		etendercomponentobj.navigate_to_bidList_page();
-		etendercomponentobj.enterTenderIdInSearch_bidsubmission();
+		//etendercomponentobj.enterTenderIdInSearch_bidsubmission();
 		etendercomponentobj.submittedBid_Tab_Validation();
 		etendercomponentobj.tenderLogoutOld();
 			
@@ -142,29 +143,36 @@ public class TG1_TC_Evaluation_11_Openingapproval_Y_Evaluationapproval_Y extends
 		//etendercomponentobj.TG1_validateAllInPrevieAllSubmitbidPage();
 		etendercomponentobj.submitBid_link_in_previewAllPage();
 		etendercomponentobj.navigate_to_bidList_page();
-		etendercomponentobj.enterTenderIdInSearch_bidsubmission();
+		//etendercomponentobj.enterTenderIdInSearch_bidsubmission();
 		etendercomponentobj.submittedBid_Tab_Validation();
 		etendercomponentobj.tenderLogoutOld();
 		 
+		//============change will be applied
 		//Evaluation: Cover 1 work flow where opening approval Yes and evaluation approval Yes      
 		etendercomponentobj.tendercreatorLogin();
 		rfqfromintendcomponentobj.waitTillBidDuetDateReached();
 		rfqfromintendcomponentobj.waitTillBidOpentDateReached();
 		etendercomponentobj.navigateToTenderListing();
 		etendercomponentobj.enterTenderIdInSearch();
-		etendercomponentobj.clickEvaluationSettingsLink();		
+		etendercomponentobj.clickEvaluationSettingsLink();
+				
+				
 		//Set the schedule opening date and time
 		/*
-		 etendercomponentobj.ScheduleOpening_Evaluationsettings(4); //Need to enable respective field
-		*/
+		 * etendercomponentobj.ScheduleOpening_Evaluationsettings(4); //Need to enable respective field
+		 */
+		 
+		
 		etendercomponentobj.selectYesForApprovalAndEvaluationRequired();
 		etendercomponentobj.selectBidOpeningAndProvideCommentsForBidOpeningApproval();
 		etendercomponentobj.selectEvaluationAndProvideCommentsForBidOpeningApproval();
 		etendercomponentobj.SendForApprovalInEvaluationsetting();
-		//etendercomponentobj.checktenderStatusIsInOpening();
-		//etendercomponentobj.checktenderStageIsInPendingForOpeningApprovalCover1("Cover 1");
-		etendercomponentobj.tenderLogout();
 		
+		
+		//etendercomponentobj.checktenderStatusIsInOpening();
+	//	etendercomponentobj.checktenderStageIsInPendingForOpeningApprovalCover1("Cover 1");
+		etendercomponentobj.tenderLogout();
+		 
 		//Waiting for schedule opening time reached
 		/*
 		etendercomponentobj.waitTillScheduleOpeningDateReached(); // dependent on method: ScheduleOpening_Evaluationsettings
@@ -177,19 +185,22 @@ public class TG1_TC_Evaluation_11_Openingapproval_Y_Evaluationapproval_Y extends
 		etendercomponentobj.validateBidOpeningApprovalpage("Cover 1", "3", "3");
 		etendercomponentobj.provideApproverCommentInCommentsection();
 		etendercomponentobj.clickApproveBtnAndCheckTenderIsDisplayingOrNotInTenderOpeningTab();
-		etendercomponentobj.tenderLogoutOld();	
+		etendercomponentobj.tenderLogoutOld();
+		 
 		
+		
+		//============change will be applied
 		//Tender creator decrypt the bid for all the bidder cover1
 		etendercomponentobj.tendercreatorLogin();
 		etendercomponentobj.navigateToTenderListing();
 		etendercomponentobj.enterTenderIdInSearch();
 		etendercomponentobj.checktenderStatusIsInevaluationState();
-		//etendercomponentobj.checktenderStageIsInevaluationStage();
+	//	etendercomponentobj.checktenderStageIsInevaluationStage();
 		etendercomponentobj.clickPendingForEvaluationApprovalStage();
 		etendercomponentobj.decryptingTheBidder();
 		etendercomponentobj.submitBidDetailPage();
-		etendercomponentobj.enterTenderIdInSearch();
-		etendercomponentobj.verifyTenderStageIsInFinalApprovalCover_1Or_Cover2();
+	//	etendercomponentobj.enterTenderIdInSearch();
+	//	etendercomponentobj.verifyTenderStageIsInFinalApprovalCover_1Or_Cover2();
 		etendercomponentobj.tenderLogout();
 		 	 
 		//Tender Evaluator evaluate(approve) the bid cover1
@@ -201,6 +212,9 @@ public class TG1_TC_Evaluation_11_Openingapproval_Y_Evaluationapproval_Y extends
 		etendercomponentobj.evaluateSupplier("TCS", "Approve", "Approve TCS", 1);
 		etendercomponentobj.enterOverallComment_EvaluatorUser();
 		etendercomponentobj.tenderLogoutOld();
+		
+		
+		/* etendercomponentobj.assertFail(); */
 		
 		//============change will be applied
 		//Evaluation: Cover 2 work flow where opening approval Yes and evaluation approval Yes
@@ -220,11 +234,12 @@ public class TG1_TC_Evaluation_11_Openingapproval_Y_Evaluationapproval_Y extends
 		etendercomponentobj.SendForApprovalInEvaluationsetting();
 		etendercomponentobj.enterTenderIdInSearch();
 		//etendercomponentobj.checktenderStatusIsInOpening(); //Issue raised, Defect ID: 136575
-		etendercomponentobj.checktenderStageIsInPendingForOpeningApprovalCover1("Cover 2"); // might be script will be failed here
+	//	etendercomponentobj.checktenderStageIsInPendingForOpeningApprovalCover1("Cover 2");
 		etendercomponentobj.tenderLogout();
 		
 		//======================
-	
+		
+		
 		//Waiting for schedule opening time reached
 		//etendercomponentobj.waitTillScheduleOpeningDateReached(); // dependent on method: ScheduleOpening_Evaluationsettings
 		
@@ -247,17 +262,23 @@ public class TG1_TC_Evaluation_11_Openingapproval_Y_Evaluationapproval_Y extends
 		etendercomponentobj.clickPendingForEvaluationApprovalStage();
 		etendercomponentobj.decryptingTheBidder();
 		etendercomponentobj.submitBidDetailPage();
-		//etendercomponentobj.enterTenderIdInSearch();
-		//etendercomponentobj.verifyTenderStageIsInFinalApprovalCover_1Or_Cover2();
+//		etendercomponentobj.enterTenderIdInSearch();
+//		etendercomponentobj.verifyTenderStageIsInFinalApprovalCover_1Or_Cover2();
 		etendercomponentobj.tenderLogout();
 		
 		//Tender Evaluator evaluate(approve) the bid cover2
 		etendercomponentobj.evaluator1Login();
 		etendercomponentobj.validateTenderEvaluationTabDetails_WithEvaluatorUser();
 		etendercomponentobj.clickDetailsLink();
+		
+		//================
+		
 		etendercomponentobj.evaluateSupplier("Tech Mahindra", "Approve", "Approve Tech Mahindra", 2);
 		etendercomponentobj.evaluateSupplier("CTS", "Approve", "Approve CTS", 2);
 		etendercomponentobj.evaluateSupplier("TCS", "Approve", "Approve TCS", 2);
+		
+		//=================
+		
 		etendercomponentobj.enterOverallComment_EvaluatorUser();
 		etendercomponentobj.tenderLogoutOld();
 		

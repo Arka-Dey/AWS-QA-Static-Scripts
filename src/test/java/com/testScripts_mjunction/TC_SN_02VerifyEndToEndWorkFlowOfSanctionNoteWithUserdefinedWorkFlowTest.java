@@ -32,7 +32,7 @@ public class TC_SN_02VerifyEndToEndWorkFlowOfSanctionNoteWithUserdefinedWorkFlow
   public void f(String no) throws Throwable {
 	  System.out.println("Entered in the Test method..................");
 	  try {
-		pdfResultReport.readTestDataFile(System.getProperty("user.dir").replace("\\", "/")	+ "/Resources/TenderCreation_CreateNewRFQ_TestData_pooja.xls", no);
+		pdfResultReport.readTestDataFile(System.getProperty("user.dir").replace("\\", "/")	+ "/Resources/TenderCreation_CreateNewRFQ_TestData_pt1.xls", no);
 	} catch (Exception e) {
 		System.out.println("Unable to read the data from excel file");
 	}
