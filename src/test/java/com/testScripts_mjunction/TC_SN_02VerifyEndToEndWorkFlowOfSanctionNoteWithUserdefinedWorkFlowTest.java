@@ -1,5 +1,4 @@
 package com.testScripts_mjunction;
-
 import com.components.PostTenderComponent;
 import com.components.eTenderComponent;
 import com.objectRepository.TenderCreation_Locators;
@@ -25,14 +24,14 @@ public class TC_SN_02VerifyEndToEndWorkFlowOfSanctionNoteWithUserdefinedWorkFlow
 		reportDetails.put("Test Author Name", "Pooja");
 		reportDetails.put("Test Script Type", "Automated Testing");
 		reportDetails.put("Requirement Document ID of System", "Doc1234567");
-		reportDetails.put("Requirement ID", "US2202");
+		reportDetails.put("Requirement ID", "US2202"); 
 	}
 	@Parameters("TestcaseNo")
 	@Test(description = "Scenario:2 - Verify the functionality of End to End workflow of Sanction Note with Userdefine workflow")
   public void f(String no) throws Throwable {
 	  System.out.println("Entered in the Test method..................");
 	  try {
-		pdfResultReport.readTestDataFile(System.getProperty("user.dir").replace("\\", "/")	+ "/Resources/TenderCreation_CreateNewRFQ_TestData_pooja.xls", no);
+		pdfResultReport.readTestDataFile(System.getProperty("user.dir").replace("\\", "/")	+ "/Resources/TenderCreation_CreateNewRFQ_TestData_pt1.xls", no);
 	} catch (Exception e) {
 		System.out.println("Unable to read the data from excel file");
 	}

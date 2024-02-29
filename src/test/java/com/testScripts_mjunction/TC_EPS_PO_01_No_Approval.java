@@ -39,6 +39,7 @@ public class TC_EPS_PO_01_No_Approval extends BaseClass_Web {
 	  
 	  initializeRepository();
 	  etendercomponentobj.openURL();
+	  
 	  posttendercomponentobj.sanction_Creator_Login();
 	  posttendercomponentobj.clickPostTenderProcessLink();
 	  posttendercomponentobj.enterCompleted_TenderId_new() ;
@@ -79,6 +80,7 @@ public class TC_EPS_PO_01_No_Approval extends BaseClass_Web {
 	  posttendercomponentobj.sanction_Creator_Login();
 	  posttendercomponentobj.navigateToPurchasrOrderList();
 	  posttendercomponentobj.verifyPOStatusIsAccepted();
+	  //posttendercomponentobj.validatePOPreviewDetails();  //po header validation
 	  etendercomponentobj.tenderLogout();
 	 
 	  

@@ -409,7 +409,7 @@ import com.itextpdf.text.pdf.PdfStructTreeController.returnType;
 			pdfResultReport.addStepDetails("Error during verifying the presence of Element :", "Error in element presence verification::", "Error during the verification of element in DOM: " + localRuntimeException.getMessage(), "FAIL","N");
 			throw new AutomationException("Error during verifying the presence of Element: " + localRuntimeException.getMessage());
 		}
-	}
+	} 
 	//added on 1601024
 	/*
 	 * public boolean IsElementPresentBoolean(By locator) throws Exception { boolean

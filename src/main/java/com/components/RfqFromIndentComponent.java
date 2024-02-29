@@ -36,14 +36,14 @@ public class RfqFromIndentComponent extends BaseClass_Web {
 	public eTenderComponent etendercomponentobj = new eTenderComponent(pdfResultReport);
 
 	SoftAssert softAssert=new SoftAssert();
-	//String SystemIndentnoLocatorText = null;
-	String SystemIndentnoLocatorText = "1530";
+	String SystemIndentnoLocatorText = null;
+//	String SystemIndentnoLocatorText = "1887";
 	String expectedSuccessMessage= null;
 	String TemplateGroup=null;
 	ArrayList<String> commentlist=new ArrayList<String>();
 	ArrayList<String> tabcontentList=new ArrayList<String>();
 
-
+	String tenderIDdromDraft=null;
 	public RfqFromIndentComponent(PDFResultReport pdfresultReport) {
 
 		this.pdfResultReport = pdfresultReport;
@@ -1053,7 +1053,7 @@ public class RfqFromIndentComponent extends BaseClass_Web {
 			//Modified on 130722
 			waitForObj(2000);
 			
-		//	click(tendercreationlocators.Savebtn_IndentNew, "savebutton");
+			click(tendercreationlocators.Savebtn_IndentNew, "savebutton");
 			//created by @Pavel 11012024
 			try {
 				
@@ -3602,6 +3602,7 @@ public class RfqFromIndentComponent extends BaseClass_Web {
 			waitForObj(1000);
 			set(tendercreationlocators.ClauseTxtTermsandConditionstab_Tender_TG1, pdfResultReport.testData.get("ClauseNo_TermsAndConditions_TG1"), "ClauseTxtTermsandConditionstab_Tender_TG1");
 			set(tendercreationlocators.ClauseHeaderTxtTermsandConditionstab_Tender_TG1, pdfResultReport.testData.get("ClauseHeader_TermsAndConditions_TG1"), "ClauseHeaderTxtTermsandConditionstab_Tender_TG1");
+			waitForObj(1000);
 			click(tendercreationlocators.savebutton, "savebutton");
 			//waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
 			waitForObj(2000);
@@ -4950,7 +4951,7 @@ public class RfqFromIndentComponent extends BaseClass_Web {
 			set(tendercreationlocators.deleteindentAttachment, System.getProperty("user.dir") + "\\MediaFiles\\cancel_Indent_reason.pdf","fileName");
 			set(tendercreationlocators.cancelIndentReason,  pdfResultReport.testData.get("Cancel reason"), "Reason");
 			click(tendercreationlocators.userdefineApprovalcancelindent, "user defined");
-			click(tendercreationlocators.sectionWiseCommentNoRadio, "Section Wise Comment No");
+	//		click(tendercreationlocators.sectionWiseCommentNoRadio, "Section Wise Comment No");
 			
 			if(ThreadLocalWebdriver.getDriver().findElements(tendercreationlocators.NoOfIndentRowinApproval).size()!= 0)
 			{
@@ -5332,43 +5333,43 @@ public class RfqFromIndentComponent extends BaseClass_Web {
 				select(tendercreationlocators.approverType1_Indent, pdfResultReport.testData.get("Indent_Approver_Type1"));
 				waitForObj(2000);
 				
-//				click(tendercreationlocators.userAdd_Indent, "userAdd_Indent");
-//				waitForObj(2000);
-//				set(tendercreationlocators.user3_Indent, pdfResultReport.testData.get("User_Approver2"), "user1_Indent");
-//				waitForObj(2000);
-//				select(tendercreationlocators.approverType1_Indent, pdfResultReport.testData.get("Approver_Type_Parallel"));
-//				waitForObj(2000);
-//				
-//				click(tendercreationlocators.userAdd_Indent, "userAdd_Indent");
-//				waitForObj(2000);
-//				set(tendercreationlocators.user4_Indent, pdfResultReport.testData.get("User_Approver3"), "user1_Indent");
-//				waitForObj(2000);
-//				select(tendercreationlocators.approverType1_Indent, pdfResultReport.testData.get("Approver_Type_Parallel"));
-//				waitForObj(2000);
-//				
-//				click(tendercreationlocators.userAdd_Indent, "userAdd_Indent");
-//				waitForObj(2000);
-//				set(tendercreationlocators.user5_Indent, pdfResultReport.testData.get("User_Approver4"), "user1_Indent");
-//				waitForObj(2000);
-//				select(tendercreationlocators.approverType1_Indent, pdfResultReport.testData.get("Approver_Type_Parallel"));
-//				waitForObj(2000);
-//				
-//				click(tendercreationlocators.userAdd_Indent, "userAdd_Indent");
-//				waitForObj(2000);
-//				set(tendercreationlocators.user6_Indent, pdfResultReport.testData.get("User_Approver5"), "user1_Indent");
-//				waitForObj(2000);
-//				select(tendercreationlocators.approverType1_Indent, pdfResultReport.testData.get("Approver_Type_Parallel"));
-//				waitForObj(2000);
-//				
-//				
-//				click(tendercreationlocators.coordinatorCheckbox, "coordinator");
-//				waitForObj(1000);
-//				set(tendercreationlocators.minApprover, "3", "min approver");
-//				waitForObj(1000);
-//				click(tendercreationlocators.coordinatorCheckbox, "coordinator");
+  /*				click(tendercreationlocators.userAdd_Indent, "userAdd_Indent");
+				waitForObj(2000);
+				set(tendercreationlocators.user3_Indent, pdfResultReport.testData.get("User_Approver2"), "user1_Indent");
+				waitForObj(2000);
+				select(tendercreationlocators.approverType1_Indent, pdfResultReport.testData.get("Approver_Type_Parallel"));
+				waitForObj(2000);
+				
+				click(tendercreationlocators.userAdd_Indent, "userAdd_Indent");
+				waitForObj(2000);
+				set(tendercreationlocators.user4_Indent, pdfResultReport.testData.get("User_Approver3"), "user1_Indent");
+				waitForObj(2000);
+				select(tendercreationlocators.approverType1_Indent, pdfResultReport.testData.get("Approver_Type_Parallel"));
+				waitForObj(2000);
+				
+				click(tendercreationlocators.userAdd_Indent, "userAdd_Indent");
+				waitForObj(2000);
+				set(tendercreationlocators.user5_Indent, pdfResultReport.testData.get("User_Approver4"), "user1_Indent");
+				waitForObj(2000);
+				select(tendercreationlocators.approverType1_Indent, pdfResultReport.testData.get("Approver_Type_Parallel"));
+				waitForObj(2000);
+				
+				click(tendercreationlocators.userAdd_Indent, "userAdd_Indent");
+				waitForObj(2000);
+				set(tendercreationlocators.user6_Indent, pdfResultReport.testData.get("User_Approver5"), "user1_Indent");
+				waitForObj(2000);
+				select(tendercreationlocators.approverType1_Indent, pdfResultReport.testData.get("Approver_Type_Parallel"));
 				waitForObj(2000);
 				
 				
+				click(tendercreationlocators.coordinatorCheckbox, "coordinator");
+				waitForObj(1000);
+				set(tendercreationlocators.minApprover, "3", "min approver");
+				waitForObj(1000);
+				click(tendercreationlocators.coordinatorCheckbox, "coordinator");
+				waitForObj(2000);
+				
+				*/    // feature removed from application
 				
 				commentlist.add(text(tendercreationlocators.CommentsArea_IndentRTF));
 				
@@ -5635,10 +5636,143 @@ log.info("completed executing the method:: ApproverOverAllComentWithIndentHasBee
 			}
 			
 		}
-
+		public void saveTenderIDfromDraft() throws Exception {
+			try {
+			waitForObj(500);
+			waitForElementToBeVisible(tendercreationlocators.tenderID);
+			tenderIDdromDraft=text(tendercreationlocators.tenderID);
+			waitForObj(500);
+			
+			pdfResultReport.addStepDetails("saveTenderIDfromDraft",
+					"must save tender id from draft",
+					"Sucessfully saved tender id"
+							+ " ",
+					"Pass", "Y");
+		}
+			catch (Exception e) {
+				log.fatal("Not able to Submit Indent" + e.getMessage());
+				pdfResultReport.addStepDetails("saveTenderIDfromDraft",
+						"must save tender id from draft",
+						"Not able to save tender id from draft"
+								+ e.getMessage(),
+						"Fail", "N");
+	                       Assert.fail("Failed Due to " + e.getMessage());
+			}
+		}
+			public void searchTenderID() throws Exception {
+				try {
+					log.info("started executing the method:: enterTenderIdInSearch");		
+					waitForObj(4000);
+					waitForElementToBeVisible(tendercreationlocators.tenderListPage);
+					
+					clear(tendercreationlocators.tenderListPage, "tenderListKeyword");
+					set(tendercreationlocators.tenderListPage, tenderIDdromDraft, "tenderListSearch");
+					//waitForElementToBeVisible(tendercreationlocators.defaultCatBy);
+					waitForObj(2000);
+					
+					pdfResultReport.addStepDetails("Successfully Saved",
+							"Tender Id must be entered successfully in search field",
+							"Tender Id is successfully entered in search field" + " ", "Pass", "Y");
+					log.info("completed executing the method:: tenderIdSave");
+				} catch (Exception e) {
+					log.fatal("Not able to create tender" + e.getMessage());
+					pdfResultReport.addStepDetails("Not able to create tender", "Not able to enter Tender Id in search field",
+							"Unable to enter Tender Id in search field" + e.getMessage(), "Fail", "N");
+				}
 			
 
 	
+}
+			public void deleteTender() throws Exception {
+				try {
+					log.info("started executing the method:: enterTenderIdInSearch");		
+					waitForObj(3000);
+					click(tendercreationlocators.tenderlistingPageAction, "action");
+					waitForObj(2000);
+					click(tendercreationlocators.deleteTender,"delete");
+					waitForElementToBeVisible(tendercreationlocators.deleteComment);
+					set(tendercreationlocators.deleteComment, "Not required", "Remarks");
+					waitForObj(1000);
+					click(tendercreationlocators.Submit,"Submit");
+					waitForObj(1000);
+					
+					pdfResultReport.addStepDetails("deleteTender",
+							"tender should be deleted",
+							"tender deleted" + " ", "Pass", "Y");
+				
+				} catch (Exception e) {
+					log.fatal("Not able to deleteTender" + e.getMessage());
+					pdfResultReport.addStepDetails("deleteTender", "tender should be deleted",
+							"unable to delete tender" + e.getMessage(), "Fail", "N");
+				}
+				
+			}
+			public void validateDeleteMessage() throws Exception {
+				try {
+					log.info("started executing the method:: validateDeleteMessage");		
+					waitForObj(6000);
+					if(	text(tendercreationlocators.poSaveMSG).equals("Success"))
+					{
+					pdfResultReport.addStepDetails("validateDeleteMessage",
+							"delete success message should get displayed ",
+							"delete success message displaied successfully" + " ", "Pass", "Y");
+					}
+					waitForObj(500);
+					click(tendercreationlocators.Okbtn_Indent, "ok button");
+				} catch (Exception e) {
+					log.fatal("Not able to view delete success message" + e.getMessage());
+					pdfResultReport.addStepDetails("validateDeleteMessage", "delete success message should get displayed ",
+							"not able to see delete success message" + e.getMessage(), "Fail", "N");
+				}
+				
+			}
+			public void validateCancelledMessage() throws Exception {
+				try {
+					log.info("started executing the method:: validateCancelledMessage");		
+					waitForObj(6000);
+					if(	text(tendercreationlocators.poSaveMSG).equals("Success"))
+					{
+					pdfResultReport.addStepDetails("validateCancelledMessage",
+							"cancel success message should get displayed ",
+							"cancel success message displaied successfully" + " ", "Pass", "Y");
+					}
+					waitForObj(2500);
+					click(tendercreationlocators.Okbtn_Indent, "ok button");
+				} catch (Exception e) {
+					log.fatal("Not able to view cancel success message" + e.getMessage());
+					pdfResultReport.addStepDetails("validateCancelledMessage", "cancelled success message should get displayed ",
+							"not able to see cancel success message" + e.getMessage(), "Fail", "N");
+				}
+				
+			}
+			
+			public void checkTenderStatusforCancelledorDeleted(String string) throws Exception {
+				try {
+					log.info("started executing the method:: checkTenderStatusforCancelledorDeleted");		
+					waitForObj(5000);
+					waitForElementToBeClickable(tendercreationlocators.cancelledorDeletedTenderTab);
+					click(tendercreationlocators.cancelledorDeletedTenderTab, "cancelled/deleted");
+					waitForObj(2500);
+					clear(tendercreationlocators.tenderListPage, "tenderListKeyword");
+					set(tendercreationlocators.tenderListPage, tenderIDdromDraft, "tenderListSearch");
+					if(	text(tendercreationlocators.deletedorcanceltenderstatus).equals(string))
+					{
+						pdfResultReport.addStepDetails("checkTenderStatusforCancelledorDeleted",
+								"tender status Deleted",
+								"delete success message displayed successfully" + " ", "Pass", "Y");
+					}
+					waitForObj(1000);
+					
+				} catch (Exception e) {
+					log.fatal("Not able to view delete success message" + e.getMessage());
+					pdfResultReport.addStepDetails("checkTenderStatusforCancelledorDeleted", "tender status Deleted",
+							"not displayed proper message" + e.getMessage(), "Fail", "N");
+				}
+				
+			}
+		
+		
+			
 }
 
 

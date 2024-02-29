@@ -279,7 +279,7 @@ import org.apache.poi.hssf.usermodel.HSSFSheet;
 						insertCell(table1, testData.get("Operating System"), Element.ALIGN_CENTER, 1, bf12);
 						insertCell(table1, "Browser(Version)", Element.ALIGN_CENTER, 1, bf12);
 						insertCell(table1, testData.get("Browser(Version)"), Element.ALIGN_CENTER, 1, bf12);
-					}
+					} 
 				}
 				if(status){  
 					insertCell(table1, "Test Script Name", Element.ALIGN_CENTER, 1, bf12);

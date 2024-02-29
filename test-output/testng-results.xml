@@ -2,57 +2,57 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Suite" duration-ms="3550656" started-at="2024-02-09T12:00:48 IST" finished-at="2024-02-09T12:59:59 IST">
+  <suite name="Suite" duration-ms="368392" started-at="2024-02-28T18:01:00 IST" finished-at="2024-02-28T18:07:08 IST">
     <groups>
     </groups>
-    <test name="Test" duration-ms="3550656" started-at="2024-02-09T12:00:48 IST" finished-at="2024-02-09T12:59:59 IST">
-      <class name="com.testScripts_mjunction.TG1_TC_Evaluation_11_Openingapproval_Y_Evaluationapproval_Y_Backup">
-        <test-method status="PASS" signature="setUpSuiteDetails(org.testng.ITestContext)[pri:0, instance:com.testScripts_mjunction.TG1_TC_Evaluation_11_Openingapproval_Y_Evaluationapproval_Y_Backup@543788f3]" name="setUpSuiteDetails" is-config="true" duration-ms="116" started-at="2024-02-09T12:00:48 IST" finished-at="2024-02-09T12:00:48 IST">
+    <test name="Test" duration-ms="368392" started-at="2024-02-28T18:01:00 IST" finished-at="2024-02-28T18:07:08 IST">
+      <class name="com.testScripts_mjunction.TC_EPS_PO_01_No_Approval">
+        <test-method status="PASS" signature="setUpSuiteDetails(org.testng.ITestContext)[pri:0, instance:com.testScripts_mjunction.TC_EPS_PO_01_No_Approval@515aebb0]" name="setUpSuiteDetails" is-config="true" duration-ms="116" started-at="2024-02-28T18:01:00 IST" finished-at="2024-02-28T18:01:00 IST">
           <params>
             <param index="0">
               <value>
-                <![CDATA[org.testng.TestRunner@191c2629]]>
+                <![CDATA[org.testng.TestRunner@5d66e944]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpSuiteDetails -->
-        <test-method status="PASS" signature="BeforeClass()[pri:0, instance:com.testScripts_mjunction.TG1_TC_Evaluation_11_Openingapproval_Y_Evaluationapproval_Y_Backup@543788f3]" name="BeforeClass" is-config="true" duration-ms="3021" started-at="2024-02-09T12:00:48 IST" finished-at="2024-02-09T12:00:51 IST">
+        <test-method status="PASS" signature="BeforeClass()[pri:0, instance:com.testScripts_mjunction.TC_EPS_PO_01_No_Approval@515aebb0]" name="BeforeClass" is-config="true" duration-ms="3014" started-at="2024-02-28T18:01:00 IST" finished-at="2024-02-28T18:01:03 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- BeforeClass -->
-        <test-method status="PASS" signature="captureDesc(java.lang.reflect.Method)[pri:0, instance:com.testScripts_mjunction.TG1_TC_Evaluation_11_Openingapproval_Y_Evaluationapproval_Y_Backup@543788f3]" name="captureDesc" is-config="true" duration-ms="1" started-at="2024-02-09T12:00:51 IST" finished-at="2024-02-09T12:00:51 IST">
+        <test-method status="PASS" signature="f(java.lang.String)[pri:0, instance:com.testScripts_mjunction.TC_EPS_PO_01_No_Approval@515aebb0]" name="f" duration-ms="355630" started-at="2024-02-28T18:01:03 IST" description="Scenario:1 - Verify the functionality of End to End workflow of Sanction Note" finished-at="2024-02-28T18:06:59 IST">
           <params>
             <param index="0">
               <value>
-                <![CDATA[public void com.testScripts_mjunction.TG1_TC_Evaluation_11_Openingapproval_Y_Evaluationapproval_Y_Backup.Tender_Evaluation_with_OpeningApproval_Y_Evaluationapproval_Y(java.lang.String) throws java.lang.Throwable]]>
+                <![CDATA[8]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- f -->
+        <test-method status="PASS" signature="captureDesc(java.lang.reflect.Method)[pri:0, instance:com.testScripts_mjunction.TC_EPS_PO_01_No_Approval@515aebb0]" name="captureDesc" is-config="true" duration-ms="0" started-at="2024-02-28T18:01:03 IST" finished-at="2024-02-28T18:01:03 IST">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.testScripts_mjunction.TC_EPS_PO_01_No_Approval.f(java.lang.String) throws java.lang.Throwable]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- captureDesc -->
-        <test-method status="PASS" signature="Tender_Evaluation_with_OpeningApproval_Y_Evaluationapproval_Y(java.lang.String)[pri:0, instance:com.testScripts_mjunction.TG1_TC_Evaluation_11_Openingapproval_Y_Evaluationapproval_Y_Backup@543788f3]" name="Tender_Evaluation_with_OpeningApproval_Y_Evaluationapproval_Y" duration-ms="3529551" started-at="2024-02-09T12:00:51 IST" description="Tender_Evaluation_with_OpeningApproval_Y_Evaluationapproval_Y_RFQ_from_Indent" finished-at="2024-02-09T12:59:41 IST">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[11]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- Tender_Evaluation_with_OpeningApproval_Y_Evaluationapproval_Y -->
-        <test-method status="PASS" signature="afterClass()[pri:0, instance:com.testScripts_mjunction.TG1_TC_Evaluation_11_Openingapproval_Y_Evaluationapproval_Y_Backup@543788f3]" name="afterClass" is-config="true" duration-ms="14871" started-at="2024-02-09T12:59:44 IST" finished-at="2024-02-09T12:59:59 IST">
+        <test-method status="PASS" signature="afterClass()[pri:0, instance:com.testScripts_mjunction.TC_EPS_PO_01_No_Approval@515aebb0]" name="afterClass" is-config="true" duration-ms="6383" started-at="2024-02-28T18:07:02 IST" finished-at="2024-02-28T18:07:08 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterClass -->
-        <test-method status="PASS" signature="afterSuite()[pri:0, instance:com.testScripts_mjunction.TG1_TC_Evaluation_11_Openingapproval_Y_Evaluationapproval_Y_Backup@543788f3]" name="afterSuite" is-config="true" duration-ms="29" started-at="2024-02-09T13:00:00 IST" finished-at="2024-02-09T13:00:00 IST">
+        <test-method status="PASS" signature="afterSuite()[pri:0, instance:com.testScripts_mjunction.TC_EPS_PO_01_No_Approval@515aebb0]" name="afterSuite" is-config="true" duration-ms="29" started-at="2024-02-28T18:07:08 IST" finished-at="2024-02-28T18:07:08 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterSuite -->
-      </class> <!-- com.testScripts_mjunction.TG1_TC_Evaluation_11_Openingapproval_Y_Evaluationapproval_Y_Backup -->
+      </class> <!-- com.testScripts_mjunction.TC_EPS_PO_01_No_Approval -->
     </test> <!-- Test -->
   </suite> <!-- Suite -->
 </testng-results>

@@ -7,7 +7,7 @@
         <parameter name="browserName" value="windowschrome"></parameter>
         <classes>
            <parameter name="TestcaseNo" value="26"></parameter>   
-            <class name="com.testScripts_mjunction.TC_SN_03VerifyEndToEndWorkFlowOfSanctionNoteWithPredefineWorkFlowTest"/>
+            <class name="com.testScripts_mjunction.TC_SN_07VerifyEndToEndWorkFlowOfSanctionNoteWithPredefineWorkFlowTest"/>
         </classes>
     </test> 
 </suite> 

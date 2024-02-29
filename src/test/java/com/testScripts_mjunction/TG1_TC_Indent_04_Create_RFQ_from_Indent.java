@@ -96,7 +96,7 @@ public class TG1_TC_Indent_04_Create_RFQ_from_Indent extends BaseClass_Web{
 		etendercomponentobj.sendForNoApproval_validation();
 		etendercomponentobj.enterTenderIdInSearch();
 		etendercomponentobj.checkTenderStatusAndTenderStage();
-		etendercomponentobj.tenderLogoutOld();
+		etendercomponentobj.tenderLogout();
 	}
 
 }

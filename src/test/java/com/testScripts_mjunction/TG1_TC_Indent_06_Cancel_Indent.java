@@ -83,6 +83,7 @@ public class TG1_TC_Indent_06_Cancel_Indent extends BaseClass_Web{
 					// cancel indent feature without approver
 					rfqfromintendcomponentobj.IndentcreatorLogin();
 				 rfqfromintendcomponentobj.navigateToIndentListing();
+				 rfqfromintendcomponentobj.enterIndentNoForSearch();
 				 rfqfromintendcomponentobj.validateCancelIndentFeature();
 					etendercomponentobj.tenderLogout();
 
@@ -95,6 +96,7 @@ public class TG1_TC_Indent_06_Cancel_Indent extends BaseClass_Web{
 					rfqfromintendcomponentobj.IndentcreatorLogin();
 					 rfqfromintendcomponentobj.navigateToIndentListing();
 					 rfqfromintendcomponentobj.clickOnCancelledDeletedIndentTab();
+					 rfqfromintendcomponentobj.enterIndentNoForSearch();
 					 rfqfromintendcomponentobj.VerifyIndentStatus_AssignmentListPageInCancelDeletedTab("Cancelled");
 					 etendercomponentobj.tenderLogout();
 	}

@@ -328,13 +328,7 @@ public class TG1_TC_Indent_02_Creation_with_multiple_Approvers extends BaseClass
 		//preview tab validation  validatePreviewData
 		 rfqfromintendcomponentobj.validatePreviewData();   //validate preview tab validation at creator end
 		 etendercomponentobj.tenderLogout();
-		 
-//		 //validate approver end preview data
-//		 rfqfromintendcomponentobj.IndentapproverLogin();
-//			rfqfromintendcomponentobj.GoToApprovalworkFlowCompletedindentAndSearchTheIndent();
-//			rfqfromintendcomponentobj.clickDetailLinkInApprovalListPage();
-//			rfqfromintendcomponentobj.validatePreviewData();
-//			 etendercomponentobj.tenderLogout();
+		
 		 
 		 
 		 
