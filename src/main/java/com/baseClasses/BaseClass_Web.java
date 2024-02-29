@@ -92,6 +92,22 @@ import com.itextpdf.text.pdf.PdfStructTreeController.returnType;
 		throw new AutomationException("Unable to click on the field : " + localRuntimeException.getMessage());
 	}
 	}
+	//added on 100224
+	public void SSClick(By locator,String locatordisplayname) throws Exception {
+		try{
+			ThreadLocalWebdriver.getDriver().findElement(locator).click();
+			waitForObj(3000);
+			log.info("Clicked on the field :"+locatordisplayname);
+			pdfResultReport.addStepDetails("Click", "User has clicked on desired event",
+					"User has successfully clicked" + " ", "Pass", "Y");
+			log.info("completed executing the method:: tendercreatorLogout");
+		} catch (RuntimeException localRuntimeException) {
+			log.fatal("Error in clicking the field:" + localRuntimeException.getMessage());
+		System.out.println("Error in clicking the field:" + localRuntimeException.getMessage() + "Fail");
+		pdfResultReport.addStepDetails("click Method", "Click on the field :", "Unable to click on the field" + localRuntimeException.getMessage(), "FAIL","N");
+		throw new AutomationException("Unable to click on the field : " + localRuntimeException.getMessage());
+	}
+	}
 	
 	public void set(By locator, String data,String locatordisplayname) throws Exception {
 		try {
@@ -409,26 +425,8 @@ import com.itextpdf.text.pdf.PdfStructTreeController.returnType;
 			pdfResultReport.addStepDetails("Error during verifying the presence of Element :", "Error in element presence verification::", "Error during the verification of element in DOM: " + localRuntimeException.getMessage(), "FAIL","N");
 			throw new AutomationException("Error during verifying the presence of Element: " + localRuntimeException.getMessage());
 		}
-	} 
-	//added on 1601024
-	/*
-	 * public boolean IsElementPresentBoolean(By locator) throws Exception { boolean
-	 * foundAlert = false; try {
-	 * ThreadLocalWebdriver.getDriver().findElement(locator).isDisplayed();
-	 * log.info("Element is available : "+locator); foundAlert = true; } catch
-	 * (RuntimeException localRuntimeException) {
-	 * log.error("Element is not available : "+locator);
-	 * System.out.println("Error in verification of presense of element: " +
-	 * localRuntimeException.getMessage() + "Fail"); pdfResultReport.
-	 * addStepDetails("Error during verifying the presence of Element :",
-	 * "Error in element presence verification::",
-	 * "Error during the verification of element in DOM: " +
-	 * localRuntimeException.getMessage(), "FAIL","N"); throw new
-	 * AutomationException("Error during verifying the presence of Element: " +
-	 * localRuntimeException.getMessage()); } return foundAlert;
-	 * 
-	 * }
-	 */
+	}
+
 	public boolean IsElementPresentBoolean(By locator) throws Exception {
 		boolean foundAlert = false;
 		
@@ -1178,6 +1176,21 @@ import com.itextpdf.text.pdf.PdfStructTreeController.returnType;
         
     }
 	
+	public boolean isElementDisplayed_Updated(By locator, int timeoutInSeconds) {
+		
+		boolean blnStatus = false;
+		WebDriverWait wait = new WebDriverWait(ThreadLocalWebdriver.getDriver(), timeoutInSeconds);
+		try
+		{
+		wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+        blnStatus = true;
+		}
+		catch (RuntimeException localRuntimeException)
+		{
+			System.out.println("Error in finding Element:"+localRuntimeException.getMessage() +"Pass");
+		}
+		return blnStatus;
+	}
 	
 	public void waitForElementToBeInvisible(By locator)
 	{
@@ -1411,8 +1424,13 @@ import com.itextpdf.text.pdf.PdfStructTreeController.returnType;
 //	            e.printStackTrace();
 //	            return false;
 //	        }
-//	    
 		
-	
+		public String concatenateWithSlash(String first, String second, String separator) {
+	        //return first + "/" + second;
+			return first + separator + second;
+	    }
+		
+		
+	    
 		
 	}

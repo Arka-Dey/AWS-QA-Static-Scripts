@@ -3,16 +3,28 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
+<<<<<<< HEAD
       <class name="com.testScripts_mjunction.TG1_TC_TenderCreation_02_tender_publish_with_multiple_approver">
         <methods>
           <include name="setUpSuiteDetails"/>
           <include name="Tenderpublished_after_tender_approval_TG1"/>
+=======
+      <class name="com.testScripts_mjunction.TC_ASN_01_CreateASNbyInputingAllData">
+        <methods>
+          <include name="setUpSuiteDetails"/>
+          <include name="BeforeClass"/>
+>>>>>>> c5cc3e91e9e277edd3483ea075bb1516542d3a20
           <include name="afterSuite"/>
           <include name="captureDesc"/>
-          <include name="BeforeClass"/>
           <include name="afterClass"/>
+<<<<<<< HEAD
         </methods>
       </class> <!-- com.testScripts_mjunction.TG1_TC_TenderCreation_02_tender_publish_with_multiple_approver -->
+=======
+          <include name="ValidateMyInFormationTabFieldsAutoPopulated"/>
+        </methods>
+      </class> <!-- com.testScripts_mjunction.TC_ASN_01_CreateASNbyInputingAllData -->
+>>>>>>> c5cc3e91e9e277edd3483ea075bb1516542d3a20
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

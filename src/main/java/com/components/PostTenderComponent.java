@@ -309,6 +309,29 @@ public class PostTenderComponent extends BaseClass_Web {
 					"Unable to login in as sanction note approver" + e.getMessage(), "Fail", "N");
 		}
 	}
+	public void sanctionNoteApproverLogin(String username) throws Throwable {
+		try {
+			log.info("started executing the method:: sanctionNoteApprover1Login");
+			waitForElementToBeVisible(tendercreationlocators.userName);
+			set(tendercreationlocators.userName, username, "SanctionNoteApproverUserName");
+			waitForElementToBeVisible(tendercreationlocators.password);
+			set(tendercreationlocators.password, pdfResultReport.testData.get("AppPassword"), "password");
+			waitForElementToBeClickable(tendercreationlocators.okButton);
+			click(tendercreationlocators.okButton, "okButton");
+			waitForElement(tendercreationlocators.dashboardIcon, 5000);
+			
+			pdfResultReport.addStepDetails("sanctionNoteApprover1Login",
+					"Sanction Note Approver must be sucessfully logged in",
+					"Successfully logged in as sanction note approver" + " ", "Pass", "Y");
+			log.info("completed executing the method:: sanctionNoteApprover1Login");
+
+		} catch (Exception e) {
+			log.fatal("Unable to login in as sanction note approver" + e.getMessage());
+			pdfResultReport.addStepDetails("sanctionNoteApprover1Login",
+					"Sanction Note Approver must be sucessfully logged in",
+					"Unable to login in as sanction note approver" + e.getMessage(), "Fail", "N");
+		}
+	}
 
 	public void sanctionNoteApprover2Login() throws Throwable {
 		try {
@@ -398,6 +421,7 @@ public class PostTenderComponent extends BaseClass_Web {
 					"Unable to approve sanction Note Evaluation" + e.getMessage(), "Fail", "N");
 		}
 	}
+	
 	
 	public void sanctionNoteEvaluationApprove_C() throws Throwable {
 		try {
@@ -2122,6 +2146,30 @@ public class PostTenderComponent extends BaseClass_Web {
 			JSClick(tendercreationlocators.ALLsupplierSelectionCheckBox, "supplierSelectionCheckBox");
 			waitForObj(1000);
 			JSClick(tendercreationlocators.L1supplierSelectionCheckBox, "L1supplierSelectionCheckBox");
+
+			waitForObj(1000);
+			pdfResultReport.addStepDetails("supplierSelection", "supplier must be selected sucessfully",
+					"Successfully selected supplier " + " ", "Pass", "Y");
+			log.info("completed executing the method:: supplierSelection");
+		} catch (Exception e) {
+			log.fatal("Unable to select supplier " + e.getMessage());
+			pdfResultReport.addStepDetails("supplierSelection", "supplier must be selected sucessfully",
+					"Unable to select supplierr " + e.getMessage(), "Fail", "N");
+		}
+	}
+	//added on 120224 @AD
+	public void SanctionsupplierOrgNameWiseSelection(String Orgname) throws Throwable {
+		try {
+			log.info("started executing the method:: sanctionReferenceNumber");
+			//waitForObj(20000);
+			//etendercomponentobj.waitForSpinnerToDisappear();
+			//waitForObj(20000);
+			
+			JSClick(tendercreationlocators.ALLsupplierSelectionCheckBox, "supplierSelectionCheckBox");
+			waitForObj(1000);
+			JSClick(tendercreationlocators.ALLsupplierSelectionCheckBox, "supplierSelectionCheckBox");
+			waitForObj(1000);
+			JSClick(tendercreationlocators.supplierWiseSelection(Orgname), "supplierWiseSelection");
 
 			waitForObj(1000);
 			pdfResultReport.addStepDetails("supplierSelection", "supplier must be selected sucessfully",
@@ -11530,31 +11578,6 @@ public class PostTenderComponent extends BaseClass_Web {
 	        pdfResultReport.addStepDetails("sendForApprovalProcess",
 	                     "send for approval sequential ",
 	                     "Unable to send for approval sequential " + e.getMessage(), "Fail", "N");
-		}
-		
-	}
-
-	public void sanctionNoteApproverLogin(String string) throws Exception {
-try {
-			
-			log.info("started executing the method:: sanction_Creator_Login");
-			waitForElementToBeVisible(tendercreationlocators.userName);
-			set(tendercreationlocators.userName, string, "SanctionNoteCreatorUserName");
-			waitForElementToBeVisible(tendercreationlocators.password);
-			set(tendercreationlocators.password, pdfResultReport.testData.get("AppPassword"), "password");
-			waitForElementToBeClickable(tendercreationlocators.okButton);
-			click(tendercreationlocators.okButton, "okButton");
-			waitForElement(tendercreationlocators.dashboardIcon, 5000);
-
-			pdfResultReport.addStepDetails("sanction_Creator_Login",
-					"Sanction note  creator user must be login sucessfully",
-					"Successfully logged in as Sanction note  creator user " + " ", "Pass", "Y");
-			log.info("completed executing the method:: sanction_Creator_Login");
-		} catch (Exception e) {
-			log.fatal("Unable to login as sanction note creator user" + e.getMessage());
-			pdfResultReport.addStepDetails("Tsanction_Creator_Login",
-					"Sanction note  creator user must be login sucessfully",
-					"Unable to login as sanction note creator user" + e.getMessage(), "Fail", "N");
 		}
 		
 	}

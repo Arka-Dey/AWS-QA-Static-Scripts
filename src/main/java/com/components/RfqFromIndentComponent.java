@@ -37,7 +37,7 @@ public class RfqFromIndentComponent extends BaseClass_Web {
 
 	SoftAssert softAssert=new SoftAssert();
 	String SystemIndentnoLocatorText = null;
-//	String SystemIndentnoLocatorText = "1887";
+	//String SystemIndentnoLocatorText = "1530";
 	String expectedSuccessMessage= null;
 	String TemplateGroup=null;
 	ArrayList<String> commentlist=new ArrayList<String>();
@@ -603,7 +603,7 @@ public class RfqFromIndentComponent extends BaseClass_Web {
 	}
 
 	public static int getrandomInterger(int min, int max) {
-
+		
 		return ((int) (Math.random() * (max - min))) + min;
 
 	}
@@ -916,6 +916,26 @@ public class RfqFromIndentComponent extends BaseClass_Web {
 					"Unable to login as indent approver" + e.getMessage(), "Fail", "N");
 		}
 	}
+	//added by @AD
+	public void commonLogin(String approvername) throws Throwable {
+		try {
+			log.info("started executing the method:: IndentapproverLogin");
+			set(tendercreationlocators.userName, approvername, "userName");
+			waitForElementToBeClickable(tendercreationlocators.password);
+			set(tendercreationlocators.password, pdfResultReport.testData.get("AppPassword"), "password");
+			click(tendercreationlocators.okButton, "okButton");
+			waitForElement(tendercreationlocators.dashboardIcon, 5000);
+			pdfResultReport.addStepDetails("Indent approver login", "Indent approver must be sucessfully logged in",
+					"Successfully logged in as indent approver" + " ", "Pass", "Y");
+			log.info("completed executing the method:: IndentapproverLogin");
+
+		} catch (Exception e) {
+			log.fatal("Unable to open the URL" + e.getMessage());
+			pdfResultReport.addStepDetails("Indent approver login", "Indent approver is not logged in",
+					"Unable to login as indent approver" + e.getMessage(), "Fail", "N");
+		}
+	}
+	
 	//Indent creator login (21/01/2021)
 	public void IndentcreatorLogin() throws Throwable {
 		try {
@@ -1621,6 +1641,7 @@ public class RfqFromIndentComponent extends BaseClass_Web {
 			waitForObj(1000);
 			
 			scrollToElement(tendercreationlocators.Savebtn_IndentNew1);
+			waitForObj(2000);
 			waitForElementToBeClickable(tendercreationlocators.Savebtn_IndentNew1);
 			click(tendercreationlocators.Savebtn_IndentNew1, "Savebtn_Indent");
 			waitForObj(2000); 
@@ -1637,7 +1658,6 @@ public class RfqFromIndentComponent extends BaseClass_Web {
 			waitForElementToBeClickable(tendercreationlocators.AddInputAlert);
 			click(tendercreationlocators.AddInputAlert, "AddInputAlert");
 			waitForObj(1000);
-	//		commentlist.add(text(tendercreationlocators.CommentsArea_IndentRTF));
 			tabcontentList.add(text(tendercreationlocators.tabContent));
 			waitForObj(1000); 
 			
@@ -1793,6 +1813,7 @@ public class RfqFromIndentComponent extends BaseClass_Web {
 			
 			waitForObj(1000);
 			scrollToElement(tendercreationlocators.Savebtn_IndentNew1);
+			waitForObj(2000);
 			waitForElementToBeClickable(tendercreationlocators.Savebtn_IndentNew1);
 			click(tendercreationlocators.Savebtn_IndentNew1, "Savebtn_Indent");
 			
@@ -2501,7 +2522,7 @@ public class RfqFromIndentComponent extends BaseClass_Web {
 			                   
 					}	
 				
-				//SSJSSend(tendercreationlocators.AppComments_Indent,"AppComments_Indent", comment);
+				//JSSend(tendercreationlocators.AppComments_Indent,"AppComments_Indent", comment);
 				set(tendercreationlocators.AppComments_Indent, comment,"AppComments_Indent");
 				commentlist.add(text(tendercreationlocators.AppComments_Indent));
 				//click(tendercreationlocators.ApproveBtn_Indent, "approve");
@@ -4850,7 +4871,7 @@ public class RfqFromIndentComponent extends BaseClass_Web {
 			
 			//approver History Preview Tab
 			waitForObj(1500);
-		click(tendercreationlocators.approvalHistoryPreviewTab, "Approval History");
+			click(tendercreationlocators.approvalHistoryPreviewTab, "Approval History");
 			
 			checkPageIsReady();
 			

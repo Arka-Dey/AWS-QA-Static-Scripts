@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Function;
@@ -21,11 +22,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
+
 import com.baseClasses.BaseClass_Web;
+import com.baseClasses.EmailUtils;
 import com.baseClasses.PDFResultReport;
 import com.baseClasses.ThreadLocalWebdriver;
 import com.objectRepository.TenderCreation_Locators;
-import com.baseClasses.EmailUtils;
 
 
 
@@ -42,9 +44,11 @@ public class ASN_GRNComponent extends BaseClass_Web {
 	public void SelectASNModule() throws Throwable {
 		try {
 			log.info("started executing the method:: SelectASNModule");
-
-			JSClick(tendercreationlocators.ASN, "SN_stage");
-
+			waitForElement(tendercreationlocators.mainMenuIcon, 100);
+			JSClick(tendercreationlocators.mainMenuIcon, "mainMenuIcon");
+			mouseOver(tendercreationlocators.orderFulfillment);
+			JSClick(tendercreationlocators.createNewASN, "createNewASN");
+			
 			pdfResultReport.addStepDetails("SelectASNModule", "ASN Module should be selected successfully",
 					"Successfully clicked ASN Module " + " ", "Pass", "Y");
 			log.info("completed executing the method:: SelectASNModule");
@@ -61,11 +65,33 @@ public class ASN_GRNComponent extends BaseClass_Web {
 
 	public void SaveASN() throws Throwable {
 		try {
+			waitForObj(2000);
 			log.info("started executing the method:: SaveASN");
-
-			click(tendercreationlocators.ASNSave, "ASNSave");
-			etendercomponentobj.waitForSpinnerToDisappear();
+			scrollToElement(tendercreationlocators.saveASN);
+			JSClick(tendercreationlocators.saveASN, "saveASN");
+			eTenderComponent.waitForSpinnerToDisappear();
 			waitForObj(3000);
+
+			pdfResultReport.addStepDetails("SaveASN", "ASN Module should be saved successfully",
+					"Successfully saved ASN Module " + " ", "Pass", "Y");
+			log.info("completed executing the method:: SaveASN");
+		} catch (Exception e) {
+			log.fatal("Unable to saved ASN Module" + e.getMessage());
+			pdfResultReport.addStepDetails("SaveASN", "ASN Module should be saved successfully",
+					"Unable to saved ASN Module" + e.getMessage(), "Fail", "N");
+			Assert.fail("Failed Due to " + e.getMessage());
+		}
+
+	}
+	
+	public void SubmitASN() throws Throwable {
+		try {
+			waitForObj(2000);
+			log.info("started executing the method:: SaveASN");
+			scrollToElement(tendercreationlocators.submitASN);
+			JSClick(tendercreationlocators.submitASN, "saveASN");
+			eTenderComponent.waitForSpinnerToDisappear();
+			waitForObj(2000);
 
 			pdfResultReport.addStepDetails("SaveASN", "ASN Module should be saved successfully",
 					"Successfully saved ASN Module " + " ", "Pass", "Y");
@@ -85,19 +111,22 @@ public class ASN_GRNComponent extends BaseClass_Web {
 			log.info("started executing the method:: TabShipmentInformation");
 			// Durgapur
 			// Patna
-
+			waitForElementToBeVisible(tendercreationlocators.TabShipmentInformation);
 			click(tendercreationlocators.TabShipmentInformation, "TabShipmentInformation");
-			waitForObj(5000);
+			waitForObj(2000);
+			waitForElementToBeClickable(tendercreationlocators.SelctWareHouse);
 			select(tendercreationlocators.SelctWareHouse, warehouse);
 
 			String BolNum = "BolNum_".concat(eTenderComponent.getDataFromPropertiesFile("poDocNum"));
+			waitForElementToBeClickable(tendercreationlocators.BolNumber);
 			click(tendercreationlocators.BolNumber, "BolNumber");
 			set(tendercreationlocators.BolNumber, BolNum, "BolNumber");
 
+			waitForElementToBeClickable(tendercreationlocators.DeliverToContactName);
 			click(tendercreationlocators.DeliverToContactName, "DeliverToContactName");
-			set(tendercreationlocators.DeliverToContactName, "Rakesh", "DeliverToContactName");
-			waitForObj(3000);
-
+			set(tendercreationlocators.DeliverToContactName, "Arka", "DeliverToContactName");
+			waitForObj(1000);
+			
 			pdfResultReport.addStepDetails("TabShipmentInformation",
 					"All fileds of Shipment Information tab should be entered successfully",
 					"Successfully saved Shipment Information Tab Details " + " ", "Pass", "Y");
@@ -112,7 +141,7 @@ public class ASN_GRNComponent extends BaseClass_Web {
 
 	}
 
-	public void TabWhatIamShippingWithBoxesOnly(String ASNQuantity, String Weight, String UOM_Weight) throws Throwable {
+	public void TabWhatIamShippingWithBoxesOnlyOld(String ASNQuantity, String Weight, String UOM_Weight) throws Throwable {
 		try {
 			log.info("started executing the method:: TabWhatIamShipping");
 
@@ -199,29 +228,91 @@ public class ASN_GRNComponent extends BaseClass_Web {
 		}
 
 	}
+	
+	public void TabWhatIamShippingWithBoxesOnly(String ASNQuantity, String Weight, String UOM_Weight) throws Throwable {
+		try {
+			log.info("started executing the method:: TabWhatIamShipping");
+			waitForElementToBeVisible(tendercreationlocators.TabWhatIamShipping);
+			click(tendercreationlocators.TabWhatIamShipping, "TabWhatIamShipping");
+			waitForElementToBeClickable(tendercreationlocators.addASNItemRow);
+			click(tendercreationlocators.addASNItemRow, "addASNItemRow");
+			waitForObj(2000);
+			mouseOver(tendercreationlocators.itemSelectionButton);
+			waitForElementToBeClickable(tendercreationlocators.itemSelectionButton);
+			click(tendercreationlocators.itemSelectionButton, "itemSelectionButton");
+			waitForElementToBeClickable(tendercreationlocators.itemSelection);
+			//click(tendercreationlocators.itemSelection, "itemSelection");
+			List<WebElement> items = ThreadLocalWebdriver.getDriver().findElements(tendercreationlocators.itemSelection);
+			int itemC=items.size();
+			System.out.println(itemC);
+			waitForElementToBeClickable(tendercreationlocators.selectASNItemCancelButton);
+			click(tendercreationlocators.selectASNItemCancelButton, "selectItem");
+			mouseOver(tendercreationlocators.deletemItemRow);
+			waitForElementToBeClickable(tendercreationlocators.deletemItemRow);
+			click(tendercreationlocators.deletemItemRow, "deletemItemRowConfirm");
+			waitForElementToBeClickable(tendercreationlocators.deletemItemRow);
+			click(tendercreationlocators.deletemItemRowConfirm, "deletemItemRowConfirm");
+			
+			for(int i=1; i<=itemC; i++) {
+				waitForElementToBeVisible(tendercreationlocators.addASNItemRow);
+				JSClick(tendercreationlocators.addASNItemRow, "addASNItemRow");
+				if(i==1) {
+					mouseOver(tendercreationlocators.itemSelectionButton);
+				}
+				String str = Integer.toString(i);
+				waitForElementToBeClickable(tendercreationlocators.itemSelectionButton(str));
+				System.out.println(tendercreationlocators.itemSelectionButton(str));
+				click(tendercreationlocators.itemSelectionButton(str), "itemSelectionButton");
+				waitForElementToBeClickable(tendercreationlocators.itemSelection(str));
+				System.out.println(tendercreationlocators.itemSelection(str));
+				click(tendercreationlocators.itemSelection(str), "itemSelection");
+				waitForElementToBeClickable(tendercreationlocators.selectASNItemOKButton);
+				click(tendercreationlocators.selectASNItemOKButton, "selectItem");
+				waitForElementToBeClickable(tendercreationlocators.shipmentQuantity(str));
+				clear(tendercreationlocators.shipmentQuantity(str),"shipmentQuantity");
+				set(tendercreationlocators.shipmentQuantity(str), ASNQuantity, "shipmentQuantity");
+				waitForElementToBeClickable(tendercreationlocators.shipmentWeight(str));
+				set(tendercreationlocators.shipmentWeight(str), Weight, "shipmentQuantity");
+				System.out.println(i);
+			}
+			waitForObj(1000);
+			
+			pdfResultReport.addStepDetails("TabWhatIamShipping",
+					"All fileds of What I am Shipping tab should be entered successfully",
+					"Successfully saved What I am Shipping Tab Details " + " ", "Pass", "Y");
+			log.info("completed executing the method:: TabWhatIamShipping");
+		} catch (Exception e) {
+			log.fatal("Unable to save My Information Tab" + e.getMessage());
+			pdfResultReport.addStepDetails("TabWhatIamShipping",
+					"All fileds of What I am Shipping tab should be entered successfully",
+					"Unable to save What I am Shipping Tab" + e.getMessage(), "Fail", "N");
+			Assert.fail("Failed Due to " + e.getMessage());
+		}
+
+	}
 
 	public void TabDeliveryChallenChecklist() throws Throwable {
 		try {
 			log.info("started executing the method:: TabDeliveryChallenChecklist");
-
-			JSClick(tendercreationlocators.TabDeliveryChallanChecklist, "TabDeliveryChallanChecklist");
+			waitForElementToBeVisible(tendercreationlocators.TabDeliveryChallanChecklist);
+			click(tendercreationlocators.TabDeliveryChallanChecklist, "TabDeliveryChallanChecklist");
+			/*
 			etendercomponentobj.waitForSpinnerToDisappear();
 			scrollToElement(tendercreationlocators.DocumentName);
-
 			JavascriptExecutor js = (JavascriptExecutor) ThreadLocalWebdriver.getDriver();
 			js.executeScript("window.scrollBy(0,-350)", "");
 			waitForObj(2000);
 			JSClick(tendercreationlocators.DocumentName, "DocumentName");
-
+			*/
+			waitForElementToBeClickable(tendercreationlocators.DocumentName);
 			set(tendercreationlocators.DocumentName, "Confidentials_Doc", "DocumentName");
-
-			etendercomponentobj.waitForSpinnerToDisappear();
-
-			set(tendercreationlocators.UploadDocument,
-					System.getProperty("user.dir") + "\\MediaFiles\\rfqCreation.xlsx", "UploadDocument");
-
-			etendercomponentobj.waitForSpinnerToDisappear();
-
+			//etendercomponentobj.waitForSpinnerToDisappear();
+			//waitForElementToBeClickable(tendercreationlocators.UploadDocument);
+			waitForObj(2000);
+			set(tendercreationlocators.UploadDocument,System.getProperty("user.dir") + "\\MediaFiles\\report.pdf", "UploadDocument");
+			eTenderComponent.waitForSpinnerToDisappear();
+			waitForObj(1000);
+			
 			pdfResultReport.addStepDetails("TabDeliveryChallenChecklist",
 					"All fileds of Delivery Challen Check list tab should be entered successfully",
 					"Successfully saved Delivery Challen Check list Tab Details " + " ", "Pass", "Y");
@@ -236,7 +327,7 @@ public class ASN_GRNComponent extends BaseClass_Web {
 
 	}
 
-	public void TabInvoice(String InvoiceType) throws Throwable {
+	public void TabInvoiceOld(String InvoiceType) throws Throwable {
 		try {
 			log.info("started executing the method:: TabInvoice");
 			// Invoice
@@ -309,6 +400,56 @@ public class ASN_GRNComponent extends BaseClass_Web {
 		}
 
 	}
+	
+	public void TabInvoice(String InvoiceType) throws Throwable {
+		try {
+			log.info("started executing the method:: TabInvoice");
+			// Invoice
+			// Proforma invoice
+			// Delivery challan
+			waitForElementToBeVisible(tendercreationlocators.TabInvoice);
+			click(tendercreationlocators.TabInvoice, "TabInvoice");
+			
+			waitForElementToBeClickable(tendercreationlocators.InvoiceType);
+			select(tendercreationlocators.InvoiceType, InvoiceType);
+			
+			waitForElementToBeClickable(tendercreationlocators.SellerInvoiceNum);
+			clear(tendercreationlocators.SellerInvoiceNum, "SellerInvoiceNum");
+			String SellerInvoiceNum = "SellerInvoice_".concat(eTenderComponent.getDataFromPropertiesFile("poDocNum"));
+			set(tendercreationlocators.SellerInvoiceNum, SellerInvoiceNum, "TabShipmentInformation");
+			eTenderComponent.updateDataIntoPropertyFile("SellerInvoiceNumber", SellerInvoiceNum);
+
+			String InvoiceDate = localdatetime.format(DateTimeFormatter.ofPattern("dd-MM-[yy]"));
+			JSClick(tendercreationlocators.InvoiceDate, "InvoiceDate");
+			//waitForElementToBeClickable(tendercreationlocators.InvoiceDate);
+			clear(tendercreationlocators.InvoiceDate, "InvoiceDate");
+			set(tendercreationlocators.InvoiceDate, InvoiceDate, "InvoiceDate");
+
+			JSClick(tendercreationlocators.totalFreightChargeP, "Freight");
+			//waitForElementToBeClickable(tendercreationlocators.totalFreightChargeP);
+			clear(tendercreationlocators.totalFreightChargeP, "Freight");
+			set(tendercreationlocators.totalFreightChargeP, "10", "Freight");
+
+			//waitForElementToBeClickable(tendercreationlocators.InvoiceAttachment);
+			set(tendercreationlocators.InvoiceAttachment, System.getProperty("user.dir") + "\\MediaFiles\\report.pdf",
+					"InvoiceAttachment");
+			
+			JSClick(tendercreationlocators.BillingAddress, "BillingAddress");
+			//waitForElementToBeClickable(tendercreationlocators.BillingAddress);
+			set(tendercreationlocators.BillingAddress, "Kolkata", "BillingAddress");
+			waitForObj(1000);
+
+			pdfResultReport.addStepDetails("TabInvoice", "All fileds of Invoice tab should be entered successfully",
+					"Successfully saved Invoice Tab Details " + " ", "Pass", "Y");
+			log.info("completed executing the method:: TabInvoice");
+		} catch (Exception e) {
+			log.fatal("Unable to save My Information Tab" + e.getMessage());
+			pdfResultReport.addStepDetails("TabInvoice", "All fileds of Invoice should be entered successfully",
+					"Unable to save Invoice Tab" + e.getMessage(), "Fail", "N");
+			Assert.fail("Failed Due to " + e.getMessage());
+		}
+
+	}
 
 	public void VerifyDraftStatus() throws Throwable {
 		try {
@@ -335,6 +476,24 @@ public class ASN_GRNComponent extends BaseClass_Web {
 		}
 	}
 
+	public void VerifyStatus(String Status) throws Throwable {
+		try {
+			log.info("started executing the method:: VerifyStatus");
+			Boolean status= isElementAttributeEqual(tendercreationlocators.asnStatus(Status), "data-original-title", Status);
+			if(status==true) {
+			highlight(tendercreationlocators.asnStatus(Status));
+			log.info("completed executing the method:: Verify "+ Status +" tatus");
+			}
+			else {
+				Assert.fail("ASN status is not "+ Status +"");
+			}
+		} catch (Exception e) {
+			log.fatal("ASN status is not "+ Status +"" + e.getMessage());
+			Assert.fail("Failed Due to " + e.getMessage());
+
+		}
+	}
+	
 	public void clickOnASNList() throws Throwable {
 		try {
 			log.info("started executing the method:: clickOnASNList");
@@ -419,13 +578,14 @@ public class ASN_GRNComponent extends BaseClass_Web {
 	public void GRN_Creator_Login() throws Throwable {
 		try {
 			log.info("started executing the method:: GRN_Creator_Login");
-			click(tendercreationlocators.login, "login");
-			waitForElement(tendercreationlocators.userName, 3000);
-			set(tendercreationlocators.userName, pdfResultReport.testData.get("GRNCreatorUserName"), "userName");
+			waitForElementToBeVisible(tendercreationlocators.userName);
+			set(tendercreationlocators.userName, pdfResultReport.testData.get("GRNCreatorUserName"), "GRNCreatorUserName");
+			//set(tendercreationlocators.userName, "BIDDERADMIN", "GRNCreatorUserName");
+			waitForElementToBeVisible(tendercreationlocators.password);
 			set(tendercreationlocators.password, pdfResultReport.testData.get("AppPassword"), "password");
+			waitForElementToBeClickable(tendercreationlocators.okButton);
 			click(tendercreationlocators.okButton, "okButton");
 			waitForElement(tendercreationlocators.dashboardIcon, 5000);
-			waitForObj(5000);
 			pdfResultReport.addStepDetails("GRN_Creator_Login", "Dashboard Page will be displayed",
 					"Successfully Dashboard Page is displaying" + " ", "Pass", "Y");
 			log.info("completed executing the method:: GRN_Creator_Login");
@@ -482,18 +642,10 @@ public class ASN_GRNComponent extends BaseClass_Web {
 	public void navigateToApprovedASNListPage() throws Throwable {
 		try {
 			log.info("started executing the method:: navigateToApprovedASNListPage");
-
-			JSClick(tendercreationlocators.GRNMenuLinkBy, "GRNMenuLinkBy");
-
-			waitForObj(2000);
-
-			JSClick(tendercreationlocators.ApprovedASNLinkBy, "ApprovedASNLinkBy");
-
-			waitForElementToBeVisible(tendercreationlocators.AsnListShipmentThBy);
-
-			waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
-
-			waitForObj(5000);
+			waitForElement(tendercreationlocators.mainMenuIcon, 100);
+			JSClick(tendercreationlocators.mainMenuIcon, "mainMenuIcon");
+			mouseOver(tendercreationlocators.orderFulfillment);
+			JSClick(tendercreationlocators.ApprovedShipments, "ApprovedShipments");
 
 			pdfResultReport.addStepDetails("navigateToApprovedASNListPage", "Should navigate to Approved ASN List Page",
 					"Successfully navigated to Approved ASN List Page" + " ", "Pass", "Y");
@@ -507,32 +659,23 @@ public class ASN_GRNComponent extends BaseClass_Web {
 		}
 	}
 
-	public void enterASNShipmentAndSelectVendorName(String vendorName, String AsnShipmentNo) throws Throwable {
+	public void enterASNShipmentAndSelectVendorName(String vendorName) throws Throwable {
 		try {
 			log.info("started executing the method:: enterASNShipmentAndSelectVendorName");
-			// TCS
-			// ShippingTracking_2104
-
-			WebDriver driver = ThreadLocalWebdriver.getDriver();
-			String TCSVendorBy = "//*[contains(@id,'typeahead')]/li/a/strong[text()='{0}']";
-
-			String AsnShipmentNoBy = "//*[contains(@id,'typeahead')]/li/a/strong[text()='{0}']";
-
-			waitForObj(3000);
-
-			set(tendercreationlocators.vendorNameFieldBy, vendorName, "vendorNameFieldBy");
-
-			driver.findElement(By.xpath(TCSVendorBy.replace("{0}", vendorName))).click();
-
+			
+			//updated scripts on 160224 by @AD
+			waitForElementToBeVisible(tendercreationlocators.EnterDespatchASNNumber);
+			set(tendercreationlocators.EnterDespatchASNNumber, eTenderComponent.getDataFromPropertiesFile("ASNNum"), "EnterDespatchASNNumber");
+			waitForObj(1000);
+			click(tendercreationlocators.completedASN(eTenderComponent.getDataFromPropertiesFile("ASNNum")), "Select_Completed_ASN");
+			//pressEnterKey();
 			waitForObj(2000);
-
-			clear(tendercreationlocators.entershipmentFieldBy, "Clear shipmentFieldBy");
-			set(tendercreationlocators.entershipmentFieldBy, AsnShipmentNo, "AsnShipmentNo");
-
-			driver.findElement(By.xpath(AsnShipmentNoBy.replace("{0}", AsnShipmentNo))).click();
-
-			waitForObj(2000);
-
+			String SupplierName= text(tendercreationlocators.SupplierName(vendorName));
+			if(SupplierName==vendorName) {
+			//highlight(tendercreationlocators.SupplierName(vendorName));
+			log.info("completed executing the method:: Verify "+ vendorName +" Name");
+			}
+			
 			pdfResultReport.addStepDetails("enterASNShipmentAndSelectVendorName", "Should display ASN Data in Table",
 					"Successfully  displaying ASN Data in Table" + " ", "Pass", "Y");
 			log.info("completed executing the method:: enterASNShipmentAndSelectVendorName");
@@ -591,21 +734,21 @@ public class ASN_GRNComponent extends BaseClass_Web {
 		}
 	}*/
 
-	public void createGrn(String AsnShipmentNo) throws Throwable {
+	public void createGrn(String AsnNo) throws Throwable {
 		try {
 			log.info("started executing the method:: createGrn");
 
 			WebDriver driver = ThreadLocalWebdriver.getDriver();
 
-			String createGrn = "//*[contains(text(),'{0}')]/../following-sibling::td//child::button[@data-toggle='dropdown']/..//ul/li/a[contains(text(),'Create GRN')]";
+			String createGrn = "//*[contains(text(),'{0}')]/../following-sibling::td//child::button[@data-toggle='dropdown']/..//ul/li/a[contains(text(),'Create Receipt')]";
 
-			driver.findElement(By.xpath(createGrn.replace("{0}", AsnShipmentNo))).click();
+			driver.findElement(By.xpath(createGrn.replace("{0}", AsnNo))).click();
 
-			waitForElementToBeVisible(tendercreationlocators.MaterialDetailsBy);
+			//waitForElementToBeVisible(tendercreationlocators.MaterialDetailsBy);
 
 			waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
 
-			waitForObj(3000);
+			waitForObj(2000);
 
 			pdfResultReport.addStepDetails("createGrn", "Should Navigate to GRN creation Page",
 					"Successfully Navigated to GRN creation Page" + " ", "Pass", "Y");
@@ -619,18 +762,66 @@ public class ASN_GRNComponent extends BaseClass_Web {
 
 		}
 	}
+	
+	public void grn_InspectionDetails() throws Throwable {
+		try {
+			log.info("started executing the method:: grn_InspectionDetails");
+			
+			IsElementPresent(tendercreationlocators.grnInspectionDetails);
+			waitForObj(1000);
+			//JSClick(By.xpath("//*[@aria-label='Bold']"), "overallComment");
+			WebElement iframele = ThreadLocalWebdriver.getDriver().findElement(By.xpath("//iframe[@id='0.inspection_detail.0_ifr']"));
+			switchframe(iframele);
+			waitForObj(1000);
+			set(tendercreationlocators.recommendationComment, "GRN Inspection has been raised by GRN creatior which will be verified from GRN approver: This is Demo statement", "recommendationComment");
+			switchToDefaultFrame();
+			waitForObj(1000);
+
+			pdfResultReport.addStepDetails("grn_InspectionDetails",
+					"Comment must be pass under grn_InspectionDetails successfully",
+					"Successfully passed comment under grn_InspectionDetails" + " ", "Pass", "Y");
+			log.info("completed executing the method:: grn_InspectionDetails");
+		} catch (Exception e) {
+			log.fatal("Not able to pass comment under grn_InspectionDetails" + e.getMessage());
+			pdfResultReport.addStepDetails("grn_InspectionDetails",
+					"Comment must be pass under grn_InspectionDetails successfully",
+					"Unable to pass comment under grn_InspectionDetails" + e.getMessage(), "Fail", "N");
+		}
+	}
+	
+	public void grnAttachment() throws Throwable {
+		try {
+			log.info("started executing the method:: grnAttachment");
+			
+			waitForElementToBeClickable(tendercreationlocators.GRNattachment);
+			click(tendercreationlocators.GRNattachment, "GRNattachment");
+			waitForElementToBeClickable(tendercreationlocators.attachmentLabel);
+			set(tendercreationlocators.attachmentLabel, "GRNAttachmentLabel", "attachmentLabel");
+			waitForObj(1000);
+			set(tendercreationlocators.uploadGRNattachment,System.getProperty("user.dir") + "\\MediaFiles\\report.pdf", "UploadDocument");
+			waitForObj(1000);
+			pdfResultReport.addStepDetails("grnAttachment", "upload GRN attachment",
+					"Successfully Should upload GRN attachment" + " ", "Pass", "Y");
+			log.info("completed executing the method:: createGrn");
+		} catch (Exception e) {
+			log.fatal("Unable to Should upload GRN attachment" + e.getMessage());
+			pdfResultReport.addStepDetails("grnAttachment", "Should Should upload GRN attachment",
+					"Unable to Should upload GRN attachment" + e.getMessage(), "Fail", "N");
+
+			Assert.fail("Failed Due to " + e.getMessage());
+
+		}
+	}
 
 	public void saveGrnDetails() throws Throwable {
 		try {
 			log.info("started executing the method:: saveGrnDetails");
-
-			waitForObj(3000);
-
-			click(tendercreationlocators.SaveGrnDetailsBy, "SaveGrnDetails");
-
+			
+			scrollToElement(tendercreationlocators.grnSaveButton);
+			waitForObj(1000);
+			JSClick(tendercreationlocators.grnSaveButton, "SaveGrnDetails");
 			waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
-
-			waitForObj(3000);
+			waitForObj(1000);
 
 			pdfResultReport.addStepDetails("saveGrnDetails", "Should Save GRN Details",
 					"Successfully Save GRN Details" + " ", "Pass", "Y");
@@ -1247,34 +1438,41 @@ public class ASN_GRNComponent extends BaseClass_Web {
 			Assert.fail("Failed Due to " + e.getMessage());
 		}
 	}
-
+	String ASNREF= null;
 	public void CreateASN() throws Throwable {
 		try {
 			log.info("started executing the method:: CreateASN");
 
 			// String number = String.valueOf(getrandomInterger(1000, 1000000));
-			JSClick(tendercreationlocators.CreateASN, "CreateASN");
-			etendercomponentobj.waitForSpinnerToDisappear();
+			eTenderComponent.waitForSpinnerToDisappear();
 			waitForObj(5000);
-			select(tendercreationlocators.SelectPONum, eTenderComponent.getDataFromPropertiesFile("poDocNum"));
-
+			
+			waitForElementToBeVisible(tendercreationlocators.referenceNumbertext);
+			//select(tendercreationlocators.SelectPONum, eTenderComponent.getDataFromPropertiesFile("poDocNum"));
+			set(tendercreationlocators.selectReferenceNumberTextBox, concatenateWithSlash(eTenderComponent.getDataFromPropertiesFile("poDocNum"), eTenderComponent.getDataFromPropertiesFile("POReferenceNum"), "/"), "PONumber/POReferenceNum");
+			click(tendercreationlocators.selectButtonASN, "selectButtonASN");
+			
+			//==========ASN Information===============
 			String ASNDate = localdatetime.format(DateTimeFormatter.ofPattern("dd-MM-[yy]"));
 			click(tendercreationlocators.ASNDate, "ASNDate");
 			clear(tendercreationlocators.ASNDate, "ASNDate");
 			set(tendercreationlocators.ASNDate, ASNDate, "ASNDate");
-
-			String ASNREF = "REF_".concat(eTenderComponent.getDataFromPropertiesFile("poDocNum"));
+			
+			//String ASNREF = "REF_".concat(eTenderComponent.getDataFromPropertiesFile("poDocNum"));
+			String number = String.valueOf(getrandomInterger(1000, 1000000));
+			ASNREF = eTenderComponent.getDataFromPropertiesFile("asnREF").concat(number).concat(eTenderComponent.getDataFromPropertiesFile("poDocNum"));
 			click(tendercreationlocators.ASNReference, "ASNReference");
 			set(tendercreationlocators.ASNReference, ASNREF, "ASNReference");
 
 			String ASNCarrier = "CARRIER_".concat(eTenderComponent.getDataFromPropertiesFile("poDocNum"));
 			click(tendercreationlocators.ASNCarrier, "ASNCarrier");
 			set(tendercreationlocators.ASNCarrier, ASNCarrier, "ASNCarrier");
-
+			/*
 			String ASNShippingMethod = "ShippingMethod_".concat(eTenderComponent.getDataFromPropertiesFile("poDocNum"));
 			click(tendercreationlocators.ASNShippingMethod, "ASNShippingMethod");
 			set(tendercreationlocators.ASNShippingMethod, ASNShippingMethod, "ASNShippingMethod");
-
+			*/
+			selectbyvalue(tendercreationlocators.modeOfDelivery, "string:Air");
 			String ASNShippingTracking1 = "ShippingTracking_"
 					.concat(eTenderComponent.getDataFromPropertiesFile("poDocNum"));
 			click(tendercreationlocators.ASNShippertracking, "ASNShippertracking");
@@ -1285,7 +1483,7 @@ public class ASN_GRNComponent extends BaseClass_Web {
 			String EstimatedDeliveryDate = localdatetime1.format(DateTimeFormatter.ofPattern("dd-MM-[yy]"));
 			click(tendercreationlocators.ASNEstimatedDeliveryTime, "ASNEstimatedDeliveryTime");
 			clear(tendercreationlocators.ASNEstimatedDeliveryTime, "ASNEstimatedDeliveryTime");
-			waitForObj(3000);
+			waitForObj(1000);
 			set(tendercreationlocators.ASNEstimatedDeliveryTime, EstimatedDeliveryDate, "ASNEstimatedDeliveryTime");
 
 			click(tendercreationlocators.ASNAdditionalNote, "ASNAdditionalNote");
@@ -1295,7 +1493,7 @@ public class ASN_GRNComponent extends BaseClass_Web {
 					.concat(eTenderComponent.getDataFromPropertiesFile("poDocNum"));
 			click(tendercreationlocators.ASNShipmentnumber, "ASNShipmentnumber");
 			set(tendercreationlocators.ASNShipmentnumber, ASNShipmentnumber, "ASNShipmentnumber");
-			waitForObj(3000);
+			waitForObj(1000);
 
 			pdfResultReport.addStepDetails("SelectASNModule", "ASN Module should be created successfully",
 					"Successfully clicked CreateASN " + " ", "Pass", "Y");
@@ -2227,12 +2425,35 @@ public class ASN_GRNComponent extends BaseClass_Web {
 	public void SearchPoInASNList() throws Throwable {
 		try {
 			log.info("started executing the method:: SearchPo");
-			etendercomponentobj.waitForSpinnerToDisappear();
+			eTenderComponent.waitForSpinnerToDisappear();
 			JSClick(tendercreationlocators.SearchPOINASN, "SearchPOINASN");
 			waitForObj(3000);
 			String ponum = eTenderComponent.getDataFromPropertiesFile("poDocNum");
 			clear(tendercreationlocators.SearchPOINASN, "SearchPOINASN");
 			set(tendercreationlocators.SearchPOINASN, ponum, "SearchPOINASN");
+			String ASNNum = text(tendercreationlocators.ASNNum(ponum));
+			eTenderComponent.updateDataIntoPropertyFile("ASNNum", ASNNum);
+			waitForObj(3000);
+			pdfResultReport.addStepDetails("SearchPo", "ASN list with PO number is to searched",
+					"Successfully searched ASN list with PO number" + " ", "Pass", "Y");
+			log.info("completed executing the method:: SearchPo");
+		} catch (Exception e) {
+			log.fatal("Not able to search ASN list with PO number" + e.getMessage());
+			pdfResultReport.addStepDetails("SearchPo", "ASN list with PO number is to searched",
+					"Unable to search ASN list with PO number" + e.getMessage(), "Fail", "N");
+			Assert.fail("Failed Due to " + e.getMessage());
+		}
+	}
+	
+	public void SearchASNRefInASNList() throws Throwable {
+		try {
+			log.info("started executing the method:: SearchPo");
+			eTenderComponent.waitForSpinnerToDisappear();
+			JSClick(tendercreationlocators.SearchPOINASN, "SearchPOINASN");
+			waitForObj(3000);
+			clear(tendercreationlocators.SearchPOINASN, "SearchPOINASN");
+			set(tendercreationlocators.SearchPOINASN, ASNREF, "SearchPOINASN");
+			String ponum = eTenderComponent.getDataFromPropertiesFile("poDocNum");
 			String ASNNum = text(tendercreationlocators.ASNNum(ponum));
 			eTenderComponent.updateDataIntoPropertyFile("ASNNum", ASNNum);
 			waitForObj(3000);
@@ -2850,18 +3071,17 @@ public class ASN_GRNComponent extends BaseClass_Web {
 		}
 	}
 
-	public void clickApprovedAsnListActionMenu(String AsnShipmentNo) throws Throwable {
+	public void clickApprovedAsnListActionMenu(String AsnNo) throws Throwable {
 		try {
 			log.info("started executing the method:: clickApprovedAsnListActionMenu");
-
+			waitForObj(1000);
 			WebDriver driver = ThreadLocalWebdriver.getDriver();
 
 			String actionDropDown = "//*[contains(text(),'{0}')]/../following-sibling::td//child::button[@data-toggle='dropdown']";
 
-			driver.findElement(By.xpath(actionDropDown.replace("{0}", AsnShipmentNo))).click();
-
-			verifyGRNValidationInActionButton(eTenderComponent.getDataFromPropertiesFile("ASNShippingTracking"),
-					Arrays.asList("Create GRN", "View"));
+			driver.findElement(By.xpath(actionDropDown.replace("{0}", AsnNo))).click();
+			waitForObj(1000);
+			verifyGRNValidationInActionButton(AsnNo, Arrays.asList("Create Receipt", "View ASN"));
 
 			waitForObj(3000);
 
@@ -2894,7 +3114,7 @@ public class ASN_GRNComponent extends BaseClass_Web {
 			boolean b = ListText.containsAll(list);
 			Assert.assertTrue(b);
 			waitForObj(3000);
-			IsElementPresent(tendercreationlocators.columnVisibility);
+			//IsElementPresent(tendercreationlocators.columnVisibility);
 			pdfResultReport.addStepDetails("verifyPreparedStatus", "Successfully verified action dropdown validation",
 					"Successfully verified action dropdown validation" + " ", "Pass", "Y");
 			log.info("completed executing the method:: verifyGRNValidationInActionButton");
@@ -2907,35 +3127,344 @@ public class ASN_GRNComponent extends BaseClass_Web {
 		}
 	}
 
-	public void submitGrnDetails1() throws Throwable {
+	public void submitGrnDetails1(String decision) throws Throwable {
 		try {
 			log.info("started executing the method:: submitGrnDetails");
-
-			waitForObj(3000);
-
-			click(tendercreationlocators.GrnSubmitBy, "GrnSubmitBy");
-
+			
+			scrollToElement(tendercreationlocators.grnSubmitButton);
+			waitForObj(1000);
+			//waitForElementToBeClickable(tendercreationlocators.grnSubmitButton);
+			JSClick(tendercreationlocators.grnSubmitButton, "GrnSubmitBy");
+			waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
 			waitForElementToBeVisible(tendercreationlocators.GrnSubmitConfirmPopUpMsgBy);
 			IsElementPresent(tendercreationlocators.GrnSubmitConfirmPopUpMsgBy);
-
-			waitForObj(3000);
+			waitForObj(2000);
 
 			pdfResultReport.addStepDetails("submitGrnDetails", "Should Show Confirmation Pop Up Yes or No",
 					"Successfully Showing Confirmation Pop Up Yes or No" + " ", "Pass", "Y");
-			click(tendercreationlocators.yesOrNoButton("No"), "No Button");
-			waitForElementToBeVisible(tendercreationlocators.EnterExcessQtyBy(1));
-			enterExcessQty(1, "3.00");
-			click(tendercreationlocators.GrnSubmitBy, "GrnSubmitBy");
-			waitForElementToBeVisible(tendercreationlocators.GrnSubmitConfirmPopUpMsgBy);
-			IsElementPresent(tendercreationlocators.GrnSubmitConfirmPopUpMsgBy);
-			click(tendercreationlocators.yesOrNoButton("Yes"), "Yes Button");
-			waitForElementToBeVisible(tendercreationlocators.draft);
-			waitForObj(2000);
+			
+			click(tendercreationlocators.yesOrNoButton(decision), decision);
+			waitForObj(4000);
+			//waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
+			
 			log.info("completed executing the method:: submitGrnDetails");
 		} catch (Exception e) {
 			log.fatal("Unable to Show Confirmation Pop Up Yes or No" + e.getMessage());
 			pdfResultReport.addStepDetails("submitGrnDetails", "Should Show Confirmation Pop Up Yes or No",
 					"Unable to  Show Confirmation Pop Up Yes or No" + e.getMessage(), "Fail", "N");
+
+			Assert.fail("Failed Due to " + e.getMessage());
+
+		}
+	}
+	
+	//added on 19-02-24 by @AD
+	public void submitNotificationTab() throws Throwable {
+		try {
+			log.info("started executing the method:: submitNotificationTab");
+			waitForObj(2000);
+			if(IsEnabled(tendercreationlocators.CrossButtonForGRNcreatorForNotication)) {
+				List<WebElement> iRows = ThreadLocalWebdriver.getDriver().findElements(tendercreationlocators.CrossButtonForGRNcreatorForNotication);
+				int iRowCount = iRows.size();
+				System.out.println(" Available rows:"+iRowCount);
+				for (WebElement item:iRows){
+					item.click();
+				}
+				//click(tendercreationlocators.CrossButtonForGRNcreatorForNotication, "CrossButtonForGRNcreatorForNotication");
+			}
+			waitForObj(1000);
+			click(tendercreationlocators.AddButtonForGRNcreatorForNotication, "AddButtonForGRNcreatorForNotication");
+			set(tendercreationlocators.selectGRNcreatorForNotication, "LEVEL2  CREATOR (arka.dey@mjunction.in)", "GRN Creator");
+			click(tendercreationlocators.ProceedButtonForGRNcreatorForNotication, "ProceedButtonForGRNcreatorForNotication");
+			waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);	
+
+			waitForObj(1000);
+
+			pdfResultReport.addStepDetails("submitNotificationTab", "Should Show Confirmation Pop Up Yes or No",
+					"Successfully Showing Confirmation Pop Up Yes or No" + " ", "Pass", "Y");
+			
+			log.info("completed executing the method:: submitNotificationTab");
+		} catch (Exception e) {
+			log.fatal("Unable to Show Confirmation Pop Up Yes or No" + e.getMessage());
+			pdfResultReport.addStepDetails("submitNotificationTab", "Should Show Confirmation Pop Up Yes or No",
+					"Unable to  Show Confirmation Pop Up Yes or No" + e.getMessage(), "Fail", "N");
+
+			Assert.fail("Failed Due to " + e.getMessage());
+
+		}
+	}
+	
+	public void grnNotSendForApproval() throws Throwable {
+		try {
+			log.info("started executing the method:: grnNotSendForApproval");
+			eTenderComponent.waitForSpinnerToDisappear();
+			saveGRNId();
+			waitForObj(2000);
+			click(tendercreationlocators.approvnotreq, "ApprovNotReq");
+			click(tendercreationlocators.submitGRNFinally, "submitGRNFinally");
+			waitForObj(8000);
+
+			pdfResultReport.addStepDetails("grnNotSendForApproval", "Should grnNotSendForApproval",
+					"Successfully grnNotSendForApproval" + " ", "Pass", "Y");
+			
+			log.info("completed executing the method:: grnNotSendForApproval");
+		} catch (Exception e) {
+			log.fatal("Unable to grnNotSendForApproval" + e.getMessage());
+			pdfResultReport.addStepDetails("grnNotSendForApproval", "Should grnNotSendForApproval",
+					"Unable to  grnNotSendForApproval" + e.getMessage(), "Fail", "N");
+
+			Assert.fail("Failed Due to " + e.getMessage());
+
+		}
+	}
+	
+	public void grnSendForApproval() throws Throwable {
+		try {
+			log.info("started executing the method:: grnNotSendForApproval");
+			eTenderComponent.waitForSpinnerToDisappear();
+			saveGRNId();
+			waitForObj(2000);
+			click(tendercreationlocators.approvYesreq, "ApprovNotReq");
+			if(ThreadLocalWebdriver.getDriver().findElements(tendercreationlocators.NoOfIndentRowinApproval).size()!= 0)
+			{
+				List<WebElement> iRows = ThreadLocalWebdriver.getDriver().findElements(tendercreationlocators.NoOfIndentRowinApproval);
+				int iRowCount = iRows.size();
+				for(int i=1;i<=iRowCount;i++)
+				{
+					waitForObj(1000);
+					click(tendercreationlocators.cancel_User1, "cancel_User");
+				}
+			}
+			click(tendercreationlocators.addButton, "addButton");
+			waitForObj(2000);
+			set(tendercreationlocators.user1_GRN, "Test  Approver01 (inbox2csoft@gmail.com)-TEST_AUTOMATION", "user1_Indent");
+			waitForObj(2000);
+			select(tendercreationlocators.approval_type_GRN, "SEQUENTIAL");
+			waitForObj(2000);
+			set(tendercreationlocators.CommentsArea_GRN, "Initiate GRN for Approval Flow", "CommentsArea_GRN");
+			
+			List<WebElement> sendForApprovalGRNButtons = ThreadLocalWebdriver.getDriver().findElements(tendercreationlocators.sendForApprovalGRN);
+			int count = sendForApprovalGRNButtons.size();
+			System.out.println(count);
+			for(int i=1; i<=count; i++) {
+				boolean display=isElementDisplayed_Updated(tendercreationlocators.sendForApprovalGRN(i), 2);
+				System.out.println(display);
+				if(display==true) {
+					click(tendercreationlocators.sendForApprovalGRN(i), "Forward_workflow");	
+				}
+			}
+			
+			//click(tendercreationlocators.sendForApprovalGRN, "sendForApprovalGRN");
+			waitForObj(8000);
+
+			pdfResultReport.addStepDetails("grnNotSendForApproval", "Should grnNotSendForApproval",
+					"Successfully grnNotSendForApproval" + " ", "Pass", "Y");
+			
+			log.info("completed executing the method:: grnNotSendForApproval");
+		} catch (Exception e) {
+			log.fatal("Unable to grnNotSendForApproval" + e.getMessage());
+			pdfResultReport.addStepDetails("grnNotSendForApproval", "Should grnNotSendForApproval",
+					"Unable to  grnNotSendForApproval" + e.getMessage(), "Fail", "N");
+
+			Assert.fail("Failed Due to " + e.getMessage());
+
+		}
+	}
+	
+	public void GoToApprovalworkFlowPendingGRNAndSearchTheGRN() throws Throwable {
+		try {
+			log.info("started executing the method:: GoToApprovalworkFlowPendingindentAndSearchTheIndent");
+			//Click on menu button (141222)
+			JSClick(tendercreationlocators.mainMenuIcon, "MenuIcon");
+			mouseOver(tendercreationlocators.MyTask);
+			waitForObj(2000);
+			JSClick(tendercreationlocators.pending, "pending");
+			waitForObj(15000);
+			waitForElementToBeVisible(tendercreationlocators.Lbl_workflowinbox);
+			click(tendercreationlocators.PendingGRN_Approval, "PendingGRN_Approval");
+			waitForObj(4000);
+			set(tendercreationlocators.search, eTenderComponent.getDataFromPropertiesFile("GRNID"), "search");
+			waitForObj(2000);
+			waitForElementToBeVisible(tendercreationlocators.IndentRowResult_Approver(eTenderComponent.getDataFromPropertiesFile("GRNID")));
+			waitForObj(1000);
+			WebDriver driver = ThreadLocalWebdriver.getDriver();
+			int size = driver.findElements(tendercreationlocators.IndentRowResult_Approver(eTenderComponent.getDataFromPropertiesFile("GRNID"))).size();
+			waitForObj(2000);
+			if(size >=1)
+			{
+				System.out.println("**********************************************************************");
+				System.out.println("Indent is present in Appproval pending List page the size is --->"+size);
+				pdfResultReport.addStepDetails("GoToApprovalworkFlowPendingindentAndSearchTheIndent",
+					"Should display the pending indent in approval work flow",
+					"Sucessfully displayed the pending indent in approval work flow", "Pass", "Y");
+				log.info("completed executing the method:: GoToApprovalworkFlowPendingindentAndSearchTheIndent");
+				System.out.println("**********************************************************************");
+			}
+			else if(size == 0)
+			{
+				System.out.println("**********************************************************************");
+				System.out.println("The indent is Not there in Approval pending List page the size is --->"+size);
+				pdfResultReport.addStepDetails("GoToApprovalworkFlowPendingindentAndSearchTheIndent",
+					"Should display the pending indent in approval work flow","Unable to display the pending indent in approval work flow",
+					"Fail", "N");
+				
+			}
+
+		} catch (Exception e) {
+			log.fatal("Unable to display the pending indent in approval work flow" + e.getMessage());
+			pdfResultReport.addStepDetails("GoToApprovalworkFlowPendingindentAndSearchTheIndent",
+					"Should display the pending indent in approval work flow","Unable to display the pending indent in approval work flow" + e.getMessage(),
+					"Fail", "N");
+                    Assert.fail("Failed Due to " + e.getMessage());
+		}
+	}
+	
+	public void clickDetailLinkInApprovalListPage() throws Throwable {
+		try {
+			log.info("started executing the method:: clickDetailLinkInApprovalListPage");
+			waitForObj(2000);
+			click(tendercreationlocators.Actionbtn_IndentApprover, "Actionbtn_IndentApprover");
+			//click(tendercreationlocators.Detailbtn_IndentApprover, "Detailbtn_IndentApprover"); //commenting this line due new CR
+			click(tendercreationlocators.sectionWiseView_IndentApprover, "sectionWiseView_IndentApprover");
+			waitForObj(5000);
+			waitForElementToBeClickable(tendercreationlocators.poApproverComment);
+			click(tendercreationlocators.poApproverComment, "poApproverComment");
+			String comment = "GRN Process Is Approved";
+			set(tendercreationlocators.comment, comment,"AppComments_Indent");
+			waitForObj(1000);
+			click(tendercreationlocators.approve, "approve");
+			waitForElementToBeClickable(tendercreationlocators.corrigendumAlertTabOk);
+			click(tendercreationlocators.corrigendumAlertTabOk, "approve");
+			waitForElementToBeClickable(tendercreationlocators.Alert_Yesbtn_EvalUser);
+			
+			pdfResultReport.addStepDetails("clickDetailLinkInApprovalListPage",
+					"Should Naviagte to Approver section comments page",
+					"Sucessfully  Naviagte to Approver section comments page", "Pass", "Y");
+
+			log.info("completed executing the method:: clickDetailLinkInApprovalListPage");
+		} catch (Exception e) {
+			log.fatal("Unable to Naviagte to Approver section comments page" + e.getMessage());
+			pdfResultReport.addStepDetails("clickDetailLinkInApprovalListPage",
+					"Should Naviagte to Approver section comments page",
+					"Unable to Naviagte to Approver section comments page" + e.getMessage(), "Fail", "N");
+
+                     Assert.fail("Failed Due to " + e.getMessage());
+		}
+	}
+	
+	public void Forward_GRNWF_With_SequentialApprovalType(String ApproverName) throws Throwable {
+		try {
+			log.info("started executing the method:: Forward_GRNWF_With_SequentialApprovalType");
+			
+			waitForObj(2000);	
+			click(tendercreationlocators.Alert_Yesbtn_EvalUser, "Forward to next person");
+			waitForObj(3000);
+			
+			String comment = "GRN Process Is Approved and Forward to another Approver";
+			//clear(tendercreationlocators.grnApproverCommentSection, "comment");
+			//set(tendercreationlocators.grnApproverCommentSection, comment,"grnApproverCommentSection");
+			waitForObj(1000);
+			
+			//1st Sequential approver
+			waitForElementToBeClickable(tendercreationlocators.addButton_GRN);
+			click(tendercreationlocators.addButton_GRN, "addButton");
+			scrollToElement(tendercreationlocators.user4_GRN);
+			waitForElementToBeClickable(tendercreationlocators.user4_GRN);
+			set(tendercreationlocators.user4_GRN, ApproverName, "Approver_GRN");
+			waitForElementToBeClickable(tendercreationlocators.approval_type_GRN_WF);
+			select(tendercreationlocators.approval_type_GRN_WF, "SEQUENTIAL");
+			waitForObj(1000);
+			List<WebElement> sendForApprovalGRNButtons = ThreadLocalWebdriver.getDriver().findElements(tendercreationlocators.sendForApprovalGRN);
+			int count = sendForApprovalGRNButtons.size();
+			System.out.println(count);
+			for(int i=1; i<=count; i++) {
+				boolean display=isElementDisplayed_Updated(tendercreationlocators.sendForApprovalGRN(i), 2);
+				System.out.println(display);
+				if(display==true) {
+					click(tendercreationlocators.sendForApprovalGRN(i), "Forward_workflow");	
+				}
+			}
+			
+			//waitForElementToBeClickable(tendercreationlocators.sendForApprovalGRN);
+			//click(tendercreationlocators.sendForApprovalGRN, "Forward_Indent");
+			IsElementPresent(tendercreationlocators.grnSuccessMSG);
+			waitForObj(1000);
+			click(tendercreationlocators.confirmOk, "confirmOk");
+			waitForObj(8000);
+			
+			pdfResultReport.addStepDetails("Forward_GRNWF_With_SequentialApprovalType",
+					"Should Provide OverAll Comment ",
+					"SucessFully Provided Over All Comment As --->  " + comment + " ", "Pass", "Y");
+			log.info("completed executing the method:: Forward_GRNWF_With_SequentialApprovalType");
+		} catch (Exception e) {
+			log.fatal("Unable to Provide OverAll Comment " + e.getMessage());
+			pdfResultReport.addStepDetails("Forward_GRNWF_With_SequentialApprovalType",
+					"Should Provide OverAll Comment and Forward the workflow ",
+					"Unable to Provide OverAll Comment and Forward the workflow"
+							+ e.getMessage(),
+					"Fail", "N");
+                    Assert.fail("Failed Due to " + e.getMessage());
+		}
+	}
+	
+	public void END_GRN_WF() throws Throwable {
+		try {
+			log.info("started executing the method:: END_GRN_WF");
+			
+			waitForObj(2000);	
+			click(tendercreationlocators.snEndWorkflow, "GRN End Workflow");
+			waitForObj(3000);
+				
+			String comment = "GRN Process Is Approved and End the Workflow";
+			//clear(tendercreationlocators.grnApproverCommentSection, "comment");
+			//set(tendercreationlocators.grnApproverCommentSection, comment,"grnApproverCommentSection");
+			waitForObj(2000);
+			IsElementPresent(tendercreationlocators.grnEND_SuccessMSG);
+			waitForObj(1000);
+			click(tendercreationlocators.Alert_Yesbtn_EvalUser, "confirmOk");
+			waitForObj(1000);
+			IsElementPresent(tendercreationlocators.grnEND_SuccessMSG_2);
+			click(tendercreationlocators.Alert_Yesbtn_EvalUser, "confirmOk");
+			waitForObj(1000);
+			IsElementPresent(tendercreationlocators.grnEND_SuccessMSG_3);
+			click(tendercreationlocators.confirmOk, "confirmOk");
+			waitForObj(8000);
+			
+			pdfResultReport.addStepDetails("END_GRN_WF",
+					"Should Provide OverAll Comment ",
+					"SucessFully Provided Over All Comment As --->  " + comment + " ", "Pass", "Y");
+			log.info("completed executing the method:: END_GRN_WF");
+		} catch (Exception e) {
+			log.fatal("Unable to Provide OverAll Comment " + e.getMessage());
+			pdfResultReport.addStepDetails("END_GRN_WF",
+					"Should Provide OverAll Comment and END_GRN_WF",
+					"Unable to Provide OverAll Comment and END_GRN_WF"
+							+ e.getMessage(),
+					"Fail", "N");
+                    Assert.fail("Failed Due to " + e.getMessage());
+		}
+	}
+	
+	public void verifyGRNStatus(String status) throws Throwable {
+		try {
+			log.info("started executing the method:: verifyGRNStatus");
+			//eTenderComponent.waitForSpinnerToDisappear();
+			waitForElementToBeClickable(tendercreationlocators.completedGRNList);
+			//waitForElementToBeVisible(tendercreationlocators.grnHeaderGRNListPage);
+			click(tendercreationlocators.completedGRNList, "completedGRNList");
+			clear(tendercreationlocators.searchBoxGRN, "searchBoxGRN");
+			set(tendercreationlocators.searchBoxGRN, eTenderComponent.getDataFromPropertiesFile("GRNID"), "searchBoxGRN");
+			IsElementPresent(tendercreationlocators.grnExpectedStatus(status));
+			waitForObj(2000);
+
+			pdfResultReport.addStepDetails("verifyGRNStatus", "Should verifyGRNStatus",
+					"Successfully verifyGRNStatus" + " ", "Pass", "Y");
+			
+			log.info("completed executing the method:: verifyGRNStatus");
+		} catch (Exception e) {
+			log.fatal("Unable to verifyGRNStatus" + e.getMessage());
+			pdfResultReport.addStepDetails("submitNotificationTab", "Should verifyGRNStatus",
+					"Unable to  verifyGRNStatus" + e.getMessage(), "Fail", "N");
 
 			Assert.fail("Failed Due to " + e.getMessage());
 
@@ -3231,7 +3760,7 @@ public class ASN_GRNComponent extends BaseClass_Web {
 
 			waitForObj(3000);
 
-			String grnId = text(tendercreationlocators.GrnIDBy).trim();
+			String grnId = text(tendercreationlocators.storeGRNNumber).trim();
 
 			String grnidUpdated = eTenderComponent.updateDataIntoPropertyFile("GRNID", grnId);
 
@@ -3737,6 +4266,31 @@ public void verifyMyInformationTabFieldsAutoPopulated() throws Throwable {
 			Assert.fail("Failed Due to " + e.getMessage());
 		}
 	}
+
+	public void myInformationTab() throws Throwable {
+		try {
+			log.info("started executing the method:: myInformationTab");
+			waitForObj(5000);
+			System.out.println(text(tendercreationlocators.DespatchNumber));
+			waitForElementToBeVisible(tendercreationlocators.TabMyInformation);
+			click(tendercreationlocators.TabMyInformation, "TabMyInformation");
+			waitForElementToBeClickable(tendercreationlocators.supplierContactNumber);
+			clear(tendercreationlocators.supplierContactNumber, "supplierContactNumber");
+			set(tendercreationlocators.supplierContactNumber, "9876543210", "supplierContactNumber");
+
+			pdfResultReport.addStepDetails("myInformationTab",
+					"My Information Tab Fields Should be Auto Populated",
+					"Successfully validated the My information tab Fields auto populated " + " ", "Pass", "Y");
+			log.info("completed executing the method:: myInformationTab");
+		} catch (Exception e) {
+			log.fatal("Failed To validate the My information tab Fields are auto populated" + e.getMessage());
+			pdfResultReport.addStepDetails("TabMyInformation",
+					"My Information Tab Fields Should be Auto Populated",
+					"Failed To validate the My information tab Fields are auto populated" + e.getMessage(), "Fail", "N");
+			Assert.fail("Failed Due to " + e.getMessage());
+		}
+	}
+
 	
 
 String asnNo = "";
@@ -4278,7 +4832,13 @@ public void verifyPreparedStatus(String currentStatus) throws Throwable {
 			Assert.fail("Failed Due to " + e.getMessage());
 
 		}
+			
 	}
 	
+	public static int getrandomInterger(int min, int max) {
+
+		return ((int) (Math.random() * (max - min))) + min;
+
+	}
 	
 }
