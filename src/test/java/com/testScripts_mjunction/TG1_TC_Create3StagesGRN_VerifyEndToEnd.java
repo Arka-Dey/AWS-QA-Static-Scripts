@@ -13,7 +13,7 @@ import com.components.RfqFromIndentComponent;
 import com.components.eTenderComponent;
 import com.objectRepository.TenderCreation_Locators;
 
-public class TG1_TC_GRN_01_Create3StagesGRN_WithApprovalFlow extends BaseClass_Web{
+public class TG1_TC_Create3StagesGRN_VerifyEndToEnd extends BaseClass_Web{
 	PreConditionPo_SanctionCreation preConditionPo = new PreConditionPo_SanctionCreation(pdfResultReport);
 	public eTenderComponent etendercomponentobj =new eTenderComponent(pdfResultReport);
 	public TenderCreation_Locators tendercreationobj =new TenderCreation_Locators(); 
@@ -41,22 +41,37 @@ public class TG1_TC_GRN_01_Create3StagesGRN_WithApprovalFlow extends BaseClass_W
 	}
 	     initializeRepository();
 	     etendercomponentobj.openURL();
-	     rfqfromintendcomponentobj.IndentcreatorLogin();
-	 	rfqfromintendcomponentobj.navigateToIndentCreation();
-	 	rfqfromintendcomponentobj.IndentTG1_General_Info_tabvalidation("Indigenous Indent (Supply & Service Both) V-004");
-	 	rfqfromintendcomponentobj.IndentTG1_Indent_Details_tabvalidation();
-	 	rfqfromintendcomponentobj.IndentTG1_Other_Information_tabvalidation();
-	 	rfqfromintendcomponentobj.IndentTG1_BOM_Item_tabvalidation();
-	 	rfqfromintendcomponentobj.IndentTG1_BOM_Services_tabvalidation();
-	 	rfqfromintendcomponentobj.IndentTG1_EstimationSheet_tabvalidation();
-	 	rfqfromintendcomponentobj.IndentTG1_technical_Specification_tabvalidation();
-	 	rfqfromintendcomponentobj.IndentTG1_Annexures_tabvalidation();
-	 	rfqfromintendcomponentobj.IndentTG1_Submit();
-	 	rfqfromintendcomponentobj.SystemIndentNoSaveNew();
-	 	rfqfromintendcomponentobj.NoApproval_IndentWF();
-	 	//rfqfromintendcomponentobj.navigateToIndentListing();
-	 	rfqfromintendcomponentobj.enterIndentNoInSearch();
-	 	rfqfromintendcomponentobj.VerifyIndentStatus("Completed");
+		rfqfromintendcomponentobj.IndentcreatorLogin();
+		rfqfromintendcomponentobj.navigateToIndentCreation();
+		rfqfromintendcomponentobj.IndentTG1_General_Info_tabvalidation("Indigenous Indent (Supply & Service Both) V-004");
+		rfqfromintendcomponentobj.IndentTG1_Indent_Details_tabvalidation();
+		rfqfromintendcomponentobj.IndentTG1_Other_Information_tabvalidation();
+		rfqfromintendcomponentobj.IndentTG1_BOM_Item_tabvalidation();
+		rfqfromintendcomponentobj.IndentTG1_BOM_Services_tabvalidation();
+		rfqfromintendcomponentobj.IndentTG1_EstimationSheet_tabvalidation();
+		rfqfromintendcomponentobj.IndentTG1_technical_Specification_tabvalidation();
+		rfqfromintendcomponentobj.IndentTG1_Annexures_tabvalidation();
+		rfqfromintendcomponentobj.IndentTG1_Submit();
+		rfqfromintendcomponentobj.SystemIndentNoSaveNew();
+		rfqfromintendcomponentobj.AddSingleUsersForSequentialApproval_IndentWF();
+		//rfqfromintendcomponentobj.navigateToIndentListing();
+		rfqfromintendcomponentobj.enterIndentNoInSearch();
+		rfqfromintendcomponentobj.VerifyIndentStatus("Pending For Approval");
+		etendercomponentobj.tenderLogout();
+		
+		//Approve the created indent
+		rfqfromintendcomponentobj.IndentapproverLogin();
+		rfqfromintendcomponentobj.GoToApprovalworkFlowPendingindentAndSearchTheIndent();
+		rfqfromintendcomponentobj.clickDetailLinkInApprovalListPage();
+		rfqfromintendcomponentobj.validateIndentdataAtApproverEnd();   //validate indent data at sectionWise view
+		rfqfromintendcomponentobj.ApproverOverAllComentWithIndentHasBeenApproved();
+		etendercomponentobj.tenderLogoutOld();
+		
+		//Verifying the indent status after approval
+		rfqfromintendcomponentobj.IndentcreatorLogin();
+		rfqfromintendcomponentobj.navigateToIndentListing();
+		rfqfromintendcomponentobj.enterIndentNoInSearch();
+		rfqfromintendcomponentobj.VerifyIndentStatus("Completed");
 
 	 	//Mark the created indent 'Marked for RFQ'
 	 	rfqfromintendcomponentobj.Indent_Mark_for_RFQ_functionality();

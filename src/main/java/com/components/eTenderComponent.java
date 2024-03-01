@@ -10361,10 +10361,10 @@ public class eTenderComponent extends BaseClass_Web {
 			log.info("started executing the method:: enterTenderIdInSearch");
 			
 			waitForObj(4000);
-			waitForElementToBeVisible(tendercreationlocators.tenderListPage);
+			waitForElementToBeVisible(tendercreationlocators.tendersearchbox);
 			
-			clear(tendercreationlocators.tenderListPage, "tenderListKeyword");
-			set(tendercreationlocators.tenderListPage, tenderReferenceNoLocatorText, "tenderListSearch");
+			clear(tendercreationlocators.tendersearchbox, "tenderListKeyword");
+			set(tendercreationlocators.tendersearchbox, tenderReferenceNoLocatorText, "tenderListSearch");
 			//waitForElementToBeVisible(tendercreationlocators.defaultCatBy);
 			waitForObj(2000);
 			
@@ -11604,8 +11604,8 @@ public class eTenderComponent extends BaseClass_Web {
 			System.out.println("Evalution settings is visible");
 			scrollToElement(tendercreationlocators.evaluationSettings);
 			JSClick(tendercreationlocators.evaluationSettings, "evaluationSettings");
-			waitForObj(5000);
-			waitForSpinnerToDisappear(tendercreationlocators.PleaseWait);
+			waitForObj(8000);
+			//waitForSpinnerToDisappear(tendercreationlocators.PleaseWait);
 			waitForElementToBeVisible(tendercreationlocators.openAndEvaluateBid_Evaluation);
 			
 

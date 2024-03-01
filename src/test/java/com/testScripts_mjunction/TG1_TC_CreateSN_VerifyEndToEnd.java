@@ -13,7 +13,7 @@ import com.baseClasses.BaseClass_Web;
 import com.components.eTenderComponent;
 
 
-public class TG1_TC_SN_01VerifyEndToEndWorkFlowOfSanctionNoteWithUserdefinedWorkFlowTest extends BaseClass_Web {
+public class TG1_TC_CreateSN_VerifyEndToEnd extends BaseClass_Web {
 
 	public eTenderComponent etendercomponentobj =new eTenderComponent(pdfResultReport);
 	public TenderCreation_Locators tendercreationobj =new TenderCreation_Locators(); 

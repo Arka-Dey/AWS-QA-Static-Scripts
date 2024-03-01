@@ -18,7 +18,7 @@ public class TenderCreation_Locators {
 	public By TenderListIcon = By.xpath("/html[1]/body[1]/section[2]/section[1]/div[1]/div[1]/h3[1]");
 	public By tendersIcon = By.xpath("//span[contains(text(),'Tender(s)')]//parent::a//i[@class='fa fa-tasks']");
 	public By tenderList = By.xpath("//a[contains(@ng-click,'tender/listTender')]");
-	public By PendingTab_MyTender_tenderlistpage = By.xpath("//*[@id='nav-01-tab']");
+	public By PendingTab_MyTender_tenderlistpage = By.xpath("//li[contains(text(),'Tender List')]");
 	public By tendercreationPlusicon = By.xpath("//button[@data-original-title='Tender Creation']");
 	public By templateGroupdropdown = By.xpath("//select[@name='templateGroup']");
 	public By bitPartdropdown = By.xpath("//select[@name='bidPartNo']");
@@ -196,6 +196,7 @@ public class TenderCreation_Locators {
 	
 	//added by pavel 05-02-2024
 	public By tenderListPage = By.xpath("/html/body/app-root/div/div/div/app-tender-listing/section/div/div[1]/input");
+	public By tendersearchbox = By.xpath("//div[@class='row searchnmenu']/div[1]/div[1]/input[1]");
 	
 	public By tenderCreatedStatus = By.xpath("//*[@id='inner-nav-01']/div/table/tbody/tr[1]/td[8]/span/span");
 	public By addBidders = By.xpath("//button[@type='button'][@ng-click='addVendor(generalInfo.tendertypeid)']");
@@ -1231,8 +1232,8 @@ public class TenderCreation_Locators {
 	
 	
 	//Template Traverse button
-	public By ttB = By.xpath("//mat-tab-header/div[3]");
-	public By ttR = By.xpath("//mat-tab-header/div[1]");
+	public By ttB = By.xpath("//mat-tab-header/button[2]");
+	public By ttR = By.xpath("//mat-tab-header/button[1]");
 	
 	//Send for approval
 	public By sendForApprovalText = By.xpath("//span[contains(text(),'Send For Approval')]");

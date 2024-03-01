@@ -37,7 +37,7 @@ public class RfqFromIndentComponent extends BaseClass_Web {
 
 	SoftAssert softAssert=new SoftAssert();
 	String SystemIndentnoLocatorText = null;
-	//String SystemIndentnoLocatorText = "1530";
+	//String SystemIndentnoLocatorText = "1951";
 	String expectedSuccessMessage= null;
 	String TemplateGroup=null;
 	ArrayList<String> commentlist=new ArrayList<String>();

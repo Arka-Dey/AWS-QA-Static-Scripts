@@ -65,8 +65,6 @@ public class TC_EPS_PO_05_with_multiple_approvers extends BaseClass_Web {
 	  posttendercomponentobj.savePoDocNumberFromPoListpage();
 	  etendercomponentobj.tenderLogout();
 	  
-	  
-	  
 	  posttendercomponentobj.poApproverLogin(pdfResultReport.testData.get("SanctionNoteApproverUserName"));
 	  posttendercomponentobj.navigateToApprovalPendingPage(tendercreationobj.poTab);
 	  posttendercomponentobj.navigateToPurchaseOrderApproval();
@@ -74,11 +72,6 @@ public class TC_EPS_PO_05_with_multiple_approvers extends BaseClass_Web {
 	  posttendercomponentobj.purchaseOrderEvaluationDecision("forward");
 	  posttendercomponentobj.sendForForwardParallelPOApprovalProcess(); //forward to sn_approver_03, sn_approver_04 and sn_approver_05(c), min app: 2
 	  etendercomponentobj.tenderLogoutOld();
-	  
-	 
-	  
-	  
-	  
 	  
 	//approver4
 	  posttendercomponentobj.poApproverLogin(pdfResultReport.testData.get("SanctionNoteApproverUserName4"));
@@ -107,7 +100,6 @@ public class TC_EPS_PO_05_with_multiple_approvers extends BaseClass_Web {
 	  //posttendercomponentobj.enterDocumentNoInSearchSanctionApprover();
 	  etendercomponentobj.tenderLogoutOld();
 	  
-	  
 	  //approver7
 	  posttendercomponentobj.poApproverLogin(pdfResultReport.testData.get("SanctionNoteApproverUserName7"));
 	  posttendercomponentobj.navigateToApprovalPendingPage(tendercreationobj.poTab);
@@ -116,8 +108,7 @@ public class TC_EPS_PO_05_with_multiple_approvers extends BaseClass_Web {
 	  posttendercomponentobj.purchaseOrderEvaluationDecision("approve");
 	  //posttendercomponentobj.enterDocumentNoInSearchSanctionApprover();
 	  etendercomponentobj.tenderLogoutOld();
-	  
-	  
+	   
 	  //approver8
 	  posttendercomponentobj.poApproverLogin(pdfResultReport.testData.get("SanctionNoteApproverUserName8"));
 	  posttendercomponentobj.navigateToApprovalPendingPage(tendercreationobj.poTab);

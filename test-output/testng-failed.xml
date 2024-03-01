@@ -6,31 +6,18 @@
   </listeners>
   <test thread-count="5" name="Test(failed)">
     <parameter name="browserName" value="windowschrome"/>
-<<<<<<< HEAD
-    <parameter name="TestcaseNo" value="29"/>
-    <classes>
-      <class name="com.testScripts_mjunction.TC_EPS_PO_02UserDefinedApprovalTest">
-        <methods>
-          <include name="setUpSuiteDetails"/>
-          <include name="f" invocation-numbers="0"/>
-=======
     <parameter name="TestcaseNo" value="11"/>
     <classes>
-      <class name="com.testScripts_mjunction.TG1_TC_Evaluation_11_Openingapproval_Y_Evaluationapproval_Y">
+      <class name="com.testScripts_mjunction.TG1_TC_Create3StagesGRN_VerifyEndToEnd">
         <methods>
           <include name="setUpSuiteDetails"/>
           <include name="BeforeClass"/>
->>>>>>> c5cc3e91e9e277edd3483ea075bb1516542d3a20
+          <include name="Create3StagesGRN_WithoutApprovalFlow" invocation-numbers="0"/>
           <include name="afterSuite"/>
           <include name="captureDesc"/>
           <include name="afterClass"/>
-          <include name="Tender_Evaluation_with_OpeningApproval_Y_Evaluationapproval_Y" invocation-numbers="0"/>
         </methods>
-<<<<<<< HEAD
-      </class> <!-- com.testScripts_mjunction.TC_EPS_PO_02UserDefinedApprovalTest -->
-=======
-      </class> <!-- com.testScripts_mjunction.TG1_TC_Evaluation_11_Openingapproval_Y_Evaluationapproval_Y -->
->>>>>>> c5cc3e91e9e277edd3483ea075bb1516542d3a20
+      </class> <!-- com.testScripts_mjunction.TG1_TC_Create3StagesGRN_VerifyEndToEnd -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

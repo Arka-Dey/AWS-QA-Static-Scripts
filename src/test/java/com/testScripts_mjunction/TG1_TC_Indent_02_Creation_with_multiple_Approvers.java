@@ -73,8 +73,7 @@ public class TG1_TC_Indent_02_Creation_with_multiple_Approvers extends BaseClass
 		rfqfromintendcomponentobj.VerifyIndentStatus("Pending For Approval");
 		etendercomponentobj.tenderLogout();
 		 
-		
-		
+	
 		//Approve the created indent
 		rfqfromintendcomponentobj.IndentapproverLogin();
 		rfqfromintendcomponentobj.GoToApprovalworkFlowPendingindentAndSearchTheIndent();
@@ -82,7 +81,6 @@ public class TG1_TC_Indent_02_Creation_with_multiple_Approvers extends BaseClass
 		rfqfromintendcomponentobj.Forward_IndentWF_With_ParallelApprovalType(); //forward to test_approver_01, test_approver_02 and test_approver_03(c), min app: 2
 		etendercomponentobj.tenderLogoutOld();
 		 
-		
 		//Login with test_approver_02 (non coordinator)
 		rfqfromintendcomponentobj.IndentapproverLogin(pdfResultReport.testData.get("Approver2"));
 		rfqfromintendcomponentobj.GoToApprovalworkFlowPendingindentAndSearchTheIndent();
@@ -97,7 +95,6 @@ public class TG1_TC_Indent_02_Creation_with_multiple_Approvers extends BaseClass
 		rfqfromintendcomponentobj.Forward_IndentWF_With_SequentialApprovalType("Indent Process Is Approved and forwarded by test_approver_03"); 
 		etendercomponentobj.tenderLogoutOld();
 		 
-		
 		//Login with test_approver_04 (non coordinator)
 		rfqfromintendcomponentobj.IndentapproverLogin(pdfResultReport.testData.get("Approver4"));
 		rfqfromintendcomponentobj.GoToApprovalworkFlowPendingindentAndSearchTheIndent();
@@ -142,7 +139,6 @@ public class TG1_TC_Indent_02_Creation_with_multiple_Approvers extends BaseClass
 		rfqfromintendcomponentobj.enterIndentNoInSearch();
 		rfqfromintendcomponentobj.VerifyIndentStatus("Pending For Approval");
 		etendercomponentobj.tenderLogout();
-		
 		
 		//Indent creator recalls WF before taking decision by any approver
 		rfqfromintendcomponentobj.IndentcreatorLogin();
