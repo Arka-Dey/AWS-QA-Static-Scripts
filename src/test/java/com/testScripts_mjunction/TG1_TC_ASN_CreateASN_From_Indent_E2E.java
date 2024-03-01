@@ -10,7 +10,7 @@ import com.components.PreConditionPo_SanctionCreation;
 import com.components.RfqFromIndentComponent;
 import com.components.eTenderComponent;
 
-public class TG1_TC_ASN_01_CreateASNbyInputingAllData extends BaseClass_Web {
+public class TG1_TC_ASN_CreateASN_From_Indent_E2E extends BaseClass_Web {
 
 	public PreConditionPo_SanctionCreation preConditionPo = new PreConditionPo_SanctionCreation(pdfResultReport);
 	public eTenderComponent etendercomponentobj = new eTenderComponent(pdfResultReport);

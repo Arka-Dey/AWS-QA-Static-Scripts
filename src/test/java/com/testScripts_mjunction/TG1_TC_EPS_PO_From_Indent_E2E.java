@@ -14,7 +14,7 @@ import com.baseClasses.BaseClass_Web;
 import com.components.eTenderComponent;
 
 
-public class TG1_TC_EPS_PO_01UserDefinedApprovalTest extends BaseClass_Web {
+public class TG1_TC_EPS_PO_From_Indent_E2E extends BaseClass_Web {
 
 	public eTenderComponent etendercomponentobj =new eTenderComponent(pdfResultReport);
 	public TenderCreation_Locators tendercreationobj =new TenderCreation_Locators(); 

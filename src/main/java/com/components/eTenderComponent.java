@@ -66,7 +66,7 @@ import com.objectRepository.TenderCreation_Locators;
 public class eTenderComponent extends BaseClass_Web {
 	
 	String tenderReferenceNoLocatorText = null;
-	//String tenderReferenceNoLocatorText = "1826";
+//	String tenderReferenceNoLocatorText = "1837";
 	TenderCreation_Locators tendercreationlocators = new TenderCreation_Locators();
 	String BidStartDate = null;
 	String BidDueDate = null;
@@ -16094,13 +16094,12 @@ public void NoApproverWF() throws Exception {
 					click(tendercreationlocators.tenderlistingPageAction, "action");
 					waitForObj(2000);
 					click(tendercreationlocators.cancelTender,"cancel");
-					waitForElementToBeVisible(tendercreationlocators.cancellationReason);
-					set(tendercreationlocators.cancellationReason, "Not required", "Remarks");
+					waitForElementToBeVisible(tendercreationlocators.cancellationReasonComment);
+					set(tendercreationlocators.cancellationReasonComment, "Not required", "Remarks");
 					waitForObj(1000);
 					click(tendercreationlocators.notRequiredCheckmark,"not required");
 					waitForObj(1000);
 					click(tendercreationlocators.Submit,"Submit");
-					
 					
 					pdfResultReport.addStepDetails("cancelTender",
 							"tender should be cancelled",

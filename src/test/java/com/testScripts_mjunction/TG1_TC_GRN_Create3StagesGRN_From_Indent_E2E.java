@@ -13,7 +13,7 @@ import com.components.RfqFromIndentComponent;
 import com.components.eTenderComponent;
 import com.objectRepository.TenderCreation_Locators;
 
-public class TG1_TC_GRN_01_Create3StagesGRN_WithApprovalFlow extends BaseClass_Web{
+public class TG1_TC_GRN_Create3StagesGRN_From_Indent_E2E extends BaseClass_Web{
 	PreConditionPo_SanctionCreation preConditionPo = new PreConditionPo_SanctionCreation(pdfResultReport);
 	public eTenderComponent etendercomponentobj =new eTenderComponent(pdfResultReport);
 	public TenderCreation_Locators tendercreationobj =new TenderCreation_Locators(); 

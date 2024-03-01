@@ -45,7 +45,7 @@ public class TC_EPS_PO_05_with_multiple_approvers extends BaseClass_Web {
 	  
 	  posttendercomponentobj.createSanctionNote();
 	  posttendercomponentobj.sanctionReferenceNumber();
-	  posttendercomponentobj.SanctionsupplierSelection();
+	  posttendercomponentobj.SanctionsupplierOrgNameWiseSelection("CTS");
 	  posttendercomponentobj.SanctionItemsAllotment();
 	  posttendercomponentobj.ScantionComment_recommendationTab();
 	  posttendercomponentobj.clickOnSubmitButton();
