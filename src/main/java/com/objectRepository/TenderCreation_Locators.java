@@ -154,6 +154,7 @@ public class TenderCreation_Locators {
 	public By details = By.xpath("//a[contains(text(),'Section Wise View')]");
 	public By sanctionTab = By.xpath("//a[contains(text(),'Sanction')]");
 	public By reverseBackToCreator = By.xpath("//button[contains(text(),'Reverse back to creator')]");
+	public By BackToCreator = By.xpath("//button[contains(text(),'Back to Creator')]");
 	public By editDraftTender = By.xpath("//*[@data-icon='edit']");
 	public By poTab = By.xpath("//li[@id='purchaseOrderTab']/a");
 	// Details page of Tender Approval Validation
@@ -684,6 +685,7 @@ public class TenderCreation_Locators {
 	public By overallComment_currentPart = By.xpath("//iframe[@id='uiTinymce1_ifr']");
 	public By upload_editable = By.xpath("//input[@class='ng-isolate-scope']");
 	public By pendingForEvaluationApproval = By.xpath("(//*[@id='clrcookie'])[1]");
+	public By cancelOkSuccess = By.xpath("//button[@class='btn modalBtnBlue mx-2 mb-2 mb-sm-0']");
 	public By bidDetailstenderId = By.xpath("(//strong[@class='ng-binding'])[1]");
 	public By bidDetailstenderStatus = By.xpath("(//strong[@class='ng-binding'])[2]");
 	public By TotalNoOfSubmittedBid = By.xpath("(//span[@class='ng-binding'])[2]");
@@ -807,7 +809,7 @@ public class TenderCreation_Locators {
 	public By noOfLiveBids_Evaluation = By.xpath("(//strong[@class='ng-binding'])[3]");
 	public By openAndEvaluateBid_Evaluation = By.xpath("//label[contains(text(),'Open & Evaluate Bid')]");
 	public By scheduleOpening_Evaluation = By.xpath("//label[contains(text(),'Schedule Opening')]");
-	public By openingApprovalCover1 = By.xpath("(//button[@id='evaluation123'])[1]");
+	public By openingApprovalCover1 = By.xpath("//*[@id='inner-nav-01']/div/table/tbody/tr[1]/td[8]/span/span");
 	public By approve0rReject_AlertMessage = By.xpath("//strong[text()='Please approve or reject CTS test']");
 	public By viewDetailsOfBidder_AlertMessage = By.xpath("//strong[contains(text(),'Please View Details of Bidder')]");
 	public String editablelinkpendingStatus = "//*[contains(normalize-space(text()),'{0}')]//following-sibling::td//*[normalize-space(text())='Pending']/../following-sibling::button";
@@ -1510,6 +1512,7 @@ public class TenderCreation_Locators {
 	public By Recall = By.xpath("//a[@data-target='#recallModal']");
 	public By RecallReason = By.xpath("//textarea[@name='recallReason']");
 	public By cancellationReason = By.xpath("//*[@name='cancelReasonComment']/div[2]/div[2]/div/p");
+	public By cancellationReasonComment = By.xpath("//*[@id='mytextarea']");
 	public By RecallSubmit = By.xpath("//button[@ng-click='recallFn()']");
 	public By recallPo = By.xpath("//*[@id='nav-my-indent']/div/table/tbody/tr/td[11]/div/ul/li[4]/a");
 	public By recallPoCloseButton = By.xpath("//button[contains(text(),'x')]");
@@ -1928,7 +1931,7 @@ public class TenderCreation_Locators {
 	public By StatusRejectedByapprover = By.xpath("//a[text()='(Rejected by approver)']");
 	public By PrintPreviewClose = By.xpath("//div[@id='poPrintPrevModal']//button[text()='Close']");
 	public By ItemQtyPopUpValidationBy = By.xpath("//*[text()='Quantity not more than main quantity!']");
-
+	public By backToPreviousApprover = By.xpath("//button[contains(text(),'Back to Previous Approver')]");
 	public By reverseBackApproverBy = By.xpath(" //*[contains(text(),' Reverse back to approver')]");
 	public By coordinatorFlagParallel_vamshi = By
 			.xpath("//table[@class='table table-striped table-advance table-hover']/tbody/tr[3]/td[3]//input");

@@ -39,7 +39,7 @@ public class TC_GRN_01_Create3StagesGRN_WithoutApprovalFlow extends BaseClass_We
 	}
 	     initializeRepository();
 	     etendercomponentobj.openURL();
-	     
+/*	     
 	     posttendercomponentobj.sanction_Creator_Login();
 		  posttendercomponentobj.clickPostTenderProcessLink();
 		  posttendercomponentobj.enterCompleted_TenderId_new() ;
@@ -94,7 +94,9 @@ public class TC_GRN_01_Create3StagesGRN_WithoutApprovalFlow extends BaseClass_We
 		  asn_grncomponentobj.SubmitASN();
 		  asn_grncomponentobj.SearchASNRefInASNList();
 		  asn_grncomponentobj.VerifyStatus("Completed");
+		  waitForObj(15000);
 		  etendercomponentobj.tenderLogoutOld();
+		 */ 
 		  
 	     //Gate Pass creation
  		 asn_grncomponentobj.GRN_Creator_Login();

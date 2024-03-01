@@ -6,18 +6,31 @@
   </listeners>
   <test thread-count="5" name="Test(failed)">
     <parameter name="browserName" value="windowschrome"/>
+<<<<<<< HEAD
     <parameter name="TestcaseNo" value="11"/>
     <classes>
       <class name="com.testScripts_mjunction.TG1_TC_Create3StagesGRN_VerifyEndToEnd">
         <methods>
           <include name="setUpSuiteDetails"/>
           <include name="BeforeClass"/>
+=======
+    <parameter name="TestcaseNo" value="8"/>
+    <classes>
+      <class name="com.testScripts_mjunction.TC_GRN_01_Create3StagesGRN_WithoutApprovalFlow">
+        <methods>
+          <include name="setUpSuiteDetails"/>
+>>>>>>> 6f9e3312d8cb03c6769797c4245f179be28175ba
           <include name="Create3StagesGRN_WithoutApprovalFlow" invocation-numbers="0"/>
           <include name="afterSuite"/>
           <include name="captureDesc"/>
+          <include name="BeforeClass"/>
           <include name="afterClass"/>
         </methods>
+<<<<<<< HEAD
       </class> <!-- com.testScripts_mjunction.TG1_TC_Create3StagesGRN_VerifyEndToEnd -->
+=======
+      </class> <!-- com.testScripts_mjunction.TC_GRN_01_Create3StagesGRN_WithoutApprovalFlow -->
+>>>>>>> 6f9e3312d8cb03c6769797c4245f179be28175ba
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

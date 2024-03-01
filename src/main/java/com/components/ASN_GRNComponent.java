@@ -737,7 +737,7 @@ public class ASN_GRNComponent extends BaseClass_Web {
 	public void createGrn(String AsnNo) throws Throwable {
 		try {
 			log.info("started executing the method:: createGrn");
-
+			waitForObj(6000);
 			WebDriver driver = ThreadLocalWebdriver.getDriver();
 
 			String createGrn = "//*[contains(text(),'{0}')]/../following-sibling::td//child::button[@data-toggle='dropdown']/..//ul/li/a[contains(text(),'Create Receipt')]";
