@@ -13,11 +13,7 @@ import com.baseClasses.BaseClass_Web;
 import com.components.eTenderComponent;
 
 
-<<<<<<<< HEAD:src/test/java/com/testScripts_mjunction/TG1_TC_CreateSN_VerifyEndToEnd.java
-public class TG1_TC_CreateSN_VerifyEndToEnd extends BaseClass_Web {
-========
-public class TG1_TC_SN_VerifyEndToEndWorkFlowOfSanctionNoteWithUserdefinedWorkFlowTest_From_Indent_E2E extends BaseClass_Web {
->>>>>>>> 6f9e3312d8cb03c6769797c4245f179be28175ba:src/test/java/com/testScripts_mjunction/TG1_TC_SN_VerifyEndToEndWorkFlowOfSanctionNoteWithUserdefinedWorkFlowTest_From_Indent_E2E.java
+public class TG1_TC_CreateSN_From_Indent_EndToEnd extends BaseClass_Web {
 
 	public eTenderComponent etendercomponentobj =new eTenderComponent(pdfResultReport);
 	public TenderCreation_Locators tendercreationobj =new TenderCreation_Locators(); 

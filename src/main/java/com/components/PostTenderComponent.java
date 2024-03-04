@@ -49,7 +49,7 @@ public class PostTenderComponent extends BaseClass_Web {
 	String documentNumberText = null;
 	//String documentNumberText = "43926";
 	String poDocNum = null;
-//	String poDocNum = "1345";
+	//String poDocNum = "1360";
 	String poReference= "";
 	String tenderReferenceNoLocatorText_sn = null;
 	//String tenderReferenceNoLocatorText_sn ="SN_9742";
@@ -360,6 +360,9 @@ public class PostTenderComponent extends BaseClass_Web {
 	public void enterDocumentNoInSearchSanctionApprover() throws Throwable {
 		try {
 			log.info("started executing the method:: enterDocumentNoInSearchSanctionApprover");
+			
+			waitForElementToBeClickable(tendercreationlocators.sanctionTab);
+			click(tendercreationlocators.sanctionTab, "sanctionTab");
 			set(tendercreationlocators.typeAnyKeyword1, documentNumberText, "typeAnyKeyword");
 			waitForObj(5000);
 			
@@ -3567,8 +3570,7 @@ public class PostTenderComponent extends BaseClass_Web {
 		try {
 			log.info("started executing the method:: poApprover1Login");
 			waitForElementToBeVisible(tendercreationlocators.userName);
-			set(tendercreationlocators.userName, "PO Approver  test (snehashis.mukherjee@mjunction.in)-TEST_AUTOMATION", "POApproverUserName");
-	//		set(tendercreationlocators.userName, pdfResultReport.testData.get("POApproverUserName1"), "POApproverUserName");
+			set(tendercreationlocators.userName, pdfResultReport.testData.get("POApproverUserName1"), "POApproverUserName");
 			waitForElementToBeVisible(tendercreationlocators.password);
 			set(tendercreationlocators.password, pdfResultReport.testData.get("AppPassword"), "password");
 			waitForElementToBeClickable(tendercreationlocators.okButton);
@@ -3596,11 +3598,10 @@ public class PostTenderComponent extends BaseClass_Web {
 			set(tendercreationlocators.recommendationComment, "overallComment_currentPart", "recommendationComment");
 			switchToDefaultFrame();
 			Thread.sleep(2000);
-			
 			scrollToElement(tendercreationlocators.poApproverComment);
-			click(tendercreationlocators.poApproverComment, "Approver_Comment");
-			scrollToTopOfThePage();
-			Thread.sleep(2000);
+			JSClick(tendercreationlocators.poApproverComment, "Approver_Comment");
+			Thread.sleep(4000);
+			
 			pdfResultReport.addStepDetails("provide_PO_ApproverComment", "Comment must be pass successfully",
 					"Successfully passed comment" + " ", "Pass", "Y");
 			log.info("completed executing the method:: provide_PO_ApproverComment");
@@ -5842,7 +5843,7 @@ public class PostTenderComponent extends BaseClass_Web {
 		try {
 			log.info("started executing the method:: navigateToPurchaseOrderApproval");
 			waitForObj(5000);
-			set(tendercreationlocators.typeAnyKeyword1, poDocNum, "enter PoDocNum");
+			set(tendercreationlocators.typeAnyKeyword1, eTenderComponent.getDataFromPropertiesFile("poDocNum"), "enter PoDocNum");
 			
 			pdfResultReport.addStepDetails("navigateToPurchaseOrderApproval",
 					"Purchase Order Approval page must be navigate sucessfully ",
@@ -11429,13 +11430,13 @@ public class PostTenderComponent extends BaseClass_Web {
                waitForElementToBeClickable(tendercreationlocators.approveConfirm);
                click(tendercreationlocators.approveConfirm, "approveConfirm");
                }
-               else if(decision=="revert back to approver") {
+               else if(decision=="revert back to approver"||decision=="Back to Previous Approver" ) {
                       waitForElementToBeClickable(tendercreationlocators.sanctionNoteEvaluationApprove);
                      click(tendercreationlocators.sanctionNoteEvaluationReview, "sanctionNoteEvaluationApprove");
                      waitForElementToBeClickable(tendercreationlocators.approveConfirm);
                      click(tendercreationlocators.approveConfirm, "approveConfirm");
-                     waitForElementToBeClickable(tendercreationlocators.revertbackToApprover);
-                     click(tendercreationlocators.revertbackToApprover, "revert back to approver");
+                     waitForElementToBeClickable(tendercreationlocators.revertbackToApprover(decision));
+                     click(tendercreationlocators.revertbackToApprover(decision), "revert back to approver");
                      
                }
                else if(decision=="forward") {
@@ -11447,13 +11448,13 @@ public class PostTenderComponent extends BaseClass_Web {
                      click(tendercreationlocators.ForwardTheSNWorkflow, "forward to next person");
                      //send for approval
                      }
-               else if (decision=="revert back to creator") {
+               else if (decision=="revert back to creator"||decision=="Back to Creator") {
             	   waitForElementToBeClickable(tendercreationlocators.sanctionNoteEvaluationApprove);
                    click(tendercreationlocators.sanctionNoteEvaluationReview, "sanctionNoteEvaluationApprove");
                    waitForElementToBeClickable(tendercreationlocators.approveConfirm);
                    click(tendercreationlocators.approveConfirm, "approveConfirm");
-                   waitForElementToBeClickable(tendercreationlocators.reverseBackToCreator);
-                   click(tendercreationlocators.reverseBackToCreator, "revert back to creator");
+                   waitForElementToBeClickable(tendercreationlocators.reverseBackToCreator(decision));
+                   click(tendercreationlocators.reverseBackToCreator(decision), "revert back to creator");
 			}
                
                waitForObj(5000);
@@ -11974,17 +11975,29 @@ try {
         try {
                log.info("started executing the method:: sanctionNoteEvaluationApprove");
                if(decision=="approve") {
+        	   scrollToElement(tendercreationlocators.sanctionNoteEvaluationApprove);
+               JSClick(tendercreationlocators.sanctionNoteEvaluationApprove, "sanctionNoteEvaluationApprove");
+               /*
+               // comment on 03-03-24 by @AD
                waitForElementToBeClickable(tendercreationlocators.sanctionNoteEvaluationApprove);
                click(tendercreationlocators.sanctionNoteEvaluationApprove, "sanctionNoteEvaluationApprove");
-               waitForElementToBeClickable(tendercreationlocators.approveConfirm);
+               */
+               waitForObj(2000);
+               waitForElementToBeVisible(tendercreationlocators.approveConfirm);
                click(tendercreationlocators.approveConfirm, "approveConfirm");
                waitForElementToBeClickable(tendercreationlocators.Okbtn);
                click(tendercreationlocators.Okbtn, "approveOk");
                }
                else if(decision=="revert back to approver") {
-                      waitForElementToBeClickable(tendercreationlocators.sanctionNoteEvaluationReview);
+            	   scrollToElement(tendercreationlocators.sanctionNoteEvaluationReview);
+                   JSClick(tendercreationlocators.sanctionNoteEvaluationReview, "sanctionNoteEvaluationReview");
+                   /*
+                   // comment on 03-03-24 by @AD
+                   waitForElementToBeClickable(tendercreationlocators.sanctionNoteEvaluationReview);
                      click(tendercreationlocators.sanctionNoteEvaluationReview, "sanctionNoteEvaluationApprove");
-                     waitForElementToBeClickable(tendercreationlocators.approveConfirm);
+                     */
+                   waitForObj(2000);
+                   waitForElementToBeVisible(tendercreationlocators.approveConfirm);
                      click(tendercreationlocators.approveConfirm, "approveConfirm");
                      waitForElementToBeClickable(tendercreationlocators.backToPreviousApprover);
                      click(tendercreationlocators.backToPreviousApprover, "revert back to approver");
@@ -11992,18 +12005,34 @@ try {
                      click(tendercreationlocators.Okbtn, "approveOk");
                }
                else if(decision=="forward") {
-                      waitForElementToBeClickable(tendercreationlocators.sanctionNoteEvaluationApprove);
+                   /*  
+                   // comment on 03-03-24 by @AD
+            	   waitForElementToBeClickable(tendercreationlocators.sanctionNoteEvaluationApprove);
                      click(tendercreationlocators.sanctionNoteEvaluationApprove, "sanctionNoteEvaluationApprove");
                      waitForElementToBeClickable(tendercreationlocators.approveConfirm);
                      click(tendercreationlocators.approveConfirm, "sanctionNoteEvaluationApprove");
                      waitForElementToBeClickable(tendercreationlocators.ForwardTheSNWorkflow);
                      click(tendercreationlocators.ForwardTheSNWorkflow, "forward to next person");
+                     */
+            	   scrollToElement(tendercreationlocators.sanctionNoteEvaluationApprove);
+                   JSClick(tendercreationlocators.sanctionNoteEvaluationApprove, "sanctionNoteEvaluationApprove");
+                   waitForElementToBeVisible(tendercreationlocators.approveConfirm);
+                   click(tendercreationlocators.approveConfirm, "sanctionNoteEvaluationApprove");
+                   waitForElementToBeClickable(tendercreationlocators.ForwardTheSNWorkflow);
+                   click(tendercreationlocators.ForwardTheSNWorkflow, "forward to next person");
+            	   
                      //send for approval
                      }
                else if (decision=="revert back to creator") {
+            	   scrollToElement(tendercreationlocators.sanctionNoteEvaluationReview);
+                   JSClick(tendercreationlocators.sanctionNoteEvaluationReview, "sanctionNoteEvaluationReview");
+            	   /*
+            	   // comment on 03-03-24 by @AD
             	   waitForElementToBeVisible(tendercreationlocators.sanctionNoteEvaluationReview);
                    click(tendercreationlocators.sanctionNoteEvaluationReview, "sanctionNoteEvaluationApprove");
-                   waitForElementToBeClickable(tendercreationlocators.approveConfirm);
+                  */
+                   waitForObj(2000);
+                   waitForElementToBeVisible(tendercreationlocators.approveConfirm);
                    click(tendercreationlocators.approveConfirm, "approveConfirm");
                    waitForElementToBeClickable(tendercreationlocators.BackToCreator);
                    click(tendercreationlocators.BackToCreator, "revert back to creator");

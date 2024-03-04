@@ -6,8 +6,8 @@
     <test name="Test">
         <parameter name="browserName" value="windowschrome"></parameter>
         <classes>
-           <parameter name="TestcaseNo" value="24"></parameter>   
-            <class name="com.testScripts_mjunction.TG1_TC_CreateSN_VerifyEndToEnd"/>
+           <parameter name="TestcaseNo" value="11"></parameter>   
+            <class name="com.testScripts_mjunction.TG1_TC_GRN_Create3StagesGRN_From_Indent_E2E" />
         </classes>
     </test> 
-</suite> 
+</suite>

@@ -42,7 +42,7 @@ public class TC_SN_02VerifyEndToEndWorkFlowOfSanctionNoteWithUserdefinedWorkFlow
 	  posttendercomponentobj.enterCompleted_TenderId_new() ;
 	  posttendercomponentobj.createSanctionNote();
 	  posttendercomponentobj.sanctionReferenceNumber();
-	  posttendercomponentobj.SanctionsupplierSelection();
+	  posttendercomponentobj.SanctionsupplierOrgNameWiseSelection("CTS");
 	  posttendercomponentobj.SanctionItemsAllotment();
 	  posttendercomponentobj.ScantionComment_recommendationTab();
 	  posttendercomponentobj.clickOnSubmitButton();

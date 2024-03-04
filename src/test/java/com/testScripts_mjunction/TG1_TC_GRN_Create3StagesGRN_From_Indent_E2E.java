@@ -13,11 +13,8 @@ import com.components.RfqFromIndentComponent;
 import com.components.eTenderComponent;
 import com.objectRepository.TenderCreation_Locators;
 
-<<<<<<<< HEAD:src/test/java/com/testScripts_mjunction/TG1_TC_Create3StagesGRN_VerifyEndToEnd.java
-public class TG1_TC_Create3StagesGRN_VerifyEndToEnd extends BaseClass_Web{
-========
+
 public class TG1_TC_GRN_Create3StagesGRN_From_Indent_E2E extends BaseClass_Web{
->>>>>>>> 6f9e3312d8cb03c6769797c4245f179be28175ba:src/test/java/com/testScripts_mjunction/TG1_TC_GRN_Create3StagesGRN_From_Indent_E2E.java
 	PreConditionPo_SanctionCreation preConditionPo = new PreConditionPo_SanctionCreation(pdfResultReport);
 	public eTenderComponent etendercomponentobj =new eTenderComponent(pdfResultReport);
 	public TenderCreation_Locators tendercreationobj =new TenderCreation_Locators(); 
@@ -45,6 +42,7 @@ public class TG1_TC_GRN_Create3StagesGRN_From_Indent_E2E extends BaseClass_Web{
 	}
 	     initializeRepository();
 	     etendercomponentobj.openURL();
+	    
 		rfqfromintendcomponentobj.IndentcreatorLogin();
 		rfqfromintendcomponentobj.navigateToIndentCreation();
 		rfqfromintendcomponentobj.IndentTG1_General_Info_tabvalidation("Indigenous Indent (Supply & Service Both) V-004");
@@ -168,12 +166,13 @@ public class TG1_TC_GRN_Create3StagesGRN_From_Indent_E2E extends BaseClass_Web{
 	 	/*
 	 	 etendercomponentobj.ScheduleOpening_Evaluationsettings(4); //Need to enable respective field
 	 	*/
+	    
 	 	etendercomponentobj.selectYesForApprovalAndEvaluationRequired();
 	 	etendercomponentobj.selectBidOpeningAndProvideCommentsForBidOpeningApproval();
 	 	etendercomponentobj.selectEvaluationAndProvideCommentsForBidOpeningApproval();
 	 	etendercomponentobj.SendForApprovalInEvaluationsetting();
 	 	//etendercomponentobj.checktenderStatusIsInOpening();
-	 	//etendercomponentobj.checktenderStageIsInPendingForOpeningApprovalCover1("Cover 1");
+	 	etendercomponentobj.checktenderStageIsInPendingForOpeningApprovalCover1("Cover 1");
 	 	etendercomponentobj.tenderLogout();
 	 	
 	 	//Waiting for schedule opening time reached
@@ -199,10 +198,10 @@ public class TG1_TC_GRN_Create3StagesGRN_From_Indent_E2E extends BaseClass_Web{
 	 	etendercomponentobj.clickPendingForEvaluationApprovalStage();
 	 	etendercomponentobj.decryptingTheBidder();
 	 	etendercomponentobj.submitBidDetailPage();
-	 	//etendercomponentobj.enterTenderIdInSearch();
-	 	//etendercomponentobj.verifyTenderStageIsInFinalApprovalCover_1Or_Cover2();
+	 	etendercomponentobj.enterTenderIdInSearch();
+	 	etendercomponentobj.verifyTenderStageIsInFinalApprovalCover_1Or_Cover2();
 	 	etendercomponentobj.tenderLogout();
-	 	 	 
+	 		 
 	 	//Tender Evaluator evaluate(approve) the bid cover1
 	 	etendercomponentobj.evaluator1Login();
 	 	etendercomponentobj.validateTenderEvaluationTabDetails_WithEvaluatorUser();
@@ -231,7 +230,7 @@ public class TG1_TC_GRN_Create3StagesGRN_From_Indent_E2E extends BaseClass_Web{
 	 	etendercomponentobj.SendForApprovalInEvaluationsetting();
 	 	etendercomponentobj.enterTenderIdInSearch();
 	 	//etendercomponentobj.checktenderStatusIsInOpening(); //Issue raised, Defect ID: 136575
-	 	//etendercomponentobj.checktenderStageIsInPendingForOpeningApprovalCover1("Cover 2");
+	 	etendercomponentobj.checktenderStageIsInPendingForOpeningApprovalCover1("Cover 2");
 	 	etendercomponentobj.tenderLogout();
 	 	
 	 	//Waiting for schedule opening time reached
@@ -251,12 +250,12 @@ public class TG1_TC_GRN_Create3StagesGRN_From_Indent_E2E extends BaseClass_Web{
 	 	etendercomponentobj.navigateToTenderListing();
 	 	etendercomponentobj.enterTenderIdInSearch();
 	 	etendercomponentobj.checktenderStatusIsInevaluationState();
-	 	//etendercomponentobj.checktenderStageIsInevaluationStage();
+	 	etendercomponentobj.checktenderStageIsInevaluationStage();
 	 	etendercomponentobj.clickPendingForEvaluationApprovalStage();
 	 	etendercomponentobj.decryptingTheBidder();
 	 	etendercomponentobj.submitBidDetailPage();
-	 	//etendercomponentobj.enterTenderIdInSearch();
-	 	//etendercomponentobj.verifyTenderStageIsInFinalApprovalCover_1Or_Cover2();
+	 	etendercomponentobj.enterTenderIdInSearch();
+	 	etendercomponentobj.verifyTenderStageIsInFinalApprovalCover_1Or_Cover2();
 	 	etendercomponentobj.tenderLogout();
 	 	
 	 	//Tender Evaluator evaluate(approve) the bid cover2
@@ -360,6 +359,7 @@ public class TG1_TC_GRN_Create3StagesGRN_From_Indent_E2E extends BaseClass_Web{
  		asn_grncomponentobj.clickDetailLinkInApprovalListPage();
  		asn_grncomponentobj.END_GRN_WF(); 
  		etendercomponentobj.tenderLogoutOld();
+ 		waitForObj(10000);
  		 
  		 //==========QC creation================
  		asn_grncomponentobj.GRN_Creator_Login();
@@ -387,7 +387,8 @@ public class TG1_TC_GRN_Create3StagesGRN_From_Indent_E2E extends BaseClass_Web{
  		asn_grncomponentobj.clickDetailLinkInApprovalListPage();
  		asn_grncomponentobj.END_GRN_WF(); 
  		etendercomponentobj.tenderLogoutOld();
-		 
+ 		waitForObj(10000);
+ 		
 		 //===========QV creation================
 		 asn_grncomponentobj.GRN_Creator_Login();
 		 asn_grncomponentobj.navigateToApprovedASNListPage();

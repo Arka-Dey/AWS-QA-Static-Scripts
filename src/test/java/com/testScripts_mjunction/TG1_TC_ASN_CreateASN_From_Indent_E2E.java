@@ -10,11 +10,8 @@ import com.components.PreConditionPo_SanctionCreation;
 import com.components.RfqFromIndentComponent;
 import com.components.eTenderComponent;
 
-<<<<<<<< HEAD:src/test/java/com/testScripts_mjunction/TG1_TC_CreateASN_VerifyEndToEnd.java
-public class TG1_TC_CreateASN_VerifyEndToEnd extends BaseClass_Web {
-========
+
 public class TG1_TC_ASN_CreateASN_From_Indent_E2E extends BaseClass_Web {
->>>>>>>> 6f9e3312d8cb03c6769797c4245f179be28175ba:src/test/java/com/testScripts_mjunction/TG1_TC_ASN_CreateASN_From_Indent_E2E.java
 
 	public PreConditionPo_SanctionCreation preConditionPo = new PreConditionPo_SanctionCreation(pdfResultReport);
 	public eTenderComponent etendercomponentobj = new eTenderComponent(pdfResultReport);

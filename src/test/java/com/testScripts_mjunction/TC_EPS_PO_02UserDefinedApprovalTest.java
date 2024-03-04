@@ -86,9 +86,7 @@ public class TC_EPS_PO_02UserDefinedApprovalTest extends BaseClass_Web {
 	  posttendercomponentobj.navigateToPurchasrOrderList();
 	  posttendercomponentobj.verifyPOStatusIsAccepted();
 	  etendercomponentobj.tenderLogout();
-	  
-	  
-	 
+	  	 
 	}
 
 }

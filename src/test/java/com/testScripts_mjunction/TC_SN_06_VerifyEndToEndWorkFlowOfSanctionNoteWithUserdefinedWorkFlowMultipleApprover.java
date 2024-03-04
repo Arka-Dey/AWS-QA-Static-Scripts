@@ -121,14 +121,14 @@ public class TC_SN_06_VerifyEndToEndWorkFlowOfSanctionNoteWithUserdefinedWorkFlo
 		  //posttendercomponentobj.enterDocumentNoInSearchSanctionApprover();
 		  etendercomponentobj.tenderLogoutOld();
 		  
-		  
+	
 		  //approver8
 		  posttendercomponentobj.sanctionNoteApproverLogin(pdfResultReport.testData.get("SanctionNoteApproverUserName8"));
 		  posttendercomponentobj.navigateToApprovalPendingPage();
 		  posttendercomponentobj.enterDocumentNoInSearchSanctionApprover();
 		  posttendercomponentobj.sanctionNoteEvaluationValidation();
 		  posttendercomponentobj.provideApproverComment();
-		  posttendercomponentobj.sanctionNoteEvaluationDecision("revert back to approver");
+		  posttendercomponentobj.sanctionNoteEvaluationDecision("Back to Previous Approver");
 		  //posttendercomponentobj.enterDocumentNoInSearchSanctionApprover();
 		  etendercomponentobj.tenderLogoutOld();
 		  
@@ -148,7 +148,7 @@ public class TC_SN_06_VerifyEndToEndWorkFlowOfSanctionNoteWithUserdefinedWorkFlo
 		  posttendercomponentobj.enterDocumentNoInSearchSanctionApprover();
 		  posttendercomponentobj.sanctionNoteEvaluationValidation();
 		  posttendercomponentobj.provideApproverComment();
-		  posttendercomponentobj.sanctionNoteEvaluationDecision("revert back to creator");
+		  posttendercomponentobj.sanctionNoteEvaluationDecision("Back to Creator");
 		  //posttendercomponentobj.enterDocumentNoInSearchSanctionApprover();
 		  etendercomponentobj.tenderLogoutOld();
 
@@ -341,7 +341,7 @@ public class TC_SN_06_VerifyEndToEndWorkFlowOfSanctionNoteWithUserdefinedWorkFlo
 		  posttendercomponentobj.enterDocumentNoInSearchSanctionApprover();
 		  posttendercomponentobj.sanctionNoteEvaluationValidation();
 		  posttendercomponentobj.provideApproverComment();
-		  posttendercomponentobj.sanctionNoteEvaluationDecision("revert back to approver");
+		  posttendercomponentobj.sanctionNoteEvaluationDecision("Back to Previous Approver");
 		  posttendercomponentobj.enterDocumentNoInSearchSanctionApprover();
 		  etendercomponentobj.tenderLogoutOld();
 	  

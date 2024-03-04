@@ -1104,7 +1104,7 @@ public class RfqFromIndentComponent extends BaseClass_Web {
 		
 			
 			tabcontentList.add(text(tendercreationlocators.tabContent));
-			waitForObj(2000);
+			waitForObj(4000);
 			pdfResultReport.addStepDetails("IndentTG1_General_Info_tabvalidation",
 					"Should save generalInfo tab fields during indent creation", "Sucessfully saved generalInfo tab fields during indent creation " + " ", "Pass",
 					"Y");
@@ -1392,7 +1392,7 @@ public class RfqFromIndentComponent extends BaseClass_Web {
 			log.info(
 					"started executing the method:: IndentTG1_Indent_Details_tabvalidation()");
 			waitForObj(2000);
-			waitForElementToBeClickable(tendercreationlocators.IndentDetailsTab);
+			waitForElementToBeVisible(tendercreationlocators.IndentDetailsTab);
 			//waitForElement(tendercreationlocators.IndentDetailsTab, 5000);
 			waitForObj(2000);
 			click(tendercreationlocators.IndentDetailsTab, "IndentDetailsTab");

@@ -220,7 +220,7 @@ public class TG1_TC_Evaluation_11_Openingapproval_Y_Evaluationapproval_Y extends
 		etendercomponentobj.SendForApprovalInEvaluationsetting();
 		etendercomponentobj.enterTenderIdInSearch();
 		//etendercomponentobj.checktenderStatusIsInOpening(); //Issue raised, Defect ID: 136575
-		etendercomponentobj.checktenderStageIsInPendingForOpeningApprovalCover1("Cover 2"); // might be script will be failed here
+		etendercomponentobj.checktenderStageIsInPendingForOpeningApprovalCover1("Cover 2"); // might be, script will fail here
 		etendercomponentobj.tenderLogout();
 		
 		//======================

@@ -155,6 +155,10 @@ public class TenderCreation_Locators {
 	public By sanctionTab = By.xpath("//a[contains(text(),'Sanction')]");
 	public By reverseBackToCreator = By.xpath("//button[contains(text(),'Reverse back to creator')]");
 	public By BackToCreator = By.xpath("//button[contains(text(),'Back to Creator')]");
+	public By reverseBackToCreator(String buttonName) {
+
+		return By.xpath("//button[contains(text(),'"+buttonName+"')]");
+	}
 	public By editDraftTender = By.xpath("//*[@data-icon='edit']");
 	public By poTab = By.xpath("//li[@id='purchaseOrderTab']/a");
 	// Details page of Tender Approval Validation
@@ -967,6 +971,10 @@ public class TenderCreation_Locators {
 	public By sanctionNoteEvaluationApprove = By.xpath("//button[@data-original-title='Approve']");
 	public By approveConfirm = By.xpath("//button[contains(text(),' Confirm')]");
 	public By revertbackToApprover = By.xpath("//button[contains(text(),'Reverse back to approver')]");
+	public By revertbackToApprover(String buttonName) {
+
+		return By.xpath("//button[contains(text(),'"+buttonName+"')]");
+	}
     public By sanctionNoteEvaluationReview = By.xpath("(//button[contains(@ng-click, 'approve')])[2]");
     public By ForwardTheSNWorkflow = By.xpath("//button[contains(text(),'Forward to Next Person')]");
 	public By snEndWorkflow = By.xpath("//button[@data-bb-handler='no']");

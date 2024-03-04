@@ -65,8 +65,8 @@ import com.objectRepository.TenderCreation_Locators;
 
 public class eTenderComponent extends BaseClass_Web {
 	
-	String tenderReferenceNoLocatorText = null;
-//	String tenderReferenceNoLocatorText = "1837";
+	//String tenderReferenceNoLocatorText = null;
+	String tenderReferenceNoLocatorText = "1849";
 	TenderCreation_Locators tendercreationlocators = new TenderCreation_Locators();
 	String BidStartDate = null;
 	String BidDueDate = null;
@@ -6605,7 +6605,7 @@ public class eTenderComponent extends BaseClass_Web {
 		try {
 			log.info("started executing the method:: verifyTenderStageIsInFinalApprovalCover_1Or_Cover2");
 
-			By finalApprovalStageBy = By.xpath("(//button[@id='evaluation123'])[1]");
+			By finalApprovalStageBy = By.xpath("//span[contains(text(),'Evaluation')]");
 			waitForElementToBeVisible(finalApprovalStageBy);
 			IsElementPresent(finalApprovalStageBy);
 
@@ -12505,15 +12505,17 @@ public class eTenderComponent extends BaseClass_Web {
 		try {
 			log.info("started executing the method:: enterOverallComment_EvaluatorUser");
 
-			Thread.sleep(2000);
+			waitForObj(2000);
 			JSClick(By.xpath("//*[@aria-label='Bold']"), "overallComment_currentPart");
 			WebDriver driver = ThreadLocalWebdriver.getDriver();
 			driver.switchTo().frame(driver.findElement(By.tagName("iframe")));
 			set(tendercreationlocators.body_overallcomment, "Provide OverallComment", "overallComment_currentPart");
 			driver.switchTo().defaultContent();
-			Thread.sleep(2000);
-			click(tendercreationlocators.submitbutton_EvalUser, "submitbutton_EvalUser");
+			waitForObj(2000);
+			JSClick(tendercreationlocators.submitbutton_EvalUser, "submitbutton_EvalUser");
+			waitForObj(2000);
 			waitForElementToBeVisible(tendercreationlocators.Alert_Nobtn_EvalUser);
+			waitForObj(2000);
 			click(tendercreationlocators.Alert_Nobtn_EvalUser, "Alert_Nobtn_EvalUser");
 			waitForElementToBeVisible(tendercreationlocators.Alert_Yesbtn_EvalUser);
 			click(tendercreationlocators.Alert_Yesbtn_EvalUser, "Alert_Yesbtn_EvalUser");
