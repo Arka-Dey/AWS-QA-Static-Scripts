@@ -12,7 +12,7 @@ import com.baseClasses.ThreadLocalWebdriver;
 import com.components.RfqFromIndentComponent;
 import com.components.eTenderComponent;
 
-public class TG1_TC_Negotiation_13_Openingapproval_N_Evaluationapproval_Y_NegotiateOnebidder_ApproveTwobidder extends BaseClass_Web{
+public class TG1_TC_Negotiation_13_Openingapproval_N_Evaluationapproval_Y_Negotiate_All_bidder_Approve_Twobidder_Reject_OneBidder extends BaseClass_Web{
 	
 	public eTenderComponent etendercomponentobj = new eTenderComponent(pdfResultReport);
 	public RfqFromIndentComponent rfqfromintendcomponentobj = new RfqFromIndentComponent(pdfResultReport);
