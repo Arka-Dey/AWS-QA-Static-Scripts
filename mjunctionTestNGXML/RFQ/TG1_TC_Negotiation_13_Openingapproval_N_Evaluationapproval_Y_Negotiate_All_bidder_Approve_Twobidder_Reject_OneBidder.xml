@@ -7,7 +7,7 @@
         <parameter name="browserName" value="windowschrome"></parameter>
         <classes>
            <parameter name="TestcaseNo" value="11"></parameter>   
-            <class name="com.testScripts_mjunction.TG1_TC_Negotiation_13_Openingapproval_N_Evaluationapproval_Y_NegotiateOnebidder_ApproveTwobidder" />
+            <class name="com.testScripts_mjunction.TG1_TC_Negotiation_13_Openingapproval_N_Evaluationapproval_Y_Negotiate_All_bidder_Approve_Twobidder_Reject_OneBidder" />
         </classes>
     </test> 
 </suite>
