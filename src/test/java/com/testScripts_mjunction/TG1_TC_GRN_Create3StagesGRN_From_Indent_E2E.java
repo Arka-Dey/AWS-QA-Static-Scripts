@@ -118,7 +118,7 @@ public class TG1_TC_GRN_Create3StagesGRN_From_Indent_E2E extends BaseClass_Web{
 	 	//etendercomponentobj.TG1_validateAllInPrevieAllSubmitbidPage();
 	 	etendercomponentobj.submitBid_link_in_previewAllPage();
 	 	etendercomponentobj.navigate_to_bidList_page();
-	 	//etendercomponentobj.enterTenderIdInSearch_bidsubmission();
+	 	etendercomponentobj.enterTenderIdInSearch_bidsubmission();
 	 	etendercomponentobj.submittedBid_Tab_Validation();
 	 	etendercomponentobj.tenderLogoutOld();
 	 			
@@ -134,7 +134,7 @@ public class TG1_TC_GRN_Create3StagesGRN_From_Indent_E2E extends BaseClass_Web{
 	 	//etendercomponentobj.TG1_validateAllInPrevieAllSubmitbidPage();
 	 	etendercomponentobj.submitBid_link_in_previewAllPage();
 	 	etendercomponentobj.navigate_to_bidList_page();
-	 	//etendercomponentobj.enterTenderIdInSearch_bidsubmission();
+	 	etendercomponentobj.enterTenderIdInSearch_bidsubmission();
 	 	etendercomponentobj.submittedBid_Tab_Validation();
 	 	etendercomponentobj.tenderLogoutOld();
 	 		
@@ -150,7 +150,7 @@ public class TG1_TC_GRN_Create3StagesGRN_From_Indent_E2E extends BaseClass_Web{
 	 	//etendercomponentobj.TG1_validateAllInPrevieAllSubmitbidPage();
 	 	etendercomponentobj.submitBid_link_in_previewAllPage();
 	 	etendercomponentobj.navigate_to_bidList_page();
-	 	//etendercomponentobj.enterTenderIdInSearch_bidsubmission();
+	 	etendercomponentobj.enterTenderIdInSearch_bidsubmission();
 	 	etendercomponentobj.submittedBid_Tab_Validation();
 	 	etendercomponentobj.tenderLogoutOld();
 	 	 

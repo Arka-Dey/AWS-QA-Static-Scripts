@@ -26,7 +26,7 @@
       <span class="top-banner-title-font">Test results</span>
       <button class="button" id="button">Switch Retro Theme</button> <!-- button -->
       <br/>
-      <span class="top-banner-font-1">1 suite</span>
+      <span class="top-banner-font-1">1 suite, 1 failed test</span>
     </div> <!-- top-banner-root -->
     <div class="navigator-root">
       <div class="navigator-suite-header">
@@ -40,7 +40,7 @@
         <div class="rounded-window">
           <div class="suite-header light-rounded-window-top">
             <a href="#" class="navigator-link" panel-name="suite-Suite">
-              <span class="suite-name border-passed">Suite</span>
+              <span class="suite-name border-failed">Suite</span>
             </a> <!-- navigator-link -->
           </div> <!-- suite-header light-rounded-window-top -->
           <div class="navigator-suite-content">
@@ -93,21 +93,21 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">1 method,   1 passed</span>
+                    <span class="method-stats">1 method, 1 failed,   </span>
                   </li>
                   <li>
-                    <span class="method-list-title passed">Passed methods</span>
-                    <span class="show-or-hide-methods passed">
-                      <a href="#" panel-name="suite-Suite" class="hide-methods passed suite-Suite"> (hide)</a> <!-- hide-methods passed suite-Suite -->
-                      <a href="#" panel-name="suite-Suite" class="show-methods passed suite-Suite"> (show)</a> <!-- show-methods passed suite-Suite -->
+                    <span class="method-list-title failed">Failed methods</span>
+                    <span class="show-or-hide-methods failed">
+                      <a href="#" panel-name="suite-Suite" class="hide-methods failed suite-Suite"> (hide)</a> <!-- hide-methods failed suite-Suite -->
+                      <a href="#" panel-name="suite-Suite" class="show-methods failed suite-Suite"> (show)</a> <!-- show-methods failed suite-Suite -->
                     </span>
-                    <div class="method-list-content passed suite-Suite">
+                    <div class="method-list-content failed suite-Suite">
                       <span>
-                        <img width="3%" src="passed.png"/>
+                        <img width="3%" src="failed.png"/>
                         <a href="#" class="method navigator-link" panel-name="suite-Suite" title="com.testScripts_mjunction.TG1_TC_GRN_Create3StagesGRN_From_Indent_E2E" hash-for-method="Create3StagesGRN_WithoutApprovalFlow(11)">Create3StagesGRN_WithoutApprovalFlow(11)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
-                    </div> <!-- method-list-content passed suite-Suite -->
+                    </div> <!-- method-list-content failed suite-Suite -->
                   </li>
                 </ul>
               </div> <!-- suite-section-content -->
@@ -119,9 +119,9 @@
     <div class="wrapper">
       <div class="main-panel-root">
         <div panel-name="suite-Suite" class="panel Suite">
-          <div class="suite-Suite-class-passed">
+          <div class="suite-Suite-class-failed">
             <div class="main-panel-header rounded-window-top">
-              <img src="passed.png"/>
+              <img src="failed.png"/>
               <span class="class-name">com.testScripts_mjunction.TG1_TC_GRN_Create3StagesGRN_From_Indent_E2E</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
@@ -131,12 +131,26 @@
                   </a> <!-- Create3StagesGRN_WithoutApprovalFlow(11) -->
                   <span class="method-name">Create3StagesGRN_WithoutApprovalFlow</span>
                   <span class="parameters">(11)</span>
+                  <div class="stack-trace">java.lang.AssertionError: Error Message : Error in entering the text in element: element not interactable
+  (Session info: chrome=122.0.6261.95)
+Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
+System info: host: &apos;MJLT-1563&apos;, ip: &apos;172.16.18.93&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_351&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 122.0.6261.95, chrome: {chromedriverVersion: 121.0.6167.85 (3f98d690ad7e..., userDataDir: C:\Users\ARKA~1.DEY\AppData...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:63822}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 124dba4408779621d0b3fdbd16c6a31a
+	at com.baseClasses.AutomationException.&lt;init&gt;(AutomationException.java:11)
+	at com.baseClasses.BaseClass_Web.set(BaseClass_Web.java:122)
+	at com.components.eTenderComponent.selectBidOpeningAndProvideCommentsForBidOpeningApproval4Cover2(eTenderComponent.java:5597)
+	at com.testScripts_mjunction.TG1_TC_GRN_Create3StagesGRN_From_Indent_E2E.Create3StagesGRN_WithoutApprovalFlow(TG1_TC_GRN_Create3StagesGRN_From_Indent_E2E.java:228)
+	at java.util.ArrayList.forEach(Unknown Source)
+... Removed 27 stack frames
+</div> <!-- stack-trace -->
                   <em>
 (TC_GRN_02:Verify the Submit Functionality during Create GRN with approval workflow & Check the GRN Status as Created)                  </em>
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
-          </div> <!-- suite-Suite-class-passed -->
+          </div> <!-- suite-Suite-class-failed -->
         </div> <!-- panel Suite -->
         <div panel-name="test-xml-Suite" class="panel">
           <div class="main-panel-header rounded-window-top">
@@ -198,12 +212,12 @@ data.addRows(1);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'Create3StagesGRN_WithoutApprovalFlow')
 data.setCell(0, 2, 'com.testScripts_mjunction.TG1_TC_GRN_Create3StagesGRN_From_Indent_E2E')
-data.setCell(0, 3, 985662);
+data.setCell(0, 3, 3498266);
 window.suiteTableData['Suite']= { tableData: data, tableDiv: 'times-div-Suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 16 minutes</span>
+              <span class="suite-total-time">Total running time: 58 minutes</span>
               <div id="times-div-Suite">
               </div> <!-- times-div-Suite -->
             </div> <!-- times-div -->
@@ -231,28 +245,30 @@ return data;
             <div class="chronological-class">
               <div class="chronological-class-name">com.testScripts_mjunction.TG1_TC_GRN_Create3StagesGRN_From_Indent_E2E</div> <!-- chronological-class-name -->
               <div class="configuration-suite before">
-                <span class="method-name">setUpSuiteDetails(org.testng.TestRunner@10817f46)</span>
+                <span class="method-name">setUpSuiteDetails(org.testng.TestRunner@6a6e6278)</span>
                 <span class="method-start">0 ms</span>
               </div> <!-- configuration-suite before -->
               <div class="configuration-class before">
                 <span class="method-name">BeforeClass</span>
-                <span class="method-start">432 ms</span>
+                <span class="method-start">435 ms</span>
               </div> <!-- configuration-class before -->
               <div class="configuration-method before">
                 <span class="method-name">captureDesc(public void com.testScripts_mjunction.TG1_TC_GRN_Create3StagesGRN_From_Indent_E2E.Create3StagesGRN_W...)</span>
-                <span class="method-start">3549 ms</span>
+                <span class="method-start">3495 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
+                <img src="failed.png">
+                </img>
                 <span class="method-name">Create3StagesGRN_WithoutApprovalFlow(11)</span>
-                <span class="method-start">3563 ms</span>
+                <span class="method-start">3510 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-class after">
                 <span class="method-name">afterClass</span>
-                <span class="method-start">992632 ms</span>
+                <span class="method-start">3505369 ms</span>
               </div> <!-- configuration-class after -->
               <div class="configuration-suite after">
                 <span class="method-name">afterSuite</span>
-                <span class="method-start">1002506 ms</span>
+                <span class="method-start">3529698 ms</span>
               </div> <!-- configuration-suite after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

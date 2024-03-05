@@ -162,7 +162,7 @@ public class TG1_TC_Evaluation_11_Openingapproval_Y_Evaluationapproval_Y extends
 		etendercomponentobj.selectEvaluationAndProvideCommentsForBidOpeningApproval();
 		etendercomponentobj.SendForApprovalInEvaluationsetting();
 		//etendercomponentobj.checktenderStatusIsInOpening();
-		//etendercomponentobj.checktenderStageIsInPendingForOpeningApprovalCover1("Cover 1");
+		etendercomponentobj.checktenderStageIsInPendingForOpeningApprovalCover1("Cover 1");
 		etendercomponentobj.tenderLogout();
 		
 		//Waiting for schedule opening time reached
