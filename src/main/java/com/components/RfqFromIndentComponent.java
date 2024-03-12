@@ -42,7 +42,6 @@ public class RfqFromIndentComponent extends BaseClass_Web {
 	String TemplateGroup=null;
 	ArrayList<String> commentlist=new ArrayList<String>();
 	ArrayList<String> tabcontentList=new ArrayList<String>();
-
 	String tenderIDdromDraft=null;
 	public RfqFromIndentComponent(PDFResultReport pdfresultReport) {
 
@@ -946,7 +945,7 @@ public class RfqFromIndentComponent extends BaseClass_Web {
 			set(tendercreationlocators.password, pdfResultReport.testData.get("AppPassword"), "password");
 			//Handle fixed Captcha (06/11/2020)
 			//set(tendercreationlocators.Captcha_Login, "1234", "Login_Captcha"); // edited on 30-11-21
-			click(tendercreationlocators.okButton, "okButton");
+			SSClick(tendercreationlocators.okButton, "okButton");
 			//waitForElement(tendercreationlocators.dashboardIcon, 5000); //commented on 110722
 			waitForElement(tendercreationlocators.dashboardIconnew, 5000);
 			pdfResultReport.addStepDetails("Indent creator login", "Indent creator must be sucessfully logged in",
@@ -1407,6 +1406,7 @@ public class RfqFromIndentComponent extends BaseClass_Web {
 			select(tendercreationlocators.BasisOfPriceEstimation_TG1IndentDetailsTab, pdfResultReport.testData.get("BasisOfPriceEstimation_TG1IndentDetailsTab"));
 			select(tendercreationlocators.PreBidMeeting_TG1IndentDetailsTab, pdfResultReport.testData.get("PreBidMeeting_TG1IndentDetailsTab"));
 			scrollToTopOfThePage();
+			waitForElementToBeVisible(tendercreationlocators.savebuttonNew);
 			click(tendercreationlocators.savebuttonNew, "Savebtn_Indent");
 			//waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
 			waitForObj(4000);
@@ -1537,6 +1537,7 @@ public class RfqFromIndentComponent extends BaseClass_Web {
 			select(tendercreationlocators.WorkofContract_TG1OtherinformationTab, pdfResultReport.testData.get("WorkofContract_TG1OtherinformationTab"));
 			select(tendercreationlocators.PartySite_TG1OtherinformationTab, pdfResultReport.testData.get("PartySite_TG1OtherinformationTab"));
 			scrollToTopOfThePage();
+			waitForElementToBeVisible(tendercreationlocators.Savebtn_IndentNew1);
 			click(tendercreationlocators.Savebtn_IndentNew1, "Savebtn_Indent");
 			//waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
 			waitForObj(5000);
@@ -5791,9 +5792,136 @@ log.info("completed executing the method:: ApproverOverAllComentWithIndentHasBee
 				}
 				
 			}
-		
-		
 			
+			
+			public void AddSingleUsersForSequentialApproval_NotesheetWF() throws Throwable {
+				try {
+					log.info(
+							"started executing the method:: AddSingleUsersForSequentialApproval_IndentWF");
+					click(tendercreationlocators.UserDefinedWFchkbox_Notesheet, "UserDefinedWFchkbox_Indent");
+					//by default section wise comment selected No
+					//loop to remove the row if the the user added previously
+					if(ThreadLocalWebdriver.getDriver().findElements(tendercreationlocators.NoOfIndentRowinApproval).size()!= 0)
+					{
+						List<WebElement> iRows = ThreadLocalWebdriver.getDriver().findElements(tendercreationlocators.NoOfIndentRowinApproval);
+						int iRowCount = iRows.size();
+						for(int i=1;i<=iRowCount;i++)
+						{
+							waitForObj(1000);
+							click(tendercreationlocators.cancelUser1_Indent, "cancelUser1_Indent");
+						}
+					}
+					click(tendercreationlocators.userAdd_Indent, "userAdd_Indent");
+					waitForObj(2000);
+					set(tendercreationlocators.user1_Indent, pdfResultReport.testData.get("notesheetApprover1Send"), "user1_Indent");
+					waitForObj(1000);
+					select(tendercreationlocators.approverType1_Indent, "For Administrative Approval");
+					waitForObj(1000);
+					select(tendercreationlocators.approverType1_Indent, "Sectional In-charge");
+					waitForObj(1000);
+					select(tendercreationlocators.approverType1_Indent, pdfResultReport.testData.get("Indent_Approver_Type1"));
+					waitForObj(2000);
+					set(tendercreationlocators.CommentsArea_Notesheet, pdfResultReport.testData.get("UserDefined_Approver_CommentsIndent"),
+							"CommentsArea_Indent");
+					
+					
+					
+					pdfResultReport.addStepDetails("AddSingleUsersForSequentialApproval_NotesheetWF",
+							"Sequential Approval Must Be selected",
+							"Sequential Approval selected Sucessfully"
+									+ " ",
+							"Pass", "Y");
+					waitForObj(2000);
+					scrollToElement(tendercreationlocators.Btn_SendforApproval_Indent);
+					click(tendercreationlocators.Btn_SendforApproval_Indent, "Btn_SendforApproval_Indent");
+					waitForElementToBeVisible(tendercreationlocators.notesheetListPage);
+					//waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
+					waitForObj(5000);
+					pdfResultReport.addStepDetails("AddSingleUsersForSequentialApproval_NotesheetWF",
+							"Must Submit the Indent With Seq Flow ",
+							"Sucessfully Submitted Notesheet With Seq Flow "
+									+ " ",
+							"Pass", "Y");
+					log.info(
+							"completed executing the method:: AddSingleUsersForSequentialApproval_NotesheetWF");
+				} catch (Exception e) {
+					log.fatal("Not able to Submit Indent" + e.getMessage());
+					pdfResultReport.addStepDetails("AddSingleUsersForSequentialApproval_NotesheetWF",
+							"Must Submit the Notesheet With Seq Flow ",
+							"Not able to Submit Notesheet"
+									+ e.getMessage(),
+							"Fail", "N");
+		                       Assert.fail("Failed Due to " + e.getMessage());
+				}
+			}
+		
+			public void NotesheetapproverLogin() throws Throwable {
+				try {
+					log.info("started executing the method:: IndentapproverLogin");
+					//click(tendercreationlocators.login, "login"); // commented on 201221
+					set(tendercreationlocators.userName, pdfResultReport.testData.get("notesheetApproverUser1"), "userName");
+					waitForElementToBeClickable(tendercreationlocators.password);
+					set(tendercreationlocators.password, pdfResultReport.testData.get("AppPassword"), "password");
+					//Handle fixed Captcha (06/11/2020)
+					//set(tendercreationlocators.Captcha_Login, "1234", "Login_Captcha");  // commented on 201221
+					click(tendercreationlocators.okButton, "okButton");
+					waitForElement(tendercreationlocators.dashboardIcon, 5000);
+					pdfResultReport.addStepDetails("Indent approver login", "Indent approver must be sucessfully logged in",
+							"Successfully logged in as indent approver" + " ", "Pass", "Y");
+					log.info("completed executing the method:: IndentapproverLogin");
+
+				} catch (Exception e) {
+					log.fatal("Unable to open the URL" + e.getMessage());
+					pdfResultReport.addStepDetails("Indent approver login", "Indent approver is not logged in",
+							"Unable to login as indent approver" + e.getMessage(), "Fail", "N");
+				}
+			}
+			
+			public void ApproverOverAllComentWithNotesheetHasBeenApproved() throws Throwable {
+				try {
+					log.info("started executing the method:: ApproverOverAllComentWithIndentHasBeenApproved");
+					String comment = "Indent Process Is Approved";
+					click(tendercreationlocators.LblAppCmnt_IndentApprover, "LblAppCmnt_IndentApprover");
+					waitForObj(1000);
+					scrollToElement(tendercreationlocators.AppComments_Indent);
+					//SSJSSend(tendercreationlocators.AppComments_Indent,"AppComments_Indent", comment);
+					set(tendercreationlocators.AppComments_Indent, comment,"AppComments_Indent");
+					//click(tendercreationlocators.ApproveBtn_Indent, "approve");
+					waitForObj(2000);
+					JSClick(tendercreationlocators.SendBtn_Indent, "approve");
+					waitForObj(2000);
+					WebDriver driver = ThreadLocalWebdriver.getDriver();
+					int size = driver.findElements(tendercreationlocators.CloseWFBtn_Indent).size();
+					if(size>=1)
+					{
+						click(tendercreationlocators.CloseWFBtn_Indent, "CloseWFBtn_Indent");
+						click(tendercreationlocators.ConfirmYESBtn_Indent, "ConfirmYESBtn_Indent");
+						click(tendercreationlocators.ConfirmYESBtnNext_Indent, "ConfirmYESBtnNext_Indent");
+						click(tendercreationlocators.ConfirmYESBtnFinal_Indent, "ConfirmYESBtnFinal_Indent");
+					}
+					waitForElementToBeVisible(tendercreationlocators.SuccessMsg_IndentApproval);
+					click(tendercreationlocators.okButton_approval, "OKBtn_IndentApproval");
+			//		click(tendercreationlocators.NoBtn_IndentApproval, "NoBtn_IndentApproval");
+					//waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
+					waitForObj(3000);
+					waitForElementToBeVisible(tendercreationlocators.Lbl_workflowinbox);
+					pdfResultReport.addStepDetails("ApproverOverAllComentWithIndentHasBeenApproved",
+							"Should Provide OverAll Comment ",
+							"SucessFully Provided Over All Comment As --->  " + comment + " ", "Pass", "Y");
+					log.info("completed executing the method:: ApproverOverAllComentWithIndentHasBeenApproved");
+				} catch (Exception e) {
+					log.fatal("Unable to Provide OverAll Comment " + e.getMessage());
+					pdfResultReport.addStepDetails("ApproverOverAllComentWithIndentHasBeenApproved",
+							"Should Provide OverAll Comment ",
+							"Unable to Provide OverAll Comment"
+									+ e.getMessage(),
+							"Fail", "N");
+		                    Assert.fail("Failed Due to " + e.getMessage());
+				}
+				
+			}
+			
+		
 }
 
 
