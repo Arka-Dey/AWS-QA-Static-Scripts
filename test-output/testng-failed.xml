@@ -8,16 +8,16 @@
     <parameter name="browserName" value="windowschrome"/>
     <parameter name="TestcaseNo" value="11"/>
     <classes>
-      <class name="com.testScripts_mjunction.TG1_TC_GRN_Create3StagesGRN_From_Indent_E2E">
+      <class name="com.testScripts_mjunction.TG1_TC_Evaluation_12_Openingapproval_N_Regression_Evaluationapproval_Y">
         <methods>
           <include name="setUpSuiteDetails"/>
-          <include name="Create3StagesGRN_WithoutApprovalFlow" invocation-numbers="0"/>
+          <include name="Tender_Evaluation_with_OpeningApproval_N_Evaluationapproval_Y_NegotiateOnebidder_ApproveTwobidder" invocation-numbers="0"/>
           <include name="afterSuite"/>
           <include name="captureDesc"/>
           <include name="BeforeClass"/>
           <include name="afterClass"/>
         </methods>
-      </class> <!-- com.testScripts_mjunction.TG1_TC_GRN_Create3StagesGRN_From_Indent_E2E -->
+      </class> <!-- com.testScripts_mjunction.TG1_TC_Evaluation_12_Openingapproval_N_Regression_Evaluationapproval_Y -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

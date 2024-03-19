@@ -51,7 +51,7 @@
               <ul>
                 <li>
                   <a href="#" class="navigator-link " panel-name="test-xml-Suite">
-                    <span>C:\Project\AWS-QA-Static-Scripts\mjunctionTestNGXML\GRN\RDCIS\TG1_TC_GRN_Create3StagesGRN_From_Indent_E2E.xml</span>
+                    <span>C:\Project\AWS-QA-Static-Scripts\mjunctionTestNGXML\RFQ\TG1_TC_Evaluation_12_Openingapproval_N_Regression_Evaluationapproval_Y.xml</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
@@ -104,7 +104,7 @@
                     <div class="method-list-content failed suite-Suite">
                       <span>
                         <img width="3%" src="failed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Suite" title="com.testScripts_mjunction.TG1_TC_GRN_Create3StagesGRN_From_Indent_E2E" hash-for-method="Create3StagesGRN_WithoutApprovalFlow(11)">Create3StagesGRN_WithoutApprovalFlow(11)</a> <!-- method navigator-link -->
+                        <a href="#" class="method navigator-link" panel-name="suite-Suite" title="com.testScripts_mjunction.TG1_TC_Evaluation_12_Openingapproval_N_Regression_Evaluationapproval_Y" hash-for-method="Tender_Evaluation_with_OpeningApproval_N_Evaluationapproval_Y_NegotiateOnebidder_ApproveTwobidder(11)">Tender_Evaluation_with_OpeningApproval_N_Evaluationapproval_Y_NegotiateOnebidder_ApproveTwobidder(11)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content failed suite-Suite -->
@@ -122,23 +122,33 @@
           <div class="suite-Suite-class-failed">
             <div class="main-panel-header rounded-window-top">
               <img src="failed.png"/>
-              <span class="class-name">com.testScripts_mjunction.TG1_TC_GRN_Create3StagesGRN_From_Indent_E2E</span>
+              <span class="class-name">com.testScripts_mjunction.TG1_TC_Evaluation_12_Openingapproval_N_Regression_Evaluationapproval_Y</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="Create3StagesGRN_WithoutApprovalFlow(11)">
-                  </a> <!-- Create3StagesGRN_WithoutApprovalFlow(11) -->
-                  <span class="method-name">Create3StagesGRN_WithoutApprovalFlow</span>
+                  <a name="Tender_Evaluation_with_OpeningApproval_N_Evaluationapproval_Y_NegotiateOnebidder_ApproveTwobidder(11)">
+                  </a> <!-- Tender_Evaluation_with_OpeningApproval_N_Evaluationapproval_Y_NegotiateOnebidder_ApproveTwobidder(11) -->
+                  <span class="method-name">Tender_Evaluation_with_OpeningApproval_N_Evaluationapproval_Y_NegotiateOnebidder_ApproveTwobidder</span>
                   <span class="parameters">(11)</span>
-                  <div class="stack-trace">java.lang.AssertionError: Failed Due to Expected condition failed: waiting for visibility of element located by By.xpath: //table[contains(@id,&apos;myTable&apos;)]//tr[@class=&apos;ng-scope&apos;]//td[contains(text(),&apos;1033&apos;)] (tried for 20 second(s) with 500 milliseconds interval)
-	at com.components.ASN_GRNComponent.GoToApprovalworkFlowPendingGRNAndSearchTheGRN(ASN_GRNComponent.java:3320)
-	at com.testScripts_mjunction.TG1_TC_GRN_Create3StagesGRN_From_Indent_E2E.Create3StagesGRN_WithoutApprovalFlow(TG1_TC_GRN_Create3StagesGRN_From_Indent_E2E.java:385)
+                  <div class="stack-trace">java.lang.AssertionError: Error Message : Error during verifying the presence of Element: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;(//td[@class=&apos;ng-binding&apos;])[2]&quot;}
+  (Session info: chrome=122.0.6261.129)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
+System info: host: &apos;MJLT-2170&apos;, ip: &apos;172.16.19.162&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_192&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 122.0.6261.129, chrome: {chromedriverVersion: 121.0.6167.85 (3f98d690ad7e..., userDataDir: C:\Users\PAVEL~1.BAI\AppDat...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:53916}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: e0d80a47196cbd7389c55356b3207428
+*** Element info: {Using=xpath, value=(//td[@class=&apos;ng-binding&apos;])[2]}
+	at com.baseClasses.AutomationException.&lt;init&gt;(AutomationException.java:11)
+	at com.baseClasses.BaseClass_Web.IsElementPresent(BaseClass_Web.java:426)
+	at com.components.eTenderComponent.validateTenderEvaluationTabDetails_WithEvaluatorUser(eTenderComponent.java:6178)
+	at com.testScripts_mjunction.TG1_TC_Evaluation_12_Openingapproval_N_Regression_Evaluationapproval_Y.Tender_Evaluation_with_OpeningApproval_N_Evaluationapproval_Y_NegotiateOnebidder_ApproveTwobidder(TG1_TC_Evaluation_12_Openingapproval_N_Regression_Evaluationapproval_Y.java:208)
 	at java.util.ArrayList.forEach(Unknown Source)
-... Removed 28 stack frames
+... Removed 27 stack frames
 </div> <!-- stack-trace -->
                   <em>
-(TC_GRN_02:Verify the Submit Functionality during Create GRN with approval workflow & Check the GRN Status as Created)                  </em>
+(Tender_Evaluation_with_OpeningApproval_N_Evaluationapproval_Y_NegotiateOnebidder_ApproveTwobidder_RFQ_from_Indent)                  </em>
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
@@ -146,7 +156,7 @@
         </div> <!-- panel Suite -->
         <div panel-name="test-xml-Suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">C:\Project\AWS-QA-Static-Scripts\mjunctionTestNGXML\GRN\RDCIS\TG1_TC_GRN_Create3StagesGRN_From_Indent_E2E.xml</span>
+            <span class="header-content">C:\Project\AWS-QA-Static-Scripts\mjunctionTestNGXML\RFQ\TG1_TC_Evaluation_12_Openingapproval_N_Regression_Evaluationapproval_Y.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
@@ -160,7 +170,7 @@
     &lt;parameter name=&quot;browserName&quot; value=&quot;windowschrome&quot;/&gt;
     &lt;parameter name=&quot;TestcaseNo&quot; value=&quot;11&quot;/&gt;
     &lt;classes&gt;
-      &lt;class name=&quot;com.testScripts_mjunction.TG1_TC_GRN_Create3StagesGRN_From_Indent_E2E&quot;/&gt;
+      &lt;class name=&quot;com.testScripts_mjunction.TG1_TC_Evaluation_12_Openingapproval_N_Regression_Evaluationapproval_Y&quot;/&gt;
     &lt;/classes&gt;
   &lt;/test&gt; &lt;!-- Test --&gt;
 &lt;/suite&gt; &lt;!-- Suite --&gt;
@@ -202,14 +212,14 @@ data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
 data.addRows(1);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'Create3StagesGRN_WithoutApprovalFlow')
-data.setCell(0, 2, 'com.testScripts_mjunction.TG1_TC_GRN_Create3StagesGRN_From_Indent_E2E')
-data.setCell(0, 3, 156685);
+data.setCell(0, 1, 'Tender_Evaluation_with_OpeningApproval_N_Evaluationapproval_Y_NegotiateOnebidder_ApproveTwobidder')
+data.setCell(0, 2, 'com.testScripts_mjunction.TG1_TC_Evaluation_12_Openingapproval_N_Regression_Evaluationapproval_Y')
+data.setCell(0, 3, 3385061);
 window.suiteTableData['Suite']= { tableData: data, tableDiv: 'times-div-Suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 2 minutes</span>
+              <span class="suite-total-time">Total running time: 56 minutes</span>
               <div id="times-div-Suite">
               </div> <!-- times-div-Suite -->
             </div> <!-- times-div -->
@@ -235,32 +245,32 @@ return data;
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="chronological-class">
-              <div class="chronological-class-name">com.testScripts_mjunction.TG1_TC_GRN_Create3StagesGRN_From_Indent_E2E</div> <!-- chronological-class-name -->
+              <div class="chronological-class-name">com.testScripts_mjunction.TG1_TC_Evaluation_12_Openingapproval_N_Regression_Evaluationapproval_Y</div> <!-- chronological-class-name -->
               <div class="configuration-suite before">
-                <span class="method-name">setUpSuiteDetails(org.testng.TestRunner@b0964b2)</span>
+                <span class="method-name">setUpSuiteDetails(org.testng.TestRunner@53534c15)</span>
                 <span class="method-start">0 ms</span>
               </div> <!-- configuration-suite before -->
               <div class="configuration-class before">
                 <span class="method-name">BeforeClass</span>
-                <span class="method-start">148 ms</span>
+                <span class="method-start">157 ms</span>
               </div> <!-- configuration-class before -->
               <div class="configuration-method before">
-                <span class="method-name">captureDesc(public void com.testScripts_mjunction.TG1_TC_GRN_Create3StagesGRN_From_Indent_E2E.Create3StagesGRN_W...)</span>
-                <span class="method-start">3188 ms</span>
+                <span class="method-name">captureDesc(public void com.testScripts_mjunction.TG1_TC_Evaluation_12_Openingapproval_N_Regression_Evaluationap...)</span>
+                <span class="method-start">3192 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
                 <img src="failed.png">
                 </img>
-                <span class="method-name">Create3StagesGRN_WithoutApprovalFlow(11)</span>
-                <span class="method-start">3191 ms</span>
+                <span class="method-name">Tender_Evaluation_with_OpeningApproval_N_Evaluationapproval_Y_NegotiateOnebidder_ApproveTwobidder(11)</span>
+                <span class="method-start">3192 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-class after">
                 <span class="method-name">afterClass</span>
-                <span class="method-start">163344 ms</span>
+                <span class="method-start">3391583 ms</span>
               </div> <!-- configuration-class after -->
               <div class="configuration-suite after">
                 <span class="method-name">afterSuite</span>
-                <span class="method-start">166747 ms</span>
+                <span class="method-start">3412528 ms</span>
               </div> <!-- configuration-suite after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
