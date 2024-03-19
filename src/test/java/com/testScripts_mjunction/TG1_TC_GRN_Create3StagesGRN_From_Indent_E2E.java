@@ -48,7 +48,7 @@ public class TG1_TC_GRN_Create3StagesGRN_From_Indent_E2E extends BaseClass_Web{
 		driver.manage().timeouts().pageLoadTimeout(100, TimeUnit.SECONDS);	
 	  	initializeRepository();
 	     etendercomponentobj.openURL();
-	/*    
+	    
 	    rfqfromintendcomponentobj.IndentcreatorLogin();
 		rfqfromintendcomponentobj.navigateToIndentCreation();
 		rfqfromintendcomponentobj.IndentTG1_General_Info_tabvalidation("Indigenous Indent (Supply & Service Both) V-004");
@@ -387,7 +387,7 @@ public class TG1_TC_GRN_Create3StagesGRN_From_Indent_E2E extends BaseClass_Web{
  		asn_grncomponentobj.END_GRN_WF(); 
  		etendercomponentobj.tenderLogoutOld();
  		waitForObj(10000);
- 		*/
+ 		
 		 //===========QV creation================
 		 asn_grncomponentobj.GRN_Creator_Login();
 		 asn_grncomponentobj.navigateToApprovedASNListPage();
