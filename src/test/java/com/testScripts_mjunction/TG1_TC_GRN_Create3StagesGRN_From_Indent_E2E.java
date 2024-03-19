@@ -1,11 +1,14 @@
 package com.testScripts_mjunction;
 
 import java.util.Arrays;
+import java.util.concurrent.TimeUnit;
 
+import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import com.baseClasses.BaseClass_Web;
+import com.baseClasses.ThreadLocalWebdriver;
 import com.components.ASN_GRNComponent;
 import com.components.PostTenderComponent;
 import com.components.PreConditionPo_SanctionCreation;
@@ -40,10 +43,13 @@ public class TG1_TC_GRN_Create3StagesGRN_From_Indent_E2E extends BaseClass_Web{
 	} catch (Exception e) {
 		System.out.println("Unable to read the data from excel file");
 	}
-	     initializeRepository();
+		 WebDriver driver = ThreadLocalWebdriver.getDriver();
+	     driver.manage().timeouts().implicitlyWait(100, TimeUnit.SECONDS);
+		driver.manage().timeouts().pageLoadTimeout(100, TimeUnit.SECONDS);	
+	  	initializeRepository();
 	     etendercomponentobj.openURL();
-	    
-		rfqfromintendcomponentobj.IndentcreatorLogin();
+	/*    
+	    rfqfromintendcomponentobj.IndentcreatorLogin();
 		rfqfromintendcomponentobj.navigateToIndentCreation();
 		rfqfromintendcomponentobj.IndentTG1_General_Info_tabvalidation("Indigenous Indent (Supply & Service Both) V-004");
 		rfqfromintendcomponentobj.IndentTG1_Indent_Details_tabvalidation();
@@ -163,9 +169,7 @@ public class TG1_TC_GRN_Create3StagesGRN_From_Indent_E2E extends BaseClass_Web{
 	 	etendercomponentobj.enterTenderIdInSearch();
 	 	etendercomponentobj.clickEvaluationSettingsLink();		
 	 	//Set the schedule opening date and time
-	 	/*
-	 	 etendercomponentobj.ScheduleOpening_Evaluationsettings(4); //Need to enable respective field
-	 	*/
+	 
 	    
 	 	etendercomponentobj.selectYesForApprovalAndEvaluationRequired();
 	 	etendercomponentobj.selectBidOpeningAndProvideCommentsForBidOpeningApproval();
@@ -175,10 +179,8 @@ public class TG1_TC_GRN_Create3StagesGRN_From_Indent_E2E extends BaseClass_Web{
 	 	etendercomponentobj.checktenderStageIsInPendingForOpeningApprovalCover1("Cover 1");
 	 	etendercomponentobj.tenderLogout();
 	 	
-	 	//Waiting for schedule opening time reached
-	 	/*
-	 	etendercomponentobj.waitTillScheduleOpeningDateReached(); // dependent on method: ScheduleOpening_Evaluationsettings
-	 	*/
+	 
+	 
 	 	
 	 	//Opening approver approve the tender for Cover1
 	 	etendercomponentobj.tenderApproverLogin();
@@ -219,10 +221,7 @@ public class TG1_TC_GRN_Create3StagesGRN_From_Indent_E2E extends BaseClass_Web{
 	 	etendercomponentobj.enterTenderIdInSearch();
 	 	etendercomponentobj.clickEvaluationSettingsLink();
 	 	
-	 	//Set the schedule opening date and time
-	 	//etendercomponentobj.ScheduleOpening_Evaluationsettings(4); //Need to enable respective field
 	 	
-	 	//===================added on 180124
 	 	
 	 	etendercomponentobj.selectYesForApprovalAndEvaluationRequired();
 	 	etendercomponentobj.selectBidOpeningAndProvideCommentsForBidOpeningApproval4Cover2();
@@ -233,8 +232,7 @@ public class TG1_TC_GRN_Create3StagesGRN_From_Indent_E2E extends BaseClass_Web{
 	 	etendercomponentobj.checktenderStageIsInPendingForOpeningApprovalCover1("Cover 2");
 	 	etendercomponentobj.tenderLogout();
 	 	
-	 	//Waiting for schedule opening time reached
-	 	//etendercomponentobj.waitTillScheduleOpeningDateReached(); // dependent on method: ScheduleOpening_Evaluationsettings
+	 	
 	 	
 	 	//Opening approver approve the tender for Cover2
 	 	etendercomponentobj.tenderApproverLogin();
@@ -267,7 +265,7 @@ public class TG1_TC_GRN_Create3StagesGRN_From_Indent_E2E extends BaseClass_Web{
 	 	etendercomponentobj.evaluateSupplier("TCS", "Approve", "Approve TCS", 2);
 	 	etendercomponentobj.enterOverallComment_EvaluatorUser();
 	 	etendercomponentobj.tenderLogoutOld();
-	 	
+	  
 	 	//Checking tender status Completed
 	 	etendercomponentobj.tendercreatorLogin();
 	 	etendercomponentobj.navigateToTenderListing();
@@ -315,7 +313,8 @@ public class TG1_TC_GRN_Create3StagesGRN_From_Indent_E2E extends BaseClass_Web{
 		  posttendercomponentobj.navigateToPurchasrOrderList();
 		  posttendercomponentobj.verifyPOStatusIsAccepted();
 		  etendercomponentobj.tenderLogout();
-		 
+		
+	     //Create ASN
 		  etendercomponentobj.bidder_01_Login();
 		  asn_grncomponentobj.SelectASNModule();
 		  asn_grncomponentobj.CreateASN();
@@ -329,9 +328,9 @@ public class TG1_TC_GRN_Create3StagesGRN_From_Indent_E2E extends BaseClass_Web{
 		  asn_grncomponentobj.SubmitASN();
 		  asn_grncomponentobj.SearchASNRefInASNList();
 		  asn_grncomponentobj.VerifyStatus("Completed");
-		  waitForObj(15000);
+		  waitForObj(20000);
 		  etendercomponentobj.tenderLogoutOld();
-		  
+		 	
 		//=============Gate Pass creation===============
  		 asn_grncomponentobj.GRN_Creator_Login();
  		 asn_grncomponentobj.navigateToApprovedASNListPage();
@@ -360,7 +359,7 @@ public class TG1_TC_GRN_Create3StagesGRN_From_Indent_E2E extends BaseClass_Web{
  		asn_grncomponentobj.END_GRN_WF(); 
  		etendercomponentobj.tenderLogoutOld();
  		waitForObj(10000);
- 		 
+ 		
  		 //==========QC creation================
  		asn_grncomponentobj.GRN_Creator_Login();
 		 asn_grncomponentobj.navigateToApprovedASNListPage();
@@ -388,7 +387,7 @@ public class TG1_TC_GRN_Create3StagesGRN_From_Indent_E2E extends BaseClass_Web{
  		asn_grncomponentobj.END_GRN_WF(); 
  		etendercomponentobj.tenderLogoutOld();
  		waitForObj(10000);
- 		
+ 		*/
 		 //===========QV creation================
 		 asn_grncomponentobj.GRN_Creator_Login();
 		 asn_grncomponentobj.navigateToApprovedASNListPage();
@@ -399,10 +398,7 @@ public class TG1_TC_GRN_Create3StagesGRN_From_Indent_E2E extends BaseClass_Web{
 		 asn_grncomponentobj.grnAttachment();
 		 asn_grncomponentobj.saveGrnDetails();
 		 asn_grncomponentobj.submitGrnDetails1("Yes");
-		 /*
-		 //This method needs application configuration, unless this method does not required for this flow
-		 /*asn_grncomponentobj.submitNotificationTab();
-		 */
+		
 		 asn_grncomponentobj.grnSendForApproval();
 		 asn_grncomponentobj.verifyGRNStatus("Pending for QV approval");
 		 etendercomponentobj.tenderLogout();

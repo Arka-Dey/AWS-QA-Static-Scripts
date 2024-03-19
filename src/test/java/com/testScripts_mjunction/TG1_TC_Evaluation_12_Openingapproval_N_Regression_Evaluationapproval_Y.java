@@ -66,7 +66,7 @@ public class TG1_TC_Evaluation_12_Openingapproval_N_Regression_Evaluationapprova
 		rfqfromintendcomponentobj.IndentTG1_Submit();
 		rfqfromintendcomponentobj.SystemIndentNoSaveNew();
 		rfqfromintendcomponentobj.AddSingleUsersForSequentialApproval_IndentWF();
-		//rfqfromintendcomponentobj.navigateToIndentListing();
+		//rfqfromintendcomponentobj.navigateToIndentListing();  
 		rfqfromintendcomponentobj.enterIndentNoInSearch();
 		rfqfromintendcomponentobj.VerifyIndentStatus("Pending For Approval");
 		etendercomponentobj.tenderLogout();

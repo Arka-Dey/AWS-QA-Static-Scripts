@@ -37,7 +37,7 @@ public class RfqFromIndentComponent extends BaseClass_Web {
 
 	SoftAssert softAssert=new SoftAssert();
 	String SystemIndentnoLocatorText = null;
-	//String SystemIndentnoLocatorText = "1951";
+//	String SystemIndentnoLocatorText = "2001";
 	String expectedSuccessMessage= null;
 	String TemplateGroup=null;
 	ArrayList<String> commentlist=new ArrayList<String>();
@@ -3094,7 +3094,7 @@ public class RfqFromIndentComponent extends BaseClass_Web {
 	public void enterIndentNoInSearch() throws Throwable {
 		try {
 			log.info("started executing the method:: enterIndentNoInSearch");
-
+			waitForElementToBeVisible(tendercreationlocators.Txt_TypeanyKeyword_Indent);
 			clear(tendercreationlocators.Txt_TypeanyKeyword_Indent, "Txt_TypeanyKeyword_Indent");
 			set(tendercreationlocators.Txt_TypeanyKeyword_Indent, SystemIndentnoLocatorText, "Txt_TypeanyKeyword_Indent");
 			waitForObj(1000);
@@ -3627,7 +3627,7 @@ public class RfqFromIndentComponent extends BaseClass_Web {
 			waitForObj(1000);
 			click(tendercreationlocators.savebutton, "savebutton");
 			//waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
-			waitForObj(2000);
+			waitForObj(3000);
 			pdfResultReport.addStepDetails("PublishTender_from_indent_withRFQ_TG1 '" +TemplateGroup+"'",
 					"Verify Terms & Conditions tab", "Terms & Conditions tab verified successfully", "Pass",
 					"Y");
@@ -3869,7 +3869,7 @@ public class RfqFromIndentComponent extends BaseClass_Web {
 			waitForElementToBeClickable(tendercreationlocators.CommercialComptabLnk_BidSubmission_TG1);
 			click(tendercreationlocators.CommercialComptabLnk_BidSubmission_TG1, "CommercialComptabLnk_BidSubmission_TG1");
 			//waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
-			waitForObj(1000);
+			waitForObj(3000);
 			pdfResultReport.addStepDetails("BidSubmission_for_Tender_from_indent_withRFQ_TG1 '" +TemplateGroup+"'",
 					"Verify Commercial Parameters Compliance tab", "Commercial Parameters Compliance tab verified successfully", "Pass",
 					"Y");

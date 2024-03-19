@@ -41,7 +41,7 @@ public class TG1_TC_Create3StagesGRN_VerifyEndToEnd extends BaseClass_Web{
 	}
 	     initializeRepository();
 	     etendercomponentobj.openURL();
-	     /*
+	     
 		rfqfromintendcomponentobj.IndentcreatorLogin();
 		rfqfromintendcomponentobj.navigateToIndentCreation();
 		rfqfromintendcomponentobj.IndentTG1_General_Info_tabvalidation("Indigenous Indent (Supply & Service Both) V-004");
@@ -152,7 +152,7 @@ public class TG1_TC_Create3StagesGRN_VerifyEndToEnd extends BaseClass_Web{
 		etendercomponentobj.enterTenderIdInSearch_bidsubmission();
 		etendercomponentobj.submittedBid_Tab_Validation();
 		etendercomponentobj.tenderLogoutOld();
-		 */
+		 
 		//Evaluation: Cover 1 work flow where opening approval Yes and evaluation approval Yes      
 		etendercomponentobj.tendercreatorLogin();
 		rfqfromintendcomponentobj.waitTillBidDuetDateReached();

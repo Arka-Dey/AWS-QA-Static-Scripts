@@ -3,16 +3,16 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.ChangeRequest.Notesheet_Notesheet_with_User_defined_With_Multiple_Approver_4">
+      <class name="com.testScripts_mjunction.TC_SN_04VerifyDeleteOfSanctionNoteTest">
         <methods>
-          <include name="setUpSuiteDetails"/>
           <include name="f"/>
+          <include name="setUpSuiteDetails"/>
           <include name="afterSuite"/>
           <include name="captureDesc"/>
           <include name="BeforeClass"/>
           <include name="afterClass"/>
         </methods>
-      </class> <!-- com.ChangeRequest.Notesheet_Notesheet_with_User_defined_With_Multiple_Approver_4 -->
+      </class> <!-- com.testScripts_mjunction.TC_SN_04VerifyDeleteOfSanctionNoteTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

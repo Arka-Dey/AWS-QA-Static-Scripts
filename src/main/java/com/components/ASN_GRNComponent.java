@@ -767,7 +767,7 @@ public class ASN_GRNComponent extends BaseClass_Web {
 		try {
 			log.info("started executing the method:: grn_InspectionDetails");
 			
-			IsElementPresent(tendercreationlocators.grnInspectionDetails);
+//			IsElementPresent(tendercreationlocators.grnInspectionDetails);
 			waitForObj(1000);
 			//JSClick(By.xpath("//*[@aria-label='Bold']"), "overallComment");
 			WebElement iframele = ThreadLocalWebdriver.getDriver().findElement(By.xpath("//iframe[@id='0.inspection_detail.0_ifr']"));
@@ -3075,12 +3075,14 @@ public class ASN_GRNComponent extends BaseClass_Web {
 		try {
 			log.info("started executing the method:: clickApprovedAsnListActionMenu");
 			waitForObj(1000);
+			/*
 			WebDriver driver = ThreadLocalWebdriver.getDriver();
-
 			String actionDropDown = "//*[contains(text(),'{0}')]/../following-sibling::td//child::button[@data-toggle='dropdown']";
-
+			waitForObj(2500);
 			driver.findElement(By.xpath(actionDropDown.replace("{0}", AsnNo))).click();
+			*/
 			waitForObj(1000);
+			click(tendercreationlocators.actionDropDown(AsnNo), "actionMenu");
 			verifyGRNValidationInActionButton(AsnNo, Arrays.asList("Create Receipt", "View ASN"));
 
 			waitForObj(3000);

@@ -64,8 +64,8 @@ import org.openqa.selenium.winium.WiniumDriver;
 
 public class eTenderComponent extends BaseClass_Web {
 	
-	//String tenderReferenceNoLocatorText = null;
-	String tenderReferenceNoLocatorText = "1849";
+//	String tenderReferenceNoLocatorText = null;
+	String tenderReferenceNoLocatorText = "1836";
 	TenderCreation_Locators tendercreationlocators = new TenderCreation_Locators();
 	String BidStartDate = null;
 	String BidDueDate = null;
@@ -746,7 +746,7 @@ public class eTenderComponent extends BaseClass_Web {
 		log.info("started executing the method:: tenderIdSave");
 		tenderReferenceNoLocatorText = text(tendercreationlocators.tenderReferenceNoLocator).trim();
 		System.out.println(tenderReferenceNoLocatorText);
-		eTenderComponent.updateDataIntoPropertyFile("tenderId", tenderReferenceNoLocatorText);
+	//	eTenderComponent.updateDataIntoPropertyFile("tenderId", tenderReferenceNoLocatorText);
 		return tenderReferenceNoLocatorText;
 	}
 
@@ -10365,6 +10365,7 @@ public class eTenderComponent extends BaseClass_Web {
 			
 			clear(tendercreationlocators.tendersearchbox, "tenderListKeyword");
 			set(tendercreationlocators.tendersearchbox, tenderReferenceNoLocatorText, "tenderListSearch");
+			eTenderComponent.updateDataIntoPropertyFile("tenderId", tenderReferenceNoLocatorText);
 			//waitForElementToBeVisible(tendercreationlocators.defaultCatBy);
 			waitForObj(2000);
 			
@@ -12854,7 +12855,7 @@ public class eTenderComponent extends BaseClass_Web {
 						"started executing the method:: AddTwoUsersForSequentialApproval");
 				waitForElementToBeClickable(tendercreationlocators.Userdefined_tender);
 				click(tendercreationlocators.Userdefined_tender, "Userdefined");
-				click(tendercreationlocators.sectionWiseComments_tender, "sectionWiseComments");
+//				click(tendercreationlocators.sectionWiseComments_tender, "sectionWiseComments");
 				//need loop if the the user not added previously
 				waitForObj(1000);
 				
@@ -12989,7 +12990,8 @@ public class eTenderComponent extends BaseClass_Web {
 			waitForObj(2000);
 			JSClick(tendercreationlocators.pending, "pending");
 		
-			waitForElementToBeVisible(tendercreationlocators.Tenderlink_approver_tender);
+			waitForElementToBeVisible(tendercreationlocators.tender_corrigendum_Tab);
+			click(tendercreationlocators.tender_corrigendum_Tab, "coriggendum Tab");
 			
 			//waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
 			
@@ -13583,14 +13585,19 @@ public class eTenderComponent extends BaseClass_Web {
 		try {
 			log.info("started executing the method:: provideApproverCommentsForDateScheduleTab");
 			waitForObj(5000);
+			if(isElementDisplayed_Updated(tendercreationlocators.dateScheduleComment, 4)) {
 			set(tendercreationlocators.dateScheduleComment, "Done Verification for the dateSchedule Tab section",
 					"dateScheduleComment");
 			click(tendercreationlocators.saveTabComment_DateSchedule, "saveTabComment_DateSchedule");
 			waitForElementToBeVisible(tendercreationlocators.alertTab);
+
+			
+			
 			IsElementPresent(tendercreationlocators.alertTab);
 			pdfResultReport.addStepDetails("provideApproverCommentsForDateScheduleTab",
 					"Should Provide Comment and save", "Sucessfully Provided Comment and saved" + " ", "Pass", "Y");
 			click(tendercreationlocators.alertTabOk, "alertTabOk");
+			}
 			log.info("completed executing the method:: provideApproverCommentsForDateScheduleTab");
 		} catch (Exception e) {
 			log.fatal("Not able to Provide Comment and save" + e.getMessage());

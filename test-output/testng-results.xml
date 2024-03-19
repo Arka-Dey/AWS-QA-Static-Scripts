@@ -1,58 +1,98 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+<testng-results skipped="0" failed="1" ignored="0" total="1" passed="0">
   <reporter-output>
   </reporter-output>
-  <suite name="Suite" duration-ms="3334412" started-at="2024-03-12T10:54:23 IST" finished-at="2024-03-12T11:49:58 IST">
+  <suite name="Suite" duration-ms="166532" started-at="2024-03-18T18:53:02 IST" finished-at="2024-03-18T18:55:49 IST">
     <groups>
     </groups>
-    <test name="Test" duration-ms="3334412" started-at="2024-03-12T10:54:23 IST" finished-at="2024-03-12T11:49:58 IST">
-      <class name="com.ChangeRequest.Notesheet_Notesheet_with_User_defined_With_Multiple_Approver_4">
-        <test-method status="PASS" signature="setUpSuiteDetails(org.testng.ITestContext)[pri:0, instance:com.ChangeRequest.Notesheet_Notesheet_with_User_defined_With_Multiple_Approver_4@3b94d659]" name="setUpSuiteDetails" is-config="true" duration-ms="148" started-at="2024-03-12T10:54:23 IST" finished-at="2024-03-12T10:54:23 IST">
+    <test name="Test" duration-ms="166532" started-at="2024-03-18T18:53:02 IST" finished-at="2024-03-18T18:55:49 IST">
+      <class name="com.testScripts_mjunction.TG1_TC_GRN_Create3StagesGRN_From_Indent_E2E">
+        <test-method status="PASS" signature="setUpSuiteDetails(org.testng.ITestContext)[pri:0, instance:com.testScripts_mjunction.TG1_TC_GRN_Create3StagesGRN_From_Indent_E2E@59474f18]" name="setUpSuiteDetails" is-config="true" duration-ms="132" started-at="2024-03-18T18:53:02 IST" finished-at="2024-03-18T18:53:02 IST">
           <params>
             <param index="0">
               <value>
-                <![CDATA[org.testng.TestRunner@1b0947c3]]>
+                <![CDATA[org.testng.TestRunner@b0964b2]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpSuiteDetails -->
-        <test-method status="PASS" signature="BeforeClass()[pri:0, instance:com.ChangeRequest.Notesheet_Notesheet_with_User_defined_With_Multiple_Approver_4@3b94d659]" name="BeforeClass" is-config="true" duration-ms="3017" started-at="2024-03-12T10:54:23 IST" finished-at="2024-03-12T10:54:26 IST">
+        <test-method status="PASS" signature="BeforeClass()[pri:0, instance:com.testScripts_mjunction.TG1_TC_GRN_Create3StagesGRN_From_Indent_E2E@59474f18]" name="BeforeClass" is-config="true" duration-ms="3025" started-at="2024-03-18T18:53:02 IST" finished-at="2024-03-18T18:53:05 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- BeforeClass -->
-        <test-method status="PASS" signature="f(java.lang.String)[pri:0, instance:com.ChangeRequest.Notesheet_Notesheet_with_User_defined_With_Multiple_Approver_4@3b94d659]" name="f" duration-ms="3279757" started-at="2024-03-12T10:54:26 IST" description="Scenario:3 - Verify the functionality of Notesheet with user defined multiple approver workflow" finished-at="2024-03-12T11:49:06 IST">
+        <test-method status="PASS" signature="captureDesc(java.lang.reflect.Method)[pri:0, instance:com.testScripts_mjunction.TG1_TC_GRN_Create3StagesGRN_From_Indent_E2E@59474f18]" name="captureDesc" is-config="true" duration-ms="0" started-at="2024-03-18T18:53:05 IST" finished-at="2024-03-18T18:53:05 IST">
           <params>
             <param index="0">
               <value>
-                <![CDATA[16]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- f -->
-        <test-method status="PASS" signature="captureDesc(java.lang.reflect.Method)[pri:0, instance:com.ChangeRequest.Notesheet_Notesheet_with_User_defined_With_Multiple_Approver_4@3b94d659]" name="captureDesc" is-config="true" duration-ms="0" started-at="2024-03-12T10:54:26 IST" finished-at="2024-03-12T10:54:26 IST">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[public void com.ChangeRequest.Notesheet_Notesheet_with_User_defined_With_Multiple_Approver_4.f(java.lang.String) throws java.lang.Throwable]]>
+                <![CDATA[public void com.testScripts_mjunction.TG1_TC_GRN_Create3StagesGRN_From_Indent_E2E.Create3StagesGRN_WithoutApprovalFlow(java.lang.String) throws java.lang.Throwable]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- captureDesc -->
-        <test-method status="PASS" signature="afterClass()[pri:0, instance:com.ChangeRequest.Notesheet_Notesheet_with_User_defined_With_Multiple_Approver_4@3b94d659]" name="afterClass" is-config="true" duration-ms="48416" started-at="2024-03-12T11:49:09 IST" finished-at="2024-03-12T11:49:58 IST">
+        <test-method status="FAIL" signature="Create3StagesGRN_WithoutApprovalFlow(java.lang.String)[pri:0, instance:com.testScripts_mjunction.TG1_TC_GRN_Create3StagesGRN_From_Indent_E2E@59474f18]" name="Create3StagesGRN_WithoutApprovalFlow" duration-ms="156685" started-at="2024-03-18T18:53:05 IST" description="TC_GRN_02:Verify the Submit Functionality during Create GRN with approval workflow &amp; Check the GRN Status as Created" finished-at="2024-03-18T18:55:42 IST">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[11]]>
+              </value>
+            </param>
+          </params>
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[Failed Due to Expected condition failed: waiting for visibility of element located by By.xpath: //table[contains(@id,'myTable')]//tr[@class='ng-scope']//td[contains(text(),'1033')] (tried for 20 second(s) with 500 milliseconds interval)]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: Failed Due to Expected condition failed: waiting for visibility of element located by By.xpath: //table[contains(@id,'myTable')]//tr[@class='ng-scope']//td[contains(text(),'1033')] (tried for 20 second(s) with 500 milliseconds interval)
+at org.testng.Assert.fail(Assert.java:99)
+at com.components.ASN_GRNComponent.GoToApprovalworkFlowPendingGRNAndSearchTheGRN(ASN_GRNComponent.java:3320)
+at com.testScripts_mjunction.TG1_TC_GRN_Create3StagesGRN_From_Indent_E2E.Create3StagesGRN_WithoutApprovalFlow(TG1_TC_GRN_Create3StagesGRN_From_Indent_E2E.java:385)
+at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+at java.lang.reflect.Method.invoke(Unknown Source)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:132)
+at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:599)
+at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:174)
+at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:822)
+at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:147)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.util.ArrayList.forEach(Unknown Source)
+at org.testng.TestRunner.privateRun(TestRunner.java:764)
+at org.testng.TestRunner.run(TestRunner.java:585)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:384)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:378)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:337)
+at org.testng.SuiteRunner.run(SuiteRunner.java:286)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1218)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1140)
+at org.testng.TestNG.runSuites(TestNG.java:1069)
+at org.testng.TestNG.run(TestNG.java:1037)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Create3StagesGRN_WithoutApprovalFlow -->
+        <test-method status="PASS" signature="afterClass()[pri:0, instance:com.testScripts_mjunction.TG1_TC_GRN_Create3StagesGRN_From_Indent_E2E@59474f18]" name="afterClass" is-config="true" duration-ms="3319" started-at="2024-03-18T18:55:46 IST" finished-at="2024-03-18T18:55:49 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterClass -->
-        <test-method status="PASS" signature="afterSuite()[pri:0, instance:com.ChangeRequest.Notesheet_Notesheet_with_User_defined_With_Multiple_Approver_4@3b94d659]" name="afterSuite" is-config="true" duration-ms="1568" started-at="2024-03-12T11:49:58 IST" finished-at="2024-03-12T11:49:59 IST">
+        <test-method status="PASS" signature="afterSuite()[pri:0, instance:com.testScripts_mjunction.TG1_TC_GRN_Create3StagesGRN_From_Indent_E2E@59474f18]" name="afterSuite" is-config="true" duration-ms="50" started-at="2024-03-18T18:55:49 IST" finished-at="2024-03-18T18:55:49 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterSuite -->
-      </class> <!-- com.ChangeRequest.Notesheet_Notesheet_with_User_defined_With_Multiple_Approver_4 -->
+      </class> <!-- com.testScripts_mjunction.TG1_TC_GRN_Create3StagesGRN_From_Indent_E2E -->
     </test> <!-- Test -->
   </suite> <!-- Suite -->
 </testng-results>

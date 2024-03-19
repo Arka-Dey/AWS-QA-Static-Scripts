@@ -248,7 +248,7 @@ public class TenderCreation_Locators {
 	public By sorItemSaveBy = By.xpath("//button[@id='saveRFQItemToTab']");
 	public By noOfRecordsBy = By.xpath("//*[contains(text(),'More...')]/parent::div/child::span");
 	public By mandotatoryItemSelectBoxBy = By.xpath("//select[@name='mandatory_item']");
-	public By alertForCreateSNfromPO = By.xpath("//div[contains(text(), 'Do you want to procced to item selection')]");
+	public By alertForCreateSNfromPO = By.xpath("//*[contains(text(), 'Do you want to proceed to item selection')]");
 	public By confirmationOkBy = By.xpath("//button[text()='OK']");
 	public By previewPopOkBy = By.xpath("//div[@id='myModalprev']//button[contains(text(),'Ok')]");
 	public By tG_Supplier_Selection = By.xpath("//h2[contains(text(),'Template Group & Supplier Selection')]");
@@ -265,6 +265,7 @@ public class TenderCreation_Locators {
 			.xpath("//table[@id='rfqpopupTAble']/tbody/tr/td/input[@ng-model='item.quantity'] ");
 	public By addSORItemSave = By.xpath("//button[@id='saveRFQItemToTab']");
 	public By action = By.xpath("//*[@id='menu1']");
+	public By actionSanction = By.xpath("//*[@id='_ctd_sn_pending']/div/table/tbody/tr/td[7]/div/button");
 	public By tenderlistingPageAction = By.xpath("//*[@id='inner-nav-01']/div/table/tbody/tr/td[10]/div/button");
 	public By action_SubmittedBid = By.xpath("//body[1]/section[2]/section[1]/div[1]/div[1]/form[3]/div[1]/div[1]/div[3]/div[2]/div[1]/div[1]/table[1]/tbody[1]/tr[1]/td[11]/div[1]//button[contains(@data-toggle,'dropdown')]");
 	public By corrigendumLink = By.xpath("//a[contains(text(),'Corrigendum')]");
@@ -286,8 +287,8 @@ public class TenderCreation_Locators {
 	//public By corrigendumStatus = By.xpath("//table[@id='myTablebyrTl00']//td[@ng-if=\"(tender.isCorrigendum.toLowerCase()=='yes')\"]//a[contains(text(), 'Yes')]");
 	public By corrigendumStatus = By.xpath("//*[@id='inner-nav-01']/div/table/tbody/tr[1]/td[6]/a");
 	public By corrigendumStatusNo = By.xpath("//table[@id='myTablebyrTl00']/tbody/tr[1]/td[6]");
-	public By corrigendumCoparison = By.xpath("//*[@id='mat-dialog-6']/app-corrigendum-history-modal/div/div[2]/section/div/table/tbody/tr/td[4]/a/fa-icon");
-	public By corrigendumNumber = By.xpath("//*[@id='mat-dialog-6']/app-corrigendum-history-modal/div/div[2]/section/div/table/tbody/tr/td[1]/a");
+	public By corrigendumCoparison = By.xpath("//*[@tooltip='View Comparison']");
+	public By corrigendumNumber = By.xpath("//*[@id='mat-dialog-0']/app-corrigendum-history-modal/div/div[2]/section/div/table/tbody/tr/td[1]/a");
 	public By corrigendumHistory = By.xpath("//*[@id='staticBackdropLabel']");
 	public By corrigendumNumberClose = By.xpath("//*[@id='mat-dialog-15']/app-corrigendum-history-details-modal/div/mat-dialog-actions/div/button");
 	public By corrigendumNewDateSchedule = By.xpath("//*[contains(text(),'New Date Schedule')]");
@@ -316,6 +317,7 @@ public class TenderCreation_Locators {
 	public By Approvercomment_tender = By.xpath("//div[@id='collapse1']//textarea[@ng-model='approvalWorkFlow.approvalDetails[0].overallComment']");
 	public By Approvebutton_tender = By.xpath("//button[normalize-space()='Approve']");
 	public By Tenderlink_approver_tender = By.xpath("//a[normalize-space()='Tender']");
+	public By tender_corrigendum_Tab = By.xpath("//a[normalize-space()='Corrigendum']");
 	public By TenderOpeninglink_approver_tender = By.xpath("//a[normalize-space()='Tender Opening']");
 	public By CloseWF_tender = By.xpath("//button[normalize-space()='Close Workflow']");
 	public By EndWF_tender = By.xpath("//button[normalize-space()='End Workflow']");
@@ -726,7 +728,7 @@ public class TenderCreation_Locators {
 	public By tenderStatus_completed = By.xpath("//span[contains(text(),'Completed')]");
 	public By tenderStage_completed = By.xpath("//button[@data-original-title='Completed']");
 	public By completedtablnk = By.xpath("//a[normalize-space()='Completed']");
-	public By tenderListingCompletedTab = By.xpath("//button[@id='nav-02-tab']");
+	public By tenderListingCompletedTab = By.xpath("//label[@for='completetender']");
 	//public By evaluation_sendForApproval = By.xpath("//button[@data-original-title='Send For Approval']");
 	public By evaluation_sendForApproval = By.xpath("//button[@id='evaluStng']");
 	public By tenderStatus_evaluation = By
@@ -935,7 +937,7 @@ public class TenderCreation_Locators {
 	public By briefcaseNotesheet = By.xpath("//*[@class='svg-inline--fa fa-box fa-w-16']");
 	
 	public By sanctionReferenceNumber = By.xpath("//input[@id='sanctionRef']");
-	public By sanctionRefNo_Submit = By.xpath("//button[@ng-click='saveSanctionRef()']");
+	public By sanctionRefNo_Submit = By.xpath("(//button[@class='btn modalBtnBlue mx-2 mb-2 mb-sm-0'])[3]");
 	public By supplierSelectionCheckBox = By.xpath("//input[@ng-click='selectAllQuotation(checkAllBidder)']");
 	public By plusIcon_CTS = By.xpath("//a[contains(text(),'CTS')]");
 	public By plusIcon_TCS = By.xpath("//a[contains(text(),'TCS')]");
@@ -966,7 +968,7 @@ public class TenderCreation_Locators {
 	public By typeAnyKeyword_Pending = By.xpath("(//input[@ng-model='obj.snSearchText'])[1]");
 	public By typeAnyKeyword_DeletedCancelledSN = By.xpath("(//input[@ng-model='obj.snSearchText'])[3]");
 	public By SNpendingList = By.xpath("//a[contains(text(),'Pending')]");
-	public By SNcompletedList = By.xpath("//li[@ng-click='getCompletedSanctionListOfTheTender()']/a");
+	public By SNcompletedList = By.xpath("//*[@id='nav-my-indent-tab' and contains(normalize-space(text()),'Completed')]");
 	public By downloadSanctionReport = By.xpath("//a[@ng-click='downloadSnReportModal(sanction.sanctionId)']");
 	public By saveSanction = By.xpath("//button[@ng-click='saveSanction(false)']");
 	public By downloadReoprtFormat = By.xpath("//select[@ng-model='downLoadReportSupportingData.type']");
@@ -1237,7 +1239,7 @@ public class TenderCreation_Locators {
 	public By OtherPriceAttribute = By.xpath("//div[contains(text(),'Other Price Attribute')]");
 	
 	//Vendor Information
-	public By VendorInformation = By.xpath("//div[@id='mat-tab-label-0-4']");
+	public By VendorInformation = By.xpath("//div[contains(text(),'Vendor Information')]");
 	public By Supplier_GSTIN = By.xpath("//input[@id='po_vendor_temp.vendor_gstin.0']");
 	
 	//Terms & Conditions
@@ -1460,9 +1462,9 @@ public class TenderCreation_Locators {
 	public By confirmOk = By.xpath("//button[contains(text(),'OK')]");
 	public By poStatus = By.xpath("//tbody/tr[1]/td[10]");
 	public By poStatusforCanceledOrDeleted = By.xpath("//tbody/tr[1]/td[9]");
-	public By deleteSN = By.xpath("//i[@class='fa fa-trash']");
+	public By deleteSN = By.xpath("//a[contains(text(),'Delete')]");
 	public By cancelSN = By.xpath("//*[@id='myTabContent']/div[2]/div/table/tbody/tr[2]/td[7]/div/ul/li[7]/a");
-	public By DeleteSNReason = By.xpath("//textarea[@name='deleteReason']");
+	public By DeleteSNReason = By.xpath("//textarea[@name='deletionRemarks']");
 	public By snSearch = By.xpath("(//input[@placeholder='Type any keyword'])[1]");
 	
 	public By poStatusFilter = By.xpath("//*[@ng-model='poStatusFilter']");
@@ -2631,7 +2633,11 @@ public class TenderCreation_Locators {
 	public By ASNNo(String ASNno) {
 		return By.xpath("//b[text()='ASN No. :']/../following-sibling::label/span/span[text()='" + ASNno + "']");
 	}
-
+	
+	public By actionDropDown (String ASNno) {
+		return By.xpath("//*[contains(text(),'" + ASNno + "')]/../following-sibling::td//child::button[@data-toggle='dropdown']");
+	}
+	
 	public By asnInformation = By.xpath("//div[normalize-space(text())='ASN Information']");
 
 	public By myInformation = By.xpath("//div[normalize-space(text())='My Information']");
@@ -3053,8 +3059,8 @@ public class TenderCreation_Locators {
 	public By notRequiredCheckmark = By.xpath("(//span[@class='checkmark'])[6]");
 	public By Submit = By.xpath("//button[normalize-space(text())='Submit']");
 	public By submitByDeleteSN = By.xpath("//*[@id='CommonModal']/div/div/div[3]/div/label");
-	public By deleteorCancelledTab = By.xpath("//a[@aria-controls='cancelled']");
-	public By snDeletestatus = By.xpath("//*[@id='myTabContent']/div[3]/div/table/tbody/tr[2]/td[6]/span/a");
+	public By deleteorCancelledTab = By.xpath("//*[@id='nav-my-indent-tab' and text()='Cancelled/Deleted']");
+	public By snDeletestatus = By.xpath("//*[@id='_ctd_sn_cancelled']/div/table/tbody/tr[1]/td[6]/span");
 	public By ShowList(String InvoiceAmtUI) {
 		return By.xpath("//span[@class='ng-binding ng-scope' and text()='" + InvoiceAmtUI
 				+ "']/../following-sibling::td//span//i");
@@ -3313,7 +3319,7 @@ public By Accommodationandfoodserviceactivities = By.xpath("//span[text()='Accom
 		}
 	public By grnHeaderGRNListPage = By.xpath("//h2[contains(text(), 'GRN List')]");
 	public By completedGRNList = By.xpath("//button[contains(text(),'Created')]");
-	public By searchBoxGRN = By.xpath("//div[@class='tableWrap']/div[1]//input[@placeholder='Type Your Keyword']");
+	public By searchBoxGRN = By.xpath("//input[@placeholder]");
 	public By reinitiatedmsg = By.xpath("//*[@id='nav-my-indent']/div/table/tbody/tr/td[1]");
 	public By notesheetStatus = By.xpath("//*[@id='nav-my-indent']/div/table/tbody/tr[1]/td[6]");
 	public By grnExpectedStatus(String status) {
@@ -3638,7 +3644,7 @@ public By Accommodationandfoodserviceactivities = By.xpath("//span[text()='Accom
 	public By poSubmitMsg=By.xpath("//mat-dialog-container[@id='mat-dialog-2']/app-general-dialog/div/div[2]//div[contains(text(),'Order has been submitted successfully.')]");
 	public By poReferenceNo=By.xpath("//label[contains(text(),'Reference No:')]//following-sibling::input");
 	public By PreviewCrossButton=By.xpath("//h5[@id='staticBackdropLabel']//following-sibling::div[1]/button");
-	public By Txt_TypeanyKeyword_Indent = By.xpath("//input[@placeholder='Type Your Keyword']");
+	public By Txt_TypeanyKeyword_Indent = By.xpath("//input[@placeholder]");
 	public By ActionBtn_Listpage_Indent = By.xpath("//button[@id='menu1']");
 	public By DropdownmenuListpage_Indent = By.xpath("//ul[contains(@class,'dropdown-menu extended logout big_actv')]");
 	public By IndentPreview = By.xpath("//h5[@id='staticBackdropLabel']/strong");
@@ -4296,7 +4302,7 @@ public By Accommodationandfoodserviceactivities = By.xpath("//span[text()='Accom
 	
 	public By SanctionReferenceNumber(String val) {
 
-		return By.xpath("//a[text()='" + val + "']");
+		return By.xpath("//td[contains(text(),'" + val + "')]");
 	}
 	
 	public By snDetailsLink= By.xpath("//tbody/tr[1]/td[10]/div[1]/ul[1]/li[1]/a[1]");
