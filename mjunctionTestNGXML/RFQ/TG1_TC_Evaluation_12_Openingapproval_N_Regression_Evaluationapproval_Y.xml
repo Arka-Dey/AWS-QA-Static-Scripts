@@ -6,8 +6,8 @@
     <test name="Test">
         <parameter name="browserName" value="windowschrome"></parameter>
         <classes>
-           <parameter name="TestcaseNo" value="1"></parameter>   
-            <class name="com.testScripts_mjunction.TG1_TC_Corrigendum_04_DateCorrigendum_with_Multiple_approver" />
+           <parameter name="TestcaseNo" value="11"></parameter>   
+            <class name="com.testScripts_mjunction.TG1_TC_Evaluation_12_Openingapproval_N_Regression_Evaluationapproval_Y" />
         </classes>
     </test> 
-</suite>	
+</suite>

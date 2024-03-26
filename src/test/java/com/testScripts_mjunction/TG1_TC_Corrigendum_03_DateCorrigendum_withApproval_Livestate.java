@@ -136,6 +136,9 @@ public class TG1_TC_Corrigendum_03_DateCorrigendum_withApproval_Livestate extend
 		etendercomponentobj.corrigendumNumber_Hyperlink_Validation();
 		etendercomponentobj.corrigendumComparison_Hyperlink_Validation();
 		etendercomponentobj.tenderLogout();
+		
+		
+		
 	}
 
 }

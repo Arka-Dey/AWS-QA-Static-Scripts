@@ -52,7 +52,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 import java.util.Date;
@@ -60,13 +59,13 @@ import java.util.HashMap;
 import java.util.Map;
 import org.openqa.selenium.winium.DesktopOptions;
 import org.openqa.selenium.winium.WiniumDriver;
-import com.objectRepository.TenderCreation_Locators;
+
 //import com.sun.glass.events.KeyEvent;
 
 public class eTenderComponent extends BaseClass_Web {
 	
-	//String tenderReferenceNoLocatorText = null;
-	String tenderReferenceNoLocatorText = "1849";
+//	String tenderReferenceNoLocatorText = null;
+	String tenderReferenceNoLocatorText = "1836";
 	TenderCreation_Locators tendercreationlocators = new TenderCreation_Locators();
 	String BidStartDate = null;
 	String BidDueDate = null;
@@ -74,7 +73,8 @@ public class eTenderComponent extends BaseClass_Web {
 	LocalDateTime localdatetimeForBid = null;
 	String BidnoLocatorText = null;
 	String DraftBidnoLocatorText = null;
-	
+	String NoteSheetNo = null;
+//	String NoteSheetNo = "1535";
 	public eTenderComponent(PDFResultReport pdfresultReport) {
 		this.pdfResultReport = pdfresultReport;
 	}
@@ -749,7 +749,7 @@ public class eTenderComponent extends BaseClass_Web {
 		log.info("started executing the method:: tenderIdSave");
 		tenderReferenceNoLocatorText = text(tendercreationlocators.tenderReferenceNoLocator).trim();
 		System.out.println(tenderReferenceNoLocatorText);
-		eTenderComponent.updateDataIntoPropertyFile("tenderId", tenderReferenceNoLocatorText);
+	//	eTenderComponent.updateDataIntoPropertyFile("tenderId", tenderReferenceNoLocatorText);
 		return tenderReferenceNoLocatorText;
 	}
 
@@ -10368,6 +10368,7 @@ public class eTenderComponent extends BaseClass_Web {
 			
 			clear(tendercreationlocators.tendersearchbox, "tenderListKeyword");
 			set(tendercreationlocators.tendersearchbox, tenderReferenceNoLocatorText, "tenderListSearch");
+			eTenderComponent.updateDataIntoPropertyFile("tenderId", tenderReferenceNoLocatorText);
 			//waitForElementToBeVisible(tendercreationlocators.defaultCatBy);
 			waitForObj(2000);
 			
@@ -12857,7 +12858,7 @@ public class eTenderComponent extends BaseClass_Web {
 						"started executing the method:: AddTwoUsersForSequentialApproval");
 				waitForElementToBeClickable(tendercreationlocators.Userdefined_tender);
 				click(tendercreationlocators.Userdefined_tender, "Userdefined");
-				click(tendercreationlocators.sectionWiseComments_tender, "sectionWiseComments");
+//				click(tendercreationlocators.sectionWiseComments_tender, "sectionWiseComments");
 				//need loop if the the user not added previously
 				waitForObj(1000);
 				
@@ -12992,7 +12993,8 @@ public class eTenderComponent extends BaseClass_Web {
 			waitForObj(2000);
 			JSClick(tendercreationlocators.pending, "pending");
 		
-			waitForElementToBeVisible(tendercreationlocators.Tenderlink_approver_tender);
+			waitForElementToBeVisible(tendercreationlocators.tender_corrigendum_Tab);
+			click(tendercreationlocators.tender_corrigendum_Tab, "coriggendum Tab");
 			
 			//waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
 			
@@ -13586,14 +13588,19 @@ public class eTenderComponent extends BaseClass_Web {
 		try {
 			log.info("started executing the method:: provideApproverCommentsForDateScheduleTab");
 			waitForObj(5000);
+			if(isElementDisplayed_Updated(tendercreationlocators.dateScheduleComment, 4)) {
 			set(tendercreationlocators.dateScheduleComment, "Done Verification for the dateSchedule Tab section",
 					"dateScheduleComment");
 			click(tendercreationlocators.saveTabComment_DateSchedule, "saveTabComment_DateSchedule");
 			waitForElementToBeVisible(tendercreationlocators.alertTab);
+
+			
+			
 			IsElementPresent(tendercreationlocators.alertTab);
 			pdfResultReport.addStepDetails("provideApproverCommentsForDateScheduleTab",
 					"Should Provide Comment and save", "Sucessfully Provided Comment and saved" + " ", "Pass", "Y");
 			click(tendercreationlocators.alertTabOk, "alertTabOk");
+			}
 			log.info("completed executing the method:: provideApproverCommentsForDateScheduleTab");
 		} catch (Exception e) {
 			log.fatal("Not able to Provide Comment and save" + e.getMessage());
@@ -16256,7 +16263,7 @@ public void NoApproverWF() throws Exception {
 			  click(tendercreationlocators.adduserSN, "add user SN");
 			  waitForElementToBeVisible(tendercreationlocators.SNuseradd);
 			 
-			  set(tendercreationlocators.SNuseradd, pdfResultReport.testData.get("UserTenderApprover3"), "user");
+			  set(tendercreationlocators.SNuseradd, pdfResultReport.testData.get("UserNotesheetApprover3"), "user");
 			  waitForObj(500);
 			  select(tendercreationlocators.approverTypeSN, pdfResultReport.testData.get("ApprovalType1"));	
 			  
@@ -16265,7 +16272,7 @@ public void NoApproverWF() throws Exception {
 			  click(tendercreationlocators.adduserSN, "add user SN");
 			  waitForElementToBeVisible(tendercreationlocators.SNuseradd);
 			 
-			  set(tendercreationlocators.SNuseradd, pdfResultReport.testData.get("UserTenderApprover4"), "user");
+			  set(tendercreationlocators.SNuseradd, pdfResultReport.testData.get("UserNotesheetApprover4"), "user");
 			  waitForObj(500);
 			  select(tendercreationlocators.approverTypeSN, pdfResultReport.testData.get("ApprovalType1"));
 			  
@@ -16274,7 +16281,7 @@ public void NoApproverWF() throws Exception {
 			  click(tendercreationlocators.adduserSN, "add user SN");
 			  waitForElementToBeVisible(tendercreationlocators.SNuseradd);
 			 
-			  set(tendercreationlocators.SNuseradd, pdfResultReport.testData.get("UserTenderApprover5"), "user");
+			  set(tendercreationlocators.SNuseradd, pdfResultReport.testData.get("UserNotesheetApprover5"), "user");
 			  waitForObj(500);
 			  select(tendercreationlocators.approverTypeSN, pdfResultReport.testData.get("ApprovalType1"));
 			  
@@ -16766,6 +16773,405 @@ set(tendercreationlocators.recallComment, "recall", "recommendationComment");
                          "sanction Note Evaluation must be approve sucessfully ",
                          "Unable to approve sanction Note Evaluation" + e.getMessage(), "Fail", "N");
      }
+		
+	}
+
+	public void nevigateToNotesheetList() throws Throwable {
+		try {
+			log.info("started executing the method:: nevigateToNotesheetList");		
+			click(tendercreationlocators.mainMenuIcon, "MenuIcon");
+			waitForObj(500);
+			mouseOver(tendercreationlocators.Others);
+			// mouseOver(tendercreationlocators.tendersIcon);
+			JSClick(tendercreationlocators.allNotesheet, "allNotesheet");
+			//WebDriver driver = ThreadLocalWebdriver.getDriver();
+			checkPageIsReady();
+			waitForElementToBeVisible(tendercreationlocators.notesheetListPage);
+			pdfResultReport.addStepDetails("nevigateToNotesheetList",
+					"nevigateToNotesheetList should displayed",
+					"nevigateToNotesheetList displayed successfully" + " ", "Pass", "Y");
+		
+			
+		} catch (Exception e) {
+			log.fatal("not able to nevigateToNotesheetList" + e.getMessage());
+			pdfResultReport.addStepDetails("nevigateToNotesheetList", "nevigateToNotesheetList should displayed",
+					"not able to nevigateToNotesheetList page" + e.getMessage(), "Fail", "N");
+		}
+		
+	}
+
+	public void createNotesheet() throws Throwable {
+		try {
+			log.info("started executing the method:: createNotesheet");		
+			
+			waitForElementToBeClickable(tendercreationlocators.createNotesheetIcon);
+			click(tendercreationlocators.createNotesheetIcon, "create notesheet");
+			waitForElementToBeVisible(tendercreationlocators.subject);
+			set(tendercreationlocators.subject, "NoteSheet for discussion", "subject");
+			set(tendercreationlocators.notesheetRefNo, "NoteSheet ref. no", "ref no");
+			waitForElementToBeClickable(tendercreationlocators.briefcaseNotesheet);
+			click(tendercreationlocators.briefcaseNotesheet, "ebriefcase icon");
+			waitForElementToBeClickable(tendercreationlocators.addfile);
+			click(tendercreationlocators.addfile, "add file");
+			
+			
+			
+	//		click(tendercreationlocators.createNotesheetIcon, "add attachment icon");
+		//	set(tendercreationlocators.notesheetdocupload, "\\MediaFiles\\Guidelines_Tnd_092110_176532.pdf", "attachment");
+			waitForObj(1000);
+			set(tendercreationlocators.notesheetcreateDeatils, "item quantity discussion", "details");
+
+			pdfResultReport.addStepDetails("createNotesheet",
+					"create notesheet should perform",
+					"create notesheet performed successfully" + " ", "Pass", "Y");
+		
+			
+		} catch (Exception e) {
+			log.fatal("not able to createNotesheet" + e.getMessage());
+			pdfResultReport.addStepDetails("createNotesheet", "create notesheet should perform",
+					"not able to perform createNotesheet page" + e.getMessage(), "Fail", "N");
+		}
+		
+	}
+
+	public void NoteSheetCreatorLogin(String string) throws Exception {
+		try {
+			log.info("started executing the method:: NoteSheetCreatorLogin");
+			//click(tendercreationlocators.login, "login"); // edited on 30-11-21
+			set(tendercreationlocators.userName, string, "userName");
+			waitForElementToBeClickable(tendercreationlocators.password);
+			set(tendercreationlocators.password, pdfResultReport.testData.get("AppPassword"), "password");
+			//Handle fixed Captcha (06/11/2020)
+			//set(tendercreationlocators.Captcha_Login, "1234", "Login_Captcha"); // edited on 30-11-21
+			SSClick(tendercreationlocators.okButton, "okButton");
+			//waitForElement(tendercreationlocators.dashboardIcon, 5000); //commented on 110722
+			waitForElement(tendercreationlocators.dashboardIconnew, 5000);
+			pdfResultReport.addStepDetails("NoteSheet creator login", "Notesheet creator must be sucessfully logged in",
+					"Successfully logged in as Notesheet creator" + " ", "Pass", "Y");
+			log.info("completed executing the method:: NoteSheetCreatorLogin");
+
+		} catch (Exception e) {
+			log.fatal("Unable to open the URL" + e.getMessage());
+			pdfResultReport.addStepDetails("Indent creator login", "NoteSheet creator is not logged in",
+					"Unable to login as Notesheet creator" + e.getMessage(), "Fail", "N");
+		}
+		
+	}
+	
+	public void evaluationApprovalDecision(String decision) throws Throwable {
+		  try {
+            log.info("started executing the method:: sanctionNoteEvaluationApprove");
+            if(decision=="approve") {
+          	  waitForElementToBeClickable(tendercreationlocators.Approvebutton_tender);
+                click(tendercreationlocators.Approvebutton_tender, "sanctionNoteEvaluationApprove");
+                waitForElementToBeClickable(tendercreationlocators.Alert_Yesbtn_EvalUser);
+                click(tendercreationlocators.Alert_Yesbtn_EvalUser, "confirm Yes");
+            }
+            else if(decision=="revert back to approver") {
+                   waitForElementToBeClickable(tendercreationlocators.TenderApproverReview);
+                  click(tendercreationlocators.TenderApproverReview, "sanctionNoteEvaluationApprove revert to approver");
+                  waitForElementToBeClickable(tendercreationlocators.confirmBtn);
+                  click(tendercreationlocators.confirmBtn, "review Confirm");
+                  waitForElementToBeClickable(tendercreationlocators.revertbackToApprover);
+                  click(tendercreationlocators.revertbackToApprover, "revert back to approver");
+                  
+            }
+            else if(decision=="forward") {
+                  waitForElementToBeClickable(tendercreationlocators.submitbutton_EvalUser);
+                  click(tendercreationlocators.submitbutton_EvalUser, "Evaluation foward");
+                  waitForObj(3000);
+                 
+                  waitForElementToBeClickable(tendercreationlocators.ForwardWF_Indent);
+                  click(tendercreationlocators.ForwardWF_Indent, "forward to next person");
+                  waitForObj(1000);
+//                  waitForElementToBeVisible(tendercreationlocators.warningYes);
+//                  JSClick(tendercreationlocators.warningYes, "warning Ok");
+//                
+                 
+                  //send for approval
+                  }
+            else if (decision=="revert back to creator") {
+          	  waitForElementToBeClickable(tendercreationlocators.TenderApproverReview);
+                click(tendercreationlocators.TenderApproverReview, "sanctionNoteEvaluationApprove");
+                waitForElementToBeClickable(tendercreationlocators.confirmBtn);
+                click(tendercreationlocators.confirmBtn, "review Confirm");
+                waitForElementToBeClickable(tendercreationlocators.reverseBackToCreator);
+                click(tendercreationlocators.reverseBackToCreator, "revert back to creator");
+			}
+            
+            waitForObj(5000);
+           
+            pdfResultReport.addStepDetails("sanctionNoteEvaluationApprove",
+                         "sanction Note Evaluation must be approve sucessfully ",
+                         "Successfully approved sanction Note Evaluation" + " ", "Pass", "Y");
+            log.info("completed executing the method:: sanctionNoteEvaluationApprove");
+
+     } catch (Exception e) {
+            log.fatal("Unable to approve sanction Note Evaluation" + e.getMessage());
+            pdfResultReport.addStepDetails("sanctionNoteEvaluationApprove",
+                         "sanction Note Evaluation must be approve sucessfully ",
+                         "Unable to approve sanction Note Evaluation" + e.getMessage(), "Fail", "N");
+     }
+}
+
+	public void AddMultipleUsersForSequentialParallelApproval_Evaluation_WF() throws Throwable {
+		try {
+			log.info("started executing the method:: AddMultipleUsersForSequentialParallelApproval_Evaluator_WF");
+			waitForElementToBeClickable(tendercreationlocators.sendForApprovalEvaluation);
+			click(tendercreationlocators.sendForApprovalEvaluation, "Userdefined");
+			/*
+			List<WebElement> iRows = ThreadLocalWebdriver.getDriver().findElements(tendercreationlocators.cancelUser1_tender);
+			int iRowCount = iRows.size();
+			
+			
+				while(iRowCount!= 0)
+				{
+					waitForObj(1000);
+					click(tendercreationlocators.cancelUser1_tender, "cancelUser1_tender");
+					waitForObj(1000);
+					iRowCount = ThreadLocalWebdriver.getDriver().findElements(tendercreationlocators.cancelUser1_tender).size();
+					}
+					*/
+			//approver 1 parallel
+				waitForElementToBeClickable(tendercreationlocators.userAdd_tender);
+				click(tendercreationlocators.userAdd_tender, "userAdd");
+			  waitForElementToBeVisible(tendercreationlocators.evaluatorUser); 
+			  set(tendercreationlocators.evaluatorUser, pdfResultReport.testData.get("User_Approver1"), "user");
+			  waitForObj(500);
+			  select(tendercreationlocators.approverTypeTender, pdfResultReport.testData.get("ApprovalType1"));
+			
+			  
+			//approver 2 parallel
+				waitForElementToBeClickable(tendercreationlocators.userAdd_tender);
+				click(tendercreationlocators.userAdd_tender, "userAdd");
+				  waitForElementToBeVisible(tendercreationlocators.evaluatorUser); 
+				  set(tendercreationlocators.evaluatorUser, pdfResultReport.testData.get("User_Approver2"), "user");
+				  waitForObj(500);
+				  select(tendercreationlocators.approverTypeTender, pdfResultReport.testData.get("ApprovalType1"));
+			
+				//approver 3 parallel
+					waitForElementToBeClickable(tendercreationlocators.userAdd_tender);
+					click(tendercreationlocators.userAdd_tender, "userAdd");
+					  waitForElementToBeVisible(tendercreationlocators.evaluatorUser); 
+					  set(tendercreationlocators.evaluatorUser, pdfResultReport.testData.get("User_Approver3"), "user");
+					  waitForObj(500);
+					  select(tendercreationlocators.approverTypeTender, pdfResultReport.testData.get("ApprovalType1"));  
+			
+					  //co-ordinator , min approver
+					  waitForElementToBeClickable(tendercreationlocators.parallelApprovermin);
+						set(tendercreationlocators.parallelApprovermin, pdfResultReport.testData.get("Min_Approver"), "minimum_Approver");
+					   waitForElementToBeClickable(tendercreationlocators.cordinatorPO);
+						click(tendercreationlocators.cordinatorPO, "parallel_Coordinator_Flag");
+					  
+						//approver 4 sequential
+						waitForElementToBeClickable(tendercreationlocators.userAdd_tender);
+						click(tendercreationlocators.userAdd_tender, "userAdd");
+						  waitForElementToBeVisible(tendercreationlocators.evaluatorUser); 
+						  set(tendercreationlocators.evaluatorUser, pdfResultReport.testData.get("User_Approver4"), "user");
+						  waitForObj(500);
+						  select(tendercreationlocators.approverTypeTender, pdfResultReport.testData.get("ApprovalType2")); 	  
+					  
+					  
+						//approver 5 sequential
+							waitForElementToBeClickable(tendercreationlocators.userAdd_tender);
+							click(tendercreationlocators.userAdd_tender, "userAdd");
+							  waitForElementToBeVisible(tendercreationlocators.tenderApproverUser); 
+							  set(tendercreationlocators.tenderApproverUser, pdfResultReport.testData.get("User_Approver5"), "user");
+							  waitForObj(500);
+							  select(tendercreationlocators.approverTypeTender, pdfResultReport.testData.get("ApprovalType2")); 	  
+					  
+					  
+							//approver 6 sequential
+								waitForElementToBeClickable(tendercreationlocators.userAdd_tender);
+								click(tendercreationlocators.userAdd_tender, "userAdd");
+								  waitForElementToBeVisible(tendercreationlocators.tenderApproverUser); 
+								  set(tendercreationlocators.tenderApproverUser, pdfResultReport.testData.get("User_Approver6"), "user");
+								  waitForObj(500);
+								  select(tendercreationlocators.approverTypeTender, pdfResultReport.testData.get("ApprovalType2"));   
+					  
+								//approver 7 sequential
+									waitForElementToBeClickable(tendercreationlocators.userAdd_tender);
+									click(tendercreationlocators.userAdd_tender, "userAdd");
+									  waitForElementToBeVisible(tendercreationlocators.tenderApproverUser); 
+									  set(tendercreationlocators.tenderApproverUser, pdfResultReport.testData.get("User_Approver7"), "user");
+									  waitForObj(500);
+									  select(tendercreationlocators.approverTypeTender, pdfResultReport.testData.get("ApprovalType2")); 
+									  
+									//approver 8 sequential
+										waitForElementToBeClickable(tendercreationlocators.userAdd_tender);
+										click(tendercreationlocators.userAdd_tender, "userAdd");
+										  waitForElementToBeVisible(tendercreationlocators.tenderApproverUser); 
+										  set(tendercreationlocators.tenderApproverUser, pdfResultReport.testData.get("User_Approver8"), "user");
+										  waitForObj(500);
+										  select(tendercreationlocators.approverTypeTender, pdfResultReport.testData.get("ApprovalType2")); 			  
+								
+										  waitForElementToBeClickable(tendercreationlocators.comments_tender);
+											set(tendercreationlocators.comments_tender, pdfResultReport.testData.get("UserDefinedApprover-Comments"),
+													"comments");
+											
+											waitForElementToBeClickable(tendercreationlocators.sendForApproval_tender);
+										  JSClick(tendercreationlocators.SendForAptovalbtn, "sendForApproval");
+									  
+					  
+					  
+			pdfResultReport.addStepDetails("AddMultipleUsersForSequentialParallelApproval_Evaluator_WF",
+					"should able to send for wf tender",
+					"Successfully send for wf tender" + " ", "Pass", "Y");
+			log.info("completed executing the method:: AddMultipleUsersForSequentialParallelApproval_Tender_WF");
+
+		} catch (Exception e) {
+			log.fatal("Unable to validate AddMultipleUsersForSequentialParallelApproval_Evaluator_WF" + e.getMessage());
+			pdfResultReport.addStepDetails("AddMultipleUsersForSequentialParallelApproval_Evaluator_WF",
+					"should able send for wf evaluation",
+					"Unable to send for wf evaluation" + e.getMessage(), "Fail", "N");
+		}
+		
+		
+	}
+
+	public void provideApproverComment() throws Throwable {
+		try {
+			log.info("started executing the method:: enterOverallComment_EvaluatorUser");
+
+			waitForObj(2000);
+			JSClick(By.xpath("//*[@aria-label='Bold']"), "overallComment_currentPart");
+			WebDriver driver = ThreadLocalWebdriver.getDriver();
+			driver.switchTo().frame(driver.findElement(By.tagName("iframe")));
+			set(tendercreationlocators.body_overallcomment, "Provide OverallComment", "overallComment_currentPart");
+			driver.switchTo().defaultContent();
+			waitForObj(2000);
+			
+			
+			/*
+			WebDriverWait wait = new WebDriverWait(driver, 200);
+			wait.until(ExpectedConditions.visibilityOfElementLocated(tendercreationlocators.TenEvalTab_Evaluation));
+			waitTillSpinnerDisable(driver, tendercreationlocators.LoadingBy);
+			 waitForObj(3000); */
+
+			pdfResultReport.addStepDetails("enterOverallComment_EvaluatorUser",
+					"OverallComment must be entered successfully And Should Submit",
+					"Successfully entered OverallComment And submitted" + " ", "Pass", "Y");
+			log.info("completed executing the method:: enterOverallComment_EvaluatorUser");
+		} catch (Exception e) {
+			log.fatal("Unable to Submit" + e.getMessage());
+			pdfResultReport.addStepDetails("enterOverallComment_EvaluatorUser",
+					"OverallComment must be entered successfully And Should Submit",
+					"Unable to Submit" + e.getMessage(), "Fail", "N");
+		}
+		
+	}
+
+	public void finalApprove() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
+
+	
+	public void verifyNoteSheetStatus(String status) throws Exception {
+		
+		try {
+			log.info("started executing the method:: verifyNoteSheetStatus");		
+		waitForElementToBeVisible(tendercreationlocators.notesheetListPage);
+		waitForObj(2500);
+		clear(tendercreationlocators.searchBoxGRN, NoteSheetNo);
+		set(tendercreationlocators.searchBoxGRN, NoteSheetNo, "search notesheet");
+
+		Assert.assertEquals(text(tendercreationlocators.notesheetStatus), status);
+
+				pdfResultReport.addStepDetails("verifyNoteSheetStatus",
+						"NoteSheetStatus should matched",
+						"Successfully mached notesheetstatus" + " ", "Pass", "Y");
+			
+			waitForObj(1000);
+			
+		} catch (Exception e) {
+			log.fatal("Not able to verifyNoteSheetStatuse" + e.getMessage());
+			pdfResultReport.addStepDetails("verifyNoteSheetStatus", "verifyNoteSheetStatus should matched",
+					"Notesheet status not mached" + e.getMessage(), "Fail", "N");
+		}
+		
+		
+	}
+	
+	
+	public void GoToApprovalworkFlowPendingindentAndSearchTheNotesheet() throws Throwable {
+		try {
+			log.info("started executing the method:: GoToApprovalworkFlowPendingindentAndSearchTheNotesheet");
+			//Click on menu button (141222)
+			JSClick(tendercreationlocators.mainMenuIcon, "MenuIcon");
+			mouseOver(tendercreationlocators.MyTask);
+			waitForObj(2000);
+			JSClick(tendercreationlocators.pending, "pending");
+			waitForElementToBeVisible(tendercreationlocators.Lbl_workflowinbox);
+			set(tendercreationlocators.search,NoteSheetNo, "search");
+			waitForObj(1000);
+			waitForElementToBeVisible(tendercreationlocators.notesheetTab);
+			waitForObj(5500);
+			click(tendercreationlocators.notesheetTab, "notesheet tab");
+			waitForElementToBeClickable(tendercreationlocators.Actionbtn_IndentApprover);
+			
+			pdfResultReport.addStepDetails("GoToApprovalworkFlowPendingindentAndSearchTheNotesheet",
+					"Should complete GoToApprovalworkFlowPendingindentAndSearchTheNotesheet",
+					"Successfully passed GoToApprovalworkFlowPendingindentAndSearchTheNotesheet" + " ", "Pass", "Y");
+			log.info("completed executing the method::GoToApprovalworkFlowPendingindentAndSearchTheNotesheet");
+		}
+		catch (Exception e) {
+			log.fatal("Not able to GoToApprovalworkFlowPendingindentAndSearchTheNotesheet" + e.getMessage());
+			pdfResultReport.addStepDetails("GoToApprovalworkFlowPendingindentAndSearchTheNotesheet", "Should complete GoToApprovalworkFlowPendingindentAndSearchTheNotesheet",
+					"Not passed GoToApprovalworkFlowPendingindentAndSearchTheNotesheet" + e.getMessage(), "Fail", "N");
+		}
+	}
+
+	public void reInitiate() throws Exception {
+		try {
+			log.info("started executing the method:: reInitiate");
+		waitForElementToBeClickable(tendercreationlocators.actionButtonotesheet);
+		click(tendercreationlocators.actionButtonotesheet, "action");
+		waitForElementToBeClickable(tendercreationlocators.reinitiated);
+		click(tendercreationlocators.reinitiated, "reinitiated");
+			
+			
+			pdfResultReport.addStepDetails("reInitiate",
+					"Should complete reInitiate",
+					"Successfully passed reInitiate" + " ", "Pass", "Y");
+			log.info("completed executing the method::reInitiate");
+		}
+		catch (Exception e) {
+			log.fatal("Not able to reInitiate" + e.getMessage());
+			pdfResultReport.addStepDetails("reInitiate", "Should complete reInitiate",
+					"Not passed reInitiate" + e.getMessage(), "Fail", "N");
+		}
+		
+	}
+
+	public void verifyNoteSheetReinitiatedOrNot(String status) throws Exception {
+		try {
+			log.info("started executing the method:: verifyNoteSheetReinitiatedOrNot");
+		
+			
+				log.info("started executing the method:: verifyNoteSheetStatus");		
+			waitForElementToBeVisible(tendercreationlocators.notesheetListPage);
+			waitForObj(2500);
+
+		if(text(tendercreationlocators.reinitiatedmsg).contains(status))
+		{
+		
+
+					waitForObj(1000);
+			
+			pdfResultReport.addStepDetails("verifyNoteSheetReinitiatedOrNot",
+					"Should complete verifyNoteSheetReinitiatedOrNot",
+					"Successfully passed verifyNoteSheetReinitiatedOrNot" + " ", "Pass", "Y");
+			log.info("completed executing the method::verifyNoteSheetReinitiatedOrNot");
+		}
+		}
+		catch (Exception e) {
+			log.fatal("Not able to verifyNoteSheetReinitiatedOrNot" + e.getMessage());
+			pdfResultReport.addStepDetails("verifyNoteSheetReinitiatedOrNot", "Should complete verifyNoteSheetReinitiatedOrNot",
+					"Not passed verifyNoteSheetReinitiatedOrNot" + e.getMessage(), "Fail", "N");
+		}
 		
 	}
 }

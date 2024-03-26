@@ -39,28 +39,20 @@ public class TC_SN_04VerifyDeleteOfSanctionNoteTest extends BaseClass_Web {
 	}
 	  initializeRepository();
 	  etendercomponentobj.openURL();
-	  posttendercomponentobj.sanction_Creator_Login();
+	 posttendercomponentobj.sanction_Creator_Login();
 	  posttendercomponentobj.clickPostTenderProcessLink();
 	  posttendercomponentobj.enterCompleted_TenderId_new() ;
 	  posttendercomponentobj.createSanctionNote();
 	  posttendercomponentobj.sanctionReferenceNumber();
-	  
+	 
 	  etendercomponentobj.tenderLogoutOld();
-	  
+	 
 	  posttendercomponentobj.sanction_Creator_Login();
 	  posttendercomponentobj.clickPostTenderProcessLink();
 	  posttendercomponentobj.enterCompleted_TenderId_new() ;
 	  posttendercomponentobj.deleteSanction();
 	  
 	  
-	  
-	  //posttendercomponentobj.documentNoSave();
-//	  posttendercomponentobj.notSendForApproval();
-//	  posttendercomponentobj.enterDocumentNoInSearch();
-	  /*
-	  posttendercomponentobj.viewDetailsValidation();
-	  posttendercomponentobj.clickOnDownloadSanctionReport();
-	  */
 	  etendercomponentobj.tenderLogoutOld();
 	 
 	}
