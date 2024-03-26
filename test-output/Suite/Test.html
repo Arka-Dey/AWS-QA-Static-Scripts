@@ -57,9 +57,9 @@ function toggleAllBoxes() {
 <tr>
 <td>Tests passed/Failed/Skipped:</td><td>0/1/0</td>
 </tr><tr>
-<td>Started on:</td><td>Mon Mar 04 15:00:15 IST 2024</td>
+<td>Started on:</td><td>Tue Mar 26 14:54:40 IST 2024</td>
 </tr>
-<tr><td>Total time:</td><td>3529 seconds (3529162 ms)</td>
+<tr><td>Total time:</td><td>86 seconds (86102 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -75,31 +75,21 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='com.testScripts_mjunction.TG1_TC_GRN_Create3StagesGRN_From_Indent_E2E.Create3StagesGRN_WithoutApprovalFlow()'><b>Create3StagesGRN_WithoutApprovalFlow</b><br>Test class: com.testScripts_mjunction.TG1_TC_GRN_Create3StagesGRN_From_Indent_E2E<br>Test method: TC_GRN_02:Verify the Submit Functionality during Create GRN with approval workflow & Check the GRN Status as Created<br>Parameters: 11</td>
-<td><div><pre>java.lang.AssertionError: Error Message : Error in entering the text in element: element not interactable
-  (Session info: chrome=122.0.6261.95)
-Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
-System info: host: &apos;MJLT-1563&apos;, ip: &apos;172.16.18.93&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_351&apos;
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 122.0.6261.95, chrome: {chromedriverVersion: 121.0.6167.85 (3f98d690ad7e..., userDataDir: C:\Users\ARKA~1.DEY\AppData...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:63822}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 124dba4408779621d0b3fdbd16c6a31a
-	at com.baseClasses.AutomationException.&lt;init&gt;(AutomationException.java:11)
-	at com.baseClasses.BaseClass_Web.set(BaseClass_Web.java:122)
-	at com.components.eTenderComponent.selectBidOpeningAndProvideCommentsForBidOpeningApproval4Cover2(eTenderComponent.java:5597)
-	at com.testScripts_mjunction.TG1_TC_GRN_Create3StagesGRN_From_Indent_E2E.Create3StagesGRN_WithoutApprovalFlow(TG1_TC_GRN_Create3StagesGRN_From_Indent_E2E.java:228)
+<td title='com.dynamicity.CreateTenderFromPR_Dynamically.createTenderFromPR_Dynamically()'><b>createTenderFromPR_Dynamically</b><br>Test class: com.dynamicity.CreateTenderFromPR_Dynamically<br>Test method: Scenario:1 -Verify mandatory negotiation functionality of a bidder<br>Parameters: 25</td>
+<td><div><pre>java.lang.RuntimeException: Failed to connect to the database
+	at com.Database.DatabaseComponent.DatabaseComponent_New(DatabaseComponent.java:43)
+	at com.Database.DatabaseComponent.encryptedPWD(DatabaseComponent.java:106)
+	at com.API.API_Component.Login(API_Component.java:2586)
+	at com.components.Dynamicity.templateGroupDetails(Dynamicity.java:7665)
+	at com.dynamicity.CreateTenderFromPR_Dynamically.createTenderFromPR_Dynamically(CreateTenderFromPR_Dynamically.java:54)
 	at java.util.ArrayList.forEach(Unknown Source)
-... Removed 27 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace617623257", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace617623257'><pre>java.lang.AssertionError: Error Message : Error in entering the text in element: element not interactable
-  (Session info: chrome=122.0.6261.95)
-Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
-System info: host: &apos;MJLT-1563&apos;, ip: &apos;172.16.18.93&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_351&apos;
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 122.0.6261.95, chrome: {chromedriverVersion: 121.0.6167.85 (3f98d690ad7e..., userDataDir: C:\Users\ARKA~1.DEY\AppData...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:63822}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 124dba4408779621d0b3fdbd16c6a31a
-	at com.baseClasses.AutomationException.&lt;init&gt;(AutomationException.java:11)
-	at com.baseClasses.BaseClass_Web.set(BaseClass_Web.java:122)
-	at com.components.eTenderComponent.selectBidOpeningAndProvideCommentsForBidOpeningApproval4Cover2(eTenderComponent.java:5597)
-	at com.testScripts_mjunction.TG1_TC_GRN_Create3StagesGRN_From_Indent_E2E.Create3StagesGRN_WithoutApprovalFlow(TG1_TC_GRN_Create3StagesGRN_From_Indent_E2E.java:228)
+... Removed 27 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1464502754", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1464502754'><pre>java.lang.RuntimeException: Failed to connect to the database
+	at com.Database.DatabaseComponent.DatabaseComponent_New(DatabaseComponent.java:43)
+	at com.Database.DatabaseComponent.encryptedPWD(DatabaseComponent.java:106)
+	at com.API.API_Component.Login(API_Component.java:2586)
+	at com.components.Dynamicity.templateGroupDetails(Dynamicity.java:7665)
+	at com.dynamicity.CreateTenderFromPR_Dynamically.createTenderFromPR_Dynamically(CreateTenderFromPR_Dynamically.java:54)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
@@ -129,8 +119,8 @@ Session ID: 124dba4408779621d0b3fdbd16c6a31a
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
 </pre></div></td>
-<td>3498</td>
-<td>com.testScripts_mjunction.TG1_TC_GRN_Create3StagesGRN_From_Indent_E2E@6497b078</td></tr>
+<td>69</td>
+<td>com.dynamicity.CreateTenderFromPR_Dynamically@37574691</td></tr>
 </table><p>
 </body>
 </html>

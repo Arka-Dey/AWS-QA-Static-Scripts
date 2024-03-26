@@ -173,12 +173,8 @@ public class eTenderComponent extends BaseClass_Web {
 			//waitForObj(2000);
 			waitForElementToBeVisible(tendercreationlocators.password);
 			set(tendercreationlocators.password, pdfResultReport.testData.get("AppPassword"), "password");
-			//Handle fixed Captcha (06/11/2020)
-			//set(tendercreationlocators.Captcha_Login, "1234", "Login_Captcha"); // edited on 201221
-			//Wait statement (Added to handle Captcha temporarily in AWS QA (19/10/2020))
-			//waitForObj(1000);
 			waitForElementToBeClickable(tendercreationlocators.okButton);
-			click(tendercreationlocators.okButton, "okButton");
+			SSClick(tendercreationlocators.okButton, "okButton");
 			waitForElement(tendercreationlocators.dashboardIcon, 5000);
 			pdfResultReport.addStepDetails("Tender creator login", "Tender creator must be sucessfully logged in",
 					"Successfully logged in as tender creator" + " ", "Pass", "Y");
@@ -194,13 +190,20 @@ public class eTenderComponent extends BaseClass_Web {
 	public void navigateToTenderList() throws Throwable {
 		try {
 			log.info("started executing the method:: navigateToTenderList");
+			JSClick(tendercreationlocators.mainMenuIcon, "MenuIcon");
+			mouseOver(tendercreationlocators.Enquiry);
+			waitForObj(2000);
+			JSClick(tendercreationlocators.AllEnquiry, "tenderList");
+			waitForObj(2000);
+			JSClick(tendercreationlocators.createNewTender, "createNewRfq");
+			/*
 			// mouseOver(tendercreationlocators.tendersIcon);
 			click(tendercreationlocators.tendersIcon, "tendersIcon");
 			waitForObj(2000);
 			JSClick(tendercreationlocators.tenderCreation, "tenderCreation");
 			waitForObj(2000);
 			JSClick(tendercreationlocators.createNewRfq, "createNewRfq");
-
+			*/
 			pdfResultReport.addStepDetails("Navigate to tender List", "Tender list must be navigated successfully",
 					"Successfully navigated to tender list" + " ", "Pass", "Y");
 			log.info("completed executing the method:: navigateToTenderList");
@@ -1184,8 +1187,8 @@ public class eTenderComponent extends BaseClass_Web {
 			waitForObj(2000);
 			click(tendercreationlocators.logout, "logout");
 			click(tendercreationlocators.logoutConfirmation, "logoutConfirmation");
-			ThreadLocalWebdriver.getDriver().navigate().to("https://epsnewprodaws.mjunction.in/EPSV2Web/");
-			waitForObj(10000);
+			//ThreadLocalWebdriver.getDriver().navigate().to("https://epsnewprodaws.mjunction.in/EPSV2Web/");
+			waitForObj(1000);
 			pdfResultReport.addStepDetails("Tender creator logout", "Tender creator must be sucessfully logout",
 					"Successfully logout" + " ", "Pass", "Y");
 			log.info("completed executing the method:: tendercreatorLogout");
@@ -1214,8 +1217,8 @@ public class eTenderComponent extends BaseClass_Web {
 	
 				waitForElementToBeInvisible(tendercreationlocators.loadingOverlay);
 			}
-			ThreadLocalWebdriver.getDriver().navigate().to("https://epsnewprodaws.mjunction.in/EPSV2Web/");
-			waitForObj(10000);
+			//ThreadLocalWebdriver.getDriver().navigate().to("https://epsnewprodaws.mjunction.in/EPSV2Web/");
+			waitForObj(1000);
 			pdfResultReport.addStepDetails("Tender creator logout", "Tender creator must be sucessfully logout",
 					"Successfully logout" + " ", "Pass", "Y");
 			log.info("completed executing the method:: tendercreatorLogout");
@@ -5359,7 +5362,7 @@ public class eTenderComponent extends BaseClass_Web {
 
 			fileWriter = new FileOutputStream(filePath);
 
-		} catch (FileNotFoundException e) {
+		} catch (IOException  e) {
 			e.printStackTrace();
 		}
 
