@@ -166,7 +166,8 @@
 					<useSystemClassLoader>false</useSystemClassLoader>
 					<testFailureIgnore>true</testFailureIgnore>
 					<suiteXmlFiles>
-						<suiteXmlFile>mjunctionTestNGXML/RFQ/TG1_TC_Negotiation_13_Openingapproval_N_Evaluationapproval_Y_Negotiate_All_bidder_Approve_Twobidder_Reject_OneBidder.xml</suiteXmlFile>
+						<suiteXmlFile>mjunctionTestNGXML/INDENT/RDCIS/TG1_TC_Indent_01_Creation_with_approval.xml</suiteXmlFile>
+						<suiteXmlFile>mjunctionTestNGXML/INDENT/RDCIS/TG1_TC_Indent_02_Creation_with_multiple_Approvers.xml</suiteXmlFile>
 					</suiteXmlFiles>
 				</configuration>
 			</plugin>
