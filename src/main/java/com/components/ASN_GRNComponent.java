@@ -3325,9 +3325,9 @@ public class ASN_GRNComponent extends BaseClass_Web {
 		try {
 			log.info("started executing the method:: clickDetailLinkInApprovalListPage");
 			waitForObj(2000);
-			click(tendercreationlocators.Actionbtn_IndentApprover, "Actionbtn_IndentApprover");
+			click(tendercreationlocators.ActionButton_approver_tender, "Actionbtn_IndentApprover");
 			//click(tendercreationlocators.Detailbtn_IndentApprover, "Detailbtn_IndentApprover"); //commenting this line due new CR
-			click(tendercreationlocators.sectionWiseView_IndentApprover, "sectionWiseView_IndentApprover");
+			click(tendercreationlocators.detailsSN, "sectionWiseView_IndentApprover");
 			waitForObj(5000);
 			waitForElementToBeClickable(tendercreationlocators.poApproverComment);
 			click(tendercreationlocators.poApproverComment, "poApproverComment");

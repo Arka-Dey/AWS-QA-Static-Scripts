@@ -102,7 +102,7 @@ public class TG1_TC_Corrigendum_03_DateCorrigendum_withApproval_Livestate extend
 		etendercomponentobj.enterTenderIdInSearch();
 		etendercomponentobj.datecorrigendum();
 		etendercomponentobj.corrigendumSaveButton();
-		etendercomponentobj.modifyDateScheduleTemplate1(	30,35);  
+		etendercomponentobj.modifyDateScheduleTemplate1(30,35);  
 		etendercomponentobj.AddTwoUsersForSequentialCorrigendumApproval();
 		etendercomponentobj.tenderLogout();
 		

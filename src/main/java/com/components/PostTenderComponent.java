@@ -371,7 +371,7 @@ public class PostTenderComponent extends BaseClass_Web {
 			
 			//===========================Added on 300124
 			WebDriver driver = ThreadLocalWebdriver.getDriver();
-			int size = driver.findElements(tendercreationlocators.actionDropdown).size(); //added on 09-01-23 by Arka
+			int size = driver.findElements(tendercreationlocators.ActionButton_approver_tender).size(); //added on 09-01-23 by Arka
 			waitForObj(2000);
 			if(size >=1)
 			{
@@ -4393,8 +4393,10 @@ public class PostTenderComponent extends BaseClass_Web {
 			JSClick(tendercreationlocators.pending, "pending");
 			waitForObj(3000);
 			eTenderComponent.waitForSpinnerToDisappear();
-			waitForElementToBeClickable(tendercreationlocators.poTab);
-			click(tendercreationlocators.poTab, "Order Tab");
+			//waitForElementToBeClickable(tendercreationlocators.poTab);
+			//click(tendercreationlocators.poTab, "Order Tab");
+			waitForElementToBeClickable(by);
+			click(by, "Order Tab");
 			//click(by, "PO_Tab");
 			
 			pdfResultReport.addStepDetails("navigateToApprovalPendingPage",
@@ -5852,9 +5854,9 @@ public class PostTenderComponent extends BaseClass_Web {
 					"Purchase Order Approval page must be navigate sucessfully ",
 					"Successfully navigated to Purchase Order Approval page" + " ", "Pass", "Y");
 			
-			click(tendercreationlocators.Actionbtn_IndentApprover_Backup, "Action_Button");
-			waitForElementToBeClickable(tendercreationlocators.snDetailsLink);
-			click(tendercreationlocators.snDetailsLink, "Details");
+			click(tendercreationlocators.ActionButton_approver_tender, "Action_Button");
+			waitForElementToBeClickable(tendercreationlocators.detailsSN);
+			click(tendercreationlocators.detailsSN, "Details");
 			waitForObj(4000);
 			pdfResultReport.addStepDetails("navigateToPurchaseOrderApproval",
 					"Purchase Order Approval page must be navigate sucessfully ",
@@ -8265,9 +8267,9 @@ public class PostTenderComponent extends BaseClass_Web {
 	public void sanctionNoteEvaluationValidation() throws Throwable {
 		try {
 			log.info("started executing the method:: sanctionNoteEvaluationValidation");
-			click(tendercreationlocators.Actionbtn_IndentApprover_Backup, "Action_Button");
-			waitForElementToBeClickable(tendercreationlocators.snDetailsLink);
-			click(tendercreationlocators.snDetailsLink, "Details");
+			click(tendercreationlocators.ActionButton_approver_tender, "Action_Button");
+			waitForElementToBeClickable(tendercreationlocators.detailsSN);
+			click(tendercreationlocators.detailsSN, "Details");
 			
 			/*
 			click(tendercreationlocators.details, "details");
@@ -11278,10 +11280,10 @@ public class PostTenderComponent extends BaseClass_Web {
 					"Purchase Order Approval page must be navigate sucessfully ",
 					"Successfully navigated to Purchase Order Approval page" + " ", "Pass", "Y");
 			waitForObj(2000);
-			click(tendercreationlocators.cancelIndentOrderTab, "Cancel Indent");
-			click(tendercreationlocators.Actionbtn_IndentApprover_Backup, "Action_Button");
-			waitForElementToBeClickable(tendercreationlocators.snDetailsLink);
-			click(tendercreationlocators.snDetailsLink, "Details");
+			//click(tendercreationlocators.cancelIndentOrderTab, "Cancel Indent");
+			click(tendercreationlocators.ActionButton_approver_tender, "Action_Button");
+			waitForElementToBeClickable(tendercreationlocators.detailsSN);
+			click(tendercreationlocators.detailsSN, "Details");
 			
 			pdfResultReport.addStepDetails("navigateToPurchaseOrderApproval",
 					"Purchase Order Approval page must be navigate sucessfully ",

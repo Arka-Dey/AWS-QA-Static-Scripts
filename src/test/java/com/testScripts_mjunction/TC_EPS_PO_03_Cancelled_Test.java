@@ -84,7 +84,7 @@ public class TC_EPS_PO_03_Cancelled_Test extends BaseClass_Web {
 	  etendercomponentobj.tenderLogout();
 	  
 	  posttendercomponentobj.poApprover1Login();
-	  posttendercomponentobj.navigateToApprovalPendingPage(tendercreationobj.poTab);
+	  posttendercomponentobj.navigateToApprovalPendingPage(tendercreationobj.CancelPOTab);
 	  posttendercomponentobj.navigateToPurchaseCancelOrderApproval();
 	  posttendercomponentobj.provide_PO_ApproverComment();
 	  posttendercomponentobj.purchaseOrderApproval();

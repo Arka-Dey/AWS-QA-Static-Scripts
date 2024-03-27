@@ -1131,18 +1131,13 @@ public class eTenderComponent extends BaseClass_Web {
 	public void tenderApproverLogin() throws Throwable {
 		try {
 			log.info("started executing the method:: tenderApproverLogin");
-			//click(tendercreationlocators.login, "login");
 			set(tendercreationlocators.userName, pdfResultReport.testData.get("TenderApproverUserName"), "userName");
-			//waitForObj(5000);
 			waitForElementToBeVisible(tendercreationlocators.password);
 			set(tendercreationlocators.password, pdfResultReport.testData.get("AppPassword"), "password");
 			pdfResultReport.addStepDetails("Tender creator login", "Entered Username and password",
 					"" + " ", "Pass", "Y");
 			log.info("completed executing the method:: tenderApproverLogin");
-			//Handle fixed Captcha (06/11/2020)
-			//set(tendercreationlocators.Captcha_Login, "1234", "Login_Captcha");
 			click(tendercreationlocators.okButton, "okButton");
-			//waitForObj(10000);
 			waitForElement(tendercreationlocators.UserIconnew, 5000);
 			pdfResultReport.addStepDetails("Tender creator login", "Tender approver must be sucessfully logged in",
 					"Successfully logged in as tender approver" + " ", "Pass", "Y");
@@ -12941,19 +12936,16 @@ public class eTenderComponent extends BaseClass_Web {
 			mouseOver(tendercreationlocators.MyTask);
 			waitForObj(2000);
 			JSClick(tendercreationlocators.pending, "pending");
-		
 			waitForElementToBeVisible(tendercreationlocators.Tenderlink_approver_tender);
-			
-			//waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
-			
-			waitForObj(2000);
+			click(tendercreationlocators.Tenderlink_approver_tender, "Tenderlink_approver_tender");
+			waitForObj(4000);
 			set(tendercreationlocators.search, tenderReferenceNoLocatorText, "search");
 			
 			WebDriver driver = ThreadLocalWebdriver.getDriver();
 			
 			//int size = driver.findElements(tendercreationlocators.details).size();
 			int size = driver.findElements(tendercreationlocators.ActionButton_approver_tender).size(); //added on 09-01-23 by Arka
-			waitForObj(1000);
+			waitForObj(2000);
 			if(size >=1)
 			{
 				System.out.println("**********************************************************************");
@@ -12992,12 +12984,8 @@ public class eTenderComponent extends BaseClass_Web {
 			mouseOver(tendercreationlocators.MyTask);
 			waitForObj(2000);
 			JSClick(tendercreationlocators.pending, "pending");
-		
-			waitForElementToBeVisible(tendercreationlocators.tender_corrigendum_Tab);
-			click(tendercreationlocators.tender_corrigendum_Tab, "coriggendum Tab");
-			
-			//waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
-			
+			waitForElementToBeVisible(tendercreationlocators.Tenderlink_approver_tender);
+			click(tendercreationlocators.Tenderlink_approver_tender, "Tenderlink_approver_tender");
 			waitForObj(4000);
 			set(tendercreationlocators.search, tenderReferenceNoLocatorText, "search");
 			
@@ -13458,15 +13446,14 @@ public class eTenderComponent extends BaseClass_Web {
 			mouseOver(tendercreationlocators.MyTask);
 			waitForObj(2000);
 			JSClick(tendercreationlocators.pending, "pending");
-			waitForElementToBeVisible(tendercreationlocators.Tenderlink_approver_tender);
-			waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
-			waitForObj(2000);
+			waitForObj(5000);
+			waitForElementToBeVisible(tendercreationlocators.tender_corrigendum_Tab);
+			waitForObj(4000);
 			click(tendercreationlocators.corrigendumTab, "corrigendumTab");
-            waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
-			waitForObj(2000); 
 			set(tendercreationlocators.search, tenderReferenceNoLocatorText, "search");
+			
 			WebDriver driver = ThreadLocalWebdriver.getDriver();
-			int size = driver.findElements(tendercreationlocators.details).size();
+			int size = driver.findElements(tendercreationlocators.ActionButton_approver_tender).size();
 			waitForObj(3000);
 			if(size >=1)
 			{
@@ -13490,9 +13477,9 @@ public class eTenderComponent extends BaseClass_Web {
 			}
 
 		} catch (Exception e) {
-			log.fatal("Unable to display the pending tender in approval work flow" + e.getMessage());
+			log.fatal("Unable to search Tender in corrigendum list" + e.getMessage());
 			pdfResultReport.addStepDetails("Verifying_Pendingtender_Corrigendumtab_sequentialWF",
-					"Should display the corrigendum tender in approval work flow","Unable to display the corrigendum tender in approval work flow" + e.getMessage(),
+					"Should not display the corrigendum tender in approval work flow","Unable to search the corrigendum tender in approval work flow" + e.getMessage(),
 					"Fail", "N");
                     Assert.fail("Failed Due to " + e.getMessage());
 		}
@@ -13510,25 +13497,14 @@ public class eTenderComponent extends BaseClass_Web {
 			mouseOver(tendercreationlocators.MyTask);
 			waitForObj(2000);
 			JSClick(tendercreationlocators.pending, "pending");
-			waitForElementToBeVisible(tendercreationlocators.Tenderlink_approver_tender);
-			
-			waitForObj(2000);
-			
-			waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
-			
-			waitForObj(2000);
-			
+			waitForObj(5000);
+			waitForElementToBeVisible(tendercreationlocators.tender_corrigendum_Tab);
+			waitForObj(4000);
 			click(tendercreationlocators.corrigendumTab, "corrigendumTab");
-			
-            waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
-			
-			waitForObj(2000);   
-			
 			set(tendercreationlocators.search, tenderReferenceNoLocatorText, "search");
 			
 			WebDriver driver = ThreadLocalWebdriver.getDriver();
-			
-			int size = driver.findElements(tendercreationlocators.details).size();
+			int size = driver.findElements(tendercreationlocators.ActionButton_approver_tender).size();
 			
 			if(size >=1)
 			{
@@ -13567,8 +13543,9 @@ public class eTenderComponent extends BaseClass_Web {
 			click(tendercreationlocators.ActionButton_approver_tender, "ActionButton_approver_tender");
 			click(tendercreationlocators.details, "details");
 			waitForElementToBeVisible(tendercreationlocators.approverComment);
-			waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
 			waitForObj(5000);
+			waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
+			waitForObj(3000);
 			pdfResultReport.addStepDetails("clickDetailLinkInApprovalListPage_CorrigendumApproval",
 					"Should Naviagte to Approver section comments page",
 					"Sucessfully  Naviagte to Approver section comments page", "Pass", "Y");
