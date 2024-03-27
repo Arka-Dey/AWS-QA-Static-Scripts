@@ -3,6 +3,9 @@
   <reporter-output>
   </reporter-output>
 <<<<<<< HEAD
+  <suite name="Suite" duration-ms="187639" started-at="2024-03-27T12:25:53 IST" finished-at="2024-03-27T12:29:00 IST">
+=======
+<<<<<<< HEAD
   <suite name="Suite" duration-ms="86102" started-at="2024-03-26T14:54:40 IST" finished-at="2024-03-26T14:56:06 IST">
     <groups>
     </groups>
@@ -15,22 +18,30 @@
                 <![CDATA[org.testng.TestRunner@3c8a7e38]]>
 =======
   <suite name="Suite" duration-ms="3412334" started-at="2024-03-19T12:23:41 IST" finished-at="2024-03-19T13:20:33 IST">
+>>>>>>> 3b3c0a1889a833ec35733e7718bfa1d005f9e039
     <groups>
     </groups>
-    <test name="Test" duration-ms="3412334" started-at="2024-03-19T12:23:41 IST" finished-at="2024-03-19T13:20:33 IST">
+    <test name="Test" duration-ms="187639" started-at="2024-03-27T12:25:53 IST" finished-at="2024-03-27T12:29:00 IST">
       <class name="com.testScripts_mjunction.TG1_TC_Evaluation_12_Openingapproval_N_Regression_Evaluationapproval_Y">
-        <test-method status="PASS" signature="setUpSuiteDetails(org.testng.ITestContext)[pri:0, instance:com.testScripts_mjunction.TG1_TC_Evaluation_12_Openingapproval_N_Regression_Evaluationapproval_Y@55141def]" name="setUpSuiteDetails" is-config="true" duration-ms="141" started-at="2024-03-19T12:23:41 IST" finished-at="2024-03-19T12:23:41 IST">
+        <test-method status="PASS" signature="setUpSuiteDetails(org.testng.ITestContext)[pri:0, instance:com.testScripts_mjunction.TG1_TC_Evaluation_12_Openingapproval_N_Regression_Evaluationapproval_Y@55141def]" name="setUpSuiteDetails" is-config="true" duration-ms="146" started-at="2024-03-27T12:25:53 IST" finished-at="2024-03-27T12:25:53 IST">
           <params>
             <param index="0">
               <value>
+<<<<<<< HEAD
+                <![CDATA[org.testng.TestRunner@5eccd3b9]]>
+=======
                 <![CDATA[org.testng.TestRunner@53534c15]]>
 >>>>>>> d20c77975f679a03f91d82b8afebadd871342272
+>>>>>>> 3b3c0a1889a833ec35733e7718bfa1d005f9e039
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpSuiteDetails -->
+<<<<<<< HEAD
+        <test-method status="PASS" signature="BeforeClass()[pri:0, instance:com.testScripts_mjunction.TG1_TC_Evaluation_12_Openingapproval_N_Regression_Evaluationapproval_Y@55141def]" name="BeforeClass" is-config="true" duration-ms="3041" started-at="2024-03-27T12:25:53 IST" finished-at="2024-03-27T12:25:56 IST">
+=======
 <<<<<<< HEAD
         <test-method status="PASS" signature="BeforeClass()[pri:0, instance:com.dynamicity.CreateTenderFromPR_Dynamically@37574691]" name="BeforeClass" is-config="true" duration-ms="3146" started-at="2024-03-26T14:54:41 IST" finished-at="2024-03-26T14:54:44 IST">
           <reporter-output>
@@ -43,10 +54,11 @@
                 <![CDATA[public void com.dynamicity.CreateTenderFromPR_Dynamically.createTenderFromPR_Dynamically(java.lang.String) throws java.lang.Throwable]]>
 =======
         <test-method status="PASS" signature="BeforeClass()[pri:0, instance:com.testScripts_mjunction.TG1_TC_Evaluation_12_Openingapproval_N_Regression_Evaluationapproval_Y@55141def]" name="BeforeClass" is-config="true" duration-ms="3019" started-at="2024-03-19T12:23:41 IST" finished-at="2024-03-19T12:23:44 IST">
+>>>>>>> 3b3c0a1889a833ec35733e7718bfa1d005f9e039
           <reporter-output>
           </reporter-output>
         </test-method> <!-- BeforeClass -->
-        <test-method status="PASS" signature="captureDesc(java.lang.reflect.Method)[pri:0, instance:com.testScripts_mjunction.TG1_TC_Evaluation_12_Openingapproval_N_Regression_Evaluationapproval_Y@55141def]" name="captureDesc" is-config="true" duration-ms="0" started-at="2024-03-19T12:23:44 IST" finished-at="2024-03-19T12:23:44 IST">
+        <test-method status="PASS" signature="captureDesc(java.lang.reflect.Method)[pri:0, instance:com.testScripts_mjunction.TG1_TC_Evaluation_12_Openingapproval_N_Regression_Evaluationapproval_Y@55141def]" name="captureDesc" is-config="true" duration-ms="0" started-at="2024-03-27T12:25:56 IST" finished-at="2024-03-27T12:25:56 IST">
           <params>
             <param index="0">
               <value>
@@ -59,10 +71,14 @@
           </reporter-output>
         </test-method> <!-- captureDesc -->
 <<<<<<< HEAD
+        <test-method status="FAIL" signature="Tender_Evaluation_with_OpeningApproval_N_Evaluationapproval_Y_NegotiateOnebidder_ApproveTwobidder(java.lang.String)[pri:0, instance:com.testScripts_mjunction.TG1_TC_Evaluation_12_Openingapproval_N_Regression_Evaluationapproval_Y@55141def]" name="Tender_Evaluation_with_OpeningApproval_N_Evaluationapproval_Y_NegotiateOnebidder_ApproveTwobidder" duration-ms="175319" started-at="2024-03-27T12:25:56 IST" description="Tender_Evaluation_with_OpeningApproval_N_Evaluationapproval_Y_NegotiateOnebidder_ApproveTwobidder_RFQ_from_Indent" finished-at="2024-03-27T12:28:51 IST">
+=======
+<<<<<<< HEAD
         <test-method status="FAIL" signature="createTenderFromPR_Dynamically(java.lang.String)[pri:0, instance:com.dynamicity.CreateTenderFromPR_Dynamically@37574691]" name="createTenderFromPR_Dynamically" duration-ms="69157" started-at="2024-03-26T14:54:44 IST" description="Scenario:1 -Verify mandatory negotiation functionality of a bidder" finished-at="2024-03-26T14:55:53 IST">
 =======
         <test-method status="FAIL" signature="Tender_Evaluation_with_OpeningApproval_N_Evaluationapproval_Y_NegotiateOnebidder_ApproveTwobidder(java.lang.String)[pri:0, instance:com.testScripts_mjunction.TG1_TC_Evaluation_12_Openingapproval_N_Regression_Evaluationapproval_Y@55141def]" name="Tender_Evaluation_with_OpeningApproval_N_Evaluationapproval_Y_NegotiateOnebidder_ApproveTwobidder" duration-ms="3385061" started-at="2024-03-19T12:23:44 IST" description="Tender_Evaluation_with_OpeningApproval_N_Evaluationapproval_Y_NegotiateOnebidder_ApproveTwobidder_RFQ_from_Indent" finished-at="2024-03-19T13:20:09 IST">
 >>>>>>> d20c77975f679a03f91d82b8afebadd871342272
+>>>>>>> 3b3c0a1889a833ec35733e7718bfa1d005f9e039
           <params>
             <param index="0">
               <value>
@@ -72,6 +88,10 @@
           </params>
           <exception class="java.lang.RuntimeException">
             <message>
+<<<<<<< HEAD
+              <![CDATA[Error Message : Error in clearing the text in element: no such element: Unable to locate element: {"method":"xpath","selector":"//textarea[@id='rdcis_quotatn_trms_cnditn.Evaluator_Remarks.0']"}
+  (Session info: chrome=123.0.6312.59)
+=======
 <<<<<<< HEAD
               <![CDATA[Failed to connect to the database]]>
             </message>
@@ -85,29 +105,37 @@ at com.dynamicity.CreateTenderFromPR_Dynamically.createTenderFromPR_Dynamically(
 =======
               <![CDATA[Error Message : Error during verifying the presence of Element: no such element: Unable to locate element: {"method":"xpath","selector":"(//td[@class='ng-binding'])[2]"}
   (Session info: chrome=122.0.6261.129)
+>>>>>>> 3b3c0a1889a833ec35733e7718bfa1d005f9e039
 For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
 Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
-System info: host: 'MJLT-2170', ip: '172.16.19.162', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_192'
+System info: host: 'MJLT-2170', ip: '172.16.17.67', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_192'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 122.0.6261.129, chrome: {chromedriverVersion: 121.0.6167.85 (3f98d690ad7e..., userDataDir: C:\Users\PAVEL~1.BAI\AppDat...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:53916}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: e0d80a47196cbd7389c55356b3207428
-*** Element info: {Using=xpath, value=(//td[@class='ng-binding'])[2]}]]>
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 123.0.6312.59, chrome: {chromedriverVersion: 123.0.6312.58 (6b4b19e9dfbb..., userDataDir: C:\Users\PAVEL~1.BAI\AppDat...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:57436}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 851bdfe21332913800c16d9e1e4abeef
+*** Element info: {Using=xpath, value=//textarea[@id='rdcis_quotatn_trms_cnditn.Evaluator_Remarks.0']}]]>
             </message>
             <full-stacktrace>
-              <![CDATA[java.lang.AssertionError: Error Message : Error during verifying the presence of Element: no such element: Unable to locate element: {"method":"xpath","selector":"(//td[@class='ng-binding'])[2]"}
-  (Session info: chrome=122.0.6261.129)
+              <![CDATA[java.lang.AssertionError: Error Message : Error in clearing the text in element: no such element: Unable to locate element: {"method":"xpath","selector":"//textarea[@id='rdcis_quotatn_trms_cnditn.Evaluator_Remarks.0']"}
+  (Session info: chrome=123.0.6312.59)
 For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
 Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
-System info: host: 'MJLT-2170', ip: '172.16.19.162', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_192'
+System info: host: 'MJLT-2170', ip: '172.16.17.67', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_192'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 122.0.6261.129, chrome: {chromedriverVersion: 121.0.6167.85 (3f98d690ad7e..., userDataDir: C:\Users\PAVEL~1.BAI\AppDat...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:53916}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: e0d80a47196cbd7389c55356b3207428
-*** Element info: {Using=xpath, value=(//td[@class='ng-binding'])[2]}
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 123.0.6312.59, chrome: {chromedriverVersion: 123.0.6312.58 (6b4b19e9dfbb..., userDataDir: C:\Users\PAVEL~1.BAI\AppDat...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:57436}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 851bdfe21332913800c16d9e1e4abeef
+*** Element info: {Using=xpath, value=//textarea[@id='rdcis_quotatn_trms_cnditn.Evaluator_Remarks.0']}
 at com.baseClasses.AutomationException.<init>(AutomationException.java:11)
+<<<<<<< HEAD
+at com.baseClasses.BaseClass_Web.clear(BaseClass_Web.java:136)
+at com.components.eTenderComponent.TG1_EvaluatorRemarks_cover1(eTenderComponent.java:14762)
+at com.components.eTenderComponent.evaluateSupplier(eTenderComponent.java:14715)
+at com.testScripts_mjunction.TG1_TC_Evaluation_12_Openingapproval_N_Regression_Evaluationapproval_Y.Tender_Evaluation_with_OpeningApproval_N_Evaluationapproval_Y_NegotiateOnebidder_ApproveTwobidder(TG1_TC_Evaluation_12_Openingapproval_N_Regression_Evaluationapproval_Y.java:194)
+=======
 at com.baseClasses.BaseClass_Web.IsElementPresent(BaseClass_Web.java:426)
 at com.components.eTenderComponent.validateTenderEvaluationTabDetails_WithEvaluatorUser(eTenderComponent.java:6178)
 at com.testScripts_mjunction.TG1_TC_Evaluation_12_Openingapproval_N_Regression_Evaluationapproval_Y.Tender_Evaluation_with_OpeningApproval_N_Evaluationapproval_Y_NegotiateOnebidder_ApproveTwobidder(TG1_TC_Evaluation_12_Openingapproval_N_Regression_Evaluationapproval_Y.java:208)
 >>>>>>> d20c77975f679a03f91d82b8afebadd871342272
+>>>>>>> 3b3c0a1889a833ec35733e7718bfa1d005f9e039
 at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
@@ -154,11 +182,11 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
       </class> <!-- com.dynamicity.CreateTenderFromPR_Dynamically -->
 =======
         </test-method> <!-- Tender_Evaluation_with_OpeningApproval_N_Evaluationapproval_Y_NegotiateOnebidder_ApproveTwobidder -->
-        <test-method status="PASS" signature="afterClass()[pri:0, instance:com.testScripts_mjunction.TG1_TC_Evaluation_12_Openingapproval_N_Regression_Evaluationapproval_Y@55141def]" name="afterClass" is-config="true" duration-ms="20892" started-at="2024-03-19T13:20:12 IST" finished-at="2024-03-19T13:20:33 IST">
+        <test-method status="PASS" signature="afterClass()[pri:0, instance:com.testScripts_mjunction.TG1_TC_Evaluation_12_Openingapproval_N_Regression_Evaluationapproval_Y@55141def]" name="afterClass" is-config="true" duration-ms="5970" started-at="2024-03-27T12:28:54 IST" finished-at="2024-03-27T12:29:00 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterClass -->
-        <test-method status="PASS" signature="afterSuite()[pri:0, instance:com.testScripts_mjunction.TG1_TC_Evaluation_12_Openingapproval_N_Regression_Evaluationapproval_Y@55141def]" name="afterSuite" is-config="true" duration-ms="48" started-at="2024-03-19T13:20:33 IST" finished-at="2024-03-19T13:20:33 IST">
+        <test-method status="PASS" signature="afterSuite()[pri:0, instance:com.testScripts_mjunction.TG1_TC_Evaluation_12_Openingapproval_N_Regression_Evaluationapproval_Y@55141def]" name="afterSuite" is-config="true" duration-ms="46" started-at="2024-03-27T12:29:01 IST" finished-at="2024-03-27T12:29:01 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterSuite -->

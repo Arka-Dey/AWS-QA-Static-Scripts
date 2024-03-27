@@ -155,20 +155,27 @@
                   </a> <!-- Tender_Evaluation_with_OpeningApproval_N_Evaluationapproval_Y_NegotiateOnebidder_ApproveTwobidder(11) -->
                   <span class="method-name">Tender_Evaluation_with_OpeningApproval_N_Evaluationapproval_Y_NegotiateOnebidder_ApproveTwobidder</span>
                   <span class="parameters">(11)</span>
-                  <div class="stack-trace">java.lang.AssertionError: Error Message : Error during verifying the presence of Element: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;(//td[@class=&apos;ng-binding&apos;])[2]&quot;}
-  (Session info: chrome=122.0.6261.129)
+                  <div class="stack-trace">java.lang.AssertionError: Error Message : Error in clearing the text in element: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//textarea[@id=&apos;rdcis_quotatn_trms_cnditn.Evaluator_Remarks.0&apos;]&quot;}
+  (Session info: chrome=123.0.6312.59)
 For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
 Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
-System info: host: &apos;MJLT-2170&apos;, ip: &apos;172.16.19.162&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_192&apos;
+System info: host: &apos;MJLT-2170&apos;, ip: &apos;172.16.17.67&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_192&apos;
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 122.0.6261.129, chrome: {chromedriverVersion: 121.0.6167.85 (3f98d690ad7e..., userDataDir: C:\Users\PAVEL~1.BAI\AppDat...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:53916}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: e0d80a47196cbd7389c55356b3207428
-*** Element info: {Using=xpath, value=(//td[@class=&apos;ng-binding&apos;])[2]}
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 123.0.6312.59, chrome: {chromedriverVersion: 123.0.6312.58 (6b4b19e9dfbb..., userDataDir: C:\Users\PAVEL~1.BAI\AppDat...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:57436}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 851bdfe21332913800c16d9e1e4abeef
+*** Element info: {Using=xpath, value=//textarea[@id=&apos;rdcis_quotatn_trms_cnditn.Evaluator_Remarks.0&apos;]}
 	at com.baseClasses.AutomationException.&lt;init&gt;(AutomationException.java:11)
+<<<<<<< HEAD
+	at com.baseClasses.BaseClass_Web.clear(BaseClass_Web.java:136)
+	at com.components.eTenderComponent.TG1_EvaluatorRemarks_cover1(eTenderComponent.java:14762)
+	at com.components.eTenderComponent.evaluateSupplier(eTenderComponent.java:14715)
+	at com.testScripts_mjunction.TG1_TC_Evaluation_12_Openingapproval_N_Regression_Evaluationapproval_Y.Tender_Evaluation_with_OpeningApproval_N_Evaluationapproval_Y_NegotiateOnebidder_ApproveTwobidder(TG1_TC_Evaluation_12_Openingapproval_N_Regression_Evaluationapproval_Y.java:194)
+=======
 	at com.baseClasses.BaseClass_Web.IsElementPresent(BaseClass_Web.java:426)
 	at com.components.eTenderComponent.validateTenderEvaluationTabDetails_WithEvaluatorUser(eTenderComponent.java:6178)
 	at com.testScripts_mjunction.TG1_TC_Evaluation_12_Openingapproval_N_Regression_Evaluationapproval_Y.Tender_Evaluation_with_OpeningApproval_N_Evaluationapproval_Y_NegotiateOnebidder_ApproveTwobidder(TG1_TC_Evaluation_12_Openingapproval_N_Regression_Evaluationapproval_Y.java:208)
 >>>>>>> d20c77975f679a03f91d82b8afebadd871342272
+>>>>>>> 3b3c0a1889a833ec35733e7718bfa1d005f9e039
 	at java.util.ArrayList.forEach(Unknown Source)
 ... Removed 27 stack frames
 </div> <!-- stack-trace -->
@@ -256,17 +263,25 @@ data.setCell(0, 3, 69157);
 =======
 data.setCell(0, 1, 'Tender_Evaluation_with_OpeningApproval_N_Evaluationapproval_Y_NegotiateOnebidder_ApproveTwobidder')
 data.setCell(0, 2, 'com.testScripts_mjunction.TG1_TC_Evaluation_12_Openingapproval_N_Regression_Evaluationapproval_Y')
+<<<<<<< HEAD
+data.setCell(0, 3, 175319);
+=======
 data.setCell(0, 3, 3385061);
 >>>>>>> d20c77975f679a03f91d82b8afebadd871342272
+>>>>>>> 3b3c0a1889a833ec35733e7718bfa1d005f9e039
 window.suiteTableData['Suite']= { tableData: data, tableDiv: 'times-div-Suite'}
 return data;
 }
               </script>
 <<<<<<< HEAD
+              <span class="suite-total-time">Total running time: 2 minutes</span>
+=======
+<<<<<<< HEAD
               <span class="suite-total-time">Total running time: 1 minutes</span>
 =======
               <span class="suite-total-time">Total running time: 56 minutes</span>
 >>>>>>> d20c77975f679a03f91d82b8afebadd871342272
+>>>>>>> 3b3c0a1889a833ec35733e7718bfa1d005f9e039
               <div id="times-div-Suite">
               </div> <!-- times-div-Suite -->
             </div> <!-- times-div -->
@@ -299,8 +314,12 @@ return data;
 =======
               <div class="chronological-class-name">com.testScripts_mjunction.TG1_TC_Evaluation_12_Openingapproval_N_Regression_Evaluationapproval_Y</div> <!-- chronological-class-name -->
               <div class="configuration-suite before">
+<<<<<<< HEAD
+                <span class="method-name">setUpSuiteDetails(org.testng.TestRunner@5eccd3b9)</span>
+=======
                 <span class="method-name">setUpSuiteDetails(org.testng.TestRunner@53534c15)</span>
 >>>>>>> d20c77975f679a03f91d82b8afebadd871342272
+>>>>>>> 3b3c0a1889a833ec35733e7718bfa1d005f9e039
                 <span class="method-start">0 ms</span>
               </div> <!-- configuration-suite before -->
               <div class="configuration-class before">
@@ -316,8 +335,12 @@ return data;
               </div> <!-- configuration-class before -->
               <div class="configuration-method before">
                 <span class="method-name">captureDesc(public void com.testScripts_mjunction.TG1_TC_Evaluation_12_Openingapproval_N_Regression_Evaluationap...)</span>
+<<<<<<< HEAD
+                <span class="method-start">3214 ms</span>
+=======
                 <span class="method-start">3192 ms</span>
 >>>>>>> d20c77975f679a03f91d82b8afebadd871342272
+>>>>>>> 3b3c0a1889a833ec35733e7718bfa1d005f9e039
               </div> <!-- configuration-method before -->
               <div class="test-method">
                 <img src="failed.png">
@@ -335,16 +358,20 @@ return data;
                 <span class="method-start">86896 ms</span>
 =======
                 <span class="method-name">Tender_Evaluation_with_OpeningApproval_N_Evaluationapproval_Y_NegotiateOnebidder_ApproveTwobidder(11)</span>
-                <span class="method-start">3192 ms</span>
+                <span class="method-start">3215 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-class after">
                 <span class="method-name">afterClass</span>
-                <span class="method-start">3391583 ms</span>
+                <span class="method-start">181813 ms</span>
               </div> <!-- configuration-class after -->
               <div class="configuration-suite after">
                 <span class="method-name">afterSuite</span>
+<<<<<<< HEAD
+                <span class="method-start">187872 ms</span>
+=======
                 <span class="method-start">3412528 ms</span>
 >>>>>>> d20c77975f679a03f91d82b8afebadd871342272
+>>>>>>> 3b3c0a1889a833ec35733e7718bfa1d005f9e039
               </div> <!-- configuration-suite after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

@@ -48,11 +48,11 @@ public class TG1_TC_Evaluation_12_Openingapproval_N_Regression_Evaluationapprova
 
 		WebDriver driver = ThreadLocalWebdriver.getDriver();
         driver.manage().timeouts().implicitlyWait(100, TimeUnit.SECONDS);
-		driver.manage().timeouts().pageLoadTimeout(100, TimeUnit.SECONDS);	
+		driver.manage().timeouts().pageLoadTimeout(100, TimeUnit.SECONDS);	 
 		initializeRepository();
 	//Creating a new Indent with No approval
 		etendercomponentobj.openURL();
-		
+	/*	
 		rfqfromintendcomponentobj.IndentcreatorLogin();
 		rfqfromintendcomponentobj.navigateToIndentCreation();
 		rfqfromintendcomponentobj.IndentTG1_General_Info_tabvalidation("Indigenous Indent (Supply & Service Both) V-004");
@@ -70,7 +70,7 @@ public class TG1_TC_Evaluation_12_Openingapproval_N_Regression_Evaluationapprova
 		rfqfromintendcomponentobj.enterIndentNoInSearch();
 		rfqfromintendcomponentobj.VerifyIndentStatus("Pending For Approval");
 		etendercomponentobj.tenderLogout();
-		
+			
 		//Approve the created indent
 		rfqfromintendcomponentobj.IndentapproverLogin();
 		rfqfromintendcomponentobj.GoToApprovalworkFlowPendingindentAndSearchTheIndent();
@@ -78,7 +78,7 @@ public class TG1_TC_Evaluation_12_Openingapproval_N_Regression_Evaluationapprova
 		rfqfromintendcomponentobj.validateIndentdataAtApproverEnd();   //validate indent data at approver end sectionWise view
 		rfqfromintendcomponentobj.ApproverOverAllComentWithIndentHasBeenApproved();
 		etendercomponentobj.tenderLogoutOld();
-		
+	
 		//Verifying the indent status after approval
 		rfqfromintendcomponentobj.IndentcreatorLogin();
 		rfqfromintendcomponentobj.navigateToIndentListing();
@@ -115,8 +115,7 @@ public class TG1_TC_Evaluation_12_Openingapproval_N_Regression_Evaluationapprova
 
 		//Bid submission process	
 		rfqfromintendcomponentobj.waitTillBidstartDateReached();
-		
-		
+			
 		etendercomponentobj.bidder_01_Login();
 		etendercomponentobj.enterTenderIdInSearch_bidsubmission();
 		etendercomponentobj.navigateToActionDropdown_bidsubmission();
@@ -187,43 +186,82 @@ public class TG1_TC_Evaluation_12_Openingapproval_N_Regression_Evaluationapprova
 		etendercomponentobj.checkTenderStatusAndTenderStage("Evaluation");
 		//etendercomponentobj.verifyTenderStageIsInFinalApprovalCover_1Or_Cover2();
 		etendercomponentobj.tenderLogout();
-		
-		//Tender Evaluator evaluate(approve and Negotiate) the bid cover1
+		*/
+		//Tender Evaluator evaluate(approve ) the bid cover1
 		etendercomponentobj.evaluator1Login();
 		etendercomponentobj.validateTenderEvaluationTabDetails_WithEvaluatorUser();
 		etendercomponentobj.clickDetailsLink();
-		etendercomponentobj.evaluateSupplier("Tech Mahindra", "Negotiate", "Negotiate with Tech Mahindra", 1);
+		etendercomponentobj.evaluateSupplier("Tech Mahindra", "Approve", "Approve Mahindra", 1);
 		etendercomponentobj.evaluateSupplier("CTS", "Approve", "Approve CTS", 1);
-		etendercomponentobj.evaluateSupplier("TCS", "Approve", "Approve TCS", 1);
+		etendercomponentobj.evaluateSupplier("TCS", "Approve", "Approve TCS", 1);    
 		//etendercomponentobj.enterOverallComment_EvaluatorUser();
 		
 		etendercomponentobj.provideApproverComment();
-		etendercomponentobj.tenderApprovalDecision("forward");
-		etendercomponentobj.AddMultipleUsersForSequentialParallelApproval_Evaluation_WF();  //creator action initiate wf  with 3 parallel and 5 sequential flow
+		etendercomponentobj.sanctionApprovalDecision("forward");
+		etendercomponentobj.AddMultipleUsersForParallelApproval_Evaluation_WF_and_assign_item(3);  //creator action initiate wf  with 3 parallel and 5 sequential flow
+		
 		etendercomponentobj.tenderLogoutOld();
 		 
 		
-		//approver1
+		//approver1  branch with b1 and b2
 		  posttendercomponentobj.sanctionNoteApproverLogin(pdfResultReport.testData.get("Approver1"));
 		  etendercomponentobj.validateTenderEvaluationTabDetails_WithEvaluatorUser();
 			etendercomponentobj.clickDetailsLink();
-			etendercomponentobj.evaluateSupplier("Tech Mahindra", "Negotiate", "Negotiate with Tech Mahindra", 1);
-			etendercomponentobj.evaluateSupplier("CTS", "Approve", "Approve CTS", 1);
-			etendercomponentobj.evaluateSupplier("TCS", "Approve", "Approve TCS", 1);
-			etendercomponentobj.provideApproverComment();
-			etendercomponentobj.tenderApprovalDecision("approve");
-		  etendercomponentobj.tenderLogoutOld();
+			rfqfromintendcomponentobj.aproverBranchingForEvaluationApprover("Mr Test Approver06","Mr Test Approver07");
+			 etendercomponentobj.tenderLogoutOld();
+			 
+			 
+			 
 		  
-		//approver2
-		  posttendercomponentobj.sanctionNoteApproverLogin(pdfResultReport.testData.get("Approver2"));
-		  etendercomponentobj.validateTenderEvaluationTabDetails_WithEvaluatorUser();
-			etendercomponentobj.clickDetailsLink();
-			etendercomponentobj.evaluateSupplier("Tech Mahindra", "Negotiate", "Negotiate with Tech Mahindra", 1);
-			etendercomponentobj.evaluateSupplier("CTS", "Approve", "Approve CTS", 1);
-			etendercomponentobj.evaluateSupplier("TCS", "Approve", "Approve TCS", 1);
-			etendercomponentobj.provideApproverComment();
-			etendercomponentobj.tenderApprovalDecision("approve");
-		  etendercomponentobj.tenderLogoutOld();
+		  
+		  //action taken by b1 user
+			  posttendercomponentobj.sanctionNoteApproverLogin(pdfResultReport.testData.get("Approver6"));
+			  etendercomponentobj.validateTenderEvaluationTabDetails_WithEvaluatorUser();
+				etendercomponentobj.clickDetailsLink();
+				etendercomponentobj.evaluateSupplier("Tech Mahindra", "Approve", "Approve Mahindra", 1);
+				etendercomponentobj.evaluateSupplier("CTS", "Approve", "Approve CTS", 1);
+				etendercomponentobj.evaluateSupplier("TCS", "Approve", "Approve TCS", 1);
+				etendercomponentobj.provideApproverComment();
+				etendercomponentobj.tenderApprovalDecision("approve");
+			  etendercomponentobj.tenderLogoutOld();
+		  
+		  
+		  
+		  //forward by B2 to B1,B3
+			  posttendercomponentobj.sanctionNoteApproverLogin(pdfResultReport.testData.get("Approver7"));
+			  etendercomponentobj.validateTenderEvaluationTabDetails_WithEvaluatorUser();
+				etendercomponentobj.clickDetailsLink();
+				rfqfromintendcomponentobj.aproverBranchingForEvaluationApprover("Mr Test Approver06","Mr Test Approver08");
+				 etendercomponentobj.tenderLogoutOld();
+		  
+		  
+		 //action taken by b1 user
+				  posttendercomponentobj.sanctionNoteApproverLogin(pdfResultReport.testData.get("Approver6"));
+				  etendercomponentobj.validateTenderEvaluationTabDetails_WithEvaluatorUser();
+					etendercomponentobj.clickDetailsLink();
+					etendercomponentobj.evaluateSupplier("Tech Mahindra", "Approve", "Approve Mahindra", 1);
+					etendercomponentobj.evaluateSupplier("CTS", "Approve", "Approve CTS", 1);
+					etendercomponentobj.evaluateSupplier("TCS", "Approve", "Approve TCS", 1);
+					etendercomponentobj.provideApproverComment();
+					etendercomponentobj.tenderApprovalDecision("approve");
+				  etendercomponentobj.tenderLogoutOld();
+			  
+		  
+		  
+		
+		  //approve by approver1
+				  posttendercomponentobj.sanctionNoteApproverLogin(pdfResultReport.testData.get("Approver1"));
+				  etendercomponentobj.validateTenderEvaluationTabDetails_WithEvaluatorUser();
+					etendercomponentobj.clickDetailsLink();
+					etendercomponentobj.evaluateSupplier("Tech Mahindra", "Approve", "Approve Mahindra", 1);
+					etendercomponentobj.evaluateSupplier("CTS", "Approve", "Approve CTS", 1);
+					etendercomponentobj.evaluateSupplier("TCS", "Approve", "Approve TCS", 1);
+					etendercomponentobj.provideApproverComment();
+					etendercomponentobj.tenderApprovalDecision("approve");
+				  etendercomponentobj.tenderLogoutOld();
+		  
+		  
+		 
 		  
 		//approver3
 		  posttendercomponentobj.sanctionNoteApproverLogin(pdfResultReport.testData.get("Approver3"));
@@ -235,200 +273,10 @@ public class TG1_TC_Evaluation_12_Openingapproval_N_Regression_Evaluationapprova
 			etendercomponentobj.provideApproverComment();
 			etendercomponentobj.tenderApprovalDecision("approve");
 		  etendercomponentobj.tenderLogoutOld();
-		  
-		//approver4
-		  posttendercomponentobj.sanctionNoteApproverLogin(pdfResultReport.testData.get("Approver4"));
-		  etendercomponentobj.validateTenderEvaluationTabDetails_WithEvaluatorUser();
-			etendercomponentobj.clickDetailsLink();
-			etendercomponentobj.evaluateSupplier("Tech Mahindra", "Negotiate", "Negotiate with Tech Mahindra", 1);
-			etendercomponentobj.evaluateSupplier("CTS", "Approve", "Approve CTS", 1);
-			etendercomponentobj.evaluateSupplier("TCS", "Approve", "Approve TCS", 1);
-			etendercomponentobj.provideApproverComment();
-			etendercomponentobj.tenderApprovalDecision("approve");
-		  etendercomponentobj.tenderLogoutOld();
-		
-		//approver5
-		  posttendercomponentobj.sanctionNoteApproverLogin(pdfResultReport.testData.get("Approver5"));
-		  etendercomponentobj.validateTenderEvaluationTabDetails_WithEvaluatorUser();
-			etendercomponentobj.clickDetailsLink();
-			etendercomponentobj.evaluateSupplier("Tech Mahindra", "Negotiate", "Negotiate with Tech Mahindra", 1);
-			etendercomponentobj.evaluateSupplier("CTS", "Approve", "Approve CTS", 1);
-			etendercomponentobj.evaluateSupplier("TCS", "Approve", "Approve TCS", 1);
-			etendercomponentobj.provideApproverComment();
-			etendercomponentobj.tenderApprovalDecision("approve");
-		  etendercomponentobj.tenderLogoutOld();
-		
-		//approver6
-		  posttendercomponentobj.sanctionNoteApproverLogin(pdfResultReport.testData.get("Approver6"));
-		  etendercomponentobj.validateTenderEvaluationTabDetails_WithEvaluatorUser();
-			etendercomponentobj.clickDetailsLink();
-			etendercomponentobj.evaluateSupplier("Tech Mahindra", "Negotiate", "Negotiate with Tech Mahindra", 1);
-			etendercomponentobj.evaluateSupplier("CTS", "Approve", "Approve CTS", 1);
-			etendercomponentobj.evaluateSupplier("TCS", "Approve", "Approve TCS", 1);
-			etendercomponentobj.provideApproverComment();
-			etendercomponentobj.tenderApprovalDecision("approve");
-		  etendercomponentobj.tenderLogoutOld();
-		
-		//approver7
-		  posttendercomponentobj.sanctionNoteApproverLogin(pdfResultReport.testData.get("Approver7"));
-		  etendercomponentobj.validateTenderEvaluationTabDetails_WithEvaluatorUser();
-			etendercomponentobj.clickDetailsLink();
-			etendercomponentobj.evaluateSupplier("Tech Mahindra", "Negotiate", "Negotiate with Tech Mahindra", 1);
-			etendercomponentobj.evaluateSupplier("CTS", "Approve", "Approve CTS", 1);
-			etendercomponentobj.evaluateSupplier("TCS", "Approve", "Approve TCS", 1);
-			etendercomponentobj.provideApproverComment();
-			etendercomponentobj.tenderApprovalDecision("approve");
-		  etendercomponentobj.tenderLogoutOld();
-		  
-		//approver8
-		  posttendercomponentobj.sanctionNoteApproverLogin(pdfResultReport.testData.get("Approver8"));
-		  etendercomponentobj.validateTenderEvaluationTabDetails_WithEvaluatorUser();
-			etendercomponentobj.clickDetailsLink();
-			etendercomponentobj.evaluateSupplier("Tech Mahindra", "Approve", "Approve Tech Mahindra", 1);
-			etendercomponentobj.evaluateSupplier("CTS", "Approve", "Approve CTS", 1);
-			etendercomponentobj.evaluateSupplier("TCS", "Approve", "Approve TCS", 1);
-			etendercomponentobj.enterOverallComment_EvaluatorUser();
-			etendercomponentobj.tenderLogoutOld();
-		
+	
 		  
 		  
 		  
-		  
-		// Negotiation WorkFlow
-		etendercomponentobj.tendercreatorLogin();
-		etendercomponentobj.navigateToTenderListing();
-		etendercomponentobj.enterTenderIdInSearch();
-		etendercomponentobj.checkTenderStatusAndTenderStage("Evaluation");
-		etendercomponentobj.clickInitiateNegotiationLink();
-		//etendercomponentobj.negotiationDetailPageValidation();
-		etendercomponentobj.negotiation_dateSchedule(2, 7);
-		//Need to write script for Buyer comment and attachment in negotiation.action page
-		etendercomponentobj.enterTenderIdInSearch();
-		etendercomponentobj.checkTenderStatusAndTenderStageContains("Cover 1 Negotiation");
-		etendercomponentobj.tenderLogout();
-		
-		etendercomponentobj.waitTillBidstartDateReached();
-		
-		//Bid submission of the negotiated bidder
-		etendercomponentobj.commonLogin("tech_auto_01");
-		etendercomponentobj.navigate_to_bidList_page();
-		//etendercomponentobj.enterTenderIdInSearch_bidsubmission();
-		etendercomponentobj.submittedBid_Tab_Validation();
-		etendercomponentobj.BidNoSave();
-		etendercomponentobj.TG1_negotiatedBidderSubmission(1);
-		etendercomponentobj.submitBid_link_in_previewAllPage();
-		etendercomponentobj.navigate_to_bidList_page();
-		//etendercomponentobj.enterTenderIdInSearch_bidsubmission();
-		etendercomponentobj.submittedBid_Tab_Validation();
-		etendercomponentobj.VerifyBidno_after_Negotiatedbid();
-		//etendercomponentobj.TG1_validateBidPreview_BidListPage();
-		etendercomponentobj.tenderLogoutOld();
-		 
-		etendercomponentobj.waitTillBidDuetDateReached();
-		
-		//Evaluation: Cover 1 work flow after negotiation
-		etendercomponentobj.tendercreatorLogin();
-		etendercomponentobj.navigateToTenderListing();
-		etendercomponentobj.enterTenderIdInSearch();
-		etendercomponentobj.clickEvaluationSettingsLink();
-		etendercomponentobj.selectYesForApprovalAndEvaluationRequired();
-		etendercomponentobj.selectEvaluatorAndProvideCommentsForBidEvaluationFlow_AfterNegotiation();
-		etendercomponentobj.SendForApprovalInEvaluationsetting();
-		etendercomponentobj.approveNegotiationAlert();
-		etendercomponentobj.enterTenderIdInSearch();
-		etendercomponentobj.checkTenderStatusAndTenderStage("Evaluation");
-		
-		//Tender creator decrypt the Negotiated bid for all the bidder after negotiation in cover1
-		etendercomponentobj.clickPendingForEvaluationApprovalStage();
-		etendercomponentobj.decryptingTheBidder();
-		etendercomponentobj.submitBidDetailPage();
-		etendercomponentobj.enterTenderIdInSearch();
-		etendercomponentobj.checkTenderStatusAndTenderStage("Evaluation");
-		etendercomponentobj.tenderLogout();
-		
-		//Negotiate against with two suppliers "Tech Mahindra" and "CTS" in Cover 1
-		etendercomponentobj.evaluator1Login();
-		etendercomponentobj.validateTenderEvaluationTabDetails_WithEvaluatorUser();
-		etendercomponentobj.clickDetailsLink();
-		etendercomponentobj.evaluateSupplier("Tech Mahindra", "Negotiate", "Negotiate with Tech Mahindra 2nd time", 1);
-		etendercomponentobj.evaluateSupplier("CTS", "Negotiate", "Negotiate with CTS 1st time", 1);
-		etendercomponentobj.enterOverallComment_EvaluatorUser();
-		etendercomponentobj.tenderLogoutOld();
-		
-		// Negotiation WorkFlow 2nd time
-		etendercomponentobj.tendercreatorLogin();
-		etendercomponentobj.navigateToTenderListing();
-		etendercomponentobj.enterTenderIdInSearch();
-		etendercomponentobj.checkTenderStatusAndTenderStage("Evaluation");
-		etendercomponentobj.clickInitiateNegotiationLink();
-		//etendercomponentobj.negotiationDetailPageValidation();
-		etendercomponentobj.negotiation_dateSchedule(2, 7);
-		//Need to write script for Buyer comment and attachment in negotiation.action page
-		etendercomponentobj.enterTenderIdInSearch();
-		etendercomponentobj.checkTenderStatusAndTenderStageContains("Cover 1 Negotiation");
-		etendercomponentobj.tenderLogout();
-		
-		etendercomponentobj.waitTillBidstartDateReached();
-		
-		//Bid submission of the negotiated bidder: Tech mahindra
-		etendercomponentobj.commonLogin("tech_auto_01");
-		etendercomponentobj.navigate_to_bidList_page();
-		//etendercomponentobj.enterTenderIdInSearch_bidsubmission();
-		etendercomponentobj.submittedBid_Tab_Validation();
-		etendercomponentobj.BidNoSave();
-		etendercomponentobj.TG1_negotiatedBidderSubmission(1);
-		etendercomponentobj.submitBid_link_in_previewAllPage();
-		etendercomponentobj.navigate_to_bidList_page();
-		//etendercomponentobj.enterTenderIdInSearch_bidsubmission();
-		etendercomponentobj.submittedBid_Tab_Validation();
-		etendercomponentobj.VerifyBidno_after_Negotiatedbid();
-		//etendercomponentobj.TG1_validateBidPreview_BidListPage();
-		etendercomponentobj.tenderLogoutOld();
-		
-		//Bid submission of the negotiated bidder: CTS
-		etendercomponentobj.commonLogin("cts_auto_01");
-		etendercomponentobj.navigate_to_bidList_page();
-		//etendercomponentobj.enterTenderIdInSearch_bidsubmission();
-		etendercomponentobj.submittedBid_Tab_Validation();
-		etendercomponentobj.BidNoSave();
-		etendercomponentobj.TG1_negotiatedBidderSubmission(1);
-		etendercomponentobj.submitBid_link_in_previewAllPage();
-		etendercomponentobj.navigate_to_bidList_page();
-		//etendercomponentobj.enterTenderIdInSearch_bidsubmission();
-		etendercomponentobj.submittedBid_Tab_Validation();
-		etendercomponentobj.VerifyBidno_after_Negotiatedbid();
-		//etendercomponentobj.TG1_validateBidPreview_BidListPage();
-		etendercomponentobj.tenderLogoutOld();
-		
-		etendercomponentobj.waitTillBidDuetDateReached();
-		
-		//Evaluation: Cover 1 work flow after negotiation
-		etendercomponentobj.tendercreatorLogin();
-		etendercomponentobj.navigateToTenderListing();
-		etendercomponentobj.enterTenderIdInSearch();
-		etendercomponentobj.clickEvaluationSettingsLink();
-		etendercomponentobj.selectYesForApprovalAndEvaluationRequired();
-		etendercomponentobj.selectEvaluatorAndProvideCommentsForBidEvaluationFlow_AfterNegotiation();
-		etendercomponentobj.SendForApprovalInEvaluationsetting();
-		etendercomponentobj.approveNegotiationAlert();
-		etendercomponentobj.enterTenderIdInSearch();
-		etendercomponentobj.checkTenderStatusAndTenderStage("Evaluation");
-		
-		//Tender creator decrypt the Negotiated bid for all the bidder after negotiation in cover2
-		etendercomponentobj.clickPendingForEvaluationApprovalStage();
-		etendercomponentobj.decryptingTheBidder();
-		etendercomponentobj.submitBidDetailPage();
-		etendercomponentobj.enterTenderIdInSearch();
-		etendercomponentobj.checkTenderStatusAndTenderStage("Evaluation");
-		etendercomponentobj.tenderLogout();
-		
-		etendercomponentobj.evaluator1Login();
-		etendercomponentobj.validateTenderEvaluationTabDetails_WithEvaluatorUser();
-		etendercomponentobj.clickDetailsLink();
-		etendercomponentobj.evaluateSupplier("Tech Mahindra", "Approve", "Approved Tech Mahindra finally", 1);
-		etendercomponentobj.evaluateSupplier("CTS", "Approve", "Approved CTS finally", 1);
-		etendercomponentobj.enterOverallComment_EvaluatorUser();
-		etendercomponentobj.tenderLogoutOld();
 		
 		//==================================COVER2====================================================
 		
@@ -463,325 +311,99 @@ public class TG1_TC_Evaluation_12_Openingapproval_N_Regression_Evaluationapprova
 		
 				etendercomponentobj.provideApproverComment();
 				etendercomponentobj.tenderApprovalDecision("forward");
-				etendercomponentobj.AddMultipleUsersForSequentialParallelApproval_Evaluation_WF();  //creator action initiate wf  with 3 parallel and 5 sequential flow
+				etendercomponentobj.AddMultipleUsersForSequentialApproval_Evaluation_WF();  //creator action initiate wf  with 3  sequential flow
 				etendercomponentobj.tenderLogoutOld();
 				 
 				
-				//approver1
-				  posttendercomponentobj.sanctionNoteApproverLogin(pdfResultReport.testData.get("Approver2"));
-				  etendercomponentobj.validateTenderEvaluationTabDetails_WithEvaluatorUser();
-					etendercomponentobj.clickDetailsLink();
-					etendercomponentobj.evaluateSupplier("Tech Mahindra", "Negotiate", "Negotiate with Tech Mahindra", 2);
-					etendercomponentobj.evaluateSupplier("CTS", "Approve", "Approve CTS", 2);
-					etendercomponentobj.evaluateSupplier("TCS", "Approve", "Approve TCS", 2);
-					etendercomponentobj.provideApproverComment();
-					etendercomponentobj.tenderApprovalDecision("approve");
-				  etendercomponentobj.tenderLogoutOld();
-				  
-				//approver2
-				  posttendercomponentobj.sanctionNoteApproverLogin(pdfResultReport.testData.get("Approver2"));
-				  etendercomponentobj.validateTenderEvaluationTabDetails_WithEvaluatorUser();
-					etendercomponentobj.clickDetailsLink();
-					etendercomponentobj.evaluateSupplier("Tech Mahindra", "Negotiate", "Negotiate with Tech Mahindra", 2);
-					etendercomponentobj.evaluateSupplier("CTS", "Approve", "Approve CTS", 2);
-					etendercomponentobj.evaluateSupplier("TCS", "Approve", "Approve TCS", 2);
-					etendercomponentobj.provideApproverComment();
-					etendercomponentobj.tenderApprovalDecision("approve");
-				  etendercomponentobj.tenderLogoutOld();
-				  
-				//approver3
-				  posttendercomponentobj.sanctionNoteApproverLogin(pdfResultReport.testData.get("Approver3"));
-				  etendercomponentobj.validateTenderEvaluationTabDetails_WithEvaluatorUser();
-					etendercomponentobj.clickDetailsLink();
-					etendercomponentobj.evaluateSupplier("Tech Mahindra", "Approve", "Approve Mahindra", 2);
-					etendercomponentobj.evaluateSupplier("CTS", "Approve", "Approve CTS", 2);
-					etendercomponentobj.evaluateSupplier("TCS", "Approve", "Approve TCS", 2);
-					etendercomponentobj.provideApproverComment();
-					etendercomponentobj.tenderApprovalDecision("approve");
-				  etendercomponentobj.tenderLogoutOld();
-				  
-				//approver4
+				 //approve by approver4
 				  posttendercomponentobj.sanctionNoteApproverLogin(pdfResultReport.testData.get("Approver4"));
 				  etendercomponentobj.validateTenderEvaluationTabDetails_WithEvaluatorUser();
 					etendercomponentobj.clickDetailsLink();
-					etendercomponentobj.evaluateSupplier("Tech Mahindra", "Negotiate", "Negotiate with Tech Mahindra", 2);
-					etendercomponentobj.evaluateSupplier("CTS", "Approve", "Approve CTS", 2);
-					etendercomponentobj.evaluateSupplier("TCS", "Approve", "Approve TCS", 2);
+					etendercomponentobj.evaluateSupplier("Tech Mahindra", "Approve", "Approve Mahindra", 1);
+					etendercomponentobj.evaluateSupplier("CTS", "Approve", "Approve CTS", 1);
+					etendercomponentobj.evaluateSupplier("TCS", "Approve", "Approve TCS", 1);
 					etendercomponentobj.provideApproverComment();
 					etendercomponentobj.tenderApprovalDecision("approve");
 				  etendercomponentobj.tenderLogoutOld();
 				
-				//approver5
-				  posttendercomponentobj.sanctionNoteApproverLogin(pdfResultReport.testData.get("Approver5"));
+				  //approve by approver5
+				  posttendercomponentobj.sanctionNoteApproverLogin(pdfResultReport.testData.get("Approver4"));
 				  etendercomponentobj.validateTenderEvaluationTabDetails_WithEvaluatorUser();
 					etendercomponentobj.clickDetailsLink();
-					etendercomponentobj.evaluateSupplier("Tech Mahindra", "Negotiate", "Negotiate with Tech Mahindra", 2);
-					etendercomponentobj.evaluateSupplier("CTS", "Approve", "Approve CTS", 2);
-					etendercomponentobj.evaluateSupplier("TCS", "Approve", "Approve TCS", 2);
-					etendercomponentobj.provideApproverComment();
-					etendercomponentobj.tenderApprovalDecision("approve");
-				  etendercomponentobj.tenderLogoutOld();
-				
-				//approver6
-				  posttendercomponentobj.sanctionNoteApproverLogin(pdfResultReport.testData.get("Approver6"));
-				  etendercomponentobj.validateTenderEvaluationTabDetails_WithEvaluatorUser();
-					etendercomponentobj.clickDetailsLink();
-					etendercomponentobj.evaluateSupplier("Tech Mahindra", "Negotiate", "Negotiate with Tech Mahindra", 2);
-					etendercomponentobj.evaluateSupplier("CTS", "Approve", "Approve CTS", 2);
-					etendercomponentobj.evaluateSupplier("TCS", "Approve", "Approve TCS", 2);
-					etendercomponentobj.provideApproverComment();
-					etendercomponentobj.tenderApprovalDecision("approve");
-				  etendercomponentobj.tenderLogoutOld();
-				
-				//approver7
-				  posttendercomponentobj.sanctionNoteApproverLogin(pdfResultReport.testData.get("Approver7"));
-				  etendercomponentobj.validateTenderEvaluationTabDetails_WithEvaluatorUser();
-					etendercomponentobj.clickDetailsLink();
-					etendercomponentobj.evaluateSupplier("Tech Mahindra", "Negotiate", "Negotiate with Tech Mahindra", 2);
-					etendercomponentobj.evaluateSupplier("CTS", "Approve", "Approve CTS", 2);
-					etendercomponentobj.evaluateSupplier("TCS", "Approve", "Approve TCS", 2);
+					etendercomponentobj.evaluateSupplier("Tech Mahindra", "Approve", "Approve Mahindra", 1);
+					etendercomponentobj.evaluateSupplier("CTS", "Approve", "Approve CTS", 1);
+					etendercomponentobj.evaluateSupplier("TCS", "Approve", "Approve TCS", 1);
 					etendercomponentobj.provideApproverComment();
 					etendercomponentobj.tenderApprovalDecision("approve");
 				  etendercomponentobj.tenderLogoutOld();
 				  
-				//approver8
-				  posttendercomponentobj.sanctionNoteApproverLogin(pdfResultReport.testData.get("Approver8"));
+				  //approve by approver6   //s3 forward to T1,T2
+				  posttendercomponentobj.sanctionNoteApproverLogin(pdfResultReport.testData.get("Approver4"));
 				  etendercomponentobj.validateTenderEvaluationTabDetails_WithEvaluatorUser();
 					etendercomponentobj.clickDetailsLink();
-					etendercomponentobj.evaluateSupplier("Tech Mahindra", "Approve", "Approve Tech Mahindra", 2);
-					etendercomponentobj.evaluateSupplier("CTS", "Approve", "Approve CTS", 2);
-					etendercomponentobj.evaluateSupplier("TCS", "Approve", "Approve TCS", 2);
-					etendercomponentobj.enterOverallComment_EvaluatorUser();
-					etendercomponentobj.tenderLogoutOld();
+					etendercomponentobj.evaluateSupplier("Tech Mahindra", "Approve", "Approve Mahindra", 1);
+					etendercomponentobj.evaluateSupplier("CTS", "Approve", "Approve CTS", 1);
+					etendercomponentobj.evaluateSupplier("TCS", "Approve", "Approve TCS", 1);
+					etendercomponentobj.provideApproverComment();
+					etendercomponentobj.sanctionApprovalDecision("forward");
+					etendercomponentobj.addTeamUserForEvaluationWF();
+				  etendercomponentobj.tenderLogoutOld();
+				
+				  
+				  
+				  
 				
 				
-
-		
-		// Negotiation WorkFlow for Cover2
-		etendercomponentobj.tendercreatorLogin();
-		etendercomponentobj.navigateToTenderListing();
-		etendercomponentobj.enterTenderIdInSearch();
-		etendercomponentobj.checkTenderStatusAndTenderStage("Evaluation");
-		etendercomponentobj.clickInitiateNegotiationLink();
-		//etendercomponentobj.negotiationDetailPageValidation();
-		etendercomponentobj.negotiation_dateSchedule(2, 15);
-		//Need to write script for Buyer comment and attachment in negotiation.action page
-		etendercomponentobj.enterTenderIdInSearch();
-		etendercomponentobj.checkTenderStatusAndTenderStageContains("Cover 2 Negotiation");
-		etendercomponentobj.tenderLogout();
-		
-		etendercomponentobj.waitTillBidstartDateReached();
-		
-		//Bid submission of the negotiated bidder
-		etendercomponentobj.commonLogin("tech_auto_01");
-		etendercomponentobj.navigate_to_bidList_page();
-		//etendercomponentobj.enterTenderIdInSearch_bidsubmission();
-		etendercomponentobj.submittedBid_Tab_Validation();
-		etendercomponentobj.BidNoSave();
-		etendercomponentobj.TG1_negotiatedBidderSubmission(2);
-		etendercomponentobj.submitBid_link_in_previewAllPage();
-		etendercomponentobj.navigate_to_bidList_page();
-		//etendercomponentobj.enterTenderIdInSearch_bidsubmission();
-		etendercomponentobj.submittedBid_Tab_Validation();
-		etendercomponentobj.VerifyBidno_after_Negotiatedbid();
-		//etendercomponentobj.TG1_validateBidPreview_BidListPage();
-		etendercomponentobj.tenderLogoutOld();
-		
-		etendercomponentobj.commonLogin("cts_auto_01");
-		etendercomponentobj.navigate_to_bidList_page();
-		//etendercomponentobj.enterTenderIdInSearch_bidsubmission();
-		etendercomponentobj.submittedBid_Tab_Validation();
-		etendercomponentobj.BidNoSave();
-		etendercomponentobj.TG1_negotiatedBidderSubmission(2);
-		etendercomponentobj.submitBid_link_in_previewAllPage();
-		etendercomponentobj.navigate_to_bidList_page();
-		//etendercomponentobj.enterTenderIdInSearch_bidsubmission();
-		etendercomponentobj.submittedBid_Tab_Validation();
-		etendercomponentobj.VerifyBidno_after_Negotiatedbid();
-		//etendercomponentobj.TG1_validateBidPreview_BidListPage();
-		etendercomponentobj.tenderLogoutOld();
-		
-		etendercomponentobj.commonLogin("tcs_auto_01");
-		etendercomponentobj.navigate_to_bidList_page();
-		//etendercomponentobj.enterTenderIdInSearch_bidsubmission();
-		etendercomponentobj.submittedBid_Tab_Validation();
-		etendercomponentobj.BidNoSave();
-		etendercomponentobj.TG1_negotiatedBidderSubmission(2);
-		etendercomponentobj.submitBid_link_in_previewAllPage();
-		etendercomponentobj.navigate_to_bidList_page();
-		//etendercomponentobj.enterTenderIdInSearch_bidsubmission();
-		etendercomponentobj.submittedBid_Tab_Validation();
-		etendercomponentobj.VerifyBidno_after_Negotiatedbid();
-		//etendercomponentobj.TG1_validateBidPreview_BidListPage();
-		etendercomponentobj.tenderLogoutOld();
-		
-		etendercomponentobj.waitTillBidDuetDateReached();
-		
-		//Evaluation: Cover 1 work flow after negotiation
-		etendercomponentobj.tendercreatorLogin();
-		etendercomponentobj.navigateToTenderListing();
-		etendercomponentobj.enterTenderIdInSearch();
-		etendercomponentobj.clickEvaluationSettingsLink();
-		etendercomponentobj.selectYesForApprovalAndEvaluationRequired();
-		etendercomponentobj.selectEvaluatorAndProvideCommentsForBidEvaluationFlow_AfterNegotiation();
-		etendercomponentobj.SendForApprovalInEvaluationsetting();
-		etendercomponentobj.approveNegotiationAlert();
-		etendercomponentobj.enterTenderIdInSearch();
-		etendercomponentobj.checkTenderStatusAndTenderStage("Evaluation");
-		
-		//Tender creator decrypt the Negotiated bid for all the bidder after negotiation in cover1
-		etendercomponentobj.clickPendingForEvaluationApprovalStage();
-		etendercomponentobj.decryptingTheBidder();
-		etendercomponentobj.submitBidDetailPage();
-		etendercomponentobj.enterTenderIdInSearch();
-		etendercomponentobj.checkTenderStatusAndTenderStage("Evaluation");
-		etendercomponentobj.tenderLogout();
-		
-		//Negotiate against with two suppliers "Tech Mahindra" and "CTS" in Cover 1
-		etendercomponentobj.evaluator1Login();
-		etendercomponentobj.validateTenderEvaluationTabDetails_WithEvaluatorUser();
-		etendercomponentobj.clickDetailsLink();
-		etendercomponentobj.evaluateSupplier("Tech Mahindra", "Negotiate", "Negotiate with Tech Mahindra 2nd time", 2);
-		etendercomponentobj.evaluateSupplier("CTS", "Negotiate", "Negotiate with CTS 1st time", 2);
-		etendercomponentobj.evaluateSupplier("TCS", "Approve", "Approve TCS 2nd time", 2);
-		etendercomponentobj.enterOverallComment_EvaluatorUser();
-		etendercomponentobj.tenderLogoutOld();
-		
-		// Negotiation WorkFlow for Cover2
-		etendercomponentobj.tendercreatorLogin();
-		etendercomponentobj.navigateToTenderListing();
-		etendercomponentobj.enterTenderIdInSearch();
-		etendercomponentobj.checkTenderStatusAndTenderStage("Evaluation");
-		etendercomponentobj.clickInitiateNegotiationLink();
-		//etendercomponentobj.negotiationDetailPageValidation();
-		etendercomponentobj.negotiation_dateSchedule(2, 8);
-		//Need to write script for Buyer comment and attachment in negotiation.action page
-		etendercomponentobj.enterTenderIdInSearch();
-		etendercomponentobj.checkTenderStatusAndTenderStageContains("Cover 2 Negotiation");
-		etendercomponentobj.tenderLogout();
-		
-		etendercomponentobj.waitTillBidstartDateReached();
-		
-		//Bid submission of the negotiated bidder
-		etendercomponentobj.commonLogin("tech_auto_01");
-		etendercomponentobj.navigate_to_bidList_page();
-		//etendercomponentobj.enterTenderIdInSearch_bidsubmission();
-		etendercomponentobj.submittedBid_Tab_Validation();
-		etendercomponentobj.BidNoSave();
-		etendercomponentobj.TG1_negotiatedBidderSubmission(2);
-		etendercomponentobj.submitBid_link_in_previewAllPage();
-		etendercomponentobj.navigate_to_bidList_page();
-		//etendercomponentobj.enterTenderIdInSearch_bidsubmission();
-		etendercomponentobj.submittedBid_Tab_Validation();
-		etendercomponentobj.VerifyBidno_after_Negotiatedbid();
-		//etendercomponentobj.TG1_validateBidPreview_BidListPage();
-		etendercomponentobj.tenderLogoutOld();
-		
-		etendercomponentobj.commonLogin("cts_auto_01");
-		etendercomponentobj.navigate_to_bidList_page();
-		//etendercomponentobj.enterTenderIdInSearch_bidsubmission();
-		etendercomponentobj.submittedBid_Tab_Validation();
-		etendercomponentobj.BidNoSave();
-		etendercomponentobj.TG1_negotiatedBidderSubmission(2);
-		etendercomponentobj.submitBid_link_in_previewAllPage();
-		etendercomponentobj.navigate_to_bidList_page();
-		//etendercomponentobj.enterTenderIdInSearch_bidsubmission();
-		etendercomponentobj.submittedBid_Tab_Validation();
-		etendercomponentobj.VerifyBidno_after_Negotiatedbid();
-		//etendercomponentobj.TG1_validateBidPreview_BidListPage();
-		etendercomponentobj.tenderLogoutOld();
-		 
-		etendercomponentobj.waitTillBidDuetDateReached();
-		
-		//Evaluation: Cover 1 work flow after negotiation
-		etendercomponentobj.tendercreatorLogin();
-		etendercomponentobj.navigateToTenderListing();
-		etendercomponentobj.enterTenderIdInSearch();
-		etendercomponentobj.clickEvaluationSettingsLink();
-		etendercomponentobj.selectYesForApprovalAndEvaluationRequired();
-		etendercomponentobj.selectEvaluatorAndProvideCommentsForBidEvaluationFlow_AfterNegotiation();
-		etendercomponentobj.SendForApprovalInEvaluationsetting();
-		etendercomponentobj.approveNegotiationAlert();
-		etendercomponentobj.enterTenderIdInSearch();
-		etendercomponentobj.checkTenderStatusAndTenderStage("Evaluation");
-		
-		//Tender creator decrypt the Negotiated bid for all the bidder after negotiation in cover1
-		etendercomponentobj.clickPendingForEvaluationApprovalStage();
-		etendercomponentobj.decryptingTheBidder();
-		etendercomponentobj.submitBidDetailPage();
-		etendercomponentobj.enterTenderIdInSearch();
-		etendercomponentobj.checkTenderStatusAndTenderStage("Evaluation");
-		etendercomponentobj.tenderLogout();
-		
-		//Negotiate against with two suppliers "Tech Mahindra" and "CTS" in Cover 1
-		etendercomponentobj.evaluator1Login();
-		etendercomponentobj.validateTenderEvaluationTabDetails_WithEvaluatorUser();
-		etendercomponentobj.clickDetailsLink();
-		etendercomponentobj.evaluateSupplier("Tech Mahindra", "Negotiate", "Negotiate with Tech Mahindra 2nd time", 2);
-		etendercomponentobj.evaluateSupplier("CTS", "Approve", "Approve CTS 3rd time", 2);
-		etendercomponentobj.enterOverallComment_EvaluatorUser();
-		etendercomponentobj.tenderLogoutOld();
-		
-		// Negotiation WorkFlow for Cover2
-		etendercomponentobj.tendercreatorLogin();
-		etendercomponentobj.navigateToTenderListing();
-		etendercomponentobj.enterTenderIdInSearch();
-		etendercomponentobj.checkTenderStatusAndTenderStage("Evaluation");
-		etendercomponentobj.clickInitiateNegotiationLink();
-		//etendercomponentobj.negotiationDetailPageValidation();
-		etendercomponentobj.negotiation_dateSchedule(2, 5);
-		//Need to write script for Buyer comment and attachment in negotiation.action page
-		etendercomponentobj.enterTenderIdInSearch();
-		etendercomponentobj.checkTenderStatusAndTenderStageContains("Cover 2 Negotiation");
-		etendercomponentobj.tenderLogout();
-		
-		etendercomponentobj.waitTillBidstartDateReached();
-		
-		//Bid submission of the negotiated bidder
-		etendercomponentobj.commonLogin("tech_auto_01");
-		etendercomponentobj.navigate_to_bidList_page();
-		//etendercomponentobj.enterTenderIdInSearch_bidsubmission();
-		etendercomponentobj.submittedBid_Tab_Validation();
-		etendercomponentobj.BidNoSave();
-		etendercomponentobj.TG1_negotiatedBidderSubmission(2);
-		etendercomponentobj.submitBid_link_in_previewAllPage();
-		etendercomponentobj.navigate_to_bidList_page();
-		//etendercomponentobj.enterTenderIdInSearch_bidsubmission();
-		etendercomponentobj.submittedBid_Tab_Validation();
-		etendercomponentobj.VerifyBidno_after_Negotiatedbid();
-		//etendercomponentobj.TG1_validateBidPreview_BidListPage();
-		etendercomponentobj.tenderLogoutOld();
-		
-		etendercomponentobj.waitTillBidDuetDateReached();
-		
-		//Evaluation: Cover 1 work flow after negotiation
-		etendercomponentobj.tendercreatorLogin();
-		etendercomponentobj.navigateToTenderListing();
-		etendercomponentobj.enterTenderIdInSearch();
-		etendercomponentobj.clickEvaluationSettingsLink();
-		etendercomponentobj.selectYesForApprovalAndEvaluationRequired();
-		etendercomponentobj.selectEvaluatorAndProvideCommentsForBidEvaluationFlow_AfterNegotiation();
-		etendercomponentobj.SendForApprovalInEvaluationsetting();
-		etendercomponentobj.approveNegotiationAlert();
-		etendercomponentobj.enterTenderIdInSearch();
-		etendercomponentobj.checkTenderStatusAndTenderStage("Evaluation");
-		
-		//Tender creator decrypt the Negotiated bid for all the bidder after negotiation in cover1
-		etendercomponentobj.clickPendingForEvaluationApprovalStage();
-		etendercomponentobj.decryptingTheBidder();
-		etendercomponentobj.submitBidDetailPage();
-		etendercomponentobj.enterTenderIdInSearch();
-		etendercomponentobj.checkTenderStatusAndTenderStage("Evaluation");
-		etendercomponentobj.tenderLogout();
-		
-		//Negotiate against with two suppliers "Tech Mahindra" and "CTS" in Cover 1
-		etendercomponentobj.evaluator1Login();
-		etendercomponentobj.validateTenderEvaluationTabDetails_WithEvaluatorUser();
-		etendercomponentobj.clickDetailsLink();
-		etendercomponentobj.evaluateSupplier("Tech Mahindra", "Reject", "Reject Tech Mahindra 4th time", 2);
-		etendercomponentobj.enterOverallComment_EvaluatorUser();
-		etendercomponentobj.tenderLogoutOld();
-		
+				
+				//evaluator recall and forward to T1 and T2
+				  
+				  etendercomponentobj.evaluator1Login();
+					etendercomponentobj.validateTenderEvaluationTabDetails_WithEvaluatorUser();
+					etendercomponentobj.evaluatorRecall();
+				  
+					etendercomponentobj.validateTenderEvaluationTabDetails_WithEvaluatorUser();
+					etendercomponentobj.clickDetailsLink();
+					etendercomponentobj.evaluateSupplier("Tech Mahindra", "Negotiate", "Negotiate with Tech Mahindra", 2);
+					etendercomponentobj.evaluateSupplier("CTS", "Negotiate", "Negotiate with CTS", 2);
+					etendercomponentobj.evaluateSupplier("TCS", "Negotiate", "Negotiate with TCS", 2);
+					//evaluator forward to T1,T2
+					
+							etendercomponentobj.provideApproverComment();
+							etendercomponentobj.tenderApprovalDecision("forward");
+							etendercomponentobj.addTeamUserForEvaluationWF();
+							 etendercomponentobj.tenderLogoutOld();
+				  
+				
+				
+							
+							
+				//T2 approve
+							  posttendercomponentobj.sanctionNoteApproverLogin(pdfResultReport.testData.get("Approver8"));
+							  etendercomponentobj.validateTenderEvaluationTabDetails_WithEvaluatorUser();
+								etendercomponentobj.clickDetailsLink();
+								etendercomponentobj.evaluateSupplier("Tech Mahindra", "Approve", "Approve Mahindra", 1);
+								etendercomponentobj.evaluateSupplier("CTS", "Approve", "Approve CTS", 1);
+								etendercomponentobj.evaluateSupplier("TCS", "Approve", "Approve TCS", 1);
+								etendercomponentobj.provideApproverComment();
+								etendercomponentobj.tenderApprovalDecision("approve");
+							  etendercomponentobj.tenderLogoutOld();
+				
+				
+				
+				
+				
+				
+	
+				
+				
+				
+				
+				
+				
+				
+				
+				
+			
 		//Checking tender status Completed
 		etendercomponentobj.tendercreatorLogin();
 		etendercomponentobj.navigateToTenderListing();

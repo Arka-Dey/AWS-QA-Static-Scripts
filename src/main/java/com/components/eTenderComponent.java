@@ -21,6 +21,7 @@ import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.jfree.ui.Spinner;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
@@ -39,7 +40,10 @@ import com.baseClasses.AutomationException;
 import com.baseClasses.BaseClass_Web;
 import com.baseClasses.PDFResultReport;
 import com.baseClasses.ThreadLocalWebdriver;
+import com.itextpdf.text.log.SysoCounter;
 import com.objectRepository.TenderCreation_Locators;
+import com.sun.istack.FinalArrayList;
+
 import java.awt.Robot;
 import java.io.Closeable;
 import java.io.File;
@@ -65,16 +69,19 @@ import org.openqa.selenium.winium.WiniumDriver;
 public class eTenderComponent extends BaseClass_Web {
 	
 //	String tenderReferenceNoLocatorText = null;
-	String tenderReferenceNoLocatorText = "1836";
+	String tenderReferenceNoLocatorText = "1987";
 	TenderCreation_Locators tendercreationlocators = new TenderCreation_Locators();
 	String BidStartDate = null;
 	String BidDueDate = null;
 	String BidOpenDate = null;
 	LocalDateTime localdatetimeForBid = null;
-	String BidnoLocatorText = null;
+	String BidnoLocatorText = null; 
 	String DraftBidnoLocatorText = null;
 	String NoteSheetNo = null;
-//	String NoteSheetNo = "1535";
+	//String NoteSheetNo = "1535";
+	static int CBE=1 ;
+	static int totalcount=0;
+	
 	public eTenderComponent(PDFResultReport pdfresultReport) {
 		this.pdfResultReport = pdfresultReport;
 	}
@@ -1209,7 +1216,7 @@ public class eTenderComponent extends BaseClass_Web {
 			click(tendercreationlocators.logoutConfirmationOld, "logoutConfirmation");
 			if(ThreadLocalWebdriver.getDriver().findElement(By.xpath("//div[@id='overlay']")).isDisplayed())
 			{
-	
+					
 				waitForElementToBeInvisible(tendercreationlocators.loadingOverlay);
 			}
 			//ThreadLocalWebdriver.getDriver().navigate().to("https://epsnewprodaws.mjunction.in/EPSV2Web/");
@@ -5951,8 +5958,8 @@ public class eTenderComponent extends BaseClass_Web {
 			//waitForElementToBeClickable(tendercreationlocators.ActionButton_approver_tender);
 			waitForObj(1000);
 			//waitForElementToBeClickable(tendercreationlocators.ActionButton_approver_tender);
-			waitForElement(tendercreationlocators.ActionButton_approver_tender, 10000);
-			JSClick(tendercreationlocators.ActionButton_approver_tender, "ActionButton_approver_tender");
+			waitForElement(tendercreationlocators.new_action_button, 10000);
+			JSClick(tendercreationlocators.new_action_button, "ActionButton_approver_tender");
 			waitForObj(1000);
 			waitForElementToBeClickable(tendercreationlocators.tenderOpeningTabDetailsLinkBy);
 			click(tendercreationlocators.tenderOpeningTabDetailsLinkBy, "tenderOpeningTabDetailsLinkBy");
@@ -6171,11 +6178,11 @@ public class eTenderComponent extends BaseClass_Web {
 			waitForElementToBeClickable(tendercreationlocators.TenEvalTab_Evaluation);
 			JSClick(tendercreationlocators.TenEvalTab_Evaluation, "Tender_Evaluation");
 			waitForObj(1000);
-			set(tendercreationlocators.search, tenderReferenceNoLocatorText, "search");
+			set(tendercreationlocators.searchBoxGRN, tenderReferenceNoLocatorText, "search");
 			waitForObj(2000);
-			IsElementPresent(tendercreationlocators.documentId_Evaluation);
-			IsElementPresent(tendercreationlocators.workFlowType_Evaluation);
-			IsElementPresent(tendercreationlocators.OpeningApprovalWFStatus_Evaluation);
+		//	IsElementPresent(tendercreationlocators.documentId_Evaluation);
+	//		IsElementPresent(tendercreationlocators.workFlowType_Evaluation);
+		//	IsElementPresent(tendercreationlocators.OpeningApprovalWFStatus_Evaluation);
 
 			pdfResultReport.addStepDetails("validateTenderEvaluationTabDetails_WithEvaluatorUser",
 					"Tender Evaluation tab Details must be validated",
@@ -17016,7 +17023,7 @@ set(tendercreationlocators.recallComment, "recall", "recommendationComment");
 			driver.switchTo().frame(driver.findElement(By.tagName("iframe")));
 			set(tendercreationlocators.body_overallcomment, "Provide OverallComment", "overallComment_currentPart");
 			driver.switchTo().defaultContent();
-			waitForObj(2000);
+			waitForObj(1000);
 			
 			
 			/*
@@ -17151,5 +17158,352 @@ set(tendercreationlocators.recallComment, "recall", "recommendationComment");
 		}
 		
 	}
+	
+	public void assignItemByCount(int count) throws Exception {
+		WebDriver driver = ThreadLocalWebdriver.getDriver();
+		waitForObj(6000);
+		if(driver.findElement(By.xpath("(//*[@id='thWidth']/input)[1]")).isSelected())
+		{
+		driver.findElement(By.xpath("(//*[@id='thWidth']/input)[1]")).click();
+		}
+		waitForObj(1000);
+		driver.findElement(By.xpath("//*[@id='itemAndGroups']/ul/li[2]/a")).click();
+		waitForObj(1000);
+		if(driver.findElement(By.xpath("(//*[@id='thWidth']/input)[2]")).isSelected())
+		{
+			driver.findElement(By.xpath("(//*[@id='thWidth']/input)[2]")).click();
+		}
+		
+		waitForObj(1000);
+		driver.findElement(By.xpath("//*[@id='itemAndGroups']/ul/li[1]/a")).click();
+		waitForObj(1000);
+		int n=driver.findElements(By.xpath("(//*[@id='submitBidTable'])[1]/tbody/tr/td/input")).size();
+		int i;
+		totalcount=totalcount +count;
+		System.out.println("totalcount is"+totalcount);
+		System.out.println("CBE is"+CBE);
+	for (i =CBE ; i <= totalcount; i++) {
+		waitForObj(500);
+	//	System.out.println(tendercreationlocators.select_assign_item(count));
+		click(tendercreationlocators.select_assign_item(i), "item_checkbox");
+		waitForObj(500);
+		
+	}
+
+	CBE=i;
+	
+	pdfResultReport.addStepDetails("assignItemByCount",
+			"Should complete assignItemByCount",
+			"Successfully passed assignItemByCount" + " ", "Pass", "Y");
+	log.info("completed executing the method::assignItemByCount");
+}
+
+	public void AddMultipleUsersForParallelApproval_Evaluation_WF_and_assign_item(int count) throws Throwable {
+		try {
+			log.info("started executing the method:: AddMultipleUsersForSequentialParallelApproval_Evaluator_WF");
+			waitForElementToBeClickable(tendercreationlocators.sendForApprovalEvaluation);
+			click(tendercreationlocators.sendForApprovalEvaluation, "Userdefined");
+			
+			//approver 1 parallel
+				waitForElementToBeClickable(tendercreationlocators.userAdd_tender);
+				click(tendercreationlocators.userAdd_tender, "userAdd");
+			  waitForElementToBeVisible(tendercreationlocators.evaluatorUser); 
+			  set(tendercreationlocators.evaluatorUser, pdfResultReport.testData.get("User_Approver1"), "user");
+			  waitForObj(500);
+			  select(tendercreationlocators.approverTypeTender, pdfResultReport.testData.get("ApprovalType1"));
+			   		  
+			                       //select 3 items
+			  waitForElementToBeClickable(tendercreationlocators.assignItem1);
+			  click(tendercreationlocators.assignItem1, "assign item");
+				checkPageIsReady();
+			assignItemByCount(count);
+			click(tendercreationlocators.saveandclose, "save and close");
+			waitForObj(1000);
+		
+			pdfResultReport.addStepDetails("select 3 items for parallel approver 1",
+					"should able to  select 3 items for parallel approver 1",
+					"Successfully select 3 items for parallel approver 1" + " ", "Pass", "Y");
+			log.info("completed executing the method:: assignItemByCount");
+			  
+			  
+			  
+			//approver 2 parallel
+				waitForElementToBeClickable(tendercreationlocators.userAdd_tender);
+				click(tendercreationlocators.userAdd_tender, "userAdd");
+				  waitForElementToBeVisible(tendercreationlocators.evaluatorUser); 
+				  set(tendercreationlocators.evaluatorUser, pdfResultReport.testData.get("User_Approver2"), "user");
+				  waitForObj(500);
+				  select(tendercreationlocators.approverTypeTender, pdfResultReport.testData.get("ApprovalType1"));
+				  
+				  				//select 3 items
+				  waitForElementToBeClickable(tendercreationlocators.assignItem2);
+				  click(tendercreationlocators.assignItem2, "assign item");
+				  checkPageIsReady();
+					assignItemByCount(count);
+					click(tendercreationlocators.saveandclose, "save and close");
+				  
+					pdfResultReport.addStepDetails("select 3 items for parallel approver 2",
+							"should able to  select 3 items for parallel approver 2",
+							"Successfully select 3 items for parallel approver 2" + " ", "Pass", "Y");
+					log.info("completed executing the method:: assignItemByCount");
+					
+					
+				//approver 3 parallel
+					waitForElementToBeClickable(tendercreationlocators.userAdd_tender);
+					click(tendercreationlocators.userAdd_tender, "userAdd");
+					  waitForElementToBeVisible(tendercreationlocators.evaluatorUser); 
+					  set(tendercreationlocators.evaluatorUser, pdfResultReport.testData.get("User_Approver3"), "user");
+					  waitForObj(500);
+					  select(tendercreationlocators.approverTypeTender, pdfResultReport.testData.get("ApprovalType1"));  
+			
+					  				//select 3 items
+					  waitForElementToBeClickable(tendercreationlocators.assignItem3);
+					  click(tendercreationlocators.assignItem3, "assign item");
+					  checkPageIsReady();
+						assignItemByCount(count);
+						click(tendercreationlocators.saveandclose, "save and close");
+					  
+						pdfResultReport.addStepDetails("select 3 items for parallel approver 3",
+								"should able to  select 3 items for parallel approver 3",
+								"Successfully select 3 items for parallel approver 3" + " ", "Pass", "Y");
+						log.info("completed executing the method:: assignItemByCount");
+						
+						
+					  //co-ordinator , min approver
+					  waitForElementToBeClickable(tendercreationlocators.parallelApprovermin);
+						set(tendercreationlocators.parallelApprovermin, pdfResultReport.testData.get("Min_Approver"), "minimum_Approver");
+					   waitForElementToBeClickable(tendercreationlocators.cordinatorPO);
+						click(tendercreationlocators.cordinatorPO, "parallel_Coordinator_Flag");
+					  
+											
+											waitForElementToBeClickable(tendercreationlocators.SendForAptovalbtn);
+										  JSClick(tendercreationlocators.SendForAptovalbtn, "sendForApproval");
+									  
+										  if(ThreadLocalWebdriver.getDriver().findElement(By.xpath("//div[@id='overlay']")).isDisplayed())
+											{
+									
+												waitForElementToBeInvisible(tendercreationlocators.loadingOverlay);
+											}
+					  			  
+			pdfResultReport.addStepDetails("AddMultipleUsersForParallelApproval_Evaluation_WF",
+					"should able to send for wf tender",
+					"Successfully send for wf tender" + " ", "Pass", "Y");
+			log.info("completed executing the method:: AddMultipleUsersForParallelApproval_Evaluation_WF");
+
+		} catch (Exception e) {
+			log.fatal("Unable to validate AddMultipleUsersForParallelApproval_Evaluation_WF" + e.getMessage());
+			pdfResultReport.addStepDetails("AddMultipleUsersForParallelApproval_Evaluation_WF",
+					"should able send for wf evaluation",
+					"Unable to send for wf evaluation" + e.getMessage(), "Fail", "N");
+		}
+		
+		
+
+		
+	}
+
+	public void sanctionApprovalDecision(String decision) throws Exception {
+		  try {
+              log.info("started executing the method:: sanctionNoteEvaluationApprove");
+              if(decision=="approve") {
+            	  waitForElementToBeClickable(tendercreationlocators.Approvebutton_tender);
+                  click(tendercreationlocators.Approvebutton_tender, "sanctionNoteEvaluationApprove");
+               
+              }
+              else if(decision=="revert back to approver") {
+                     waitForElementToBeClickable(tendercreationlocators.TenderApproverReview);
+                    click(tendercreationlocators.TenderApproverReview, "sanctionNoteEvaluationApprove");
+                    waitForElementToBeClickable(tendercreationlocators.confirmBtn);
+                    click(tendercreationlocators.confirmBtn, "review Confirm");
+                    waitForElementToBeClickable(tendercreationlocators.revertbackToApprover);
+                    click(tendercreationlocators.revertbackToApprover, "revert back to approver");
+                    
+              }
+              else if(decision=="forward") {
+                    waitForElementToBeClickable(tendercreationlocators.submitbutton_EvalUser);
+                    click(tendercreationlocators.submitbutton_EvalUser, "sanctionNoteEvaluationApprove");
+                    waitForObj(3000);
+                   
+                    waitForElementToBeClickable(tendercreationlocators.ForwardWF_Indent);
+                    click(tendercreationlocators.ForwardWF_Indent, "forward to next person");
+                    waitForObj(1000);
+//                    waitForElementToBeVisible(tendercreationlocators.warningYes);
+//                    JSClick(tendercreationlocators.warningYes, "warning Ok");
+//                  
+                   
+                    //send for approval
+                    }
+              else if (decision=="revert back to creator") {
+            	  waitForElementToBeClickable(tendercreationlocators.TenderApproverReview);
+                  click(tendercreationlocators.TenderApproverReview, "sanctionNoteEvaluationApprove");
+                  waitForElementToBeClickable(tendercreationlocators.confirmBtn);
+                  click(tendercreationlocators.confirmBtn, "review Confirm");
+                  waitForElementToBeClickable(tendercreationlocators.reverseBackToCreator);
+                  click(tendercreationlocators.reverseBackToCreator, "revert back to creator");
+			}
+              
+              waitForObj(5000);
+             
+              pdfResultReport.addStepDetails("sanctionNoteEvaluationApprove",
+                           "sanction Note Evaluation must be approve sucessfully ",
+                           "Successfully approved sanction Note Evaluation" + " ", "Pass", "Y");
+              log.info("completed executing the method:: sanctionNoteEvaluationApprove");
+
+       } catch (Exception e) {
+              log.fatal("Unable to approve sanction Note Evaluation" + e.getMessage());
+              pdfResultReport.addStepDetails("sanctionNoteEvaluationApprove",
+                           "sanction Note Evaluation must be approve sucessfully ",
+                           "Unable to approve sanction Note Evaluation" + e.getMessage(), "Fail", "N");
+       }
+		
+		
+	}
+	
+	public void AddMultipleUsersForSequentialApproval_Evaluation_WF() throws Throwable {
+		try {
+			log.info("started executing the method:: AddMultipleUsersForSequentialParallelApproval_Evaluator_WF");
+			waitForElementToBeClickable(tendercreationlocators.sendForApprovalEvaluation);
+			click(tendercreationlocators.sendForApprovalEvaluation, "Userdefined");
+			/*
+			List<WebElement> iRows = ThreadLocalWebdriver.getDriver().findElements(tendercreationlocators.cancelUser1_tender);
+			int iRowCount = iRows.size();
+			
+			
+				while(iRowCount!= 0)
+				{
+					waitForObj(1000);
+					click(tendercreationlocators.cancelUser1_tender, "cancelUser1_tender");
+					waitForObj(1000);
+					iRowCount = ThreadLocalWebdriver.getDriver().findElements(tendercreationlocators.cancelUser1_tender).size();
+					}
+					*/
+			
+						//approver 4 sequential
+						waitForElementToBeClickable(tendercreationlocators.userAdd_tender);
+						click(tendercreationlocators.userAdd_tender, "userAdd");
+						  waitForElementToBeVisible(tendercreationlocators.evaluatorUser); 
+						  set(tendercreationlocators.evaluatorUser, pdfResultReport.testData.get("User_Approver4"), "user");
+						  waitForObj(500);
+						  select(tendercreationlocators.approverTypeTender, pdfResultReport.testData.get("ApprovalType2")); 	  
+					  
+					  
+						//approver 5 sequential
+							waitForElementToBeClickable(tendercreationlocators.userAdd_tender);
+							click(tendercreationlocators.userAdd_tender, "userAdd");
+							  waitForElementToBeVisible(tendercreationlocators.tenderApproverUser); 
+							  set(tendercreationlocators.tenderApproverUser, pdfResultReport.testData.get("User_Approver5"), "user");
+							  waitForObj(500);
+							  select(tendercreationlocators.approverTypeTender, pdfResultReport.testData.get("ApprovalType2")); 	  
+					  
+					  
+							//approver 6 sequential
+								waitForElementToBeClickable(tendercreationlocators.userAdd_tender);
+								click(tendercreationlocators.userAdd_tender, "userAdd");
+								  waitForElementToBeVisible(tendercreationlocators.tenderApproverUser); 
+								  set(tendercreationlocators.tenderApproverUser, pdfResultReport.testData.get("User_Approver6"), "user");
+								  waitForObj(500);
+								  select(tendercreationlocators.approverTypeTender, pdfResultReport.testData.get("ApprovalType2"));   
+					  
+										  waitForElementToBeClickable(tendercreationlocators.comments_tender);
+											set(tendercreationlocators.comments_tender, pdfResultReport.testData.get("UserDefinedApprover-Comments"),
+													"comments");
+											
+											waitForElementToBeClickable(tendercreationlocators.sendForApproval_tender);
+										  JSClick(tendercreationlocators.SendForAptovalbtn, "sendForApproval");
+									  
+					  
+					  
+			pdfResultReport.addStepDetails("AddMultipleUsersForSequentialApproval_Evaluation_WF",
+					"should able to send for wf tender",
+					"Successfully send for wf tender" + " ", "Pass", "Y");
+			log.info("completed executing the method:: AddMultipleUsersForSequentialApproval_Evaluation_WF");
+
+		} catch (Exception e) {
+			log.fatal("Unable to validate AddMultipleUsersForSequentialApproval_Evaluation_WF" + e.getMessage());
+			pdfResultReport.addStepDetails("AddMultipleUsersForSequentialApproval_Evaluation_WF",
+					"should able send for wf evaluation",
+					"Unable to send for wf evaluation" + e.getMessage(), "Fail", "N");
+		}
+		
+		
+	}
+
+	public void addTeamUserForEvaluationWF() throws Throwable {
+	
+		try {
+			log.info("started executing the method:: addTeamUserForEvaluationWF");
+			waitForElementToBeClickable(tendercreationlocators.sendForApprovalEvaluation);
+			click(tendercreationlocators.sendForApprovalEvaluation, "Userdefined");
+			
+		// add team 1 user
+			waitForElementToBeClickable(tendercreationlocators.userAdd_tender);
+			click(tendercreationlocators.userAdd_tender, "userAdd");
+		  waitForElementToBeVisible(tendercreationlocators.evaluatorUser); 
+		  set(tendercreationlocators.evaluatorUser, pdfResultReport.testData.get("User_Approver7"), "user");
+		  waitForObj(500);
+		  select(tendercreationlocators.approverTypeTender, "TEAM");
+		   		
+		  //add team 2 user
+		  waitForElementToBeClickable(tendercreationlocators.userAdd_tender);
+			click(tendercreationlocators.userAdd_tender, "userAdd");
+		  waitForElementToBeVisible(tendercreationlocators.evaluatorUser); 
+		  set(tendercreationlocators.evaluatorUser, pdfResultReport.testData.get("User_Approver8"), "user");
+		  waitForObj(500);
+		  select(tendercreationlocators.approverTypeTender, "TEAM");			
+					  			  
+		  waitForElementToBeClickable(tendercreationlocators.SendForAptovalbtn);
+		  JSClick(tendercreationlocators.SendForAptovalbtn, "sendForApproval");
+	  
+		  if(ThreadLocalWebdriver.getDriver().findElement(By.xpath("//div[@id='overlay']")).isDisplayed())
+			{
+	
+				waitForElementToBeInvisible(tendercreationlocators.loadingOverlay);
+			}
+	  
+		  
+		  
+			pdfResultReport.addStepDetails("addTeamUserForEvaluationWF",
+					"should able to send for wf tender",
+					"Successfully send for wf tender" + " ", "Pass", "Y");
+			log.info("completed executing the method:: addTeamUserForEvaluationWF");
+
+		} catch (Exception e) {
+			log.fatal("Unable to validate addTeamUserForEvaluationWF" + e.getMessage());
+			pdfResultReport.addStepDetails("addTeamUserForEvaluationWF",
+					"should able send for team wf evaluation",
+					"Unable to send for team wf evaluation" + e.getMessage(), "Fail", "N");
+		}
+	}
+	
+	public void evaluatorRecall() throws Throwable {
+		try {
+			log.info("started executing the method:: clickDetailsLink");
+			//waitForElementToBeClickable(tendercreationlocators.ActionButton_approver_tender);
+			waitForObj(1000);
+			waitForElementToBeVisible(tendercreationlocators.ApprovalStatusEvaluation);
+			select(tendercreationlocators.ApprovalStatusEvaluation, "Completed");
+			//waitForElementToBeClickable(tendercreationlocators.ActionButton_approver_tender);
+			waitForElement(tendercreationlocators.new_action_button, 10000);
+			JSClick(tendercreationlocators.new_action_button, "ActionButton_approver_tender");
+			waitForObj(1000);
+			waitForElementToBeClickable(tendercreationlocators.recallbuttonEvaluation);
+			click(tendercreationlocators.recallbuttonEvaluation, "tenderOpeningTabDetailsLinkBy");
+			waitForObj(2000);
+			waitForElementToBeVisible(tendercreationlocators.recallReasonEvaluation);
+			set(tendercreationlocators.recallReasonEvaluation, "recall for testing", "Recall Reason");
+			waitForElementToBeClickable(tendercreationlocators.submitBybuttonRecallEvaluation);
+			click(tendercreationlocators.submitBybuttonRecallEvaluation, "submitBybuttonRecall Evaluation");
+			
+			pdfResultReport.addStepDetails("clickDetailsLink", "Detail link must be clicked sucessfully",
+					"SucessFully clicked Detail link" + " ", "Pass", "Y");
+			log.info("completed executing the method:: validateTenderOpeningTabDetails_ForBidOpeningUser");
+		} catch (Exception e) {
+			log.fatal("Not able to clicked Detail link" + e.getMessage());
+			pdfResultReport.addStepDetails("clickDetailsLink", "Detail link must be clicked sucessfully",
+					"Unable to clicked Detail link" + e.getMessage(), "Fail", "N");
+		}
+	}
+	
+	
 }
 
