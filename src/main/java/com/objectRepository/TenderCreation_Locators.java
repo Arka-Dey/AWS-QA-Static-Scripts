@@ -317,6 +317,8 @@ public class TenderCreation_Locators {
 	public By Approvercomment_tender = By.xpath("//div[@id='collapse1']//textarea[@ng-model='approvalWorkFlow.approvalDetails[0].overallComment']");
 	public By Approvebutton_tender = By.xpath("//button[normalize-space()='Approve']");
 	public By Tenderlink_approver_tender = By.xpath("//a[normalize-space()='Tender']");
+	public By new_action_button = By.xpath("//button[@class='dropdown-toggle customToggle']");
+	public By ApprovalStatusEvaluation = By.xpath("//select[@ng-model='searchApprovalStatus']");
 	public By tender_corrigendum_Tab = By.xpath("//a[normalize-space()='Corrigendum']");
 	public By TenderOpeninglink_approver_tender = By.xpath("//a[normalize-space()='Tender Opening']");
 	public By CloseWF_tender = By.xpath("//button[normalize-space()='Close Workflow']");
@@ -367,7 +369,8 @@ public class TenderCreation_Locators {
 	public By EvalApprovalType1_Evaluation = By.xpath("//div[@id='menu1Bid']//select[@id='filterTest']");
 	public By EvalcommentSection_Evaluation = By.xpath("//div[@id='menu1Bid']//label[contains(text(),'Comments')]/following::textarea");
 	public By OpeningcommentSection_Evaluation = By.xpath("//div[@id='homeBid']//label[contains(text(),'Comments')]/following::textarea[contains(@ng-model,'openingcomment')]");
-	public By TenEvalTab_Evaluation = By.xpath("//a[normalize-space()='Tender Evaluation']");
+	public By TenEvalTab_Evaluation = By.xpath("//span[normalize-space()='Tender Evaluation']");
+	public By IndentListTab = By.xpath("//span[normalize-space()='Indent']");
 	public By submitbutton_EvalUser = By.xpath("//button[@data-original-title='Submit']");
 	public By Alert_Nobtn_EvalUser = By.xpath("//button[@data-bb-handler='no']");
 	public By Alert_Yesbtn_EvalUser = By.xpath("//button[@data-bb-handler='yes']");
@@ -982,11 +985,12 @@ public class TenderCreation_Locators {
 	public By recallReasonComment = By.xpath("//textarea[@ng-model='recallObj.comment']");
 	public By recallComment = By.xpath("//textarea[@name='recallReason']");
 	public By recallReasonSubmit = By.xpath("//button[@ng-click='recallFn()']");
+	public By recallbuttonEvaluation = By.xpath("//*[@data-target='#recallModalForTenderEval']");
 	public By cancel_User1 = By.xpath("(//button[@ng-click='cancelUser(row)'])[1]");
 	public By typeAnyKeyword1 = By.xpath("//input[@ng-model='tenderFilter']");
 	public By sanctionNoteEvaluationCommentTab = By.xpath("//a[contains(text(),'Comment')]");
 	public By sanctionNoteEvaluationApprove = By.xpath("//button[@data-original-title='Approve']");
-	
+	public By recallReasonEvaluation = By.xpath("//textarea[@ng-model='recalReasonTenderEval']");
 	
 	
 	public By approveConfirm = By.xpath("//button[contains(text(),' Confirm')]");
@@ -1658,6 +1662,18 @@ public class TenderCreation_Locators {
 	public By drpdwn(String id) {
 		return By.xpath("(//td[text()='" + id + "']/following-sibling::td)[6]//button[@id='menu1']");
 	}
+	
+	public By assignItem1 = By.xpath("//*[@id='approver']/tbody/tr[2]/td[7]/button[1]");
+	public By assignItem2 = By.xpath("//*[@id='approver']/tbody/tr[3]/td[7]/button[1]");
+	public By assignItem3 = By.xpath("//*[@id='approver']/tbody/tr[4]/td[7]/button[1]");
+	
+	//public By select_assign_item = By.xpath("(//*[@id='submitBidTable'])[1]/tbody/tr/td/input[@class='ng-valid ng-dirty ng-valid-parse ng-touched ng-empty']");
+	public By select_assign_item(int count) {
+		return By.xpath("(//table[@id='submitBidTable']/tbody[1]/tr["+count+"]//td[normalize-space()='"+count+"']//preceding-sibling::td)[1]/input");
+	}
+	public By saveandclose = By.xpath("//*[@id='tenderItemAssignModal']/div/div/div[2]/div/div/div[2]/button[3]");
+	
+	
 	public By min_approverNotesheet = By.xpath("//*[@id='approver']/tbody/tr[4]/td[8]/span/input");
 	public By corrdiantorNotesheet = By.xpath("//*[@id='approver']/tbody/tr[4]/td[7]/label/span");
 	public By VIEW(String id) {
@@ -3212,7 +3228,7 @@ public class TenderCreation_Locators {
 public By Accommodationandfoodserviceactivities = By.xpath("//span[text()='Accommodation and food service activities']/preceding-sibling::span//span");
 	
 	public By btnSubmit = By.xpath("//a[@data-original-title='Submit']/button");
-	
+	public By brachSubmitButton = By.xpath("(//*[@id='btn-prevOk'])[3]");
 	public By UserName = By.xpath("//input[@name='userid']");
 	
 	public By AcceptDisclaimer = By.xpath("//a[text()='Disclaimer']/../preceding-sibling::span");
@@ -3481,6 +3497,8 @@ public By Accommodationandfoodserviceactivities = By.xpath("//span[text()='Accom
 	public By arrowIcon = By.xpath("//a[@name='add2Group']");
 	public By discussionSearchUser = By.xpath("(//input[@placeholder='Type any keyword'])[2]");
 	public By b1usercomment = By.xpath("//*[@id='buttonHolder']/tr/td[2]/div/textarea");
+	public By b1EvaluationUserComment = By.xpath("//textarea[@ng-model='user.comment']");
+	public By b2EvaluationUserComment = By.xpath("(//textarea[@ng-model='user.comment'])[2]");
 	public By coordinatorCheckbox = By.xpath("//*[@id='approver']/tbody/tr[6]/td[5]/label/span");
 	public By minApprover = By.xpath("//*[@id='approver']/tbody/tr[6]/td[6]/span/input");
 	public By b2usercommnet = By.xpath("(//*[@id='buttonHolder']/tr/td[2]/div/textarea)[2]");
@@ -3542,6 +3560,7 @@ public By Accommodationandfoodserviceactivities = By.xpath("//span[text()='Accom
 	public By deleteRemarks  = By.xpath("//*[@id='deletionRemarks']");
 	public By deleteindentAttachment  = By.xpath("//*[@class='customFile']");
 	public By submitbuttonIndentCancel  = By.xpath("//button[text()='Submit']");
+	public By submitBybuttonRecallEvaluation  = By.xpath("//button[@ng-click='recallTenderEvalApprover(recalReasonTenderEval)']");
 	public By indesntCancelSuccessMessageOkButton  = By.xpath("//button[@class='btn btn-primary']");
 	public By sendBack  = By.xpath("//*[@id='collapseAC']/div/div[2]/div[1]/button");
 	public By cancelIndent  = By.xpath("//ul[@class='dropdown-menu customDroupDown show']//*[text()[contains(.,'Cancel Indent')]]");
@@ -3564,6 +3583,7 @@ public By Accommodationandfoodserviceactivities = By.xpath("//span[text()='Accom
 
 	public By mailTableBody = By.xpath("//table[@class='table table-striped table-advance table-hover fixed-header fontSizeClass']/tbody");
 	public By discussionButton = By.xpath("//*[@id='collapseAC']/div/div[2]/div[1]/button[3]");
+	public By branchingButton = By.xpath("//*[@id='main-content-nw']/section/div/div/div[1]/h3/div/a[1]/button");
 	//public By userAdd_Indent = By.xpath("//table[@id='approver']/thead/tr[1]/th[7]/div/button[@id='addApprovertc']");
 	public By userAdd_Indent = By.xpath("//th/a/fa-icon[@class='ng-fa-icon']"); //added on 220722
 	public By user1_Indent = By.xpath("//table[@id='approver']/tbody/tr[1]/td[2]/input");
@@ -3862,7 +3882,7 @@ public By Accommodationandfoodserviceactivities = By.xpath("//span[text()='Accom
 	//Indent Approver
 	public By Lbl_workflowinbox = By.xpath("//h3[normalize-space()='Workflow Inbox (Pending & complete list)']");
 	public By notesheetTab = By.xpath("//*[@id='noteSheetTab']");
-	public By IndentRowResult_Approver (String indentno) { return By.xpath("//table[contains(@id,'myTable')]//tr[@class='ng-scope']//td[contains(text(),'"+indentno+"')]");}
+	public By IndentRowResult_Approver (String indentno) { return By.xpath("//span[text()='"+indentno+"')]");}
 	public By Actionbtn_IndentApprover = By.xpath("//button[@id='menu1']");
 	public By Actionbtn_IndentApprover_Backup = By.xpath("(//button[@id='menu1'])[1]");
 	public By Detailbtn_IndentApprover = By.xpath("//a[normalize-space()='Details']");
