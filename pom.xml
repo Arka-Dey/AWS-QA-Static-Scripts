@@ -109,15 +109,11 @@
 			<artifactId>javax.mail-api</artifactId>
 			<version>1.6.0</version>
 		</dependency>
-
-
-		<!-- https://mvnrepository.com/artifact/com.sun.mail/imap -->
 		<dependency>
 			<groupId>com.sun.mail</groupId>
 			<artifactId>imap</artifactId>
 			<version>1.6.0</version>
 		</dependency>
-
 		<dependency>
 			<groupId>com.sun.mail</groupId>
 			<artifactId>javax.mail</artifactId>
@@ -128,7 +124,6 @@
 			<artifactId>jersey-json</artifactId>
 			<version>1.18</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/com.github.2gis.winium/winium-webdriver -->
 		<dependency>
 			<groupId>com.github.2gis.winium</groupId>
 			<artifactId>winium-webdriver</artifactId>
@@ -145,13 +140,16 @@
 			<version>4.1</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.apache.pdfbox/pdfbox-app -->
-
-
-      <dependency>
-      <groupId>org.apache.pdfbox</groupId>
-      <artifactId>pdfbox-app</artifactId>
-      <version>2.0.2</version>
-      </dependency>
+      	<dependency>
+		      <groupId>org.apache.pdfbox</groupId>
+		      <artifactId>pdfbox-app</artifactId>
+		      <version>2.0.2</version>
+      	</dependency>
+     	 <dependency>
+		    <groupId>org.postgresql</groupId>
+		    <artifactId>postgresql</artifactId>
+		    <version>42.2.2</version>
+		</dependency>
 
 	</dependencies>
 	<properties>
@@ -168,8 +166,7 @@
 					<useSystemClassLoader>false</useSystemClassLoader>
 					<testFailureIgnore>true</testFailureIgnore>
 					<suiteXmlFiles>
-						<suiteXmlFile>mjunctionTestNGXML/RFQ/JSL/TG7_TC_Negotiation_16_Openingapproval_N_Evaluationapproval_Y_NegotiateOnebidder_ApproveTwobidder.xml</suiteXmlFile>
-						<suiteXmlFile>mjunctionTestNGXML/RFQ/JSL/TG7_TC_Negotiation_17_Openingapproval_N_Evaluationapproval_N_NegotiateTwobidder_RejectOnebidder.xml</suiteXmlFile>
+						<suiteXmlFile>mjunctionTestNGXML/RFQ/TG1_TC_Negotiation_13_Openingapproval_N_Evaluationapproval_Y_Negotiate_All_bidder_Approve_Twobidder_Reject_OneBidder.xml</suiteXmlFile>
 					</suiteXmlFiles>
 				</configuration>
 			</plugin>

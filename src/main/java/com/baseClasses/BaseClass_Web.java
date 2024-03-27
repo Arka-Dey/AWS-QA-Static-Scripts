@@ -68,6 +68,7 @@ import com.sun.tools.xjc.Driver;
 	public Logger log=Logger.getLogger(BaseClass_Web.class);
 	public PDFResultReport pdfResultReport=new PDFResultReport();
 	public HtmlReport htmlrep = new HtmlReport();
+	public String ii=null;
 	
 	public void launchapp(String url) throws Exception {
 		try {
@@ -1193,6 +1194,22 @@ import com.sun.tools.xjc.Driver;
 		return blnStatus;
 	}
 	
+	public boolean isElementEnable_Updated(By locator, int timeoutInSeconds) {
+		
+		boolean blnStatus = false;
+		WebDriverWait wait = new WebDriverWait(ThreadLocalWebdriver.getDriver(), timeoutInSeconds);
+		try
+		{
+		wait.until(ExpectedConditions.elementToBeClickable(locator));
+        blnStatus = true;
+		}
+		catch (RuntimeException localRuntimeException)
+		{
+			System.out.println("Error in finding Element:"+localRuntimeException.getMessage() +"Pass");
+		}
+		return blnStatus;
+	}
+	
 	public void waitForElementToBeInvisible(By locator)
 	{
 		WebDriverWait wait= (WebDriverWait) new WebDriverWait(ThreadLocalWebdriver.getDriver(),100).pollingEvery(5, TimeUnit.SECONDS).ignoring(Exception.class);
@@ -1234,6 +1251,19 @@ import com.sun.tools.xjc.Driver;
 			}
 	  }
 	}
+	
+	public String Date_24Hrs="";
+	public String Date(int minutes)
+	{
+		  LocalDateTime localdatetime =LocalDateTime.now().plusMinutes(minutes);
+		  
+		  Date_24Hrs = localdatetime.format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss"));
+		  
+		  String Date_12Hrs = localdatetime.format(DateTimeFormatter.ofPattern("dd-MM-yyyy hh:mm a"));
+		
+		  return Date_12Hrs;	
+	}
+	
 	public String bidStartDate_24Hrs="";
 	public String getBidStartDate(int minutes)
 	{
@@ -1431,5 +1461,13 @@ import com.sun.tools.xjc.Driver;
 			return first + separator + second;
 	    }
 		
+		//@AD
+		public static void scrollRight(int pixels) {
+	        JavascriptExecutor jsExecutor = (JavascriptExecutor) ThreadLocalWebdriver.getDriver();
+	        String script = "window.scrollBy(" + pixels + ", 0);";
+	        jsExecutor.executeScript(script);
+	    }
+	    
+		
+	}
 
-}

@@ -27,7 +27,7 @@ public class TG1_TC_Indent_01_Creation_with_approval extends BaseClass_Web{
 		reportDetails.put("Test Script Name", this.getClass().getSimpleName());
 		reportDetails.put("Test Script MyWorksshop Document ID", "Doc1234567");
 		reportDetails.put("Test Script Revision No", "1");
-		reportDetails.put("Test Author Name", "Venkatesh Jujjuru");
+		reportDetails.put("Test Author Name", "Arka Dey");
 		reportDetails.put("Test Script Type", "Automated Testing");
 		reportDetails.put("Requirement Document ID of System", "Doc1234567");
 		reportDetails.put("Requirement ID", "US2202");

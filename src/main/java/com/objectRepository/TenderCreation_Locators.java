@@ -16,6 +16,7 @@ public class TenderCreation_Locators {
 	public By dashboardIconnew = By.xpath("//button[normalize-space()='Site Map']");
 	public By UserIconnew = By.xpath("//div[@id='user-profile-img-dashbord']");
 	public By TenderListIcon = By.xpath("/html[1]/body[1]/section[2]/section[1]/div[1]/div[1]/h3[1]");
+	public By createNewTender = By.xpath("(//a[normalize-space()='Create New'])[1]");
 	public By tendersIcon = By.xpath("//span[contains(text(),'Tender(s)')]//parent::a//i[@class='fa fa-tasks']");
 	public By tenderList = By.xpath("//a[contains(@ng-click,'tender/listTender')]");
 	public By PendingTab_MyTender_tenderlistpage = By.xpath("//li[contains(text(),'Tender List')]");
@@ -3268,6 +3269,7 @@ public By Accommodationandfoodserviceactivities = By.xpath("//span[text()='Accom
 	public By mainMenuIcon = By.xpath("//button[@id='mainMenuIcon']");
 	public By mainMenuIconSub = By.xpath("//button[@class='menuBtn']");
 	public By Requisition = By.xpath("//a[contains(text(),'Requisition')]");
+	public By prList = By.xpath("//span[contains(text(),'All PRs')]");
 	public By Enquiry = By.xpath("//a[normalize-space()='Enquiry']");
 	public By AllEnquiry = By.xpath("//a[normalize-space()='All Enquires']");
 	public By AllQuotation = By.xpath("//span[contains(text(),'All Quotations')]");
@@ -4328,10 +4330,27 @@ public By Accommodationandfoodserviceactivities = By.xpath("//span[text()='Accom
 	public By snDetailsLink= By.xpath("//tbody/tr[1]/td[10]/div[1]/ul[1]/li[1]/a[1]");
 	public By snComment= By.xpath("//a[contains(text(),'Comment')]");
 	public By poApproverComment= By.xpath("//strong[contains(text(),'Approver Comment')]");
-	public By detailsofCorrigendumNumber= By.xpath("//*[@id='staticBackdropLabel']");;
+	public By detailsofCorrigendumNumber= By.xpath("//*[@id='staticBackdropLabel']");
 
 	//Throbber locators
 	public By PleaseWait= By.xpath("//div[contains(text(),'Please Wait')]");
+	
+	//===============PR_Locator================
+	
+	public By allPRCheck= By.xpath("//thead/tr[1]/th[1]/div[1]/label[1]");
+	public By allPRActionButton= By.xpath("//button[@id='$index']");
+	public By createTenderFromButton= By.xpath("//thead/tr[1]/th[6]/div[1]/ul[1]/li[3]/a[1]/span[1]");
+	public By confirmationPRtoRFQ= By.xpath("//body/section[@id='main-content-nw']/div[@id='erpItemList']/div[1]/div[1]/div[3]/button[2]");
+	//During Tender Creation
+	//Limited Tender
+	public By addSupplier= By.xpath("//body/section[@id='container']/section[@id='main-content-nw']/section[1]/div[1]/div[1]/div[2]/div[2]/div[1]/div[1]/form[1]/div[5]/div[5]/div[1]/div[1]/a[1]/button[1]");
+	public By searchSupplier= By.xpath("//body/section[@id='container']/section[@id='main-content-nw']/section[1]/div[1]/div[1]/div[2]/div[2]/div[1]/div[1]/form[1]/div[5]/div[5]/div[2]/div[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/input[1]");
+	public By searchSupplierButton= By.xpath("//body[1]/section[2]/section[1]/section[1]/div[1]/div[1]/div[2]/div[2]/div[1]/div[1]/form[1]/div[5]/div[5]/div[2]/div[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[2]/button[1]");
+	public By selectAllSuppliers= By.xpath("//tbody/tr[1]/th[1]/span[1]/label[1]/span[1]");
+	public By add_close= By.xpath("//button[contains(text(),'Add and Close')]");
+	
+	//=========================================
+	
 	
 	
 
