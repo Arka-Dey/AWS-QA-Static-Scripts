@@ -46,6 +46,8 @@ import org.testng.ITestContext;
 	import org.testng.annotations.BeforeMethod;
 	import org.testng.annotations.BeforeSuite;
 	import org.testng.annotations.Test;
+
+import com.itextpdf.text.pdf.PdfStructTreeController.returnType;
 	
 	public class BaseClass_Web {
 		
@@ -83,6 +85,22 @@ import org.testng.ITestContext;
 			ThreadLocalWebdriver.getDriver().findElement(locator).click();
 			waitForObj(3000);
 			log.info("Clicked on the field :"+locatordisplayname);
+		} catch (RuntimeException localRuntimeException) {
+			log.fatal("Error in clicking the field:" + localRuntimeException.getMessage());
+		System.out.println("Error in clicking the field:" + localRuntimeException.getMessage() + "Fail");
+		pdfResultReport.addStepDetails("click Method", "Click on the field :", "Unable to click on the field" + localRuntimeException.getMessage(), "FAIL","N");
+		throw new AutomationException("Unable to click on the field : " + localRuntimeException.getMessage());
+	}
+	}
+	//added on 100224
+	public void SSClick(By locator,String locatordisplayname) throws Exception {
+		try{
+			ThreadLocalWebdriver.getDriver().findElement(locator).click();
+			waitForObj(3000);
+			log.info("Clicked on the field :"+locatordisplayname);
+			pdfResultReport.addStepDetails("Click", "User has clicked on desired event",
+					"User has successfully clicked" + " ", "Pass", "Y");
+			log.info("completed executing the method:: tendercreatorLogout");
 		} catch (RuntimeException localRuntimeException) {
 			log.fatal("Error in clicking the field:" + localRuntimeException.getMessage());
 		System.out.println("Error in clicking the field:" + localRuntimeException.getMessage() + "Fail");
@@ -131,6 +149,7 @@ import org.testng.ITestContext;
 	public void select(By locator, String data) throws Exception {
 		try {
 			Select dropdown = new Select(ThreadLocalWebdriver.getDriver().findElement(locator));
+			waitForObj(1500);
 			dropdown.selectByVisibleText(data);
 			waitForObj(2000);
 			log.info("Selected the Value from the dropdown :"+locator);
@@ -407,6 +426,21 @@ import org.testng.ITestContext;
 			throw new AutomationException("Error during verifying the presence of Element: " + localRuntimeException.getMessage());
 		}
 	}
+
+	public boolean IsElementPresentBoolean(By locator) throws Exception {
+		boolean foundAlert = false;
+		
+			if(ThreadLocalWebdriver.getDriver().findElement(locator).isDisplayed()) {
+				foundAlert = true;
+				log.info("Element is available : "+locator);
+			}
+			else {
+				foundAlert = false;
+				log.info("Element is not available : "+locator);
+			}
+			
+		return foundAlert;
+		}
 	
 	public int totalitemsdropdownlist(WebElement elem) throws AutomationException {
 		List<WebElement> dropdown_values = null;
@@ -419,6 +453,20 @@ import org.testng.ITestContext;
 			throw new AutomationException("Error in finding total no. of elements in dropdown: " + localRuntimeException.getMessage());
 		}
 		return dropdown_values.size();
+	}
+	
+	public int totalLocatorCount(By by) throws AutomationException {
+		List<WebElement> totalLocator_Count = null;
+		try {
+			WebDriver driver = ThreadLocalWebdriver.getDriver();
+			totalLocator_Count = driver.findElements(by);
+
+		} catch (RuntimeException localRuntimeException) {
+			System.out.println("Error in finding total no. totalLocator_Count: " + localRuntimeException.getMessage() + "Fail");
+			// PDFResultReport.addStepDetails("List box size", "Get the no of items available in the dropdown", "Error in finding total no. of elements in dropdown: " + localRuntimeException.getMessage(), "FAIL","N");
+			throw new AutomationException("Error in finding total no. totalLocator_Count: " + localRuntimeException.getMessage());
+		}
+		return totalLocator_Count.size();
 	}
 	
 	public static boolean ischeckboxcheckedbbydefault(WebElement elem) {
@@ -1115,11 +1163,34 @@ import org.testng.ITestContext;
 		}
 	public void waitForElementToBeVisible(By locator)
 	{
-		WebDriverWait wait= new WebDriverWait(ThreadLocalWebdriver.getDriver(), 2000);
+		WebDriverWait wait= new WebDriverWait(ThreadLocalWebdriver.getDriver(), 20);
 		
 		wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
 	}
 	
+	public boolean isElementDisplayed(By locator, int timeoutInSeconds) {
+        	
+            WebDriverWait wait = new WebDriverWait(ThreadLocalWebdriver.getDriver(), timeoutInSeconds);
+            WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+            return element.isDisplayed();
+        
+    }
+	
+	public boolean isElementDisplayed_Updated(By locator, int timeoutInSeconds) {
+		
+		boolean blnStatus = false;
+		WebDriverWait wait = new WebDriverWait(ThreadLocalWebdriver.getDriver(), timeoutInSeconds);
+		try
+		{
+		wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+        blnStatus = true;
+		}
+		catch (RuntimeException localRuntimeException)
+		{
+			System.out.println("Error in finding Element:"+localRuntimeException.getMessage() +"Pass");
+		}
+		return blnStatus;
+	}
 	
 	public void waitForElementToBeInvisible(By locator)
 	{
@@ -1131,7 +1202,7 @@ import org.testng.ITestContext;
 	
 	public void waitForElementToBeClickable(By locator)
 	{
-		WebDriverWait wait= new WebDriverWait(ThreadLocalWebdriver.getDriver(), 2000);
+		WebDriverWait wait= new WebDriverWait(ThreadLocalWebdriver.getDriver(), 20);
 		
 		wait.until(ExpectedConditions.elementToBeClickable(locator));
 	}
@@ -1253,6 +1324,18 @@ import org.testng.ITestContext;
 			e.printStackTrace();
 		}
 	}
+	//added @pavel
+	public void scrollToBottomOfThePage() {
+		try {
+		WebDriver driver = ThreadLocalWebdriver.getDriver();
+		((JavascriptExecutor) driver)
+	     .executeScript("window.scrollTo(0, document.body.scrollHeight)");
+	} catch (Exception e) {
+		
+		e.printStackTrace();
+	}
+	}
+	
 	
 	// added on 070124
 	public boolean isElementTextPresent(By locator, String expectedText) {
@@ -1267,6 +1350,18 @@ import org.testng.ITestContext;
             return false;
         }
     }
+	
+	public String getPRNumberFromString(By locator) {
+       
+        	WebDriver driver = ThreadLocalWebdriver.getDriver();
+            WebElement element = driver.findElement(locator);
+            String actualText = element.getText().trim();
+            String[] words= actualText.split("Indent No.");
+    	    String[] splitted=words[1].split(" is successfully");
+    	   String prNo= splitted[0].trim();
+    	   return prNo;
+        } 
+    
 	
 	// added on 070124
 	public boolean isElementAttributeEqual(By locator, String attributeName, String expectedValue) {
@@ -1312,4 +1407,30 @@ import org.testng.ITestContext;
 	            //return false;
 	        }
 	    }
+//		//added by @Pavel 12/01/2024
+//		public boolean validatePreviewTabData(By locator, String expectedText) {
+//	        try {
+//	        	WebDriver driver = ThreadLocalWebdriver.getDriver();
+//	        	List<WebElement> listOfElements= driver.findElements(locator);
+//	         
+//	            
+//	            String actualText = listOfElements.get(1).getText().trim();
+//	            return actualText.equals(expectedText);
+//	            
+//	            
+//	    
+//	        } catch (Exception e) {
+//	            // Handle any exceptions or log them as needed
+//	            e.printStackTrace();
+//	            return false;
+//	        }
+		
+		public String concatenateWithSlash(String first, String second, String separator) {
+	        //return first + "/" + second;
+			return first + separator + second;
+	    }
+		
+		
+	    
+		
 	}

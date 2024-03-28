@@ -76,6 +76,7 @@ public class TG1_TC_Indent_01_Creation_with_approval extends BaseClass_Web{
 		rfqfromintendcomponentobj.IndentapproverLogin();
 		rfqfromintendcomponentobj.GoToApprovalworkFlowPendingindentAndSearchTheIndent();
 		rfqfromintendcomponentobj.clickDetailLinkInApprovalListPage();
+		rfqfromintendcomponentobj.validateIndentdataAtApproverEnd();   //validate indent data at sectionWise view
 		rfqfromintendcomponentobj.ApproverOverAllComentWithIndentHasBeenApproved();
 		etendercomponentobj.tenderLogoutOld();
 		
@@ -85,6 +86,11 @@ public class TG1_TC_Indent_01_Creation_with_approval extends BaseClass_Web{
 		rfqfromintendcomponentobj.enterIndentNoInSearch();
 		rfqfromintendcomponentobj.VerifyIndentStatus("Completed");
 		etendercomponentobj.tenderLogout();
+		
+		
+		
+		
+	
 	}
 
 }

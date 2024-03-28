@@ -15,7 +15,7 @@ public class Listener implements IInvokedMethodListener{
 	            ThreadLocalWebdriver.setWebDriver(driver);
 	            
 	        }
-	    }
+	    } 
 	 
 	    public void afterInvocation(IInvokedMethod method, ITestResult testResult) {
 	        if (method.isTestMethod()) {

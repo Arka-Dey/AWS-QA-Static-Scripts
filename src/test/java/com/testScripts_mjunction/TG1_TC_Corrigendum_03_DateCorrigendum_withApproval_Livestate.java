@@ -74,7 +74,7 @@ public class TG1_TC_Corrigendum_03_DateCorrigendum_withApproval_Livestate extend
 		etendercomponentobj.tenderLogout();
 		
 		
-	//Indent assignment Process (self claim)
+		//Indent assignment Process (self claim)
 		etendercomponentobj.tendercreatorLogin();
 		rfqfromintendcomponentobj.navigateToIndentAssignment();
 		rfqfromintendcomponentobj.enterIndentNoForSearch();
@@ -83,17 +83,17 @@ public class TG1_TC_Corrigendum_03_DateCorrigendum_withApproval_Livestate extend
 		rfqfromintendcomponentobj.VerifyIndentStatus_AssignmentListPage("Assigned");
 		rfqfromintendcomponentobj.navigateToCreateRFQFromIndentPage();
 		rfqfromintendcomponentobj.enterIndentNoInSearch_RFQfromIndentPage();
-		
-		
+		 
 	//Create and publish RFQ from indent
 		rfqfromintendcomponentobj.Create_RFQ_From_Indent("Indigenous Tender (Supply & Service Both) V-1.0");
 		rfqfromintendcomponentobj.PublishTender_from_indent_withRFQ_TG1("Indigenous Tender (Supply & Service Both) V-1.0",5,30,40);
+		//Clicking on submit button and verify tender status
 		etendercomponentobj.clickSubmitBtn();
 		etendercomponentobj.tenderIdSave();
 		etendercomponentobj.sendForNoApproval_validation();
 		etendercomponentobj.enterTenderIdInSearch();
 		etendercomponentobj.checkTenderStatusAndTenderStage();
-		etendercomponentobj.tenderLogoutOld();
+		etendercomponentobj.tenderLogout();
 		
 	//Date corrigendum during Live tender status
 		etendercomponentobj.waitTillBidstartDateReached();
@@ -104,7 +104,7 @@ public class TG1_TC_Corrigendum_03_DateCorrigendum_withApproval_Livestate extend
 		etendercomponentobj.corrigendumSaveButton();
 		etendercomponentobj.modifyDateScheduleTemplate1(	30,35);  
 		etendercomponentobj.AddTwoUsersForSequentialCorrigendumApproval();
-		etendercomponentobj.tenderLogoutOld();
+		etendercomponentobj.tenderLogout();
 		
 	//verifying pending corrigendum in 2nd approver login	
 		etendercomponentobj.tenderApprover2Login();
@@ -134,8 +134,8 @@ public class TG1_TC_Corrigendum_03_DateCorrigendum_withApproval_Livestate extend
 		etendercomponentobj.corrigendumStatus();
 		etendercomponentobj.corrigendumStatus_Yes_Hyperlink_Validation();
 		etendercomponentobj.corrigendumNumber_Hyperlink_Validation();
-		etendercomponentobj.corrigendumHistory_Hyperlink_Validation();
-		etendercomponentobj.tenderLogoutOld();
+		etendercomponentobj.corrigendumComparison_Hyperlink_Validation();
+		etendercomponentobj.tenderLogout();
 	}
 
 }
