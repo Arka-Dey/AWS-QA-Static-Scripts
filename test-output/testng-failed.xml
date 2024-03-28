@@ -6,30 +6,18 @@
   </listeners>
   <test thread-count="5" name="Test(failed)">
     <parameter name="browserName" value="windowschrome"/>
-    <parameter name="TestcaseNo" value="25"/>
+    <parameter name="TestcaseNo" value="11"/>
     <classes>
-<<<<<<< HEAD
-      <class name="com.dynamicity.CreateTenderFromPR_Dynamically">
-        <methods>
-          <include name="setUpSuiteDetails"/>
-          <include name="BeforeClass"/>
-          <include name="createTenderFromPR_Dynamically" invocation-numbers="0"/>
-=======
       <class name="com.testScripts_mjunction.TG1_TC_Evaluation_12_Openingapproval_N_Regression_Evaluationapproval_Y">
         <methods>
           <include name="setUpSuiteDetails"/>
           <include name="Tender_Evaluation_with_OpeningApproval_N_Evaluationapproval_Y_NegotiateOnebidder_ApproveTwobidder" invocation-numbers="0"/>
->>>>>>> d20c77975f679a03f91d82b8afebadd871342272
           <include name="afterSuite"/>
           <include name="captureDesc"/>
           <include name="BeforeClass"/>
           <include name="afterClass"/>
         </methods>
-<<<<<<< HEAD
-      </class> <!-- com.dynamicity.CreateTenderFromPR_Dynamically -->
-=======
       </class> <!-- com.testScripts_mjunction.TG1_TC_Evaluation_12_Openingapproval_N_Regression_Evaluationapproval_Y -->
->>>>>>> d20c77975f679a03f91d82b8afebadd871342272
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

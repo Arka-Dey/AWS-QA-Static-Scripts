@@ -1075,7 +1075,7 @@ public class RfqFromIndentComponent extends BaseClass_Web {
 			click(tendercreationlocators.Savebtn_IndentNew, "savebutton");
 			//created by @Pavel 11012024
 			try {
-				
+				waitForObj(3000);
 		if(isElementTextPresent(tendercreationlocators.IndentSuccessMessage, "General Information page is saved successfully and the new Indent No. "+getPRNumberFromString(tendercreationlocators.IndentSuccessMessage)+" is successfully generated.")==true)
 		{
 			

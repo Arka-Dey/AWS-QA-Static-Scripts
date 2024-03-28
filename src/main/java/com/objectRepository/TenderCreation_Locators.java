@@ -12,8 +12,8 @@ public class TenderCreation_Locators {
 	public By Captcha_Login = By.xpath("//input[@name='captcha' and @ng-model = 'login.captcha']");
 	public By okButton = By.xpath("//button[@title='Login'][@type='submit']");
 	//public By dashboardIcon = By.xpath("//h3[contains(@class, 'page-header box_shadow page-header-ex ng-binding')]");
-	public By dashboardIcon = By.xpath("//body/section[@id='container']/section[@id='main-content-nw']/section[1]/div[1]/div[1]/div[1]/h3[1]");
-	public By dashboardIconnew = By.xpath("//button[normalize-space()='Site Map']");
+	public By dashboardIcon = By.xpath("//*[text()[contains(.,'Dashboard')]]");
+	public By dashboardIconnew = By.xpath("//*[text()[contains(.,'Dashboard')]]");   //bashboard page for all module
 	public By UserIconnew = By.xpath("//div[@id='user-profile-img-dashbord']");
 	public By TenderListIcon = By.xpath("/html[1]/body[1]/section[2]/section[1]/div[1]/div[1]/h3[1]");
 	public By createNewTender = By.xpath("(//a[normalize-space()='Create New'])[1]");
