@@ -4,27 +4,27 @@
   <test thread-count="5" name="Default test(failed)">
     <classes>
 <<<<<<< HEAD
-      <class name="com.testScripts_mjunction.TG1_TC_TenderCreation_02_tender_publish_with_multiple_approver">
+      <class name="com.dynamicity.CreateTender_Dynamically">
         <methods>
-          <include name="setUpSuiteDetails"/>
-          <include name="Tenderpublished_after_tender_approval_TG1"/>
-=======
-      <class name="com.testScripts_mjunction.TC_ASN_01_CreateASNbyInputingAllData">
-        <methods>
+          <include name="validateCover1Cover2WithApprovalRequiredWhereApproveOneBidderAndRejectOneBidder"/>
           <include name="setUpSuiteDetails"/>
           <include name="BeforeClass"/>
->>>>>>> c5cc3e91e9e277edd3483ea075bb1516542d3a20
+=======
+      <class name="com.testScripts_mjunction.TC_SN_04VerifyDeleteOfSanctionNoteTest">
+        <methods>
+          <include name="f"/>
+          <include name="setUpSuiteDetails"/>
+>>>>>>> d20c77975f679a03f91d82b8afebadd871342272
           <include name="afterSuite"/>
           <include name="captureDesc"/>
+          <include name="BeforeClass"/>
           <include name="afterClass"/>
+        </methods>
 <<<<<<< HEAD
-        </methods>
-      </class> <!-- com.testScripts_mjunction.TG1_TC_TenderCreation_02_tender_publish_with_multiple_approver -->
+      </class> <!-- com.dynamicity.CreateTender_Dynamically -->
 =======
-          <include name="ValidateMyInFormationTabFieldsAutoPopulated"/>
-        </methods>
-      </class> <!-- com.testScripts_mjunction.TC_ASN_01_CreateASNbyInputingAllData -->
->>>>>>> c5cc3e91e9e277edd3483ea075bb1516542d3a20
+      </class> <!-- com.testScripts_mjunction.TC_SN_04VerifyDeleteOfSanctionNoteTest -->
+>>>>>>> d20c77975f679a03f91d82b8afebadd871342272
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

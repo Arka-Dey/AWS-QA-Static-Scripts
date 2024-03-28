@@ -43,6 +43,7 @@ import com.baseClasses.EmailUtils;
 import com.baseClasses.PDFResultReport;
 import com.baseClasses.ThreadLocalWebdriver;
 import com.objectRepository.TenderCreation_Locators;
+import com.sun.tools.xjc.Driver;
 
 public class PostTenderComponent extends BaseClass_Web {
 	TenderCreation_Locators tendercreationlocators = new TenderCreation_Locators();
@@ -51,8 +52,8 @@ public class PostTenderComponent extends BaseClass_Web {
 	String poDocNum = null;
 	//String poDocNum = "1360";
 	String poReference= "";
-	String tenderReferenceNoLocatorText_sn = null;
-	//String tenderReferenceNoLocatorText_sn ="SN_9742";
+//	String tenderReferenceNoLocatorText_sn = null;
+	String tenderReferenceNoLocatorText_sn ="SN_5632";
 	eTenderComponent etendercomponentobj = new eTenderComponent(pdfResultReport);
 
 	public PostTenderComponent(PDFResultReport pdfresultReport) {
@@ -217,6 +218,8 @@ public class PostTenderComponent extends BaseClass_Web {
 
 			set(tendercreationlocators.TypeYourKeywordSN, eTenderComponent.getDataFromPropertiesFile_New("tenderId"),
 					"enterCompleted_TenderId");
+			
+			
 
 			waitForObj(5000);
 
@@ -368,7 +371,7 @@ public class PostTenderComponent extends BaseClass_Web {
 			
 			//===========================Added on 300124
 			WebDriver driver = ThreadLocalWebdriver.getDriver();
-			int size = driver.findElements(tendercreationlocators.actionDropdown).size(); //added on 09-01-23 by Arka
+			int size = driver.findElements(tendercreationlocators.ActionButton_approver_tender).size(); //added on 09-01-23 by Arka
 			waitForObj(2000);
 			if(size >=1)
 			{
@@ -1395,10 +1398,9 @@ public class PostTenderComponent extends BaseClass_Web {
 			log.info("started executing the method:: createSanctionNote");
 			JSClick(tendercreationlocators.SN_stage, "SN_stage");
 			checkPageIsReady();
-			waitForElementToBeVisible(tendercreationlocators.createSanctionNote);
-			//waitForObj(5000);
-			waitForElementToBeClickable(tendercreationlocators.createSanctionNote);
-			JSClick(tendercreationlocators.createSanctionNote, "createSanctionNote");
+			waitForElementToBeVisible(tendercreationlocators.createNotesheetIcon);
+
+			click(tendercreationlocators.createNotesheetIcon, "createSanctionNote");
 			pdfResultReport.addStepDetails("createSanctionNote", "Create sanction note must be click sucessfully",
 					"Successfully clicked on Create sanction note " + " ", "Pass", "Y");
 			log.info("completed executing the method:: createSanctionNote");
@@ -2608,6 +2610,7 @@ public class PostTenderComponent extends BaseClass_Web {
 	
 	public void EPS_PO_Submission() throws Throwable {
 		try {
+			
 			log.info("started executing the method:: PO_GeneralInformation_TAB");
 
 			
@@ -3711,8 +3714,8 @@ public class PostTenderComponent extends BaseClass_Web {
 					"po ref no search field");
 			*/
 			waitForElementToBeClickable(tendercreationlocators.poSearchKeyword);
-			clear(tendercreationlocators.poSearchKeyword, "Clear the po no search field");
-			set(tendercreationlocators.poSearchKeyword, poDocNum, "po no search field");
+			clear(tendercreationlocators.Txt_TypeanyKeyword_Indent, "Clear the po no search field");
+			set(tendercreationlocators.Txt_TypeanyKeyword_Indent, poDocNum, "po no search field");
 			IsElementPresent(tendercreationlocators.poAccetpedStatus);
 
 			waitForObj(2000);
@@ -4390,8 +4393,10 @@ public class PostTenderComponent extends BaseClass_Web {
 			JSClick(tendercreationlocators.pending, "pending");
 			waitForObj(3000);
 			eTenderComponent.waitForSpinnerToDisappear();
-			waitForElementToBeClickable(tendercreationlocators.poTab);
-			click(tendercreationlocators.poTab, "Order Tab");
+			//waitForElementToBeClickable(tendercreationlocators.poTab);
+			//click(tendercreationlocators.poTab, "Order Tab");
+			waitForElementToBeClickable(by);
+			click(by, "Order Tab");
 			//click(by, "PO_Tab");
 			
 			pdfResultReport.addStepDetails("navigateToApprovalPendingPage",
@@ -4970,7 +4975,7 @@ public class PostTenderComponent extends BaseClass_Web {
 			waitForElementToBeClickable(tendercreationlocators.btnIssuePO);
 			click(tendercreationlocators.btnIssuePO, "btnIssuePO");
 			waitForElementToBeVisible(tendercreationlocators.alertForCreateSNfromPO);
-			click(tendercreationlocators.confirmationOkBy, "confirmationOkBy");
+			click(tendercreationlocators.ConfirmBackYes, "confirmationOkBy");
 			pdfResultReport.addStepDetails("IssuePO", "Issue PO must be click sucessfully",
 					"Successfully clicked on Issue PO " + " ", "Pass", "Y");
 			log.info("completed executing the method:: IssuePO");
@@ -5849,9 +5854,9 @@ public class PostTenderComponent extends BaseClass_Web {
 					"Purchase Order Approval page must be navigate sucessfully ",
 					"Successfully navigated to Purchase Order Approval page" + " ", "Pass", "Y");
 			
-			click(tendercreationlocators.Actionbtn_IndentApprover_Backup, "Action_Button");
-			waitForElementToBeClickable(tendercreationlocators.snDetailsLink);
-			click(tendercreationlocators.snDetailsLink, "Details");
+			click(tendercreationlocators.ActionButton_approver_tender, "Action_Button");
+			waitForElementToBeClickable(tendercreationlocators.detailsSN);
+			click(tendercreationlocators.detailsSN, "Details");
 			waitForObj(4000);
 			pdfResultReport.addStepDetails("navigateToPurchaseOrderApproval",
 					"Purchase Order Approval page must be navigate sucessfully ",
@@ -7996,14 +8001,14 @@ public class PostTenderComponent extends BaseClass_Web {
 			*/
 			//====================================
 			
-			waitForElement(tendercreationlocators.typeAnyKeyword, 3000);
+			waitForElement(tendercreationlocators.Txt_TypeanyKeyword_Indent, 3000);
 			click(tendercreationlocators.SNcompletedList, "SNcompletedList");
 			//waitForObj(2000);
-			waitForElementToBeClickable(tendercreationlocators.typeAnyKeyword);
-			clear(tendercreationlocators.typeAnyKeyword, "typeAnyKeyword");
+			waitForElementToBeClickable(tendercreationlocators.Txt_TypeanyKeyword_Indent);
+			clear(tendercreationlocators.Txt_TypeanyKeyword_Indent, "typeAnyKeyword");
 			//waitForObj(2000);
 			//set(tendercreationlocators.typeAnyKeyword, eTenderComponent.getDataFromPropertiesFile("sanctionReferenceNumber"), "typeAnyKeyword");
-			set(tendercreationlocators.typeAnyKeyword, documentNumberText, "typeAnyKeyword");
+			set(tendercreationlocators.Txt_TypeanyKeyword_Indent, documentNumberText, "typeAnyKeyword");
 			waitForObj(1000);
 		
 			IsElementPresent(tendercreationlocators.SanctionDocumentID(documentNumberText));
@@ -8072,6 +8077,7 @@ public class PostTenderComponent extends BaseClass_Web {
 			tenderReferenceNoLocatorText_sn = SN.concat(ref);
 			//String sanctionReference = SN.concat(ref);
 			waitForObj(1000);
+			waitForElementToBeVisible(tendercreationlocators.sanctionReferenceNumber);
 			set(tendercreationlocators.sanctionReferenceNumber, tenderReferenceNoLocatorText_sn, "sanctionReferenceNumber");
 			eTenderComponent.updateDataIntoPropertyFile("sanctionReferenceNumber", tenderReferenceNoLocatorText_sn);
 			waitForObj(1000);
@@ -8261,9 +8267,9 @@ public class PostTenderComponent extends BaseClass_Web {
 	public void sanctionNoteEvaluationValidation() throws Throwable {
 		try {
 			log.info("started executing the method:: sanctionNoteEvaluationValidation");
-			click(tendercreationlocators.Actionbtn_IndentApprover_Backup, "Action_Button");
-			waitForElementToBeClickable(tendercreationlocators.snDetailsLink);
-			click(tendercreationlocators.snDetailsLink, "Details");
+			click(tendercreationlocators.ActionButton_approver_tender, "Action_Button");
+			waitForElementToBeClickable(tendercreationlocators.detailsSN);
+			click(tendercreationlocators.detailsSN, "Details");
 			
 			/*
 			click(tendercreationlocators.details, "details");
@@ -11274,10 +11280,10 @@ public class PostTenderComponent extends BaseClass_Web {
 					"Purchase Order Approval page must be navigate sucessfully ",
 					"Successfully navigated to Purchase Order Approval page" + " ", "Pass", "Y");
 			waitForObj(2000);
-			click(tendercreationlocators.cancelIndentOrderTab, "Cancel Indent");
-			click(tendercreationlocators.Actionbtn_IndentApprover_Backup, "Action_Button");
-			waitForElementToBeClickable(tendercreationlocators.snDetailsLink);
-			click(tendercreationlocators.snDetailsLink, "Details");
+			//click(tendercreationlocators.cancelIndentOrderTab, "Cancel Indent");
+			click(tendercreationlocators.ActionButton_approver_tender, "Action_Button");
+			waitForElementToBeClickable(tendercreationlocators.detailsSN);
+			click(tendercreationlocators.detailsSN, "Details");
 			
 			pdfResultReport.addStepDetails("navigateToPurchaseOrderApproval",
 					"Purchase Order Approval page must be navigate sucessfully ",
@@ -11340,19 +11346,19 @@ public class PostTenderComponent extends BaseClass_Web {
 		log.info("started executing the method:: deleteSanction");
 		JSClick(tendercreationlocators.SN_stage, "SN_stage");
 		checkPageIsReady();
-		waitForElementToBeVisible(tendercreationlocators.createSanctionNote);
-		//waitForObj(5000);
-		waitForElementToBeClickable(tendercreationlocators.createSanctionNote);
+		waitForElementToBeVisible(tendercreationlocators.Txt_TypeanyKeyword_Indent);
+		
 		waitForObj(4000);
-		set(tendercreationlocators.snSearch, tenderReferenceNoLocatorText_sn, "enter sn ref");
+		set(tendercreationlocators.Txt_TypeanyKeyword_Indent, tenderReferenceNoLocatorText_sn, "enter sn ref");
 		waitForObj(1500);
-		click(tendercreationlocators.action, "Action dropdown");
+		click(tendercreationlocators.actionSanction, "Action dropdown");
 		waitForObj(700);
 		click(tendercreationlocators.deleteSN, "Delete Sn");
 		waitForElementToBeVisible(tendercreationlocators.DeleteSNReason);
 		set(tendercreationlocators.DeleteSNReason, "not required", "Remarks/Reason");
 		
-		click(tendercreationlocators.submitByDeleteSN,"Submit");
+		click(tendercreationlocators.submitbuttonIndentCancel,"Submit");
+		waitForObj(6000);
 		waitForElementToBeClickable(tendercreationlocators.deleteorCancelledTab);
 		waitForObj(1000);
 		click(tendercreationlocators.deleteorCancelledTab,"Deleted/Cancelled");

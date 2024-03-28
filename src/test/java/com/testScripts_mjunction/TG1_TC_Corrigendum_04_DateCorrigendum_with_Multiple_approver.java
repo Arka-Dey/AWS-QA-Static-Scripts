@@ -62,8 +62,8 @@ public class TG1_TC_Corrigendum_04_DateCorrigendum_with_Multiple_approver extend
 		rfqfromintendcomponentobj.IndentTG1_technical_Specification_tabvalidation();
 		rfqfromintendcomponentobj.IndentTG1_Annexures_tabvalidation();
 		rfqfromintendcomponentobj.IndentTG1_Submit();
-		rfqfromintendcomponentobj.SystemIndentNoSaveNew();
-		rfqfromintendcomponentobj.NoApproval_IndentWF();
+		rfqfromintendcomponentobj.SystemIndentNoSaveNew(); 
+		rfqfromintendcomponentobj.NoApproval_IndentWF(); 
 		//rfqfromintendcomponentobj.navigateToIndentListing();
 		rfqfromintendcomponentobj.enterIndentNoInSearch();
 		rfqfromintendcomponentobj.VerifyIndentStatus("Completed");
@@ -551,7 +551,7 @@ public class TG1_TC_Corrigendum_04_DateCorrigendum_with_Multiple_approver extend
 																etendercomponentobj.tenderApprovalDecision("forward");
 																etendercomponentobj.sendForForwardSequential_Single_User_Tender_ApprovalProcess( pdfResultReport.testData.get("UserTenderApprover7"));
 															  etendercomponentobj.tenderLogoutOld();
-									
+							
 									
 															//approver7
 															  posttendercomponentobj.sanctionNoteApproverLogin(pdfResultReport.testData.get("SanctionNoteApproverUserName7"));
