@@ -2,6 +2,7 @@
 <testng-results skipped="0" failed="1" ignored="0" total="1" passed="0">
   <reporter-output>
   </reporter-output>
+<<<<<<< HEAD
   <suite name="Suite" duration-ms="125948" started-at="2024-03-28T18:29:04 IST" finished-at="2024-03-28T18:31:10 IST">
     <groups>
     </groups>
@@ -12,12 +13,25 @@
             <param index="0">
               <value>
                 <![CDATA[org.testng.TestRunner@19f21b6b]]>
+=======
+  <suite name="Suite" duration-ms="218943" started-at="2024-03-28T12:06:37 IST" finished-at="2024-03-28T12:10:16 IST">
+    <groups>
+    </groups>
+    <test name="Test" duration-ms="218943" started-at="2024-03-28T12:06:37 IST" finished-at="2024-03-28T12:10:16 IST">
+      <class name="com.testScripts_mjunction.TG1_TC_Evaluation_12_Openingapproval_N_Regression_Evaluationapproval_Y">
+        <test-method status="PASS" signature="setUpSuiteDetails(org.testng.ITestContext)[pri:0, instance:com.testScripts_mjunction.TG1_TC_Evaluation_12_Openingapproval_N_Regression_Evaluationapproval_Y@3270d194]" name="setUpSuiteDetails" is-config="true" duration-ms="112" started-at="2024-03-28T12:06:37 IST" finished-at="2024-03-28T12:06:37 IST">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[org.testng.TestRunner@57bd2029]]>
+>>>>>>> 2672b2f1664d6d201e4a452c3643422cfad944a3
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpSuiteDetails -->
+<<<<<<< HEAD
         <test-method status="PASS" signature="BeforeClass()[pri:0, instance:com.testScripts_mjunction.TG1_TC_Indent_01_Creation_with_approval@76a4d6c]" name="BeforeClass" is-config="true" duration-ms="3018" started-at="2024-03-28T18:29:04 IST" finished-at="2024-03-28T18:29:07 IST">
           <reporter-output>
           </reporter-output>
@@ -63,6 +77,47 @@ at com.baseClasses.AutomationException.<init>(AutomationException.java:11)
 at com.baseClasses.BaseClass_Web.click(BaseClass_Web.java:94)
 at com.components.RfqFromIndentComponent.IndentTG1_Indent_Details_tabvalidation(RfqFromIndentComponent.java:1397)
 at com.testScripts_mjunction.TG1_TC_Indent_01_Creation_with_approval.Indent_creation_with_approval(TG1_TC_Indent_01_Creation_with_approval.java:60)
+=======
+        <test-method status="PASS" signature="BeforeClass()[pri:0, instance:com.testScripts_mjunction.TG1_TC_Evaluation_12_Openingapproval_N_Regression_Evaluationapproval_Y@3270d194]" name="BeforeClass" is-config="true" duration-ms="3033" started-at="2024-03-28T12:06:37 IST" finished-at="2024-03-28T12:06:40 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- BeforeClass -->
+        <test-method status="FAIL" signature="Tender_Evaluation_with_OpeningApproval_N_Evaluationapproval_Y_NegotiateOnebidder_ApproveTwobidder(java.lang.String)[pri:0, instance:com.testScripts_mjunction.TG1_TC_Evaluation_12_Openingapproval_N_Regression_Evaluationapproval_Y@3270d194]" name="Tender_Evaluation_with_OpeningApproval_N_Evaluationapproval_Y_NegotiateOnebidder_ApproveTwobidder" duration-ms="209750" started-at="2024-03-28T12:06:40 IST" description="Tender_Evaluation_with_OpeningApproval_N_Evaluationapproval_Y_NegotiateOnebidder_ApproveTwobidder_RFQ_from_Indent" finished-at="2024-03-28T12:10:10 IST">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[11]]>
+              </value>
+            </param>
+          </params>
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[Error Message : Error in clearing the text in element: no such element: Unable to locate element: {"method":"xpath","selector":"//textarea[@id='rdcis_quotatn_trms_cnditn.Evaluator_Remarks.0']"}
+  (Session info: chrome=123.0.6312.59)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'MJLT-2170', ip: '172.16.17.39', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_192'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 123.0.6312.59, chrome: {chromedriverVersion: 123.0.6312.58 (6b4b19e9dfbb..., userDataDir: C:\Users\PAVEL~1.BAI\AppDat...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:59134}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: a6cba55ef2e9c81f1490927e6f88cb26
+*** Element info: {Using=xpath, value=//textarea[@id='rdcis_quotatn_trms_cnditn.Evaluator_Remarks.0']}]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: Error Message : Error in clearing the text in element: no such element: Unable to locate element: {"method":"xpath","selector":"//textarea[@id='rdcis_quotatn_trms_cnditn.Evaluator_Remarks.0']"}
+  (Session info: chrome=123.0.6312.59)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'MJLT-2170', ip: '172.16.17.39', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_192'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 123.0.6312.59, chrome: {chromedriverVersion: 123.0.6312.58 (6b4b19e9dfbb..., userDataDir: C:\Users\PAVEL~1.BAI\AppDat...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:59134}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: a6cba55ef2e9c81f1490927e6f88cb26
+*** Element info: {Using=xpath, value=//textarea[@id='rdcis_quotatn_trms_cnditn.Evaluator_Remarks.0']}
+at com.baseClasses.AutomationException.<init>(AutomationException.java:11)
+at com.baseClasses.BaseClass_Web.clear(BaseClass_Web.java:137)
+at com.components.eTenderComponent.TG1_EvaluatorRemarks_cover1(eTenderComponent.java:14742)
+at com.components.eTenderComponent.evaluateSupplier(eTenderComponent.java:14695)
+at com.testScripts_mjunction.TG1_TC_Evaluation_12_Openingapproval_N_Regression_Evaluationapproval_Y.Tender_Evaluation_with_OpeningApproval_N_Evaluationapproval_Y_NegotiateOnebidder_ApproveTwobidder(TG1_TC_Evaluation_12_Openingapproval_N_Regression_Evaluationapproval_Y.java:194)
+>>>>>>> 2672b2f1664d6d201e4a452c3643422cfad944a3
 at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
@@ -96,6 +151,7 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
           </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
           </reporter-output>
+<<<<<<< HEAD
         </test-method> <!-- Indent_creation_with_approval -->
         <test-method status="PASS" signature="afterClass()[pri:0, instance:com.testScripts_mjunction.TG1_TC_Indent_01_Creation_with_approval@76a4d6c]" name="afterClass" is-config="true" duration-ms="1804" started-at="2024-03-28T18:31:08 IST" finished-at="2024-03-28T18:31:10 IST">
           <reporter-output>
@@ -106,6 +162,29 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
           </reporter-output>
         </test-method> <!-- afterSuite -->
       </class> <!-- com.testScripts_mjunction.TG1_TC_Indent_01_Creation_with_approval -->
+=======
+        </test-method> <!-- Tender_Evaluation_with_OpeningApproval_N_Evaluationapproval_Y_NegotiateOnebidder_ApproveTwobidder -->
+        <test-method status="PASS" signature="captureDesc(java.lang.reflect.Method)[pri:0, instance:com.testScripts_mjunction.TG1_TC_Evaluation_12_Openingapproval_N_Regression_Evaluationapproval_Y@3270d194]" name="captureDesc" is-config="true" duration-ms="0" started-at="2024-03-28T12:06:40 IST" finished-at="2024-03-28T12:06:40 IST">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.testScripts_mjunction.TG1_TC_Evaluation_12_Openingapproval_N_Regression_Evaluationapproval_Y.Tender_Evaluation_with_OpeningApproval_N_Evaluationapproval_Y_NegotiateOnebidder_ApproveTwobidder(java.lang.String) throws java.lang.Throwable]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- captureDesc -->
+        <test-method status="PASS" signature="afterClass()[pri:0, instance:com.testScripts_mjunction.TG1_TC_Evaluation_12_Openingapproval_N_Regression_Evaluationapproval_Y@3270d194]" name="afterClass" is-config="true" duration-ms="2852" started-at="2024-03-28T12:10:13 IST" finished-at="2024-03-28T12:10:16 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterClass -->
+        <test-method status="PASS" signature="afterSuite()[pri:0, instance:com.testScripts_mjunction.TG1_TC_Evaluation_12_Openingapproval_N_Regression_Evaluationapproval_Y@3270d194]" name="afterSuite" is-config="true" duration-ms="36" started-at="2024-03-28T12:10:16 IST" finished-at="2024-03-28T12:10:16 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterSuite -->
+      </class> <!-- com.testScripts_mjunction.TG1_TC_Evaluation_12_Openingapproval_N_Regression_Evaluationapproval_Y -->
+>>>>>>> 2672b2f1664d6d201e4a452c3643422cfad944a3
     </test> <!-- Test -->
   </suite> <!-- Suite -->
 </testng-results>

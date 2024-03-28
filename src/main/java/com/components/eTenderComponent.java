@@ -69,7 +69,7 @@ import org.openqa.selenium.winium.WiniumDriver;
 public class eTenderComponent extends BaseClass_Web {
 	
 //	String tenderReferenceNoLocatorText = null;
-	String tenderReferenceNoLocatorText = "1987";
+	String tenderReferenceNoLocatorText = "1988";
 	TenderCreation_Locators tendercreationlocators = new TenderCreation_Locators();
 	String BidStartDate = null;
 	String BidDueDate = null;

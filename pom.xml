@@ -37,12 +37,7 @@
 			<version>3.8</version>
 		</dependency>
 	<!--	//if fail then update latest jar for below dependency   -->
-		<dependency>
-			<groupId>com.sikulix</groupId>
-			<artifactId>sikulixapi</artifactId>
-			<version>1.1.0</version>
-		</dependency>
-		<dependency>
+	<dependency>
 		    <groupId>com.sikulix</groupId>
 		    <artifactId>sikulixapi</artifactId>
 		    <version>2.0.5</version>

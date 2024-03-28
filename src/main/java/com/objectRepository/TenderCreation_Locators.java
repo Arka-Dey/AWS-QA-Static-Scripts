@@ -13,7 +13,11 @@ public class TenderCreation_Locators {
 	public By okButton = By.xpath("//button[@title='Login'][@type='submit']");
 	//public By dashboardIcon = By.xpath("//h3[contains(@class, 'page-header box_shadow page-header-ex ng-binding')]");
 	public By dashboardIcon = By.xpath("//*[text()[contains(.,'Dashboard')]]");
+<<<<<<< HEAD
 	public By dashboardIconnew = By.xpath("//*[text()[contains(.,'Dashboard')]]");
+=======
+	public By dashboardIconnew = By.xpath("//*[text()[contains(.,'Dashboard')]]");   //bashboard page for all module
+>>>>>>> 2672b2f1664d6d201e4a452c3643422cfad944a3
 	public By UserIconnew = By.xpath("//div[@id='user-profile-img-dashbord']");
 	public By TenderListIcon = By.xpath("/html[1]/body[1]/section[2]/section[1]/div[1]/div[1]/h3[1]");
 	public By createNewTender = By.xpath("(//a[normalize-space()='Create New'])[1]");

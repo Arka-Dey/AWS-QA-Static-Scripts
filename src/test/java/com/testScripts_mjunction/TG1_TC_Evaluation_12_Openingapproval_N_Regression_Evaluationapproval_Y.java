@@ -115,7 +115,7 @@ public class TG1_TC_Evaluation_12_Openingapproval_N_Regression_Evaluationapprova
 
 		//Bid submission process	
 		rfqfromintendcomponentobj.waitTillBidstartDateReached();
-			
+
 		etendercomponentobj.bidder_01_Login();
 		etendercomponentobj.enterTenderIdInSearch_bidsubmission();
 		etendercomponentobj.navigateToActionDropdown_bidsubmission();
