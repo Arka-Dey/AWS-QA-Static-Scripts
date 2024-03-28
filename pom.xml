@@ -22,7 +22,6 @@
 			<artifactId>jackson-databind</artifactId>
 			<version>2.9.9.2</version>
 		</dependency>
-
 		<!-- https://mvnrepository.com/artifact/io.rest-assured/rest-assured -->
 		<dependency>
 			<groupId>io.rest-assured</groupId>
@@ -42,6 +41,11 @@
 			<groupId>com.sikulix</groupId>
 			<artifactId>sikulixapi</artifactId>
 			<version>1.1.0</version>
+		</dependency>
+		<dependency>
+		    <groupId>com.sikulix</groupId>
+		    <artifactId>sikulixapi</artifactId>
+		    <version>2.0.5</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
 		<dependency>

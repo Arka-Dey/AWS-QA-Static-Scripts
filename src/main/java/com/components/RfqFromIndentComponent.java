@@ -1073,9 +1073,9 @@ public class RfqFromIndentComponent extends BaseClass_Web {
 			waitForObj(2000);
 			
 			click(tendercreationlocators.Savebtn_IndentNew, "savebutton");
+			isElementEnable_Updated(tendercreationlocators.IndentSuccessOK,30);
 			//created by @Pavel 11012024
 			try {
-				
 		if(isElementTextPresent(tendercreationlocators.IndentSuccessMessage, "General Information page is saved successfully and the new Indent No. "+getPRNumberFromString(tendercreationlocators.IndentSuccessMessage)+" is successfully generated.")==true)
 		{
 			
@@ -1099,9 +1099,9 @@ public class RfqFromIndentComponent extends BaseClass_Web {
 			
 			waitForElementToBeClickable(tendercreationlocators.IndentSuccessOK);
 			//click(tendercreationlocators.IndentSuccessOK, "IndentSuccess");
-			JSClick(tendercreationlocators.IndentSuccessOK, "IndentSuccess");
+			click(tendercreationlocators.IndentSuccessOK, "IndentSuccess");
 		
-			
+			isElementEnable_Updated(tendercreationlocators.IndentDetailsTab,30);
 			tabcontentList.add(text(tendercreationlocators.tabContent));
 			waitForObj(4000);
 			pdfResultReport.addStepDetails("IndentTG1_General_Info_tabvalidation",
@@ -1393,7 +1393,7 @@ public class RfqFromIndentComponent extends BaseClass_Web {
 			waitForObj(2000);
 			waitForElementToBeVisible(tendercreationlocators.IndentDetailsTab);
 			//waitForElement(tendercreationlocators.IndentDetailsTab, 5000);
-			waitForObj(2000);
+			waitForObj(10000);
 			click(tendercreationlocators.IndentDetailsTab, "IndentDetailsTab");
 			//waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
 			waitForObj(2000);
