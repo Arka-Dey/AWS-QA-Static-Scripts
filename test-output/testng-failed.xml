@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Suite]">
+  <listeners>
+    <listener class-name="com.baseClasses.Listener"/>
+  </listeners>
+  <test thread-count="5" name="Test(failed)">
+    <parameter name="browserName" value="windowschrome"/>
+<<<<<<< HEAD
+    <parameter name="TestcaseNo" value="18"/>
+    <classes>
+      <class name="com.testScripts_mjunction.TG1_TC_Indent_02_Creation_with_multiple_Approvers">
+=======
+    <parameter name="TestcaseNo" value="11"/>
+    <classes>
+<<<<<<< HEAD
+      <class name="com.testScripts_mjunction.TG1_TC_GRN_Create3StagesGRN_From_Indent_E2E">
+>>>>>>> 4c5b75b078d5042ba5e72986fb6646038d283c60
+=======
+      <class name="com.testScripts_mjunction.TG1_TC_Evaluation_12_Openingapproval_N_Regression_Evaluationapproval_Y">
+>>>>>>> develop
+        <methods>
+          <include name="setUpSuiteDetails"/>
+<<<<<<< HEAD
+<<<<<<< HEAD
+          <include name="Indent_creation_with_approval" invocation-numbers="0"/>
+=======
+          <include name="BeforeClass"/>
+>>>>>>> 4c5b75b078d5042ba5e72986fb6646038d283c60
+=======
+          <include name="Tender_Evaluation_with_OpeningApproval_N_Evaluationapproval_Y_NegotiateOnebidder_ApproveTwobidder" invocation-numbers="0"/>
+>>>>>>> develop
+          <include name="afterSuite"/>
+          <include name="captureDesc"/>
+          <include name="BeforeClass"/>
+          <include name="afterClass"/>
+        </methods>
+<<<<<<< HEAD
+<<<<<<< HEAD
+      </class> <!-- com.testScripts_mjunction.TG1_TC_Indent_02_Creation_with_multiple_Approvers -->
+=======
+      </class> <!-- com.testScripts_mjunction.TG1_TC_GRN_Create3StagesGRN_From_Indent_E2E -->
+>>>>>>> 4c5b75b078d5042ba5e72986fb6646038d283c60
+=======
+      </class> <!-- com.testScripts_mjunction.TG1_TC_Evaluation_12_Openingapproval_N_Regression_Evaluationapproval_Y -->
+>>>>>>> develop
+    </classes>
+  </test> <!-- Test(failed) -->
+</suite> <!-- Failed suite [Suite] -->
