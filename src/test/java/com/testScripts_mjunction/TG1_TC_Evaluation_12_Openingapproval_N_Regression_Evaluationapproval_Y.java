@@ -52,7 +52,6 @@ public class TG1_TC_Evaluation_12_Openingapproval_N_Regression_Evaluationapprova
 		initializeRepository();
 	//Creating a new Indent with No approval
 		etendercomponentobj.openURL();
-	/*	
 		rfqfromintendcomponentobj.IndentcreatorLogin();
 		rfqfromintendcomponentobj.navigateToIndentCreation();
 		rfqfromintendcomponentobj.IndentTG1_General_Info_tabvalidation("Indigenous Indent (Supply & Service Both) V-004");
@@ -77,7 +76,7 @@ public class TG1_TC_Evaluation_12_Openingapproval_N_Regression_Evaluationapprova
 		rfqfromintendcomponentobj.clickDetailLinkInApprovalListPage();
 		rfqfromintendcomponentobj.validateIndentdataAtApproverEnd();   //validate indent data at approver end sectionWise view
 		rfqfromintendcomponentobj.ApproverOverAllComentWithIndentHasBeenApproved();
-		etendercomponentobj.tenderLogoutOld();
+		etendercomponentobj.tenderLogout();
 	
 		//Verifying the indent status after approval
 		rfqfromintendcomponentobj.IndentcreatorLogin();
@@ -104,7 +103,7 @@ public class TG1_TC_Evaluation_12_Openingapproval_N_Regression_Evaluationapprova
 		 
 		//Create and publish RFQ from indent
 		rfqfromintendcomponentobj.Create_RFQ_From_Indent("Indigenous Tender (Supply & Service Both) V-1.0");
-		rfqfromintendcomponentobj.PublishTender_from_indent_withRFQ_TG1("Indigenous Tender (Supply & Service Both) V-1.0",5,30,32);
+		rfqfromintendcomponentobj.PublishTender_from_indent_withRFQ_TG1("Indigenous Tender (Supply & Service Both) V-1.0",5,45,47);
 		//Clicking on submit button and verify tender status
 		etendercomponentobj.clickSubmitBtn();
 		etendercomponentobj.tenderIdSave();
@@ -186,7 +185,7 @@ public class TG1_TC_Evaluation_12_Openingapproval_N_Regression_Evaluationapprova
 		etendercomponentobj.checkTenderStatusAndTenderStage("Evaluation");
 		//etendercomponentobj.verifyTenderStageIsInFinalApprovalCover_1Or_Cover2();
 		etendercomponentobj.tenderLogout();
-		*/
+		
 		//Tender Evaluator evaluate(approve ) the bid cover1
 		etendercomponentobj.evaluator1Login();
 		etendercomponentobj.validateTenderEvaluationTabDetails_WithEvaluatorUser();
@@ -199,56 +198,46 @@ public class TG1_TC_Evaluation_12_Openingapproval_N_Regression_Evaluationapprova
 		etendercomponentobj.provideApproverComment();
 		etendercomponentobj.sanctionApprovalDecision("forward");
 		etendercomponentobj.AddMultipleUsersForParallelApproval_Evaluation_WF_and_assign_item(3);  //creator action initiate wf  with 3 parallel and 5 sequential flow
-		
-		etendercomponentobj.tenderLogoutOld();
-		 
-		
+		etendercomponentobj.tenderLogout();
+		 	
 		//approver1  branch with b1 and b2
 		  posttendercomponentobj.sanctionNoteApproverLogin(pdfResultReport.testData.get("Approver1"));
 		  etendercomponentobj.validateTenderEvaluationTabDetails_WithEvaluatorUser();
 			etendercomponentobj.clickDetailsLink();
 			rfqfromintendcomponentobj.aproverBranchingForEvaluationApprover("Mr Test Approver06","Mr Test Approver07");
 			 etendercomponentobj.tenderLogoutOld();
-			 
-			 
-			 
-		  
-		  
+		
 		  //action taken by b1 user
 			  posttendercomponentobj.sanctionNoteApproverLogin(pdfResultReport.testData.get("Approver6"));
 			  etendercomponentobj.validateTenderEvaluationTabDetails_WithEvaluatorUser();
 				etendercomponentobj.clickDetailsLink();
-				etendercomponentobj.evaluateSupplier("Tech Mahindra", "Approve", "Approve Mahindra", 1);
-				etendercomponentobj.evaluateSupplier("CTS", "Approve", "Approve CTS", 1);
-				etendercomponentobj.evaluateSupplier("TCS", "Approve", "Approve TCS", 1);
+//				etendercomponentobj.evaluateSupplier("Tech Mahindra", "Approve", "Approve Mahindra", 1);
+//				etendercomponentobj.evaluateSupplier("CTS", "Approve", "Approve CTS", 1);
+//				etendercomponentobj.evaluateSupplier("TCS", "Approve", "Approve TCS", 1);
 				etendercomponentobj.provideApproverComment();
-				etendercomponentobj.tenderApprovalDecision("approve");
+				etendercomponentobj.tenderApprovalDecision("send back by branch user");
 			  etendercomponentobj.tenderLogoutOld();
-		  
-		  
+	  
 		  
 		  //forward by B2 to B1,B3
 			  posttendercomponentobj.sanctionNoteApproverLogin(pdfResultReport.testData.get("Approver7"));
 			  etendercomponentobj.validateTenderEvaluationTabDetails_WithEvaluatorUser();
 				etendercomponentobj.clickDetailsLink();
 				rfqfromintendcomponentobj.aproverBranchingForEvaluationApprover("Mr Test Approver06","Mr Test Approver08");
-				 etendercomponentobj.tenderLogoutOld();
+				 etendercomponentobj.tenderLogout();
 		  
 		  
 		 //action taken by b1 user
 				  posttendercomponentobj.sanctionNoteApproverLogin(pdfResultReport.testData.get("Approver6"));
 				  etendercomponentobj.validateTenderEvaluationTabDetails_WithEvaluatorUser();
 					etendercomponentobj.clickDetailsLink();
-					etendercomponentobj.evaluateSupplier("Tech Mahindra", "Approve", "Approve Mahindra", 1);
-					etendercomponentobj.evaluateSupplier("CTS", "Approve", "Approve CTS", 1);
-					etendercomponentobj.evaluateSupplier("TCS", "Approve", "Approve TCS", 1);
+//					etendercomponentobj.evaluateSupplier("Tech Mahindra", "Approve", "Approve Mahindra", 1);
+//					etendercomponentobj.evaluateSupplier("CTS", "Approve", "Approve CTS", 1);
+//					etendercomponentobj.evaluateSupplier("TCS", "Approve", "Approve TCS", 1);
 					etendercomponentobj.provideApproverComment();
-					etendercomponentobj.tenderApprovalDecision("approve");
-				  etendercomponentobj.tenderLogoutOld();
-			  
-		  
-		  
-		
+					etendercomponentobj.tenderApprovalDecision("send back by branch user");
+				  etendercomponentobj.tenderLogout();
+
 		  //approve by approver1
 				  posttendercomponentobj.sanctionNoteApproverLogin(pdfResultReport.testData.get("Approver1"));
 				  etendercomponentobj.validateTenderEvaluationTabDetails_WithEvaluatorUser();
@@ -258,11 +247,8 @@ public class TG1_TC_Evaluation_12_Openingapproval_N_Regression_Evaluationapprova
 					etendercomponentobj.evaluateSupplier("TCS", "Approve", "Approve TCS", 1);
 					etendercomponentobj.provideApproverComment();
 					etendercomponentobj.tenderApprovalDecision("approve");
-				  etendercomponentobj.tenderLogoutOld();
-		  
-		  
-		 
-		  
+				  etendercomponentobj.tenderLogout();
+  
 		//approver3
 		  posttendercomponentobj.sanctionNoteApproverLogin(pdfResultReport.testData.get("Approver3"));
 		  etendercomponentobj.validateTenderEvaluationTabDetails_WithEvaluatorUser();
@@ -272,12 +258,8 @@ public class TG1_TC_Evaluation_12_Openingapproval_N_Regression_Evaluationapprova
 			etendercomponentobj.evaluateSupplier("TCS", "Approve", "Approve TCS", 1);
 			etendercomponentobj.provideApproverComment();
 			etendercomponentobj.tenderApprovalDecision("approve");
-		  etendercomponentobj.tenderLogoutOld();
-	
-		  
-		  
-		  
-		
+		  etendercomponentobj.tenderLogout();
+
 		//==================================COVER2====================================================
 		
 		//Initiate Evaluation settings for Cover2
@@ -312,9 +294,8 @@ public class TG1_TC_Evaluation_12_Openingapproval_N_Regression_Evaluationapprova
 				etendercomponentobj.provideApproverComment();
 				etendercomponentobj.tenderApprovalDecision("forward");
 				etendercomponentobj.AddMultipleUsersForSequentialApproval_Evaluation_WF();  //creator action initiate wf  with 3  sequential flow
-				etendercomponentobj.tenderLogoutOld();
-				 
-				
+				etendercomponentobj.tenderLogout();
+				 			
 				 //approve by approver4
 				  posttendercomponentobj.sanctionNoteApproverLogin(pdfResultReport.testData.get("Approver4"));
 				  etendercomponentobj.validateTenderEvaluationTabDetails_WithEvaluatorUser();
@@ -324,7 +305,7 @@ public class TG1_TC_Evaluation_12_Openingapproval_N_Regression_Evaluationapprova
 					etendercomponentobj.evaluateSupplier("TCS", "Approve", "Approve TCS", 1);
 					etendercomponentobj.provideApproverComment();
 					etendercomponentobj.tenderApprovalDecision("approve");
-				  etendercomponentobj.tenderLogoutOld();
+				  etendercomponentobj.tenderLogout();
 				
 				  //approve by approver5
 				  posttendercomponentobj.sanctionNoteApproverLogin(pdfResultReport.testData.get("Approver4"));
@@ -335,7 +316,7 @@ public class TG1_TC_Evaluation_12_Openingapproval_N_Regression_Evaluationapprova
 					etendercomponentobj.evaluateSupplier("TCS", "Approve", "Approve TCS", 1);
 					etendercomponentobj.provideApproverComment();
 					etendercomponentobj.tenderApprovalDecision("approve");
-				  etendercomponentobj.tenderLogoutOld();
+				  etendercomponentobj.tenderLogout();
 				  
 				  //approve by approver6   //s3 forward to T1,T2
 				  posttendercomponentobj.sanctionNoteApproverLogin(pdfResultReport.testData.get("Approver4"));
@@ -347,13 +328,7 @@ public class TG1_TC_Evaluation_12_Openingapproval_N_Regression_Evaluationapprova
 					etendercomponentobj.provideApproverComment();
 					etendercomponentobj.sanctionApprovalDecision("forward");
 					etendercomponentobj.addTeamUserForEvaluationWF();
-				  etendercomponentobj.tenderLogoutOld();
-				
-				  
-				  
-				  
-				
-				
+				  etendercomponentobj.tenderLogout();	
 				
 				//evaluator recall and forward to T1 and T2
 				  
@@ -371,11 +346,7 @@ public class TG1_TC_Evaluation_12_Openingapproval_N_Regression_Evaluationapprova
 							etendercomponentobj.provideApproverComment();
 							etendercomponentobj.tenderApprovalDecision("forward");
 							etendercomponentobj.addTeamUserForEvaluationWF();
-							 etendercomponentobj.tenderLogoutOld();
-				  
-				
-				
-							
+							 etendercomponentobj.tenderLogout();						
 							
 				//T2 approve
 							  posttendercomponentobj.sanctionNoteApproverLogin(pdfResultReport.testData.get("Approver8"));
@@ -386,24 +357,8 @@ public class TG1_TC_Evaluation_12_Openingapproval_N_Regression_Evaluationapprova
 								etendercomponentobj.evaluateSupplier("TCS", "Approve", "Approve TCS", 1);
 								etendercomponentobj.provideApproverComment();
 								etendercomponentobj.tenderApprovalDecision("approve");
-							  etendercomponentobj.tenderLogoutOld();
-				
-				
-				
-				
-				
-				
+							  etendercomponentobj.tenderLogout();
 	
-				
-				
-				
-				
-				
-				
-				
-				
-				
-			
 		//Checking tender status Completed
 		etendercomponentobj.tendercreatorLogin();
 		etendercomponentobj.navigateToTenderListing();

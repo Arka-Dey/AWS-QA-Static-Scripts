@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Suite">
+<listeners>
+<listener class-name="com.baseClasses.Listener"></listener>
+</listeners>
+    <test name="Test">
+        <parameter name="browserName" value="windowschrome"></parameter>
+        <classes>
+           <parameter name="TestcaseNo" value="1"></parameter>   
+            <class name="com.ProductionDefects.Tender_PD_138875"/>
+        </classes>
+    </test> 
+</suite>
+
+<!-- 138875	Defect	New	Severity - 1	HMEL_PROD_User was unable to view the channel
+
+
+
+TenderCreator=IPSITA_RDCIS
+TenderCreator_Password=pass@123
+tenderID=1271
+Supplier=JSL-DUMMY_VENDOR1
+Supplier_Password=pass@123
+
+ --> 

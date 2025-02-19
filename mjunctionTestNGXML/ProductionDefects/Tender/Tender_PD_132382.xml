@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Suite">
+<listeners>
+<listener class-name="com.baseClasses.Listener"></listener>
+</listeners>
+    <test name="Test">
+        <parameter name="browserName" value="windowschrome"></parameter>
+        <classes>
+           <parameter name="TestcaseNo" value="1"></parameter>   
+            <class name="com.ProductionDefects.Tender_PD_132382"/>
+        </classes>
+    </test> 
+</suite> 
+
+<!-- 132382	Defect	Verified	Severity - 1	Error occur in submitting the tender
+IndentTemplate=Indigenous Indent (Supply & Service Both) V-004
+IndentCreator=RDCIS_SUPER_ADMIN
+IndentCreator_Password=Pass@123
+TenderCreator=IPSITA_RDCIS
+Template=Indigenous Tender (Supply & Service Both) V-1.1
+TenderCreator_Password=pass@123
+
+ -->

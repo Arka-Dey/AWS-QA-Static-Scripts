@@ -1,11 +1,9 @@
 package com.components;
 
 import java.text.DecimalFormat;
-import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Function;
@@ -78,14 +76,13 @@ public class InvoiceComponent extends BaseClass_Web {
 	}
 
 	@SuppressWarnings("deprecation")
-	public static boolean waitTillSpinnerDisable(WebDriver driver, By by) {
+	public static boolean waitTillSpinnerDisable(WebDriver driver, final By by) {
 		FluentWait<WebDriver> fWait = new FluentWait<WebDriver>(driver);
 		fWait.withTimeout(100, TimeUnit.SECONDS);
 		fWait.pollingEvery(3, TimeUnit.SECONDS);
 		fWait.ignoring(NoSuchElementException.class);
 
 		Function<WebDriver, Boolean> func = new Function<WebDriver, Boolean>() {
-			@Override
 			public Boolean apply(WebDriver driver) {
 				WebElement element = driver.findElement(by);
 				System.out.println(element.getCssValue("display"));

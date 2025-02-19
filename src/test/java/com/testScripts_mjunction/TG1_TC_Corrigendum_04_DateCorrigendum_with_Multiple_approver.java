@@ -118,7 +118,7 @@ public class TG1_TC_Corrigendum_04_DateCorrigendum_with_Multiple_approver extend
 		etendercomponentobj.clickDetailLinkInApprovalListPage_CorrigendumApproval();
 		etendercomponentobj.provideApproverCommentsForDateScheduleTab();
 		etendercomponentobj.ApproverOverAllComentWithCorrigendumHasBeenApproved();
-		etendercomponentobj.tenderLogoutOld();
+		etendercomponentobj.tenderLogout();
 		
 	//Verifying pending corrigendum in 2nd approver login and approve the corrigendum 
 		etendercomponentobj.tenderApprover2Login();
@@ -127,7 +127,7 @@ public class TG1_TC_Corrigendum_04_DateCorrigendum_with_Multiple_approver extend
 		etendercomponentobj.provideApproverCommentforTenderApprover();
 		etendercomponentobj.tender_Corrigendum_ApprovalDecision("forward");
 		etendercomponentobj.sendForForwardParallelTender_Corrigendum_ApprovalProcess(); //forward to sn_approver_03, sn_approver_04 and sn_approver_05(c), min app: 2
-		etendercomponentobj.tenderLogoutOld();
+		etendercomponentobj.tenderLogout();
 		
 
 		
@@ -138,7 +138,7 @@ public class TG1_TC_Corrigendum_04_DateCorrigendum_with_Multiple_approver extend
 			etendercomponentobj.provideApproverCommentforTenderApprover();
 			etendercomponentobj.tender_Corrigendum_ApprovalDecision("approve");
 		  //posttendercomponentobj.enterDocumentNoInSearchSanctionApprover();
-		  etendercomponentobj.tenderLogoutOld();
+		  etendercomponentobj.tenderLogout();
 			
 		  //approver5
 		  posttendercomponentobj.sanctionNoteApproverLogin(pdfResultReport.testData.get("SanctionNoteApproverUserName5"));
@@ -147,7 +147,7 @@ public class TG1_TC_Corrigendum_04_DateCorrigendum_with_Multiple_approver extend
 			etendercomponentobj.provideApproverCommentforTenderApprover();
 			etendercomponentobj.tender_Corrigendum_ApprovalDecision("forward");
 		  posttendercomponentobj.sendForForwardSequentialTender_CorrigendumApprovalProcess();  //forward to sn_approver_06, sn_approver_07 and sn_approver_08(c), min app: 2
-		  etendercomponentobj.tenderLogoutOld();
+		  etendercomponentobj.tenderLogout();
 		   
 		  //approver6
 		  posttendercomponentobj.sanctionNoteApproverLogin(pdfResultReport.testData.get("SanctionNoteApproverUserName6"));
@@ -156,7 +156,7 @@ public class TG1_TC_Corrigendum_04_DateCorrigendum_with_Multiple_approver extend
 			etendercomponentobj.provideApproverCommentforTenderApprover();
 			etendercomponentobj.tender_Corrigendum_ApprovalDecision("approve");
 		  //posttendercomponentobj.enterDocumentNoInSearchSanctionApprover();
-		  etendercomponentobj.tenderLogoutOld();
+		  etendercomponentobj.tenderLogout();
 		  
 		  
 		  //approver7
@@ -166,7 +166,7 @@ public class TG1_TC_Corrigendum_04_DateCorrigendum_with_Multiple_approver extend
 			etendercomponentobj.provideApproverCommentforTenderApprover();
 			etendercomponentobj.tender_Corrigendum_ApprovalDecision("approve");
 		  //posttendercomponentobj.enterDocumentNoInSearchSanctionApprover();
-		  etendercomponentobj.tenderLogoutOld();
+		  etendercomponentobj.tenderLogout();
 		  
 		  	
 		  //approver8
@@ -176,7 +176,7 @@ public class TG1_TC_Corrigendum_04_DateCorrigendum_with_Multiple_approver extend
 			etendercomponentobj.provideApproverCommentforTenderApprover();
 			etendercomponentobj.tender_Corrigendum_ApprovalDecision("revert back to approver");
 		  //posttendercomponentobj.enterDocumentNoInSearchSanctionApprover();
-		  etendercomponentobj.tenderLogoutOld();
+		  etendercomponentobj.tenderLogout();
 		  
 		  //approver7
 		  posttendercomponentobj.sanctionNoteApproverLogin(pdfResultReport.testData.get("SanctionNoteApproverUserName7"));
@@ -185,7 +185,7 @@ public class TG1_TC_Corrigendum_04_DateCorrigendum_with_Multiple_approver extend
 			etendercomponentobj.provideApproverCommentforTenderApprover();
 			etendercomponentobj.tender_Corrigendum_ApprovalDecision("approve");
 		  //posttendercomponentobj.enterDocumentNoInSearchSanctionApprover();
-		  etendercomponentobj.tenderLogoutOld();
+		  etendercomponentobj.tenderLogout();
 		  
 		//approver8
 		  posttendercomponentobj.sanctionNoteApproverLogin(pdfResultReport.testData.get("SanctionNoteApproverUserName8"));
@@ -194,7 +194,7 @@ public class TG1_TC_Corrigendum_04_DateCorrigendum_with_Multiple_approver extend
 			etendercomponentobj.provideApproverCommentforTenderApprover();
 			etendercomponentobj.tender_Corrigendum_ApprovalDecision("revert back to creator");
 		  //posttendercomponentobj.enterDocumentNoInSearchSanctionApprover();
-		  etendercomponentobj.tenderLogoutOld();
+		  etendercomponentobj.tenderLogout();
 		
 		//creator action initiate wf  with 3 parallel and 5 sequential flow
 		  etendercomponentobj.tendercreatorLogin();
@@ -232,7 +232,7 @@ public class TG1_TC_Corrigendum_04_DateCorrigendum_with_Multiple_approver extend
 						etendercomponentobj.provideApproverCommentforTenderApprover();
 						etendercomponentobj.tenderApprovalDecision("approve");
 					  //posttendercomponentobj.enterDocumentNoInSearchSanctionApprover();
-					  etendercomponentobj.tenderLogoutOld();
+					  etendercomponentobj.tenderLogout();
 		
 					//approver2
 					  posttendercomponentobj.sanctionNoteApproverLogin(pdfResultReport.testData.get("TenderApprover2UserName"));
@@ -241,7 +241,7 @@ public class TG1_TC_Corrigendum_04_DateCorrigendum_with_Multiple_approver extend
 						etendercomponentobj.provideApproverCommentforTenderApprover();
 						etendercomponentobj.tenderApprovalDecision("approve");
 					  //posttendercomponentobj.enterDocumentNoInSearchSanctionApprover();
-					  etendercomponentobj.tenderLogoutOld();
+					  etendercomponentobj.tenderLogout();
 		 
 						//approver3
 					  posttendercomponentobj.sanctionNoteApproverLogin(pdfResultReport.testData.get("SanctionNoteApproverUserName3"));
@@ -250,7 +250,7 @@ public class TG1_TC_Corrigendum_04_DateCorrigendum_with_Multiple_approver extend
 						etendercomponentobj.provideApproverCommentforTenderApprover();
 						etendercomponentobj.tenderApprovalDecision("approve");
 					  //posttendercomponentobj.enterDocumentNoInSearchSanctionApprover();
-					  etendercomponentobj.tenderLogoutOld();
+					  etendercomponentobj.tenderLogout();
 		
 					//approver4
 					  posttendercomponentobj.sanctionNoteApproverLogin(pdfResultReport.testData.get("SanctionNoteApproverUserName4"));
@@ -259,7 +259,7 @@ public class TG1_TC_Corrigendum_04_DateCorrigendum_with_Multiple_approver extend
 						etendercomponentobj.provideApproverCommentforTenderApprover();
 						etendercomponentobj.tenderApprovalDecision("approve");
 					  //posttendercomponentobj.enterDocumentNoInSearchSanctionApprover();
-					  etendercomponentobj.tenderLogoutOld();
+					  etendercomponentobj.tenderLogout();
 					  
 					//approver5
 					  posttendercomponentobj.sanctionNoteApproverLogin(pdfResultReport.testData.get("SanctionNoteApproverUserName5"));
@@ -268,7 +268,7 @@ public class TG1_TC_Corrigendum_04_DateCorrigendum_with_Multiple_approver extend
 						etendercomponentobj.provideApproverCommentforTenderApprover();
 						etendercomponentobj.tenderApprovalDecision("approve");
 					  //posttendercomponentobj.enterDocumentNoInSearchSanctionApprover();
-					  etendercomponentobj.tenderLogoutOld();
+					  etendercomponentobj.tenderLogout();
 					   
 					//approver6
 					  posttendercomponentobj.sanctionNoteApproverLogin(pdfResultReport.testData.get("SanctionNoteApproverUserName6"));
@@ -277,7 +277,7 @@ public class TG1_TC_Corrigendum_04_DateCorrigendum_with_Multiple_approver extend
 						etendercomponentobj.provideApproverCommentforTenderApprover();
 						etendercomponentobj.tenderApprovalDecision("approve");
 					  //posttendercomponentobj.enterDocumentNoInSearchSanctionApprover();
-					  etendercomponentobj.tenderLogoutOld();
+					  etendercomponentobj.tenderLogout();
 		
 					//tender creator recall WF
 						etendercomponentobj.tendercreatorLogin();
@@ -305,7 +305,7 @@ public class TG1_TC_Corrigendum_04_DateCorrigendum_with_Multiple_approver extend
 									etendercomponentobj.provideApproverCommentforTenderApprover();
 									etendercomponentobj.tenderApprovalDecision("forward");
 									etendercomponentobj.sendForForwardSequential_Single_User_Tender_ApprovalProcess( pdfResultReport.testData.get("UserTenderApprover2"));
-								  etendercomponentobj.tenderLogoutOld();				
+								  etendercomponentobj.tenderLogout();				
 		
 									//approver2
 								  posttendercomponentobj.sanctionNoteApproverLogin(pdfResultReport.testData.get("TenderApprover2UserName"));
@@ -314,7 +314,7 @@ public class TG1_TC_Corrigendum_04_DateCorrigendum_with_Multiple_approver extend
 									etendercomponentobj.provideApproverCommentforTenderApprover();
 									etendercomponentobj.tenderApprovalDecision("forward");
 									etendercomponentobj.sendForForwardSequential_Single_User_Tender_ApprovalProcess( pdfResultReport.testData.get("UserTenderApprover3"));
-								  etendercomponentobj.tenderLogoutOld();
+								  etendercomponentobj.tenderLogout();
 
 
 									//approver3
@@ -324,7 +324,7 @@ public class TG1_TC_Corrigendum_04_DateCorrigendum_with_Multiple_approver extend
 									etendercomponentobj.provideApproverCommentforTenderApprover();
 									etendercomponentobj.tenderApprovalDecision("forward");
 									etendercomponentobj.sendForForwardSequential_Single_User_Tender_ApprovalProcess( pdfResultReport.testData.get("UserTenderApprover4"));
-								  etendercomponentobj.tenderLogoutOld();
+								  etendercomponentobj.tenderLogout();
 								  
 									//approver4
 								  posttendercomponentobj.sanctionNoteApproverLogin(pdfResultReport.testData.get("SanctionNoteApproverUserName4"));
@@ -333,7 +333,7 @@ public class TG1_TC_Corrigendum_04_DateCorrigendum_with_Multiple_approver extend
 									etendercomponentobj.provideApproverCommentforTenderApprover();
 									etendercomponentobj.tenderApprovalDecision("forward");
 									etendercomponentobj.sendForForwardSequential_Single_User_Tender_ApprovalProcess( pdfResultReport.testData.get("UserTenderApprover5"));
-								  etendercomponentobj.tenderLogoutOld();
+								  etendercomponentobj.tenderLogout();
 								  
 									//approver5
 								  posttendercomponentobj.sanctionNoteApproverLogin(pdfResultReport.testData.get("SanctionNoteApproverUserName5"));
@@ -342,7 +342,7 @@ public class TG1_TC_Corrigendum_04_DateCorrigendum_with_Multiple_approver extend
 									etendercomponentobj.provideApproverCommentforTenderApprover();
 									etendercomponentobj.tenderApprovalDecision("forward");
 									etendercomponentobj.sendForForwardSequential_Single_User_Tender_ApprovalProcess( pdfResultReport.testData.get("UserTenderApprover6"));
-								  etendercomponentobj.tenderLogoutOld();
+								  etendercomponentobj.tenderLogout();
 	
 								//approver6
 								  posttendercomponentobj.sanctionNoteApproverLogin(pdfResultReport.testData.get("SanctionNoteApproverUserName6"));
@@ -351,7 +351,7 @@ public class TG1_TC_Corrigendum_04_DateCorrigendum_with_Multiple_approver extend
 									etendercomponentobj.provideApproverCommentforTenderApprover();
 									etendercomponentobj.tenderApprovalDecision("forward");
 									etendercomponentobj.sendForForwardSequential_Single_User_Tender_ApprovalProcess( pdfResultReport.testData.get("UserTenderApprover7"));
-								  etendercomponentobj.tenderLogoutOld();
+								  etendercomponentobj.tenderLogout();
 		
 		
 								//approver7
@@ -361,7 +361,7 @@ public class TG1_TC_Corrigendum_04_DateCorrigendum_with_Multiple_approver extend
 									etendercomponentobj.provideApproverCommentforTenderApprover();
 									etendercomponentobj.tenderApprovalDecision("forward");
 									etendercomponentobj.sendForForwardSequential_Single_User_Tender_ApprovalProcess( pdfResultReport.testData.get("UserTenderApprover8"));
-								  etendercomponentobj.tenderLogoutOld();
+								  etendercomponentobj.tenderLogout();
 		
 		
 								//approver8
@@ -370,7 +370,7 @@ public class TG1_TC_Corrigendum_04_DateCorrigendum_with_Multiple_approver extend
 									etendercomponentobj.TenderApproverValidation();
 									etendercomponentobj.provideApproverCommentforTenderApprover();
 									etendercomponentobj.tenderApprovalDecision("revert back to approver");
-								  etendercomponentobj.tenderLogoutOld();
+								  etendercomponentobj.tenderLogout();
 		
 								//approver7
 								  posttendercomponentobj.sanctionNoteApproverLogin(pdfResultReport.testData.get("SanctionNoteApproverUserName7"));
@@ -378,7 +378,7 @@ public class TG1_TC_Corrigendum_04_DateCorrigendum_with_Multiple_approver extend
 									etendercomponentobj.TenderApproverValidation();
 									etendercomponentobj.provideApproverCommentforTenderApprover();
 									etendercomponentobj.tenderApprovalDecision("approve");
-								  etendercomponentobj.tenderLogoutOld();
+								  etendercomponentobj.tenderLogout();
 		
 								//approver8
 								  posttendercomponentobj.sanctionNoteApproverLogin(pdfResultReport.testData.get("SanctionNoteApproverUserName8"));
@@ -387,7 +387,7 @@ public class TG1_TC_Corrigendum_04_DateCorrigendum_with_Multiple_approver extend
 									etendercomponentobj.provideApproverCommentforTenderApprover();
 									etendercomponentobj.TenderApprover_Approve_C();
 									etendercomponentobj.tenderCloseWorkflow();
-								  etendercomponentobj.tenderLogoutOld();
+								  etendercomponentobj.tenderLogout();
 		
 		
 			
@@ -431,7 +431,7 @@ public class TG1_TC_Corrigendum_04_DateCorrigendum_with_Multiple_approver extend
 													etendercomponentobj.provideApproverCommentforTenderApprover();
 													etendercomponentobj.tenderApprovalDecision("approve");
 												  //posttendercomponentobj.enterDocumentNoInSearchSanctionApprover();
-												  etendercomponentobj.tenderLogoutOld();
+												  etendercomponentobj.tenderLogout();
 									
 												//approver2
 												  posttendercomponentobj.sanctionNoteApproverLogin(pdfResultReport.testData.get("TenderApprover2UserName"));
@@ -440,7 +440,7 @@ public class TG1_TC_Corrigendum_04_DateCorrigendum_with_Multiple_approver extend
 													etendercomponentobj.provideApproverCommentforTenderApprover();
 													etendercomponentobj.tenderApprovalDecision("approve");
 												  //posttendercomponentobj.enterDocumentNoInSearchSanctionApprover();
-												  etendercomponentobj.tenderLogoutOld();
+												  etendercomponentobj.tenderLogout();
 									 
 													//approver3
 												  posttendercomponentobj.sanctionNoteApproverLogin(pdfResultReport.testData.get("SanctionNoteApproverUserName3"));
@@ -449,7 +449,7 @@ public class TG1_TC_Corrigendum_04_DateCorrigendum_with_Multiple_approver extend
 													etendercomponentobj.provideApproverCommentforTenderApprover();
 													etendercomponentobj.tenderApprovalDecision("approve");
 												  //posttendercomponentobj.enterDocumentNoInSearchSanctionApprover();
-												  etendercomponentobj.tenderLogoutOld();
+												  etendercomponentobj.tenderLogout();
 									
 												//approver4
 												  posttendercomponentobj.sanctionNoteApproverLogin(pdfResultReport.testData.get("SanctionNoteApproverUserName4"));
@@ -458,7 +458,7 @@ public class TG1_TC_Corrigendum_04_DateCorrigendum_with_Multiple_approver extend
 													etendercomponentobj.provideApproverCommentforTenderApprover();
 													etendercomponentobj.tenderApprovalDecision("approve");
 												  //posttendercomponentobj.enterDocumentNoInSearchSanctionApprover();
-												  etendercomponentobj.tenderLogoutOld();
+												  etendercomponentobj.tenderLogout();
 												  
 												//approver5
 												  posttendercomponentobj.sanctionNoteApproverLogin(pdfResultReport.testData.get("SanctionNoteApproverUserName5"));
@@ -467,7 +467,7 @@ public class TG1_TC_Corrigendum_04_DateCorrigendum_with_Multiple_approver extend
 													etendercomponentobj.provideApproverCommentforTenderApprover();
 													etendercomponentobj.tenderApprovalDecision("approve");
 												  //posttendercomponentobj.enterDocumentNoInSearchSanctionApprover();
-												  etendercomponentobj.tenderLogoutOld();
+												  etendercomponentobj.tenderLogout();
 												   
 												//approver6
 												  posttendercomponentobj.sanctionNoteApproverLogin(pdfResultReport.testData.get("SanctionNoteApproverUserName6"));
@@ -476,7 +476,7 @@ public class TG1_TC_Corrigendum_04_DateCorrigendum_with_Multiple_approver extend
 													etendercomponentobj.provideApproverCommentforTenderApprover();
 													etendercomponentobj.tenderApprovalDecision("approve");
 												  //posttendercomponentobj.enterDocumentNoInSearchSanctionApprover();
-												  etendercomponentobj.tenderLogoutOld();
+												  etendercomponentobj.tenderLogout();
 									
 												//tender creator recall WF
 													etendercomponentobj.tendercreatorLogin();
@@ -504,7 +504,7 @@ public class TG1_TC_Corrigendum_04_DateCorrigendum_with_Multiple_approver extend
 																etendercomponentobj.provideApproverCommentforTenderApprover();
 																etendercomponentobj.tenderApprovalDecision("forward");
 																etendercomponentobj.sendForForwardSequential_Single_User_Tender_ApprovalProcess( pdfResultReport.testData.get("UserTenderApprover2"));
-															  etendercomponentobj.tenderLogoutOld();				
+															  etendercomponentobj.tenderLogout();				
 									
 																//approver2
 															  posttendercomponentobj.sanctionNoteApproverLogin(pdfResultReport.testData.get("TenderApprover2UserName"));
@@ -513,7 +513,7 @@ public class TG1_TC_Corrigendum_04_DateCorrigendum_with_Multiple_approver extend
 																etendercomponentobj.provideApproverCommentforTenderApprover();
 																etendercomponentobj.tenderApprovalDecision("forward");
 																etendercomponentobj.sendForForwardSequential_Single_User_Tender_ApprovalProcess( pdfResultReport.testData.get("UserTenderApprover3"));
-															  etendercomponentobj.tenderLogoutOld();
+															  etendercomponentobj.tenderLogout();
 
 
 																//approver3
@@ -523,7 +523,7 @@ public class TG1_TC_Corrigendum_04_DateCorrigendum_with_Multiple_approver extend
 																etendercomponentobj.provideApproverCommentforTenderApprover();
 																etendercomponentobj.tenderApprovalDecision("forward");
 																etendercomponentobj.sendForForwardSequential_Single_User_Tender_ApprovalProcess( pdfResultReport.testData.get("UserTenderApprover4"));
-															  etendercomponentobj.tenderLogoutOld();
+															  etendercomponentobj.tenderLogout();
 															  
 																//approver4
 															  posttendercomponentobj.sanctionNoteApproverLogin(pdfResultReport.testData.get("SanctionNoteApproverUserName4"));
@@ -532,7 +532,7 @@ public class TG1_TC_Corrigendum_04_DateCorrigendum_with_Multiple_approver extend
 																etendercomponentobj.provideApproverCommentforTenderApprover();
 																etendercomponentobj.tenderApprovalDecision("forward");
 																etendercomponentobj.sendForForwardSequential_Single_User_Tender_ApprovalProcess( pdfResultReport.testData.get("UserTenderApprover5"));
-															  etendercomponentobj.tenderLogoutOld();
+															  etendercomponentobj.tenderLogout();
 															  
 																//approver5
 															  posttendercomponentobj.sanctionNoteApproverLogin(pdfResultReport.testData.get("SanctionNoteApproverUserName5"));
@@ -541,7 +541,7 @@ public class TG1_TC_Corrigendum_04_DateCorrigendum_with_Multiple_approver extend
 																etendercomponentobj.provideApproverCommentforTenderApprover();
 																etendercomponentobj.tenderApprovalDecision("forward");
 																etendercomponentobj.sendForForwardSequential_Single_User_Tender_ApprovalProcess( pdfResultReport.testData.get("UserTenderApprover6"));
-															  etendercomponentobj.tenderLogoutOld();
+															  etendercomponentobj.tenderLogout();
 								
 															//approver6
 															  posttendercomponentobj.sanctionNoteApproverLogin(pdfResultReport.testData.get("SanctionNoteApproverUserName6"));
@@ -550,7 +550,7 @@ public class TG1_TC_Corrigendum_04_DateCorrigendum_with_Multiple_approver extend
 																etendercomponentobj.provideApproverCommentforTenderApprover();
 																etendercomponentobj.tenderApprovalDecision("forward");
 																etendercomponentobj.sendForForwardSequential_Single_User_Tender_ApprovalProcess( pdfResultReport.testData.get("UserTenderApprover7"));
-															  etendercomponentobj.tenderLogoutOld();
+															  etendercomponentobj.tenderLogout();
 							
 									
 															//approver7
@@ -560,7 +560,7 @@ public class TG1_TC_Corrigendum_04_DateCorrigendum_with_Multiple_approver extend
 																etendercomponentobj.provideApproverCommentforTenderApprover();
 																etendercomponentobj.tenderApprovalDecision("forward");
 																etendercomponentobj.sendForForwardSequential_Single_User_Tender_ApprovalProcess( pdfResultReport.testData.get("UserTenderApprover8"));
-															  etendercomponentobj.tenderLogoutOld();
+															  etendercomponentobj.tenderLogout();
 									
 									
 															//approver8
@@ -569,7 +569,7 @@ public class TG1_TC_Corrigendum_04_DateCorrigendum_with_Multiple_approver extend
 																etendercomponentobj.TenderApproverValidation();
 																etendercomponentobj.provideApproverCommentforTenderApprover();
 																etendercomponentobj.tenderApprovalDecision("revert back to approver");
-															  etendercomponentobj.tenderLogoutOld();
+															  etendercomponentobj.tenderLogout();
 									
 															//approver7
 															  posttendercomponentobj.sanctionNoteApproverLogin(pdfResultReport.testData.get("SanctionNoteApproverUserName7"));
@@ -577,7 +577,7 @@ public class TG1_TC_Corrigendum_04_DateCorrigendum_with_Multiple_approver extend
 																etendercomponentobj.TenderApproverValidation();
 																etendercomponentobj.provideApproverCommentforTenderApprover();
 																etendercomponentobj.tenderApprovalDecision("approve");
-															  etendercomponentobj.tenderLogoutOld();
+															  etendercomponentobj.tenderLogout();
 									
 															//approver8
 															  posttendercomponentobj.sanctionNoteApproverLogin(pdfResultReport.testData.get("SanctionNoteApproverUserName8"));
@@ -586,7 +586,7 @@ public class TG1_TC_Corrigendum_04_DateCorrigendum_with_Multiple_approver extend
 																etendercomponentobj.provideApproverCommentforTenderApprover();
 																etendercomponentobj.TenderApprover_Approve_C();
 																etendercomponentobj.tenderCloseWorkflow();
-															  etendercomponentobj.tenderLogoutOld();
+															  etendercomponentobj.tenderLogout();
 									
 									
 									
@@ -614,7 +614,7 @@ public class TG1_TC_Corrigendum_04_DateCorrigendum_with_Multiple_approver extend
 		etendercomponentobj.tendercreatorLogin();
 		etendercomponentobj.navigateToTenderListing();
 		etendercomponentobj.enterTenderIdInSearch();
-		etendercomponentobj.corrigendumStatus();
+		etendercomponentobj.corrigendumStatus(no);
 		etendercomponentobj.corrigendumStatus_Yes_Hyperlink_Validation();
 		etendercomponentobj.corrigendumNumber_Hyperlink_Validation();
 		etendercomponentobj.corrigendumComparison_Hyperlink_Validation();

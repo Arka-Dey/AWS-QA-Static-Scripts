@@ -6,8 +6,8 @@
     <test name="Test">
         <parameter name="browserName" value="windowschrome"></parameter>
         <classes>
-           <parameter name="TestcaseNo" value="1"></parameter>   
-            <class name="com.dynamicity.FetchAllFieldNames"/>
+           <parameter name="TestcaseNo" value="26"></parameter>   
+            <class name="com.Dynamicity.FetchAllFieldNames"/>
         </classes>
     </test> 
 </suite>

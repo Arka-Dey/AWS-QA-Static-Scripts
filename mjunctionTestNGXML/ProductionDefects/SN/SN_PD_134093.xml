@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Suite">
+<listeners>
+<listener class-name="com.baseClasses.Listener"></listener>
+</listeners>
+    <test name="Test">
+        <parameter name="browserName" value="windowschrome"></parameter>
+        <classes>
+           <parameter name="TestcaseNo" value="8"></parameter>   
+            <class name="com.ProductionDefects.SN_PD_134093"/>
+        </classes>
+    </test> 
+</suite> 
+
+<!--
+Note: 
+This issue is dynamic in nature, you can run it in both environment and against any TG
+1. pass completed Tender ID in precondition
+2. Pass SN Template group against Template field in Pre-condition
+3. paste SN approver and password details under column header "SanctionNoteApproverUserName" and "SanctionNoteApproverUserName_PWD", "SanctionNoteApproverUserName2" and "SanctionNoteApproverUserName2_PWD"respectively.
+(Row number 3 in excel). 
+4. Excel name: ProductionDefects_static_scripts.xls
+  -->

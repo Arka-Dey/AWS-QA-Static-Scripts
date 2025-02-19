@@ -1,7 +1,5 @@
 package com.testScripts_mjunction;
 
-import java.util.Arrays;
-
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
@@ -42,7 +40,7 @@ public class TC_GRN_02_Create3StagesGRN_WithApprovalFlow extends BaseClass_Web{
 	     initializeRepository();
 	     etendercomponentobj.openURL();
 	     
-	     posttendercomponentobj.sanction_Creator_Login();
+		  posttendercomponentobj.sanction_Creator_Login();
 		  posttendercomponentobj.clickPostTenderProcessLink();
 		  posttendercomponentobj.enterCompleted_TenderId_new() ;
 		 
@@ -63,6 +61,7 @@ public class TC_GRN_02_Create3StagesGRN_WithApprovalFlow extends BaseClass_Web{
 		  posttendercomponentobj.EPS_PO_Submission();
 		
 		  posttendercomponentobj.POSaveandApproval();
+		  posttendercomponentobj.savePoDocNumber();
 		  posttendercomponentobj.ApprovalNotRequired();
 		  posttendercomponentobj.verifyPoRefNumberInPoListPage();
 		  posttendercomponentobj.verifyPOStatus("Pending for Acceptance");
@@ -71,18 +70,18 @@ public class TC_GRN_02_Create3StagesGRN_WithApprovalFlow extends BaseClass_Web{
 		  
 		  etendercomponentobj.bidder_01_Login();
 		  posttendercomponentobj.navigateToPoListingWithBidderUser();
-		  posttendercomponentobj.searchThePoRefNoInPoListPage();
+		  posttendercomponentobj.searchThePoRefNoInPoListPage_SupplierSide();
 		  posttendercomponentobj.clickAcceptPoInDropDown();
 		  posttendercomponentobj.verifySummaryTabAndEnterComment();
 		  posttendercomponentobj.clickAccepPotBtn();
-		  posttendercomponentobj.verifyPOStatusIsAccepted();
+		  posttendercomponentobj.verifyPOStatusIsAccepted_SupplierSide();
 		  etendercomponentobj.tenderLogout();
 		  
 		  posttendercomponentobj.sanction_Creator_Login();
 		  posttendercomponentobj.navigateToPurchasrOrderList();
 		  posttendercomponentobj.verifyPOStatusIsAccepted();
 		  etendercomponentobj.tenderLogout();
-		 
+		  
 		  etendercomponentobj.bidder_01_Login();
 		  asn_grncomponentobj.SelectASNModule();
 		  asn_grncomponentobj.CreateASN();
@@ -95,13 +94,14 @@ public class TC_GRN_02_Create3StagesGRN_WithApprovalFlow extends BaseClass_Web{
 		  asn_grncomponentobj.SaveASN();
 		  asn_grncomponentobj.SubmitASN();
 		  asn_grncomponentobj.SearchASNRefInASNList();
+		  //ASN_GRNComponent.VerifyDraftStatus();
 		  asn_grncomponentobj.VerifyStatus("Completed");
-		  waitForObj(15000);
 		  etendercomponentobj.tenderLogoutOld();
 		  
 		//=============Gate Pass creation===============
  		 asn_grncomponentobj.GRN_Creator_Login();
  		 asn_grncomponentobj.navigateToApprovedASNListPage();
+ 		 universalWait();
  		 asn_grncomponentobj.enterASNShipmentAndSelectVendorName("CTS");
  		 asn_grncomponentobj.clickApprovedAsnListActionMenu(eTenderComponent.getDataFromPropertiesFile("ASNNum"));
  		 asn_grncomponentobj.createGrn(eTenderComponent.getDataFromPropertiesFile("ASNNum"));
@@ -112,24 +112,25 @@ public class TC_GRN_02_Create3StagesGRN_WithApprovalFlow extends BaseClass_Web{
  		 //asn_grncomponentobj.verifyGRNStatus("Pending for QC creation");
  		 asn_grncomponentobj.verifyGRNStatus("Pending for GP approval");
  		 etendercomponentobj.tenderLogout();
- 		 
+ 		
  		//Approval of GRN
  		rfqfromintendcomponentobj.commonLogin("TEST_APPROVER_01");
  		asn_grncomponentobj.GoToApprovalworkFlowPendingGRNAndSearchTheGRN();
  		asn_grncomponentobj.clickDetailLinkInApprovalListPage();
  		asn_grncomponentobj.Forward_GRNWF_With_SequentialApprovalType("Test  Approver02 (inbox2csoft@gmail.com)-TEST_AUTOMATION"); //forward to test_approver_02
- 		etendercomponentobj.tenderLogoutOld();
+ 		etendercomponentobj.tenderLogout();
  		
  		//Forward to another person
  		rfqfromintendcomponentobj.commonLogin("TEST_APPROVER_02");
  		asn_grncomponentobj.GoToApprovalworkFlowPendingGRNAndSearchTheGRN();
  		asn_grncomponentobj.clickDetailLinkInApprovalListPage();
  		asn_grncomponentobj.END_GRN_WF(); 
- 		etendercomponentobj.tenderLogoutOld();
- 		 
+ 		etendercomponentobj.tenderLogout();
+ 		
  		 //==========QC creation================
  		asn_grncomponentobj.GRN_Creator_Login();
 		 asn_grncomponentobj.navigateToApprovedASNListPage();
+		 universalWait();
 		 asn_grncomponentobj.enterASNShipmentAndSelectVendorName("CTS");
 		 asn_grncomponentobj.clickApprovedAsnListActionMenu(eTenderComponent.getDataFromPropertiesFile("ASNNum"));
 		 asn_grncomponentobj.createGrn(eTenderComponent.getDataFromPropertiesFile("ASNNum"));
@@ -139,24 +140,25 @@ public class TC_GRN_02_Create3StagesGRN_WithApprovalFlow extends BaseClass_Web{
 		 asn_grncomponentobj.grnSendForApproval();
 		 asn_grncomponentobj.verifyGRNStatus("Pending for QC approval");
 		 etendercomponentobj.tenderLogout();
-		 
+		
 		//Approval of QC GRN
  		rfqfromintendcomponentobj.commonLogin("TEST_APPROVER_01");
  		asn_grncomponentobj.GoToApprovalworkFlowPendingGRNAndSearchTheGRN();
  		asn_grncomponentobj.clickDetailLinkInApprovalListPage();
  		asn_grncomponentobj.Forward_GRNWF_With_SequentialApprovalType("Test  Approver02 (inbox2csoft@gmail.com)-TEST_AUTOMATION"); //forward to test_approver_02
- 		etendercomponentobj.tenderLogoutOld();
+ 		etendercomponentobj.tenderLogout();
  		
  		//Forward to another person
  		rfqfromintendcomponentobj.commonLogin("TEST_APPROVER_02");
  		asn_grncomponentobj.GoToApprovalworkFlowPendingGRNAndSearchTheGRN();
  		asn_grncomponentobj.clickDetailLinkInApprovalListPage();
  		asn_grncomponentobj.END_GRN_WF(); 
- 		etendercomponentobj.tenderLogoutOld();
+ 		etendercomponentobj.tenderLogout();
 		 
 		 //===========QV creation================
 		 asn_grncomponentobj.GRN_Creator_Login();
 		 asn_grncomponentobj.navigateToApprovedASNListPage();
+		 universalWait();
 		 asn_grncomponentobj.enterASNShipmentAndSelectVendorName("CTS");
 		 asn_grncomponentobj.clickApprovedAsnListActionMenu(eTenderComponent.getDataFromPropertiesFile("ASNNum"));
 		 asn_grncomponentobj.createGrn(eTenderComponent.getDataFromPropertiesFile("ASNNum"));
@@ -177,14 +179,14 @@ public class TC_GRN_02_Create3StagesGRN_WithApprovalFlow extends BaseClass_Web{
  		asn_grncomponentobj.GoToApprovalworkFlowPendingGRNAndSearchTheGRN();
  		asn_grncomponentobj.clickDetailLinkInApprovalListPage();
  		asn_grncomponentobj.Forward_GRNWF_With_SequentialApprovalType("Test  Approver02 (inbox2csoft@gmail.com)-TEST_AUTOMATION"); //forward to test_approver_02
- 		etendercomponentobj.tenderLogoutOld();
+ 		etendercomponentobj.tenderLogout();
 	 		
  		//Forward to another person
  		rfqfromintendcomponentobj.commonLogin("TEST_APPROVER_02");
  		asn_grncomponentobj.GoToApprovalworkFlowPendingGRNAndSearchTheGRN();
  		asn_grncomponentobj.clickDetailLinkInApprovalListPage();
  		asn_grncomponentobj.END_GRN_WF(); 
- 		etendercomponentobj.tenderLogoutOld();
+ 		etendercomponentobj.tenderLogout();
 	}
 
 }

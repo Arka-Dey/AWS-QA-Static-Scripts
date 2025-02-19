@@ -3,28 +3,16 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-<<<<<<< HEAD
-      <class name="com.dynamicity.CreateTender_Dynamically">
+      <class name="com.PO_Purchase_Order_From_Sanction.PO_01_Create_PO_From_SN_NO_Approval">
         <methods>
-          <include name="validateCover1Cover2WithApprovalRequiredWhereApproveOneBidderAndRejectOneBidder"/>
           <include name="setUpSuiteDetails"/>
-          <include name="BeforeClass"/>
-=======
-      <class name="com.testScripts_mjunction.TC_SN_04VerifyDeleteOfSanctionNoteTest">
-        <methods>
-          <include name="f"/>
-          <include name="setUpSuiteDetails"/>
->>>>>>> d20c77975f679a03f91d82b8afebadd871342272
           <include name="afterSuite"/>
           <include name="captureDesc"/>
           <include name="BeforeClass"/>
+          <include name="createPOFromSN_Dynamically"/>
           <include name="afterClass"/>
         </methods>
-<<<<<<< HEAD
-      </class> <!-- com.dynamicity.CreateTender_Dynamically -->
-=======
-      </class> <!-- com.testScripts_mjunction.TC_SN_04VerifyDeleteOfSanctionNoteTest -->
->>>>>>> d20c77975f679a03f91d82b8afebadd871342272
+      </class> <!-- com.PO_Purchase_Order_From_Sanction.PO_01_Create_PO_From_SN_NO_Approval -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

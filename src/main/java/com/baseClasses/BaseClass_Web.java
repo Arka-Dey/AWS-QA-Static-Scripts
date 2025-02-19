@@ -3,9 +3,14 @@
 	import java.awt.Robot;
 	import java.awt.event.KeyEvent;
 	import java.io.File;
-	import java.io.IOException;
-	import java.lang.reflect.Method;
-	import java.text.SimpleDateFormat;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.lang.reflect.Method;
+import java.nio.file.Path;
+import java.text.SimpleDateFormat;
+import java.time.Duration;
+import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -13,17 +18,22 @@ import java.util.ArrayList;
 	import java.util.Calendar;
 	import java.util.Date;
 	import java.util.HashMap;
-	import java.util.Iterator;
-	import java.util.List;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.LinkedHashSet;
+import java.util.LinkedList;
+import java.util.List;
 	import java.util.Map;
-	import java.util.Properties;
-	import java.util.Random;
+import java.util.Properties;
 import java.util.Set;
-import java.util.concurrent.TimeUnit;
+import java.util.TimeZone;
+import java.util.concurrent.ConcurrentHashMap;
 
 import org.apache.commons.io.FileUtils;
-import org.apache.commons.lang3.RandomStringUtils;
-	import org.apache.log4j.Logger;
+import org.apache.log4j.Logger;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
 import org.openqa.selenium.Alert;
 	import org.openqa.selenium.By;
 	import org.openqa.selenium.JavascriptExecutor;
@@ -31,24 +41,26 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoAlertPresentException;
 	import org.openqa.selenium.OutputType;
 	import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.interactions.Actions;
+	import org.openqa.selenium.WebDriver;
+	import org.openqa.selenium.WebElement;
+	import org.openqa.selenium.chrome.ChromeOptions;
+	import org.openqa.selenium.interactions.Actions;
 	import org.openqa.selenium.support.ui.ExpectedConditions;
 	import org.openqa.selenium.support.ui.Select;
 	import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
-import org.testng.ITestContext;
+	import org.testng.Assert;
+	import org.testng.ITestContext;
 	import org.testng.annotations.AfterClass;
 	import org.testng.annotations.AfterSuite;
 	import org.testng.annotations.BeforeClass;
 	import org.testng.annotations.BeforeMethod;
 	import org.testng.annotations.BeforeSuite;
 	import org.testng.annotations.Test;
+	import com.Database.DatabaseComponent;
+import com.components.Dynamicity;
 
-import com.itextpdf.text.pdf.PdfStructTreeController.returnType;
-import com.sun.tools.xjc.Driver;
+import io.restassured.path.json.JsonPath;
+
 	
 	public class BaseClass_Web {
 		
@@ -69,7 +81,100 @@ import com.sun.tools.xjc.Driver;
 	public PDFResultReport pdfResultReport=new PDFResultReport();
 	public HtmlReport htmlrep = new HtmlReport();
 	public String ii=null;
+	public static String response;
+	public String filePath = System.getProperty("user.dir")+ "\\src\\main\\java\\com\\DataProperties\\VerifyPagesUpAndRunning.properties";
+	public static String filePath_4 = System.getProperty("user.dir")+ "\\src\\main\\java\\com\\DataProperties\\Dynamic_PreCondition_Details.properties";
+	public static String filePath_3 = System.getProperty("user.dir")+ "\\src\\main\\java\\com\\DataProperties\\FetchTenderFieldDetails.properties";
+	public static String PRtoTenderFieldDetails = System.getProperty("user.dir")+ "\\src\\main\\java\\com\\DataProperties\\PR_to_Tender.properties";
+	public static String IndenttoTenderFieldDetails = System.getProperty("user.dir")+ "\\src\\main\\java\\com\\DataProperties\\Indent_to_Tender.properties";
+	public static String FreshTenderFieldDetails = System.getProperty("user.dir")+ "\\src\\main\\java\\com\\DataProperties\\Fresh_Tender.properties";
+	public static String IndentFieldDetails = System.getProperty("user.dir")+ "\\src\\main\\java\\com\\DataProperties\\Indent.properties";
+	public static String FreshSNFieldDetails = System.getProperty("user.dir")+ "\\src\\main\\java\\com\\DataProperties\\Fresh_SN.properties";
+	public static String IndenttoSNFieldDetails = System.getProperty("user.dir")+ "\\src\\main\\java\\com\\DataProperties\\Indent_to_SN.properties";
+	public static String PRtoSNFieldDetails = System.getProperty("user.dir")+ "\\src\\main\\java\\com\\DataProperties\\PR_to_SN.properties";
+	public static String TendertoSNFieldDetails = System.getProperty("user.dir")+ "\\src\\main\\java\\com\\DataProperties\\Tender_to_SN.properties";
+	public static String FreshPOFieldDetails = System.getProperty("user.dir")+ "\\src\\main\\java\\com\\DataProperties\\Fresh_PO.properties";
+	public static String SNtoPOFieldDetails = System.getProperty("user.dir")+ "\\src\\main\\java\\com\\DataProperties\\SN_to_PO.properties";
+	public static String CorrigendumFieldDetails = System.getProperty("user.dir")+ "\\src\\main\\java\\com\\DataProperties\\Corrigendum.properties";
+	public static String NotesheetFieldDetails = System.getProperty("user.dir")+ "\\src\\main\\java\\com\\DataProperties\\Notesheet.properties";
+	public static String LOAFieldDetails = System.getProperty("user.dir")+ "\\src\\main\\java\\com\\DataProperties\\LOA.properties";
+	public static String TenderCLarificationOrDiscussionFieldDetails = System.getProperty("user.dir")+ "\\src\\main\\java\\com\\DataProperties\\Tender_ClarificationOrDiscussion.properties";
+	public static String FreshTenderBidSubmissionFieldDetails = System.getProperty("user.dir")+ "\\src\\main\\java\\com\\DataProperties\\FreshTender_BidSubmission.properties";
+	public static String IndentTendertoBidSubmissionFieldDetails = System.getProperty("user.dir")+ "\\src\\main\\java\\com\\DataProperties\\Indent_to_Tender_to_BidSubmission.properties";
+	public static String IndenttoPO_E2E_FieldDetails = System.getProperty("user.dir")+ "\\src\\main\\java\\com\\DataProperties\\Indent_to_PO_E2E.properties";
+	public static String PRTendertoBidSubmissionFieldDetails = System.getProperty("user.dir")+ "\\src\\main\\java\\com\\DataProperties\\PR_TendertoBidSubmission.properties";
+	public static String PRtoSN_E2E_FieldDetails = System.getProperty("user.dir")+ "\\src\\main\\java\\com\\DataProperties\\PR_to_SN_E2E.properties";
+	public String filePath_5 = System.getProperty("user.dir")+ "\\src\\main\\java\\com\\DataProperties\\FetchIndentFieldDetails.properties";
+	public static String filePath_6 = System.getProperty("user.dir")+ "\\src\\main\\java\\com\\DataProperties\\FetchPOFieldDetails.properties";
+	public static String TenderDetails = System.getProperty("user.dir")+ "\\src\\main\\java\\com\\DataProperties\\TenderDetails.properties";
+	public static String BidDetails =null;
+	//public static String BidDetails_Excel = null;
+	public static String BidDetails_Excel= System.getProperty("user.dir")+ "\\Resources\\BidExcel\\BidDetails.xlsx";
+	public static String sheetName = null;
+	public static int s=0;
+	public static String QueryParameter_Global = null;
+	public static List<String> templates = new ArrayList<String>();
+	public static int rdcisSNflag=0;
+	public static int sanctionGroupID=0;
+	public static int supplierCount=0;
+	public List<String> supplierPasswords = new ArrayList<String>();
+	public List<String> buyerPasswords = new ArrayList<String>();
+	public static int sp=0;
+	public static String orgValue=null;
+	public static String depValue=null;
+	public static String user=null;
+	public static int PR_Nu=0;
+	public static String distinctTGCount;
+	public static int totalRowCount=1;
+	public static List<String> tTems = new ArrayList<>();
+	public static String mailID=null;
+	public static int AttachmentCount;
+	public static String approvalConfirmMsgStatus="REPEAT";   //Value will be either REPEAT OR ONCE
+	public static String pngFilePath ;
+	public static Path pathToDel;
+	public static String qCSN;
+	public static String psf;
+	public static String supOrgID;
+	public static String tID;
+	public static String sTID;
+	public static String bID;
+	public static String qID;
+	public static String sIID;
+	public static String dQID;
+	public static String vID;
+	public static String vUID;
+	public static Map<Integer, Integer> templateMap;
+	public static int tempCount;
+	public static Set<Integer> uniqueTG = new LinkedHashSet<>();
+	public static List<Integer> nonUniqueTemplateGroupIds = new ArrayList<>();
+	public static String ReferenceNoLocatorText_msn =null;
+	public static String cd_S;
+	public static int pageValue=0;
+	public static Map<String, Integer> orgBidDetails = new HashMap<>();
+	public static Map<String, String> BidderQuotations = new HashMap<>();
+	public static int bp=0;
+	public static JsonPath js_SGI=null;
+	public static List<JsonPath> jsonpath=new ArrayList<>();
+	public static final Map<Integer, String> tabres = new ConcurrentHashMap<>();
+	public static int brc=0;
+	public static int poCheck;
+	public static int inCheck;
+	public static int ivC = 0;
+	public static int iv = 0;
+	public static String BidDetails_S1 = System.getProperty("user.dir")+ "\\src\\main\\java\\com\\DataProperties\\BidDetails_S1.properties";
+	public static String BidDetails_S2 = System.getProperty("user.dir")+ "\\src\\main\\java\\com\\DataProperties\\BidDetails_S2.properties";
+	public static String BidDetails_S3 = System.getProperty("user.dir")+ "\\src\\main\\java\\com\\DataProperties\\BidDetails_S3.properties";
+	public static String BidDetails_S4 = System.getProperty("user.dir")+ "\\src\\main\\java\\com\\DataProperties\\BidDetails_S1.properties";
+	public static String BidDetails_S5 = System.getProperty("user.dir")+ "\\src\\main\\java\\com\\DataProperties\\BidDetails_S2.properties";
+	public static String BidDetails_S6 = System.getProperty("user.dir")+ "\\src\\main\\java\\com\\DataProperties\\BidDetails_S3.properties";
+	public static String BidDetails_S7 = System.getProperty("user.dir")+ "\\src\\main\\java\\com\\DataProperties\\BidDetails_S1.properties";
+	public static String BidDetails_S8 = System.getProperty("user.dir")+ "\\src\\main\\java\\com\\DataProperties\\BidDetails_S2.properties";
+	public static String BidDetails_S9 = System.getProperty("user.dir")+ "\\src\\main\\java\\com\\DataProperties\\BidDetails_S3.properties";
+	public static String BidDetails_S10 = System.getProperty("user.dir")+ "\\src\\main\\java\\com\\DataProperties\\BidDetails_S1.properties";
+	public static String BidDetails_S11 = System.getProperty("user.dir")+ "\\src\\main\\java\\com\\DataProperties\\BidDetails_S2.properties";
+	public static String BidDetails_S12 = System.getProperty("user.dir")+ "\\src\\main\\java\\com\\DataProperties\\BidDetails_S3.properties";
 	
+	//public static List<Integer> quotation = new ArrayList<>();
 	public void launchapp(String url) throws Exception {
 		try {
 			ThreadLocalWebdriver.getDriver().get(url);
@@ -84,11 +189,18 @@ import com.sun.tools.xjc.Driver;
 	
 	public void click(By locator,String locatordisplayname) throws Exception {
 		try{
+			Instant startTime = Instant.now();
 			ThreadLocalWebdriver.getDriver().findElement(locator).click();
-			waitForObj(3000);
+			checkPageIsReady();
+			Instant endTime = Instant.now();
+			long loadingTimeMillis = Duration.between(startTime, endTime).getSeconds();
 			log.info("Clicked on the field :"+locatordisplayname);
+			String currentUrl = ThreadLocalWebdriver.getDriver().getCurrentUrl();
+			pdfResultReport.addStepDetails("User has clicked on "+locatordisplayname+"", "User has successfully clicked and the current url is: "+currentUrl ,
+					"User is taking time to click on "+locatordisplayname+" is "+loadingTimeMillis+"" + " ", "Pass", "Y");
+			log.info("completed executing the method:: click");
 		} catch (RuntimeException localRuntimeException) {
-			log.fatal("Error in clicking the field:" + localRuntimeException.getMessage());
+			log.fatal("Error in clicking the field:"+locatordisplayname+" " + localRuntimeException.getMessage());
 		System.out.println("Error in clicking the field:" + localRuntimeException.getMessage() + "Fail");
 		pdfResultReport.addStepDetails("click Method", "Click on the field :", "Unable to click on the field" + localRuntimeException.getMessage(), "FAIL","N");
 		throw new AutomationException("Unable to click on the field : " + localRuntimeException.getMessage());
@@ -102,7 +214,7 @@ import com.sun.tools.xjc.Driver;
 			log.info("Clicked on the field :"+locatordisplayname);
 			pdfResultReport.addStepDetails("Click", "User has clicked on desired event",
 					"User has successfully clicked" + " ", "Pass", "Y");
-			log.info("completed executing the method:: tendercreatorLogout");
+			log.info("completed executing the method:: SSClick");
 		} catch (RuntimeException localRuntimeException) {
 			log.fatal("Error in clicking the field:" + localRuntimeException.getMessage());
 		System.out.println("Error in clicking the field:" + localRuntimeException.getMessage() + "Fail");
@@ -113,9 +225,8 @@ import com.sun.tools.xjc.Driver;
 	
 	public void set(By locator, String data,String locatordisplayname) throws Exception {
 		try {
-			
 			ThreadLocalWebdriver.getDriver().findElement(locator).sendKeys(data);
-			waitForObj(2000);
+//			waitForObj(1000);
 			log.info("Entered the value in the text box :"+locatordisplayname);
 		} catch (RuntimeException localRuntimeException) {
 			log.fatal("Unable to Enter the value in the text box :"+locatordisplayname);
@@ -151,9 +262,8 @@ import com.sun.tools.xjc.Driver;
 	public void select(By locator, String data) throws Exception {
 		try {
 			Select dropdown = new Select(ThreadLocalWebdriver.getDriver().findElement(locator));
-			waitForObj(1500);
 			dropdown.selectByVisibleText(data);
-			waitForObj(2000);
+			waitForObj(1000);
 			log.info("Selected the Value from the dropdown :"+locator);
 		} catch (RuntimeException localRuntimeException) {
 			log.fatal("Unable to select the value from the dropdown :"+locator);
@@ -255,13 +365,54 @@ import com.sun.tools.xjc.Driver;
 		}
 	}
 	
-	public  boolean JSClick(By locator, String locatorName)	throws Throwable {
+	public boolean JSClick(By locator, String locatorName)	throws Throwable {
 		boolean flag = false;
 		try {
+			Instant startTime = Instant.now();
 			WebElement element = ThreadLocalWebdriver.getDriver().findElement(locator);
 			JavascriptExecutor executor = (JavascriptExecutor)ThreadLocalWebdriver.getDriver();
 			executor.executeScript("arguments[0].click();", element);
 			flag = true;
+			checkPageIsReady();
+			Instant endTime = Instant.now();
+			String currentUrl = ThreadLocalWebdriver.getDriver().getCurrentUrl();
+			long loadingTimeMillis = Duration.between(startTime, endTime).getSeconds();
+			pdfResultReport.addStepDetails("User has clicked on "+locatorName+"", "User has successfully clicked and current url is: "+currentUrl,
+					"User is taking time to click on "+locatorName+" is "+loadingTimeMillis+"" + " ", "Pass", "Y");
+			log.info("completed executing the method:: JSClick");
+		}
+		catch (RuntimeException localRuntimeException) {
+			System.out.println("Error in clicking the element :" + localRuntimeException.getMessage() + "Fail");
+			pdfResultReport.addStepDetails("Click on the element", "Element should be clickable ", "Error in clicking the element : " + localRuntimeException.getMessage(), "FAIL","N");
+			throw new AutomationException("Error in clicking the element : " + localRuntimeException.getMessage());
+		} finally {
+			if (!flag) {
+				System.out.println("MouseOver "+
+						" MouseOver action is not perform on " + locatorName);
+				return flag;
+			} else if (b && flag) {
+				System.out.println("MouseOver "+
+						" MouserOver Action is Done on " + locatorName);
+				return flag;
+			}
+	
+		}
+		return flag;
+	}
+	public boolean JSClick(WebElement we, String locatorName)	throws Throwable {
+		boolean flag = false;
+		try {
+			Instant startTime = Instant.now();
+			WebElement element = we;
+			JavascriptExecutor executor = (JavascriptExecutor)ThreadLocalWebdriver.getDriver();
+			executor.executeScript("arguments[0].click();", element);
+			flag = true;
+			checkPageIsReady();
+			Instant endTime = Instant.now();
+			long loadingTimeMillis = Duration.between(startTime, endTime).getSeconds();
+			pdfResultReport.addStepDetails("User has clicked on "+locatorName+"", "User has successfully clicked",
+					"User is taking time to click on "+locatorName+" is "+loadingTimeMillis+"" + " ", "Pass", "Y");
+			log.info("completed executing the method:: JSClick");
 		}
 		catch (RuntimeException localRuntimeException) {
 			System.out.println("Error in clicking the element :" + localRuntimeException.getMessage() + "Fail");
@@ -421,6 +572,7 @@ import com.sun.tools.xjc.Driver;
 		try {
 			ThreadLocalWebdriver.getDriver().findElement(locator).isDisplayed();
 			log.info("Element is available : "+locator);
+			System.out.println(locator);
 		} catch (RuntimeException localRuntimeException) {
 			log.error("Element is not available : "+locator);
 			System.out.println("Error in verification of presense of element: " + localRuntimeException.getMessage() + "Fail");
@@ -887,7 +1039,7 @@ import com.sun.tools.xjc.Driver;
 	
 	}
 	
-	public  String text(By locator) {
+	public String text(By locator) {
 		String text= ThreadLocalWebdriver.getDriver().findElement(locator).getText();
 		System.out.println("The text is :"+text);
 		return text;
@@ -1165,7 +1317,7 @@ import com.sun.tools.xjc.Driver;
 		}
 	public void waitForElementToBeVisible(By locator)
 	{
-		WebDriverWait wait= new WebDriverWait(ThreadLocalWebdriver.getDriver(), 20);
+		WebDriverWait wait= new WebDriverWait(ThreadLocalWebdriver.getDriver(), 30);
 		
 		wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
 	}
@@ -1177,6 +1329,55 @@ import com.sun.tools.xjc.Driver;
             return element.isDisplayed();
         
     }
+	
+	public void dynamic_Loader(By by,int timeinsecond)
+	{
+		try {					
+			waitForElementToBeInvisible(by);	
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}	
+	}
+	
+	public boolean isElementEnable(By locator, int timeoutInSeconds) {
+		
+        WebDriverWait wait = new WebDriverWait(ThreadLocalWebdriver.getDriver(), timeoutInSeconds);
+        WebElement element = wait.until(ExpectedConditions.elementToBeClickable(locator));
+        return element.isEnabled();
+    
+	}
+	public boolean isElementDisplayed_UX(By locator, int timeoutInSeconds) {
+			
+		boolean blnStatus = false;
+		WebDriverWait wait = new WebDriverWait(ThreadLocalWebdriver.getDriver(), timeoutInSeconds);
+		if(blnStatus==false)
+		{
+		wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+        blnStatus = true;
+		}
+		else
+		{
+			System.out.println("Error in finding Element");
+		}
+		return blnStatus;
+	    
+	}
+	public boolean isElementEnable_UX(By locator, int timeoutInSeconds) {
+			
+			boolean blnStatus = false;
+			WebDriverWait wait = new WebDriverWait(ThreadLocalWebdriver.getDriver(), timeoutInSeconds);
+			if(blnStatus==false)
+			{
+			wait.until(ExpectedConditions.elementToBeClickable(locator));
+	        blnStatus = true;
+			}
+			else
+			{
+				System.out.println("Error in finding Element");
+			}
+			return blnStatus;
+		}
 	
 	public boolean isElementDisplayed_Updated(By locator, int timeoutInSeconds) {
 		
@@ -1212,15 +1413,21 @@ import com.sun.tools.xjc.Driver;
 	
 	public void waitForElementToBeInvisible(By locator)
 	{
-		WebDriverWait wait= (WebDriverWait) new WebDriverWait(ThreadLocalWebdriver.getDriver(),100).pollingEvery(5, TimeUnit.SECONDS).ignoring(Exception.class);
+		WebDriverWait wait= (WebDriverWait) new WebDriverWait(ThreadLocalWebdriver.getDriver(),30).pollingEvery(Duration.ofSeconds(3L)).ignoring(Exception.class);
 		
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(locator));
 	}
-	
-	
+	public void universalWait()
+	{
+		waitForObj(20000);
+	}
+	public void universalNormalWait()
+	{
+		waitForObj(5000);
+	}
 	public void waitForElementToBeClickable(By locator)
 	{
-		WebDriverWait wait= new WebDriverWait(ThreadLocalWebdriver.getDriver(), 20);
+		WebDriverWait wait= new WebDriverWait(ThreadLocalWebdriver.getDriver(), 30);
 		
 		wait.until(ExpectedConditions.elementToBeClickable(locator));
 	}
@@ -1264,7 +1471,7 @@ import com.sun.tools.xjc.Driver;
 		  return Date_12Hrs;	
 	}
 	
-	public String bidStartDate_24Hrs="";
+	public static String bidStartDate_24Hrs="";
 	public String getBidStartDate(int minutes)
 	{
 		  LocalDateTime localdatetime =LocalDateTime.now().plusMinutes(minutes);
@@ -1276,7 +1483,7 @@ import com.sun.tools.xjc.Driver;
 		  return bidStartDate_12Hrs;	
 	}
 	
-	public String bidDueDate_24Hrs="";
+	public static String bidDueDate_24Hrs="";
 	public String getBidDueDate(int minutes)
 	{
 		 LocalDateTime localdatetime =LocalDateTime.now().plusMinutes(minutes);
@@ -1288,7 +1495,7 @@ import com.sun.tools.xjc.Driver;
 		  return bidDueDateTime;	
 	}
 	
-	public String bidOpenDate_24Hrs="";
+	public static String bidOpenDate_24Hrs="";
 	public String getBidOpenDate(int minutes)
 	{
 		 LocalDateTime localdatetime =LocalDateTime.now().plusMinutes(minutes);
@@ -1301,7 +1508,7 @@ import com.sun.tools.xjc.Driver;
 		
 	}
 	
-	public String PrebidStartDate_24Hrs="";
+	public static String PrebidStartDate_24Hrs="";
 	public String getPreBidStartDate(int minutes)
 	{
 		  LocalDateTime localdatetime =LocalDateTime.now().plusMinutes(minutes);
@@ -1313,7 +1520,7 @@ import com.sun.tools.xjc.Driver;
 		  return PrebidStartDateTime_24Hrs;	
 	}
 	
-	public String PrebidDueDate_24Hrs="";
+	public static String PrebidDueDate_24Hrs="";
 	public String getPreBidDueDate(int minutes)
 	{
 		 LocalDateTime localdatetime =LocalDateTime.now().plusMinutes(minutes);
@@ -1324,7 +1531,7 @@ import com.sun.tools.xjc.Driver;
 		
 		  return PrebidDueDateTime_24Hrs;	
 	}
-	public String ScheduleOpeningDate_24Hrs="";
+	public static String ScheduleOpeningDate_24Hrs="";
 	public String getScheduleOpeningDate(int minutes)
 	{
 		 LocalDateTime localdatetime =LocalDateTime.now().plusMinutes(minutes);
@@ -1392,6 +1599,16 @@ import com.sun.tools.xjc.Driver;
     	   String prNo= splitted[0].trim();
     	   return prNo;
         } 
+	
+	public String getNewPRNumberFromClone(By locator) {
+	       
+    	WebDriver driver = ThreadLocalWebdriver.getDriver();
+        WebElement element = driver.findElement(locator);
+        String actualText = element.getText().trim();
+        String[] words= actualText.split("Indent Id:");
+	   String prNo= words[1].trim();
+	   return prNo;
+    } 
     
 	
 	// added on 070124
@@ -1467,7 +1684,289 @@ import com.sun.tools.xjc.Driver;
 	        String script = "window.scrollBy(" + pixels + ", 0);";
 	        jsExecutor.executeScript(script);
 	    }
-	    
+		//added on 290824 by @AD
+		public void mailAndAttachmentVeification(int eventId, int time, String description) throws Exception {
+			try{
+				String attachmentNames=DatabaseComponent.isMailAttachmentPresent(eventId, time);
+				if(!(mailID==null)) {
+					System.out.println(eventId+": is sent to "+description);
+					if(AttachmentCount>0) {
+						System.out.println("Number of attachment is :"+AttachmentCount+" and name of attachment(s) are "+attachmentNames);
+					}
+					else {
+						System.out.println("No attachment is present against mail Event ID: "+ eventId);
+					}
+				}
+				else {
+					log.fatal("mail is not shoot against Event ID: " + eventId);
+					System.out.println("mail is not shoot against Event ID: " + eventId + "Fail");
+					pdfResultReport.addStepDetails(description, "Try to validate :"+eventId, "Unable to validate :"+eventId, "FAIL","N");
+				}
+				pdfResultReport.addStepDetails("Start to validate "+eventId, eventId+": is sent to "+description,
+						"Successfully validated" + eventId +"Attachment count: "+AttachmentCount+ " if attachment are present then attachment name(s) are "+attachmentNames, "Pass", "Y");
+				log.info("completed executing the method:: Mail Event Verification");
+			} catch (RuntimeException localRuntimeException) {
+				log.fatal("mail is not shoot against Event ID: " + eventId +" "+ localRuntimeException.getMessage());
+			System.out.println("mail is not shoot against Event ID: " + eventId + " " + localRuntimeException.getMessage() + "Fail");
+			pdfResultReport.addStepDetails(description, "Try to validate :"+eventId, "Unable to validate :"+eventId +" "+ localRuntimeException.getMessage(), "FAIL","N");
+			throw new AutomationException("Unable to Validate EventID : "+ eventId+ " "+ localRuntimeException.getMessage());
+		}
+		}
+		
+		public void BuyerDepartmentWiseLogin(String usercode) throws Throwable {
+			try {
+				log.info("started executing the method:: SupplierOrgWiseLogin");
+				String xpath="//*[@id='myModalLabel']";
+				String orgSelection="//div[@class='input-group']/select[1]";
+				DatabaseComponent.OrgID(usercode);
+				boolean fielddisplay=isElementDisplayed_Updated(By.xpath(xpath), 2);
+				boolean interactable=isElementEnable_Updated(By.xpath(xpath), 2);
+				
+				System.out.println("Field is displayed: " + fielddisplay);
+				System.out.println("Field is displayed: " + interactable);
+				
+				if (fielddisplay == true && interactable == true) {
+					selectbyvalue(By.xpath(orgSelection), depValue);
+					click(By.xpath("//button[contains(text(), 'Ok')]"), "Click on OK button");
+//					universalNormalWait();
+				}
+				
+				pdfResultReport.addStepDetails("Navigate to tender List", "Tender list must be navigated successfully",
+						"Successfully navigated to tender list" + " ", "Pass", "Y");
+				log.info("completed executing the method:: navigateToTenderList");DatabaseComponent.organizationName(usercode);
+
+			} catch (Exception e) {
+				log.fatal("Unable to navigate to the tender list" + e.getMessage());
+				pdfResultReport.addStepDetails("Navigate to tender List", "Not able to navigate to the tender list",
+						"Unable to navigate to the tender list" + e.getMessage(), "Fail", "N");
+			}
+		}
+		
+		
+		public void updateExcelDataIntoPropertiesFile(String Filepath,String preconditionFile, String tcID,Sheet sheet) {
+			FileInputStream fileReader = null;
+			Properties properties = null;
+			try {
+	        	final String filePath = Filepath;
+				properties = new Properties();
+				FileInputStream fis = new FileInputStream(filePath);
+				properties = new Properties();
+				properties.load(fis);
+	            	Row row = sheet.getRow(Integer.parseInt(tcID));
+	            	for (int i = 0; i < row.getLastCellNum(); i++) {
+	                if (row != null) {
+	                    Cell keyCell = row.getCell(0);
+	                    Cell valueCell = row.getCell(Integer.parseInt(tcID));
+
+	                    if (keyCell != null && valueCell != null) {
+	                        String key = keyCell.getStringCellValue();
+	                        String value = valueCell.getStringCellValue();
+	                        properties.setProperty(key, value);
+	                    }
+	                }
+	            }
+	            FileOutputStream outputStream = new FileOutputStream(Filepath);
+	            properties.store(outputStream, null);
+	            fis.close();
+	            outputStream.close();
+
+	            System.out.println("Updated properties file successfully.");
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	        }	
+		}
+		
+		public Long TimestampConverter_DT(String str) {
+				long timestamp = Long.parseLong(str);
+		        Date date = new Date(timestamp);
+		        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy hh:mm a");
+		        formatter.setTimeZone(TimeZone.getDefault());
+		        String formattedDate = formatter.format(date);
+		        System.out.println(formattedDate);
+		        return timestamp;
+		}
+		
+		public Long TimestampConverter_D(String str) {
+			long timestamp = Long.parseLong(str);
+	        Date date = new Date(timestamp);
+	        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+	        formatter.setTimeZone(TimeZone.getDefault());
+	        String formattedDate = formatter.format(date);
+	        System.out.println(formattedDate);
+	        return timestamp;
+		}
+		public static void waitForSpinnerToDisappear(By loc) {
+			try {
+			WebDriver driver = ThreadLocalWebdriver.getDriver();
+			WebDriverWait wait = new WebDriverWait(driver, 1000);
+			wait.until(ExpectedConditions.invisibilityOf(driver.findElement(loc)));
+			}
+			catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		public static String op_key;
+		public void updateDataDuringRunTime(String user, String source, String target ) {
+			try {
+				
+				if(user.equalsIgnoreCase("Supplier")) {
+					if(s==0) {
+						source=BidDetails_S1;
+						sheetName="Supplier1";
+					}
+					else if(s==1){
+						source=BidDetails_S2;
+						sheetName="Supplier2";
+					}
+					else if(s==2){
+						source=BidDetails_S3;
+						sheetName="Supplier3";
+					}
+					else if(s==3){
+						source=BidDetails_S4;
+						sheetName="Supplier4";
+					}
+					else if(s==4){
+						source=BidDetails_S5;
+						sheetName="Supplier5";
+					}
+					else if(s==5){
+						source=BidDetails_S6;
+						sheetName="Supplier6";
+					}
+					else if(s==6){
+						source=BidDetails_S7;
+						sheetName="Supplier7";
+					}
+					else if(s==7){
+						target=BidDetails_S8;
+						sheetName="Supplier8";
+					}
+					else if(s==8){
+						source=BidDetails_S9;
+						sheetName="Supplier9";
+					}
+					else if(s==9){
+						source=BidDetails_S10;
+						sheetName="Supplier10";
+					}
+					else if(s==10){
+						source=BidDetails_S11;
+						sheetName="Supplier11";
+					}
+					else if(s==11){
+						source=BidDetails_S12;
+						sheetName="Supplier12";
+					}
+					
+				}
+				
+	            Properties prop1 = new Properties();
+	            FileInputStream input1 = new FileInputStream(source);
+	            prop1.load(input1);
+	            input1.close();
+	            Properties prop2 = new Properties();
+	            FileInputStream input2 = new FileInputStream(target);
+	            prop2.load(input2);
+	            input2.close();
+	            for (String key : prop1.stringPropertyNames()) {
+	            	op_key=key.replaceAll("\\s+", "").replaceAll("\\p{P}", "");
+	                if (prop2.containsKey(op_key)) {
+	                    String valueFromFile1 = prop1.getProperty(key);
+	                    prop2.setProperty(key, valueFromFile1);
+	                }
+	            }
+	            FileOutputStream output2 = new FileOutputStream(target);
+	            prop2.store(output2, "Updated properties from first file");
+	            output2.close();
+
+	            System.out.println("Properties file updated successfully!");
+
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	        }
+	}
+		public void updateDataDuringRunTime_multiData(String user, String source, String target ) {
+			try {
+				
+				if(user.equalsIgnoreCase("Supplier")) {
+					if(s==0) {
+						source=BidDetails_S1;
+						sheetName="Supplier1";
+					}
+					else if(s==1){
+						source=BidDetails_S2;
+						sheetName="Supplier2";
+					}
+					else if(s==2){
+						source=BidDetails_S3;
+						sheetName="Supplier3";
+					}
+					else if(s==3){
+						source=BidDetails_S4;
+						sheetName="Supplier4";
+					}
+					else if(s==4){
+						source=BidDetails_S5;
+						sheetName="Supplier5";
+					}
+					else if(s==5){
+						source=BidDetails_S6;
+						sheetName="Supplier6";
+					}
+					else if(s==6){
+						source=BidDetails_S7;
+						sheetName="Supplier7";
+					}
+					else if(s==7){
+						target=BidDetails_S8;
+						sheetName="Supplier8";
+					}
+					else if(s==8){
+						source=BidDetails_S9;
+						sheetName="Supplier9";
+					}
+					else if(s==9){
+						source=BidDetails_S10;
+						sheetName="Supplier10";
+					}
+					else if(s==10){
+						source=BidDetails_S11;
+						sheetName="Supplier11";
+					}
+					else if(s==11){
+						source=BidDetails_S12;
+						sheetName="Supplier12";
+					}
+					
+				}
+				
+	            Properties prop1 = new Properties();
+	            FileInputStream input1 = new FileInputStream(source);
+	            prop1.load(input1);
+	            input1.close();
+	            Properties prop2 = new Properties();
+	            FileInputStream input2 = new FileInputStream(target);
+	            prop2.load(input2);
+	            input2.close();
+	            for (String key : prop1.stringPropertyNames()) {
+	            	op_key=key.replaceAll("\\s+", "").replaceAll("\\p{P}", "");
+	                if (prop2.containsKey(op_key)) {
+	                    String valueFromFile1 = prop1.getProperty(key);
+	                    String[] vff = valueFromFile1.split(",\\s*");
+	                    prop2.setProperty(key, vff[ivC]);
+	                }
+	            }
+	            FileOutputStream output2 = new FileOutputStream(target);
+	            prop2.store(output2, "Updated properties from first file");
+	            output2.close();
+	            System.out.println("Properties file updated successfully!");
+
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	        }
+		}
 		
 	}
 

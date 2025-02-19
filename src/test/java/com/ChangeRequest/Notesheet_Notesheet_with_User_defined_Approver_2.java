@@ -1,7 +1,11 @@
 package com.ChangeRequest;
 import com.components.Change_request_Component;
-
-
+import com.components.Dynamicity;
+import com.components.PostTenderComponent;
+import com.components.ProductionDefectComponent;
+import com.components.RfqFromIndentComponent;
+import com.components.RfqFromPRComponent;
+import com.components.eTenderComponent;
 
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
@@ -12,7 +16,13 @@ import com.baseClasses.BaseClass_Web;
 
 public class Notesheet_Notesheet_with_User_defined_Approver_2 extends BaseClass_Web {
 
-		public Change_request_Component change_requestobj=new Change_request_Component(pdfResultReport);
+	public Change_request_Component change_requestobj=new Change_request_Component(pdfResultReport);
+	public eTenderComponent etendercomponentobj = new eTenderComponent(pdfResultReport);
+	public RfqFromPRComponent etenderPRcomponentobj = new RfqFromPRComponent(pdfResultReport);
+	public Dynamicity dynamicity=new Dynamicity(pdfResultReport);
+	public ProductionDefectComponent ProductionDefectobj = new ProductionDefectComponent(pdfResultReport);
+	public RfqFromIndentComponent rfqfromintendcomponentobj = new RfqFromIndentComponent(pdfResultReport);
+	public PostTenderComponent posttendercomponentobj =new PostTenderComponent(pdfResultReport);
 
 		public void initializeRepository() throws Exception {
 			reportDetails.put("Test Script Name", this.getClass().getSimpleName());
@@ -30,34 +40,46 @@ public class Notesheet_Notesheet_with_User_defined_Approver_2 extends BaseClass_
 			System.out.println("Entered in the Test method..................");
 			try {
 				pdfResultReport.readTestDataFile(System.getProperty("user.dir").replace("\\", "/")
-						+ "/Resources/Notesheet_TestData.xls", no);
+						+ "/Resources/TG1_Testdata_static_scripts.xls", no);
 			} catch (Exception e) {
 				System.out.println("Unable to read the data from excel file");
 			}
 			initializeRepository();
+			etenderPRcomponentobj.updateNotesheetDetails();
 			//deleteBrowserCookies();
-			change_requestobj.openURL();
-			change_requestobj.NoteSheetLogin(pdfResultReport.testData.get("NotesheetCreatorUserName"));
+			ProductionDefectobj.openURL(Dynamicity.getDataFromPropertiesFile("Environment", filePath_4));
+			etenderPRcomponentobj.commonLogin(Dynamicity.getDataFromPropertiesFile("IndentCreator", filePath_4), Dynamicity.getDataFromPropertiesFile("IndentCreator_Password", filePath_4), "Indent", "Creator");
 			change_requestobj.nevigateToNotesheetList();
 			change_requestobj.createNotesheet();
 			change_requestobj.noteSheetSubmit();
-			change_requestobj.AddSingleUsersForSequentialApproval_NotesheetWF();
-			change_requestobj.verifyNoteSheetStatus("Pending For Approval");
-			change_requestobj.tenderLogout();
-			
-			//Approve the created Notesheet
-			change_requestobj.NotesheetapproverLogin();
+			change_requestobj.AddTwoUsersForSequentialApproval();
+			ProductionDefectobj.Logout(Dynamicity.getDataFromPropertiesFile("Environment", filePath_4));
+		
+			  //approver1
+			rfqfromintendcomponentobj.ApproverLogin(pdfResultReport.testData.get("UserTenderApprover1"));
 			change_requestobj.GoToApprovalworkFlowPendingindentAndSearchTheNotesheet();
-			change_requestobj.clickDetailLinkInApprovalListPage();
-			change_requestobj.ApproverOverAllComentWithNotesheetHasBeenApproved();
-			change_requestobj.tenderLogoutOld();
+			change_requestobj.TenderApproverValidation();
+			change_requestobj.provideApproverCommentforTenderApprover();
+			change_requestobj.appprovalDecision("approve");
+			ProductionDefectobj.Logout(Dynamicity.getDataFromPropertiesFile("Environment", filePath_4));
 			
-			//Verifying the Notesheet status after approval
-			change_requestobj.NoteSheetLogin(pdfResultReport.testData.get("NotesheetCreatorUserName"));
+			
+			rfqfromintendcomponentobj.ApproverLogin(pdfResultReport.testData.get("UserTenderApprover2"));
+			change_requestobj.GoToApprovalworkFlowPendingindentAndSearchTheNotesheet();
+			change_requestobj.TenderApproverValidation();
+			change_requestobj.provideApproverCommentforTenderApprover();
+			etendercomponentobj.tenderApprovalDecision("final approve Tender");
+			mailAndAttachmentVeification(408 , 1,"Creator will get an intimation mail after document is approved by approver(s).");
+			ProductionDefectobj.Logout(Dynamicity.getDataFromPropertiesFile("Environment", filePath_4));
+			
+			
+		//Verifying the Notesheet status after approval
+			etenderPRcomponentobj.commonLogin(Dynamicity.getDataFromPropertiesFile("IndentCreator", filePath_4), Dynamicity.getDataFromPropertiesFile("IndentCreator_Password", filePath_4), "Indent", "Creator");
 			change_requestobj.nevigateToNotesheetList();
-			change_requestobj.verifyNoteSheetStatus("Approved");
-			change_requestobj.tenderLogout();
-			
+			change_requestobj.searchNotesheet();
+			change_requestobj.verifyNoteSheetStatus("Completed");
+			ProductionDefectobj.Logout(Dynamicity.getDataFromPropertiesFile("Environment", filePath_4));
+		
 			
 			
 			

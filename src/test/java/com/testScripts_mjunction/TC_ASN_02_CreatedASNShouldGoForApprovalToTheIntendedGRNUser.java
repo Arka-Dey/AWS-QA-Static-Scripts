@@ -62,7 +62,7 @@ public class TC_ASN_02_CreatedASNShouldGoForApprovalToTheIntendedGRNUser extends
 		  posttendercomponentobj.EPS_PO_Submission();
 		
 		  posttendercomponentobj.POSaveandApproval();
-		  //posttendercomponentobj.savePoDocNumber();
+		  posttendercomponentobj.savePoDocNumber();
 		  posttendercomponentobj.ApprovalNotRequired();
 		  posttendercomponentobj.verifyPoRefNumberInPoListPage();
 		  posttendercomponentobj.verifyPOStatus("Pending for Acceptance");

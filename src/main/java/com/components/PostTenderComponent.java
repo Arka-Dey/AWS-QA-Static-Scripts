@@ -1,5 +1,9 @@
 package com.components;
 
+import java.awt.Robot;
+import java.awt.Toolkit;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -10,7 +14,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
 import java.util.Set;
@@ -38,24 +41,30 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import com.Database.DatabaseComponent;
 import com.baseClasses.BaseClass_Web;
 import com.baseClasses.EmailUtils;
 import com.baseClasses.PDFResultReport;
 import com.baseClasses.ThreadLocalWebdriver;
 import com.objectRepository.TenderCreation_Locators;
-import com.sun.tools.xjc.Driver;
+
+import io.appium.java_client.touch.WaitOptions;
+
+
 
 public class PostTenderComponent extends BaseClass_Web {
 	TenderCreation_Locators tendercreationlocators = new TenderCreation_Locators();
 	String documentNumberText = null;
-	//String documentNumberText = "43926";
-	String poDocNum = null;
-	//String poDocNum = "1360";
-	String poReference= "";
-//	String tenderReferenceNoLocatorText_sn = null;
-	String tenderReferenceNoLocatorText_sn ="SN_5632";
+//	String documentNumberText = "46301";
+//	String poDocNum = null;
+	String poDocNum = "1228";
+	String poReference= null;
+	//String poReference= "PO_Ref_08-04-2024-13-36";
+	String tenderReferenceNoLocatorText_sn = null;
+//	String tenderReferenceNoLocatorText_sn ="SN_6654";
 	eTenderComponent etendercomponentobj = new eTenderComponent(pdfResultReport);
-
+	public Dynamicity dynamicity=new Dynamicity(pdfResultReport);
+	
 	public PostTenderComponent(PDFResultReport pdfresultReport) {
 		this.pdfResultReport = pdfresultReport;
 	}
@@ -101,7 +110,7 @@ public class PostTenderComponent extends BaseClass_Web {
 			set(tendercreationlocators.password, pdfResultReport.testData.get("AppPassword"), "password");
 			click(tendercreationlocators.okButton, "okButton");
 			
-			waitForElement(tendercreationlocators.dashboardIconnew, 5000);
+			waitForElement(tendercreationlocators.dashboardIconnew, 50);
 
 			pdfResultReport.addStepDetails("super_Admin_Login", "Super admin user must be login sucessfully",
 					"Successfully logged in as Super admin user" + " ", "Pass", "Y");
@@ -163,28 +172,28 @@ public class PostTenderComponent extends BaseClass_Web {
 	}
 
 	public void sanction_Creator_Login() throws Throwable {
-		try {
-			
-			log.info("started executing the method:: sanction_Creator_Login");
-			waitForElementToBeVisible(tendercreationlocators.userName);
-			set(tendercreationlocators.userName, pdfResultReport.testData.get("SanctionNoteCreatorUserName"), "SanctionNoteCreatorUserName");
-			waitForElementToBeVisible(tendercreationlocators.password);
-			set(tendercreationlocators.password, pdfResultReport.testData.get("AppPassword"), "password");
-			waitForElementToBeClickable(tendercreationlocators.okButton);
-			click(tendercreationlocators.okButton, "okButton");
-			waitForElement(tendercreationlocators.dashboardIcon, 5000);
+			try {
+				
+				log.info("started executing the method:: sanction_Creator_Login");
+				waitForElementToBeVisible(tendercreationlocators.userName);
+				set(tendercreationlocators.userName, pdfResultReport.testData.get("SanctionNoteCreatorUserName"), "SanctionNoteCreatorUserName");
+				waitForElementToBeVisible(tendercreationlocators.password);
+				set(tendercreationlocators.password, pdfResultReport.testData.get("AppPassword"), "password");
+				waitForElementToBeClickable(tendercreationlocators.okButton);
+				click(tendercreationlocators.okButton, "okButton");
+				waitForElement(tendercreationlocators.dashboardIcon, 30);
 
-			pdfResultReport.addStepDetails("sanction_Creator_Login",
-					"Sanction note  creator user must be login sucessfully",
-					"Successfully logged in as Sanction note  creator user " + " ", "Pass", "Y");
-			log.info("completed executing the method:: sanction_Creator_Login");
-		} catch (Exception e) {
-			log.fatal("Unable to login as sanction note creator user" + e.getMessage());
-			pdfResultReport.addStepDetails("Tsanction_Creator_Login",
-					"Sanction note  creator user must be login sucessfully",
-					"Unable to login as sanction note creator user" + e.getMessage(), "Fail", "N");
+				pdfResultReport.addStepDetails("sanction_Creator_Login",
+						"Sanction note  creator user must be login sucessfully",
+						"Successfully logged in as Sanction note  creator user " + " ", "Pass", "Y");
+				log.info("completed executing the method:: sanction_Creator_Login");
+			} catch (Exception e) {
+				log.fatal("Unable to login as sanction note creator user" + e.getMessage());
+				pdfResultReport.addStepDetails("Tsanction_Creator_Login",
+						"Sanction note  creator user must be login sucessfully",
+						"Unable to login as sanction note creator user" + e.getMessage(), "Fail", "N");
+			}
 		}
-	}
 
 	public void enterCompleted_TenderId() throws Exception {
 		try {
@@ -216,12 +225,9 @@ public class PostTenderComponent extends BaseClass_Web {
 
 			clear(tendercreationlocators.TypeYourKeywordSN, "tenderListKeyword");
 
-			set(tendercreationlocators.TypeYourKeywordSN, eTenderComponent.getDataFromPropertiesFile_New("tenderId"),
-					"enterCompleted_TenderId");
-			
-			
-
-			waitForObj(5000);
+			set(tendercreationlocators.TypeYourKeywordSN, Dynamicity.getDataFromPropertiesFile("tenderID", filePath_4), "tenderListSearch");
+					
+//			universalNormalWait();
 
 			pdfResultReport.addStepDetails("enterCompletedTenderId",
 					"Tender id should be displayed in completed tender list page",
@@ -234,6 +240,7 @@ public class PostTenderComponent extends BaseClass_Web {
 					"Unable to display tender id in completed tender list page" + e.getMessage(), "Fail", "N");
 		}
 	}
+	
 
 
 	public void supplierSelection() throws Throwable {
@@ -298,7 +305,7 @@ public class PostTenderComponent extends BaseClass_Web {
 			set(tendercreationlocators.password, pdfResultReport.testData.get("AppPassword"), "password");
 			waitForElementToBeClickable(tendercreationlocators.okButton);
 			click(tendercreationlocators.okButton, "okButton");
-			waitForElement(tendercreationlocators.dashboardIcon, 5000);
+			waitForElement(tendercreationlocators.dashboardIcon, 30);
 			
 			pdfResultReport.addStepDetails("sanctionNoteApprover1Login",
 					"Sanction Note Approver must be sucessfully logged in",
@@ -321,7 +328,7 @@ public class PostTenderComponent extends BaseClass_Web {
 			set(tendercreationlocators.password, pdfResultReport.testData.get("AppPassword"), "password");
 			waitForElementToBeClickable(tendercreationlocators.okButton);
 			click(tendercreationlocators.okButton, "okButton");
-			waitForElement(tendercreationlocators.dashboardIcon, 5000);
+			waitForElement(tendercreationlocators.dashboardIcon, 50);
 			
 			pdfResultReport.addStepDetails("sanctionNoteApprover1Login",
 					"Sanction Note Approver must be sucessfully logged in",
@@ -345,7 +352,7 @@ public class PostTenderComponent extends BaseClass_Web {
 			set(tendercreationlocators.password, pdfResultReport.testData.get("AppPassword"), "password");
 			waitForElementToBeClickable(tendercreationlocators.okButton);
 			click(tendercreationlocators.okButton, "okButton");
-			waitForElement(tendercreationlocators.dashboardIcon, 5000);
+			waitForElement(tendercreationlocators.dashboardIcon, 30);
 			
 			pdfResultReport.addStepDetails("sanctionNoteApprover1Login",
 					"Sanction Note Approver must be sucessfully logged in",
@@ -364,15 +371,13 @@ public class PostTenderComponent extends BaseClass_Web {
 		try {
 			log.info("started executing the method:: enterDocumentNoInSearchSanctionApprover");
 			
-			waitForElementToBeClickable(tendercreationlocators.sanctionTab);
+			//waitForElementToBeClickable(tendercreationlocators.sanctionTab);
 			click(tendercreationlocators.sanctionTab, "sanctionTab");
-			set(tendercreationlocators.typeAnyKeyword1, documentNumberText, "typeAnyKeyword");
-			waitForObj(5000);
+			set(tendercreationlocators.typeAnyKeyword_Pending, documentNumberText, "typeAnyKeyword");
 			
 			//===========================Added on 300124
 			WebDriver driver = ThreadLocalWebdriver.getDriver();
 			int size = driver.findElements(tendercreationlocators.ActionButton_approver_tender).size(); //added on 09-01-23 by Arka
-			waitForObj(2000);
 			if(size >=1)
 			{
 				System.out.println("**********************************************************************");
@@ -405,15 +410,82 @@ public class PostTenderComponent extends BaseClass_Web {
 					"N");
 		}
 	}
+	
+	public void enterDocumentNoInSearchSanctionApprover_AfterTakingDecision() throws Throwable {
+		try {
+			log.info("started executing the method:: enterDocumentNoInSearchSanctionApprover");
+
+			set(tendercreationlocators.typeAnyKeyword_Pending, documentNumberText, "typeAnyKeyword");
+
+			//===========================Added on 300124
+			WebDriver driver = ThreadLocalWebdriver.getDriver();
+			int size = driver.findElements(tendercreationlocators.ActionButton_approver_tender).size(); //added on 09-01-23 by Arka
+			if(size == 0)
+			{
+				System.out.println("**********************************************************************");
+				System.out.println("The tender is Not there in Approval pending List page the size is --->"+size);
+				pdfResultReport.addStepDetails("enterDocumentNoInSearchSanctionApprover",
+						"Should not display the pending tender in approval work flow",
+						"Sucessfully not displayed the pending SN in approval work flow", "Pass", "Y");
+					log.info("completed executing the method:: enterDocumentNoInSearchSanctionApprover");
+				
+			}
+			else if(size >=1)
+			{
+				System.out.println("**********************************************************************");
+				System.out.println("SN is present in Appproval pending List page the size is --->"+size);
+				pdfResultReport.addStepDetails("enterDocumentNoInSearchSanctionApprover",
+						"Should not display the pending SN in approval work flow","able to display the pending SN in approval work flow",
+						"Fail", "N");
+				System.out.println("**********************************************************************");
+			}
+			
+			//=================================
+			
+			pdfResultReport.addStepDetails("enterDocumentNoInSearchSanctionApprover",
+					"Document No must be enter successfully", "Successfully entered document No" + " ", "Pass", "Y");
+			log.info("completed executing the method:: enterDocumentNoInSearchSanctionApprover");
+		} catch (Exception e) {
+			log.fatal("Not able to enter document No" + e.getMessage());
+			pdfResultReport.addStepDetails("enterDocumentNoInSearchSanctionApprover",
+					"Document No must be enter successfully", "Unable to eneter document No" + e.getMessage(), "Fail",
+					"N");
+		}
+	}
 
 	public void sanctionNoteEvaluationApprove() throws Throwable {
 		try {
 			log.info("started executing the method:: sanctionNoteEvaluationApprove");
-			waitForElementToBeClickable(tendercreationlocators.sanctionNoteEvaluationApprove);
-			click(tendercreationlocators.sanctionNoteEvaluationApprove, "sanctionNoteEvaluationApprove");
-			waitForElementToBeClickable(tendercreationlocators.approveConfirm);
-			click(tendercreationlocators.approveConfirm, "approveConfirm");
-			//waitForObj(8000);
+			//waitForElementToBeClickable(tendercreationlocators.ApproveBtn);
+			//click(tendercreationlocators.ApproveBtn, "sanctionNoteEvaluationApprove");
+			waitForElementToBeClickable(tendercreationlocators.commonNameofApprove);
+			click(tendercreationlocators.commonNameofApprove, "sanctionNoteEvaluationApprove");
+			waitForElementToBeClickable(tendercreationlocators.confirmButton);
+			click(tendercreationlocators.confirmButton, "approveConfirm");
+			waitForElementToBeClickable(tendercreationlocators.BtnOk);
+            click(tendercreationlocators.BtnOk, "approveOk");
+			
+			pdfResultReport.addStepDetails("sanctionNoteEvaluationApprove",
+					"sanction Note Evaluation must be approve sucessfully ",
+					"Successfully approved sanction Note Evaluation" + " ", "Pass", "Y");
+			log.info("completed executing the method:: sanctionNoteEvaluationApprove");
+
+		} catch (Exception e) {
+			log.fatal("Unable to approve sanction Note Evaluation" + e.getMessage());
+			pdfResultReport.addStepDetails("sanctionNoteEvaluationApprove",
+					"sanction Note Evaluation must be approve sucessfully ",
+					"Unable to approve sanction Note Evaluation" + e.getMessage(), "Fail", "N");
+		}
+	}
+	public void sanctionNoteEvaluationApproveForRDCIS() throws Throwable {
+		try {
+			log.info("started executing the method:: sanctionNoteEvaluationApprove");
+			waitForElementToBeClickable(tendercreationlocators.SendBtn);
+			click(tendercreationlocators.SendBtn, "sanctionNoteEvaluationApprove");
+			waitForElementToBeClickable(tendercreationlocators.confirmButton);
+			click(tendercreationlocators.confirmButton, "approveConfirm");
+			waitForElementToBeClickable(tendercreationlocators.success_Ok_button);
+			click(tendercreationlocators.success_Ok_button, "ok");
 			waitForElementToBeClickable(tendercreationlocators.sanctionTab);
 			pdfResultReport.addStepDetails("sanctionNoteEvaluationApprove",
 					"sanction Note Evaluation must be approve sucessfully ",
@@ -428,14 +500,29 @@ public class PostTenderComponent extends BaseClass_Web {
 		}
 	}
 	
-	
 	public void sanctionNoteEvaluationApprove_C() throws Throwable {
 		try {
 			log.info("started executing the method:: sanctionNoteEvaluationApprove");
-			waitForElementToBeClickable(tendercreationlocators.sanctionNoteEvaluationApprove);
-			click(tendercreationlocators.sanctionNoteEvaluationApprove, "sanctionNoteEvaluationApprove");
-			waitForElementToBeClickable(tendercreationlocators.approveConfirm);
-			click(tendercreationlocators.approveConfirm, "approveConfirm");
+			waitForElementToBeClickable(tendercreationlocators.ApproveBtn);
+			click(tendercreationlocators.ApproveBtn, "sanctionNoteEvaluationApprove");
+			
+			pdfResultReport.addStepDetails("sanctionNoteEvaluationApprove",
+					"sanction Note Evaluation must be approve sucessfully ",
+					"Successfully approved sanction Note Evaluation" + " ", "Pass", "Y");
+			log.info("completed executing the method:: sanctionNoteEvaluationApprove");
+
+		} catch (Exception e) {
+			log.fatal("Unable to approve sanction Note Evaluation" + e.getMessage());
+			pdfResultReport.addStepDetails("sanctionNoteEvaluationApprove",
+					"sanction Note Evaluation must be approve sucessfully ",
+					"Unable to approve sanction Note Evaluation" + e.getMessage(), "Fail", "N");
+		}
+	}
+	public void sanctionNoteEvaluationApprove_RDCIS_C() throws Throwable {
+		try {
+			log.info("started executing the method:: sanctionNoteEvaluationApprove");
+			waitForElementToBeClickable(tendercreationlocators.SendBtn);
+			click(tendercreationlocators.SendBtn, "sanctionNoteEvaluationApprove");
 			
 			pdfResultReport.addStepDetails("sanctionNoteEvaluationApprove",
 					"sanction Note Evaluation must be approve sucessfully ",
@@ -458,7 +545,33 @@ public class PostTenderComponent extends BaseClass_Web {
 			click(tendercreationlocators.confirm_snEndWorkflow, "confirm_snEndWorkflow");
 			waitForElementToBeClickable(tendercreationlocators.confirm_snEndWorkflow);
 			click(tendercreationlocators.confirm_snEndWorkflow, "Again_confirm_snEndWorkflow");
-			//waitForObj(8000);
+			waitForElementToBeClickable(tendercreationlocators.confirm_snEndWorkflow);
+			click(tendercreationlocators.confirm_snEndWorkflow, "are you sure want to continue");
+			waitForElementToBeClickable(tendercreationlocators.success_Ok_button);
+			click(tendercreationlocators.success_Ok_button, "ok");
+			waitForElementToBeVisible(tendercreationlocators.sanctionTab);
+			pdfResultReport.addStepDetails("sanctionNoteEvaluationApprove",
+					"sanction Note Evaluation must be approve sucessfully ",
+					"Successfully approved sanction Note Evaluation" + " ", "Pass", "Y");
+			log.info("completed executing the method:: sanctionNoteEvaluationApprove");
+
+		} catch (Exception e) {
+			log.fatal("Unable to approve sanction Note Evaluation" + e.getMessage());
+			pdfResultReport.addStepDetails("sanctionNoteEvaluationApprove",
+					"sanction Note Evaluation must be approve sucessfully ",
+					"Unable to approve sanction Note Evaluation" + e.getMessage(), "Fail", "N");
+		}
+	}
+	
+	public void sanctionNoteCloseWorkflow_Repeat_Once() throws Throwable {
+		try {
+			log.info("started executing the method:: sanctionNoteEvaluationApprove");
+			waitForElementToBeClickable(tendercreationlocators.snEndWorkflow);
+			click(tendercreationlocators.snEndWorkflow, "sanctionNoteEvaluationApprove");
+			//waitForElementToBeClickable(tendercreationlocators.confirm_snEndWorkflow);
+			click(tendercreationlocators.confirm_snEndWorkflow, "confirm_snEndWorkflow");
+			waitForElementToBeClickable(tendercreationlocators.success_Ok_button);
+			click(tendercreationlocators.success_Ok_button, "ok");
 			waitForElementToBeVisible(tendercreationlocators.sanctionTab);
 			pdfResultReport.addStepDetails("sanctionNoteEvaluationApprove",
 					"sanction Note Evaluation must be approve sucessfully ",
@@ -477,7 +590,7 @@ public class PostTenderComponent extends BaseClass_Web {
 		try {
 			log.info("started executing the method:: navigateToCompletedTenderDetailsPage");
 			click(tendercreationlocators.SN_stage, "SN_stage");
-			waitForElement(tendercreationlocators.SNpendingList, 10000);
+			waitForElement(tendercreationlocators.SNpendingList, 30);
 			waitForElementToBeClickable(tendercreationlocators.SNcompletedList);
 			pdfResultReport.addStepDetails("navigateToCompletedTenderDetailsPage",
 					"Completed Tender Details Page must be sucessfully logged in",
@@ -495,14 +608,15 @@ public class PostTenderComponent extends BaseClass_Web {
 	public void provideApproverComment() throws Throwable {
 		try {
 			log.info("started executing the method:: provideApproverComment");
-			JSClick(tendercreationlocators.snComment, "overallComment");
-			//WebElement iframele = ThreadLocalWebdriver.getDriver().findElement(By.xpath("//iframe[@id='txtArea_ifr']"));
-			WebElement iframele = ThreadLocalWebdriver.getDriver().findElement(By.xpath("//*[@id='txtArea_ifr']"));
-			switchframe(iframele);
-			Thread.sleep(2000);
-			set(tendercreationlocators.recommendationComment, "overallComment_currentPart", "recommendationComment");
-			switchToDefaultFrame();
-			Thread.sleep(2000);
+			String comment = "Tender Process Is Approved";
+			waitForElementToBeClickable(tendercreationlocators.snComment);
+			click(tendercreationlocators.approverComment, "approverComment");
+			universalNormalWait();
+			waitForElementToBeVisible(tendercreationlocators.Approvercomment_tender);
+			//scrollToElement(tendercreationlocators.Approvercomment_tender);
+//			waitForObj(2000);
+			set(tendercreationlocators.Approvercomment_tender, comment,"comment");
+//				waitForObj(1000);
 			pdfResultReport.addStepDetails("provideApproverComment", "Comment must be pass successfully",
 					"Successfully passed comment" + " ", "Pass", "Y");
 			log.info("completed executing the method:: provideApproverComment");
@@ -596,7 +710,7 @@ public class PostTenderComponent extends BaseClass_Web {
 			documentNoSave();
 			click(tendercreationlocators.sendForApproval, "sendForApproval");
 
-			waitForElementToBeVisible(By.xpath("//*[@id='myTabContent']/child::div/child::div/table/tbody/tr[2]"));
+			//waitForElementToBeVisible(By.xpath("//*[@id='myTabContent']/child::div/child::div/table/tbody/tr[2]"));
 
 			waitForObj(2000);
 
@@ -643,7 +757,7 @@ public class PostTenderComponent extends BaseClass_Web {
 		try {
 			log.info("started executing the method:: clickOn_SNstage");
 			click(tendercreationlocators.SN_stage, "SN_stage");
-			waitForObj(5000);
+			universalNormalWait();
 			pdfResultReport.addStepDetails("clickOn_SNstage", "SN stage must be click sucessfully",
 					"Successfully clicked on SN stage " + " ", "Pass", "Y");
 			log.info("completed executing the method:: clickOn_POstage");
@@ -1396,8 +1510,10 @@ public class PostTenderComponent extends BaseClass_Web {
 	public void createSanctionNote() throws Throwable {
 		try {
 			log.info("started executing the method:: createSanctionNote");
+			
 			JSClick(tendercreationlocators.SN_stage, "SN_stage");
-			checkPageIsReady();
+			//checkPageIsReady();
+			universalNormalWait();
 			waitForElementToBeVisible(tendercreationlocators.createNotesheetIcon);
 
 			click(tendercreationlocators.createNotesheetIcon, "createSanctionNote");
@@ -1494,26 +1610,6 @@ public class PostTenderComponent extends BaseClass_Web {
 
 	public void clickPostTenderProcessLink() throws Throwable {
 		try {
-			//commented on 251123
-			
-			/*
-			 * log.info("started executing the method:: clickPostTenderProcessLink");
-			 * 
-			 * click(tendercreationlocators.tendersIcon, "tendersIcon"); waitForObj(2000);
-			 * 
-			 * JSClick(tendercreationlocators.postTenderProcessBy, "postTenderProcessBy");
-			 * 
-			 * waitForObj(3000);
-			 * 
-			 * checkPageIsReady();
-			 * 
-			 * waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(),
-			 * tendercreationlocators.LoadingBy);
-			 * 
-			 * waitForElementToBeVisible(By.xpath("//*[@id='myTablebyrTl00']/tbody/tr[1]"));
-			 * 
-			 * waitForObj(5000);
-			 */
 			
 			// newly added script on 251123
 			log.info("started executing the method:: navigateToIndentCreation");
@@ -1521,7 +1617,7 @@ public class PostTenderComponent extends BaseClass_Web {
 			mouseOver(tendercreationlocators.Enquiry);
 			JSClick(tendercreationlocators.AllSanctionsFromRFx, "AllSanctionsFromRFx");
 			checkPageIsReady();
-			waitForElementToBeVisible(tendercreationlocators.TypeYourKeywordSN);
+			waitForElementToBeClickable(tendercreationlocators.TypeYourKeywordSN);
 			
 
 			pdfResultReport.addStepDetails("clickPostTenderProcessLink", "Should navigate to Complete Tender List page",
@@ -1566,16 +1662,20 @@ public class PostTenderComponent extends BaseClass_Web {
 	return tenderReferenceNoLocatorText_sn;
 	}
 	public String documentNoSave() throws Throwable {
+		try{
 		log.info("started executing the method:: documentNoSave");
-		waitForElement(tendercreationlocators.documentNumber, 10000);
+		waitForObj(7000);
 		documentNumberText = text(tendercreationlocators.documentNumber).trim();
 		System.out.println(documentNumberText);
-		updateDataIntoPropertyFile(documentNumberText);
-		eTenderComponent.updateDataIntoPropertyFile("sanctionoteDocnum", documentNumberText);
+		Dynamicity.updateDataIntoPropertyFile("CompletedSN", documentNumberText, filePath_4);
+		}
+		catch (Exception e) {
+			log.fatal("documentNoSave" + e.getMessage());
+			pdfResultReport.addStepDetails("Not able to documentNoSave", "Not able to documentNoSave",
+					"Unable to documentNoSave" + e.getMessage(), "Fail", "N");
+		}
 		return documentNumberText;
 	}
-	
-
 	public void CreateSanctionNoteWithPredefinedApproval() throws Throwable {
 		try {
 			log.info("started executing the method::CreateSanctionNoteWithPredefinedApproval");
@@ -2166,10 +2266,7 @@ public class PostTenderComponent extends BaseClass_Web {
 	public void SanctionsupplierOrgNameWiseSelection(String Orgname) throws Throwable {
 		try {
 			log.info("started executing the method:: sanctionReferenceNumber");
-			//waitForObj(20000);
-			//etendercomponentobj.waitForSpinnerToDisappear();
-			//waitForObj(20000);
-			
+	
 			JSClick(tendercreationlocators.ALLsupplierSelectionCheckBox, "supplierSelectionCheckBox");
 			waitForObj(1000);
 			JSClick(tendercreationlocators.ALLsupplierSelectionCheckBox, "supplierSelectionCheckBox");
@@ -2186,7 +2283,78 @@ public class PostTenderComponent extends BaseClass_Web {
 					"Unable to select supplierr " + e.getMessage(), "Fail", "N");
 		}
 	}
-
+	//added on 240724 @AD
+	public void supplierSelection_SN() throws Throwable {
+		try {
+			log.info("started executing the method:: supplierSelection");
+			
+			if(rdcisSNflag==0) {
+				try {
+		            String supplierValue = Dynamicity.getDataFromPropertiesFile("SupplierForSN", filePath_4);
+		            String[] suppliers = supplierValue.split(",\\s*");
+		            int supplierSize=suppliers.length;
+		            for (String supplier : suppliers) {
+		            	if(supplier.equalsIgnoreCase("All") && supplierSize==1) {
+		            		click(By.xpath("//input[contains(@ng-click, 'selectAllQuotation')]"), "Select all Users");
+		            	}
+		            	else {
+			                System.out.println("Supplier: " + supplier);
+			                click(By.xpath("//span[text()='"+supplier+"']/parent::td/preceding-sibling::td/input"), "Supplier Selection");
+		            	}
+		            }
+		        } catch (IOException ex) {
+		            ex.printStackTrace();
+		        }
+			}
+			else {
+				String SNTypes=Dynamicity.getDataFromPropertiesFile("AutomaticSNCreationBasedOn", filePath_4);
+				System.out.println("This is "+SNTypes+" saction so L1, L2 column is not pereent here.");
+			}
+			
+			pdfResultReport.addStepDetails("supplierSelection", "supplier must be selected sucessfully",
+					"Successfully selected supplier " + " ", "Pass", "Y");
+			log.info("completed executing the method:: supplierSelection");
+		} catch (Exception e) {
+			log.fatal("Unable to select supplier " + e.getMessage());
+			pdfResultReport.addStepDetails("supplierSelection", "supplier must be selected sucessfully",
+					"Unable to select supplierr " + e.getMessage(), "Fail", "N");
+		}
+	}
+	public void supplierSelection_MSN() throws Throwable {
+		try {
+			log.info("started executing the method:: supplierSelection");
+				try {
+		            String supplierValue = Dynamicity.getDataFromPropertiesFile("Supplier", filePath_4);
+		            String[] suppliers = supplierValue.split(",\\s*");
+		            click(tendercreationlocators.clickONsupplierSelectionSearchBox, "clickONsupplierSelectionSearchBox");
+		            for (String supplier : suppliers) {
+			                System.out.println("Supplier: " + supplier);
+			                String companyName=DatabaseComponent.SupplierCompanyName(supplier);
+			                System.out.println(companyName);
+							set(tendercreationlocators.enterSupplierName, companyName, "enterSupplierName");
+							checkPageIsReady();
+							click(tendercreationlocators.clickONsupplierName(companyName), "clickONsupplierName");
+							waitForObj(10000);
+							checkPageIsReady();
+							clear(tendercreationlocators.enterSupplierName,"Clear SupplierName");
+							checkPageIsReady();
+							
+							pdfResultReport.addStepDetails("supplierSelection", "supplier must be selected sucessfully",
+									"Successfully selected supplier " + " ", "Pass", "Y");
+							log.info("completed executing the method:: supplierSelection");
+		            	}
+		            click(tendercreationlocators.omitSupplierSection, "omitSupplierSection and going fill fresh sanction details");
+		            universalWait();
+		        } catch (IOException ex) {
+		            ex.printStackTrace();
+		        }
+			}	
+			catch (Exception e) {
+			log.fatal("Unable to select supplier " + e.getMessage());
+			pdfResultReport.addStepDetails("supplierSelection", "supplier must be selected sucessfully",
+					"Unable to select supplierr " + e.getMessage(), "Fail", "N");
+		}
+	}
 	public void ApproverrecallButtonValidation() throws Throwable {
 		try {
 			log.info("started executing the method:: recallButtonValidation");
@@ -2331,7 +2499,7 @@ public class PostTenderComponent extends BaseClass_Web {
 					"Unable to review sanction" + e.getMessage(), "Fail", "N");
 		}
 	}
-
+	/*
 	public static int fn_GetCellNumberByColumName(HSSFSheet WSheetObj, String ColumnName, int rownum) {
 
 		HSSFRow FstRowObj = WSheetObj.getRow(rownum);
@@ -2349,7 +2517,7 @@ public class PostTenderComponent extends BaseClass_Web {
 		}
 		return columnNumber;
 	}
-
+	
 	public void writeexcel(String path, String sheetname, String colname, int rownum, int rowtowrite, int data) {
 		try {
 			File file = new File(System.getProperty("user.dir") + path);
@@ -2377,7 +2545,7 @@ public class PostTenderComponent extends BaseClass_Web {
 			log.fatal("Not able to write" + e.getCause().getClass());
 		}
 
-	}
+	}*/
 
 	public String idno;
 	public int id;
@@ -2492,18 +2660,119 @@ public class PostTenderComponent extends BaseClass_Web {
 	        */
 			
 			//============================
-			
-			click(tendercreationlocators.BOQAllItemsChecklist_T1, "BOQAllItemsChecklist");
+			scrollToElement(tendercreationlocators.BOQAllItemsChecklist_T1);
+			JSClick(tendercreationlocators.BOQAllItemsChecklist_T1, "BOQAllItemsChecklist");
 			waitForObj(2000);
 			scrollToElement(tendercreationlocators.BOQAllItemsChecklist_T2);
 			JSClick(tendercreationlocators.BOQAllItemsChecklist_T2, "BOQAllItemsChecklist");
 			//waitForElementToBeClickable(tendercreationlocators.addAllSNItems);
-			click(tendercreationlocators.addAllSNItems, "addAllSNItems");
+			JSClick(tendercreationlocators.addAllSNItems, "addAllSNItems");
 			//click(tendercreationlocators.btnAddfinalItems, "addAllSNItems");
 			scrollToElement(tendercreationlocators.evaluation_sendForApproval);
 			waitForObj(1000);
 			click(tendercreationlocators.evaluation_sendForApproval, "addAllSNItems");
 			
+			pdfResultReport.addStepDetails("Addquantity_Final_Items",
+					"Remaining items for Purchase to be displayed in Finalitems ",
+					"Successfully displaying Finalitems List of item Qty for purchase" + " ", "Pass", "Y");
+			log.info("completed executing the method:: Addquantity_Final_Items");
+		} catch (Exception e) {
+			log.fatal("Unable to display Finalitems List of item Qty for purchase" + e.getMessage());
+			pdfResultReport.addStepDetails("Addquantity_Final_Items",
+					"Remaining items for Purchase to be displayed in Finalitems ",
+					"Unable to display Finalitems List of item Qty for purchase" + e.getMessage(), "Fail", "N");
+		}
+	}
+	public void Add_SN_Items_Submit() throws Throwable {
+		try {
+			log.info("started executing the method:: Addquantity_Final_Items");
+			waitForElementToBeVisible(tendercreationlocators.tG_Supplier_Selection);
+			
+			List<WebElement> noItems = ThreadLocalWebdriver.getDriver().findElements(By.xpath("//tbody/tr/td//input[@type='checkbox']"));
+			int numberOfSNItem=noItems.size();
+			
+			if(Dynamicity.getDataFromPropertiesFile("POItemCount", filePath_4).equalsIgnoreCase("All")) {
+			List<WebElement> SlectAllItems = ThreadLocalWebdriver.getDriver().findElements(By.xpath("//thead/tr/th//input[@type='checkbox']"));
+			int SelectAllSNItem=SlectAllItems.size();
+			try {
+				for (int c = 1; c <= SelectAllSNItem; c++) {
+					boolean SelectAllSNItemdisplay = ThreadLocalWebdriver.getDriver()
+							.findElement(By
+									.xpath("(//thead/tr/th//input[@type='checkbox'])[" + c + "]"))
+							.isDisplayed();
+					boolean SelectAllSNItemEnable = ThreadLocalWebdriver.getDriver()
+							.findElement(By
+									.xpath("(//thead/tr/th//input[@type='checkbox'])[" + c + "]"))
+							.isEnabled();
+					if (SelectAllSNItemdisplay == true && SelectAllSNItemEnable==true) {
+						JSClick(By.xpath("(//thead/tr/th//input[@type='checkbox'])[" + c + "]"), "Select All items");
+					}
+				}
+			} catch (Exception e) {
+				System.out.println("No item is present");
+				}
+			}
+			else {
+				int prItems=Integer.parseInt(Dynamicity.getDataFromPropertiesFile("POItemCount", filePath_4));
+				if(numberOfSNItem<prItems) {
+					System.out.println("numberOfSNItem: " +numberOfSNItem);
+					System.out.println("prItems: "+ prItems);
+					prItems=numberOfSNItem;
+					System.out.println("prItems after update: "+ prItems);
+					try {
+						for (int c = 1; c <= prItems; c++) {
+							boolean SelectPOItemdisplay = ThreadLocalWebdriver.getDriver()
+									.findElement(By
+											.xpath("(//tbody/tr/td//input[@type='checkbox'])[" + c + "]"))
+									.isDisplayed();
+							boolean SelectPOItemEnable = ThreadLocalWebdriver.getDriver()
+									.findElement(By
+											.xpath("(//tbody/tr/td//input[@type='checkbox'])[" + c + "]"))
+									.isEnabled();
+							System.out.println("SelectPOItemdisplay: "+ SelectPOItemdisplay);
+							System.out.println("SelectPOItemEnable: "+ SelectPOItemEnable);
+							if (SelectPOItemdisplay == true && SelectPOItemEnable==true) {
+								System.out.println("(//tbody/tr/td//input[@type='checkbox'])[" + c + "]");
+								JSClick(By.xpath("(//tbody/tr/td//input[@type='checkbox'])[" + c + "]"), "ItemSelection");
+							}
+						}
+					} catch (Exception e) {
+						System.out.println("No item is present");
+						}
+				}
+				else {
+					try {
+						for (int c = 1; c <= prItems; c++) {
+							boolean SelectPOItemdisplay = ThreadLocalWebdriver.getDriver()
+									.findElement(By
+											.xpath("(//tbody/tr/td//input[@type='checkbox'])[" + c + "]"))
+									.isDisplayed();
+							boolean SelectPOItemEnable = ThreadLocalWebdriver.getDriver()
+									.findElement(By
+											.xpath("(//tbody/tr/td//input[@type='checkbox'])[" + c + "]"))
+									.isEnabled();
+							if (SelectPOItemdisplay == true && SelectPOItemEnable==true) {
+								System.out.println("(//tbody/tr/td//input[@type='checkbox'])[" + c + "]");
+								JSClick(By.xpath("(//tbody/tr/td//input[@type='checkbox'])[" + c + "]"), "ItemSelection");
+							}
+						}
+					} catch (Exception e) {
+						System.out.println("No item is present");
+						}
+				}
+				
+			}
+			JSClick(tendercreationlocators.addAllSNItems, "addAllSNItems");
+			scrollToElement(tendercreationlocators.evaluation_sendForApproval);
+			click(tendercreationlocators.evaluation_sendForApproval, "addAllSNItems");
+			String xpath = "//div/p[contains(text(),'Do you want to use the sanction in future?')]";
+			System.out.println(xpath);
+			boolean fielddisplay=isElementDisplayed_Updated(By.xpath(xpath), 5);
+			System.out.println("Alert is displayed: " + fielddisplay);
+			if (fielddisplay == true ) {
+				String alertYes="//div/button[contains(text(),'Yes')]";
+				click(By.xpath(alertYes), "alertYes");
+			}
 			pdfResultReport.addStepDetails("Addquantity_Final_Items",
 					"Remaining items for Purchase to be displayed in Finalitems ",
 					"Successfully displaying Finalitems List of item Qty for purchase" + " ", "Pass", "Y");
@@ -2591,13 +2860,12 @@ public class PostTenderComponent extends BaseClass_Web {
 			String currentDateTime = localdatetime.format(DateTimeFormatter.ofPattern("dd-MM-yyyy-HH-mm"));
 			poReference = PO.concat(currentDateTime);
 			set(tendercreationlocators.poReferenceNo, poReference, "poReferenceNo");
-			waitForObj(1000);
 			eTenderComponent.updateDataIntoPropertyFile("POReferenceNum", poReference);
 			waitForElementToBeClickable(tendercreationlocators.BtnCreatePO);
 			click(tendercreationlocators.BtnCreatePO, "BtnCreatePO");
 			//waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
 			waitForElementToBeClickable(tendercreationlocators.saveButton_PO);
-
+			universalNormalWait();
 			pdfResultReport.addStepDetails("ProceedtoCreatePO", "Should display POReferenceNo PopUp",
 					"Successfully displaying POReferenceNo PopUp " + " ", "Pass", "Y");
 			log.info("completed executing the method:: ProceedtoCreatePO");
@@ -2615,7 +2883,7 @@ public class PostTenderComponent extends BaseClass_Web {
 
 			
 			//General Information
-			
+			universalNormalWait();
 			waitForElementToBeVisible(tendercreationlocators.POExpiryDate);
 			LocalDateTime localdatetime = LocalDateTime.now().plusDays(26);
 			String POExpiryDate = localdatetime.format(DateTimeFormatter.ofPattern("dd-MM-yyyy hh:mm a"));
@@ -2650,13 +2918,13 @@ public class PostTenderComponent extends BaseClass_Web {
 			set(tendercreationlocators.Performance_Security_Applicable_Percentage, "10", "Performance_Security_Applicable_Percentage");
 			//==============Details Of MSME & MII
 			scrollToElement(tendercreationlocators.MSME_Claimed_Status);
-			selectbyvalue(tendercreationlocators.MSME_Claimed_Status, "No");
+			selectbyvalue(tendercreationlocators.MSME_Claimed_Status, "Yes");
 			scrollToElement(tendercreationlocators.Type_Enterprise);
 			selectbyvalue(tendercreationlocators.Type_Enterprise, "Small");
 			scrollToElement(tendercreationlocators.Social_Ownership_Category);
 			selectbyvalue(tendercreationlocators.Social_Ownership_Category, "General");
 			scrollToElement(tendercreationlocators.MII_Claimed_Status);
-			selectbyvalue(tendercreationlocators.MII_Claimed_Status, "No");
+			selectbyvalue(tendercreationlocators.MII_Claimed_Status, "Yes");
 			scrollToElement(tendercreationlocators.Type_Supplier);
 			selectbyvalue(tendercreationlocators.Type_Supplier, "Class-I");
 			
@@ -2705,7 +2973,7 @@ public class PostTenderComponent extends BaseClass_Web {
 			set(tendercreationlocators.PO_Label, "PO Attachment", "PO_Label");
 			set(tendercreationlocators.PO_Upload_Attachment, System.getProperty("user.dir") + "\\MediaFiles\\rfqCreation.xlsx","fileName");
 			
-			waitForObj(3000);
+			universalNormalWait();
 			
 			pdfResultReport.addStepDetails("PODetailsTAB", "PO Details tab details to be filled ",
 					"Successfully filled PO Details tab details" + " ", "Pass", "Y");
@@ -2888,24 +3156,16 @@ public class PostTenderComponent extends BaseClass_Web {
 			log.info("started executing the method:: clickAccepPotBtn");
 
 			JSClick(tendercreationlocators.poAcceptButton, "poAcceptButton");
-			waitForElementToBeVisible(tendercreationlocators.poSaveButton);
-			click(tendercreationlocators.poAcceptenceConfirm, "acceptPurchaseOrderConfirmPopYesBtnBy");
-			click(tendercreationlocators.poPuchaseOrderAcceptedMSG, "poPuchaseOrderAcceptedMSG");
+			click(tendercreationlocators.releaseConfirmYes, "acceptPurchaseOrderConfirmPopYesBtnBy");
+			waitForElementToBeVisible(tendercreationlocators.poPuchaseOrderAcceptedMSG);
 			waitForElementToBeClickable(tendercreationlocators.poAcceptFinally);
 			click(tendercreationlocators.poAcceptFinally, "poAcceptFinally");
-			//eTenderComponent.waitForSpinnerToDisappear();
 			waitForElementToBeVisible(tendercreationlocators.poColumn);
 			
 			
 			pdfResultReport.addStepDetails("PO Sucessful Msg PopUp",
 					"Purchase order should be successfully PopUp should appear",
 					"Purchase order successfully accepted PopUp is dispalyed" + " ", "Pass", "Y");
-			/*
-			waitForObj(2000);
-			click(tendercreationlocators.acceptPurchaseOrderConfirmPopOKBtnBy, "acceptPurchaseOrderConfirmPopOKBtnBy");
-			waitForElementToBeVisible(tendercreationlocators.poListPageRowBy);
-			waitForObj(3000);
-			*/
 			
 			pdfResultReport.addStepDetails("clickAccepPotBtn", "Purchase order should be successfully accepted",
 					"Purchase order successfully accepted" + " ", "Pass", "Y");
@@ -3578,7 +3838,7 @@ public class PostTenderComponent extends BaseClass_Web {
 			set(tendercreationlocators.password, pdfResultReport.testData.get("AppPassword"), "password");
 			waitForElementToBeClickable(tendercreationlocators.okButton);
 			click(tendercreationlocators.okButton, "okButton");
-			waitForElement(tendercreationlocators.dashboardIcon, 5000);
+			waitForElement(tendercreationlocators.dashboardIcon, 30);
 
 			pdfResultReport.addStepDetails("poApprover1Login", "PO Approver must be sucessfully logged in",
 					"Successfully logged in as PO approver" + " ", "Pass", "Y");
@@ -3594,16 +3854,14 @@ public class PostTenderComponent extends BaseClass_Web {
 	public void provide_PO_ApproverComment() throws Throwable {
 		try {
 			log.info("started executing the method:: provide_PO_ApproverComment");
-			
-			WebElement iframele = ThreadLocalWebdriver.getDriver().findElement(By.xpath("//iframe[@id='commentData_ifr']"));
-			switchframe(iframele);
-			Thread.sleep(2000);
-			set(tendercreationlocators.recommendationComment, "overallComment_currentPart", "recommendationComment");
-			switchToDefaultFrame();
-			Thread.sleep(2000);
-			scrollToElement(tendercreationlocators.poApproverComment);
-			JSClick(tendercreationlocators.poApproverComment, "Approver_Comment");
-			Thread.sleep(4000);
+			dynamic_Loader(tendercreationlocators.loadingLocator, 2);
+			waitForElementToBeClickable(tendercreationlocators.snComment);
+			click(tendercreationlocators.snComment, "overallComment");
+			waitForElementToBeVisible(tendercreationlocators.AppComments);
+			waitForElementToBeClickable(tendercreationlocators.AppComments);
+			set(tendercreationlocators.AppComments, "overallComment_currentPart", "recommendationComment");
+
+		
 			
 			pdfResultReport.addStepDetails("provide_PO_ApproverComment", "Comment must be pass successfully",
 					"Successfully passed comment" + " ", "Pass", "Y");
@@ -3664,12 +3922,10 @@ public class PostTenderComponent extends BaseClass_Web {
 
 		try {
 			log.info("started executing the method:: navigateToPoListingWithBidderUser");
-			waitForElement(tendercreationlocators.mainMenuIcon, 100);
-			JSClick(tendercreationlocators.mainMenuIcon, "mainMenuIcon");
-			mouseOver(tendercreationlocators.Enquiry);
+			waitForElement(tendercreationlocators.mainMenuIconSub, 30);
+			JSClick(tendercreationlocators.mainMenuIconSub, "mainMenuIconSub");
+			mouseOver(tendercreationlocators.order);
 			JSClick(tendercreationlocators.allOrders, "allOrders");
-			//checkPageIsReady();
-			//eTenderComponent.waitForSpinnerToDisappear();
 			waitForElementToBeClickable(tendercreationlocators.poColumn);
 
 			pdfResultReport.addStepDetails("navigateToPoListingWithBidderUser",
@@ -3691,9 +3947,19 @@ public class PostTenderComponent extends BaseClass_Web {
 			click(tendercreationlocators.poAction, "poAction");
 			IsElementPresent(tendercreationlocators.acceptPO);
 			JSClick(tendercreationlocators.acceptPO, "acceptPO");
-			eTenderComponent.waitForSpinnerToDisappear();
 			waitForElementToBeVisible(tendercreationlocators.poSummary);
+			
+			if(isElementDisplayed_Updated(By.xpath("//div[contains(@class,'ngx-overlay')]"), 5))
+			{
+			if(	isElementDisplayed_Updated(By.xpath("//div[contains(@class,'ngx-overlay')]"), 2) &&
+				isElementEnable_Updated(By.xpath("//div[contains(@class,'ngx-overlay')]"), 2))
+			{
+				waitForElementToBeVisible(By.xpath("//div[contains(@class,'ngx-overlay')]"));
+				waitForElementToBeInvisible(By.xpath("//div[contains(@class,'ngx-overlay')]"));
+			}	
+			}
 
+			
 			pdfResultReport.addStepDetails("clickAcceptPoInDropDown", "Should navigate to Accept Purchase Order Page",
 					"Sucessfully navigated to Accept Purchase Order Page" + " ", "Pass", "Y");
 			log.info("completed executing the method:: clickAcceptPoInDropDown");
@@ -3703,23 +3969,44 @@ public class PostTenderComponent extends BaseClass_Web {
 					"Unable to navigate to Accept Purchase Order Page ",
 					"Should navigate to Accept Purchase Order Page" + e.getMessage(), "Fail", "N");
 		}
+
 	}
 
 	public void verifyPOStatusIsAccepted() throws Exception {
 		try {
 			log.info("started executing the method:: verifyPOStatusIsAccepted");
-			/*
-			clear(tendercreationlocators.search, "Clear the po ref no search field");
-			set(tendercreationlocators.search, eTenderComponent.getDataFromPropertiesFile("POReferenceNum"),
-					"po ref no search field");
-			*/
-			waitForElementToBeClickable(tendercreationlocators.poSearchKeyword);
-			clear(tendercreationlocators.Txt_TypeanyKeyword_Indent, "Clear the po no search field");
-			set(tendercreationlocators.Txt_TypeanyKeyword_Indent, poDocNum, "po no search field");
+			
+			waitForElementToBeClickable(tendercreationlocators.typeAnyKeyword_Pending);
+			clear(tendercreationlocators.typeAnyKeyword_Pending, "Clear the po no search field");
+			set(tendercreationlocators.typeAnyKeyword_Pending, poDocNum, "po no search field");
+			waitForElementToBeClickable(By.xpath("//button[@class='btn refresh' and @placement='top']"));
+			click(By.xpath("//button[@class='btn refresh' and @placement='top']"), "refresh");
+			
+			dynamic_Loader(tendercreationlocators.loadingLocator,2);
+					
+			waitForElementToBeVisible(tendercreationlocators.poDocNo(poDocNum));
 			IsElementPresent(tendercreationlocators.poAccetpedStatus);
 
-			waitForObj(2000);
+			pdfResultReport.addStepDetails("verifyPOStatusIsAccepted", "Po Status should show Accepted Mode",
+					"Sucessfully showing Status as accepted" + " ", "Pass", "Y");
 
+			log.info("completed executing the method:: verifyPOStatusIsAccepted");
+		} catch (Exception e) {
+			log.fatal("Unable to show Po Status in Accepted Mode" + e.getMessage());
+			pdfResultReport.addStepDetails("verifyPOStatusIsAccepted", "Unable to show Po Status in Accepted Mode",
+					"Po Status should show Accepted Mode" + e.getMessage(), "Fail", "N");
+		}
+	}
+	
+	
+	public void verifyPOStatusIsAccepted_SupplierSide() throws Exception {
+		try {
+			log.info("started executing the method:: verifyPOStatusIsAccepted");
+			
+			waitForElementToBeClickable(tendercreationlocators.poSearchKeyword);
+			clear(tendercreationlocators.poSearchKeyword, "Clear the po no search field");
+			set(tendercreationlocators.poSearchKeyword, poDocNum, "po no search field");
+		
 			pdfResultReport.addStepDetails("verifyPOStatusIsAccepted", "Po Status should show Accepted Mode",
 					"Sucessfully showing Status as accepted" + " ", "Pass", "Y");
 
@@ -3944,8 +4231,9 @@ public class PostTenderComponent extends BaseClass_Web {
 	public void sendForApprovalUserDefinedSequential_pocreator() throws Throwable {
 		try {
 			log.info("started executing the method:: sendForApprovalUserDefinedSequential");
+			waitForElementToBeClickable(tendercreationlocators.Userdefined_po);
 			click(tendercreationlocators.Userdefined_po, "Userdefined_po");
-			set(tendercreationlocators.poComments, pdfResultReport.testData.get("UserDefinedApprover-Comments"),
+			set(tendercreationlocators.poComments, "Need Approval",
 					"comments");
 			if(ThreadLocalWebdriver.getDriver().findElements(tendercreationlocators.NoOfIndentRowinApproval).size()!= 0)
 			{
@@ -3953,28 +4241,50 @@ public class PostTenderComponent extends BaseClass_Web {
 				int iRowCount = iRows.size();
 				for(int i=1;i<=iRowCount;i++)
 				{
-					waitForObj(1000);
+					waitForElementToBeClickable(tendercreationlocators.cancelUser1_Indent);
 					click(tendercreationlocators.cancelUser1_Indent, "cancelUser1_Indent");
 				}
 			}
 			click(tendercreationlocators.userAdd_Indent, "addButtonPO");
-			waitForObj(2000);
-			set(tendercreationlocators.user1_Indent, pdfResultReport.testData.get("UserTenderApprover1"), "PO_approver");
-			waitForObj(2000);
-			//select(tendercreationlocators.approverType1_Indent, pdfResultReport.testData.get("Indent_Approver_Type1"));
-			selectbyvalue(tendercreationlocators.approverType1_Indent, "S");
-			waitForObj(2000);
-			//set(tendercreationlocators.CommentsArea_IndentRTF, pdfResultReport.testData.get("UserDefined_Approver_CommentsIndent"),"CommentsArea_Indent");
+			//=========Role Activity and other Details===========================
+			String xpath_AP = "//table[@id='approver']/tbody[1]/ tr[1]/td[3]/div[1]/select";
+			String xpath_Role = "//table[@id='approver']/tbody[1]/ tr[1]/td[4]/div[1]/select";
 			
-			JSClick(tendercreationlocators.Btn_SendforApproval_Indent, "sendForApprovalSubmit");
+			String AP= "//*[@id='approver']/thead/tr/th[contains(normalize-space(text()),'Activity/Process')]";
+			boolean fielddisplay=isElementDisplayed_Updated(By.xpath(AP), 1);
+			if(fielddisplay==true) {
+				waitForElementToBeClickable(tendercreationlocators.user1_tender);
+				set(tendercreationlocators.user1_tender, DatabaseComponent_UnderComponentPakage.formatUserInfo(pdfResultReport.testData.get("UserTenderApprover1")), "user1");
+				selectbyIndex(By.xpath(xpath_AP), 1);
+				selectbyIndex(By.xpath(xpath_Role), 1);
+				waitForElementToBeClickable(tendercreationlocators.approverType3);
+				select(tendercreationlocators.approverType3, pdfResultReport.testData.get("ApprovalType2"));
+				
+			}
+			else {
+				waitForElementToBeClickable(tendercreationlocators.user1_tender);
+				set(tendercreationlocators.user1_tender, DatabaseComponent_UnderComponentPakage.formatUserInfo(pdfResultReport.testData.get("UserTenderApprover1")), "user1");
+				waitForElementToBeClickable(tendercreationlocators.approverTypePO);
+				select(tendercreationlocators.approverTypePO, pdfResultReport.testData.get("ApprovalType2"));
+			}
 			
-			waitForElementToBeVisible(tendercreationlocators.poOrder);
+			JSClick(tendercreationlocators.Btn_SendforApproval_Indent, "sendForApprovalSubmit");	
+			waitForElementToBeVisible(tendercreationlocators.BtnOk);
 			//IsElementPresent(tendercreationlocators.poSubmitMsg);
-			click(tendercreationlocators.confirmPOSaveMsg, "POSUccessMsg");
-			
+			click(tendercreationlocators.BtnOk, "POSUccessMsg");
 			waitForElementToBeVisible(tendercreationlocators.myPOTab);
-		
-			waitForObj(2000);
+//			dynamic_Loader(tendercreationlocators.loadingLocator, 2);
+			if(isElementDisplayed_Updated(By.xpath("//div[contains(@class,'ngx-overlay')]"), 5))
+			{
+			if(	isElementDisplayed_Updated(By.xpath("//div[contains(@class,'ngx-overlay')]"), 2) &&
+				isElementEnable_Updated(By.xpath("//div[contains(@class,'ngx-overlay')]"), 2))
+			{
+				waitForElementToBeVisible(By.xpath("//div[contains(@class,'ngx-overlay')]"));
+				waitForElementToBeInvisible(By.xpath("//div[contains(@class,'ngx-overlay')]"));
+			}	
+			}
+			
+			
 			pdfResultReport.addStepDetails("sendForApprovalUserDefinedSequential",
 					"sendForApproval must be validate successfully", "Successfully validated sendForApproval" + " ",
 					"Pass", "Y");
@@ -4241,20 +4551,34 @@ public class PostTenderComponent extends BaseClass_Web {
 		return set;
 	}
 
-	public void verifyPoRefNumberInPoListPage() throws Exception {
+	public void verifyPoRefNumberInPoListPage() throws Throwable {
 		try {
-			log.info("started executing the method:: verifyPoRefNumberInPoListPage");
-
-			/*
-			String porefnum = "//tbody/tr/td/span[contains(text(),'{0}')]";
-			IsElementPresent(
-					By.xpath(porefnum.replace("{0}", eTenderComponent.getDataFromPropertiesFile("POReferenceNum"))));
-			*/
-			
-			set(tendercreationlocators.Txt_TypeanyKeyword_Indent, poReference, "poDocNum");
+			log.info("started executing the method:: verifyPoRefNumberInPoListPage");	
+			dynamic_Loader(tendercreationlocators.loadingLocator, 2);
+			waitForElementToBeClickable(tendercreationlocators.typeAnyKeyword_Pending);
+			set(tendercreationlocators.typeAnyKeyword_Pending, poDocNum, "poReference");
+			savePoDocNumberFromPoListpage();
+			IsElementPresent(tendercreationlocators.poDocNo(poDocNum));
+			pdfResultReport.addStepDetails("verifyPoRefNumberInPoListPage",
+					"Should display Expected poref num in list page",
+					"Sucessfully displaying Expected poref num in list page" + " ", "Pass", "Y");
+			log.info("completed executing the method:: verifyPoRefNumberInPoListPage");
+		} catch (Exception e) {
+			log.fatal("Unable to enter po ref no in text field" + e.getMessage());
+			pdfResultReport.addStepDetails("verifyPoRefNumberInPoListPage",
+					"Should display Expected poref num in list page",
+					"Unable to display Expected poref num in list page" + e.getMessage(), "Fail", "N");
+		}
+	}
+	
+	public void SearchWithPoRefNumberInPoListPage() throws Throwable {
+		try {
+			log.info("started executing the method:: verifyPoRefNumberInPoListPage");			
+			set(tendercreationlocators.typeAnyKeyword_Pending, poReference, "poReference");
 			waitForObj(2000);
-			//IsElementPresent(tendercreationlocators.poDocNo(poReference));
-		
+			savePoDocNumberFromPoListpage();
+			IsElementPresent(tendercreationlocators.poDocNo(poDocNum));
+			//poDocNum
 			pdfResultReport.addStepDetails("verifyPoRefNumberInPoListPage",
 					"Should display Expected poref num in list page",
 					"Sucessfully displaying Expected poref num in list page" + " ", "Pass", "Y");
@@ -4346,12 +4670,12 @@ public class PostTenderComponent extends BaseClass_Web {
 			
 			
 			waitForElementToBeVisible(tendercreationlocators.poOrder);
-			//IsElementPresent(tendercreationlocators.poSubmitMsg);
 			click(tendercreationlocators.confirmPOSaveMsg, "POSUccessMsg");
 			
+			waitForElementToBeVisible(By.xpath("//div[@class='ngx-overlay loading-foreground']"));
+			waitForElementToBeInvisible(By.xpath("//div[@class='ngx-overlay loading-foreground']"));
+
 			waitForElementToBeVisible(tendercreationlocators.myPOTab);
-		
-			waitForObj(2000);
 
 			log.info("completed executing the method:: ApprovalNotRequired");
 		} catch (Exception e) {
@@ -4366,10 +4690,18 @@ public class PostTenderComponent extends BaseClass_Web {
 			log.info("started executing the method:: navigateToApprovalPendingPage");
 			JSClick(tendercreationlocators.mainMenuIcon, "MenuIcon");
 			mouseOver(tendercreationlocators.MyTask);
-			waitForObj(2000);
 			JSClick(tendercreationlocators.pending, "pending");
-		
 			waitForElementToBeClickable(tendercreationlocators.sanctionTab);
+			
+			if(isElementDisplayed_Updated(By.xpath("//div[contains(@class,'ngx-overlay')]"), 2))
+			{
+			if(	isElementDisplayed_Updated(By.xpath("//div[contains(@class,'ngx-overlay')]"), 2) &&
+				isElementEnable_Updated(By.xpath("//div[contains(@class,'ngx-overlay')]"), 2))
+			{
+				waitForElementToBeVisible(By.xpath("//div[contains(@class,'ngx-overlay')]"));
+				waitForElementToBeInvisible(By.xpath("//div[contains(@class,'ngx-overlay')]"));
+			}	
+			}
 			
 			pdfResultReport.addStepDetails("navigateToApprovalPendingPage",
 					"Approval Pending page must be navigate successfully",
@@ -4389,15 +4721,12 @@ public class PostTenderComponent extends BaseClass_Web {
 			log.info("started executing the method:: navigateToApprovalPendingPage");
 			JSClick(tendercreationlocators.mainMenuIcon, "MenuIcon");
 			mouseOver(tendercreationlocators.MyTask);
-			waitForObj(2000);
 			JSClick(tendercreationlocators.pending, "pending");
-			waitForObj(3000);
-			eTenderComponent.waitForSpinnerToDisappear();
-			//waitForElementToBeClickable(tendercreationlocators.poTab);
-			//click(tendercreationlocators.poTab, "Order Tab");
+			//eTenderComponent.waitForSpinnerToDisappear();
+			waitForElementToBeVisible(By.xpath("//div[@class='ngx-overlay foreground-closing fast-closing']"));
+			waitForElementToBeInvisible(By.xpath("//div[@class='ngx-overlay foreground-closing fast-closing']"));
 			waitForElementToBeClickable(by);
-			click(by, "Order Tab");
-			//click(by, "PO_Tab");
+			click(by, "Cancel Order Tab");
 			
 			pdfResultReport.addStepDetails("navigateToApprovalPendingPage",
 					"Approval Pending page must be navigate successfully",
@@ -4432,29 +4761,36 @@ public class PostTenderComponent extends BaseClass_Web {
 	public void purchaseOrderApproval() throws Throwable {
 		try {
 			log.info("started executing the method:: purchaseOrderApproval");
-			scrollToElement(tendercreationlocators.sanctionNoteEvaluationApprove);
+			scrollToElement(tendercreationlocators.SendBtn);
 			//highlight(tendercreationlocators.sanctionNoteEvaluationApprove);
 			pdfResultReport.addStepDetails("purchaseOrderApproval", "Approve button must be click sucessfully ",
 					"Successfclickedully  on approve button" + " ", "Pass", "Y");
-			JSClick(tendercreationlocators.sanctionNoteEvaluationApprove, "sanctionNoteEvaluationApprove");
-			waitForElementToBeVisible(tendercreationlocators.approveConfirm);
-			click(tendercreationlocators.approveConfirm, "approveConfirm");
-			waitForElementToBeVisible(tendercreationlocators.CloseWFBtn);
-			click(tendercreationlocators.CloseWFBtn, "CloseWF");
-			click(tendercreationlocators.ConfirmYESBtn_PO, "CloseWF");
-			click(tendercreationlocators.ConfirmYESBtn_PO, "CloseWF");
-			
-			waitForElementToBeVisible(tendercreationlocators.approvalConfirmPopUp);
+			JSClick(tendercreationlocators.SendBtn, "sanctionNoteEvaluationApprove");
 			waitForObj(2000);
-			IsElementPresent(tendercreationlocators.approvalConfirmPopUp);
 			
-			pdfResultReport.addStepDetails("purchaseOrderApproval",
-					"Status updated sucessfully popup must be validate sucessfully ",
-					"Successfully validate status updated sucessfully pop up" + " ", "Pass", "Y");
-			click(tendercreationlocators.confirmOk, "confirmOk");
-			waitForElement(tendercreationlocators.poTab, 10000);
-			//waitForElementToBeClickable(tendercreationlocators.poTab);
-			waitForObj(3000);
+			String s= approvalConfirmMsgStatus;
+            System.out.println("this is confirmMSG  "+s);
+            if (s.equalsIgnoreCase("REPEAT")) {
+				
+			waitForElementToBeVisible(tendercreationlocators.EndWF_tender);
+			click(tendercreationlocators.EndWF_tender, "CloseWF");
+			waitForElementToBeClickable(tendercreationlocators.approveConfirm);
+			click(tendercreationlocators.approveConfirm, "CloseWF");
+			waitForElementToBeClickable(tendercreationlocators.confirmButton);
+			click(tendercreationlocators.confirmButton, "CloseWF");
+			waitForElementToBeClickable(tendercreationlocators.confirmButton);
+			click(tendercreationlocators.confirmButton, "CloseWF");
+		}
+		else {
+			waitForElementToBeVisible(tendercreationlocators.EndWF_tender);
+			click(tendercreationlocators.EndWF_tender, "CloseWF");
+			waitForElementToBeClickable(tendercreationlocators.approveConfirm);
+			click(tendercreationlocators.approveConfirm, "CloseWF");
+		}
+			waitForElementToBeClickable(tendercreationlocators.BtnOk);
+			click(tendercreationlocators.BtnOk, "ok");
+			universalNormalWait();
+
 			pdfResultReport.addStepDetails("purchaseOrderApproval", "Purchase order must be approve sucessfully ",
 					"Successfully approved Purchase order" + " ", "Pass", "Y");
 			log.info("completed executing the method:: purchaseOrderApproval");
@@ -4567,13 +4903,10 @@ public class PostTenderComponent extends BaseClass_Web {
 	
 	public void verifyPOStatus(String status) throws Throwable {
 		try {
-			waitForObj(3000);
 			log.info("started executing the method:: verifyPOStatus");
 			String poStatus= text(tendercreationlocators.poStatus).trim();
 			String statusTrim=status.trim();
-			System.out.println(poStatus);
-			System.out.println(statusTrim);
-			if(poStatus.equalsIgnoreCase(statusTrim)) {
+			if(poStatus.contains(statusTrim)) {
 				
 				pdfResultReport.addStepDetails("verifyPOStatus '"+status+"'",
 						"All Purchase Orders with Status as '"+status+"' must be displayed",
@@ -4588,7 +4921,6 @@ public class PostTenderComponent extends BaseClass_Web {
 			
 			
 			IsElementPresent(tendercreationlocators.poStatus);
-			waitForObj(2000);
 			pdfResultReport.addStepDetails("verifyPOStatus '"+status+"'",
 					"All Purchase Orders with Status as '"+status+"' must be displayed",
 					"All Purchase Orders with Status as '"+status+"' are displayed successfull" + " ", "Pass",
@@ -4786,7 +5118,7 @@ public class PostTenderComponent extends BaseClass_Web {
 	public void purchaseOrderApproval1() throws Throwable {
 		try {
 			log.info("started executing the method:: purchaseOrderApproval");
-			click(tendercreationlocators.sanctionNoteEvaluationApprove, "sanctionNoteEvaluationApprove");
+			click(tendercreationlocators.ApproveBtn, "sanctionNoteEvaluationApprove");
 			waitForObj(5000);
 			click(tendercreationlocators.approveConfirm, "approveConfirm");
 			waitForElement(tendercreationlocators.approvalConfirmPopUp, 50);
@@ -4976,6 +5308,7 @@ public class PostTenderComponent extends BaseClass_Web {
 			click(tendercreationlocators.btnIssuePO, "btnIssuePO");
 			waitForElementToBeVisible(tendercreationlocators.alertForCreateSNfromPO);
 			click(tendercreationlocators.ConfirmBackYes, "confirmationOkBy");
+			universalNormalWait();
 			pdfResultReport.addStepDetails("IssuePO", "Issue PO must be click sucessfully",
 					"Successfully clicked on Issue PO " + " ", "Pass", "Y");
 			log.info("completed executing the method:: IssuePO");
@@ -5463,14 +5796,7 @@ public class PostTenderComponent extends BaseClass_Web {
 	public void verifySummaryTabAndEnterComment() throws Exception {
 		try {
 			log.info("started executing the method:: verifySummaryTabAndEnterComment");
-			/*
-			JavascriptExecutor je = (JavascriptExecutor) ThreadLocalWebdriver.getDriver();
-			String poRefNo = (String) je
-					.executeScript("return document.getElementById('po_header_temp.po_ref_no.0').value;");
-			Assert.assertTrue(poRefNo.equalsIgnoreCase(eTenderComponent.getDataFromPropertiesFile("POReferenceNum")));
-			click(tendercreationlocators.aacceptPOCommentTabBy, "aacceptPOCommentTabBy");
-			waitForObj(3000);
-			*/
+			
 			waitForElementToBeVisible(tendercreationlocators.poCommentTab);
 			click(tendercreationlocators.poCommentTab, "poCommentTab");
 			set(tendercreationlocators.poCommentTextArea, "Accept Po", "poCommentTextArea");
@@ -5579,14 +5905,28 @@ public class PostTenderComponent extends BaseClass_Web {
 	public void searchThePoRefNoInPoListPage() throws Throwable {
 		try {
 			log.info("started executing the method:: searchThePoRefNoInPoListPage");
-			/*
-			String porefNumber = "//*[@id='usrmntbLst']/tbody/tr/td/span[contains(@ng-bind,'data.orgpoId') and contains(text(),'{0}')]";
-			clear(tendercreationlocators.search, "Clear the po ref no search field");
-			set(tendercreationlocators.search, eTenderComponent.getDataFromPropertiesFile("POReferenceNum"),
-					"po ref no search field");
-			IsElementPresent(
-					By.xpath(porefNumber.replace("{0}", eTenderComponent.getDataFromPropertiesFile("poDocNum"))));
-			*/
+			
+			waitForElementToBeClickable(tendercreationlocators.typeAnyKeyword_Pending);
+			clear(tendercreationlocators.typeAnyKeyword_Pending, "Clear the po ref no search field");
+			set(tendercreationlocators.typeAnyKeyword_Pending, poDocNum, "po ref no search field");
+			IsElementPresent(tendercreationlocators.poAction);
+			
+			pdfResultReport.addStepDetails("searchThePoRefNoInPoListPage",
+					"Created PO should be displayed in the PO listing page",
+					"Sucessfully Created PO is displaying in the po listing page" + " ", "Pass", "Y");
+			log.info("completed executing the method:: searchThePoRefNoInPoListPage");
+		} catch (Exception e) {
+			log.fatal("Unable to display the Po  in the bidder login PO listing page" + e.getMessage());
+			pdfResultReport.addStepDetails("searchThePoRefNoInPoListPage",
+					"Created PO should be displayed in PO listing page",
+					"Unable to display the Po  in the PO listing page" + e.getMessage(), "Fail", "N");
+		}
+	}
+	
+	public void searchThePoRefNoInPoListPage_SupplierSide() throws Throwable {
+		try {
+			log.info("started executing the method:: searchThePoRefNoInPoListPage");
+			
 			waitForElementToBeClickable(tendercreationlocators.poSearchKeyword);
 			clear(tendercreationlocators.poSearchKeyword, "Clear the po ref no search field");
 			set(tendercreationlocators.poSearchKeyword, poDocNum, "po ref no search field");
@@ -5709,14 +6049,14 @@ public class PostTenderComponent extends BaseClass_Web {
 	public void navigateToPurchasrOrderList() throws Throwable {
 		try {
 			log.info("started executing the method:: navigateToPurchasrOrderList");
-			waitForElement(tendercreationlocators.mainMenuIcon, 100);
+			waitForElement(tendercreationlocators.mainMenuIcon, 30);
 			JSClick(tendercreationlocators.mainMenuIcon, "mainMenuIcon");
 			mouseOver(tendercreationlocators.orderFromMenu);
 			JSClick(tendercreationlocators.allOrders, "allOrders");
-			//checkPageIsReady();
-			//eTenderComponent.waitForSpinnerToDisappear();
-			waitForElementToBeVisible(tendercreationlocators.Lbl_IndentList);
-			waitForObj(2000);
+			dynamic_Loader(tendercreationlocators.loadingLocator, 2);
+			
+						
+			waitForElementToBeVisible(tendercreationlocators.myPOTab);
 			pdfResultReport.addStepDetails("navigateToPurchasrOrderList",
 					"Purchase Order List Page must be naviagte successfully",
 					"Successfully navigated to Purchase Order List Page" + " ", "Pass", "Y");
@@ -5847,7 +6187,7 @@ public class PostTenderComponent extends BaseClass_Web {
 	public void navigateToPurchaseOrderApproval() throws Throwable {
 		try {
 			log.info("started executing the method:: navigateToPurchaseOrderApproval");
-			waitForObj(5000);
+			waitForElementToBeClickable(tendercreationlocators.typeAnyKeyword1);
 			set(tendercreationlocators.typeAnyKeyword1, eTenderComponent.getDataFromPropertiesFile("poDocNum"), "enter PoDocNum");
 			
 			pdfResultReport.addStepDetails("navigateToPurchaseOrderApproval",
@@ -5857,13 +6197,6 @@ public class PostTenderComponent extends BaseClass_Web {
 			click(tendercreationlocators.ActionButton_approver_tender, "Action_Button");
 			waitForElementToBeClickable(tendercreationlocators.detailsSN);
 			click(tendercreationlocators.detailsSN, "Details");
-			waitForObj(4000);
-			pdfResultReport.addStepDetails("navigateToPurchaseOrderApproval",
-					"Purchase Order Approval page must be navigate sucessfully ",
-					"Successfully navigated to Purchase Order Approval page" + " ", "Pass", "Y");
-			waitForElementToBeClickable(tendercreationlocators.snComment);
-			click(tendercreationlocators.snComment, "sanctionNoteEvaluationCommentTab");
-			waitForElementToBeClickable(tendercreationlocators.poApproverComment);
 			pdfResultReport.addStepDetails("navigateToPurchaseOrderApproval",
 					"Purchase Order Approval page must be navigate sucessfully ",
 					"Successfully navigated to Purchase Order Approval page" + " ", "Pass", "Y");
@@ -5974,14 +6307,16 @@ public class PostTenderComponent extends BaseClass_Web {
 	public String savePoDocNumber() throws Throwable {
 		log.info("started executing the method:: documentNoSave");
 		String text = text(tendercreationlocators.poDocumentNoBy);
-		poDocNum = text.substring(0, text.lastIndexOf("(")).trim();
+		poDocNum = text.trim();
 		System.out.println(poDocNum);
 		eTenderComponent.updateDataIntoPropertyFile("poDocNum", poDocNum);
 		return poDocNum;
 	}
 	public String savePoDocNumberFromPoListpage() throws Throwable {
 		log.info("started executing the method:: documentNoSave");
+		waitForElementToBeClickable(By.xpath("//div[@class='dropstart']/button"));
 		click(By.xpath("//div[@class='dropstart']/button"), "PO_Menu");
+		waitForElementToBeClickable(By.xpath("//div[@class='dropstart']/ul[1]/li[1]"));
 		click(By.xpath("//div[@class='dropstart']/ul[1]/li[1]"), "View_PO");
 		By locatorHI=By.xpath("//span[contains(text(),'Header Information')]");
 		waitForElementToBeVisible(locatorHI);
@@ -6235,23 +6570,31 @@ public class PostTenderComponent extends BaseClass_Web {
 		}
 	}
 	
-
 	public void POSaveandApproval() throws Throwable {
 		try {
 			log.info("started executing the method:: POSaveandApproval");
-			
 			//==saveButton_PO
-			scrollToElement(tendercreationlocators.saveButton_PO);
+			scrollToTopOfThePage();
 			JSClick(tendercreationlocators.saveButton_PO, "saveButton_PO");
-			
+			waitForObj(1000);
 			waitForElementToBeVisible(tendercreationlocators.poOrder);
 			//IsElementPresent(tendercreationlocators.poSaveMsg);
-			click(tendercreationlocators.confirmPOSaveMsg, "POSUccessMsg");
+			waitForElementToBeClickable(tendercreationlocators.confirmPOSaveMsg);
+			click(tendercreationlocators.success_Ok_button, "POSUccessOk");
 			
-			waitForElementToBeClickable(tendercreationlocators.submitButton_PO);
-			click(tendercreationlocators.submitButton_PO, "submitButton_PO");
+			if(isElementDisplayed_Updated(By.xpath("//div[contains(@class,'ngx-overlay')]"), 5))
+			{
+			if(	isElementDisplayed_Updated(By.xpath("//div[contains(@class,'ngx-overlay')]"), 2) &&
+				isElementEnable_Updated(By.xpath("//div[contains(@class,'ngx-overlay')]"), 2))
+			{
+				waitForElementToBeVisible(By.xpath("//div[contains(@class,'ngx-overlay')]"));
+				waitForElementToBeInvisible(By.xpath("//div[contains(@class,'ngx-overlay')]"));
+			}	
+			}
+				
+			waitForElementToBeClickable(tendercreationlocators.evaluation_sendForApproval);
+			click(tendercreationlocators.evaluation_sendForApproval, "submitButton_PO");
 			waitForElementToBeVisible(tendercreationlocators.sendForApprovalText);
-
 			pdfResultReport.addStepDetails("POSaveandApproval", "PO should Save and Approval",
 					"Successfully saved and approved po " + " ", "Pass", "Y");
 			log.info("completed executing the method:: POSaveandApproval");
@@ -7144,7 +7487,7 @@ public class PostTenderComponent extends BaseClass_Web {
 	public void purchaseOrderApprovalAlertForExpiredPO() throws Throwable {
 		try {
 			log.info("started executing the method:: purchaseOrderApprovalAlertForExpiredPO");
-			click(tendercreationlocators.sanctionNoteEvaluationApprove, "sanctionNoteEvaluationApprove");
+			click(tendercreationlocators.ApproveBtn, "sanctionNoteEvaluationApprove");
 			waitForObj(4000);
 
 			IsElementPresent(tendercreationlocators.POApprovalAlertForExpiredPO);
@@ -7833,7 +8176,7 @@ public class PostTenderComponent extends BaseClass_Web {
 			waitForObj(3000);
 			click(tendercreationlocators.sendForApprovalNotRequired_SN, "sendForApprovalNotRequired_SN");
 			JSClick(tendercreationlocators.sendForApprovalSubmit, "sendForApprovalSubmit");
-			waitForElement(tendercreationlocators.createSanctionNote, 100);
+			waitForElement(tendercreationlocators.createSanctionNote, 30);
 			new WebDriverWait(ThreadLocalWebdriver.getDriver(), 30)
 					.until(ExpectedConditions.invisibilityOfElementLocated(tendercreationlocators.Snipper));
 			waitForObj(7000);
@@ -7882,6 +8225,191 @@ public class PostTenderComponent extends BaseClass_Web {
 				click(tendercreationlocators.Userdefined, "Userdefined");
 			}
 
+			List<WebElement> elem = ThreadLocalWebdriver.getDriver()
+					.findElements(By.xpath("//button[@ng-click='cancelUser(row)']"));
+			boolean flag = false;
+			if (elem.size() > 0) {
+				flag = true;
+			} else {
+				flag = false;
+			}
+
+			if (flag) {
+				List<WebElement> elem1 = ThreadLocalWebdriver.getDriver()
+						.findElements(By.xpath("//button[@ng-click='cancelUser(row)']"));
+				for (int i = 1; i <= elem1.size(); i++) {
+					click(tendercreationlocators.deleteUser, "deleteUser");
+				}
+
+			} else {
+				System.out.println("user not created earlier");
+			}
+			
+			waitForElementToBeClickable(tendercreationlocators.userAdd);
+			click(tendercreationlocators.userAdd, "userAdd");
+			
+			//=========Role Activity and other Details===========================
+			String xpath_AP = "//table[@id='approver']/tbody[1]/ tr[1]/td[3]/div[1]/select";
+			String xpath_Role = "//table[@id='approver']/tbody[1]/ tr[1]/td[4]/div[1]/select";
+			
+			String AP= "//*[@id='approver']/thead/tr/th[contains(normalize-space(text()),'Activity/Process')]";
+			boolean fielddisplay=isElementDisplayed_Updated(By.xpath(AP), 1);
+			if(fielddisplay==true) {
+				set(tendercreationlocators.user1, DatabaseComponent_UnderComponentPakage.formatUserInfo(pdfResultReport.testData.get("UserTenderApprover1")), "user1");
+				selectbyIndex(tendercreationlocators.approverTypeSN_old, 1);
+				selectbyIndex(tendercreationlocators.approverTypeSN_old, 1);
+				waitForElementToBeClickable(tendercreationlocators.approverTypeSN_old);
+				select(tendercreationlocators.approverTypeSN_old, pdfResultReport.testData.get("ApprovalType2"));
+				
+			}
+			else {
+				set(tendercreationlocators.user1, DatabaseComponent_UnderComponentPakage.formatUserInfo(pdfResultReport.testData.get("UserTenderApprover1")), "user1");
+				waitForElementToBeClickable(tendercreationlocators.approverTypeSN_old);
+				select(tendercreationlocators.approverTypeSN_old, pdfResultReport.testData.get("ApprovalType2"));
+			}
+		 
+		
+			waitForElementToBeClickable(tendercreationlocators.userAdd);
+			click(tendercreationlocators.userAdd, "userAdd");
+			
+			//=========Role Activity and other Details===========================
+			
+			if(fielddisplay==true) {
+				set(tendercreationlocators.user2, DatabaseComponent_UnderComponentPakage.formatUserInfo(pdfResultReport.testData.get("UserTenderApprover2")), "user1");
+				selectbyIndex(tendercreationlocators.approverTypeSN_old, 1);
+				selectbyIndex(tendercreationlocators.approverTypeSN_old, 1);
+				waitForElementToBeClickable(tendercreationlocators.approverTypeSN_old);
+				select(tendercreationlocators.approverTypeSN_old, pdfResultReport.testData.get("ApprovalType2"));
+				
+			}
+			else {
+				set(tendercreationlocators.user2, DatabaseComponent_UnderComponentPakage.formatUserInfo(pdfResultReport.testData.get("UserTenderApprover2")), "user1");
+				waitForElementToBeClickable(tendercreationlocators.approverTypeSN_old);
+				select(tendercreationlocators.approverTypeSN_old, pdfResultReport.testData.get("ApprovalType2"));
+			}
+
+			documentNoSave();
+			waitForElementToBeClickable(tendercreationlocators.sendForApproval);
+			JSClick(tendercreationlocators.sendForApproval, "sendForApproval");
+			waitForElementToBeClickable(By.xpath("//button[@class='btn add']"));
+			pdfResultReport.addStepDetails("sendForApprovalUserDefinedSequential",
+					"sendForApproval must be validate successfully", "Successfully validated sendForApproval" + " ",
+					"Pass", "Y");
+			log.info("completed executing the method:: sendForApprovalUserDefinedSequential");
+		} catch (Exception e) {
+			log.fatal("Not able to validate sendForApproval" + e.getMessage());
+			pdfResultReport.addStepDetails("sendForApprovalUserDefinedSequential",
+					"sendForApproval must be validate successfully",
+					"Unable to validate sendForApproval" + e.getMessage(), "Fail", "N");
+		}
+	}
+	
+	public void sendForApprovalUserDefinedSequential_Coordinator(String approverName1, String approverName2) throws Throwable {
+		try {
+			log.info("started executing the method:: sendForApprovalUserDefinedSequential");
+			System.out.println(approverName1);
+			System.out.println(approverName2);
+			waitForElementToBeVisible(tendercreationlocators.SendforApprovalTextBy_SN);
+			if (ThreadLocalWebdriver.getDriver().findElement(By.xpath("//input[@id='appYes'][@value='U']"))
+					.isSelected()) {
+				System.out.println("user defined already selected");
+			} else {
+				click(tendercreationlocators.Userdefined, "Userdefined");
+			}
+
+			waitForObj(2000);
+			List<WebElement> elem = ThreadLocalWebdriver.getDriver()
+					.findElements(By.xpath("//button[@ng-click='cancelUser(row)']"));
+			boolean flag = false;
+			if (elem.size() > 0) {
+				flag = true;
+			} else {
+				flag = false;
+			}
+
+			if (flag) {
+				List<WebElement> elem1 = ThreadLocalWebdriver.getDriver()
+						.findElements(By.xpath("//button[@ng-click='cancelUser(row)']"));
+				for (int i = 1; i <= elem1.size(); i++) {
+					click(tendercreationlocators.deleteUser, "deleteUser");
+					waitForObj(3000);
+				}
+
+			} else {
+				System.out.println("user not created earlier");
+			}
+			
+			waitForElementToBeClickable(tendercreationlocators.userAdd);
+			click(tendercreationlocators.userAdd, "userAdd");
+			
+			//=========Role Activity and other Details===========================
+			String xpath_AP = "//table[@id='approver']/tbody[1]/ tr[1]/td[3]/div[1]/select";
+			String xpath_Role = "//table[@id='approver']/tbody[1]/ tr[1]/td[4]/div[1]/select";
+			
+			String AP= "//*[@id='approver']/thead/tr/th[contains(normalize-space(text()),'Activity/Process')]";
+			boolean fielddisplay=isElementDisplayed_Updated(By.xpath(AP), 1);
+			if(fielddisplay==true) {
+				set(tendercreationlocators.user1, DatabaseComponent_UnderComponentPakage.formatUserInfo(approverName1), "user1");
+				selectbyIndex(tendercreationlocators.approverTypeSN_old, 1);
+				selectbyIndex(tendercreationlocators.approverTypeSN_old, 1);
+				waitForElementToBeClickable(tendercreationlocators.approverTypeSN_old);
+				select(tendercreationlocators.approverTypeSN_old, pdfResultReport.testData.get("ApprovalType2"));
+				
+			}
+			else {
+				set(tendercreationlocators.user1, DatabaseComponent_UnderComponentPakage.formatUserInfo(approverName1), "user1");
+				waitForElementToBeClickable(tendercreationlocators.approverTypeSN_old);
+				select(tendercreationlocators.approverTypeSN_old, pdfResultReport.testData.get("ApprovalType2"));
+			}
+		 
+		
+			waitForElementToBeClickable(tendercreationlocators.userAdd);
+			click(tendercreationlocators.userAdd, "userAdd");
+			
+			//=========Role Activity and other Details===========================
+			
+			if(fielddisplay==true) {
+				set(tendercreationlocators.user2, DatabaseComponent_UnderComponentPakage.formatUserInfo(approverName2), "user1");
+				selectbyIndex(tendercreationlocators.approverTypeSN_old, 1);
+				selectbyIndex(tendercreationlocators.approverTypeSN_old, 1);
+				waitForElementToBeClickable(tendercreationlocators.approverTypeSN_old);
+				select(tendercreationlocators.approverTypeSN_old, pdfResultReport.testData.get("ApprovalType2"));
+				
+			}
+			else {
+				set(tendercreationlocators.user2, DatabaseComponent_UnderComponentPakage.formatUserInfo(approverName2), "user1");
+				waitForElementToBeClickable(tendercreationlocators.approverTypeSN_old);
+				select(tendercreationlocators.approverTypeSN_old, pdfResultReport.testData.get("ApprovalType2"));
+			}
+
+			documentNoSave();
+			waitForElementToBeClickable(tendercreationlocators.sendForApproval);
+			JSClick(tendercreationlocators.sendForApproval, "sendForApproval");
+			universalWait();
+
+			
+			pdfResultReport.addStepDetails("sendForApprovalUserDefinedSequential",
+					"sendForApproval must be validate successfully", "Successfully validated sendForApproval" + " ",
+					"Pass", "Y");
+			log.info("completed executing the method:: sendForApprovalUserDefinedSequential");
+		} catch (Exception e) {
+			log.fatal("Not able to validate sendForApproval" + e.getMessage());
+			pdfResultReport.addStepDetails("sendForApprovalUserDefinedSequential",
+					"sendForApproval must be validate successfully",
+					"Unable to validate sendForApproval" + e.getMessage(), "Fail", "N");
+		}
+	}
+	public void sendForApprovalUserDefinedSequential_Coordinator_for_MSN() throws Throwable {
+		try {
+			log.info("started executing the method:: sendForApprovalUserDefinedSequential");
+			waitForElementToBeVisible(tendercreationlocators.SendforApprovalTextBy_SN);
+			if (ThreadLocalWebdriver.getDriver().findElement(By.xpath("//input[@id='appYes'][@value='U']"))
+					.isSelected()) {
+				System.out.println("user defined already selected");
+			} else {
+				click(tendercreationlocators.Userdefined, "Userdefined");
+			}
+
 			waitForObj(2000);
 			List<WebElement> elem = ThreadLocalWebdriver.getDriver()
 					.findElements(By.xpath("//button[@ng-click='cancelUser(row)']"));
@@ -7907,9 +8435,13 @@ public class PostTenderComponent extends BaseClass_Web {
 			waitForElementToBeClickable(tendercreationlocators.userAdd);
 			click(tendercreationlocators.userAdd, "userAdd");
 			waitForElementToBeClickable(tendercreationlocators.user1);
-			set(tendercreationlocators.user1, pdfResultReport.testData.get("UserTenderApprover1"), "user1");
+			set(tendercreationlocators.user1, pdfResultReport.testData.get("UserMSNApprover1"), "user1");
+			waitForElementToBeClickable(tendercreationlocators.activity_process_MSN1);
+			select(tendercreationlocators.activity_process_MSN1,"For Administrative Approval");
+			waitForElementToBeClickable(tendercreationlocators.role_MSN1);
+			select(tendercreationlocators.role_MSN1,"Screening Committee Convenor");
 			waitForElementToBeClickable(tendercreationlocators.approverType1_p);
-			select(tendercreationlocators.approverType1_p, pdfResultReport.testData.get("ApprovalType1"));
+			select(tendercreationlocators.approverType1_p, "SEQUENTIAL");
 			/*
 			waitForElementToBeClickable(tendercreationlocators.coordinator);
 			JSClick(tendercreationlocators.coordinator, "coordinator");
@@ -7917,9 +8449,13 @@ public class PostTenderComponent extends BaseClass_Web {
 			waitForElementToBeClickable(tendercreationlocators.userAdd);
 			click(tendercreationlocators.userAdd, "userAdd");
 			waitForElementToBeClickable(tendercreationlocators.user2);
-			set(tendercreationlocators.user2, pdfResultReport.testData.get("UserTenderApprover2"), "user2");
+			set(tendercreationlocators.user2, pdfResultReport.testData.get("UserMSNApprover2"), "user2");
+			waitForElementToBeClickable(tendercreationlocators.activity_process_MSN1);
+			select(tendercreationlocators.activity_process_MSN2,"For Administrative Approval");
+			waitForElementToBeClickable(tendercreationlocators.role_MSN1);
+			select(tendercreationlocators.role_MSN2,"Screening Committee Convenor");
 			waitForElementToBeClickable(tendercreationlocators.approverType2_p);
-			select(tendercreationlocators.approverType2_p, pdfResultReport.testData.get("ApprovalType1"));
+			select(tendercreationlocators.approverType2_p,"SEQUENTIAL");
 			/*
 			waitForElementToBeClickable(tendercreationlocators.coordinator);
 			JSClick(tendercreationlocators.coordinator, "coordinator");
@@ -7951,29 +8487,19 @@ public class PostTenderComponent extends BaseClass_Web {
 		}
 	}
 
+	
 	public void ScantionComment_recommendationTab() throws Throwable {
 		try {
 			log.info("started executing the method:: provideComment_recommendationTab");
 			
-			//Commented on 261123
-			/*
-			 * click(tendercreationlocators.saveSanction, "saveSanction");
-			 * waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(),
-			 * tendercreationlocators.LoadingBy); Thread.sleep(5000);
-			 */
-			
 			JSClick(tendercreationlocators.recommendationTab, "recommendationTab");
-			waitForObj(1000);
-			//JSClick(By.xpath("//*[@aria-label='Bold']"), "overallComment");
 			WebElement iframele = ThreadLocalWebdriver.getDriver().findElement(By.xpath("//iframe[@id='txtArea_ifr']"));
 			switchframe(iframele);
-			waitForObj(1000);
 			set(tendercreationlocators.recommendationComment, "overallComment_currentPart", "recommendationComment");
 			switchToDefaultFrame();
-			waitForObj(1000);
+			
 			JSClick(tendercreationlocators.saveSanction, "saveSanction");
-			waitForObj(2000);
-			//waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
+			universalWait(); //for handling Some occur issue
 
 			pdfResultReport.addStepDetails("provideComment_recommendationTab",
 					"Comment must be pass under recommendation tab successfully",
@@ -7990,29 +8516,39 @@ public class PostTenderComponent extends BaseClass_Web {
 	public void enterDocumentNoInSearch() throws Throwable {
 		try {
 			log.info("started executing the method:: enterDocumentNoInSearch");
-			
-			//================
-			/*
-			JSClick(tendercreationlocators.SN_stage, "SN_stage");
-			checkPageIsReady();
-			waitForElementToBeVisible(tendercreationlocators.createSanctionNote);
-			//waitForObj(5000);
-			waitForElementToBeClickable(tendercreationlocators.createSanctionNote);
-			*/
-			//====================================
-			
-			waitForElement(tendercreationlocators.Txt_TypeanyKeyword_Indent, 3000);
+			waitForElement(tendercreationlocators.Txt_TypeanyKeyword_Indent, 30);
+			waitForElementToBeClickable(tendercreationlocators.SNcompletedList);
 			click(tendercreationlocators.SNcompletedList, "SNcompletedList");
-			//waitForObj(2000);
+			checkPageIsReady();
+			waitForElementToBeVisible(tendercreationlocators.Txt_TypeanyKeyword_Indent);
 			waitForElementToBeClickable(tendercreationlocators.Txt_TypeanyKeyword_Indent);
 			clear(tendercreationlocators.Txt_TypeanyKeyword_Indent, "typeAnyKeyword");
-			//waitForObj(2000);
-			//set(tendercreationlocators.typeAnyKeyword, eTenderComponent.getDataFromPropertiesFile("sanctionReferenceNumber"), "typeAnyKeyword");
+			set(tendercreationlocators.Txt_TypeanyKeyword_Indent, documentNumberText, "typeAnyKeyword");
+
+			waitForElement(tendercreationlocators.SanctionDocumentID_CompletedList(documentNumberText), 3);
+			IsElementPresent(tendercreationlocators.SanctionDocumentID_CompletedList(documentNumberText));
+			
+			pdfResultReport.addStepDetails("enterDocumentNoInSearch", "Document No must be enter successfully",
+					"Successfully entered document No " + documentNumberText, "Pass", "Y");
+			log.info("completed executing the method:: enterDocumentNoInSearch");
+		} catch (Exception e) {
+			log.fatal("Not able to enter document No" + e.getMessage());
+			pdfResultReport.addStepDetails("enterDocumentNoInSearch", "Document No must be enter successfully",
+					"Unable to eneter document No" + e.getMessage(), "Fail", "N");
+		}
+	}
+	
+	public void enterDocumentNoInSearchSN() throws Throwable {
+		try {
+			log.info("started executing the method:: enterDocumentNoInSearch");
+			
+			waitForElementToBeClickable(tendercreationlocators.Txt_TypeanyKeyword_Indent);
+			clear(tendercreationlocators.Txt_TypeanyKeyword_Indent, "typeAnyKeyword");
 			set(tendercreationlocators.Txt_TypeanyKeyword_Indent, documentNumberText, "typeAnyKeyword");
 			waitForObj(1000);
 		
-			IsElementPresent(tendercreationlocators.SanctionDocumentID(documentNumberText));
-			IsElementPresent(tendercreationlocators.SanctionReferenceNumber(tenderReferenceNoLocatorText_sn));
+			IsElementPresent(tendercreationlocators.SanctionDocumentID_CompletedList(documentNumberText));
+			//IsElementPresent(tendercreationlocators.SanctionReferenceNumber_CompletedList(tenderReferenceNoLocatorText_sn));
 			waitForObj(1000);
 			
 			pdfResultReport.addStepDetails("enterDocumentNoInSearch", "Document No must be enter successfully",
@@ -8029,15 +8565,13 @@ public class PostTenderComponent extends BaseClass_Web {
 	public void enterDocumentNoInSearch_PendinList() throws Throwable {
 		try {
 			log.info("started executing the method:: enterDocumentNoInSearch");
-			waitForElement(tendercreationlocators.SNpendingList, 100);
 			waitForElementToBeClickable(tendercreationlocators.SNcompletedList);
 			click(tendercreationlocators.SNpendingList, "SNpendingList");
 			waitForElementToBeClickable(tendercreationlocators.typeAnyKeyword_Pending);
 			clear(tendercreationlocators.typeAnyKeyword_Pending, "typeAnyKeyword");
 			set(tendercreationlocators.typeAnyKeyword_Pending, documentNumberText, "typeAnyKeyword");
-		//	IsElementPresent(tendercreationlocators.SanctionDocumentID(documentNumberText));
-		//	IsElementPresent(tendercreationlocators.SanctionReferenceNumber(tenderReferenceNoLocatorText_sn));
-			waitForObj(4000);
+			IsElementPresent(tendercreationlocators.SanctionDocumentID(documentNumberText));
+
 			pdfResultReport.addStepDetails("enterDocumentNoInSearch", "Document No must be enter successfully",
 					"Successfully entered document No" + " ", "Pass", "Y");
 			log.info("completed executing the method:: enterDocumentNoInSearch");
@@ -8051,14 +8585,26 @@ public class PostTenderComponent extends BaseClass_Web {
 	public void clickOnSubmitButton() throws Throwable {
 		try {
 			log.info("started executing the method:: clickOnSubmitButton");
-//			if(ThreadLocalWebdriver.getDriver().findElement(tendercreationlocators.LoadingBy).isDisplayed())
-//			{
-			waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
-//			}
-			scrollToElement(tendercreationlocators.submit);
-			//waitForElementToBeClickable(tendercreationlocators.submit);
-			JSClick(tendercreationlocators.submit, "submit");
-			waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
+			scrollToTopOfThePage();
+			boolean isD=isElementDisplayed_Updated(tendercreationlocators.submit, 20);
+			boolean isE=isElementEnable_Updated(tendercreationlocators.submit, 20);
+			if(isD==true && isE==true) {
+			waitForSpinnerToDisappear(By.xpath("//*[@id='overlay']"));
+			click(tendercreationlocators.submit, "submit");
+			}
+			String warning="//h4[@class='modal-title ng-scope' and text()='Warning']";
+			String confirm="//button[@type='button' and text()='Confirm']";
+			if(isElementDisplayed_Updated(By.xpath(warning), 5))
+			{
+			if(	isElementDisplayed_Updated(By.xpath(confirm), 2) &&
+				isElementEnable_Updated(By.xpath(confirm), 2))
+			{
+				click(By.xpath(confirm), "confirm");
+			}
+				
+			}
+		
+			
 			pdfResultReport.addStepDetails("clickOnSubmitButton", "Submit button must be click successfully",
 					"Successfully clicked on submit button" + " ", "Pass", "Y");
 			log.info("completed executing the method:: clickOnSubmitButton");
@@ -8076,7 +8622,7 @@ public class PostTenderComponent extends BaseClass_Web {
 			String ref = String.valueOf(getrandomInterger(1000, 10000));
 			tenderReferenceNoLocatorText_sn = SN.concat(ref);
 			//String sanctionReference = SN.concat(ref);
-			waitForObj(1000);
+			waitForObj(2000);
 			waitForElementToBeVisible(tendercreationlocators.sanctionReferenceNumber);
 			set(tendercreationlocators.sanctionReferenceNumber, tenderReferenceNoLocatorText_sn, "sanctionReferenceNumber");
 			eTenderComponent.updateDataIntoPropertyFile("sanctionReferenceNumber", tenderReferenceNoLocatorText_sn);
@@ -8218,42 +8764,31 @@ public class PostTenderComponent extends BaseClass_Web {
 		try {
 			log.info("started executing the method:: sendForApproval");
 			
-			waitForElementToBeVisible(tendercreationlocators.SendforApprovalTextBy_SN);
-			JSClick(tendercreationlocators.sendForApprovalNotRequired_SN, "sendForApprovalNotRequired_SN");
-			documentNoSave();
-			JSClick(tendercreationlocators.sendForApprovalSubmit, "sendForApprovalSubmit");
+			waitForElementToBeClickable(tendercreationlocators.sendForApprovalNotRequired_SN);
+			click(tendercreationlocators.sendForApprovalNotRequired_SN, "sendForApprovalNotRequired_SN");
+			waitForElementToBeClickable(tendercreationlocators.SubmitSN_sendforapproval);
+			JSClick(tendercreationlocators.SubmitSN_sendforapproval, "SubmitSN_sendforapproval");
 			pdfResultReport.addStepDetails("NotsendForApproval", "NotsendForApproval must be validate successfully",
 					"Successfully validated NotsendForApproval" + " ", "Pass", "Y");
-			log.info("completed executing the method:: sendForApproval");
-			/*
-			WebDriverWait wait = new WebDriverWait(ThreadLocalWebdriver.getDriver(), 100);
-			wait.until(ExpectedConditions.visibilityOfElementLocated(
-					By.xpath("//*[@id='myTabContent']/child::div/child::div/table/tbody/tr[2]")));
-					*/
-			waitForObj(6000);
-			pdfResultReport.addStepDetails("sendForApproval", "sendForApproval must be validate successfully",
-					"Successfully validated sendForApproval" + " ", "Pass", "Y");
-			log.info("completed executing the method:: sendForApproval");
+			log.info("completed executing the method:: NotsendForApproval");
+			
 		} catch (Exception e) {
 			log.fatal("Not able to validate sendForApproval" + e.getMessage());
-			pdfResultReport.addStepDetails("sendForApproval", "Not able to validate sendForApproval",
-					"Unable to validate sendForApproval" + e.getMessage(), "Fail", "N");
+			pdfResultReport.addStepDetails("sendForApproval", "Not able to validate NotsendForApproval",
+					"Unable to validate NotsendForApproval" + e.getMessage(), "Fail", "N");
 		}
 	}
 
 	public void recallButtonValidation() throws Throwable {
 		try {
 			log.info("started executing the method:: recallButtonValidation");
-			click(tendercreationlocators.drpdwn(eTenderComponent.getDataFromPropertiesFile("sanctionoteDocnum")),
-					"actionDropdown");
-			click(tendercreationlocators.btnRecall(eTenderComponent.getDataFromPropertiesFile("sanctionoteDocnum")),
+			click(tendercreationlocators.actionPendingSN,"action dropdown");
+			click(tendercreationlocators.btnRecall(documentNumberText),
 					"recallButton");
-			waitForObj(5000);
-			set(tendercreationlocators.recallReasonComment, "recall", "recommendationComment");
+			set(tendercreationlocators.recallReasonComment_BySNCreator, "recall", "recommendationComment");
 			pdfResultReport.addStepDetails("recallButtonValidation", "Recall button must be validate successfully",
 					"Successfully validated recall button" + " ", "Pass", "Y");
-			click(tendercreationlocators.recallReasonSubmit, "recallReasonSubmit");
-			waitForObj(6000);
+			click(tendercreationlocators.recallReasonSubmit_BySNCreator, "recallReasonSubmit");
 			pdfResultReport.addStepDetails("recallButtonValidation", "Recall button must be validate successfully",
 					"Successfully validated recall button" + " ", "Pass", "Y");
 			log.info("completed executing the method:: recallButtonValidation");
@@ -8271,13 +8806,17 @@ public class PostTenderComponent extends BaseClass_Web {
 			waitForElementToBeClickable(tendercreationlocators.detailsSN);
 			click(tendercreationlocators.detailsSN, "Details");
 			
-			/*
-			click(tendercreationlocators.details, "details");
-			waitForObj(5000);
-			JSClick(tendercreationlocators.sanctionNoteEvaluationCommentTab, "sanctionNoteEvaluationCommentTab");
-			waitForObj(2000);
-			*/
-			
+			if(isElementDisplayed_Updated(By.xpath("//div[contains(@class,'ngx-overlay')]"), 2))
+			{
+			if(	isElementDisplayed_Updated(By.xpath("//div[contains(@class,'ngx-overlay')]"), 2) &&
+				isElementEnable_Updated(By.xpath("//div[contains(@class,'ngx-overlay')]"), 2))
+			{
+				waitForElementToBeVisible(By.xpath("//div[contains(@class,'ngx-overlay')]"));
+				waitForElementToBeInvisible(By.xpath("//div[contains(@class,'ngx-overlay')]"));
+			}	
+			}
+
+			waitForElementToBeClickable(tendercreationlocators.approverComment);
 			pdfResultReport.addStepDetails("sanctionNoteEvaluationValidation",
 					"sanction Note Evaluation must be validate sucessfully ",
 					"Successfully validated sanction Note Evaluation" + " ", "Pass", "Y");
@@ -8381,7 +8920,7 @@ public class PostTenderComponent extends BaseClass_Web {
 			click(tendercreationlocators.sendForApproval, "sendForApproval");
 			pdfResultReport.addStepDetails("sendForApproval", "sendForApproval must be validate successfully",
 					"Successfully validated sendForApproval" + " ", "Pass", "Y");
-			waitForElement(tendercreationlocators.createSanctionNote, 5);
+			waitForElement(tendercreationlocators.createSanctionNote, 30);
 			new WebDriverWait(ThreadLocalWebdriver.getDriver(), 30)
 					.until(ExpectedConditions.invisibilityOfElementLocated(tendercreationlocators.Snipper));
 			waitForObj(7000);
@@ -9397,24 +9936,12 @@ public class PostTenderComponent extends BaseClass_Web {
 			log.info("started executing the method::  recallPOValidation");
 
 			click(tendercreationlocators.order_list_action_button, "action");
-			waitForObj(2000);
 
 			click(tendercreationlocators.recallPo, "recallPo");
-
 			waitForElementToBeVisible(By.xpath("//label[contains(text(),'Reason')]"));
-
 			set(By.xpath("//textarea[@name='desc']"), "Reason For Recall", "recallReason");
-
 			click(By.xpath("//*[contains(text(),'Submit')]"), "recallFn()");
-
-			waitForObj(6000);
-
-			//waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
-
-		//	waitForObj(4000);
-
-		//	IsElementPresent(By.xpath("//tbody/tr[2]/td[contains(text(),'Draft')]/a[text()='(Recalled)']"));
-
+			dynamic_Loader(tendercreationlocators.loadingLocator, 2);
 			pdfResultReport.addStepDetails("recallPOValidation", "Recall PO must be validate sucessfully",
 					"Successfully validated Recall PO Data" + " ", "Pass", "Y");
 			log.info("completed executing the method:: recallPOValidation");
@@ -11183,8 +11710,7 @@ public class PostTenderComponent extends BaseClass_Web {
 			
 			waitForObj(2000);
 			//set(tendercreationlocators.CommentsArea_IndentRTF, pdfResultReport.testData.get("UserDefined_Approver_CommentsIndent"),"CommentsArea_Indent");
-			set(tendercreationlocators.poCommentsforCancel, pdfResultReport.testData.get("UserDefinedApprover-Comments"),
-					"comments");
+			//set(tendercreationlocators.poCommentsforCancel, pdfResultReport.testData.get("UserDefinedApprover-Comments"),"comments");
 			waitForObj(1000);
 			scrollToElement(tendercreationlocators.userAdd_Indent);
 			waitForObj(2000);
@@ -11200,20 +11726,35 @@ public class PostTenderComponent extends BaseClass_Web {
 			}
 			click(tendercreationlocators.userAdd_Indent, "addButtonPO");
 			waitForObj(2000);
-			set(tendercreationlocators.user1_Indent, pdfResultReport.testData.get("UserTenderApprover1"), "PO_approver");
-			waitForObj(2000);
-			//select(tendercreationlocators.approverType1_Indent, pdfResultReport.testData.get("Indent_Approver_Type1"));
-			selectbyvalue(tendercreationlocators.approverType1_Indent, "S");
 			
+			
+			
+			  String xpath_AP = "//table[@id='approver']/tbody[1]/ tr[1]/td[3]/div[1]/select";
+				String xpath_Role = "//table[@id='approver']/tbody[1]/ tr[1]/td[4]/div[1]/select";
+				
+				String AP= "//*[@id='approver']/thead/tr/th[contains(normalize-space(text()),'Activity/Process')]";
+				boolean fielddisplay=isElementDisplayed_Updated(By.xpath(AP), 1);
+				if(fielddisplay==true) {
+					set(tendercreationlocators.POuseradd, DatabaseComponent_UnderComponentPakage.formatUserInfo(user), "user1");
+					selectbyIndex(tendercreationlocators.approverTypePO, 1);
+					selectbyIndex(tendercreationlocators.approverTypePO, 1);
+					waitForObj(500);
+					select(tendercreationlocators.approverTypePO, pdfResultReport.testData.get("ApprovalType2"));
+					
+				}
+				else {
+					set(tendercreationlocators.POuseradd, DatabaseComponent_UnderComponentPakage.formatUserInfo(user), "user1");
+					waitForObj(500);
+					select(tendercreationlocators.approverTypePO, pdfResultReport.testData.get("ApprovalType2"));
+				}
+			
+		
 			waitForObj(1000);
 			JSClick(tendercreationlocators.CancelOrderSendForApproval, "cancelPOSendForApproval");
 			waitForObj(3000);
 			
 			waitForElementToBeVisible(tendercreationlocators.myPOTab);
-			
-		
-		
-			waitForObj(1000);
+			universalWait();
 			pdfResultReport.addStepDetails("sendForApprovalUserDefinedSequential",
 					"sendForApproval must be validate successfullyv For Cancel PO", "Successfully validated sendForApproval" + " ",
 					"Pass", "Y");
@@ -11231,11 +11772,11 @@ public class PostTenderComponent extends BaseClass_Web {
 	public void verifyIndentStatusForCancelledOrDeleted(String status) throws Throwable {
 		try {
 			log.info("started executing the method:: verifyPOStatus");
-			waitForObj(3000);
+			universalNormalWait();
 			click(tendercreationlocators.cancelledIndentTab, "Cancelled/Deleted");
 			waitForObj(6000);
-			clear(tendercreationlocators.poSearchKeyword, "Clear the po no search field");
-			set(tendercreationlocators.poSearchKeyword, poDocNum, "po no search field");
+			clear(tendercreationlocators.typeAnyKeyword_Pending, "Clear the po no search field");
+			set(tendercreationlocators.typeAnyKeyword_Pending, poDocNum, "po no search field");
 			waitForElementToBeVisible(tendercreationlocators.poStatusforCanceledOrDeleted);
 			String poStatus= text(tendercreationlocators.poStatusforCanceledOrDeleted).trim();
 			String statusTrim=status.trim();
@@ -11273,24 +11814,22 @@ public class PostTenderComponent extends BaseClass_Web {
 	public void navigateToPurchaseCancelOrderApproval() throws Throwable {
 		try {
 			log.info("started executing the method:: navigateToPurchaseOrderApproval");
-			waitForObj(5000);
 			set(tendercreationlocators.typeAnyKeyword1, poDocNum, "enter PoDocNum");
 			
 			pdfResultReport.addStepDetails("navigateToPurchaseOrderApproval",
 					"Purchase Order Approval page must be navigate sucessfully ",
 					"Successfully navigated to Purchase Order Approval page" + " ", "Pass", "Y");
 			waitForObj(2000);
-			//click(tendercreationlocators.cancelIndentOrderTab, "Cancel Indent");
 			click(tendercreationlocators.ActionButton_approver_tender, "Action_Button");
 			waitForElementToBeClickable(tendercreationlocators.detailsSN);
 			click(tendercreationlocators.detailsSN, "Details");
-			
+			universalNormalWait();
 			pdfResultReport.addStepDetails("navigateToPurchaseOrderApproval",
 					"Purchase Order Approval page must be navigate sucessfully ",
 					"Successfully navigated to Purchase Order Approval page" + " ", "Pass", "Y");
 			waitForElementToBeClickable(tendercreationlocators.snComment);
 			click(tendercreationlocators.snComment, "sanctionNoteEvaluationCommentTab");
-			waitForElementToBeClickable(tendercreationlocators.poApproverComment);
+			waitForElementToBeClickable(tendercreationlocators.snComment);
 			pdfResultReport.addStepDetails("navigateToPurchaseOrderApproval",
 					"Purchase Order Approval page must be navigate sucessfully ",
 					"Successfully navigated to Purchase Order Approval page" + " ", "Pass", "Y");
@@ -11320,8 +11859,8 @@ public class PostTenderComponent extends BaseClass_Web {
 		
 			set(tendercreationlocators.deleteOrderRemarks, "Delete as not required", "Remarks");
 			waitForObj(1000);
-//			set(tendercreationlocators.deleteUploadButton, System.getProperty("user.dir") + "\\MediaFiles\\rfqCreation.xlsx","fileName");
-//			waitForObj(1000);
+			//set(tendercreationlocators.deleteUploadButton, System.getProperty("user.dir") + "\\MediaFiles\\rfqCreation.xlsx","fileName");
+			//waitForObj(1000);
 			click(tendercreationlocators.deleteButton,"Delete");
 			waitForObj(2000);
 			click(tendercreationlocators.confirmsanction,"Delete");
@@ -11349,7 +11888,7 @@ public class PostTenderComponent extends BaseClass_Web {
 		waitForElementToBeVisible(tendercreationlocators.Txt_TypeanyKeyword_Indent);
 		
 		waitForObj(4000);
-		set(tendercreationlocators.Txt_TypeanyKeyword_Indent, tenderReferenceNoLocatorText_sn, "enter sn ref");
+//		set(tendercreationlocators.Txt_TypeanyKeyword_Indent, tenderReferenceNoLocatorText_sn, "enter sn ref");
 		waitForObj(1500);
 		click(tendercreationlocators.actionSanction, "Action dropdown");
 		waitForObj(700);
@@ -11357,7 +11896,9 @@ public class PostTenderComponent extends BaseClass_Web {
 		waitForElementToBeVisible(tendercreationlocators.DeleteSNReason);
 		set(tendercreationlocators.DeleteSNReason, "not required", "Remarks/Reason");
 		
-		click(tendercreationlocators.submitbuttonIndentCancel,"Submit");
+		click(tendercreationlocators.submit_delete_sn,"Submit");
+		waitForElementToBeClickable(tendercreationlocators.BtnOk);
+        click(tendercreationlocators.BtnOk, "approveOk");
 		waitForObj(6000);
 		waitForElementToBeClickable(tendercreationlocators.deleteorCancelledTab);
 		waitForObj(1000);
@@ -11388,7 +11929,7 @@ public class PostTenderComponent extends BaseClass_Web {
 		try {
 			log.info("started executing the method:: deleteSanction");
 			
-			click(tendercreationlocators.action, "action icon");
+			click(tendercreationlocators.action_New, "action icon");
 			checkPageIsReady();
 			
 			//waitForObj(5000);
@@ -11396,15 +11937,18 @@ public class PostTenderComponent extends BaseClass_Web {
 			click(tendercreationlocators.cancelSN, "Cancel SN");
 			waitForElementToBeVisible(tendercreationlocators.DeleteSNReason);
 			set(tendercreationlocators.DeleteSNReason, "not required", "Remarks/Reason");
-			
-			click(tendercreationlocators.submitByDeleteSN,"Submit");
-		
-			set(tendercreationlocators.snSearch, tenderReferenceNoLocatorText_sn, "enter sn ref");
+			set(tendercreationlocators.AttachmentforSNCancellation, System.getProperty("user.dir") + "\\MediaFiles\\rfqCreation.xlsx","fileName");
+			click(tendercreationlocators.CompleteIndentbtn,"Submit");
+			waitForElementToBeClickable(tendercreationlocators.Okbtn_Indent);
+			click(tendercreationlocators.Okbtn_Indent, "Success Ok button");
+			clear(tendercreationlocators.typeAnyKeyword_Pending, "Clear sn ref");
+			set(tendercreationlocators.typeAnyKeyword_Pending, tenderReferenceNoLocatorText_sn, "enter sn ref");
 			waitForObj(1500);
 			waitForElementToBeClickable(tendercreationlocators.deleteorCancelledTab);
 			waitForObj(1000);
 			click(tendercreationlocators.deleteorCancelledTab,"Deleted/Cancelled");
 			waitForObj(2000);
+			
 			
 			
 			
@@ -11431,43 +11975,45 @@ public class PostTenderComponent extends BaseClass_Web {
         try {
                log.info("started executing the method:: sanctionNoteEvaluationApprove");
                if(decision=="approve") {
-               waitForElementToBeClickable(tendercreationlocators.sanctionNoteEvaluationApprove);
-               click(tendercreationlocators.sanctionNoteEvaluationApprove, "sanctionNoteEvaluationApprove");
-               waitForElementToBeClickable(tendercreationlocators.approveConfirm);
-               click(tendercreationlocators.approveConfirm, "approveConfirm");
+               waitForElementToBeClickable(tendercreationlocators.Approvebutton_tender);
+               click(tendercreationlocators.Approvebutton_tender, "sanctionNoteEvaluationApprove");
+               waitForElementToBeClickable(tendercreationlocators.confirmButton);
+               click(tendercreationlocators.confirmButton, "approveConfirm");
+               waitForElementToBeClickable(tendercreationlocators.Okbtn_Indent);
+               click(tendercreationlocators.Okbtn_Indent, "Ok Button");
                }
-               else if(decision=="revert back to approver"||decision=="Back to Previous Approver" ) {
-                      waitForElementToBeClickable(tendercreationlocators.sanctionNoteEvaluationApprove);
-                     click(tendercreationlocators.sanctionNoteEvaluationReview, "sanctionNoteEvaluationApprove");
-                     waitForElementToBeClickable(tendercreationlocators.approveConfirm);
-                     click(tendercreationlocators.approveConfirm, "approveConfirm");
-                     waitForElementToBeClickable(tendercreationlocators.revertbackToApprover(decision));
-                     click(tendercreationlocators.revertbackToApprover(decision), "revert back to approver");
-                     
+               else if(decision=="Review Back to Previous Approver") {
+                      waitForElementToBeClickable(tendercreationlocators.SendBaackBtn);
+                     click(tendercreationlocators.SendBaackBtn, "sanctionNoteEvaluationApprove");
+                     waitForElementToBeClickable(tendercreationlocators.ReviewBackWF_to_previousApprover);
+                     click(tendercreationlocators.ReviewBackWF_to_previousApprover, "revert back to previous approver");
+                     waitForElementToBeClickable(tendercreationlocators.confirmButton);
+                     click(tendercreationlocators.confirmButton, "approveConfirm");
+                     click(tendercreationlocators.Okbtn_Indent, "Ok Button");
                }
                else if(decision=="forward") {
-                      waitForElementToBeClickable(tendercreationlocators.sanctionNoteEvaluationApprove);
-                     click(tendercreationlocators.sanctionNoteEvaluationApprove, "sanctionNoteEvaluationApprove");
-                     waitForElementToBeClickable(tendercreationlocators.approveConfirm);
-                     click(tendercreationlocators.approveConfirm, "sanctionNoteEvaluationApprove");
+                      waitForElementToBeClickable(tendercreationlocators.Approvebutton_tender);
+                     click(tendercreationlocators.Approvebutton_tender, "sanctionNoteEvaluationApprove");
                      waitForElementToBeClickable(tendercreationlocators.ForwardTheSNWorkflow);
                      click(tendercreationlocators.ForwardTheSNWorkflow, "forward to next person");
                      //send for approval
                      }
-               else if (decision=="revert back to creator"||decision=="Back to Creator") {
-            	   waitForElementToBeClickable(tendercreationlocators.sanctionNoteEvaluationApprove);
-                   click(tendercreationlocators.sanctionNoteEvaluationReview, "sanctionNoteEvaluationApprove");
-                   waitForElementToBeClickable(tendercreationlocators.approveConfirm);
-                   click(tendercreationlocators.approveConfirm, "approveConfirm");
-                   waitForElementToBeClickable(tendercreationlocators.reverseBackToCreator(decision));
-                   click(tendercreationlocators.reverseBackToCreator(decision), "revert back to creator");
+               else if (decision=="Review Back to Creator") {
+            	   waitForElementToBeClickable(tendercreationlocators.SendBaackBtn);
+                   click(tendercreationlocators.SendBaackBtn, "sanctionNoteEvaluationApprove");
+                   waitForElementToBeClickable(tendercreationlocators.ReviewBackWF_to_Creator);
+                   click(tendercreationlocators.ReviewBackWF_to_Creator, "revert back to creator");
+                   waitForElementToBeClickable(tendercreationlocators.confirmButton);
+                   click(tendercreationlocators.confirmButton, "approveConfirm");
+                   click(tendercreationlocators.Okbtn_Indent, "Ok Button");
 			}
                
-               waitForObj(5000);
+               //waitForObj(5000);
+               universalWait();
               
                pdfResultReport.addStepDetails("sanctionNoteEvaluationApprove",
-                            "sanction Note Evaluation must be approve sucessfully ",
-                            "Successfully approved sanction Note Evaluation" + " ", "Pass", "Y");
+                            "sanction Note Evaluation must be "+decision+" sucessfully ",
+                            "Successfully "+decision+" sanction Note Evaluation" + " ", "Pass", "Y");
                log.info("completed executing the method:: sanctionNoteEvaluationApprove");
 
         } catch (Exception e) {
@@ -11478,51 +12024,87 @@ public class PostTenderComponent extends BaseClass_Web {
         }
  }
 
-	public void sendForForwardParallelSNApprovalProcess() throws Exception {
+	public void sendForForwardParallelSNApprovalProcess() throws Throwable {
 	try {
 		  log.info("started executing the method:: sendForApprovalProcess");
 		  //add approver
-		  waitForElementToBeVisible(tendercreationlocators.adduserSN);
-		  click(tendercreationlocators.adduserSN, "add user SN");
-		  waitForElementToBeVisible(tendercreationlocators.SNuseradd);
+		  waitForElementToBeVisible(tendercreationlocators.userAdd_tender);
+		  click(tendercreationlocators.userAdd_tender, "add user SN");
+		  scrollToElement(tendercreationlocators.POuseradd);
+		//=========Role Activity and other Details===========================
+			String xpath_AP = "//table[@id='approver']/tbody[1]/ tr[1]/td[3]/div[1]/select";
+			String xpath_Role = "//table[@id='approver']/tbody[1]/ tr[1]/td[4]/div[1]/select";
+			
+			String AP= "//*[@id='approver']/thead/tr/th[contains(normalize-space(text()),'Activity/Process')]";
+			boolean fielddisplay=isElementDisplayed_Updated(By.xpath(AP), 1);
+			if(fielddisplay==true) {
+				set(tendercreationlocators.POuseradd, DatabaseComponent_UnderComponentPakage.formatUserInfo(pdfResultReport.testData.get("UserTenderApprover3")), "user1");
+				selectbyIndex(tendercreationlocators.approverTypePO, 1);
+				selectbyIndex(tendercreationlocators.approverTypePO, 1);
+				waitForElementToBeClickable(tendercreationlocators.approverTypePO);
+				select(tendercreationlocators.approverTypePO, pdfResultReport.testData.get("ApprovalType1"));
+				
+			}
+			else {
+				set(tendercreationlocators.POuseradd, DatabaseComponent_UnderComponentPakage.formatUserInfo(pdfResultReport.testData.get("UserTenderApprover3")), "user1");
+				waitForElementToBeClickable(tendercreationlocators.approverTypePO);
+				select(tendercreationlocators.approverTypePO, pdfResultReport.testData.get("ApprovalType1"));
+			}
 		 
-		  set(tendercreationlocators.SNuseradd, pdfResultReport.testData.get("UserTenderApprover3"), "user");
-		  waitForObj(500);
-		  select(tendercreationlocators.approverTypeSN, pdfResultReport.testData.get("ApprovalType2"));	
-		  
-		  //add approver
-		  waitForElementToBeVisible(tendercreationlocators.adduserSN);
-		  click(tendercreationlocators.adduserSN, "add user SN");
-		  waitForElementToBeVisible(tendercreationlocators.SNuseradd);
-		 
-		  set(tendercreationlocators.SNuseradd, pdfResultReport.testData.get("UserTenderApprover4"), "user");
-		  waitForObj(500);
-		  select(tendercreationlocators.approverTypeSN, pdfResultReport.testData.get("ApprovalType2"));
-		  
-		  //add approver
-		  waitForElementToBeVisible(tendercreationlocators.adduserSN);
-		  click(tendercreationlocators.adduserSN, "add user SN");
-		  waitForElementToBeVisible(tendercreationlocators.SNuseradd);
-		 
-		  set(tendercreationlocators.SNuseradd, pdfResultReport.testData.get("UserTenderApprover5"), "user");
-		  waitForObj(500);
-		  select(tendercreationlocators.approverTypeSN, pdfResultReport.testData.get("ApprovalType2"));
-		  
+		
+			waitForElementToBeClickable(tendercreationlocators.userAdd_tender);
+			click(tendercreationlocators.userAdd_tender, "userAdd");
+			 scrollToElement(tendercreationlocators.POuseradd);
+			//=========Role Activity and other Details===========================
+			
+			if(fielddisplay==true) {
+				set(tendercreationlocators.POuseradd, DatabaseComponent_UnderComponentPakage.formatUserInfo(pdfResultReport.testData.get("UserTenderApprover4")), "user1");
+				selectbyIndex(tendercreationlocators.approverTypePO, 1);
+				selectbyIndex(tendercreationlocators.approverTypePO, 1);
+				waitForElementToBeClickable(tendercreationlocators.approverTypePO);
+				select(tendercreationlocators.approverTypePO, pdfResultReport.testData.get("ApprovalType1"));
+				
+			}
+			else {
+				set(tendercreationlocators.POuseradd, DatabaseComponent_UnderComponentPakage.formatUserInfo(pdfResultReport.testData.get("UserTenderApprover4")), "user1");
+				waitForElementToBeClickable(tendercreationlocators.approverTypePO);
+				select(tendercreationlocators.approverTypePO, pdfResultReport.testData.get("ApprovalType1"));
+			}
+			
+			waitForElementToBeClickable(tendercreationlocators.userAdd_tender);
+			click(tendercreationlocators.userAdd_tender, "userAdd");
+			 scrollToElement(tendercreationlocators.SNuseradd);
+			//=========Role Activity and other Details===========================
+			
+			if(fielddisplay==true) {
+				set(tendercreationlocators.POuseradd, DatabaseComponent_UnderComponentPakage.formatUserInfo(pdfResultReport.testData.get("UserTenderApprover5")), "user1");
+				selectbyIndex(tendercreationlocators.approverTypePO, 1);
+				selectbyIndex(tendercreationlocators.approverTypePO, 1);
+				waitForElementToBeClickable(tendercreationlocators.approverTypePO);
+				select(tendercreationlocators.approverTypePO, pdfResultReport.testData.get("ApprovalType1"));
+				
+			}
+			else {
+				set(tendercreationlocators.POuseradd, DatabaseComponent_UnderComponentPakage.formatUserInfo(pdfResultReport.testData.get("UserTenderApprover5")), "user1");
+				waitForElementToBeClickable(tendercreationlocators.approverTypePO);
+				select(tendercreationlocators.approverTypePO, pdfResultReport.testData.get("ApprovalType1"));
+			}
+			
+
 		  //co-ordinator , min approver		  
 		  waitForElementToBeClickable(tendercreationlocators.cordinatorSN);
-			set(tendercreationlocators.minimumApproverSN, pdfResultReport.testData.get("Min_Approver"), "minimum_Approver");
+			set(tendercreationlocators.parallelApprovermin, pdfResultReport.testData.get("Min_Approver"), "minimum_Approver");
 		   waitForElementToBeClickable(tendercreationlocators.cordinatorSN);
-			click(tendercreationlocators.cordinatorSN, "parallel_Coordinator_Flag");
-			//Select minimum approver
-			
-			
+			JSClick(tendercreationlocators.cordinatorSN, "parallel_Coordinator_Flag");
+
 			//send for approval
 			scrollToElement(tendercreationlocators.Btn_Forward_Indent);
 			waitForElementToBeClickable(tendercreationlocators.Btn_Forward_Indent);
 			click(tendercreationlocators.Btn_Forward_Indent, "Send for approval");
-			waitForElementToBeClickable(tendercreationlocators.recall_ok_msg);
-			click(tendercreationlocators.recall_ok_msg,"success ok");
-			waitForElementToBeClickable(tendercreationlocators.createSanctionNote);
+			waitForElementToBeClickable(tendercreationlocators.BtnOk);
+			click(tendercreationlocators.BtnOk,"success ok");
+			
+			dynamic_Loader(tendercreationlocators.loadingLocator, 2);
 			
 		  pdfResultReport.addStepDetails("sendForApprovalProcess",
                   "send for approval ",
@@ -11544,30 +12126,70 @@ public class PostTenderComponent extends BaseClass_Web {
 			  //add approver
 			  waitForElementToBeVisible(tendercreationlocators.adduserSN);
 			  click(tendercreationlocators.adduserSN, "add user SN");
-			  waitForElementToBeVisible(tendercreationlocators.SNuseradd);
+			  waitForElementToBeVisible(tendercreationlocators.POuseradd);
 			 
-			  set(tendercreationlocators.SNuseradd, pdfResultReport.testData.get("UserTenderApprover6"), "user");
-			  waitForObj(500);
-			  select(tendercreationlocators.approverTypeSN, pdfResultReport.testData.get("ApprovalType1"));	
+			//=========Role Activity and other Details===========================
+				String xpath_AP = "//table[@id='approver']/tbody[1]/ tr[1]/td[3]/div[1]/select";
+				String xpath_Role = "//table[@id='approver']/tbody[1]/ tr[1]/td[4]/div[1]/select";
+				
+				String AP= "//*[@id='approver']/thead/tr/th[contains(normalize-space(text()),'Activity/Process')]";
+				boolean fielddisplay=isElementDisplayed_Updated(By.xpath(AP), 1);
+				if(fielddisplay==true) {
+					set(tendercreationlocators.POuseradd, DatabaseComponent_UnderComponentPakage.formatUserInfo(pdfResultReport.testData.get("UserTenderApprover5")), "user1");
+					selectbyIndex(tendercreationlocators.approverTypePO, 1);
+					selectbyIndex(tendercreationlocators.approverTypePO, 1);
+					waitForElementToBeClickable(tendercreationlocators.approverTypePO);
+					select(tendercreationlocators.approverTypePO, pdfResultReport.testData.get("ApprovalType2"));
+					
+				}
+				else {
+					set(tendercreationlocators.POuseradd, DatabaseComponent_UnderComponentPakage.formatUserInfo(pdfResultReport.testData.get("UserTenderApprover5")), "user1");
+					waitForElementToBeClickable(tendercreationlocators.approverTypePO);
+					select(tendercreationlocators.approverTypePO, pdfResultReport.testData.get("ApprovalType2"));
+				}
 			  
 			  //add approver
 			  waitForElementToBeVisible(tendercreationlocators.adduserSN);
 			  click(tendercreationlocators.adduserSN, "add user SN");
-			  waitForElementToBeVisible(tendercreationlocators.SNuseradd);
+			  waitForElementToBeVisible(tendercreationlocators.POuseradd);
 			 
-			  set(tendercreationlocators.SNuseradd, pdfResultReport.testData.get("UserTenderApprover7"), "user");
-			  waitForObj(500);
-			  select(tendercreationlocators.approverTypeSN, pdfResultReport.testData.get("ApprovalType1"));
+			//=========Role Activity and other Details===========================
+				
+				if(fielddisplay==true) {
+					set(tendercreationlocators.POuseradd, DatabaseComponent_UnderComponentPakage.formatUserInfo(pdfResultReport.testData.get("UserTenderApprover6")), "user1");
+					selectbyIndex(tendercreationlocators.approverTypePO, 1);
+					selectbyIndex(tendercreationlocators.approverTypePO, 1);
+					waitForElementToBeClickable(tendercreationlocators.approverTypePO);
+					select(tendercreationlocators.approverTypePO, pdfResultReport.testData.get("ApprovalType2"));
+					
+				}
+				else {
+					set(tendercreationlocators.POuseradd, DatabaseComponent_UnderComponentPakage.formatUserInfo(pdfResultReport.testData.get("UserTenderApprover6")), "user1");
+					waitForElementToBeClickable(tendercreationlocators.approverTypePO);
+					select(tendercreationlocators.approverTypePO, pdfResultReport.testData.get("ApprovalType2"));
+				}
 			  
 			  //add approver
 			  waitForElementToBeVisible(tendercreationlocators.adduserSN);
 			  click(tendercreationlocators.adduserSN, "add user SN");
-			  waitForElementToBeVisible(tendercreationlocators.SNuseradd);
+			  waitForElementToBeVisible(tendercreationlocators.POuseradd);
 			 
-			  set(tendercreationlocators.SNuseradd, pdfResultReport.testData.get("UserTenderApprover8"), "user");
-			  waitForObj(500);
-			  select(tendercreationlocators.approverTypeSN, pdfResultReport.testData.get("ApprovalType1"));
-			 
+			//=========Role Activity and other Details===========================
+				
+				if(fielddisplay==true) {
+					set(tendercreationlocators.POuseradd, DatabaseComponent_UnderComponentPakage.formatUserInfo(pdfResultReport.testData.get("UserTenderApprover7")), "user1");
+					selectbyIndex(tendercreationlocators.approverTypePO, 1);
+					selectbyIndex(tendercreationlocators.approverTypePO, 1);
+					waitForElementToBeClickable(tendercreationlocators.approverTypePO);
+					select(tendercreationlocators.approverTypePO, pdfResultReport.testData.get("ApprovalType2"));
+					
+				}
+				else {
+					set(tendercreationlocators.POuseradd, DatabaseComponent_UnderComponentPakage.formatUserInfo(pdfResultReport.testData.get("UserTenderApprover7")), "user1");
+					waitForElementToBeClickable(tendercreationlocators.approverTypePO);
+					select(tendercreationlocators.approverTypePO, pdfResultReport.testData.get("ApprovalType2"));
+				}
+			  
 				//send for approval
 				scrollToElement(tendercreationlocators.Btn_Forward_Indent);
 				waitForElementToBeClickable(tendercreationlocators.Btn_Forward_Indent);
@@ -11601,7 +12223,6 @@ public class PostTenderComponent extends BaseClass_Web {
 				click(tendercreationlocators.Userdefined, "Userdefined");
 			}
 
-			waitForObj(2000);
 			List<WebElement> elem = ThreadLocalWebdriver.getDriver()
 					.findElements(By.xpath("//button[@ng-click='cancelUser(row)']"));
 			boolean flag = false;
@@ -11616,89 +12237,187 @@ public class PostTenderComponent extends BaseClass_Web {
 						.findElements(By.xpath("//button[@ng-click='cancelUser(row)']"));
 				for (int i = 1; i <= elem1.size(); i++) {
 					click(tendercreationlocators.deleteUser, "deleteUser");
-					waitForObj(3000);
 				}
 
 			} else {
 				System.out.println("user not created earlier");
 			}
+			//approver 1
+			waitForElementToBeClickable(tendercreationlocators.userAdd);
+			click(tendercreationlocators.userAdd, "userAdd");
 			
-			//approver 1 parallel
-			 waitForElementToBeVisible(tendercreationlocators.AddApprover_Evaluation);
-			  click(tendercreationlocators.AddApprover_Evaluation, "add user SN");
-			  waitForElementToBeVisible(tendercreationlocators.SNuseradd); 
-			  set(tendercreationlocators.SNuseradd, pdfResultReport.testData.get("UserTenderApprover1"), "user");
-			  waitForObj(500);
-			  select(tendercreationlocators.approverTypeSN, pdfResultReport.testData.get("ApprovalType2"));	
+			//=========Role Activity and other Details===========================
+			String xpath_AP = "//table[@id='approver']/tbody[1]/ tr[1]/td[3]/div[1]/select";
+			String xpath_Role = "//table[@id='approver']/tbody[1]/ tr[1]/td[4]/div[1]/select";
 			
-			//approver 2 parallel
-			  waitForElementToBeVisible(tendercreationlocators.AddApprover_Evaluation);
-			  click(tendercreationlocators.AddApprover_Evaluation, "add user SN");
-			  waitForElementToBeVisible(tendercreationlocators.SNuseradd); 
-			  set(tendercreationlocators.SNuseradd, pdfResultReport.testData.get("UserTenderApprover2"), "user");
-			  waitForObj(500);
-			  select(tendercreationlocators.approverTypeSN, pdfResultReport.testData.get("ApprovalType2"));	
+			String AP= "//*[@id='approver']/thead/tr/th[contains(normalize-space(text()),'Activity/Process')]";
+			boolean fielddisplay=isElementDisplayed_Updated(By.xpath(AP), 1);
+			if(fielddisplay==true) {
+				set(tendercreationlocators.SNuseradd, DatabaseComponent_UnderComponentPakage.formatUserInfo(pdfResultReport.testData.get("UserTenderApprover1")), "user1");
+				selectbyIndex(tendercreationlocators.approverTypeSN_old, 1);
+				selectbyIndex(tendercreationlocators.approverTypeSN_old, 1);
+				waitForElementToBeClickable(tendercreationlocators.approverTypeSN_old);
+				select(tendercreationlocators.approverTypeSN_old, pdfResultReport.testData.get("ApprovalType1"));
+				
+			}
+			else {
+				set(tendercreationlocators.SNuseradd, DatabaseComponent_UnderComponentPakage.formatUserInfo(pdfResultReport.testData.get("UserTenderApprover1")), "user1");
+				waitForElementToBeClickable(tendercreationlocators.approverTypeSN_old);
+				select(tendercreationlocators.approverTypeSN_old, pdfResultReport.testData.get("ApprovalType1"));
+			}
+		 
+			//approver 2
+			waitForElementToBeClickable(tendercreationlocators.userAdd);
+			click(tendercreationlocators.userAdd, "userAdd");
 			
-			//approver 3 parallel
-			  waitForElementToBeVisible(tendercreationlocators.AddApprover_Evaluation);
-			  click(tendercreationlocators.AddApprover_Evaluation, "add user SN");
-			  waitForElementToBeVisible(tendercreationlocators.SNuseradd); 
-			  set(tendercreationlocators.SNuseradd, pdfResultReport.testData.get("UserTenderApprover3"), "user");
-			  waitForObj(500);
-			  select(tendercreationlocators.approverTypeSN, pdfResultReport.testData.get("ApprovalType2"));	
-			  
-			  
-			  //co-ordinator , min approver
+			//=========Role Activity and other Details===========================
+			
+			if(fielddisplay==true) {
+				set(tendercreationlocators.SNuseradd, DatabaseComponent_UnderComponentPakage.formatUserInfo(pdfResultReport.testData.get("UserTenderApprover2")), "user1");
+				selectbyIndex(tendercreationlocators.approverTypeSN_old, 1);
+				selectbyIndex(tendercreationlocators.approverTypeSN_old, 1);
+				waitForElementToBeClickable(tendercreationlocators.approverTypeSN_old);
+				select(tendercreationlocators.approverTypeSN_old, pdfResultReport.testData.get("ApprovalType1"));
+				
+			}
+			else {
+				set(tendercreationlocators.SNuseradd, DatabaseComponent_UnderComponentPakage.formatUserInfo(pdfResultReport.testData.get("UserTenderApprover2")), "user1");
+				waitForElementToBeClickable(tendercreationlocators.approverTypeSN_old);
+				select(tendercreationlocators.approverTypeSN_old, pdfResultReport.testData.get("ApprovalType1"));
+			}
+			
+			//approver 3
+			waitForElementToBeClickable(tendercreationlocators.userAdd);
+			click(tendercreationlocators.userAdd, "userAdd");
+			
+			//=========Role Activity and other Details===========================
+			
+			if(fielddisplay==true) {
+				set(tendercreationlocators.SNuseradd, DatabaseComponent_UnderComponentPakage.formatUserInfo(pdfResultReport.testData.get("UserTenderApprover3")), "user1");
+				selectbyIndex(tendercreationlocators.approverTypeSN_old, 1);
+				selectbyIndex(tendercreationlocators.approverTypeSN_old, 1);
+				waitForElementToBeClickable(tendercreationlocators.approverTypeSN_old);
+				select(tendercreationlocators.approverTypeSN_old, pdfResultReport.testData.get("ApprovalType1"));
+				
+			}
+			else {
+				set(tendercreationlocators.SNuseradd, DatabaseComponent_UnderComponentPakage.formatUserInfo(pdfResultReport.testData.get("UserTenderApprover3")), "user1");
+				waitForElementToBeClickable(tendercreationlocators.approverTypeSN_old);
+				select(tendercreationlocators.approverTypeSN_old, pdfResultReport.testData.get("ApprovalType1"));
+			}
+				
+			  //co-ordinator , min approver					
 			  waitForElementToBeClickable(tendercreationlocators.parallelApprovermin);
 				set(tendercreationlocators.parallelApprovermin, pdfResultReport.testData.get("Min_Approver"), "minimum_Approver");
-			   waitForElementToBeClickable(tendercreationlocators.cordinatorSNclick);
-				click(tendercreationlocators.cordinatorSNclick, "parallel_Coordinator_Flag");
+			   waitForElementToBeClickable(tendercreationlocators.cordinatorSN_OLD);
+				click(tendercreationlocators.cordinatorSN_OLD, "parallel_Coordinator_Flag");
+			
+				//approver 4
+				waitForElementToBeClickable(tendercreationlocators.userAdd);
+				click(tendercreationlocators.userAdd, "userAdd");
 				
-				//approver 1 sequential
-				 waitForElementToBeVisible(tendercreationlocators.AddApprover_Evaluation);
-				  click(tendercreationlocators.AddApprover_Evaluation, "add user SN");
-				  waitForElementToBeVisible(tendercreationlocators.SNuseradd); 
-				  set(tendercreationlocators.SNuseradd, pdfResultReport.testData.get("UserTenderApprover4"), "user");
-				  waitForObj(500);
-				  select(tendercreationlocators.approverTypeSN, pdfResultReport.testData.get("ApprovalType1"));	
+				//=========Role Activity and other Details===========================
 				
-				//approver 1 sequential
-					 waitForElementToBeVisible(tendercreationlocators.AddApprover_Evaluation);
-					  click(tendercreationlocators.AddApprover_Evaluation, "add user SN");
-					  waitForElementToBeVisible(tendercreationlocators.SNuseradd); 
-					  set(tendercreationlocators.SNuseradd, pdfResultReport.testData.get("UserTenderApprover5"), "user");
-					  waitForObj(500);
-					  select(tendercreationlocators.approverTypeSN, pdfResultReport.testData.get("ApprovalType1"));	
-					  
-					//approver 1 sequential
-						 waitForElementToBeVisible(tendercreationlocators.AddApprover_Evaluation);
-						  click(tendercreationlocators.AddApprover_Evaluation, "add user SN");
-						  waitForElementToBeVisible(tendercreationlocators.SNuseradd); 
-						  set(tendercreationlocators.SNuseradd, pdfResultReport.testData.get("UserTenderApprover6"), "user");
-						  waitForObj(500);
-						  select(tendercreationlocators.approverTypeSN, pdfResultReport.testData.get("ApprovalType1"));	
+				if(fielddisplay==true) {
+					set(tendercreationlocators.SNuseradd, DatabaseComponent_UnderComponentPakage.formatUserInfo(pdfResultReport.testData.get("UserTenderApprover4")), "user1");
+					selectbyIndex(tendercreationlocators.approverTypeSN_old, 1);
+					selectbyIndex(tendercreationlocators.approverTypeSN_old, 1);
+					waitForElementToBeClickable(tendercreationlocators.approverTypeSN_old);
+					select(tendercreationlocators.approverTypeSN_old, pdfResultReport.testData.get("ApprovalType2"));
+					
+				}
+				else {
+					set(tendercreationlocators.SNuseradd, DatabaseComponent_UnderComponentPakage.formatUserInfo(pdfResultReport.testData.get("UserTenderApprover4")), "user1");
+					waitForElementToBeClickable(tendercreationlocators.approverTypeSN_old);
+					select(tendercreationlocators.approverTypeSN_old, pdfResultReport.testData.get("ApprovalType2"));
+				}	
+				
+				//approver 3
+				waitForElementToBeClickable(tendercreationlocators.userAdd);
+				click(tendercreationlocators.userAdd, "userAdd");
+				
+				//=========Role Activity and other Details===========================
+				
+				if(fielddisplay==true) {
+					set(tendercreationlocators.SNuseradd, DatabaseComponent_UnderComponentPakage.formatUserInfo(pdfResultReport.testData.get("UserTenderApprover5")), "user1");
+					selectbyIndex(tendercreationlocators.approverTypeSN_old, 1);
+					selectbyIndex(tendercreationlocators.approverTypeSN_old, 1);
+					waitForElementToBeClickable(tendercreationlocators.approverTypeSN_old);
+					select(tendercreationlocators.approverTypeSN_old, pdfResultReport.testData.get("ApprovalType2"));
+					
+				}
+				else {
+					set(tendercreationlocators.SNuseradd, DatabaseComponent_UnderComponentPakage.formatUserInfo(pdfResultReport.testData.get("UserTenderApprover5")), "user1");
+					waitForElementToBeClickable(tendercreationlocators.approverTypeSN_old);
+					select(tendercreationlocators.approverTypeSN_old, pdfResultReport.testData.get("ApprovalType2"));
+				}
+				
+				//approver 3
+				waitForElementToBeClickable(tendercreationlocators.userAdd);
+				click(tendercreationlocators.userAdd, "userAdd");
+				
+				//=========Role Activity and other Details===========================
+				
+				if(fielddisplay==true) {
+					set(tendercreationlocators.SNuseradd, DatabaseComponent_UnderComponentPakage.formatUserInfo(pdfResultReport.testData.get("UserTenderApprover6")), "user1");
+					selectbyIndex(tendercreationlocators.approverTypeSN_old, 1);
+					selectbyIndex(tendercreationlocators.approverTypeSN_old, 1);
+					waitForElementToBeClickable(tendercreationlocators.approverTypeSN_old);
+					select(tendercreationlocators.approverTypeSN_old, pdfResultReport.testData.get("ApprovalType2"));
+					
+				}
+				else {
+					set(tendercreationlocators.SNuseradd, DatabaseComponent_UnderComponentPakage.formatUserInfo(pdfResultReport.testData.get("UserTenderApprover6")), "user1");
+					waitForElementToBeClickable(tendercreationlocators.approverTypeSN_old);
+					select(tendercreationlocators.approverTypeSN_old, pdfResultReport.testData.get("ApprovalType2"));
+				}
+				
+				//approver 3
+				waitForElementToBeClickable(tendercreationlocators.userAdd);
+				click(tendercreationlocators.userAdd, "userAdd");
+				
+				//=========Role Activity and other Details===========================
+				
+				if(fielddisplay==true) {
+					set(tendercreationlocators.SNuseradd, DatabaseComponent_UnderComponentPakage.formatUserInfo(pdfResultReport.testData.get("UserTenderApprover7")), "user1");
+					selectbyIndex(tendercreationlocators.approverTypeSN_old, 1);
+					selectbyIndex(tendercreationlocators.approverTypeSN_old, 1);
+					waitForElementToBeClickable(tendercreationlocators.approverTypeSN_old);
+					select(tendercreationlocators.approverTypeSN_old, pdfResultReport.testData.get("ApprovalType2"));
+					
+				}
+				else {
+					set(tendercreationlocators.SNuseradd, DatabaseComponent_UnderComponentPakage.formatUserInfo(pdfResultReport.testData.get("UserTenderApprover7")), "user1");
+					waitForElementToBeClickable(tendercreationlocators.approverTypeSN_old);
+					select(tendercreationlocators.approverTypeSN_old, pdfResultReport.testData.get("ApprovalType2"));
+				}
+				
+				//approver 3
+				waitForElementToBeClickable(tendercreationlocators.userAdd);
+				click(tendercreationlocators.userAdd, "userAdd");
+				
+				//=========Role Activity and other Details===========================
+				
+				if(fielddisplay==true) {
+					set(tendercreationlocators.SNuseradd, DatabaseComponent_UnderComponentPakage.formatUserInfo(pdfResultReport.testData.get("UserTenderApprover8")), "user1");
+					selectbyIndex(tendercreationlocators.approverTypeSN_old, 1);
+					selectbyIndex(tendercreationlocators.approverTypeSN_old, 1);
+					waitForElementToBeClickable(tendercreationlocators.approverTypeSN_old);
+					select(tendercreationlocators.approverTypeSN_old, pdfResultReport.testData.get("ApprovalType2"));
+					
+				}
+				else {
+					set(tendercreationlocators.SNuseradd, DatabaseComponent_UnderComponentPakage.formatUserInfo(pdfResultReport.testData.get("UserTenderApprover8")), "user1");
+					waitForElementToBeClickable(tendercreationlocators.approverTypeSN_old);
+					select(tendercreationlocators.approverTypeSN_old, pdfResultReport.testData.get("ApprovalType2"));
+				}
+				
+			
+			documentNoSave();
+			waitForElementToBeClickable(tendercreationlocators.sendForApproval);
+			JSClick(tendercreationlocators.sendForApproval, "sendForApproval");
+			waitForElementToBeClickable(By.xpath("//button[@class='btn add']"));
 						  
-						  
-						//approver 1 sequential
-							 waitForElementToBeVisible(tendercreationlocators.AddApprover_Evaluation);
-							  click(tendercreationlocators.AddApprover_Evaluation, "add user SN");
-							  waitForElementToBeVisible(tendercreationlocators.SNuseradd); 
-							  set(tendercreationlocators.SNuseradd, pdfResultReport.testData.get("UserTenderApprover7"), "user");
-							  waitForObj(500);
-							  select(tendercreationlocators.approverTypeSN, pdfResultReport.testData.get("ApprovalType1"));	
-			  
-							//approver 1 sequential
-								 waitForElementToBeVisible(tendercreationlocators.AddApprover_Evaluation);
-								  click(tendercreationlocators.AddApprover_Evaluation, "add user SN");
-								  waitForElementToBeVisible(tendercreationlocators.SNuseradd); 
-								  set(tendercreationlocators.SNuseradd, pdfResultReport.testData.get("UserTenderApprover8"), "user");
-								  waitForObj(500);
-								  select(tendercreationlocators.approverTypeSN, pdfResultReport.testData.get("ApprovalType1"));	
-								  
-								  documentNoSave();
-									waitForElementToBeClickable(tendercreationlocators.sendForApproval);
-									JSClick(tendercreationlocators.sendForApproval, "sendForApproval");		  
-								  
 		}
 catch (Exception e) {
 	log.fatal("Unable to AddMultipleUsersForSequentialParallelApproval_SNWF" + e.getMessage());
@@ -11712,7 +12431,7 @@ catch (Exception e) {
 try {
 			
 			log.info("started executing the method:: AddMultipleUsersForSequentialParallelApproval_SNWF");
-			waitForElement(tendercreationlocators.SNpendingList, 100);
+			waitForElement(tendercreationlocators.SNpendingList, 30);
 			waitForElementToBeClickable(tendercreationlocators.SNcompletedList);
 			click(tendercreationlocators.SNpendingList, "SNpendingList");
 			waitForElementToBeClickable(tendercreationlocators.typeAnyKeyword_Pending);
@@ -11721,19 +12440,8 @@ try {
 			
 			waitForElementToBeClickable(tendercreationlocators.draftSN_stage);
 			click(tendercreationlocators.draftSN_stage, "draft bid");
-			WebDriver driver = ThreadLocalWebdriver.getDriver();
-			WebElement supplierCheckbox=driver.findElement(tendercreationlocators.checkSupplier);
-			if (!supplierCheckbox.isSelected()) {
-				click(tendercreationlocators.checkSupplier, "supplier Checkbox");
-			}
 			waitForElementToBeClickable(tendercreationlocators.recommendationTab);
 			JSClick(tendercreationlocators.recommendationTab, "recommendationTab");
-			
-//			clear(tendercreationlocators.recommendationComment, "tenderListKeyword");
-//
-//			set(tendercreationlocators.recommendationComment, "overallComment_currentPart",
-//					"recommendation Comment");
-				
 			}
 
 catch (Exception e) {
@@ -11746,21 +12454,21 @@ catch (Exception e) {
 	}
 
 	public void nevigateToPendingSNList() throws Throwable {
-try {
-			
-			log.info("started executing the method:: nevigateToPendingSNList");
-			JSClick(tendercreationlocators.SN_stage, "SN_stage");
-			checkPageIsReady();
-			waitForElementToBeVisible(tendercreationlocators.createSanctionNote);
-			
-}
-
-catch (Exception e) {
-	log.fatal("Unable to sendforApproverFromDraftSNr" + e.getMessage());
-	pdfResultReport.addStepDetails("nevigateToPendingSNList",
-			"nevigateToPendingSNList should pass",
-			"Unable to perform nevigateToPendingSNList" + e.getMessage(), "Fail", "N");
-}
+		try {
+					
+					log.info("started executing the method:: nevigateToPendingSNList");
+					JSClick(tendercreationlocators.SN_stage, "SN_stage");
+					checkPageIsReady();
+					waitForElementToBeVisible(tendercreationlocators.createNotesheetIcon);
+					
+		}
+		
+		catch (Exception e) {
+			log.fatal("Unable to sendforApproverFromDraftSNr" + e.getMessage());
+			pdfResultReport.addStepDetails("nevigateToPendingSNList",
+					"nevigateToPendingSNList should pass",
+					"Unable to perform nevigateToPendingSNList" + e.getMessage(), "Fail", "N");
+		}
 		
 	}
 
@@ -11768,8 +12476,8 @@ catch (Exception e) {
 try {
 			
 			log.info("started executing the method:: nevigateToPendingSNList");
-			waitForElementToBeClickable(tendercreationlocators.recallSuccessOk);
-			click(tendercreationlocators.recallSuccessOk, "recall success ok SN");
+			waitForElementToBeClickable(tendercreationlocators.BtnOk);
+			click(tendercreationlocators.BtnOk, "recall success ok SN");
 			
 }
 
@@ -11793,7 +12501,7 @@ catch (Exception e) {
 				click(tendercreationlocators.Userdefined, "Userdefined");
 			}
 
-			waitForObj(2000);
+//			waitForObj(2000);
 			List<WebElement> elem = ThreadLocalWebdriver.getDriver()
 					.findElements(By.xpath("//button[@ng-click='cancelUser(row)']"));
 			boolean flag = false;
@@ -11808,25 +12516,43 @@ catch (Exception e) {
 						.findElements(By.xpath("//button[@ng-click='cancelUser(row)']"));
 				for (int i = 1; i <= elem1.size(); i++) {
 					click(tendercreationlocators.deleteUser, "deleteUser");
-					waitForObj(3000);
+//					waitForObj(3000);
 				}
 
 			} else {
 				System.out.println("user not created earlier");
 			}
 			
-			//approver 1 sequential
-			 waitForElementToBeVisible(tendercreationlocators.AddApprover_Evaluation);
-			  click(tendercreationlocators.AddApprover_Evaluation, "add user SN");
-			  waitForElementToBeVisible(tendercreationlocators.SNuseradd); 
-			  set(tendercreationlocators.SNuseradd, string, "user");
-			  waitForObj(500);
-			  select(tendercreationlocators.approverTypeSN, pdfResultReport.testData.get("ApprovalType1"));
-		
+			//approver 1
+			waitForElementToBeClickable(tendercreationlocators.userAdd);
+			click(tendercreationlocators.userAdd, "userAdd");
+			
+			//=========Role Activity and other Details===========================
+			String xpath_AP = "//table[@id='approver']/tbody[1]/ tr[1]/td[3]/div[1]/select";
+			String xpath_Role = "//table[@id='approver']/tbody[1]/ tr[1]/td[4]/div[1]/select";
+			
+			String AP= "//*[@id='approver']/thead/tr/th[contains(normalize-space(text()),'Activity/Process')]";
+			boolean fielddisplay=isElementDisplayed_Updated(By.xpath(AP), 1);
+			if(fielddisplay==true) {
+				set(tendercreationlocators.SNuseradd, DatabaseComponent_UnderComponentPakage.formatUserInfo(pdfResultReport.testData.get("UserTenderApprover1")), "user1");
+				selectbyIndex(tendercreationlocators.approverTypeSN_old, 1);
+				selectbyIndex(tendercreationlocators.approverTypeSN_old, 1);
+				waitForElementToBeClickable(tendercreationlocators.approverTypeSN_old);
+				select(tendercreationlocators.approverTypeSN_old, pdfResultReport.testData.get("ApprovalType2"));
+				
+			}
+			else {
+				set(tendercreationlocators.SNuseradd, DatabaseComponent_UnderComponentPakage.formatUserInfo(pdfResultReport.testData.get("UserTenderApprover1")), "user1");
+				waitForElementToBeClickable(tendercreationlocators.approverTypeSN_old);
+				select(tendercreationlocators.approverTypeSN_old, pdfResultReport.testData.get("ApprovalType2"));
+			}
+		 
 			  
 			  documentNoSave();
 				waitForElementToBeClickable(tendercreationlocators.sendForApproval);
-				JSClick(tendercreationlocators.sendForApproval, "sendForApproval");	
+				JSClick(tendercreationlocators.sendForApproval, "sendForApproval");
+				waitForElementToBeClickable(By.xpath("//button[@class='btn add']"));
+				
 				pdfResultReport.addStepDetails("AddSingleUsersForSequentialApproval_SNWF_AfterRecall_Revert",
 						"AddSingleUsersForSequentialApproval_SNWF_AfterRecall_Revert should passed sucessfully",
 						"Successfully passed AddSingleUsersForSequentialApproval_SNWF_AfterRecall_Revert" + " ", "Pass", "Y");
@@ -11846,23 +12572,46 @@ catch (Exception e) {
 		try {
 			  log.info("started executing the method:: sendForApprovalProcess");
 			  //add approver
-			  waitForObj(1000);
-			  waitForElementToBeVisible(tendercreationlocators.adduserSN);
-			 
-			  click(tendercreationlocators.adduserSN, "add user SN");
-			  waitForElementToBeVisible(tendercreationlocators.SNuseradd);
-			 
-			  set(tendercreationlocators.SNuseradd, user, "user");
-			  waitForObj(500);
-			  select(tendercreationlocators.approverTypeSN, pdfResultReport.testData.get("ApprovalType1"));	
-			  
-			  
+			  scrollToElement(tendercreationlocators.userAdd_tender);
+				waitForElementToBeClickable(tendercreationlocators.userAdd_tender);
+				click(tendercreationlocators.userAdd_tender, "userAdd");
+				scrollToElement(tendercreationlocators.POuseradd);
+				 waitForElementToBeVisible(tendercreationlocators.POuseradd); 
+				  
+				 String xpath_AP = "//table[@id='approver']/tbody[1]/ tr[1]/td[3]/div[1]/select";
+					String xpath_Role = "//table[@id='approver']/tbody[1]/ tr[1]/td[4]/div[1]/select";
+					
+					String AP= "//*[@id='approver']/thead/tr/th[contains(normalize-space(text()),'Activity/Process')]";
+					boolean fielddisplay=isElementDisplayed_Updated(By.xpath(AP), 1);
+					if(fielddisplay==true) {
+						set(tendercreationlocators.POuseradd, DatabaseComponent_UnderComponentPakage.formatUserInfo(user), "user1");
+						selectbyIndex(tendercreationlocators.approverTypePO, 1);
+						selectbyIndex(tendercreationlocators.approverTypePO, 1);
+						select(tendercreationlocators.approverTypePO, pdfResultReport.testData.get("ApprovalType2"));
+						
+					}
+					else {
+						set(tendercreationlocators.POuseradd, DatabaseComponent_UnderComponentPakage.formatUserInfo(user), "user1");
+						select(tendercreationlocators.approverTypePO, pdfResultReport.testData.get("ApprovalType2"));
+					}
+	  
 			//send for approval
 				scrollToElement(tendercreationlocators.Btn_Forward_Indent);
 				waitForElementToBeClickable(tendercreationlocators.Btn_Forward_Indent);
 				click(tendercreationlocators.Btn_Forward_Indent, "Send for approval");
-				waitForElementToBeClickable(tendercreationlocators.recallSuccessSNPopup);
-				click(tendercreationlocators.recallSuccessSNPopup, "success");
+				waitForElementToBeClickable(tendercreationlocators.btnok);
+				click(tendercreationlocators.btnok, "btnok");
+			
+				if(isElementDisplayed_Updated(By.xpath("//div[contains(@class,'ngx-overlay')]"), 5))
+				{
+				if(	isElementDisplayed_Updated(By.xpath("//div[contains(@class,'ngx-overlay')]"), 2) &&
+					isElementEnable_Updated(By.xpath("//div[contains(@class,'ngx-overlay')]"), 2))
+				{
+					waitForElementToBeVisible(By.xpath("//div[contains(@class,'ngx-overlay')]"));
+					waitForElementToBeInvisible(By.xpath("//div[contains(@class,'ngx-overlay')]"));
+				}	
+				}
+
 				
 			  pdfResultReport.addStepDetails("sendForForwardSequential_Single_User_SNApprovalProcess",
 	                  "sendForForwardSequential_Single_User_SNApprovalProcess should pass",
@@ -11880,18 +12629,46 @@ catch (Exception e) {
 		
 	}
 
-	public void verifySNSatus(String string) {
+	public void verifySNSatus(String status) throws Exception {
 		try {
+			
+			if(status.equalsIgnoreCase("Cancelled")||status.equalsIgnoreCase("Deleted"))
+			{
+			click(tendercreationlocators.cancelledIndentTabSN, "cancel/delete tab");
+			String txt = text(tendercreationlocators.SNStatus_Delete_CancelledTab).trim();
+			if(txt.equalsIgnoreCase(status))
+			{
+				pdfResultReport.addStepDetails("Verify Indent status",
+						"Indent status should be "+status,
+						"Indent status is '"+txt+"' and successfully verified" + " ", "Pass", "Y");
+			}			
+			else {
+				pdfResultReport.addStepDetails("Verify indent status", "Should be able to verify indent status",
+						"Unable to verify indent status", "Fail", "N");
+			
+				}
+			}
+			
+			
 			log.info("started executing the method:: verifySNSatus");
+			String txt = text(tendercreationlocators.IndentStatus_ListPage).trim();
+			if(txt.equalsIgnoreCase(status))
 			
-			
+			pdfResultReport.addStepDetails("verifySNSatus",
+					"verify sn status",
+					"Successfully logged in as Sanction note  creator user " + " ", "Pass", "Y");
+			log.info("completed executing the method:: sanction_Creator_Login");
 		} catch (Exception e) {
-			// TODO: handle exception
+
+			log.fatal("Unable to login as sanction note creator user" + e.getMessage());
+			pdfResultReport.addStepDetails("Tsanction_Creator_Login",
+					"Sanction note  creator user must be login sucessfully",
+					"Unable to login as sanction note creator user" + e.getMessage(), "Fail", "N");
 		}
 		
 	}
 
-	public void poApproverLogin(String string) throws Exception {
+	public void ApproverLogin(String string) throws Exception {
 try {
 			
 			log.info("started executing the method:: sanction_Creator_Login");
@@ -11901,11 +12678,11 @@ try {
 			set(tendercreationlocators.password, pdfResultReport.testData.get("AppPassword"), "password");
 			waitForElementToBeClickable(tendercreationlocators.okButton);
 			click(tendercreationlocators.okButton, "okButton");
-			waitForElement(tendercreationlocators.dashboardIcon, 5000);
-
+			waitForElement(tendercreationlocators.dashboardIcon, 30);
 			pdfResultReport.addStepDetails("sanction_Creator_Login",
 					"Sanction note  creator user must be login sucessfully",
 					"Successfully logged in as Sanction note  creator user " + " ", "Pass", "Y");
+			
 			log.info("completed executing the method:: sanction_Creator_Login");
 		} catch (Exception e) {
 			log.fatal("Unable to login as sanction note creator user" + e.getMessage());
@@ -11922,36 +12699,84 @@ try {
 			  //add approver
 			  waitForElementToBeVisible(tendercreationlocators.adduserSN);
 			  click(tendercreationlocators.adduserSN, "add user SN");
-			  waitForElementToBeVisible(tendercreationlocators.SNuseradd);
+			  scrollToElement(tendercreationlocators.POuseradd);
+			  waitForElementToBeVisible(tendercreationlocators.POuseradd);
 			 
-			  set(tendercreationlocators.SNuseradd, pdfResultReport.testData.get("UserTenderApprover3"), "user");
-			  waitForObj(500);
-			  select(tendercreationlocators.approverTypeSN, pdfResultReport.testData.get("ApprovalType2"));	
-			  
+			//=========Role Activity and other Details===========================
+				String xpath_AP = "//table[@id='approver']/tbody[1]/ tr[1]/td[3]/div[1]/select";
+				String xpath_Role = "//table[@id='approver']/tbody[1]/ tr[1]/td[4]/div[1]/select";
+				
+				String AP= "//*[@id='approver']/thead/tr/th[contains(normalize-space(text()),'Activity/Process')]";
+				boolean fielddisplay=isElementDisplayed_Updated(By.xpath(AP), 1);
+				if(fielddisplay==true) {
+					set(tendercreationlocators.POuseradd, DatabaseComponent_UnderComponentPakage.formatUserInfo(pdfResultReport.testData.get("UserTenderApprover2")), "user1");
+					selectbyIndex(tendercreationlocators.approverTypePO, 1);
+					selectbyIndex(tendercreationlocators.approverTypePO, 1);
+					waitForElementToBeClickable(tendercreationlocators.approverTypePO);
+					select(tendercreationlocators.approverTypePO, pdfResultReport.testData.get("ApprovalType1"));
+					
+				}
+				else {
+					set(tendercreationlocators.POuseradd, DatabaseComponent_UnderComponentPakage.formatUserInfo(pdfResultReport.testData.get("UserTenderApprover2")), "user1");
+					waitForElementToBeClickable(tendercreationlocators.approverTypePO);
+					select(tendercreationlocators.approverTypePO, pdfResultReport.testData.get("ApprovalType1"));
+				}
+				
 			  //add approver
 			  waitForElementToBeVisible(tendercreationlocators.adduserSN);
 			  click(tendercreationlocators.adduserSN, "add user SN");
-			  waitForElementToBeVisible(tendercreationlocators.SNuseradd);
+			  waitForElementToBeVisible(tendercreationlocators.POuseradd);
 			 
-			  set(tendercreationlocators.SNuseradd, pdfResultReport.testData.get("UserTenderApprover4"), "user");
-			  waitForObj(500);
-			  select(tendercreationlocators.approverTypeSN, pdfResultReport.testData.get("ApprovalType2"));
-			  
+			//=========Role Activity and other Details===========================
+				System.out.println("approver(FIRST)"+DatabaseComponent_UnderComponentPakage.formatUserInfo(pdfResultReport.testData.get("UserTenderApprover3")));
+				if(fielddisplay==true) {
+					set(tendercreationlocators.POuseradd, DatabaseComponent_UnderComponentPakage.formatUserInfo(pdfResultReport.testData.get("UserTenderApprover3")), "user1");
+					selectbyIndex(tendercreationlocators.approverTypePO, 1);
+					selectbyIndex(tendercreationlocators.approverTypePO, 1);
+					waitForElementToBeClickable(tendercreationlocators.approverTypePO);
+					select(tendercreationlocators.approverTypePO, pdfResultReport.testData.get("ApprovalType1"));
+					
+				}
+				else {
+					set(tendercreationlocators.POuseradd, DatabaseComponent_UnderComponentPakage.formatUserInfo(pdfResultReport.testData.get("UserTenderApprover3")), "user1");
+					waitForElementToBeClickable(tendercreationlocators.approverTypePO);
+					select(tendercreationlocators.approverTypePO, pdfResultReport.testData.get("ApprovalType1"));
+				}
+
 			  //add approver
 			  waitForElementToBeVisible(tendercreationlocators.adduserSN);
 			  click(tendercreationlocators.adduserSN, "add user SN");
-			  waitForElementToBeVisible(tendercreationlocators.SNuseradd);
+			  waitForElementToBeVisible(tendercreationlocators.POuseradd);
 			 
-			  set(tendercreationlocators.SNuseradd, pdfResultReport.testData.get("UserTenderApprover5"), "user");
-			  waitForObj(500);
-			  select(tendercreationlocators.approverTypeSN, pdfResultReport.testData.get("ApprovalType2"));
-			  
-			  //co-ordinator , min approver		  
-			  waitForElementToBeClickable(tendercreationlocators.cordinatorPO);
-				set(tendercreationlocators.minimumApproverPO, pdfResultReport.testData.get("Min_Approver"), "minimum_Approver");
-			   waitForElementToBeClickable(tendercreationlocators.cordinatorPO);
-				click(tendercreationlocators.cordinatorPO, "parallel_Coordinator_Flag");
-				//Select minimum approver
+			//=========Role Activity and other Details===========================
+				
+				if(fielddisplay==true) {
+					set(tendercreationlocators.POuseradd, DatabaseComponent_UnderComponentPakage.formatUserInfo(pdfResultReport.testData.get("UserTenderApprover4")), "user1");
+					selectbyIndex(tendercreationlocators.approverTypePO, 1);
+					selectbyIndex(tendercreationlocators.approverTypePO, 1);
+					waitForElementToBeClickable(tendercreationlocators.approverTypePO);
+					select(tendercreationlocators.approverTypePO, pdfResultReport.testData.get("ApprovalType1"));
+					
+				}
+				else {
+					set(tendercreationlocators.POuseradd, DatabaseComponent_UnderComponentPakage.formatUserInfo(pdfResultReport.testData.get("UserTenderApprover4")), "user1");
+					waitForElementToBeClickable(tendercreationlocators.approverTypePO);
+					select(tendercreationlocators.approverTypePO, pdfResultReport.testData.get("ApprovalType1"));
+				}
+				
+				if(fielddisplay==true) {
+					 waitForElementToBeClickable(tendercreationlocators.cordinatorPO);
+						set(tendercreationlocators.minimumApproverPO1, pdfResultReport.testData.get("Min_Approver"), "minimum_Approver");
+					   waitForElementToBeClickable(tendercreationlocators.cordinatorPO);
+						click(tendercreationlocators.cordinatorPO, "parallel_Coordinator_Flag");
+				}
+				else {
+					 waitForElementToBeClickable(tendercreationlocators.cordinatorPO);
+						set(tendercreationlocators.minimumApproverPO, pdfResultReport.testData.get("Min_Approver"), "minimum_Approver");
+					   waitForElementToBeClickable(tendercreationlocators.cordinatorPO);
+						click(tendercreationlocators.cordinatorPO, "parallel_Coordinator_Flag");
+				}
+
 				
 				
 				//send for approval
@@ -11960,7 +12785,7 @@ try {
 				click(tendercreationlocators.Btn_Forward_Indent, "Send for approval");
 				waitForElementToBeClickable(tendercreationlocators.recall_ok_msg);
 				click(tendercreationlocators.recall_ok_msg,"success ok");
-		
+				
 				
 			  pdfResultReport.addStepDetails("sendForApprovalProcess",
 	                  "send for approval ",
@@ -11980,73 +12805,59 @@ try {
 	public void purchaseOrderEvaluationDecision(String decision) throws Throwable {
         try {
                log.info("started executing the method:: sanctionNoteEvaluationApprove");
-               if(decision=="approve") {
-        	   scrollToElement(tendercreationlocators.sanctionNoteEvaluationApprove);
-               JSClick(tendercreationlocators.sanctionNoteEvaluationApprove, "sanctionNoteEvaluationApprove");
-               /*
-               // comment on 03-03-24 by @AD
-               waitForElementToBeClickable(tendercreationlocators.sanctionNoteEvaluationApprove);
-               click(tendercreationlocators.sanctionNoteEvaluationApprove, "sanctionNoteEvaluationApprove");
-               */
-               waitForObj(2000);
-               waitForElementToBeVisible(tendercreationlocators.approveConfirm);
-               click(tendercreationlocators.approveConfirm, "approveConfirm");
-               waitForElementToBeClickable(tendercreationlocators.Okbtn);
-               click(tendercreationlocators.Okbtn, "approveOk");
+               if(decision=="approve") 
+               {
+        	   scrollToElement(tendercreationlocators.SendBtn);
+        	   JSClick(tendercreationlocators.SendBtn, "sanctionNoteEvaluationApprove");
+               click(tendercreationlocators.confirmButton, "approveOk");
+               waitForElementToBeClickable(tendercreationlocators.BtnOk);
+               click(tendercreationlocators.BtnOk, "approveOk");
+               
+               if(isElementDisplayed_Updated(By.xpath("//div[contains(@class,'ngx-overlay')]"), 5))
+   			{
+   			if(	isElementDisplayed_Updated(By.xpath("//div[contains(@class,'ngx-overlay')]"), 2) &&
+   				isElementEnable_Updated(By.xpath("//div[contains(@class,'ngx-overlay')]"), 2))
+   			{
+   				waitForElementToBeVisible(By.xpath("//div[contains(@class,'ngx-overlay')]"));
+   				waitForElementToBeInvisible(By.xpath("//div[contains(@class,'ngx-overlay')]"));
+   			}	
+   			}
+               
                }
-               else if(decision=="revert back to approver") {
-            	   scrollToElement(tendercreationlocators.sanctionNoteEvaluationReview);
-                   JSClick(tendercreationlocators.sanctionNoteEvaluationReview, "sanctionNoteEvaluationReview");
+               else if(decision=="Review Back to Previous Approver") {
+            	   scrollToElement(tendercreationlocators.SendBaackBtn);
+                   JSClick(tendercreationlocators.SendBaackBtn, "sanctionNoteEvaluationReview");
                    /*
                    // comment on 03-03-24 by @AD
                    waitForElementToBeClickable(tendercreationlocators.sanctionNoteEvaluationReview);
                      click(tendercreationlocators.sanctionNoteEvaluationReview, "sanctionNoteEvaluationApprove");
                      */
-                   waitForObj(2000);
-                   waitForElementToBeVisible(tendercreationlocators.approveConfirm);
-                     click(tendercreationlocators.approveConfirm, "approveConfirm");
                      waitForElementToBeClickable(tendercreationlocators.backToPreviousApprover);
                      click(tendercreationlocators.backToPreviousApprover, "revert back to approver");
-                     waitForElementToBeClickable(tendercreationlocators.Okbtn);
-                     click(tendercreationlocators.Okbtn, "approveOk");
+                     waitForElementToBeVisible(tendercreationlocators.confirmButton);
+                       click(tendercreationlocators.confirmButton, "approveConfirm");
+                     waitForElementToBeClickable(tendercreationlocators.BtnOk);
+                     click(tendercreationlocators.BtnOk, "approveOk");
                }
                else if(decision=="forward") {
-                   /*  
-                   // comment on 03-03-24 by @AD
-            	   waitForElementToBeClickable(tendercreationlocators.sanctionNoteEvaluationApprove);
-                     click(tendercreationlocators.sanctionNoteEvaluationApprove, "sanctionNoteEvaluationApprove");
-                     waitForElementToBeClickable(tendercreationlocators.approveConfirm);
-                     click(tendercreationlocators.approveConfirm, "sanctionNoteEvaluationApprove");
-                     waitForElementToBeClickable(tendercreationlocators.ForwardTheSNWorkflow);
-                     click(tendercreationlocators.ForwardTheSNWorkflow, "forward to next person");
-                     */
-            	   scrollToElement(tendercreationlocators.sanctionNoteEvaluationApprove);
-                   JSClick(tendercreationlocators.sanctionNoteEvaluationApprove, "sanctionNoteEvaluationApprove");
-                   waitForElementToBeVisible(tendercreationlocators.approveConfirm);
-                   click(tendercreationlocators.approveConfirm, "sanctionNoteEvaluationApprove");
+            	   scrollToElement(tendercreationlocators.SendBtn);
+                   JSClick(tendercreationlocators.SendBtn, "sanctionNoteEvaluationApprove");
                    waitForElementToBeClickable(tendercreationlocators.ForwardTheSNWorkflow);
                    click(tendercreationlocators.ForwardTheSNWorkflow, "forward to next person");
+                   
             	   
-                     //send for approval
                      }
-               else if (decision=="revert back to creator") {
-            	   scrollToElement(tendercreationlocators.sanctionNoteEvaluationReview);
-                   JSClick(tendercreationlocators.sanctionNoteEvaluationReview, "sanctionNoteEvaluationReview");
-            	   /*
-            	   // comment on 03-03-24 by @AD
-            	   waitForElementToBeVisible(tendercreationlocators.sanctionNoteEvaluationReview);
-                   click(tendercreationlocators.sanctionNoteEvaluationReview, "sanctionNoteEvaluationApprove");
-                  */
-                   waitForObj(2000);
-                   waitForElementToBeVisible(tendercreationlocators.approveConfirm);
-                   click(tendercreationlocators.approveConfirm, "approveConfirm");
+               else if (decision=="Review Back to Creator") {
+            	   scrollToElement(tendercreationlocators.SendBaackBtn);
+                   JSClick(tendercreationlocators.SendBaackBtn, "sanctionNoteEvaluationReview");
                    waitForElementToBeClickable(tendercreationlocators.BackToCreator);
                    click(tendercreationlocators.BackToCreator, "revert back to creator");
-                   waitForElementToBeClickable(tendercreationlocators.Okbtn);
-                   click(tendercreationlocators.Okbtn, "approveOk");
+                   waitForElementToBeVisible(tendercreationlocators.confirmButton);
+                   click(tendercreationlocators.confirmButton, "approveConfirm");
+                   waitForElementToBeClickable(tendercreationlocators.BtnOk);
+                   click(tendercreationlocators.BtnOk, "approveOk");
 			}
                
-               waitForObj(5000);
               
                pdfResultReport.addStepDetails("sanctionNoteEvaluationApprove",
                             "sanction Note Evaluation must be approve sucessfully ",
@@ -12071,17 +12882,15 @@ try {
 			} else {
 				click(tendercreationlocators.Userdefined_po, "Userdefined_po");
 			}
-
-			waitForObj(2000);
-			set(tendercreationlocators.poComments, pdfResultReport.testData.get("UserDefinedApprover-Comments"),
+			set(tendercreationlocators.poComments, "Need Approval",
 					"comments");
 			if(ThreadLocalWebdriver.getDriver().findElements(tendercreationlocators.NoOfIndentRowinApproval).size()!= 0)
 			{
 				List<WebElement> iRows = ThreadLocalWebdriver.getDriver().findElements(tendercreationlocators.NoOfIndentRowinApproval);
 				int iRowCount = iRows.size();
 				for(int i=1;i<=iRowCount;i++)
-				{
-					waitForObj(1000);
+				{	
+					waitForElementToBeClickable(tendercreationlocators.cancelUser1_Indent);
 					click(tendercreationlocators.cancelUser1_Indent, "cancelUser1_Indent");
 				}
 			}
@@ -12091,84 +12900,175 @@ try {
 			 waitForElementToBeVisible(tendercreationlocators.userAdd_Indent);
 			 click(tendercreationlocators.userAdd_Indent, "addButtonPO");
 			  waitForElementToBeVisible(tendercreationlocators.POuseradd); 
-			  set(tendercreationlocators.POuseradd, pdfResultReport.testData.get("UserTenderApprover1"), "user");
-			  waitForObj(500);
-			  select(tendercreationlocators.approverTypePO, pdfResultReport.testData.get("ApprovalType2"));	
-			
+			//=========Role Activity and other Details===========================
+				String xpath_AP = "//table[@id='approver']/tbody[1]/ tr[1]/td[3]/div[1]/select";
+				String xpath_Role = "//table[@id='approver']/tbody[1]/ tr[1]/td[4]/div[1]/select";
+				
+				String AP= "//*[@id='approver']/thead/tr/th[contains(normalize-space(text()),'Activity/Process')]";
+				boolean fielddisplay=isElementDisplayed_Updated(By.xpath(AP), 1);
+				if(fielddisplay==true) {
+					set(tendercreationlocators.POuseradd, DatabaseComponent_UnderComponentPakage.formatUserInfo(pdfResultReport.testData.get("UserTenderApprover1")), "user1");
+					selectbyIndex(tendercreationlocators.approverTypePO, 1);
+					selectbyIndex(tendercreationlocators.approverTypePO, 1);
+					select(tendercreationlocators.approverTypePO, pdfResultReport.testData.get("ApprovalType1"));
+					
+				}
+				else {
+					set(tendercreationlocators.POuseradd, DatabaseComponent_UnderComponentPakage.formatUserInfo(pdfResultReport.testData.get("UserTenderApprover1")), "user1");
+					select(tendercreationlocators.approverTypePO, pdfResultReport.testData.get("ApprovalType1"));
+				}
 			//approver 2 parallel
 			  waitForElementToBeVisible(tendercreationlocators.userAdd_Indent);
 				 click(tendercreationlocators.userAdd_Indent, "addButtonPO");
 			  waitForElementToBeVisible(tendercreationlocators.POuseradd); 
-			  set(tendercreationlocators.POuseradd, pdfResultReport.testData.get("UserTenderApprover2"), "user");
-			  waitForObj(500);
-			  select(tendercreationlocators.approverTypePO, pdfResultReport.testData.get("ApprovalType2"));	
-			
+			//=========Role Activity and other Details===========================
+				
+				if(fielddisplay==true) {
+					set(tendercreationlocators.POuseradd, DatabaseComponent_UnderComponentPakage.formatUserInfo(pdfResultReport.testData.get("UserTenderApprover2")), "user1");
+					selectbyIndex(tendercreationlocators.approverTypePO, 1);
+					selectbyIndex(tendercreationlocators.approverTypePO, 1);
+					select(tendercreationlocators.approverTypePO, pdfResultReport.testData.get("ApprovalType1"));
+					
+				}
+				else {
+					set(tendercreationlocators.POuseradd, DatabaseComponent_UnderComponentPakage.formatUserInfo(pdfResultReport.testData.get("UserTenderApprover2")), "user1");
+					select(tendercreationlocators.approverTypePO, pdfResultReport.testData.get("ApprovalType1"));
+				}
+				
 			//approver 3 parallel
 			  waitForElementToBeVisible(tendercreationlocators.userAdd_Indent);
 				 click(tendercreationlocators.userAdd_Indent, "addButtonPO");
 			  waitForElementToBeVisible(tendercreationlocators.POuseradd); 
-			  set(tendercreationlocators.POuseradd, pdfResultReport.testData.get("UserTenderApprover3"), "user");
-			  waitForObj(500);
-			  select(tendercreationlocators.approverTypePO, pdfResultReport.testData.get("ApprovalType2"));	
-			  
-			  
-			  //co-ordinator , min approver
-			  waitForElementToBeClickable(tendercreationlocators.parallelApproverminPO);
-				set(tendercreationlocators.parallelApproverminPO, pdfResultReport.testData.get("Min_Approver"), "minimum_Approver");
-			   waitForElementToBeClickable(tendercreationlocators.cordinatorPOclick);
-				click(tendercreationlocators.cordinatorPOclick, "parallel_Coordinator_Flag");
+			//=========Role Activity and other Details===========================
+				
+				if(fielddisplay==true) {
+					set(tendercreationlocators.POuseradd, DatabaseComponent_UnderComponentPakage.formatUserInfo(pdfResultReport.testData.get("UserTenderApprover3")), "user1");
+					selectbyIndex(tendercreationlocators.approverTypePO, 1);
+					selectbyIndex(tendercreationlocators.approverTypePO, 1);
+					select(tendercreationlocators.approverTypePO, pdfResultReport.testData.get("ApprovalType1"));
+					
+				}
+				else {
+					set(tendercreationlocators.POuseradd, DatabaseComponent_UnderComponentPakage.formatUserInfo(pdfResultReport.testData.get("UserTenderApprover3")), "user1");
+					select(tendercreationlocators.approverTypePO, pdfResultReport.testData.get("ApprovalType1"));
+				}
+				
+				  //co-ordinator , min approver
+				if(fielddisplay==true) {
+					 waitForElementToBeClickable(tendercreationlocators.Coordinator3User);
+						set(tendercreationlocators.minimumApproverPO1, pdfResultReport.testData.get("Min_Approver"), "minimum_Approver");
+					   waitForElementToBeClickable(tendercreationlocators.Coordinator3User);
+						click(tendercreationlocators.Coordinator3User, "parallel_Coordinator_Flag");
+				}
+				else {
+					 waitForElementToBeClickable(tendercreationlocators.Coordinator3User);
+						set(tendercreationlocators.parallelApproverminPO, pdfResultReport.testData.get("Min_Approver"), "minimum_Approver");
+					   waitForElementToBeClickable(tendercreationlocators.Coordinator3User);
+						click(tendercreationlocators.Coordinator3User, "parallel_Coordinator_Flag");
+				}
+				
+			
+			 
 				
 				//approver 1 sequential
 				 waitForElementToBeVisible(tendercreationlocators.userAdd_Indent);
 				 click(tendercreationlocators.userAdd_Indent, "addButtonPO");
 				  waitForElementToBeVisible(tendercreationlocators.POuseradd); 
-				  set(tendercreationlocators.POuseradd, pdfResultReport.testData.get("UserTenderApprover4"), "user");
-				  waitForObj(500);
-				  select(tendercreationlocators.approverTypePO, pdfResultReport.testData.get("ApprovalType1"));	
-				
+				//=========Role Activity and other Details===========================
+					
+					if(fielddisplay==true) {
+						set(tendercreationlocators.POuseradd, DatabaseComponent_UnderComponentPakage.formatUserInfo(pdfResultReport.testData.get("UserTenderApprover4")), "user1");
+						selectbyIndex(tendercreationlocators.approverTypePO, 1);
+						selectbyIndex(tendercreationlocators.approverTypePO, 1);
+						select(tendercreationlocators.approverTypePO, pdfResultReport.testData.get("ApprovalType2"));
+						
+					}
+					else {
+						set(tendercreationlocators.POuseradd, DatabaseComponent_UnderComponentPakage.formatUserInfo(pdfResultReport.testData.get("UserTenderApprover4")), "user1");
+						select(tendercreationlocators.approverTypePO, pdfResultReport.testData.get("ApprovalType2"));
+					}
+					
 				//approver 2 sequential
 				  waitForElementToBeVisible(tendercreationlocators.userAdd_Indent);
 					 click(tendercreationlocators.userAdd_Indent, "addButtonPO");
 					  waitForElementToBeVisible(tendercreationlocators.POuseradd); 
-					  set(tendercreationlocators.POuseradd, pdfResultReport.testData.get("UserTenderApprover5"), "user");
-					  waitForObj(500);
-					  select(tendercreationlocators.approverTypePO, pdfResultReport.testData.get("ApprovalType1"));	
-					  
+					//=========Role Activity and other Details===========================
+						
+						if(fielddisplay==true) {
+							set(tendercreationlocators.POuseradd, DatabaseComponent_UnderComponentPakage.formatUserInfo(pdfResultReport.testData.get("UserTenderApprover5")), "user1");
+							selectbyIndex(tendercreationlocators.approverTypePO, 1);
+							selectbyIndex(tendercreationlocators.approverTypePO, 1);
+							select(tendercreationlocators.approverTypePO, pdfResultReport.testData.get("ApprovalType2"));
+							
+						}
+						else {
+							set(tendercreationlocators.POuseradd, DatabaseComponent_UnderComponentPakage.formatUserInfo(pdfResultReport.testData.get("UserTenderApprover5")), "user1");
+							select(tendercreationlocators.approverTypePO, pdfResultReport.testData.get("ApprovalType2"));
+						}
+						
 					//approver 3 sequential
 					  waitForElementToBeVisible(tendercreationlocators.userAdd_Indent);
 						 click(tendercreationlocators.userAdd_Indent, "addButtonPO");
 						  waitForElementToBeVisible(tendercreationlocators.POuseradd); 
-						  set(tendercreationlocators.POuseradd, pdfResultReport.testData.get("UserTenderApprover6"), "user");
-						  waitForObj(500);
-						  select(tendercreationlocators.approverTypePO, pdfResultReport.testData.get("ApprovalType1"));	
-						  
-						  
+						//=========Role Activity and other Details===========================
+							
+							if(fielddisplay==true) {
+								set(tendercreationlocators.POuseradd, DatabaseComponent_UnderComponentPakage.formatUserInfo(pdfResultReport.testData.get("UserTenderApprover6")), "user1");
+								selectbyIndex(tendercreationlocators.approverTypePO, 1);
+								selectbyIndex(tendercreationlocators.approverTypePO, 1);
+								select(tendercreationlocators.approverTypePO, pdfResultReport.testData.get("ApprovalType2"));
+								
+							}
+							else {
+								set(tendercreationlocators.POuseradd, DatabaseComponent_UnderComponentPakage.formatUserInfo(pdfResultReport.testData.get("UserTenderApprover6")), "user1");
+								select(tendercreationlocators.approverTypePO, pdfResultReport.testData.get("ApprovalType2"));
+							}
+							
 						//approver 4 sequential
 						  waitForElementToBeVisible(tendercreationlocators.userAdd_Indent);
 							 click(tendercreationlocators.userAdd_Indent, "addButtonPO");
 							  waitForElementToBeVisible(tendercreationlocators.POuseradd); 
-							  set(tendercreationlocators.POuseradd, pdfResultReport.testData.get("UserTenderApprover7"), "user");
-							  waitForObj(500);
-							  select(tendercreationlocators.approverTypePO, pdfResultReport.testData.get("ApprovalType1"));	
-			  
+							//=========Role Activity and other Details===========================
+								
+								if(fielddisplay==true) {
+									set(tendercreationlocators.POuseradd, DatabaseComponent_UnderComponentPakage.formatUserInfo(pdfResultReport.testData.get("UserTenderApprover7")), "user1");
+									selectbyIndex(tendercreationlocators.approverTypePO, 1);
+									selectbyIndex(tendercreationlocators.approverTypePO, 1);
+									select(tendercreationlocators.approverTypePO, pdfResultReport.testData.get("ApprovalType2"));
+									
+								}
+								else {
+									set(tendercreationlocators.POuseradd, DatabaseComponent_UnderComponentPakage.formatUserInfo(pdfResultReport.testData.get("UserTenderApprover7")), "user1");
+									select(tendercreationlocators.approverTypePO, pdfResultReport.testData.get("ApprovalType2"));
+								}
 							//approver 5 sequential
 							  waitForElementToBeVisible(tendercreationlocators.userAdd_Indent);
 								 click(tendercreationlocators.userAdd_Indent, "addButtonPO");
 								  waitForElementToBeVisible(tendercreationlocators.POuseradd); 
-								  set(tendercreationlocators.POuseradd, pdfResultReport.testData.get("UserTenderApprover8"), "user");
-								  waitForObj(500);
-								  select(tendercreationlocators.approverTypePO, pdfResultReport.testData.get("ApprovalType1"));	
-								  
-						
-								  JSClick(tendercreationlocators.Btn_SendforApproval_Indent, "sendForApprovalSubmit");
+								//=========Role Activity and other Details===========================
 									
-									waitForElementToBeVisible(tendercreationlocators.poOrder);
+									if(fielddisplay==true) {
+										set(tendercreationlocators.POuseradd, DatabaseComponent_UnderComponentPakage.formatUserInfo(pdfResultReport.testData.get("UserTenderApprover8")), "user1");
+										selectbyIndex(tendercreationlocators.approverTypePO, 1);
+										selectbyIndex(tendercreationlocators.approverTypePO, 1);
+										select(tendercreationlocators.approverTypePO, pdfResultReport.testData.get("ApprovalType2"));
+										
+									}
+									else {
+										set(tendercreationlocators.POuseradd, DatabaseComponent_UnderComponentPakage.formatUserInfo(pdfResultReport.testData.get("UserTenderApprover8")), "user1");
+										select(tendercreationlocators.approverTypePO, pdfResultReport.testData.get("ApprovalType2"));
+									}
+									click(tendercreationlocators.coordinatorSeq, "coordinator");
+									waitForElementToBeClickable(tendercreationlocators.Btn_SendforApproval_Indent);
+								 click(tendercreationlocators.Btn_SendforApproval_Indent, "sendForApprovalSubmit");
+								 
+								
+								waitForElementToBeClickable(tendercreationlocators.confirmPOSaveMsg);
 									//IsElementPresent(tendercreationlocators.poSubmitMsg);
 									click(tendercreationlocators.confirmPOSaveMsg, "POSUccessMsg");
-									
-									waitForElementToBeVisible(tendercreationlocators.myPOTab);
-								
-									waitForObj(2000);
+									dynamic_Loader(tendercreationlocators.loadingLocator, 2);
+									waitForElementToBeVisible(tendercreationlocators.orderListPage);
+
 									 pdfResultReport.addStepDetails("AddMultipleUsersForSequentialParallelApproval_PO_WF",
 					                            "Po send for approval should pass ",
 					                            "Successfully passed AddMultipleUsersForSequentialParallelApproval_PO_WF" + " ", "Pass", "Y");
@@ -12184,13 +13084,24 @@ catch (Exception e) {
 }
 
 	public void editPO() throws Exception {
+		try {
 		log.info("started executing the method:: editPO");
 		waitForElementToBeClickable(tendercreationlocators.order_list_action_button);
 		click(tendercreationlocators.order_list_action_button, "action");
 		waitForElementToBeClickable(tendercreationlocators.editOrder);
 		click(tendercreationlocators.editOrder, "edit order");
+		dynamic_Loader(tendercreationlocators.loadingLocator, 2);
+		  pdfResultReport.addStepDetails("editPO",
+                  "editPO should pass",
+                  "editPO passed" + " ", "Pass", "Y");
+     log.info("completed executing the method:: editPO");
 		
-		
+	} catch (Exception e) {
+		log.fatal("Unable to perform editPO" + e.getMessage());
+        pdfResultReport.addStepDetails("editPO",
+                     "editPO should pass",
+                     "editPO not passed " + e.getMessage(), "Fail", "N");
+	}
 	}
 	
 	
@@ -12198,22 +13109,36 @@ catch (Exception e) {
 		try {
 			  log.info("started executing the method:: sendForApprovalProcess");
 			  //add approver
+			  dynamic_Loader(tendercreationlocators.loadingLocator, 2);
+			  waitForElementToBeClickable(tendercreationlocators.userAdd_tender);
+				click(tendercreationlocators.userAdd_tender, "userAdd");
+				scrollToElement(tendercreationlocators.POuseradd);
+				 waitForElementToBeVisible(tendercreationlocators.POuseradd); 
 			  
-			  waitForElementToBeVisible(tendercreationlocators.adduserSN);
-			  click(tendercreationlocators.adduserSN, "add user SN");
-			  waitForElementToBeVisible(tendercreationlocators.SNuseradd);
-			 
-			  set(tendercreationlocators.SNuseradd, user, "user");
-			  waitForObj(500);
-			  select(tendercreationlocators.approverTypeSN, pdfResultReport.testData.get("ApprovalType1"));	
-			  
+			  String xpath_AP = "//table[@id='approver']/tbody[1]/ tr[1]/td[3]/div[1]/select";
+				String xpath_Role = "//table[@id='approver']/tbody[1]/ tr[1]/td[4]/div[1]/select";
+				
+				String AP= "//*[@id='approver']/thead/tr/th[contains(normalize-space(text()),'Activity/Process')]";
+				boolean fielddisplay=isElementDisplayed_Updated(By.xpath(AP), 1);
+				if(fielddisplay==true) {
+					set(tendercreationlocators.POuseradd, DatabaseComponent_UnderComponentPakage.formatUserInfo(user), "user1");
+					selectbyIndex(tendercreationlocators.approverTypePO, 1);
+					selectbyIndex(tendercreationlocators.approverTypePO, 1);
+					select(tendercreationlocators.approverTypePO, pdfResultReport.testData.get("ApprovalType2"));
+					
+				}
+				else {
+					set(tendercreationlocators.POuseradd, DatabaseComponent_UnderComponentPakage.formatUserInfo(user), "user1");
+					select(tendercreationlocators.approverTypePO, pdfResultReport.testData.get("ApprovalType2"));
+				}
+
 			  
 			//send for approval
 				scrollToElement(tendercreationlocators.Btn_Forward_Indent);
 				waitForElementToBeClickable(tendercreationlocators.Btn_Forward_Indent);
 				click(tendercreationlocators.Btn_Forward_Indent, "Send for approval");
-				waitForElementToBeClickable(tendercreationlocators.recallSuccessSNPopup);
-				click(tendercreationlocators.recallSuccessSNPopup, "success");
+				waitForElementToBeClickable(tendercreationlocators.BtnOk);
+				click(tendercreationlocators.BtnOk, "success");
 				
 				
 			  pdfResultReport.addStepDetails("sendForForwardSequential_Single_User_PO_ApprovalProcess",
@@ -12310,40 +13235,94 @@ catch (Exception e) {
 		try {
 			  log.info("started executing the method:: sendForForwardSequentialTenderApprovalProcess");
 			  //add approver
-			  waitForElementToBeVisible(tendercreationlocators.adduserSN);
-			  click(tendercreationlocators.adduserSN, "add user SN");
-			  waitForElementToBeVisible(tendercreationlocators.SNuseradd);
+			  waitForElementToBeClickable(tendercreationlocators.userAdd_tender);
+			  click(tendercreationlocators.userAdd_tender, "add user SN");
+			  scrollToElement(tendercreationlocators.POuseradd);
+			  waitForElementToBeVisible(tendercreationlocators.POuseradd);
 			 
-			  set(tendercreationlocators.SNuseradd, pdfResultReport.testData.get("UserTenderApprover6"), "user");
-			  waitForObj(500);
-			  select(tendercreationlocators.approverTypeSN, pdfResultReport.testData.get("ApprovalType2"));	
-			  
-			  //add approver
-			  waitForElementToBeVisible(tendercreationlocators.adduserSN);
-			  click(tendercreationlocators.adduserSN, "add user SN");
-			  waitForElementToBeVisible(tendercreationlocators.SNuseradd);
-			 
-			  set(tendercreationlocators.SNuseradd, pdfResultReport.testData.get("UserTenderApprover7"), "user");
-			  waitForObj(500);
-			  select(tendercreationlocators.approverTypeSN, pdfResultReport.testData.get("ApprovalType2"));
-			  
-			  //add approver
-			  waitForElementToBeVisible(tendercreationlocators.adduserSN);
-			  click(tendercreationlocators.adduserSN, "add user SN");
-			  waitForElementToBeVisible(tendercreationlocators.SNuseradd);
-			 
-			  set(tendercreationlocators.SNuseradd, pdfResultReport.testData.get("UserTenderApprover8"), "user");
-			  waitForObj(500);
-			  select(tendercreationlocators.approverTypeSN, pdfResultReport.testData.get("ApprovalType2"));
-			  
+			//=========Role Activity and other Details===========================
+				String xpath_AP = "//table[@id='approver']/tbody[1]/ tr[1]/td[3]/div[1]/select";
+				String xpath_Role = "//table[@id='approver']/tbody[1]/ tr[1]/td[4]/div[1]/select";
 				
+				String AP= "//*[@id='approver']/thead/tr/th[contains(normalize-space(text()),'Activity/Process')]";
+				boolean fielddisplay=isElementDisplayed_Updated(By.xpath(AP), 1);
+				if(fielddisplay==true) {
+					set(tendercreationlocators.POuseradd, DatabaseComponent_UnderComponentPakage.formatUserInfo(pdfResultReport.testData.get("UserTenderApprover6")), "user1");
+					selectbyIndex(tendercreationlocators.approverTypePO, 1);
+					selectbyIndex(tendercreationlocators.approverTypePO, 1);
+					waitForElementToBeClickable(tendercreationlocators.approverTypePO);
+					select(tendercreationlocators.approverTypePO, pdfResultReport.testData.get("ApprovalType2"));
+					
+				}
+				else {
+					set(tendercreationlocators.POuseradd, DatabaseComponent_UnderComponentPakage.formatUserInfo(pdfResultReport.testData.get("UserTenderApprover6")), "user1");
+					waitForElementToBeClickable(tendercreationlocators.approverTypePO);
+					select(tendercreationlocators.approverTypePO, pdfResultReport.testData.get("ApprovalType2"));
+				}
+			  
+			  //add approver
+			  waitForElementToBeVisible(tendercreationlocators.userAdd_tender);
+			  click(tendercreationlocators.userAdd_tender, "add user SN");
+			  waitForElementToBeVisible(tendercreationlocators.POuseradd);
+			 
+			  
+			//=========Role Activity and other Details===========================
+	
+				if(fielddisplay==true) {
+					set(tendercreationlocators.POuseradd, DatabaseComponent_UnderComponentPakage.formatUserInfo(pdfResultReport.testData.get("UserTenderApprover7")), "user1");
+					selectbyIndex(tendercreationlocators.approverTypePO, 1);
+					selectbyIndex(tendercreationlocators.approverTypePO, 1);
+					waitForElementToBeClickable(tendercreationlocators.approverTypePO);
+					select(tendercreationlocators.approverTypePO, pdfResultReport.testData.get("ApprovalType2"));
+					
+				}
+				else {
+					set(tendercreationlocators.POuseradd, DatabaseComponent_UnderComponentPakage.formatUserInfo(pdfResultReport.testData.get("UserTenderApprover7")), "user1");
+					waitForElementToBeClickable(tendercreationlocators.approverTypePO);
+					select(tendercreationlocators.approverTypePO, pdfResultReport.testData.get("ApprovalType2"));
+				}
+			  
+			  //add approver
+			  waitForElementToBeVisible(tendercreationlocators.userAdd_tender);
+			  click(tendercreationlocators.userAdd_tender, "add user SN");
+			  waitForElementToBeVisible(tendercreationlocators.POuseradd);
+			 
+			  
+			//=========Role Activity and other Details===========================
+		
+				if(fielddisplay==true) {
+					set(tendercreationlocators.POuseradd, DatabaseComponent_UnderComponentPakage.formatUserInfo(pdfResultReport.testData.get("UserTenderApprover8")), "user1");
+					selectbyIndex(tendercreationlocators.approverTypePO, 1);
+					selectbyIndex(tendercreationlocators.approverTypePO, 1);
+					waitForElementToBeClickable(tendercreationlocators.approverTypePO);
+					select(tendercreationlocators.approverTypePO, pdfResultReport.testData.get("ApprovalType2"));
+					
+				}
+				else {
+					set(tendercreationlocators.POuseradd, DatabaseComponent_UnderComponentPakage.formatUserInfo(pdfResultReport.testData.get("UserTenderApprover8")), "user1");
+					waitForElementToBeClickable(tendercreationlocators.approverTypePO);
+					select(tendercreationlocators.approverTypePO, pdfResultReport.testData.get("ApprovalType2"));
+				}
 				
 				//send for approval
 				scrollToElement(tendercreationlocators.Btn_Forward_Indent);
 				waitForElementToBeClickable(tendercreationlocators.Btn_Forward_Indent);
 				click(tendercreationlocators.Btn_Forward_Indent, "Send for approval");
+				waitForElementToBeClickable(tendercreationlocators.BtnOk);
+				click(tendercreationlocators.BtnOk, "Send for approval");
 				
-			
+				if(isElementDisplayed_Updated(By.xpath("//div[contains(@class,'ngx-overlay')]"), 3))
+				{
+				if(	isElementDisplayed_Updated(By.xpath("//div[contains(@class,'ngx-overlay')]"), 2) &&
+					isElementEnable_Updated(By.xpath("//div[contains(@class,'ngx-overlay')]"), 2))
+				{
+					waitForElementToBeVisible(By.xpath("//div[contains(@class,'ngx-overlay')]"));
+					waitForElementToBeInvisible(By.xpath("//div[contains(@class,'ngx-overlay')]"));
+				}	
+				}
+
+				waitForElementToBeVisible(tendercreationlocators.Tenderlink_approver_tender);
+				
 				
 			  pdfResultReport.addStepDetails("sendForForwardSequentialTenderApprovalProcess",
 	                  "sendForForwardSequentialTenderApprovalProcess should pass",
@@ -12413,40 +13392,1053 @@ catch (Exception e) {
 		
 	}
 
-	/*
+	public void validateSNData() throws Exception {
+		try {
+			  log.info("started executing the method:: validateSNData");
+			  waitForElementToBeClickable(tendercreationlocators.new_action_button);
+			  click(tendercreationlocators.new_action_button, "action");
+			  waitForElementToBeClickable(tendercreationlocators.viewSanction);
+			  click(tendercreationlocators.viewSanction, "view sanction");
+			  waitForElementToBeVisible(tendercreationlocators.tenderIdInSanctionPreview);
+			 universalNormalWait();
+			  isElementTextPresent(tendercreationlocators.suppierNameSNPreview, "CTS");
+			  isElementTextPresent(tendercreationlocators.tenderIdInSanctionPreview, tenderReferenceNoLocatorText_sn);
+			  isElementTextPresent(tendercreationlocators.TenderDescriptionSNPreview,pdfResultReport.testData.get("Indent_Geninfo_Desc") );
+			  scrollToElement(tendercreationlocators.pacSNPreview);
+			  isElementTextPresent(tendercreationlocators.pacSNPreview,"256,800.00" );
+			  scrollToElement(tendercreationlocators.boqQty1SNPreview);
+			  isElementTextPresent(tendercreationlocators.boqQty1SNPreview,"200.00" );
+			  scrollToElement(tendercreationlocators.boqQty2SNPreview);
+			  isElementTextPresent(tendercreationlocators.boqQty2SNPreview,"200.00" );
+			  scrollToElement(tendercreationlocators.rfqQty1SNPreview);
+			  isElementTextPresent(tendercreationlocators.rfqQty1SNPreview,"200.00" );
+			  scrollToElement(tendercreationlocators.rfqQty2SNPreview);
+			  isElementTextPresent(tendercreationlocators.rfqQty2SNPreview,"200.00" );
+			  
+			  scrollToElement(tendercreationlocators.ClauseSubClauseNoSNPreview);
+			  isElementTextPresent(tendercreationlocators.ClauseSubClauseNoSNPreview,pdfResultReport.testData.get("ClauseNo_TermsAndConditions_TG1") );
+			  isElementTextPresent(tendercreationlocators.ClauseSubClauseTitleSNPreview,pdfResultReport.testData.get("ClauseHeader_TermsAndConditions_TG1") );
+			  
+			  scrollToElement(tendercreationlocators.TCClauseSubClauseNoSNPreview);
+			  isElementTextPresent(tendercreationlocators.TCClauseSubClauseNoSNPreview,pdfResultReport.testData.get("ClauseNo_TG1TechnicalSpecificationTab") );
+			  isElementTextPresent(tendercreationlocators.TCClauseSubClauseTitleSNPreview,pdfResultReport.testData.get("ClauseHeaderTitle_TG1TechnicalSpecificationTab") );
+			   
+			waitForElementToBeClickable(tendercreationlocators.indentByPreviewclosebutton);
+			click(tendercreationlocators.indentByPreviewclosebutton, "close");
+			  
+			  pdfResultReport.addStepDetails("validateSNData",
+	                  "validateSNData should pass",
+	                  "validateSNData passed" + " ", "Pass", "Y");
+	     log.info("completed executing the method:: validateSNData");
+			  
+			  
+	}
+		catch (Exception e) {
+			log.fatal("Unable to perform validateSNData" + e.getMessage());
+	        pdfResultReport.addStepDetails("validateSNData",
+	                     "validateSNData should pass",
+	                     "validateSNData not passed " + e.getMessage(), "Fail", "N");
+		}
+	}
+		
+	
 	public void validatePOPreviewDetails() throws Exception {
 		try {
 			  log.info("started executing the method:: validatePOPreviewDetails");
+		
+			//General Information preview tab validation 
+		try {
+			  log.info("started executing the method:: general info po tab validation");
+			  //header validation
 			  waitForElementToBeClickable(tendercreationlocators.order_list_action_button);
 			  click(tendercreationlocators.order_list_action_button, "action");
-			  waitForElementToBeClickable(tendercreationlocators.viewOrderbutton);
-			  click(tendercreationlocators.viewOrderbutton, "view order");
-			  
+			  waitForElementToBeClickable(tendercreationlocators.ViewOrder);
+			  click(tendercreationlocators.ViewOrder, "view order");
+			  universalNormalWait();
 			  waitForElementToBeVisible(tendercreationlocators.poOrderNoPreview);
 			  isElementTextPresent(tendercreationlocators.poOrderNoPreview,poDocNum);
 			  isElementTextPresent(tendercreationlocators.OrderRefNoPreview,poReference);
-			  isElementTextPresent(tendercreationlocators.OrderValuePreview,ordervalue);
-			  isElementTextPresent(tendercreationlocators.OrderTypePreview,POType);
-			  isElementTextPresent(tendercreationlocators.TenderIDPreview,eTenderComponent.getDataFromPropertiesFile_New("tenderId"));
-			  isElementTextPresent(tendercreationlocators.TenderCategoryPreview,POCategory);
-			  isElementTextPresent(tendercreationlocators.OrderCreationDatePreview,PODate);
-			  isElementTextPresent(tendercreationlocators.ContractCompletionDeliveryStartDatePreview,POstartdate);
-			  isElementTextPresent(tendercreationlocators.ContractCompletionDeliveryEndDatePreview,POExpirydate);
-			  isElementTextPresent(tendercreationlocators.OrderCreatorNamePreview,POCreatorName);
-			  isElementTextPresent(tendercreationlocators.AmendedPreview,POAmendmentflagCreate);
+			  isElementTextPresent(tendercreationlocators.TenderIDPOPreview,eTenderComponent.getDataFromPropertiesFile_New("tenderId"));
+			  isElementTextPresent(tendercreationlocators.AmendedPreview,"No");
 
-			
+			  //shipping details 
+			  waitForObj(500);
+			  scrollToElement(tendercreationlocators.shipToPreview);
+			  isElementTextPresent(tendercreationlocators.shipToPreview,"Kolkata");
+			  isElementTextPresent(tendercreationlocators.billToPreview,"Finance Manager");
+			  
+			  //Details On LD & Performance Security
+			  waitForObj(500);
+			  scrollToElement(tendercreationlocators.LD_ApplicablePreview);
+			  isElementTextPresent(tendercreationlocators.LD_ApplicablePreview, "Yes");
+			  isElementTextPresent(tendercreationlocators.LD_Applicable_For_DelayPreview, "10.00");
+			  isElementTextPresent(tendercreationlocators.LD_Applicable_For_Non_PerformancePreview, "20.00");
+			  isElementTextPresent(tendercreationlocators.Frequency_of_LD_Calculated_For_DelayPreview, "Per Week");		
+			  isElementTextPresent(tendercreationlocators.Frequency_of_LD_Calculated_For_Non_PerformancePreview, "Per Week");
+			  isElementTextPresent(tendercreationlocators.Maximum_LD_Applicable_for_This_CasePreview, "10.00");
+			  isElementTextPresent(tendercreationlocators.Performance_Security_ApplicablePreview, "Yes");
+			  isElementTextPresent(tendercreationlocators.Performance_Security_Applicable_PercentagePreview, "10.00");
+			  
+			  //Details Of MSME & MII
+			  
+			  waitForObj(500);
+			  scrollToElement(tendercreationlocators.MSME_Claimed_StatusPreview);
+			  isElementTextPresent(tendercreationlocators.MSME_Claimed_StatusPreview, "Yes");
+			  isElementTextPresent(tendercreationlocators.Type_EnterprisePreview, "Small");
+			  isElementTextPresent(tendercreationlocators.Social_Ownership_CategoryPreview, "General");
+			  isElementTextPresent(tendercreationlocators.MII_Claimed_StatusPreview, "Yes");
+			  isElementTextPresent(tendercreationlocators.Type_SupplierPreview, "Class-I");
+			  
+			  
+				pdfResultReport.addStepDetails("general infor po tab data validation", "general infor po tab data validation shoild pass",
+						"Successfully pass general infor po tab data validation" + " ", "Pass", "Y");
+
+				log.info("completed executing the method:: EPS_PO_Submission");
 			}
+			catch (Exception e) {
+				log.fatal("Unable to validate general infor po tab data validation" + e.getMessage());
+				pdfResultReport.addStepDetails("general infor po tab data validation", "general infor po tab data validation shoild pass",
+						"Unable to  validate general info po tab data validation shoild pass" + e.getMessage(), "Fail", "N");
+			}
+			  
+			  //Details of Item
+		try {
+			log.info("started executing the method:: detail of item tab validation");
+			  click(tendercreationlocators.DetailsofItemPOPreviewTab, "Detail of Item tab");
+			  waitForObj(1000);
+			  
+			  
+			  pdfResultReport.addStepDetails("Details of Item po tab data validation", "Details of Item po tab data validation shoild pass",
+						"Successfully pass Details of Item po tab data validation" + " ", "Pass", "Y");
+
+				log.info("completed executing the method:: detail of item tab validation");
+			}	
+				catch (Exception e) {
+					log.fatal("Unable to perform Details of Item preview tab" + e.getMessage());
+			        pdfResultReport.addStepDetails("Details of Item po tab data validation",
+			                     "Details of Item po tab data validation shoild pass",
+			                     "Details of Item not passed " + e.getMessage(), "Fail", "N");
+				}
+
+		
+		  //Details of service
+			try {
+				log.info("started executing the method:: detail of service tab validation");
+				  click(tendercreationlocators.DetailsofServicePOPreviewTab, "Detail of service tab");
+				  waitForObj(1000);
+				  
+				  
+				  pdfResultReport.addStepDetails("Details of service po tab data validation", "Details of service po tab data validation shoild pass",
+							"Successfully pass Details of Item po tab data validation" + " ", "Pass", "Y");
+
+					log.info("completed executing the method:: detail of service tab validation");
+				}	
+					catch (Exception e) {
+						log.fatal("Unable to perform Details of service preview tab" + e.getMessage());
+				        pdfResultReport.addStepDetails("Details of service po tab data validation",
+				                     "Details of service po tab data validation shoild pass",
+				                     "Details of service not passed " + e.getMessage(), "Fail", "N");
+					}
+			
+			 //other Price attribute
+			try {
+				log.info("started executing the method:: other Price attribute tab validation");
+				  click(tendercreationlocators.otherPriceAttributePOPreviewTab, "other Price attribute tab");
+				  waitForObj(1000);
+				  
+				  
+				  pdfResultReport.addStepDetails("other Price attribute po tab data validation", "other Price attribute po tab data validation shoild pass",
+							"Successfully pass other Price attribute po tab data validation" + " ", "Pass", "Y");
+
+					log.info("completed executing the method:: other Price attribute tab validation");
+				}	
+					catch (Exception e) {
+						log.fatal("Unable to perform other Price attribute preview tab" + e.getMessage());
+				        pdfResultReport.addStepDetails("other Price attribute po tab data validation",
+				                     "other Price attribute po tab data validation shoild pass",
+				                     "other Price attribute not passed " + e.getMessage(), "Fail", "N");
+					}
+			
+			//Vendor Information
+			try {
+				log.info("started executing the method:: Vendor Information tab validation");
+				  click(tendercreationlocators.VendorInformationPOPreviewTab, "Vendor Information tab");
+				  waitForObj(1000);
+				  isElementTextPresent(tendercreationlocators.Supplier_GSTINPreview, "GTSIN12345678");
+				  
+				  pdfResultReport.addStepDetails("Vendor Information po tab data validation", "Vendor Information po tab data validation shoild pass",
+							"Successfully pass Vendor Information po tab data validation" + " ", "Pass", "Y");
+
+					log.info("completed executing the method:: Vendor Information tab validation");
+				}	
+					catch (Exception e) {
+						log.fatal("Unable to perform other Price attribute preview tab" + e.getMessage());
+				        pdfResultReport.addStepDetails("Vendor Information po tab data validation",
+				                     "Vendor Information po tab data validation shoild pass",
+				                     "Vendor Information not passed " + e.getMessage(), "Fail", "N");
+					}
+			
+			//Terms and condition
+			try {
+				log.info("started executing the method:: Terms and condition tab validation");
+				  click(tendercreationlocators.TermsandconditionPOPreviewTab, "Terms and condition tab");
+				  waitForObj(1000);
+				  isElementTextPresent(tendercreationlocators.termsandconditionDescriptionPreview, "TermsConditions_Description");
+				  
+				  pdfResultReport.addStepDetails("Terms and condition po tab data validation", "Terms and condition po tab data validation shoild pass",
+							"Successfully pass Terms and condition po tab data validation" + " ", "Pass", "Y");
+
+					log.info("completed executing the method:: Terms and condition tab validation");
+				}	
+					catch (Exception e) {
+						log.fatal("Unable to perform Terms and condition preview tab" + e.getMessage());
+				        pdfResultReport.addStepDetails("Terms and condition po tab data validation",
+				                     "Terms and condition po tab data validation shoild pass",
+				                     "Terms and condition not passed " + e.getMessage(), "Fail", "N");
+					}
+		
+			//Technical Specification
+			try {
+				log.info("started executing the method:: Technical Specification tab validation");
+				  click(tendercreationlocators.TechnicalSpecificationPOPreviewTab, "Technical Specification tab");
+				  waitForObj(1000);
+				  isElementTextPresent(tendercreationlocators.TechnicalSpecification_DescriptionPreview, "TechnicalSpecification_Description");
+				  
+				  pdfResultReport.addStepDetails("Technical Specification po tab data validation", "Technical Specification po tab data validation shoild pass",
+							"Successfully pass Technical Specification po tab data validation" + " ", "Pass", "Y");
+
+					log.info("completed executing the method:: Technical Specification tab validation");
+				}	
+					catch (Exception e) {
+						log.fatal("Unable to perform Technical Specification preview tab" + e.getMessage());
+				        pdfResultReport.addStepDetails("Technical Specification po tab data validation",
+				                     "Technical Specification po tab data validation shoild pass",
+				                     "Technical Specification not passed " + e.getMessage(), "Fail", "N");
+					}
+		
+			//Technical Specification
+			try {
+				log.info("started executing the method:: Technical Specification tab validation");
+				  click(tendercreationlocators.TechnicalSpecificationPOPreviewTab, "Technical Specification tab");
+				  waitForObj(1000);
+				  isElementTextPresent(tendercreationlocators.TechnicalSpecification_DescriptionPreview, "TechnicalSpecification_Description");
+				  
+				  pdfResultReport.addStepDetails("Technical Specification po tab data validation", "Technical Specification po tab data validation shoild pass",
+							"Successfully pass Technical Specification po tab data validation" + " ", "Pass", "Y");
+
+					log.info("completed executing the method:: Technical Specification tab validation");
+				}	
+					catch (Exception e) {
+						log.fatal("Unable to perform Technical Specification preview tab" + e.getMessage());
+				        pdfResultReport.addStepDetails("Technical Specification po tab data validation",
+				                     "Technical Specification po tab data validation shoild pass",
+				                     "Technical Specification not passed " + e.getMessage(), "Fail", "N");
+					}
+		click(tendercreationlocators.nextButtonpoPreview, "next button");
+		
+		//attachment
+		try {
+			log.info("started executing the method:: attachment tab validation");
+			  click(tendercreationlocators.attachmentPOPreviewTab, "attachment tab");
+			  waitForObj(1000);
+			  isElementTextPresent(tendercreationlocators.AttachmentsLabelPreview, "PO Attachment");
+			  isFileDownloadAndValidation(tendercreationlocators.attachmentdownloadiconPOPreview, "rfqCreation.xlsx", "rfqCreation.xlsx");
+			  pdfResultReport.addStepDetails("attachment po tab data validation", "attachment po tab data validation shoild pass",
+						"Successfully pass attachment po tab data validation" + " ", "Pass", "Y");
+
+				log.info("completed executing the method:: attachment tab validation");
+			}	
+				catch (Exception e) {
+					log.fatal("Unable to perform attachment preview tab" + e.getMessage());
+			        pdfResultReport.addStepDetails("attachment po tab data validation",
+			                     "attachment po tab data validation shoild pass",
+			                     "attachment not passed " + e.getMessage(), "Fail", "N");
+				}
+		waitForObj(1000);
+		waitForElementToBeClickable(tendercreationlocators.closetenderpreview);
+		click(tendercreationlocators.closetenderpreview, "close");
+		
+		}
+	
+		
+		catch (Exception e) {
+			log.fatal("Unable to perform validatePOPreviewDetails tab" + e.getMessage());
+	        pdfResultReport.addStepDetails("validatePOPreviewDetails data validation",
+	                     "validatePOPreviewDetails shoild pass",
+	                     "validatePOPreviewDetails not passed " + e.getMessage(), "Fail", "N");
+		}
+		
+	}
+
+	public void amendSN() throws Exception {
+		try {
+			log.info("started executing the method:: amendSN");
+			
+			waitForElementToBeClickable(tendercreationlocators.action_New);
+			click(tendercreationlocators.action_New, "action");
+			waitForElementToBeClickable(tendercreationlocators.amendSN);
+			click(tendercreationlocators.amendSN, "amend Sn");
+			waitForElementToBeVisible(tendercreationlocators.amendReason);
+			waitForObj(1000);
+			set(tendercreationlocators.amendReason, "need to be change", "amend reason");
+			set(tendercreationlocators.amendattachment,
+					System.getProperty("user.dir") + "\\MediaFiles\\rfqCreation.xlsx", "fileName");
+			universalWait();
+			waitForElementToBeClickable(tendercreationlocators.ameendSNSubmit);
+			click(tendercreationlocators.ameendSNSubmit, "amend sn submit");
+		
+			pdfResultReport.addStepDetails("amendSN",
+					"sn creator should perform amend SN",
+					"Successfully performed amend SN"
+							+ " ",
+					"Pass", "Y");
+
+			log.info("completed executing the method:: amendSN");
+		} catch (Exception e) {
+			log.fatal("Unable to perform amend SN"
+					+ e.getMessage());
+			pdfResultReport.addStepDetails("amendSN",
+					"sn creator should perform amend SN",
+					"unable to performed amend SN"
+							+ e.getMessage(),
+					"Fail", "N");
+		}
+		
+	}
+
+	public void assignAmendItems(String items) throws Exception {
+		try {
+			log.info("started executing the method:: assignAmendItems");
+			waitForObj(1000);
+			click(tendercreationlocators.Biddername, "plusIcon_L1");
+			waitForObj(1000);
+			scrollToElement(tendercreationlocators.boqCheckbox);
+			waitForObj(1000);
+			clear(tendercreationlocators.boqQty, "qty");
+			set(tendercreationlocators.boqQty, items, "qty");
+			
+			
+		
+			pdfResultReport.addStepDetails("assignAmendItems",
+					"assign amend items should provided",
+					"Successfully provided amend items"
+							+ " ",
+					"Pass", "Y");
+
+			log.info("completed executing the method:: assignAmendItems");
+		} catch (Exception e) {
+			log.fatal("Unable to assignAmendItems"
+					+ e.getMessage());
+			pdfResultReport.addStepDetails("assignAmendItems",
+					"assign amend items should provided",
+					"uable to provided amend items"
+							+ e.getMessage(),
+					"Fail", "N");
+		}
+		
+	}
+
+	public void amendPO() throws Exception {
+		
+		try {
+			log.info("started executing the method:: amendPO");
+			
+			waitForElementToBeClickable(tendercreationlocators.new_action_button);
+			click(tendercreationlocators.new_action_button, "action");
+			waitForElementToBeClickable(tendercreationlocators.amendPO);
+			click(tendercreationlocators.amendPO, "amend PO");
+			waitForElementToBeVisible(tendercreationlocators.POamendReason);
+			waitForObj(1000);
+			set(tendercreationlocators.POamendReason, "need to be changed", "amend reason");
+//			set(tendercreationlocators.amendattachment,
+//					System.getProperty("user.dir") + "\\MediaFiles\\rfqCreation.xlsx", "fileName");
+			waitForElementToBeClickable(tendercreationlocators.ameendPOSubmit);
+			click(tendercreationlocators.ameendPOSubmit, "amend po submit");
+			universalWait();
+			pdfResultReport.addStepDetails("amendPO",
+					"sn creator should perform amend PO",
+					"Successfully performed amend PO"
+							+ " ",
+					"Pass", "Y");
+
+			log.info("completed executing the method:: amendPO");
+		} catch (Exception e) {
+			log.fatal("Unable to perform amend SN"
+					+ e.getMessage());
+			pdfResultReport.addStepDetails("amendPO",
+					"sn creator should perform amend PO",
+					"unable to performed amend PO"
+							+ e.getMessage(),
+					"Fail", "N");
+		}
+		
+	}
+
+	public void clickOnSnStage() throws Throwable {
+		JSClick(tendercreationlocators.SN_stage, "SN_stage");
+		//checkPageIsReady();
+		universalNormalWait();
+		waitForElementToBeVisible(tendercreationlocators.createNotesheetIcon);
+
+		
+	}
+
+	public void validateItemInPOPreview() throws Exception {
+		try {
+			log.info("started executing the method:: validateItemInPOPreview");
+			waitForElementToBeClickable(tendercreationlocators.new_action_button);
+			click(tendercreationlocators.new_action_button, "action");
+			waitForElementToBeClickable(tendercreationlocators.ViewOrder);
+			click(tendercreationlocators.ViewOrder, "view order");
+			waitForElementToBeClickable(tendercreationlocators.DetailsofItemPOPreviewTab);
+			waitForObj(2000);
+			  click(tendercreationlocators.DetailsofItemPOPreviewTab, "Detail of Item tab");
+			waitForObj(1000);
+			scrollToElement(tendercreationlocators.amendqtyInPo);
+			waitForObj(1000);
+		if(	text(tendercreationlocators.amendqtyInPo).equals("100.00"))
+		{
+			pdfResultReport.addStepDetails("amend item qty",
+					"amend item qty should matched",
+					"Successfully matched amend item qty"
+							+ " ",
+					"Pass", "Y");
+		}
+		
+			click(tendercreationlocators.indentByPreviewclosebutton, "close");
+			waitForObj(1000);
+			pdfResultReport.addStepDetails("validateItemInPOPreview",
+					"should matched qty in po item preview",
+					"Successfully matched po preview amend item"
+							+ " ",
+					"Pass", "Y");
+
+			log.info("completed executing the method:: validateItemInPOPreview");
+		} catch (Exception e) {
+			log.fatal("Unable to perform validateItemInPOPreview"
+					+ e.getMessage());
+			pdfResultReport.addStepDetails("validateItemInPOPreview",
+					"should matched qty in po item preview",
+					"d item in po preview not matched"
+							+ e.getMessage(),
+					"Fail", "N");
+		}
+		
+	}
+
+	public void validateAmendSNItem() throws Exception {
+		try {
+			log.info("started executing the method:: validateItemInPOPreview");
+			waitForElementToBeClickable(tendercreationlocators.new_action_button);
+			click(tendercreationlocators.new_action_button, "action");
+			waitForElementToBeClickable(tendercreationlocators.viewSanction);
+			click(tendercreationlocators.viewSanction, "view SN");
+			waitForElementToBeVisible(tendercreationlocators.tenderIdInSanctionPreview);
+			waitForObj(1000);
+			scrollToElement(tendercreationlocators.amendItemSNPreview);
+			waitForObj(1000);
+		if(	text(tendercreationlocators.amendItemSNPreview).equals("100.00"))
+		{
+			pdfResultReport.addStepDetails("amend item qty",
+					"amend item qty should matched",
+					"Successfully matched amend item qty"
+							+ " ",
+					"Pass", "Y");
+		}
+		
+			click(tendercreationlocators.indentByPreviewclosebutton, "close");
+			waitForObj(1000);
+			pdfResultReport.addStepDetails("validateAmendSNItem",
+					"should matched qty in Sn item preview",
+					"Successfully matched SN preview amend item"
+							+ " ",
+					"Pass", "Y");
+
+			log.info("completed executing the method:: validateAmendSNItem");
+		} catch (Exception e) {
+			log.fatal("Unable to perform validateAmendSNItem"
+					+ e.getMessage());
+			pdfResultReport.addStepDetails("validateAmendSNItem",
+					"should matched qty in SN item preview",
+					"d item in SN preview not matched"
+							+ e.getMessage(),
+					"Fail", "N");
+		}
+		
+	}
+
+	public void repeatOrder() throws Exception {
+		try {
+			log.info("started executing the method:: validateItemInPOPreview");
+			waitForElementToBeClickable(tendercreationlocators.new_action_button);
+			click(tendercreationlocators.new_action_button, "action");
+			waitForElementToBeClickable(tendercreationlocators.repeatOrderPO);
+			click(tendercreationlocators.repeatOrderPO, "repeat order");
+			waitForElementToBeClickable(tendercreationlocators.cancelOkSuccess);
+			click(tendercreationlocators.cancelOkSuccess, "confirm");
+		waitForElementToBeVisible(tendercreationlocators.repeatOrdersuccessMsg);
+		String msg=text(tendercreationlocators.repeatOrdersuccessMsg).trim();
+		String[] words= msg.split(":");
+	   String repeatOrderNo= words[1].trim();
+		
+	   
+	   waitForElementToBeClickable(tendercreationlocators.typeAnyKeyword_Pending);
+		clear(tendercreationlocators.typeAnyKeyword_Pending, "Clear the po no search field");
+		set(tendercreationlocators.typeAnyKeyword_Pending, repeatOrderNo, "po no search field");
+		IsElementPresent(tendercreationlocators.poDraftStatus);
+
+		waitForObj(2000);
+	   
+	   
+			pdfResultReport.addStepDetails("validateAmendSNItem",
+					"should matched qty in Sn item preview",
+					"Successfully matched SN preview amend item"
+							+ " ",
+					"Pass", "Y");
+
+			log.info("completed executing the method:: validateAmendSNItem");
+		} catch (Exception e) {
+			log.fatal("Unable to perform validateAmendSNItem"
+					+ e.getMessage());
+			pdfResultReport.addStepDetails("validateAmendSNItem",
+					"should matched qty in SN item preview",
+					"d item in SN preview not matched"
+							+ e.getMessage(),
+					"Fail", "N");
+		}
+		
+	}
+	
+	public void validateSNMailAfterSendForApproval() throws Throwable {
+		try {
+		String arr[]= {"197","195"};
+			log.info("started executing the method:: validateMailAfterSendForApproval");
+			for (int i = 0; i < arr.length; i++) {
+				if (text(tendercreationlocators.mailTableBody).contains(arr[i])) {
+					pdfResultReport.addStepDetails("validateMailAfterSendForApproval", "EventId Matching",
+							"All eventID matched" + " ", "Pass", "Y");
+					log.info("completed executing the method:: validateMailAfterSendForApproval");
+			}
+	
+			
+				pdfResultReport.addStepDetails("validateMailAfterSendForApproval", "EventId Matching",
+						"Successfully matched event ID and count" + " ", "Pass", "Y");
+				log.info("completed executing the method:: nevigateToMailDetails");
 			
 				
-				catch (Exception e) {
-					log.fatal("Unable to perform validatePOPreviewDetails" + e.getMessage());
-			        pdfResultReport.addStepDetails("validatePOPreviewDetails",
-			                     "validatePOPreviewDetails should pass",
-			                     "validatePOPreviewDetails not passed " + e.getMessage(), "Fail", "N");
+			}
+		
+		
+			
+			pdfResultReport.addStepDetails("nevigateToMailDetails", "Mail should trigger to respective user",
+					"Successfully triggered to respective user" + " ", "Pass", "Y");
+			log.info("completed executing the method:: validateMailAfterSendForApproval");
+
+		} catch (Exception e) {
+			log.fatal("Unable to mail details" + e.getMessage());
+			pdfResultReport.addStepDetails("nevigateToMailDetails", "Mail Details should ",
+					"Unable to nevigate Mail Details" + e.getMessage(), "Fail", "N");
+		}
+		
+		
+	}
+	public void navigateToPOList() throws Throwable {
+		try {
+			log.info("started executing the method:: navigateToPOList");
+			JSClick(tendercreationlocators.mainMenuIconSub, "MenuIcon");
+			String Order="//a[text()='Order']";
+			String allOrder="//a/span[contains(text(), 'All Orders')]";
+			mouseOver(By.xpath(Order));
+			waitForElementToBeClickable(By.xpath(allOrder));
+			click(By.xpath(allOrder), "poList");
+			dynamic_Loader(tendercreationlocators.loadingLocator, 2);
+			pdfResultReport.addStepDetails("Navigate to PO List", "PO list must be navigated successfully",
+					"Successfully navigated to PO list" + " ", "Pass", "Y");
+			log.info("completed executing the method:: navigateToPOList");
+
+		} catch (Exception e) {
+			log.fatal("Unable to navigate to the PO list" + e.getMessage());
+			pdfResultReport.addStepDetails("Navigate to PO List", "Not able to navigate to the PO list",
+					"Unable to navigate to the PO list" + e.getMessage(), "Fail", "N");
+		}
+	}
+	public void CreatePOfromSN(String snNUmber, String poTG) throws Throwable {
+		try {
+			log.info("started executing the method:: CreatePOfromSN");
+			String CreatePOButton="//*[@data-icon='plus']";
+			String selectOrigin="//select[@id='floatingSelectGrid']";
+			String searchSN="//input[@name='searchTerm']";
+			String menu="//td[contains(text(),'"+snNUmber+"')]/following-sibling::td[6]/div/button";
+			String createPOoption="//a[text()='Create Order']";
+			String selectPOTG="//select[@name='selectedTemplateGroupId']";
+			String grabQueryPOParameter=null;
+			if(!poTG.equalsIgnoreCase("")) {
+				grabQueryPOParameter="//option[contains(text(), '"+poTG+"')]";
+			}
+			else {
+				grabQueryPOParameter="//select[@name='selectedTemplateGroupId']/option[@selected='selected']/following-sibling::option[1]";	
+			}
+			String selectSupplier="//select[@id='venderView']";
+			dynamic_Loader(tendercreationlocators.loadingLocator, 2);
+		//	waitForElementToBeClickable(By.xpath(CreatePOButton));
+			if(isElementEnable_Updated(By.xpath(CreatePOButton), 10)==true && isElementDisplayed_Updated(By.xpath(CreatePOButton), 10))
+			{click(By.xpath(CreatePOButton), "Create PO");}
+			waitForElementToBeClickable(By.xpath(selectOrigin));
+			select(By.xpath(selectOrigin), "Sanction Note");
+			set(By.xpath(searchSN), snNUmber, "Enter SN number in search box");
+			waitForElementToBeClickable(By.xpath(menu));
+			click(By.xpath(menu), "Click on menu button");
+			waitForElementToBeClickable(By.xpath(createPOoption));
+			click(By.xpath(createPOoption), "Create PO from SN");
+			dynamic_Loader(tendercreationlocators.loadingLocator, 2);
+			waitForElementToBeClickable(By.xpath(selectPOTG));
+			String QueryPOParameter = ThreadLocalWebdriver.getDriver().findElement(By.xpath(grabQueryPOParameter)).getAttribute("value");
+			Dynamicity.updateDataIntoPropertyFile("queryPOparam", QueryPOParameter, filePath_4);
+			selectbyvalue(By.xpath(selectPOTG), QueryPOParameter);
+			supOrgID=ThreadLocalWebdriver.getDriver().findElement(By.xpath("//select[@name='supplierName']/option[@selected='selected']/following-sibling::option[1]")).getAttribute("value");DatabaseComponent.uc();
+			String supplierValue = Dynamicity.getDataFromPropertiesFile("Supplier", filePath_4);
+            String[] suppliers = supplierValue.split(",\\s*");
+            int index = Arrays.asList(suppliers).indexOf(supOrgID);
+            String supplierPValue = Dynamicity.getDataFromPropertiesFile("Supplier_Password", filePath_4);
+            String[] suppliersP = supplierPValue.split(",\\s*");
+            String password=suppliersP[index];
+			Dynamicity.updateDataIntoPropertyFile("Supplier",supOrgID, filePath_4);
+			Dynamicity.updateDataIntoPropertyFile("Supplier_Password",password, filePath_4);
+			selectbyIndex(By.xpath(selectSupplier), 1);
+			dynamicity.templateGroupDetails_PO(QueryPOParameter);
+			if(!Dynamicity.getDataFromPropertiesFile("poTemplate", filePath_4).equalsIgnoreCase(Dynamicity.getDataFromPropertiesFile("poTemplate", filePath_6))) {
+				dynamicity.fetchAllFieldNames_PO();
+				}
+			else {
+				if(Dynamicity.getDataFromPropertiesFile("FirstTimeRun", filePath_4).equalsIgnoreCase("Yes")) {
+					dynamicity.fetchAllFieldNames_PO();
 				}
 			}
-			*/
-}
+			pdfResultReport.addStepDetails("Create PO from SN", "Create PO from SN successfully",
+					"Successfully Create PO from SN" + " ", "Pass", "Y");
+			log.info("completed executing the method:: Create PO from SN");
+
+		} catch (Exception e) {
+			log.fatal("Unable to Create PO from SN" + e.getMessage());
+			pdfResultReport.addStepDetails("Create PO from SN", "Not able to CreatePOfromSN",
+					"Unable to Create PO from SN" + e.getMessage(), "Fail", "N");
+		}
+	}
+
+	public void createFreshPO() throws Throwable {
+		try {
+			log.info("started executing the method:: navigateToPOList");
+			String CreatePOButton="//*[@data-icon='plus']";
+			String selectOrigin="//select[@id='floatingSelectGrid']";
+			String templategroup="//select[@name='templateGroup']";
+			
+			if (isElementDisplayed_Updated(By.xpath("//div[@class='ngx-overlay loading-foreground']"), 2)==true) {
+				waitForElementToBeVisible(By.xpath("//div[@class='ngx-overlay loading-foreground']"));
+				waitForElementToBeInvisible(By.xpath("//div[@class='ngx-overlay loading-foreground']"));			
+			}
+			
+			
+			waitForElementToBeClickable(By.xpath(CreatePOButton));
+			click(By.xpath(CreatePOButton), "Create PO");
+//			universalNormalWait();
+			waitForElementToBeClickable(By.xpath(selectOrigin));
+			select(By.xpath(selectOrigin), "Fresh PO");
+//			waitForObj(1500);
+			waitForElementToBeClickable(By.xpath(templategroup));
+			select(By.xpath(templategroup), eTenderComponent.getDataFromPropertiesFile_New("freshPOtemplate"));
+//			waitForObj(2000);
+			//=================================
+			File f = new File(System.getProperty("user.dir")+"\\MediaFiles\\PoCreation.xlsx");
+			String absolute = f.getAbsolutePath();
+
+			StringSelection sel = new StringSelection(absolute);
+			Toolkit.getDefaultToolkit().getSystemClipboard().setContents(sel, null);
+			System.out.println("selection" + sel);
+			ThreadLocalWebdriver.getDriver()
+					.findElement(By.xpath("//input[@upload-event='uploadPo']/parent::button"))
+					.click();
+			Thread.sleep(5000);
+
+			Robot robot = new Robot();
+			Thread.sleep(2000);
+
+			robot.keyPress(KeyEvent.VK_CONTROL);
+			robot.keyPress(KeyEvent.VK_V);
+
+			robot.keyRelease(KeyEvent.VK_V);
+			robot.keyRelease(KeyEvent.VK_CONTROL);
+			Thread.sleep(3000);
+			robot.keyPress(KeyEvent.VK_ENTER);
+			robot.keyRelease(KeyEvent.VK_ENTER);
+			Thread.sleep(5000);
+			//=================================
+			//set(tendercreationlocators.uploadPO, System.getProperty("user.dir") + "\\MediaFiles\\PoCreation.xlsx", "upload po");
+			waitForElementToBeClickable(tendercreationlocators.BtnOk);
+			click(tendercreationlocators.BtnOk, "success Ok");
+			
+			waitForElementToBeClickable(tendercreationlocators.poattachmentTab);
+			click(tendercreationlocators.poattachmentTab, "poattachmentTab");
+			waitForElementToBeClickable(tendercreationlocators.addIconPoAttachments);
+			click(tendercreationlocators.addIconPoAttachments, "addIconPo");
+			waitForObj(500);
+			set(tendercreationlocators.labelAttachmentPO, "a1", "tendercreationlocators");
+			set(tendercreationlocators.fileNamePO, "fileNamePO", "fileNamePO");
+			set(tendercreationlocators.attachmentPO, System.getProperty("user.dir") + "\\MediaFiles\\rfqCreation.xlsx", "upload attachment");
+			universalNormalWait();
+			
+			pdfResultReport.addStepDetails("Navigate to PO List", "PO list must be navigated successfully",
+					"Successfully navigated to PO list" + " ", "Pass", "Y");
+			log.info("completed executing the method:: navigateToPOList");
+
+		} catch (Exception e) {
+			log.fatal("Unable to navigate to the PO list" + e.getMessage());
+			pdfResultReport.addStepDetails("Navigate to PO List", "Not able to navigate to the PO list",
+					"Unable to navigate to the PO list" + e.getMessage(), "Fail", "N");
+		}
+	}
+
+	public void validatePrintPreview() throws Exception {
+		try {
+			log.info("started executing the method:: validatePrintPreview");
+		
+			waitForElementToBeClickable(tendercreationlocators.order_list_action_button);
+			click(tendercreationlocators.order_list_action_button, "action");
+			String printPreview="//a[contains(text(),'Print Preview')]";
+			waitForElementToBeClickable(By.xpath(printPreview));
+			click(By.xpath(printPreview),"print preview");
+			dynamic_Loader(tendercreationlocators.loadingLocator, 2);
+			waitForObj(3000);
+			String POPribtPreviewText="//h5[contains(text(),'PO Print Preview')]";
+			if(IsElementPresentBoolean(By.xpath(POPribtPreviewText))==true)
+			{
+				
+				pdfResultReport.addStepDetails("Successfully to open print preview", "Successfully to open print preview",
+						"Successfully to open print preview" + " ", "Pass", "Y");
+				
+			}
+			else {
+				log.fatal("Unable to open print preview" );
+				pdfResultReport.addStepDetails("ERROR MESSAGE due to unable to open print preview", "ERROR MESSAGE due to unable to open print preview",
+						"Successfully ERROR MESSAGE due to unable to open print preview" + " ", "Fail", "N");
+			}
+			waitForObj(3000);
+			click(tendercreationlocators.indentByPreviewclosebutton, "indentByPreviewclosebutton");
+			pdfResultReport.addStepDetails("Successfully to open print preview", "Successfully to open print preview",
+					"Successfully to open print preview" + " ", "Pass", "Y");
+			log.info("completed executing the method:: validatePrintPreview");
+
+		} catch (Exception e) {
+			log.fatal("unable to open print preview" + e.getMessage());
+			pdfResultReport.addStepDetails("unable toopen print preview", "unable toopen print preview",
+					"unable toopen print preview" + e.getMessage(), "Fail", "N");
+		}
+		
+		
+	}
+
+	public void searchPO() throws Exception {
+		try {
+			log.info("started executing the method:: searchPO");
+			set(tendercreationlocators.Txt_TypeanyKeyword_Indent,
+					 Dynamicity.getDataFromPropertiesFile("queryPOparam", filePath_4), "queryPOparam");
+			waitForObj(1000);
+		
+			pdfResultReport.addStepDetails("Navigate to searchPO", "searchPO",
+					"Successfully searchPO" + " ", "Pass", "Y");
+			log.info("completed executing the method:: searchPO");
+
+		} catch (Exception e) {
+			log.fatal("Unable to searchPO" + e.getMessage());
+			pdfResultReport.addStepDetails("searchPO", "Not able to searchPO",
+					"Unable to searchPO" + e.getMessage(), "Fail", "N");
+		}
+	}
+
+	public void fowardTeam3Approvers() throws Exception {
+		try {
+			  log.info("started executing the method:: fowardTeam3Approvers");
+			  //add approver
+			  waitForElementToBeVisible(tendercreationlocators.userAdd_tender);
+			  click(tendercreationlocators.userAdd_tender, "add user SN");
+			  scrollToElement(tendercreationlocators.POuseradd);
+			//=========Role Activity and other Details===========================
+				String xpath_AP = "//table[@id='approver']/tbody[1]/ tr[1]/td[3]/div[1]/select";
+				String xpath_Role = "//table[@id='approver']/tbody[1]/ tr[1]/td[4]/div[1]/select";
+				
+				String AP= "//*[@id='approver']/thead/tr/th[contains(normalize-space(text()),'Activity/Process')]";
+				boolean fielddisplay=isElementDisplayed_Updated(By.xpath(AP), 1);
+				if(fielddisplay==true) {
+					set(tendercreationlocators.POuseradd, DatabaseComponent_UnderComponentPakage.formatUserInfo(pdfResultReport.testData.get("UserTenderApprover3")), "user1");
+					selectbyIndex(tendercreationlocators.approverTypePO, 1);
+					selectbyIndex(tendercreationlocators.approverTypePO, 1);
+					waitForElementToBeClickable(tendercreationlocators.approverTypePO);
+					select(tendercreationlocators.approverTypePO, "TEAM");
+					
+				}
+				else {
+					set(tendercreationlocators.POuseradd, DatabaseComponent_UnderComponentPakage.formatUserInfo(pdfResultReport.testData.get("UserTenderApprover3")), "user1");
+					waitForElementToBeClickable(tendercreationlocators.approverTypePO);
+					select(tendercreationlocators.approverTypePO, "TEAM");
+				}
+			 
+			
+				waitForElementToBeClickable(tendercreationlocators.userAdd_tender);
+				click(tendercreationlocators.userAdd_tender, "userAdd");
+				 scrollToElement(tendercreationlocators.POuseradd);
+				//=========Role Activity and other Details===========================
+				
+				if(fielddisplay==true) {
+					set(tendercreationlocators.POuseradd, DatabaseComponent_UnderComponentPakage.formatUserInfo(pdfResultReport.testData.get("UserTenderApprover4")), "user1");
+					selectbyIndex(tendercreationlocators.approverTypePO, 1);
+					selectbyIndex(tendercreationlocators.approverTypePO, 1);
+					waitForElementToBeClickable(tendercreationlocators.approverTypePO);
+					select(tendercreationlocators.approverTypePO, "TEAM");
+					
+				}
+				else {
+					set(tendercreationlocators.POuseradd, DatabaseComponent_UnderComponentPakage.formatUserInfo(pdfResultReport.testData.get("UserTenderApprover4")), "user1");
+					waitForElementToBeClickable(tendercreationlocators.approverTypePO);
+					select(tendercreationlocators.approverTypePO, "TEAM");
+				}
+				
+				waitForElementToBeClickable(tendercreationlocators.userAdd_tender);
+				click(tendercreationlocators.userAdd_tender, "userAdd");
+				 scrollToElement(tendercreationlocators.SNuseradd);
+				//=========Role Activity and other Details===========================
+				
+				if(fielddisplay==true) {
+					set(tendercreationlocators.POuseradd, DatabaseComponent_UnderComponentPakage.formatUserInfo(pdfResultReport.testData.get("UserTenderApprover5")), "user1");
+					selectbyIndex(tendercreationlocators.approverTypePO, 1);
+					selectbyIndex(tendercreationlocators.approverTypePO, 1);
+					waitForElementToBeClickable(tendercreationlocators.approverTypePO);
+					select(tendercreationlocators.approverTypePO, "TEAM");
+					
+				}
+				else {
+					set(tendercreationlocators.POuseradd, DatabaseComponent_UnderComponentPakage.formatUserInfo(pdfResultReport.testData.get("UserTenderApprover5")), "user1");
+					waitForElementToBeClickable(tendercreationlocators.approverTypePO);
+					select(tendercreationlocators.approverTypePO, "TEAM");
+				}
+				
+			
+
+					//send for approval
+					scrollToElement(tendercreationlocators.Btn_Forward_Indent);
+					waitForElementToBeClickable(tendercreationlocators.Btn_Forward_Indent);
+					click(tendercreationlocators.Btn_Forward_Indent, "Send for approval");
+					waitForElementToBeClickable(tendercreationlocators.BtnOk);
+					click(tendercreationlocators.BtnOk,"success ok");
+					
+				  pdfResultReport.addStepDetails("fowardTeam3Approvers",
+		                  "send for fowardTeam3Approvers ",
+		                  "Successfully sent fowardTeam3Approvers process" + " ", "Pass", "Y");
+		     log.info("completed executing the method:: fowardTeam3Approvers");
+				
+			} catch (Exception e) {
+				log.fatal("Unable to fowardTeam3Approvers" + e.getMessage());
+		        pdfResultReport.addStepDetails("fowardTeam3Approvers",
+		                     "send for fowardTeam3Approvers ",
+		                     "Unable to send for fowardTeam3Approvers " + e.getMessage(), "Fail", "N");
+			}
+				
+			}
+
+	public void MSNlistPage() throws Throwable {
+		try {
+			log.info("started executing the method:: MSNlistPage");
+			JSClick(tendercreationlocators.mainMenuIcon, "MenuIcon");
+			mouseOver(tendercreationlocators.Enquiry);
+			waitForObj(2000);
+			click(tendercreationlocators.allFSNList, "allFSNList");
+	
+			pdfResultReport.addStepDetails("MSNlistPage", "MSNlistPage",
+					"Sucessfully showing MSNlistPage" + " ", "Pass", "Y");
+
+			log.info("completed executing the method:: MSNlistPage");
+		} catch (Exception e) {
+			log.fatal("Unable to show MSNlistPage" + e.getMessage());
+			pdfResultReport.addStepDetails("MSNlistPage", "Unable to show MSNlistPage",
+					"MSNlistPage" + e.getMessage(), "Fail", "N");
+		}
+		
+	}
+
+	public void enterDocumentNoInSearch_msn() throws Throwable {
+		try {
+			log.info("started executing the method:: enterDocumentNoInSearch");
+			
+			waitForElement(tendercreationlocators.tenderListKeyword, 30);
+			waitForElementToBeClickable(tendercreationlocators.tenderListKeyword);
+			clear(tendercreationlocators.tenderListKeyword, "typeAnyKeyword"); 
+			set(tendercreationlocators.tenderListKeyword, documentNumberText, "typeAnyKeyword");
+			universalNormalWait();
+		
+			IsElementPresent(tendercreationlocators.Validate_msn_DocNo(documentNumberText));
+			//IsElementPresent(tendercreationlocators.Validate_msn_RefNo(ReferenceNoLocatorText_msn));
+			IsElementPresent(tendercreationlocators.Validate_msn_Status);
+			IsElementPresent(tendercreationlocators.Validate_msn_Stage);
+			if(psf.equalsIgnoreCase("1")) {
+			IsElementPresent(tendercreationlocators.Validate_msn_IssuePOIcon);
+			}
+			else {
+				if(!isElementDisplayed_Updated(tendercreationlocators.Validate_msn_IssuePOIcon, 2)) {
+					log.info("working fine, Issue PO option is not visible for this organization");
+				}
+				else {
+					log.fatal("Issue PO should not come up for this organization");
+					pdfResultReport.addStepDetails("enterDocumentNoInSearch", "Issue PO should not come up for this organization",
+							"Issue option is visible here", "Fail", "N");
+				}
+			}
+			waitForObj(2000);
+			
+			pdfResultReport.addStepDetails("enterDocumentNoInSearch", "Document No must be enter successfully",
+					"Successfully entered document No" + " ", "Pass", "Y");
+			log.info("completed executing the method:: enterDocumentNoInSearch");
+		} catch (Exception e) {
+			log.fatal("Not able to enter document No" + e.getMessage());
+			pdfResultReport.addStepDetails("enterDocumentNoInSearch", "Document No must be enter successfully",
+					"Unable to eneter document No" + e.getMessage(), "Fail", "N");
+		}
+	}
+
+	public void editDraftSN() throws Exception {
+		try {
+			log.info("started executing the method:: MSNlistPage");
+			waitForElementToBeClickable(tendercreationlocators.draftStage);
+			click(tendercreationlocators.draftStage, "draftStage");
+			waitForObj(3000);
+			pdfResultReport.addStepDetails("editDraftSN", "editDraftSN",
+					"Sucessfully showing editDraftSN" + " ", "Pass", "Y");
+
+			log.info("completed executing the method:: editDraftSN");
+		} catch (Exception e) {
+			log.fatal("Unable to show editDraftSN" + e.getMessage());
+			pdfResultReport.addStepDetails("editDraftSN", "Unable to show editDraftSN",
+					"editDraftSN" + e.getMessage(), "Fail", "N");
+		}
+		
+	}
+
+	public void nevigatetoAllSanction() throws Throwable {
+		try {
+			log.info("started executing the method:: MSNlistPage");
+			JSClick(tendercreationlocators.mainMenuIcon, "MenuIcon");
+			mouseOver(tendercreationlocators.Enquiry);
+			click(tendercreationlocators.AllSanctions, "AllSanctions");
+	
+			pdfResultReport.addStepDetails("nevigatetoAllSanction", "nevigatetoAllSanction",
+					"Sucessfully showing nevigatetoAllSanction" + " ", "Pass", "Y");
+
+			log.info("completed executing the method:: nevigatetoAllSanction");
+		} catch (Exception e) {
+			log.fatal("Unable to show nevigatetoAllSanction" + e.getMessage());
+			pdfResultReport.addStepDetails("MSNlistPage", "Unable to show nevigatetoAllSanction",
+					"nevigatetoAllSanction" + e.getMessage(), "Fail", "N");
+		}
+		
+	}
+
+	public void enterDocumentNoInSearch_SNPendinList() throws Throwable {
+		try {
+			log.info("started executing the method:: enterDocumentNoInSearch");
+		
+			waitForElementToBeClickable(tendercreationlocators.typeAnyKeyword_Pending);
+			clear(tendercreationlocators.typeAnyKeyword_Pending, "typeAnyKeyword");
+			set(tendercreationlocators.typeAnyKeyword_Pending, documentNumberText, "typeAnyKeyword");
+
+			pdfResultReport.addStepDetails("enterDocumentNoInSearch_SNPendinList", "enterDocumentNoInSearch_SNPendinList",
+					"Successfully enterDocumentNoInSearch_SNPendinList" + " ", "Pass", "Y");
+			log.info("completed executing the method:: enterDocumentNoInSearch_SNPendinList");
+		} catch (Exception e) {
+			log.fatal("Not able to enterDocumentNoInSearch_SNPendinList" + e.getMessage());
+			pdfResultReport.addStepDetails("enterDocumentNoInSearch_SNPendinList", "Document No must be enterDocumentNoInSearch_SNPendinList",
+					"Unable to enterDocumentNoInSearch_SNPendinList" + e.getMessage(), "Fail", "N");
+		}
+	}
+
+	public void recallSN() throws Exception {
+		try {	
+			log.info("started executing the method:: recallTender");
+			
+			
+			waitForElementToBeClickable(tendercreationlocators.tenderlistingPageAction);
+			click(tendercreationlocators.tenderlistingPageAction, "tender list action button");
+			waitForElementToBeClickable(tendercreationlocators.recallTender);
+			click(tendercreationlocators.recallTender, "recall button");
+			
+			
+			waitForElementToBeClickable(tendercreationlocators.recallReasonComment_BySNCreator);
+			
+			
+			
+			set(tendercreationlocators.recallReasonComment_BySNCreator, "recall", "recommendationComment");
+		pdfResultReport.addStepDetails("recallButtonValidation", "Recall button must be validate successfully",
+				"Successfully validated recall button" + " ", "Pass", "Y");
+		click(tendercreationlocators.recallreasonSubmit, "recallReasonSubmit");
+		waitForElementToBeClickable(tendercreationlocators.BtnOk);
+		click(tendercreationlocators.BtnOk, "success ok");
+		waitForElementToBeClickable(tendercreationlocators.tenderlistingPageAction);
+		
+		
+		
+		pdfResultReport.addStepDetails("recallTender",
+				"should able to recall tender",
+				"Successfully recalled tender" + " ", "Pass", "Y");
+		log.info("completed executing the method:: AddMultipleUsersForSequentialParallelApproval_Tender_WF");
+	}
+		catch (Exception e) {
+			log.fatal("Unable to validate recallTender" + e.getMessage());
+			pdfResultReport.addStepDetails("recallTender",
+					"should able recall tender",
+					"Unable to recall tender" + e.getMessage(), "Fail", "N");
+		}
+		
+		
+	}
+
+	public void nevigateCompletedSN() throws Exception {
+		try {
+			log.info("started executing the method:: nevigateCompletedSN");
+		
+			waitForElementToBeClickable(tendercreationlocators.SNcompletedList);
+		click(tendercreationlocators.SNcompletedList, "SNcompletedList");
+			pdfResultReport.addStepDetails("enterDocumentNoInSearch_SNPendinList", "enterDocumentNoInSearch_SNPendinList",
+					"Successfully enterDocumentNoInSearch_SNPendinList" + " ", "Pass", "Y");
+			log.info("completed executing the method:: nevigateCompletedSN");
+		} catch (Exception e) {
+			log.fatal("Not able to nevigateCompletedSN" + e.getMessage());
+			pdfResultReport.addStepDetails("nevigateCompletedSN", "Document No must be nevigateCompletedSN",
+					"Unable to nevigateCompletedSN" + e.getMessage(), "Fail", "N");
+		}
+		
+	}
+	
+	public void nevigateCompletedSNFromRFx() throws Exception {
+		try {
+			log.info("started executing the method:: nevigateCompletedSN");
+			click(tendercreationlocators.SN_stage, "SN_stage");
+			waitForElement(tendercreationlocators.SNpendingList, 30);
+			waitForElementToBeClickable(tendercreationlocators.CompletedSNTab);
+		click(tendercreationlocators.CompletedSNTab, "CompletedSNTab");
+			waitForObj(4000);
+			pdfResultReport.addStepDetails("nevigateCompletedSNFromRFx", "nevigateCompletedSNFromRFx",
+					"Successfully nevigateCompletedSNFromRFx" + " ", "Pass", "Y");
+			log.info("completed executing the method:: nevigateCompletedSNFromRFx");
+		} catch (Exception e) {
+			log.fatal("Not able to nevigateCompletedSNFromRFx" + e.getMessage());
+			pdfResultReport.addStepDetails("nevigateCompletedSNFromRFx", "Document No must be nevigateCompletedSNFromRFx",
+					"Unable to nevigateCompletedSNFromRFx" + e.getMessage(), "Fail", "N");
+		}
+		
+	}
+		
+		
+	}
+		
+	
+		
+			
+
 	
 

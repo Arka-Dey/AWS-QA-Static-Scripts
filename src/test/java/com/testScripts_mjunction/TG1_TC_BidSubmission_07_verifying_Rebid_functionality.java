@@ -3,7 +3,6 @@ package com.testScripts_mjunction;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
@@ -121,10 +120,10 @@ public class TG1_TC_BidSubmission_07_verifying_Rebid_functionality extends BaseC
 		etendercomponentobj.submittedBid_Tab_Validation();
 		etendercomponentobj.VerifyBidno_after_rebid();
 		//etendercomponentobj.tenderLogoutOld();
-		
-		
-		
+	
+	
 		//Revise functionality verification
+		
 		etendercomponentobj.navigateToTenderListing();
 		etendercomponentobj.enterTenderIdInSearch_bidsubmission();
 		etendercomponentobj.navigateToActionDropdown_ReviseBidsubmission();

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Suite">
+<listeners>
+<listener class-name="com.baseClasses.Listener"></listener>
+</listeners>
+    <test name="Test">
+        <parameter name="browserName" value="windowschrome"></parameter>
+        <classes>
+           <parameter name="TestcaseNo" value="1"></parameter>   
+            <class name="com.ProductionDefects.Tender_PD_141027"/>
+        </classes>
+    </test> 
+</suite> 
+
+<!-- 141027	Defect	Closed	Severity - 1	hmel_prod_Unable to download cs getting error ?file download error? 
+
+
+TenderCreator=HMEL_CREATOR001    (pass completed tender ID)
+tenderID=1271
+
+
+
+*/
+
+
+ -->

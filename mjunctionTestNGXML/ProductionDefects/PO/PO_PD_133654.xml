@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Suite">
+<listeners>
+<listener class-name="com.baseClasses.Listener"></listener>
+</listeners>
+    <test name="Test">
+        <parameter name="browserName" value="windowschrome"></parameter>
+        <classes>
+           <parameter name="TestcaseNo" value="4"></parameter>   
+            <class name="com.ProductionDefects.PO_PD_133654"/>
+        </classes>
+    </test> 
+</suite> 
+
+<!--133654	Defect	Verified	Severity - 1	HMEL_Prod:- PO not visible in mjPRO   
+
+
+
+  -->

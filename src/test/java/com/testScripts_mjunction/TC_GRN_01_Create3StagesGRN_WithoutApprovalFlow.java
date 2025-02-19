@@ -1,7 +1,5 @@
 package com.testScripts_mjunction;
 
-import java.util.Arrays;
-
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
@@ -39,7 +37,7 @@ public class TC_GRN_01_Create3StagesGRN_WithoutApprovalFlow extends BaseClass_We
 	}
 	     initializeRepository();
 	     etendercomponentobj.openURL();
-/*	     
+	     
 	     posttendercomponentobj.sanction_Creator_Login();
 		  posttendercomponentobj.clickPostTenderProcessLink();
 		  posttendercomponentobj.enterCompleted_TenderId_new() ;
@@ -61,6 +59,7 @@ public class TC_GRN_01_Create3StagesGRN_WithoutApprovalFlow extends BaseClass_We
 		  posttendercomponentobj.EPS_PO_Submission();
 		
 		  posttendercomponentobj.POSaveandApproval();
+		  posttendercomponentobj.savePoDocNumber();
 		  posttendercomponentobj.ApprovalNotRequired();
 		  posttendercomponentobj.verifyPoRefNumberInPoListPage();
 		  posttendercomponentobj.verifyPOStatus("Pending for Acceptance");
@@ -69,11 +68,11 @@ public class TC_GRN_01_Create3StagesGRN_WithoutApprovalFlow extends BaseClass_We
 		  
 		  etendercomponentobj.bidder_01_Login();
 		  posttendercomponentobj.navigateToPoListingWithBidderUser();
-		  posttendercomponentobj.searchThePoRefNoInPoListPage();
+		  posttendercomponentobj.searchThePoRefNoInPoListPage_SupplierSide();
 		  posttendercomponentobj.clickAcceptPoInDropDown();
 		  posttendercomponentobj.verifySummaryTabAndEnterComment();
 		  posttendercomponentobj.clickAccepPotBtn();
-		  posttendercomponentobj.verifyPOStatusIsAccepted();
+		  posttendercomponentobj.verifyPOStatusIsAccepted_SupplierSide();
 		  etendercomponentobj.tenderLogout();
 		  
 		  posttendercomponentobj.sanction_Creator_Login();
@@ -94,13 +93,12 @@ public class TC_GRN_01_Create3StagesGRN_WithoutApprovalFlow extends BaseClass_We
 		  asn_grncomponentobj.SubmitASN();
 		  asn_grncomponentobj.SearchASNRefInASNList();
 		  asn_grncomponentobj.VerifyStatus("Completed");
-		  waitForObj(15000);
 		  etendercomponentobj.tenderLogoutOld();
-		 */ 
 		  
 	     //Gate Pass creation
  		 asn_grncomponentobj.GRN_Creator_Login();
  		 asn_grncomponentobj.navigateToApprovedASNListPage();
+ 		 universalWait();
  		 asn_grncomponentobj.enterASNShipmentAndSelectVendorName("CTS");
  		 asn_grncomponentobj.clickApprovedAsnListActionMenu(eTenderComponent.getDataFromPropertiesFile("ASNNum"));
  		 asn_grncomponentobj.createGrn(eTenderComponent.getDataFromPropertiesFile("ASNNum"));
@@ -114,6 +112,7 @@ public class TC_GRN_01_Create3StagesGRN_WithoutApprovalFlow extends BaseClass_We
  		 //QC creation
  		asn_grncomponentobj.GRN_Creator_Login();
 		 asn_grncomponentobj.navigateToApprovedASNListPage();
+		 universalWait();
 		 asn_grncomponentobj.enterASNShipmentAndSelectVendorName("CTS");
 		 asn_grncomponentobj.clickApprovedAsnListActionMenu(eTenderComponent.getDataFromPropertiesFile("ASNNum"));
 		 asn_grncomponentobj.createGrn(eTenderComponent.getDataFromPropertiesFile("ASNNum"));
@@ -127,6 +126,7 @@ public class TC_GRN_01_Create3StagesGRN_WithoutApprovalFlow extends BaseClass_We
 		 //QV creation
 		 asn_grncomponentobj.GRN_Creator_Login();
 		 asn_grncomponentobj.navigateToApprovedASNListPage();
+		 universalWait();
 		 asn_grncomponentobj.enterASNShipmentAndSelectVendorName("CTS");
 		 asn_grncomponentobj.clickApprovedAsnListActionMenu(eTenderComponent.getDataFromPropertiesFile("ASNNum"));
 		 asn_grncomponentobj.createGrn(eTenderComponent.getDataFromPropertiesFile("ASNNum"));

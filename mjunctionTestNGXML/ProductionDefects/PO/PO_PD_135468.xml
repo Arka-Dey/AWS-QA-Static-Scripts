@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Suite">
+<listeners>
+<listener class-name="com.baseClasses.Listener"></listener>
+</listeners>
+    <test name="Test">
+        <parameter name="browserName" value="windowschrome"></parameter>
+        <classes>
+           <parameter name="TestcaseNo" value="4"></parameter>   
+            <class name="com.ProductionDefects.PO_PD_135468"/>
+        </classes>
+    </test> 
+</suite> 
+
+<!--135468	Defect	Closed	Severity - 2	RDCIS_Prod - Unable to create PO
+snCreator=RDCISSTG_INDENTCREATOR
+snCreator_Password=pass@123
+Template=Indigenous Tender (Supply & Service Both) V-1.1
+poCreator=GSML_buyer
+poCreator_password=pass@123
+poTemplate=New Indigenous PO (Supply & Service Both) 1.0
+
+
+
+  -->

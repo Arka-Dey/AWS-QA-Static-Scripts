@@ -5,12 +5,10 @@ import com.components.PostTenderComponent;
 import com.components.eTenderComponent;
 import com.objectRepository.TenderCreation_Locators;
 
-import org.openqa.selenium.By;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import com.baseClasses.BaseClass_Web;
-import com.components.eTenderComponent;
 
 
 public class TC_SN_05VerifyCancelOfSanctionNoteTest extends BaseClass_Web {
@@ -48,7 +46,7 @@ public class TC_SN_05VerifyCancelOfSanctionNoteTest extends BaseClass_Web {
 	  posttendercomponentobj.SanctionItemsAllotment();
 	  posttendercomponentobj.ScantionComment_recommendationTab();
 	  posttendercomponentobj.clickOnSubmitButton();
-	  //posttendercomponentobj.documentNoSave();
+	  posttendercomponentobj.documentNoSave();
 	  posttendercomponentobj.notSendForApproval();
 	  posttendercomponentobj.enterDocumentNoInSearch();
 	  /*
@@ -57,7 +55,7 @@ public class TC_SN_05VerifyCancelOfSanctionNoteTest extends BaseClass_Web {
 	  */
 	  
 	  posttendercomponentobj.cancelSN();
-	  etendercomponentobj.tenderLogoutOld();
+	  etendercomponentobj.tenderLogout();
 	 
 	}
 

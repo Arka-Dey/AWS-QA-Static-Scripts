@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite thread-count="7" name="Failed suite [ParallelTestSuite]" parallel="methods">
+  <listeners>
+    <listener class-name="com.baseClasses.Listener"/>
+  </listeners>
+  <test thread-count="7" name="Test(failed)" parallel="methods">
+    <parameter name="browserName" value="windowschrome"/>
+    <parameter name="TestcaseNo" value="26"/>
+    <classes>
+      <class name="com.Dynamicity.BidSubmissionFor1stSupplier_Dynamically_test">
+        <methods>
+          <include name="setUpSuiteDetails"/>
+          <include name="CaptureJSResponse"/>
+          <include name="BidSubmission3rdSupplier_Dynamically"/>
+          <include name="BidSubmission4thSupplier_Dynamically"/>
+          <include name="BidSubmission1stSupplier_Dynamically"/>
+          <include name="afterSuite"/>
+          <include name="captureDesc"/>
+          <include name="BidSubmission2ndSupplier_Dynamically"/>
+          <include name="BidSubmission5thSupplier_Dynamically"/>
+          <include name="BeforeClass"/>
+          <include name="BidSubmission6thSupplier_Dynamically"/>
+          <include name="afterClass"/>
+        </methods>
+      </class> <!-- com.Dynamicity.BidSubmissionFor1stSupplier_Dynamically_test -->
+    </classes>
+  </test> <!-- Test(failed) -->
+</suite> <!-- Failed suite [ParallelTestSuite] -->

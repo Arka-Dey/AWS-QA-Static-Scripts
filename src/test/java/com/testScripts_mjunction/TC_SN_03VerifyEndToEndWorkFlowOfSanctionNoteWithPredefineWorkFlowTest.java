@@ -49,18 +49,11 @@ public class TC_SN_03VerifyEndToEndWorkFlowOfSanctionNoteWithPredefineWorkFlowTe
 		posttendercomponentobj.SanctionItemsAllotment();
 		posttendercomponentobj.ScantionComment_recommendationTab();
 		posttendercomponentobj.clickOnSubmitButton();
-		//posttendercomponentobj.documentNoSave();
+		posttendercomponentobj.documentNoSave();
 		posttendercomponentobj.sendForApprovalPredefineWorkFlow();
 		posttendercomponentobj.enterDocumentNoInSearch_PendinList();
-		  /*
-		posttendercomponentobj.enterDocumentNoInSearch();
-		posttendercomponentobj.viewDetailsValidation();
-		posttendercomponentobj.SN_ApprovalDetailsValidation();
-		posttendercomponentobj.clickOnDownloadSanctionReport();
 		etendercomponentobj.tenderLogout();
-		  */
-		etendercomponentobj.tenderLogoutOld();
-		
+	
 		//approver1
 		  posttendercomponentobj.sanctionNoteApprover1Login();
 		  posttendercomponentobj.navigateToApprovalPendingPage();
@@ -68,8 +61,8 @@ public class TC_SN_03VerifyEndToEndWorkFlowOfSanctionNoteWithPredefineWorkFlowTe
 		  posttendercomponentobj.sanctionNoteEvaluationValidation();
 		  posttendercomponentobj.provideApproverComment();
 		  posttendercomponentobj.sanctionNoteEvaluationApprove();
-		  //posttendercomponentobj.enterDocumentNoInSearchSanctionApprover();
-		  etendercomponentobj.tenderLogoutOld();
+		  posttendercomponentobj.enterDocumentNoInSearchSanctionApprover_AfterTakingDecision();
+		  etendercomponentobj.tenderLogout();
 		 
 		  //approver2
 		  posttendercomponentobj.sanctionNoteApprover2Login();
@@ -79,16 +72,16 @@ public class TC_SN_03VerifyEndToEndWorkFlowOfSanctionNoteWithPredefineWorkFlowTe
 		  posttendercomponentobj.provideApproverComment();
 		  posttendercomponentobj.sanctionNoteEvaluationApprove_C();
 		  posttendercomponentobj.sanctionNoteCloseWorkflow();
-		  //posttendercomponentobj.enterDocumentNoInSearchSanctionApprover();
-		  etendercomponentobj.tenderLogoutOld();
+		  posttendercomponentobj.enterDocumentNoInSearchSanctionApprover_AfterTakingDecision();
+		  etendercomponentobj.tenderLogout();
 		  
 		  posttendercomponentobj.sanction_Creator_Login();
 		  posttendercomponentobj.clickPostTenderProcessLink();
 		  posttendercomponentobj.enterCompleted_TenderId_new() ;
 		  posttendercomponentobj.navigateToCompletedTenderDetailsPage();
 		  posttendercomponentobj.enterDocumentNoInSearch();
-		  //posttendercomponentobj.issuePObuttonValidation();
-		  etendercomponentobj.tenderLogoutOld();
+		  posttendercomponentobj.issuePObuttonValidation();
+		  etendercomponentobj.tenderLogout();
 	}
 
 }

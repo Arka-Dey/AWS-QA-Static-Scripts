@@ -44,7 +44,6 @@ public class TC_SN_04VerifyDeleteOfSanctionNoteTest extends BaseClass_Web {
 	  posttendercomponentobj.enterCompleted_TenderId_new() ;
 	  posttendercomponentobj.createSanctionNote();
 	  posttendercomponentobj.sanctionReferenceNumber();
-	 
 	  etendercomponentobj.tenderLogoutOld();
 	 
 	  posttendercomponentobj.sanction_Creator_Login();
@@ -53,7 +52,7 @@ public class TC_SN_04VerifyDeleteOfSanctionNoteTest extends BaseClass_Web {
 	  posttendercomponentobj.deleteSanction();
 	  
 	  
-	  etendercomponentobj.tenderLogoutOld();
+	  etendercomponentobj.tenderLogout();
 	 
 	}
 

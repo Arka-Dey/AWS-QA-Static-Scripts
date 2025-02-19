@@ -44,13 +44,13 @@ public class TC_ASN_01_CreateASNbyInputingAllData extends BaseClass_Web {
 		
 		  initializeRepository();
 		  etendercomponentobj.openURL();
+		  
 		  posttendercomponentobj.sanction_Creator_Login();
 		  posttendercomponentobj.clickPostTenderProcessLink();
 		  posttendercomponentobj.enterCompleted_TenderId_new() ;
 		 
 		  posttendercomponentobj.createSanctionNote();
 		  posttendercomponentobj.sanctionReferenceNumber();
-		  //posttendercomponentobj.SanctionsupplierSelection();
 		  posttendercomponentobj.SanctionsupplierOrgNameWiseSelection("CTS");
 		  posttendercomponentobj.SanctionItemsAllotment();
 		  posttendercomponentobj.ScantionComment_recommendationTab();
@@ -66,27 +66,27 @@ public class TC_ASN_01_CreateASNbyInputingAllData extends BaseClass_Web {
 		  posttendercomponentobj.EPS_PO_Submission();
 		
 		  posttendercomponentobj.POSaveandApproval();
-		  //posttendercomponentobj.savePoDocNumber();
+		  posttendercomponentobj.savePoDocNumber();
 		  posttendercomponentobj.ApprovalNotRequired();
 		  posttendercomponentobj.verifyPoRefNumberInPoListPage();
 		  posttendercomponentobj.verifyPOStatus("Pending for Acceptance");
 		  posttendercomponentobj.savePoDocNumberFromPoListpage();
 		  etendercomponentobj.tenderLogout();
-		  
+	  
 		  etendercomponentobj.bidder_01_Login();
 		  posttendercomponentobj.navigateToPoListingWithBidderUser();
-		  posttendercomponentobj.searchThePoRefNoInPoListPage();
+		  posttendercomponentobj.searchThePoRefNoInPoListPage_SupplierSide();
 		  posttendercomponentobj.clickAcceptPoInDropDown();
 		  posttendercomponentobj.verifySummaryTabAndEnterComment();
 		  posttendercomponentobj.clickAccepPotBtn();
-		  posttendercomponentobj.verifyPOStatusIsAccepted();
+		  posttendercomponentobj.verifyPOStatusIsAccepted_SupplierSide();
 		  etendercomponentobj.tenderLogout();
 		  
 		  posttendercomponentobj.sanction_Creator_Login();
 		  posttendercomponentobj.navigateToPurchasrOrderList();
 		  posttendercomponentobj.verifyPOStatusIsAccepted();
 		  etendercomponentobj.tenderLogout();
-		 
+	  
 		  etendercomponentobj.bidder_01_Login();
 		  ASN_GRNComponent.SelectASNModule();
 		  ASN_GRNComponent.CreateASN();
@@ -110,7 +110,7 @@ public class TC_ASN_01_CreateASNbyInputingAllData extends BaseClass_Web {
 		  */
 		  ASN_GRNComponent.SearchASNRefInASNList();
 		  //ASN_GRNComponent.VerifyDraftStatus();
-		  ASN_GRNComponent.VerifyStatus("Completed");
+		  ASN_GRNComponent.VerifyStatus("Approved");
 		  etendercomponentobj.tenderLogoutOld();
 		
 

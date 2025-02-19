@@ -87,7 +87,7 @@ public class TG1_TC_TenderCreation_02_tender_publish_with_multiple_approver exte
 		 
 	//Create and publish RFQ from indent
 		rfqfromintendcomponentobj.Create_RFQ_From_Indent("Indigenous Tender (Supply & Service Both) V-1.0");
-		rfqfromintendcomponentobj.PublishTender_from_indent_withRFQ_TG1("Indigenous Tender (Supply & Service Both) V-1.0",90,120,125);
+		rfqfromintendcomponentobj.PublishTender_from_indent_withRFQ_TG1("Indigenous Tender (Supply & Service Both) V-1.0",130,150,175);
 		//Clicking on submit button and verify tender status
 		etendercomponentobj.clickSubmitBtn();
 		etendercomponentobj.tenderIdSave();
@@ -98,7 +98,7 @@ public class TG1_TC_TenderCreation_02_tender_publish_with_multiple_approver exte
 	//verifying pending tender in 2nd approver login	
 		etendercomponentobj.tenderApprover2Login();
 		etendercomponentobj.Verifying_Pendingtender_sequentialWF();
-		etendercomponentobj.tenderLogoutOld();
+		etendercomponentobj.tenderLogout();
 				
 	//approving pending tender in 1st approver login	
 		etendercomponentobj.tenderApproverLogin();
@@ -106,7 +106,7 @@ public class TG1_TC_TenderCreation_02_tender_publish_with_multiple_approver exte
 		etendercomponentobj.clickDetailLinkInApprovalListPage();
 		etendercomponentobj.TG1_tenderApprover_dynamicityNew();
 		etendercomponentobj.ApproverOverAllComentWithTenderHasBeenApproved();
-		etendercomponentobj.tenderLogoutOld();
+		etendercomponentobj.tenderLogout();
 			
 	//approving pending tender in 2nd approver login	
 		etendercomponentobj.tenderApprover2Login();
@@ -115,19 +115,19 @@ public class TG1_TC_TenderCreation_02_tender_publish_with_multiple_approver exte
 		etendercomponentobj.provideApproverCommentforTenderApprover();
 		etendercomponentobj.tenderApprovalDecision("forward");
 		etendercomponentobj.sendForForwardParallelTenderApprovalProcess(); //forward to sn_approver_03, sn_approver_04 and sn_approver_05(c), min app: 2
-		etendercomponentobj.tenderLogoutOld();
+		etendercomponentobj.tenderLogout();
 				
 				
 			
 		
 		  //approver4
-		  posttendercomponentobj.sanctionNoteApproverLogin(pdfResultReport.testData.get("SanctionNoteApproverUserName4"));
+		  posttendercomponentobj.sanctionNoteApproverLogin(pdfResultReport.testData.get("SanctionNoteApproverUserName3"));
 		  etendercomponentobj.GoToApprovalworkFlowPendingTendersAndSearchTheTender();
 			etendercomponentobj.TenderApproverValidation();
 			etendercomponentobj.provideApproverCommentforTenderApprover();
 			etendercomponentobj.tenderApprovalDecision("approve");
 		  //posttendercomponentobj.enterDocumentNoInSearchSanctionApprover();
-		  etendercomponentobj.tenderLogoutOld();
+		  etendercomponentobj.tenderLogout();
  
 		  //approver5
 		  posttendercomponentobj.sanctionNoteApproverLogin(pdfResultReport.testData.get("SanctionNoteApproverUserName5"));
@@ -136,7 +136,7 @@ public class TG1_TC_TenderCreation_02_tender_publish_with_multiple_approver exte
 			etendercomponentobj.provideApproverCommentforTenderApprover();
 			etendercomponentobj.tenderApprovalDecision("forward");
 		  posttendercomponentobj.sendForForwardSequentialTenderApprovalProcess();  //forward to sn_approver_06, sn_approver_07 and sn_approver_08(c), min app: 2
-		  etendercomponentobj.tenderLogoutOld();
+		  etendercomponentobj.tenderLogout();
 		   
 		  //approver6
 		  posttendercomponentobj.sanctionNoteApproverLogin(pdfResultReport.testData.get("SanctionNoteApproverUserName6"));
@@ -145,7 +145,7 @@ public class TG1_TC_TenderCreation_02_tender_publish_with_multiple_approver exte
 			etendercomponentobj.provideApproverCommentforTenderApprover();
 			etendercomponentobj.tenderApprovalDecision("approve");
 		  //posttendercomponentobj.enterDocumentNoInSearchSanctionApprover();
-		  etendercomponentobj.tenderLogoutOld();
+		  etendercomponentobj.tenderLogout();
 		  
 		  
 		  //approver7
@@ -155,8 +155,8 @@ public class TG1_TC_TenderCreation_02_tender_publish_with_multiple_approver exte
 			etendercomponentobj.provideApproverCommentforTenderApprover();
 			etendercomponentobj.tenderApprovalDecision("approve");
 		  //posttendercomponentobj.enterDocumentNoInSearchSanctionApprover();
-		  etendercomponentobj.tenderLogoutOld();
-		  
+		  etendercomponentobj.tenderLogout();
+		 
 		  
 		  //approver8
 		  posttendercomponentobj.sanctionNoteApproverLogin(pdfResultReport.testData.get("SanctionNoteApproverUserName8"));
@@ -165,7 +165,7 @@ public class TG1_TC_TenderCreation_02_tender_publish_with_multiple_approver exte
 			etendercomponentobj.provideApproverCommentforTenderApprover();
 			etendercomponentobj.tenderApprovalDecision("revert back to approver");
 		  //posttendercomponentobj.enterDocumentNoInSearchSanctionApprover();
-		  etendercomponentobj.tenderLogoutOld();
+		  etendercomponentobj.tenderLogout();
 		  
 		  //approver7
 		  posttendercomponentobj.sanctionNoteApproverLogin(pdfResultReport.testData.get("SanctionNoteApproverUserName7"));
@@ -174,7 +174,7 @@ public class TG1_TC_TenderCreation_02_tender_publish_with_multiple_approver exte
 			etendercomponentobj.provideApproverCommentforTenderApprover();
 			etendercomponentobj.tenderApprovalDecision("approve");
 		  //posttendercomponentobj.enterDocumentNoInSearchSanctionApprover();
-		  etendercomponentobj.tenderLogoutOld();
+		  etendercomponentobj.tenderLogout();
 		  
 		//approver8
 		  posttendercomponentobj.sanctionNoteApproverLogin(pdfResultReport.testData.get("SanctionNoteApproverUserName8"));
@@ -183,14 +183,14 @@ public class TG1_TC_TenderCreation_02_tender_publish_with_multiple_approver exte
 			etendercomponentobj.provideApproverCommentforTenderApprover();
 			etendercomponentobj.tenderApprovalDecision("revert back to creator");
 		  //posttendercomponentobj.enterDocumentNoInSearchSanctionApprover();
-		  etendercomponentobj.tenderLogoutOld();
+		  etendercomponentobj.tenderLogout();
 		
 		//creator action initiate wf  with 3 parallel and 5 sequential flow
 		etendercomponentobj.tendercreatorLogin();
 		  etendercomponentobj.navigateToTenderListing();
 			etendercomponentobj.enterTenderIdInSearch();
 			etendercomponentobj.editDraftTender();
-			//etendercomponentobj.updateDateScheduleAtDraftTender(30,55,56);
+			etendercomponentobj.updateDateScheduleAtDraftTender(30,55,56);
 			etendercomponentobj.clickSubmitBtn();
 			etendercomponentobj.AddMultipleUsersForSequentialParallelApproval_Tender_WF("Reinitiated after reverted back the workflow");
 			etendercomponentobj.tenderLogout();
@@ -215,13 +215,13 @@ public class TG1_TC_TenderCreation_02_tender_publish_with_multiple_approver exte
 					etendercomponentobj.tenderLogout();
 		
 					//approver1
-					  posttendercomponentobj.sanctionNoteApproverLogin(pdfResultReport.testData.get("TenderApprover"));
+					  posttendercomponentobj.sanctionNoteApproverLogin(pdfResultReport.testData.get("TenderApproverUserName"));
 					  etendercomponentobj.GoToApprovalworkFlowPendingTendersAndSearchTheTender();
 						etendercomponentobj.TenderApproverValidation();
 						etendercomponentobj.provideApproverCommentforTenderApprover();
 						etendercomponentobj.tenderApprovalDecision("approve");
 					  //posttendercomponentobj.enterDocumentNoInSearchSanctionApprover();
-					  etendercomponentobj.tenderLogoutOld();
+					  etendercomponentobj.tenderLogout();
 		
 					//approver2
 					  posttendercomponentobj.sanctionNoteApproverLogin(pdfResultReport.testData.get("TenderApprover2UserName"));
@@ -230,7 +230,7 @@ public class TG1_TC_TenderCreation_02_tender_publish_with_multiple_approver exte
 						etendercomponentobj.provideApproverCommentforTenderApprover();
 						etendercomponentobj.tenderApprovalDecision("approve");
 					  //posttendercomponentobj.enterDocumentNoInSearchSanctionApprover();
-					  etendercomponentobj.tenderLogoutOld();
+					  etendercomponentobj.tenderLogout();
 		 
 						//approver3
 					  posttendercomponentobj.sanctionNoteApproverLogin(pdfResultReport.testData.get("SanctionNoteApproverUserName3"));
@@ -239,7 +239,7 @@ public class TG1_TC_TenderCreation_02_tender_publish_with_multiple_approver exte
 						etendercomponentobj.provideApproverCommentforTenderApprover();
 						etendercomponentobj.tenderApprovalDecision("approve");
 					  //posttendercomponentobj.enterDocumentNoInSearchSanctionApprover();
-					  etendercomponentobj.tenderLogoutOld();
+					  etendercomponentobj.tenderLogout();
 		
 					//approver4
 					  posttendercomponentobj.sanctionNoteApproverLogin(pdfResultReport.testData.get("SanctionNoteApproverUserName4"));
@@ -248,7 +248,7 @@ public class TG1_TC_TenderCreation_02_tender_publish_with_multiple_approver exte
 						etendercomponentobj.provideApproverCommentforTenderApprover();
 						etendercomponentobj.tenderApprovalDecision("approve");
 					  //posttendercomponentobj.enterDocumentNoInSearchSanctionApprover();
-					  etendercomponentobj.tenderLogoutOld();
+					  etendercomponentobj.tenderLogout();
 					  
 					//approver5
 					  posttendercomponentobj.sanctionNoteApproverLogin(pdfResultReport.testData.get("SanctionNoteApproverUserName5"));
@@ -257,7 +257,7 @@ public class TG1_TC_TenderCreation_02_tender_publish_with_multiple_approver exte
 						etendercomponentobj.provideApproverCommentforTenderApprover();
 						etendercomponentobj.tenderApprovalDecision("approve");
 					  //posttendercomponentobj.enterDocumentNoInSearchSanctionApprover();
-					  etendercomponentobj.tenderLogoutOld();
+					  etendercomponentobj.tenderLogout();
 					   
 					//approver6
 					  posttendercomponentobj.sanctionNoteApproverLogin(pdfResultReport.testData.get("SanctionNoteApproverUserName6"));
@@ -266,7 +266,7 @@ public class TG1_TC_TenderCreation_02_tender_publish_with_multiple_approver exte
 						etendercomponentobj.provideApproverCommentforTenderApprover();
 						etendercomponentobj.tenderApprovalDecision("approve");
 					  //posttendercomponentobj.enterDocumentNoInSearchSanctionApprover();
-					  etendercomponentobj.tenderLogoutOld();
+					  etendercomponentobj.tenderLogout();
 		
 					//tender creator recall WF
 						etendercomponentobj.tendercreatorLogin();
@@ -281,11 +281,11 @@ public class TG1_TC_TenderCreation_02_tender_publish_with_multiple_approver exte
 							  etendercomponentobj.navigateToTenderListing();
 								etendercomponentobj.enterTenderIdInSearch();
 								etendercomponentobj.editDraftTender();
-								//etendercomponentobj.updateDateScheduleAtDraftTender(30,55,56);
+								etendercomponentobj.updateDateScheduleAtDraftTender(45,55,56);
 								etendercomponentobj.clickSubmitBtn();
 								etendercomponentobj.AddSingleUsersForSequentialApproval_Tender_WF_AfterRecall_Revert(pdfResultReport.testData.get("UserTenderApprover1"));
 								etendercomponentobj.tenderLogout();	
-								
+						
 								
 								//approver1
 								  posttendercomponentobj.sanctionNoteApproverLogin(pdfResultReport.testData.get("TenderApproverUserName"));
@@ -294,8 +294,8 @@ public class TG1_TC_TenderCreation_02_tender_publish_with_multiple_approver exte
 									etendercomponentobj.provideApproverCommentforTenderApprover();
 									etendercomponentobj.tenderApprovalDecision("forward");
 									etendercomponentobj.sendForForwardSequential_Single_User_Tender_ApprovalProcess( pdfResultReport.testData.get("UserTenderApprover2"));
-								  etendercomponentobj.tenderLogoutOld();				
-		
+								  etendercomponentobj.tenderLogout();				
+			
 									//approver2
 								  posttendercomponentobj.sanctionNoteApproverLogin(pdfResultReport.testData.get("TenderApprover2UserName"));
 								  etendercomponentobj.GoToApprovalworkFlowPendingTendersAndSearchTheTender();
@@ -303,9 +303,9 @@ public class TG1_TC_TenderCreation_02_tender_publish_with_multiple_approver exte
 									etendercomponentobj.provideApproverCommentforTenderApprover();
 									etendercomponentobj.tenderApprovalDecision("forward");
 									etendercomponentobj.sendForForwardSequential_Single_User_Tender_ApprovalProcess( pdfResultReport.testData.get("UserTenderApprover3"));
-								  etendercomponentobj.tenderLogoutOld();
+								  etendercomponentobj.tenderLogout();
 
-
+	
 									//approver3
 								  posttendercomponentobj.sanctionNoteApproverLogin(pdfResultReport.testData.get("SanctionNoteApproverUserName3"));
 								  etendercomponentobj.GoToApprovalworkFlowPendingTendersAndSearchTheTender();
@@ -313,7 +313,7 @@ public class TG1_TC_TenderCreation_02_tender_publish_with_multiple_approver exte
 									etendercomponentobj.provideApproverCommentforTenderApprover();
 									etendercomponentobj.tenderApprovalDecision("forward");
 									etendercomponentobj.sendForForwardSequential_Single_User_Tender_ApprovalProcess( pdfResultReport.testData.get("UserTenderApprover4"));
-								  etendercomponentobj.tenderLogoutOld();
+								  etendercomponentobj.tenderLogout();
 								  
 									//approver4
 								  posttendercomponentobj.sanctionNoteApproverLogin(pdfResultReport.testData.get("SanctionNoteApproverUserName4"));
@@ -322,7 +322,7 @@ public class TG1_TC_TenderCreation_02_tender_publish_with_multiple_approver exte
 									etendercomponentobj.provideApproverCommentforTenderApprover();
 									etendercomponentobj.tenderApprovalDecision("forward");
 									etendercomponentobj.sendForForwardSequential_Single_User_Tender_ApprovalProcess( pdfResultReport.testData.get("UserTenderApprover5"));
-								  etendercomponentobj.tenderLogoutOld();
+								  etendercomponentobj.tenderLogout();
 								  
 									//approver5
 								  posttendercomponentobj.sanctionNoteApproverLogin(pdfResultReport.testData.get("SanctionNoteApproverUserName5"));
@@ -331,7 +331,7 @@ public class TG1_TC_TenderCreation_02_tender_publish_with_multiple_approver exte
 									etendercomponentobj.provideApproverCommentforTenderApprover();
 									etendercomponentobj.tenderApprovalDecision("forward");
 									etendercomponentobj.sendForForwardSequential_Single_User_Tender_ApprovalProcess( pdfResultReport.testData.get("UserTenderApprover6"));
-								  etendercomponentobj.tenderLogoutOld();
+								  etendercomponentobj.tenderLogout();
 	
 								//approver6
 								  posttendercomponentobj.sanctionNoteApproverLogin(pdfResultReport.testData.get("SanctionNoteApproverUserName6"));
@@ -340,7 +340,7 @@ public class TG1_TC_TenderCreation_02_tender_publish_with_multiple_approver exte
 									etendercomponentobj.provideApproverCommentforTenderApprover();
 									etendercomponentobj.tenderApprovalDecision("forward");
 									etendercomponentobj.sendForForwardSequential_Single_User_Tender_ApprovalProcess( pdfResultReport.testData.get("UserTenderApprover7"));
-								  etendercomponentobj.tenderLogoutOld();
+								  etendercomponentobj.tenderLogout();
 		
 		
 								//approver7
@@ -350,7 +350,7 @@ public class TG1_TC_TenderCreation_02_tender_publish_with_multiple_approver exte
 									etendercomponentobj.provideApproverCommentforTenderApprover();
 									etendercomponentobj.tenderApprovalDecision("forward");
 									etendercomponentobj.sendForForwardSequential_Single_User_Tender_ApprovalProcess( pdfResultReport.testData.get("UserTenderApprover8"));
-								  etendercomponentobj.tenderLogoutOld();
+								  etendercomponentobj.tenderLogout();
 		
 		
 								//approver8
@@ -359,7 +359,7 @@ public class TG1_TC_TenderCreation_02_tender_publish_with_multiple_approver exte
 									etendercomponentobj.TenderApproverValidation();
 									etendercomponentobj.provideApproverCommentforTenderApprover();
 									etendercomponentobj.tenderApprovalDecision("revert back to approver");
-								  etendercomponentobj.tenderLogoutOld();
+								  etendercomponentobj.tenderLogout();
 		
 								//approver7
 								  posttendercomponentobj.sanctionNoteApproverLogin(pdfResultReport.testData.get("SanctionNoteApproverUserName7"));
@@ -367,7 +367,7 @@ public class TG1_TC_TenderCreation_02_tender_publish_with_multiple_approver exte
 									etendercomponentobj.TenderApproverValidation();
 									etendercomponentobj.provideApproverCommentforTenderApprover();
 									etendercomponentobj.tenderApprovalDecision("approve");
-								  etendercomponentobj.tenderLogoutOld();
+								  etendercomponentobj.tenderLogout();
 		
 								//approver8
 								  posttendercomponentobj.sanctionNoteApproverLogin(pdfResultReport.testData.get("SanctionNoteApproverUserName8"));
@@ -376,7 +376,7 @@ public class TG1_TC_TenderCreation_02_tender_publish_with_multiple_approver exte
 									etendercomponentobj.provideApproverCommentforTenderApprover();
 									etendercomponentobj.TenderApprover_Approve_C();
 									etendercomponentobj.tenderCloseWorkflow();
-								  etendercomponentobj.tenderLogoutOld();
+								  etendercomponentobj.tenderLogout();
 		
 		
 		
@@ -386,6 +386,7 @@ public class TG1_TC_TenderCreation_02_tender_publish_with_multiple_approver exte
 		etendercomponentobj.navigateToTenderListing();
 		etendercomponentobj.enterTenderIdInSearch();
 		etendercomponentobj.checkTenderStatusAndTenderStage("Published");
+		etendercomponentobj.validateApprovalHistoryAtTenderCreatorEnd();    //validate approval history at tender creator
 		etendercomponentobj.tenderLogout();
 		
 	}

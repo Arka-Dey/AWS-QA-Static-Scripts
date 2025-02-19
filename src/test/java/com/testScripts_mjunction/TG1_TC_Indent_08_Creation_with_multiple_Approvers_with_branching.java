@@ -72,64 +72,63 @@ public class TG1_TC_Indent_08_Creation_with_multiple_Approvers_with_branching ex
 		rfqfromintendcomponentobj.enterIndentNoInSearch();
 		rfqfromintendcomponentobj.VerifyIndentStatus("Pending For Approval");
 		etendercomponentobj.tenderLogout();
-		
+	
 		//sent for branching by s1
-		rfqfromintendcomponentobj.IndentapproverLogin();
+		rfqfromintendcomponentobj.ApproverLogin(pdfResultReport.testData.get("Approver1"));
 		rfqfromintendcomponentobj.GoToApprovalworkFlowPendingindentAndSearchTheIndent();
 		rfqfromintendcomponentobj.clickDetailLinkInApprovalListPage();
 		rfqfromintendcomponentobj.aproverBranching("Mr Test Approver01","Mr Test Approver02");
 		etendercomponentobj.tenderLogout();
 		
 		//action by branch b1(S2) user
-		rfqfromintendcomponentobj.IndentapproverLogin(pdfResultReport.testData.get("Approver1"));
+		rfqfromintendcomponentobj.ApproverLogin(pdfResultReport.testData.get("Approver1"));
 		rfqfromintendcomponentobj.GoToApprovalworkFlowPendingindentAndSearchTheIndent();
 		rfqfromintendcomponentobj.clickDetailLinkInApprovalListPage();
 		rfqfromintendcomponentobj.sendBackToApprover("Indent Process Is Approved by branch user b1(S2)"); 
-		etendercomponentobj.tenderLogoutOld();
+		etendercomponentobj.tenderLogout();
 		
 		//action by branch b2 user
-				rfqfromintendcomponentobj.IndentapproverLogin(pdfResultReport.testData.get("Approver2"));
+				rfqfromintendcomponentobj.ApproverLogin(pdfResultReport.testData.get("Approver2"));
 				rfqfromintendcomponentobj.GoToApprovalworkFlowPendingindentAndSearchTheIndent();
 				rfqfromintendcomponentobj.clickDetailLinkInApprovalListPage();
 				rfqfromintendcomponentobj.sendBackToApprover("Indent Process Is Approved by branch user b2"); 
-				etendercomponentobj.tenderLogoutOld();
+				etendercomponentobj.tenderLogout();
 				
 				//approve s1 approver
-				rfqfromintendcomponentobj.IndentapproverLogin(pdfResultReport.testData.get("IndentApproverUserName"));
+				rfqfromintendcomponentobj.ApproverLogin(pdfResultReport.testData.get("IndentApproverUserName"));
 				rfqfromintendcomponentobj.GoToApprovalworkFlowPendingindentAndSearchTheIndent();
 				rfqfromintendcomponentobj.clickDetailLinkInApprovalListPage();
 				rfqfromintendcomponentobj.approveByApproverAfterBranching();
-				etendercomponentobj.tenderLogoutOld();
-				
+				etendercomponentobj.tenderLogout();
+					
 				//sent for branching by s2
-				rfqfromintendcomponentobj.IndentapproverLogin(pdfResultReport.testData.get("Approver1"));
+				rfqfromintendcomponentobj.ApproverLogin(pdfResultReport.testData.get("Approver1"));
 				rfqfromintendcomponentobj.GoToApprovalworkFlowPendingindentAndSearchTheIndent();
 				rfqfromintendcomponentobj.clickDetailLinkInApprovalListPage();
 				rfqfromintendcomponentobj.aproverBranching("Mr Indent Approver test","Mr Test Approver03");
 				etendercomponentobj.tenderLogout();
 				
 				//action by branch b3(S1) user
-				rfqfromintendcomponentobj.IndentapproverLogin();
+				rfqfromintendcomponentobj.ApproverLogin(pdfResultReport.testData.get("Approver2"));
 				rfqfromintendcomponentobj.GoToApprovalworkFlowPendingindentAndSearchTheIndent();
 				rfqfromintendcomponentobj.clickDetailLinkInApprovalListPage();
 				rfqfromintendcomponentobj.sendBackToApprover("Indent Process Is Approved by branch user b3(S1)"); 
-				etendercomponentobj.tenderLogoutOld();
+				etendercomponentobj.tenderLogout();
 				
 				//action by branch b4 user
-				rfqfromintendcomponentobj.IndentapproverLogin(pdfResultReport.testData.get("Approver3"));
+				rfqfromintendcomponentobj.ApproverLogin(pdfResultReport.testData.get("Approver3"));
 				rfqfromintendcomponentobj.GoToApprovalworkFlowPendingindentAndSearchTheIndent();
 				rfqfromintendcomponentobj.clickDetailLinkInApprovalListPage();
 				rfqfromintendcomponentobj.sendBackToApprover("Indent Process Is Approved by branch user b4"); 
-				etendercomponentobj.tenderLogoutOld();
+				etendercomponentobj.tenderLogout();
 				
 				//approve s2 approver
-				rfqfromintendcomponentobj.IndentapproverLogin(pdfResultReport.testData.get("Approver1"));
+				rfqfromintendcomponentobj.ApproverLogin(pdfResultReport.testData.get("Approver1"));
 				rfqfromintendcomponentobj.GoToApprovalworkFlowPendingindentAndSearchTheIndent();
 				rfqfromintendcomponentobj.clickDetailLinkInApprovalListPage();
 				rfqfromintendcomponentobj.ApproverOverAllComentWithIndentHasBeenApproved();
-				etendercomponentobj.tenderLogoutOld();
+				etendercomponentobj.tenderLogout();
 				
-						
 				//Verifying the indent status after approval
 				rfqfromintendcomponentobj.IndentcreatorLogin();
 				rfqfromintendcomponentobj.navigateToIndentListing();
@@ -137,10 +136,5 @@ public class TG1_TC_Indent_08_Creation_with_multiple_Approvers_with_branching ex
 				rfqfromintendcomponentobj.VerifyIndentStatus("Completed");
 				etendercomponentobj.tenderLogout();
 				
-				
-				
-				
-				
-		
 	}
 }

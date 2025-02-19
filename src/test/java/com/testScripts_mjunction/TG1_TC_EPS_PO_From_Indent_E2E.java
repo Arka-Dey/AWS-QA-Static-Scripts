@@ -278,6 +278,7 @@ public class TG1_TC_EPS_PO_From_Indent_E2E extends BaseClass_Web {
 	  posttendercomponentobj.InitiatePOfromSN();
 	  posttendercomponentobj.EPS_PO_Submission();
 	  posttendercomponentobj.POSaveandApproval();
+	  posttendercomponentobj.savePoDocNumber();
 	  posttendercomponentobj.sendForApprovalUserDefinedSequential_pocreator();
 	  posttendercomponentobj.verifyPoRefNumberInPoListPage();
 	  posttendercomponentobj.verifyPOStatus("Pending for Approval");

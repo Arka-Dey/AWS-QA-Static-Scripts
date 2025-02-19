@@ -1,6 +1,5 @@
 	package com.baseClasses;
 	
-	import java.awt.AWTException;
 	import java.awt.Color;
 	import java.awt.Graphics2D;
 	import java.awt.Rectangle;
@@ -19,17 +18,13 @@
 	import java.util.Calendar;
 	import java.util.Date;
 	import java.util.HashMap;
-	import java.util.Hashtable;
 	import java.util.List;
 	import java.util.Map;
-	import java.util.Set;
-	
 	import javax.imageio.ImageIO;
 	
 	
 	import org.apache.poi.ss.usermodel.Cell;
 	import org.apache.poi.ss.usermodel.Row;
-	import org.apache.poi.xssf.usermodel.XSSFSheet;
 	import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 	import org.jfree.chart.ChartFactory;
 	import org.jfree.chart.JFreeChart;
@@ -58,64 +53,11 @@
 	import com.itextpdf.text.pdf.PdfPTable;
 	import com.itextpdf.text.pdf.PdfTemplate;
 	import com.itextpdf.text.pdf.PdfWriter;
-	
-	import java.awt.AWTException;
-	import java.awt.Color;
-	import java.awt.Graphics2D;
-	import java.awt.Rectangle;
-	import java.awt.Robot;
-	import java.awt.Toolkit;
-	import java.awt.image.BufferedImage;
-	import java.io.File;
-	import java.io.FileInputStream;
-	import java.io.FileOutputStream;
-	import java.io.IOException;
-	import java.net.InetAddress;
-	import java.net.MalformedURLException;
-	import java.text.DecimalFormat;
-	import java.text.SimpleDateFormat;
-	import java.util.ArrayList;
-	import java.util.Calendar;
-	import java.util.Date;
-	import java.util.HashMap;
-	import java.util.List;
-	import java.util.Map;
-	import javax.imageio.ImageIO;
-
-import org.apache.commons.io.FileUtils;
-import org.apache.poi.hssf.usermodel.HSSFSheet;
+	import org.apache.commons.io.FileUtils;
 	import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-	import org.apache.poi.ss.usermodel.Cell;
-	import org.apache.poi.ss.usermodel.Row;
 	import org.apache.poi.ss.usermodel.Sheet;
 	import org.apache.poi.ss.usermodel.Workbook;
-	import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-	import org.jfree.chart.ChartFactory;
-	import org.jfree.chart.JFreeChart;
-	import org.jfree.chart.plot.PiePlot;
-	import org.jfree.chart.title.TextTitle;
-	import org.jfree.data.general.DefaultPieDataset;
-	import org.openqa.selenium.OutputType;
-	import org.openqa.selenium.TakesScreenshot;
-	import org.openqa.selenium.WebDriver;
-	import com.itextpdf.awt.DefaultFontMapper;
-	import com.itextpdf.text.BaseColor;
-	import com.itextpdf.text.Chunk;
-	import com.itextpdf.text.Document;
-	import com.itextpdf.text.DocumentException;
-	import com.itextpdf.text.Element;
-	import com.itextpdf.text.Font;
-	import com.itextpdf.text.Font.FontFamily;
-	import com.itextpdf.text.FontFactory;
-	import com.itextpdf.text.Image;
-	import com.itextpdf.text.PageSize;
-	import com.itextpdf.text.Paragraph;
-	import com.itextpdf.text.Phrase;
-	import com.itextpdf.text.pdf.PdfContentByte;
-	import com.itextpdf.text.pdf.PdfPCell;
-	import com.itextpdf.text.pdf.PdfPTable;
-	import com.itextpdf.text.pdf.PdfTemplate;
-	import com.itextpdf.text.pdf.PdfWriter;
+
 	
 	
 	public class PDFResultReport{

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Suite">
+<listeners>
+<listener class-name="com.baseClasses.Listener"></listener>
+</listeners>
+    <test name="Test">
+        <parameter name="browserName" value="windowschrome"></parameter>
+        <classes>
+           <parameter name="TestcaseNo" value="2"></parameter>   
+            <class name="com.ProductionDefects.SN_138926"/>
+        </classes>
+    </test> 
+</suite> 
+
+<!--
+Note: 
+This issue is dynamic in nature, you can run it in both environment and against any TG
+1. pass claimed Indent ID in precondition
+2. If multiple SN templates are mapped with Indent template group then pass any template against Template filed in precondition or keep it blank but pleaes don't pass wrong TG else execution will be failed
+3. You can pass multiple suppliers in supplier field in precondition  -->

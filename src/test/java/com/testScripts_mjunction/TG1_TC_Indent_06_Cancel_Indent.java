@@ -3,7 +3,6 @@ package com.testScripts_mjunction;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
@@ -78,20 +77,20 @@ public class TG1_TC_Indent_06_Cancel_Indent extends BaseClass_Web{
 		rfqfromintendcomponentobj.clickDetailLinkInApprovalListPage();
 		rfqfromintendcomponentobj.validateIndentdataAtApproverEnd();   //validate indent data at sectionWise view
 		rfqfromintendcomponentobj.ApproverOverAllComentWithIndentHasBeenApproved();
-		etendercomponentobj.tenderLogoutOld();
-		
+		etendercomponentobj.tenderLogout();
+	
 					// cancel indent feature without approver
 					rfqfromintendcomponentobj.IndentcreatorLogin();
 				 rfqfromintendcomponentobj.navigateToIndentListing();
 				 rfqfromintendcomponentobj.enterIndentNoForSearch();
 				 rfqfromintendcomponentobj.validateCancelIndentFeature();
 					etendercomponentobj.tenderLogout();
-
-					rfqfromintendcomponentobj.IndentapproverLogin(pdfResultReport.testData.get("IndentApproverUserName"));
+	
+					rfqfromintendcomponentobj.ApproverLogin(pdfResultReport.testData.get("IndentApproverUserName"));
 					rfqfromintendcomponentobj.cancelIndentTabAtApproverEnd();
 					rfqfromintendcomponentobj.clickDetailLinkInApprovalListPageForCancelIndent();
 					rfqfromintendcomponentobj.ApproverOverAllComentWithIndentHasBeenApprovedforCancelIndent();
-					etendercomponentobj.tenderLogoutOld();			 
+					etendercomponentobj.tenderLogout();			 
 					
 					rfqfromintendcomponentobj.IndentcreatorLogin();
 					 rfqfromintendcomponentobj.navigateToIndentListing();

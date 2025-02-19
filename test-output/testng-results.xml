@@ -1,38 +1,88 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="1" ignored="0" total="1" passed="0">
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
 <<<<<<< HEAD
+  <suite name="Suite" duration-ms="511927" started-at="2025-02-11T13:14:52 IST" finished-at="2025-02-11T13:23:24 IST">
+=======
 <<<<<<< HEAD
-  <suite name="Suite" duration-ms="354023" started-at="2024-01-11T17:41:30 IST" finished-at="2024-01-11T17:47:24 IST">
+  <suite name="Suite" duration-ms="160593" started-at="2025-01-30T17:36:48 IST" finished-at="2025-01-30T17:39:29 IST">
     <groups>
     </groups>
-    <test name="Test" duration-ms="354023" started-at="2024-01-11T17:41:30 IST" finished-at="2024-01-11T17:47:24 IST">
-      <class name="com.testScripts_mjunction.TG1_TC_Indent_02_Creation_with_multiple_Approvers">
-        <test-method status="PASS" signature="setUpSuiteDetails(org.testng.ITestContext)[pri:0, instance:com.testScripts_mjunction.TG1_TC_Indent_02_Creation_with_multiple_Approvers@543788f3]" name="setUpSuiteDetails" is-config="true" duration-ms="95" started-at="2024-01-11T17:41:30 IST" finished-at="2024-01-11T17:41:30 IST">
+    <test name="Test" duration-ms="160593" started-at="2025-01-30T17:36:48 IST" finished-at="2025-01-30T17:39:29 IST">
+      <class name="com.PO_Purchase_Order_From_Sanction.PO_01_Create_PO_From_SN_NO_Approval">
+        <test-method status="PASS" signature="setUpSuiteDetails(org.testng.ITestContext)[pri:0, instance:com.PO_Purchase_Order_From_Sanction.PO_01_Create_PO_From_SN_NO_Approval@1a677343]" name="setUpSuiteDetails" is-config="true" duration-ms="118" started-at="2025-01-30T17:36:48 IST" finished-at="2025-01-30T17:36:48 IST">
           <params>
             <param index="0">
               <value>
-                <![CDATA[org.testng.TestRunner@3166f664]]>
+                <![CDATA[org.testng.TestRunner@65dac812]]>
 =======
-  <suite name="Suite" duration-ms="3529162" started-at="2024-03-04T15:00:15 IST" finished-at="2024-03-04T15:59:04 IST">
+<<<<<<< HEAD
+  <suite name="Suite" duration-ms="168916" started-at="2025-02-04T09:42:55 IST" finished-at="2025-02-04T09:45:44 IST">
 =======
-  <suite name="Suite" duration-ms="218943" started-at="2024-03-28T12:06:37 IST" finished-at="2024-03-28T12:10:16 IST">
->>>>>>> develop
+<<<<<<< HEAD
+  <suite name="Suite" duration-ms="112647" started-at="2025-01-28T17:51:20 IST" finished-at="2025-01-28T17:53:12 IST">
+=======
+<<<<<<< HEAD
+  <suite name="Suite" duration-ms="333417" started-at="2025-01-28T11:20:34 IST" finished-at="2025-01-28T11:26:08 IST">
+>>>>>>> 2afa94cd37ae73a90f8d21d79f624335f4cae25f
+>>>>>>> 888c42b9e5f2a2b9119ac4b73304344ed597f202
     <groups>
     </groups>
-    <test name="Test" duration-ms="218943" started-at="2024-03-28T12:06:37 IST" finished-at="2024-03-28T12:10:16 IST">
-      <class name="com.testScripts_mjunction.TG1_TC_Evaluation_12_Openingapproval_N_Regression_Evaluationapproval_Y">
-        <test-method status="PASS" signature="setUpSuiteDetails(org.testng.ITestContext)[pri:0, instance:com.testScripts_mjunction.TG1_TC_Evaluation_12_Openingapproval_N_Regression_Evaluationapproval_Y@3270d194]" name="setUpSuiteDetails" is-config="true" duration-ms="112" started-at="2024-03-28T12:06:37 IST" finished-at="2024-03-28T12:06:37 IST">
+    <test name="Test" duration-ms="511927" started-at="2025-02-11T13:14:52 IST" finished-at="2025-02-11T13:23:24 IST">
+      <class name="com.Dynamicity.BidSubmission_Dynamically">
+        <test-method status="PASS" signature="setUpSuiteDetails(org.testng.ITestContext)[pri:0, instance:com.Dynamicity.BidSubmission_Dynamically@3943a2be]" name="setUpSuiteDetails" is-config="true" duration-ms="129" started-at="2025-02-11T13:14:52 IST" finished-at="2025-02-11T13:14:52 IST">
           <params>
             <param index="0">
               <value>
 <<<<<<< HEAD
-                <![CDATA[org.testng.TestRunner@6a6e6278]]>
->>>>>>> 4c5b75b078d5042ba5e72986fb6646038d283c60
+                <![CDATA[org.testng.TestRunner@546c1d23]]>
 =======
-                <![CDATA[org.testng.TestRunner@57bd2029]]>
->>>>>>> develop
+<<<<<<< HEAD
+                <![CDATA[org.testng.TestRunner@41962299]]>
+=======
+                <![CDATA[org.testng.TestRunner@414f13fc]]>
+=======
+<<<<<<< HEAD
+  <suite name="Suite" duration-ms="47411" started-at="2025-01-28T15:16:15 IST" finished-at="2025-01-28T15:17:02 IST">
+=======
+<<<<<<< HEAD
+  <suite name="Suite" duration-ms="1447031" started-at="2025-01-28T12:34:23 IST" finished-at="2025-01-28T12:58:30 IST">
+>>>>>>> ff73cce0b928ccc95fcefbe567ecc80a9535f434
+    <groups>
+    </groups>
+    <test name="Test" duration-ms="112647" started-at="2025-01-28T17:51:20 IST" finished-at="2025-01-28T17:53:12 IST">
+      <class name="com.ProductionDefects.PR_PD_139031">
+        <test-method status="PASS" signature="setUpSuiteDetails(org.testng.ITestContext)[pri:0, instance:com.ProductionDefects.PR_PD_139031@6f03482]" name="setUpSuiteDetails" is-config="true" duration-ms="171" started-at="2025-01-28T17:51:19 IST" finished-at="2025-01-28T17:51:20 IST">
+          <params>
+            <param index="0">
+              <value>
+<<<<<<< HEAD
+                <![CDATA[org.testng.TestRunner@634ff56]]>
+=======
+                <![CDATA[org.testng.TestRunner@61e247fd]]>
+=======
+  <suite name="Suite" duration-ms="336131" started-at="2025-01-28T11:52:37 IST" finished-at="2025-01-28T11:58:14 IST">
+>>>>>>> c3b32659334731bee0b016da0f415be266115d50
+    <groups>
+    </groups>
+    <test name="Test" duration-ms="47411" started-at="2025-01-28T15:16:15 IST" finished-at="2025-01-28T15:17:02 IST">
+      <class name="com.ProductionDefects.Tender_PD_133692">
+        <test-method status="PASS" signature="setUpSuiteDetails(org.testng.ITestContext)[pri:0, instance:com.ProductionDefects.Tender_PD_133692@6f03482]" name="setUpSuiteDetails" is-config="true" duration-ms="183" started-at="2025-01-28T15:16:15 IST" finished-at="2025-01-28T15:16:15 IST">
+          <params>
+            <param index="0">
+              <value>
+<<<<<<< HEAD
+                <![CDATA[org.testng.TestRunner@7159a5cd]]>
+=======
+                <![CDATA[org.testng.TestRunner@6c238208]]>
+>>>>>>> d0ee82a1b893114825f5eaf0a5b288f89a70dd1c
+>>>>>>> c3b32659334731bee0b016da0f415be266115d50
+>>>>>>> 46af59b515ebd36ce3f7a5b5ea94430f21d6a19c
+>>>>>>> ff73cce0b928ccc95fcefbe567ecc80a9535f434
+>>>>>>> 2afa94cd37ae73a90f8d21d79f624335f4cae25f
+>>>>>>> 2db905cf9242398f20eb7f34445a1adad89e5b13
+>>>>>>> 888c42b9e5f2a2b9119ac4b73304344ed597f202
               </value>
             </param>
           </params>
@@ -40,123 +90,108 @@
           </reporter-output>
         </test-method> <!-- setUpSuiteDetails -->
 <<<<<<< HEAD
-<<<<<<< HEAD
-        <test-method status="PASS" signature="BeforeClass()[pri:0, instance:com.testScripts_mjunction.TG1_TC_Indent_02_Creation_with_multiple_Approvers@543788f3]" name="BeforeClass" is-config="true" duration-ms="3021" started-at="2024-01-11T17:41:30 IST" finished-at="2024-01-11T17:41:33 IST">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- BeforeClass -->
-        <test-method status="PASS" signature="captureDesc(java.lang.reflect.Method)[pri:0, instance:com.testScripts_mjunction.TG1_TC_Indent_02_Creation_with_multiple_Approvers@543788f3]" name="captureDesc" is-config="true" duration-ms="1" started-at="2024-01-11T17:41:33 IST" finished-at="2024-01-11T17:41:33 IST">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[public void com.testScripts_mjunction.TG1_TC_Indent_02_Creation_with_multiple_Approvers.Indent_creation_with_approval(java.lang.String) throws java.lang.Throwable]]>
+        <test-method status="PASS" signature="BeforeClass()[pri:0, instance:com.Dynamicity.BidSubmission_Dynamically@3943a2be]" name="BeforeClass" is-config="true" duration-ms="3016" started-at="2025-02-11T13:14:52 IST" finished-at="2025-02-11T13:14:55 IST">
 =======
-        <test-method status="PASS" signature="BeforeClass()[pri:0, instance:com.testScripts_mjunction.TG1_TC_GRN_Create3StagesGRN_From_Indent_E2E@6497b078]" name="BeforeClass" is-config="true" duration-ms="3044" started-at="2024-03-04T15:00:15 IST" finished-at="2024-03-04T15:00:18 IST">
+<<<<<<< HEAD
+        <test-method status="PASS" signature="BeforeClass()[pri:0, instance:com.PO_Purchase_Order_From_Sanction.PO_01_Create_PO_From_SN_NO_Approval@1a677343]" name="BeforeClass" is-config="true" duration-ms="3052" started-at="2025-01-30T17:36:48 IST" finished-at="2025-01-30T17:36:51 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- BeforeClass -->
-        <test-method status="PASS" signature="captureDesc(java.lang.reflect.Method)[pri:0, instance:com.testScripts_mjunction.TG1_TC_GRN_Create3StagesGRN_From_Indent_E2E@6497b078]" name="captureDesc" is-config="true" duration-ms="0" started-at="2024-03-04T15:00:18 IST" finished-at="2024-03-04T15:00:18 IST">
+        <test-method status="FAIL" signature="createPOFromSN_Dynamically(java.lang.String)[pri:0, instance:com.PO_Purchase_Order_From_Sanction.PO_01_Create_PO_From_SN_NO_Approval@1a677343]" name="createPOFromSN_Dynamically" duration-ms="150352" started-at="2025-01-30T17:36:51 IST" description="Scenario:1 -Verify mandatory negotiation functionality of a bidder" finished-at="2025-01-30T17:39:22 IST">
           <params>
             <param index="0">
               <value>
-                <![CDATA[public void com.testScripts_mjunction.TG1_TC_GRN_Create3StagesGRN_From_Indent_E2E.Create3StagesGRN_WithoutApprovalFlow(java.lang.String) throws java.lang.Throwable]]>
->>>>>>> 4c5b75b078d5042ba5e72986fb6646038d283c60
+                <![CDATA[10]]>
+=======
+<<<<<<< HEAD
+        <test-method status="PASS" signature="BeforeClass()[pri:0, instance:com.Sanction_Note_Creation.SN_03_Create_MSN_From_Completed_Tender@5f16132a]" name="BeforeClass" is-config="true" duration-ms="3026" started-at="2025-02-04T09:42:55 IST" finished-at="2025-02-04T09:42:58 IST">
+=======
+<<<<<<< HEAD
+        <test-method status="PASS" signature="BeforeClass()[pri:0, instance:com.ProductionDefects.PR_PD_139031@6f03482]" name="BeforeClass" is-config="true" duration-ms="3010" started-at="2025-01-28T17:51:20 IST" finished-at="2025-01-28T17:51:23 IST">
+=======
+<<<<<<< HEAD
+        <test-method status="PASS" signature="BeforeClass()[pri:0, instance:com.BidSubmission.CreateTender_BidSubmission_From_Indent@3943a2be]" name="BeforeClass" is-config="true" duration-ms="3048" started-at="2025-01-28T11:20:34 IST" finished-at="2025-01-28T11:20:37 IST">
+>>>>>>> 2afa94cd37ae73a90f8d21d79f624335f4cae25f
+>>>>>>> 888c42b9e5f2a2b9119ac4b73304344ed597f202
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- BeforeClass -->
+        <test-method status="PASS" signature="createEvaluationFromPR_Dynamically(java.lang.String)[pri:0, instance:com.Dynamicity.BidSubmission_Dynamically@3943a2be]" name="createEvaluationFromPR_Dynamically" duration-ms="499683" started-at="2025-02-11T13:14:55 IST" description="Scenario:1 -Verify mandatory negotiation functionality of a bidder" finished-at="2025-02-11T13:23:15 IST">
+          <params>
+            <param index="0">
+              <value>
+<<<<<<< HEAD
+                <![CDATA[3]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- captureDesc -->
-<<<<<<< HEAD
-        <test-method status="FAIL" signature="Indent_creation_with_approval(java.lang.String)[pri:0, instance:com.testScripts_mjunction.TG1_TC_Indent_02_Creation_with_multiple_Approvers@543788f3]" name="Indent_creation_with_approval" duration-ms="345304" started-at="2024-01-11T17:41:33 IST" description="Indent_creation_with_approval" finished-at="2024-01-11T17:47:18 IST">
+        </test-method> <!-- createEvaluationFromPR_Dynamically -->
+        <test-method status="PASS" signature="captureDesc(java.lang.reflect.Method)[pri:0, instance:com.Dynamicity.BidSubmission_Dynamically@3943a2be]" name="captureDesc" is-config="true" duration-ms="0" started-at="2025-02-11T13:14:55 IST" finished-at="2025-02-11T13:14:55 IST">
           <params>
             <param index="0">
               <value>
-                <![CDATA[18]]>
+                <![CDATA[public void com.Dynamicity.BidSubmission_Dynamically.createEvaluationFromPR_Dynamically(java.lang.String) throws java.lang.Throwable]]>
 =======
-        <test-method status="FAIL" signature="Create3StagesGRN_WithoutApprovalFlow(java.lang.String)[pri:0, instance:com.testScripts_mjunction.TG1_TC_GRN_Create3StagesGRN_From_Indent_E2E@6497b078]" name="Create3StagesGRN_WithoutApprovalFlow" duration-ms="3498266" started-at="2024-03-04T15:00:18 IST" description="TC_GRN_02:Verify the Submit Functionality during Create GRN with approval workflow &amp; Check the GRN Status as Created" finished-at="2024-03-04T15:58:36 IST">
-=======
-        <test-method status="PASS" signature="BeforeClass()[pri:0, instance:com.testScripts_mjunction.TG1_TC_Evaluation_12_Openingapproval_N_Regression_Evaluationapproval_Y@3270d194]" name="BeforeClass" is-config="true" duration-ms="3033" started-at="2024-03-28T12:06:37 IST" finished-at="2024-03-28T12:06:40 IST">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- BeforeClass -->
-        <test-method status="FAIL" signature="Tender_Evaluation_with_OpeningApproval_N_Evaluationapproval_Y_NegotiateOnebidder_ApproveTwobidder(java.lang.String)[pri:0, instance:com.testScripts_mjunction.TG1_TC_Evaluation_12_Openingapproval_N_Regression_Evaluationapproval_Y@3270d194]" name="Tender_Evaluation_with_OpeningApproval_N_Evaluationapproval_Y_NegotiateOnebidder_ApproveTwobidder" duration-ms="209750" started-at="2024-03-28T12:06:40 IST" description="Tender_Evaluation_with_OpeningApproval_N_Evaluationapproval_Y_NegotiateOnebidder_ApproveTwobidder_RFQ_from_Indent" finished-at="2024-03-28T12:10:10 IST">
->>>>>>> develop
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[11]]>
->>>>>>> 4c5b75b078d5042ba5e72986fb6646038d283c60
+                <![CDATA[5]]>
+>>>>>>> 2db905cf9242398f20eb7f34445a1adad89e5b13
               </value>
             </param>
           </params>
           <exception class="java.lang.AssertionError">
             <message>
 <<<<<<< HEAD
-<<<<<<< HEAD
-              <![CDATA[Error Message : Unable to click on the field : element not interactable
-  (Session info: chrome=120.0.6099.217)
+              <![CDATA[Error Message : Unable to click on the field : element click intercepted: Element <button type="button" class="btn btn-icon btn-primary btn-circle btn-lg" data-toggle="tooltip" title="Submit" ng-click="submitSanction()">...</button> is not clickable at point (1483, 129). Other element would receive the click: <div id="overlay"></div>
+  (Session info: chrome=132.0.6834.111)
 Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
-System info: host: 'MJLT-2170', ip: '172.16.16.201', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_192'
+System info: host: 'MJLT-2170', ip: '172.16.17.70', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_192'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 120.0.6099.217, chrome: {chromedriverVersion: 119.0.6045.105 (38c72552c5e..., userDataDir: C:\Users\PAVEL~1.BAI\AppDat...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:52578}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: b21ce023c280f0720c03e33a30baf70f]]>
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 132.0.6834.111, chrome: {chromedriverVersion: 131.0.6778.85 (3d81e41b6f3a..., userDataDir: C:\Users\PAVEL~1.BAI\AppDat...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:64287}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 349a34d0a90a4e237f19920f900b81ea]]>
             </message>
             <full-stacktrace>
-              <![CDATA[java.lang.AssertionError: Error Message : Unable to click on the field : element not interactable
-  (Session info: chrome=120.0.6099.217)
+              <![CDATA[java.lang.AssertionError: Error Message : Unable to click on the field : element click intercepted: Element <button type="button" class="btn btn-icon btn-primary btn-circle btn-lg" data-toggle="tooltip" title="Submit" ng-click="submitSanction()">...</button> is not clickable at point (1483, 129). Other element would receive the click: <div id="overlay"></div>
+  (Session info: chrome=132.0.6834.111)
 Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
-System info: host: 'MJLT-2170', ip: '172.16.16.201', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_192'
+System info: host: 'MJLT-2170', ip: '172.16.17.70', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_192'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 120.0.6099.217, chrome: {chromedriverVersion: 119.0.6045.105 (38c72552c5e..., userDataDir: C:\Users\PAVEL~1.BAI\AppDat...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:52578}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: b21ce023c280f0720c03e33a30baf70f
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 132.0.6834.111, chrome: {chromedriverVersion: 131.0.6778.85 (3d81e41b6f3a..., userDataDir: C:\Users\PAVEL~1.BAI\AppDat...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:64287}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 349a34d0a90a4e237f19920f900b81ea
 at com.baseClasses.AutomationException.<init>(AutomationException.java:11)
-at com.baseClasses.BaseClass_Web.click(BaseClass_Web.java:90)
-at com.components.RfqFromIndentComponent.AddSingleUsersForSequentialApproval_IndentWF(RfqFromIndentComponent.java:2138)
-at com.testScripts_mjunction.TG1_TC_Indent_02_Creation_with_multiple_Approvers.Indent_creation_with_approval(TG1_TC_Indent_02_Creation_with_multiple_Approvers.java:70)
+at com.baseClasses.BaseClass_Web.click(BaseClass_Web.java:203)
+at com.components.PostTenderComponent.clickOnSubmitButton(PostTenderComponent.java:8592)
+at com.PO_Purchase_Order_From_Sanction.PO_01_Create_PO_From_SN_NO_Approval.createPOFromSN_Dynamically(PO_01_Create_PO_From_SN_NO_Approval.java:56)
 =======
-              <![CDATA[Error Message : Error in entering the text in element: element not interactable
-  (Session info: chrome=122.0.6261.95)
-=======
-              <![CDATA[Error Message : Error in clearing the text in element: no such element: Unable to locate element: {"method":"xpath","selector":"//textarea[@id='rdcis_quotatn_trms_cnditn.Evaluator_Remarks.0']"}
-  (Session info: chrome=123.0.6312.59)
+              <![CDATA[Error Message : Unable to click on the field : no such element: Unable to locate element: {"method":"xpath","selector":"//ul[contains(@class, 'dropdown-menu extended logout')]//../a[contains(text(), ' Log Out')]"}
+  (Session info: chrome=132.0.6834.160)
 For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
->>>>>>> develop
 Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
-System info: host: 'MJLT-2170', ip: '172.16.17.39', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_192'
+System info: host: 'MJLT-2643', ip: '192.168.1.5', os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_401'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 123.0.6312.59, chrome: {chromedriverVersion: 123.0.6312.58 (6b4b19e9dfbb..., userDataDir: C:\Users\PAVEL~1.BAI\AppDat...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:59134}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: a6cba55ef2e9c81f1490927e6f88cb26
-*** Element info: {Using=xpath, value=//textarea[@id='rdcis_quotatn_trms_cnditn.Evaluator_Remarks.0']}]]>
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 132.0.6834.160, chrome: {chromedriverVersion: 131.0.6778.85 (3d81e41b6f3a..., userDataDir: C:\Users\ARKA~1.DEY\AppData...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:50021}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 1b1200233f0a9fee734a3caadf1a4aa2
+*** Element info: {Using=xpath, value=//ul[contains(@class, 'dropdown-menu extended logout')]//../a[contains(text(), ' Log Out')]}]]>
             </message>
             <full-stacktrace>
-              <![CDATA[java.lang.AssertionError: Error Message : Error in clearing the text in element: no such element: Unable to locate element: {"method":"xpath","selector":"//textarea[@id='rdcis_quotatn_trms_cnditn.Evaluator_Remarks.0']"}
-  (Session info: chrome=123.0.6312.59)
+              <![CDATA[java.lang.AssertionError: Error Message : Unable to click on the field : no such element: Unable to locate element: {"method":"xpath","selector":"//ul[contains(@class, 'dropdown-menu extended logout')]//../a[contains(text(), ' Log Out')]"}
+  (Session info: chrome=132.0.6834.160)
 For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
 Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
-System info: host: 'MJLT-2170', ip: '172.16.17.39', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_192'
+System info: host: 'MJLT-2643', ip: '192.168.1.5', os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_401'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 123.0.6312.59, chrome: {chromedriverVersion: 123.0.6312.58 (6b4b19e9dfbb..., userDataDir: C:\Users\PAVEL~1.BAI\AppDat...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:59134}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: a6cba55ef2e9c81f1490927e6f88cb26
-*** Element info: {Using=xpath, value=//textarea[@id='rdcis_quotatn_trms_cnditn.Evaluator_Remarks.0']}
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 132.0.6834.160, chrome: {chromedriverVersion: 131.0.6778.85 (3d81e41b6f3a..., userDataDir: C:\Users\ARKA~1.DEY\AppData...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:50021}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 1b1200233f0a9fee734a3caadf1a4aa2
+*** Element info: {Using=xpath, value=//ul[contains(@class, 'dropdown-menu extended logout')]//../a[contains(text(), ' Log Out')]}
 at com.baseClasses.AutomationException.<init>(AutomationException.java:11)
-<<<<<<< HEAD
-at com.baseClasses.BaseClass_Web.set(BaseClass_Web.java:122)
-at com.components.eTenderComponent.selectBidOpeningAndProvideCommentsForBidOpeningApproval4Cover2(eTenderComponent.java:5597)
-at com.testScripts_mjunction.TG1_TC_GRN_Create3StagesGRN_From_Indent_E2E.Create3StagesGRN_WithoutApprovalFlow(TG1_TC_GRN_Create3StagesGRN_From_Indent_E2E.java:228)
->>>>>>> 4c5b75b078d5042ba5e72986fb6646038d283c60
-=======
-at com.baseClasses.BaseClass_Web.clear(BaseClass_Web.java:137)
-at com.components.eTenderComponent.TG1_EvaluatorRemarks_cover1(eTenderComponent.java:14742)
-at com.components.eTenderComponent.evaluateSupplier(eTenderComponent.java:14695)
-at com.testScripts_mjunction.TG1_TC_Evaluation_12_Openingapproval_N_Regression_Evaluationapproval_Y.Tender_Evaluation_with_OpeningApproval_N_Evaluationapproval_Y_NegotiateOnebidder_ApproveTwobidder(TG1_TC_Evaluation_12_Openingapproval_N_Regression_Evaluationapproval_Y.java:194)
->>>>>>> develop
+at com.baseClasses.BaseClass_Web.click(BaseClass_Web.java:203)
+at com.components.ProductionDefectComponent.LogoutOld(ProductionDefectComponent.java:1097)
+at com.Sanction_Note_Creation.SN_03_Create_MSN_From_Completed_Tender.CreateFreshTenderDynamically(SN_03_Create_MSN_From_Completed_Tender.java:56)
+>>>>>>> 2db905cf9242398f20eb7f34445a1adad89e5b13
 at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
 at java.lang.reflect.Method.invoke(Unknown Source)
-<<<<<<< HEAD
-<<<<<<< HEAD
 at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:132)
 at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:599)
 at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:174)
@@ -178,41 +213,6 @@ at org.testng.TestNG.runSuitesSequentially(TestNG.java:1218)
 at org.testng.TestNG.runSuitesLocally(TestNG.java:1140)
 at org.testng.TestNG.runSuites(TestNG.java:1069)
 at org.testng.TestNG.run(TestNG.java:1037)
-=======
-at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
-at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
-at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
-=======
-at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:132)
-at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:599)
-at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:174)
->>>>>>> develop
-at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
-at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:822)
-at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:147)
-at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
-at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
-at java.util.ArrayList.forEach(Unknown Source)
-at org.testng.TestRunner.privateRun(TestRunner.java:764)
-at org.testng.TestRunner.run(TestRunner.java:585)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:384)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:378)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:337)
-at org.testng.SuiteRunner.run(SuiteRunner.java:286)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
-<<<<<<< HEAD
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
-at org.testng.TestNG.runSuites(TestNG.java:1063)
-at org.testng.TestNG.run(TestNG.java:1031)
->>>>>>> 4c5b75b078d5042ba5e72986fb6646038d283c60
-=======
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1218)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1140)
-at org.testng.TestNG.runSuites(TestNG.java:1069)
-at org.testng.TestNG.run(TestNG.java:1037)
->>>>>>> develop
 at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
 at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
 at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
@@ -222,48 +222,132 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
           <reporter-output>
           </reporter-output>
 <<<<<<< HEAD
-<<<<<<< HEAD
-        </test-method> <!-- Indent_creation_with_approval -->
-        <test-method status="PASS" signature="afterClass()[pri:0, instance:com.testScripts_mjunction.TG1_TC_Indent_02_Creation_with_multiple_Approvers@543788f3]" name="afterClass" is-config="true" duration-ms="2405" started-at="2024-01-11T17:47:21 IST" finished-at="2024-01-11T17:47:24 IST">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- afterClass -->
-        <test-method status="PASS" signature="afterSuite()[pri:0, instance:com.testScripts_mjunction.TG1_TC_Indent_02_Creation_with_multiple_Approvers@543788f3]" name="afterSuite" is-config="true" duration-ms="28" started-at="2024-01-11T17:47:24 IST" finished-at="2024-01-11T17:47:24 IST">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- afterSuite -->
-      </class> <!-- com.testScripts_mjunction.TG1_TC_Indent_02_Creation_with_multiple_Approvers -->
-=======
-        </test-method> <!-- Create3StagesGRN_WithoutApprovalFlow -->
-        <test-method status="PASS" signature="afterClass()[pri:0, instance:com.testScripts_mjunction.TG1_TC_GRN_Create3StagesGRN_From_Indent_E2E@6497b078]" name="afterClass" is-config="true" duration-ms="24193" started-at="2024-03-04T15:58:40 IST" finished-at="2024-03-04T15:59:04 IST">
-=======
-        </test-method> <!-- Tender_Evaluation_with_OpeningApproval_N_Evaluationapproval_Y_NegotiateOnebidder_ApproveTwobidder -->
-        <test-method status="PASS" signature="captureDesc(java.lang.reflect.Method)[pri:0, instance:com.testScripts_mjunction.TG1_TC_Evaluation_12_Openingapproval_N_Regression_Evaluationapproval_Y@3270d194]" name="captureDesc" is-config="true" duration-ms="0" started-at="2024-03-28T12:06:40 IST" finished-at="2024-03-28T12:06:40 IST">
+        </test-method> <!-- createPOFromSN_Dynamically -->
+        <test-method status="PASS" signature="captureDesc(java.lang.reflect.Method)[pri:0, instance:com.PO_Purchase_Order_From_Sanction.PO_01_Create_PO_From_SN_NO_Approval@1a677343]" name="captureDesc" is-config="true" duration-ms="0" started-at="2025-01-30T17:36:51 IST" finished-at="2025-01-30T17:36:51 IST">
           <params>
             <param index="0">
               <value>
-                <![CDATA[public void com.testScripts_mjunction.TG1_TC_Evaluation_12_Openingapproval_N_Regression_Evaluationapproval_Y.Tender_Evaluation_with_OpeningApproval_N_Evaluationapproval_Y_NegotiateOnebidder_ApproveTwobidder(java.lang.String) throws java.lang.Throwable]]>
+                <![CDATA[public void com.PO_Purchase_Order_From_Sanction.PO_01_Create_PO_From_SN_NO_Approval.createPOFromSN_Dynamically(java.lang.String) throws java.lang.Throwable]]>
+=======
+        </test-method> <!-- CreateFreshTenderDynamically -->
+        <test-method status="PASS" signature="captureDesc(java.lang.reflect.Method)[pri:0, instance:com.Sanction_Note_Creation.SN_03_Create_MSN_From_Completed_Tender@5f16132a]" name="captureDesc" is-config="true" duration-ms="0" started-at="2025-02-04T09:42:58 IST" finished-at="2025-02-04T09:42:58 IST">
+          <params>
+            <param index="0">
+              <value>
+<<<<<<< HEAD
+                <![CDATA[public void com.Sanction_Note_Creation.SN_03_Create_MSN_From_Completed_Tender.CreateFreshTenderDynamically(java.lang.String) throws java.lang.Throwable]]>
+=======
+                <![CDATA[public void com.BidSubmission.CreateTender_BidSubmission_From_Indent.createTenderBidSubmissionFromPR_Dynamically(java.lang.String) throws java.lang.Throwable]]>
+=======
+<<<<<<< HEAD
+        <test-method status="PASS" signature="BeforeClass()[pri:0, instance:com.ProductionDefects.Tender_PD_133692@6f03482]" name="BeforeClass" is-config="true" duration-ms="3028" started-at="2025-01-28T15:16:15 IST" finished-at="2025-01-28T15:16:18 IST">
+=======
+<<<<<<< HEAD
+        <test-method status="PASS" signature="BeforeClass()[pri:0, instance:com.BidSubmission.CreateTender_BidSubmission_From_Indent@315f43d5]" name="BeforeClass" is-config="true" duration-ms="3036" started-at="2025-01-28T12:34:23 IST" finished-at="2025-01-28T12:34:26 IST">
+>>>>>>> ff73cce0b928ccc95fcefbe567ecc80a9535f434
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- BeforeClass -->
+        <test-method status="PASS" signature="captureDesc(java.lang.reflect.Method)[pri:0, instance:com.ProductionDefects.PR_PD_139031@6f03482]" name="captureDesc" is-config="true" duration-ms="0" started-at="2025-01-28T17:51:23 IST" finished-at="2025-01-28T17:51:23 IST">
+          <params>
+            <param index="0">
+              <value>
+<<<<<<< HEAD
+                <![CDATA[public void com.ProductionDefects.PR_PD_139031.ProductionDefect_135540(java.lang.String) throws java.lang.Throwable]]>
+=======
+                <![CDATA[public void com.BidSubmission.CreateTender_BidSubmission_From_Indent.createTenderBidSubmissionFromPR_Dynamically(java.lang.String) throws java.lang.Throwable]]>
+=======
+        <test-method status="PASS" signature="BeforeClass()[pri:0, instance:com.ProductionDefects.Tender_PD_132881@6f03482]" name="BeforeClass" is-config="true" duration-ms="3042" started-at="2025-01-28T11:52:38 IST" finished-at="2025-01-28T11:52:41 IST">
+>>>>>>> c3b32659334731bee0b016da0f415be266115d50
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- BeforeClass -->
+        <test-method status="PASS" signature="captureDesc(java.lang.reflect.Method)[pri:0, instance:com.ProductionDefects.Tender_PD_133692@6f03482]" name="captureDesc" is-config="true" duration-ms="0" started-at="2025-01-28T15:16:18 IST" finished-at="2025-01-28T15:16:18 IST">
+          <params>
+            <param index="0">
+              <value>
+<<<<<<< HEAD
+                <![CDATA[public void com.ProductionDefects.Tender_PD_133692.ProductionDefect_135540(java.lang.String) throws java.lang.Throwable]]>
+=======
+                <![CDATA[public void com.ProductionDefects.Tender_PD_132881.ProductionDefect_135540(java.lang.String) throws java.lang.Throwable]]>
+>>>>>>> d0ee82a1b893114825f5eaf0a5b288f89a70dd1c
+>>>>>>> c3b32659334731bee0b016da0f415be266115d50
+>>>>>>> 46af59b515ebd36ce3f7a5b5ea94430f21d6a19c
+>>>>>>> ff73cce0b928ccc95fcefbe567ecc80a9535f434
+>>>>>>> 2afa94cd37ae73a90f8d21d79f624335f4cae25f
+>>>>>>> 2db905cf9242398f20eb7f34445a1adad89e5b13
+>>>>>>> 888c42b9e5f2a2b9119ac4b73304344ed597f202
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- captureDesc -->
-        <test-method status="PASS" signature="afterClass()[pri:0, instance:com.testScripts_mjunction.TG1_TC_Evaluation_12_Openingapproval_N_Regression_Evaluationapproval_Y@3270d194]" name="afterClass" is-config="true" duration-ms="2852" started-at="2024-03-28T12:10:13 IST" finished-at="2024-03-28T12:10:16 IST">
->>>>>>> develop
+<<<<<<< HEAD
+        <test-method status="PASS" signature="afterClass()[pri:0, instance:com.Dynamicity.BidSubmission_Dynamically@3943a2be]" name="afterClass" is-config="true" duration-ms="5500" started-at="2025-02-11T13:23:18 IST" finished-at="2025-02-11T13:23:24 IST">
+=======
+<<<<<<< HEAD
+        <test-method status="PASS" signature="afterClass()[pri:0, instance:com.PO_Purchase_Order_From_Sanction.PO_01_Create_PO_From_SN_NO_Approval@1a677343]" name="afterClass" is-config="true" duration-ms="3723" started-at="2025-01-30T17:39:25 IST" finished-at="2025-01-30T17:39:29 IST">
+=======
+<<<<<<< HEAD
+        <test-method status="PASS" signature="afterClass()[pri:0, instance:com.Sanction_Note_Creation.SN_03_Create_MSN_From_Completed_Tender@5f16132a]" name="afterClass" is-config="true" duration-ms="3418" started-at="2025-02-04T09:45:41 IST" finished-at="2025-02-04T09:45:44 IST">
+>>>>>>> 888c42b9e5f2a2b9119ac4b73304344ed597f202
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterClass -->
-        <test-method status="PASS" signature="afterSuite()[pri:0, instance:com.testScripts_mjunction.TG1_TC_Evaluation_12_Openingapproval_N_Regression_Evaluationapproval_Y@3270d194]" name="afterSuite" is-config="true" duration-ms="36" started-at="2024-03-28T12:10:16 IST" finished-at="2024-03-28T12:10:16 IST">
+        <test-method status="PASS" signature="afterSuite()[pri:0, instance:com.Dynamicity.BidSubmission_Dynamically@3943a2be]" name="afterSuite" is-config="true" duration-ms="30" started-at="2025-02-11T13:23:24 IST" finished-at="2025-02-11T13:23:24 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterSuite -->
 <<<<<<< HEAD
-      </class> <!-- com.testScripts_mjunction.TG1_TC_GRN_Create3StagesGRN_From_Indent_E2E -->
->>>>>>> 4c5b75b078d5042ba5e72986fb6646038d283c60
+      </class> <!-- com.Dynamicity.BidSubmission_Dynamically -->
 =======
-      </class> <!-- com.testScripts_mjunction.TG1_TC_Evaluation_12_Openingapproval_N_Regression_Evaluationapproval_Y -->
->>>>>>> develop
+      </class> <!-- com.Sanction_Note_Creation.SN_03_Create_MSN_From_Completed_Tender -->
+=======
+<<<<<<< HEAD
+        <test-method status="PASS" signature="ProductionDefect_135540(java.lang.String)[pri:0, instance:com.ProductionDefects.PR_PD_139031@6f03482]" name="ProductionDefect_135540" duration-ms="102287" started-at="2025-01-28T17:51:23 IST" description="Tenderpublished_after_tender_approval_tender_from_indent" finished-at="2025-01-28T17:53:05 IST">
+=======
+<<<<<<< HEAD
+        <test-method status="PASS" signature="afterClass()[pri:0, instance:com.BidSubmission.CreateTender_BidSubmission_From_Indent@3943a2be]" name="afterClass" is-config="true" duration-ms="3973" started-at="2025-01-28T11:26:04 IST" finished-at="2025-01-28T11:26:08 IST">
+>>>>>>> 2db905cf9242398f20eb7f34445a1adad89e5b13
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterClass -->
+        <test-method status="PASS" signature="afterSuite()[pri:0, instance:com.PO_Purchase_Order_From_Sanction.PO_01_Create_PO_From_SN_NO_Approval@1a677343]" name="afterSuite" is-config="true" duration-ms="32" started-at="2025-01-30T17:39:29 IST" finished-at="2025-01-30T17:39:29 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterSuite -->
+<<<<<<< HEAD
+      </class> <!-- com.PO_Purchase_Order_From_Sanction.PO_01_Create_PO_From_SN_NO_Approval -->
+=======
+      </class> <!-- com.BidSubmission.CreateTender_BidSubmission_From_Indent -->
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ff73cce0b928ccc95fcefbe567ecc80a9535f434
+        </test-method> <!-- ProductionDefect_135540 -->
+        <test-method status="PASS" signature="afterClass()[pri:0, instance:com.ProductionDefects.PR_PD_139031@6f03482]" name="afterClass" is-config="true" duration-ms="4010" started-at="2025-01-28T17:53:08 IST" finished-at="2025-01-28T17:53:12 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterClass -->
+        <test-method status="PASS" signature="afterSuite()[pri:0, instance:com.ProductionDefects.PR_PD_139031@6f03482]" name="afterSuite" is-config="true" duration-ms="31" started-at="2025-01-28T17:53:12 IST" finished-at="2025-01-28T17:53:12 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterSuite -->
+<<<<<<< HEAD
+      </class> <!-- com.ProductionDefects.PR_PD_139031 -->
+=======
+<<<<<<< HEAD
+      </class> <!-- com.ProductionDefects.Tender_PD_133692 -->
+=======
+      </class> <!-- com.ProductionDefects.Tender_PD_132881 -->
+>>>>>>> d0ee82a1b893114825f5eaf0a5b288f89a70dd1c
+>>>>>>> c3b32659334731bee0b016da0f415be266115d50
+>>>>>>> 46af59b515ebd36ce3f7a5b5ea94430f21d6a19c
+>>>>>>> ff73cce0b928ccc95fcefbe567ecc80a9535f434
+>>>>>>> 2afa94cd37ae73a90f8d21d79f624335f4cae25f
+>>>>>>> 2db905cf9242398f20eb7f34445a1adad89e5b13
+>>>>>>> 888c42b9e5f2a2b9119ac4b73304344ed597f202
     </test> <!-- Test -->
   </suite> <!-- Suite -->
 </testng-results>

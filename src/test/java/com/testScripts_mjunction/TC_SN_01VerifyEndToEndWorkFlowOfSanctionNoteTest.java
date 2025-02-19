@@ -48,14 +48,14 @@ public class TC_SN_01VerifyEndToEndWorkFlowOfSanctionNoteTest extends BaseClass_
 	  posttendercomponentobj.SanctionItemsAllotment();
 	  posttendercomponentobj.ScantionComment_recommendationTab();
 	  posttendercomponentobj.clickOnSubmitButton();
-	  //posttendercomponentobj.documentNoSave();
+	  posttendercomponentobj.documentNoSave();
 	  posttendercomponentobj.notSendForApproval();
 	  posttendercomponentobj.enterDocumentNoInSearch();
 	  /*
 	  posttendercomponentobj.viewDetailsValidation();
 	  posttendercomponentobj.clickOnDownloadSanctionReport();
 	  */
-	  etendercomponentobj.tenderLogoutOld();
+	  etendercomponentobj.tenderLogout();
 	 
 	}
 

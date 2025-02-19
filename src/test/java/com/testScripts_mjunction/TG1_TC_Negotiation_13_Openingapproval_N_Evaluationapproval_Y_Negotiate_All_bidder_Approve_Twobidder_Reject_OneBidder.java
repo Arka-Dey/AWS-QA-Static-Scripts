@@ -87,7 +87,7 @@ public class TG1_TC_Negotiation_13_Openingapproval_N_Evaluationapproval_Y_Negoti
 		 
 		//Create and publish RFQ from indent
 		rfqfromintendcomponentobj.Create_RFQ_From_Indent("Indigenous Tender (Supply & Service Both) V-1.0");
-		rfqfromintendcomponentobj.PublishTender_from_indent_withRFQ_TG1("Indigenous Tender (Supply & Service Both) V-1.0",5,30,32);
+		rfqfromintendcomponentobj.PublishTender_from_indent_withRFQ_TG1("Indigenous Tender (Supply & Service Both) V-1.0",5,45,47);
 		//Clicking on submit button and verify tender status
 		etendercomponentobj.clickSubmitBtn();
 		etendercomponentobj.tenderIdSave();
@@ -179,7 +179,7 @@ public class TG1_TC_Negotiation_13_Openingapproval_N_Evaluationapproval_Y_Negoti
 		etendercomponentobj.evaluateSupplier("CTS", "Approve", "Approve CTS", 1);
 		etendercomponentobj.evaluateSupplier("TCS", "Approve", "Approve TCS", 1);
 		etendercomponentobj.enterOverallComment_EvaluatorUser();
-		etendercomponentobj.tenderLogoutOld();
+		etendercomponentobj.tenderLogout();
 		 
 		// Negotiation WorkFlow
 		etendercomponentobj.tendercreatorLogin();
@@ -209,7 +209,7 @@ public class TG1_TC_Negotiation_13_Openingapproval_N_Evaluationapproval_Y_Negoti
 		etendercomponentobj.submittedBid_Tab_Validation();
 		etendercomponentobj.VerifyBidno_after_Negotiatedbid();
 		//etendercomponentobj.TG1_validateBidPreview_BidListPage();
-		etendercomponentobj.tenderLogoutOld();
+		etendercomponentobj.tenderLogout();
 		 
 		etendercomponentobj.waitTillBidDuetDateReached();
 		
@@ -270,7 +270,7 @@ public class TG1_TC_Negotiation_13_Openingapproval_N_Evaluationapproval_Y_Negoti
 		etendercomponentobj.submittedBid_Tab_Validation();
 		etendercomponentobj.VerifyBidno_after_Negotiatedbid();
 		//etendercomponentobj.TG1_validateBidPreview_BidListPage();
-		etendercomponentobj.tenderLogoutOld();
+		etendercomponentobj.tenderLogout();
 		
 		//Bid submission of the negotiated bidder: CTS
 		etendercomponentobj.commonLogin("cts_auto_01");
@@ -285,7 +285,7 @@ public class TG1_TC_Negotiation_13_Openingapproval_N_Evaluationapproval_Y_Negoti
 		etendercomponentobj.submittedBid_Tab_Validation();
 		etendercomponentobj.VerifyBidno_after_Negotiatedbid();
 		//etendercomponentobj.TG1_validateBidPreview_BidListPage();
-		etendercomponentobj.tenderLogoutOld();
+		etendercomponentobj.tenderLogout();
 		
 		etendercomponentobj.waitTillBidDuetDateReached();
 		
@@ -347,7 +347,7 @@ public class TG1_TC_Negotiation_13_Openingapproval_N_Evaluationapproval_Y_Negoti
 		etendercomponentobj.evaluateSupplier("CTS", "Negotiate", "Negotiate with CTS", 2);
 		etendercomponentobj.evaluateSupplier("TCS", "Negotiate", "Negotiate with TCS", 2);
 		etendercomponentobj.enterOverallComment_EvaluatorUser();
-		etendercomponentobj.tenderLogoutOld();
+		etendercomponentobj.tenderLogout();
 		
 		// Negotiation WorkFlow for Cover2
 		etendercomponentobj.tendercreatorLogin();
@@ -377,7 +377,7 @@ public class TG1_TC_Negotiation_13_Openingapproval_N_Evaluationapproval_Y_Negoti
 		etendercomponentobj.submittedBid_Tab_Validation();
 		etendercomponentobj.VerifyBidno_after_Negotiatedbid();
 		//etendercomponentobj.TG1_validateBidPreview_BidListPage();
-		etendercomponentobj.tenderLogoutOld();
+		etendercomponentobj.tenderLogout();
 		
 		etendercomponentobj.commonLogin("cts_auto_01");
 		etendercomponentobj.navigate_to_bidList_page();
@@ -391,7 +391,7 @@ public class TG1_TC_Negotiation_13_Openingapproval_N_Evaluationapproval_Y_Negoti
 		etendercomponentobj.submittedBid_Tab_Validation();
 		etendercomponentobj.VerifyBidno_after_Negotiatedbid();
 		//etendercomponentobj.TG1_validateBidPreview_BidListPage();
-		etendercomponentobj.tenderLogoutOld();
+		etendercomponentobj.tenderLogout();
 		
 		etendercomponentobj.commonLogin("tcs_auto_01");
 		etendercomponentobj.navigate_to_bidList_page();
@@ -405,7 +405,7 @@ public class TG1_TC_Negotiation_13_Openingapproval_N_Evaluationapproval_Y_Negoti
 		etendercomponentobj.submittedBid_Tab_Validation();
 		etendercomponentobj.VerifyBidno_after_Negotiatedbid();
 		//etendercomponentobj.TG1_validateBidPreview_BidListPage();
-		etendercomponentobj.tenderLogoutOld();
+		etendercomponentobj.tenderLogout();
 		
 		etendercomponentobj.waitTillBidDuetDateReached();
 		
@@ -437,7 +437,7 @@ public class TG1_TC_Negotiation_13_Openingapproval_N_Evaluationapproval_Y_Negoti
 		etendercomponentobj.evaluateSupplier("CTS", "Negotiate", "Negotiate with CTS 1st time", 2);
 		etendercomponentobj.evaluateSupplier("TCS", "Approve", "Approve TCS 2nd time", 2);
 		etendercomponentobj.enterOverallComment_EvaluatorUser();
-		etendercomponentobj.tenderLogoutOld();
+		etendercomponentobj.tenderLogout();
 		
 		// Negotiation WorkFlow for Cover2
 		etendercomponentobj.tendercreatorLogin();
@@ -467,7 +467,7 @@ public class TG1_TC_Negotiation_13_Openingapproval_N_Evaluationapproval_Y_Negoti
 		etendercomponentobj.submittedBid_Tab_Validation();
 		etendercomponentobj.VerifyBidno_after_Negotiatedbid();
 		//etendercomponentobj.TG1_validateBidPreview_BidListPage();
-		etendercomponentobj.tenderLogoutOld();
+		etendercomponentobj.tenderLogout();
 		
 		etendercomponentobj.commonLogin("cts_auto_01");
 		etendercomponentobj.navigate_to_bidList_page();
@@ -481,7 +481,7 @@ public class TG1_TC_Negotiation_13_Openingapproval_N_Evaluationapproval_Y_Negoti
 		etendercomponentobj.submittedBid_Tab_Validation();
 		etendercomponentobj.VerifyBidno_after_Negotiatedbid();
 		//etendercomponentobj.TG1_validateBidPreview_BidListPage();
-		etendercomponentobj.tenderLogoutOld();
+		etendercomponentobj.tenderLogout();
 		 
 		etendercomponentobj.waitTillBidDuetDateReached();
 		
@@ -512,7 +512,7 @@ public class TG1_TC_Negotiation_13_Openingapproval_N_Evaluationapproval_Y_Negoti
 		etendercomponentobj.evaluateSupplier("Tech Mahindra", "Negotiate", "Negotiate with Tech Mahindra 2nd time", 2);
 		etendercomponentobj.evaluateSupplier("CTS", "Approve", "Approve CTS 3rd time", 2);
 		etendercomponentobj.enterOverallComment_EvaluatorUser();
-		etendercomponentobj.tenderLogoutOld();
+		etendercomponentobj.tenderLogout();
 		
 		// Negotiation WorkFlow for Cover2
 		etendercomponentobj.tendercreatorLogin();
@@ -542,7 +542,7 @@ public class TG1_TC_Negotiation_13_Openingapproval_N_Evaluationapproval_Y_Negoti
 		etendercomponentobj.submittedBid_Tab_Validation();
 		etendercomponentobj.VerifyBidno_after_Negotiatedbid();
 		//etendercomponentobj.TG1_validateBidPreview_BidListPage();
-		etendercomponentobj.tenderLogoutOld();
+		etendercomponentobj.tenderLogout();
 		
 		etendercomponentobj.waitTillBidDuetDateReached();
 		

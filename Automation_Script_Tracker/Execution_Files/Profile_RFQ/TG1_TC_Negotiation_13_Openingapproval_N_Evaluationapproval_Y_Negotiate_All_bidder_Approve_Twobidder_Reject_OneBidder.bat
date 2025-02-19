@@ -1,0 +1,2 @@
+cd C:\Project\GIT\mjpro-qa
+mvn test -PRFQ -Dsurefire.suiteXmlFiles=mjunctionTestNGXML/RFQ/TG1_TC_Negotiation_13_Openingapproval_N_Evaluationapproval_Y_Negotiate_All_bidder_Approve_Twobidder_Reject_OneBidder.xml

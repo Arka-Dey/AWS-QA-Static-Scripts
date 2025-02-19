@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Suite">
+<listeners>
+<listener class-name="com.baseClasses.Listener"></listener>
+</listeners>
+    <test name="Test">
+        <parameter name="browserName" value="windowschrome"></parameter>
+        <classes>
+           <parameter name="TestcaseNo" value="2"></parameter>   
+            <class name="com.ProductionDefects.SN_PD_131632_test"/>
+        </classes>
+    </test> 
+</suite> 
+
+<!-- This is Template group specific defect, provide exact template that mention in Defect body-->

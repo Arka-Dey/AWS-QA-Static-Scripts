@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Suite">
+<listeners>
+<listener class-name="com.baseClasses.Listener"></listener>
+</listeners>
+    <test name="Test">
+        <parameter name="browserName" value="windowschrome"></parameter>
+        <classes>
+           <parameter name="TestcaseNo" value="4"></parameter>   
+            <class name="com.ProductionDefects.PO_PD_136674"/>
+        </classes>
+    </test> 
+</suite> 
+
+<!--136674	Defect	Closed	Severity - 1	RDCIS_Prod - Activate the old PO Template Group, (PO Module- PO Print Preview not appearing for PO no. 1136 )
+
+poCreator=GSML_buyer
+poCreator_password=pass@123
+queryPOparam=1747
+
+
+
+  -->

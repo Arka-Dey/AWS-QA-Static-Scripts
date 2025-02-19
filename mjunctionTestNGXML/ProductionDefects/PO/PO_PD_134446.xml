@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Suite">
+<listeners>
+<listener class-name="com.baseClasses.Listener"></listener>
+</listeners>
+    <test name="Test">
+        <parameter name="browserName" value="windowschrome"></parameter>
+        <classes>
+           <parameter name="TestcaseNo" value="4"></parameter>   
+            <class name="com.ProductionDefects.PO_PD_134446"/>
+        </classes>
+    </test> 
+</suite> 
+
+<!--134446	Defect	Closed	Severity - 2	SAIL (RDCIS)_Prod - MIS- Unable to download the Order MIS report
+
+poCreator=IPSITA_RDCIS
+poCreator_password=pass@123
+
+
+
+
+  -->

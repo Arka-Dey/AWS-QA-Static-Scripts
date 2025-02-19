@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Suite">
+<listeners>
+<listener class-name="com.baseClasses.Listener"></listener>
+</listeners>
+    <test name="Test">
+        <parameter name="browserName" value="windowschrome"></parameter>
+        <classes>
+           <parameter name="TestcaseNo" value="9"></parameter>   
+            <class name="com.PO_Purchase_Order.PO_03_Create_Fresh_PO_Without_Approver"/>
+        </classes>
+    </test> 
+</suite>

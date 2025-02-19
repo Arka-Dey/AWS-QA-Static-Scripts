@@ -6,12 +6,10 @@ import com.components.RfqFromIndentComponent;
 import com.components.eTenderComponent;
 import com.objectRepository.TenderCreation_Locators;
 
-import org.openqa.selenium.By;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import com.baseClasses.BaseClass_Web;
-import com.components.eTenderComponent;
 
 
 public class TG1_TC_CreatePO_VerifyEndToEnd extends BaseClass_Web {

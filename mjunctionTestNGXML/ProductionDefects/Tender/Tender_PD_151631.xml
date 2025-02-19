@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Suite">
+<listeners>
+<listener class-name="com.baseClasses.Listener"></listener>
+</listeners>
+    <test name="Test">
+        <parameter name="browserName" value="windowschrome"></parameter>
+        <classes>
+           <parameter name="TestcaseNo" value="1"></parameter>   
+            <class name="com.ProductionDefects.Tender_PD_151631"/>
+        </classes>
+    </test> 
+</suite> 
+
+<!-- 151631	EPS Product	Defect	Resolved	P1 - Critical	HMEL_PROD:HMEL/2024/3920 - Vendor is not getting Organizational empanelment Tab.
+
+
+
+
+
+*/
+
+
+ -->

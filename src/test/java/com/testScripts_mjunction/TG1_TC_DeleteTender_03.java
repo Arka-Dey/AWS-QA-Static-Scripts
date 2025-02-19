@@ -91,7 +91,6 @@ public class TG1_TC_DeleteTender_03 extends BaseClass_Web{
 		
 		etendercomponentobj.tendercreatorLogin();
 		etendercomponentobj.navigateToTenderListing();
-		rfqfromintendcomponentobj.searchTenderID();
 		rfqfromintendcomponentobj.deleteTender();
 		rfqfromintendcomponentobj.validateDeleteMessage();
 		rfqfromintendcomponentobj.checkTenderStatusforCancelledorDeleted("Deleted");

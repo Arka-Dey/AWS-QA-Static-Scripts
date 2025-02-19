@@ -5,12 +5,10 @@ import com.components.PostTenderComponent;
 import com.components.eTenderComponent;
 import com.objectRepository.TenderCreation_Locators;
 
-import org.openqa.selenium.By;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import com.baseClasses.BaseClass_Web;
-import com.components.eTenderComponent;
 
 
 public class TC_EPS_PO_02UserDefinedApprovalTest extends BaseClass_Web {
@@ -60,26 +58,27 @@ public class TC_EPS_PO_02UserDefinedApprovalTest extends BaseClass_Web {
 	  posttendercomponentobj.InitiatePOfromSN();
 	  posttendercomponentobj.EPS_PO_Submission();
 	  posttendercomponentobj.POSaveandApproval();
+	  posttendercomponentobj.savePoDocNumber();
 	  posttendercomponentobj.sendForApprovalUserDefinedSequential_pocreator();
 	  posttendercomponentobj.verifyPoRefNumberInPoListPage();
 	  posttendercomponentobj.verifyPOStatus("Pending for Approval");
 	  posttendercomponentobj.savePoDocNumberFromPoListpage();
 	  etendercomponentobj.tenderLogout();
-	  
+ 
 	  posttendercomponentobj.poApprover1Login();
 	  posttendercomponentobj.navigateToApprovalPendingPage(tendercreationobj.poTab);
 	  posttendercomponentobj.navigateToPurchaseOrderApproval();
 	  posttendercomponentobj.provide_PO_ApproverComment();
 	  posttendercomponentobj.purchaseOrderApproval();
-	  etendercomponentobj.tenderLogoutOld();
-	  
+	  etendercomponentobj.tenderLogout();
+		  
 	  etendercomponentobj.bidder_01_Login();
 	  posttendercomponentobj.navigateToPoListingWithBidderUser();
-	  posttendercomponentobj.searchThePoRefNoInPoListPage();
+	  posttendercomponentobj.searchThePoRefNoInPoListPage_SupplierSide();
 	  posttendercomponentobj.clickAcceptPoInDropDown();
 	  posttendercomponentobj.verifySummaryTabAndEnterComment();
 	  posttendercomponentobj.clickAccepPotBtn();
-	  posttendercomponentobj.verifyPOStatusIsAccepted();
+	  posttendercomponentobj.verifyPOStatusIsAccepted_SupplierSide();
 	  etendercomponentobj.tenderLogout();
 	  
 	  posttendercomponentobj.sanction_Creator_Login();

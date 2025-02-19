@@ -153,22 +153,16 @@ public class TG1_TC_Evaluation_11_Openingapproval_Y_Evaluationapproval_Y extends
 		etendercomponentobj.navigateToTenderListing();
 		etendercomponentobj.enterTenderIdInSearch();
 		etendercomponentobj.clickEvaluationSettingsLink();		
-		//Set the schedule opening date and time
-		/*
-		 etendercomponentobj.ScheduleOpening_Evaluationsettings(4); //Need to enable respective field
-		*/
+		
 		etendercomponentobj.selectYesForApprovalAndEvaluationRequired();
 		etendercomponentobj.selectBidOpeningAndProvideCommentsForBidOpeningApproval();
 		etendercomponentobj.selectEvaluationAndProvideCommentsForBidOpeningApproval();
 		etendercomponentobj.SendForApprovalInEvaluationsetting();
-		//etendercomponentobj.checktenderStatusIsInOpening();
+	
 		etendercomponentobj.checktenderStageIsInPendingForOpeningApprovalCover1("Cover 1");
 		etendercomponentobj.tenderLogout();
 		
-		//Waiting for schedule opening time reached
-		/*
-		etendercomponentobj.waitTillScheduleOpeningDateReached(); // dependent on method: ScheduleOpening_Evaluationsettings
-		*/
+	
 		
 		//Opening approver approve the tender for Cover1
 		etendercomponentobj.tenderApproverLogin();
@@ -177,7 +171,7 @@ public class TG1_TC_Evaluation_11_Openingapproval_Y_Evaluationapproval_Y extends
 		etendercomponentobj.validateBidOpeningApprovalpage("Cover 1", "3", "3");
 		etendercomponentobj.provideApproverCommentInCommentsection();
 		etendercomponentobj.clickApproveBtnAndCheckTenderIsDisplayingOrNotInTenderOpeningTab();
-		etendercomponentobj.tenderLogoutOld();	
+		etendercomponentobj.tenderLogout();	
 		
 		//Tender creator decrypt the bid for all the bidder cover1
 		etendercomponentobj.tendercreatorLogin();
@@ -200,8 +194,7 @@ public class TG1_TC_Evaluation_11_Openingapproval_Y_Evaluationapproval_Y extends
 		etendercomponentobj.evaluateSupplier("CTS", "Approve", "Approve CTS", 1);
 		etendercomponentobj.evaluateSupplier("TCS", "Approve", "Approve TCS", 1);
 		etendercomponentobj.enterOverallComment_EvaluatorUser();
-		etendercomponentobj.tenderLogoutOld();
-		
+		etendercomponentobj.tenderLogout();
 		//============change will be applied
 		//Evaluation: Cover 2 work flow where opening approval Yes and evaluation approval Yes
 		etendercomponentobj.tendercreatorLogin();
@@ -235,7 +228,7 @@ public class TG1_TC_Evaluation_11_Openingapproval_Y_Evaluationapproval_Y extends
 		etendercomponentobj.validateBidOpeningApprovalpage("Cover 2", "3", "3");
 		etendercomponentobj.provideApproverCommentInCommentsection();
 		etendercomponentobj.clickApproveBtnAndCheckTenderIsDisplayingOrNotInTenderOpeningTab();
-		etendercomponentobj.tenderLogoutOld();
+		etendercomponentobj.tenderLogout();
 	
 		//============change will be applied
 		//Tender creator decrypt the bid for all the bidder cover2
@@ -259,7 +252,7 @@ public class TG1_TC_Evaluation_11_Openingapproval_Y_Evaluationapproval_Y extends
 		etendercomponentobj.evaluateSupplier("CTS", "Approve", "Approve CTS", 2);
 		etendercomponentobj.evaluateSupplier("TCS", "Approve", "Approve TCS", 2);
 		etendercomponentobj.enterOverallComment_EvaluatorUser();
-		etendercomponentobj.tenderLogoutOld();
+		etendercomponentobj.tenderLogout();
 		
 		//============change will be applied
 		//Checking tender status Completed

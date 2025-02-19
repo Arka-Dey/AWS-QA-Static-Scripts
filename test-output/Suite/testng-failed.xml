@@ -7,43 +7,73 @@
   <test thread-count="5" name="Test(failed)">
     <parameter name="browserName" value="windowschrome"/>
 <<<<<<< HEAD
-    <parameter name="TestcaseNo" value="18"/>
-    <classes>
-      <class name="com.testScripts_mjunction.TG1_TC_Indent_02_Creation_with_multiple_Approvers">
 =======
-    <parameter name="TestcaseNo" value="11"/>
-    <classes>
 <<<<<<< HEAD
-      <class name="com.testScripts_mjunction.TG1_TC_GRN_Create3StagesGRN_From_Indent_E2E">
->>>>>>> 4c5b75b078d5042ba5e72986fb6646038d283c60
+    <parameter name="TestcaseNo" value="10"/>
+    <classes>
+      <class name="com.PO_Purchase_Order_From_Sanction.PO_01_Create_PO_From_SN_NO_Approval">
+        <methods>
+          <include name="setUpSuiteDetails"/>
 =======
-      <class name="com.testScripts_mjunction.TG1_TC_Evaluation_12_Openingapproval_N_Regression_Evaluationapproval_Y">
->>>>>>> develop
+    <parameter name="TestcaseNo" value="5"/>
+    <classes>
+      <class name="com.Sanction_Note_Creation.SN_03_Create_MSN_From_Completed_Tender">
         <methods>
           <include name="setUpSuiteDetails"/>
 <<<<<<< HEAD
+          <include name="CreateFreshTenderDynamically" invocation-numbers="0"/>
+=======
+          <include name="createTenderBidSubmissionFromPR_Dynamically" invocation-numbers="0"/>
+=======
+>>>>>>> 888c42b9e5f2a2b9119ac4b73304344ed597f202
+    <parameter name="TestcaseNo" value="1"/>
+    <classes>
+      <class name="com.BidSubmission.Create_Multi_Tender_BidSubmissionForEachLine_FromPR">
+        <methods>
+          <include name="createTenderBidSubmissionFromPR_Dynamically" invocation-numbers="0"/>
+          <include name="setUpSuiteDetails"/>
 <<<<<<< HEAD
-          <include name="Indent_creation_with_approval" invocation-numbers="0"/>
 =======
-          <include name="BeforeClass"/>
->>>>>>> 4c5b75b078d5042ba5e72986fb6646038d283c60
+          <include name="ProductionDefect_135540" invocation-numbers="0"/>
+<<<<<<< HEAD
 =======
-          <include name="Tender_Evaluation_with_OpeningApproval_N_Evaluationapproval_Y_NegotiateOnebidder_ApproveTwobidder" invocation-numbers="0"/>
->>>>>>> develop
+>>>>>>> d0ee82a1b893114825f5eaf0a5b288f89a70dd1c
+>>>>>>> 46af59b515ebd36ce3f7a5b5ea94430f21d6a19c
+>>>>>>> ff73cce0b928ccc95fcefbe567ecc80a9535f434
+>>>>>>> 2afa94cd37ae73a90f8d21d79f624335f4cae25f
+>>>>>>> 2db905cf9242398f20eb7f34445a1adad89e5b13
+>>>>>>> 888c42b9e5f2a2b9119ac4b73304344ed597f202
           <include name="afterSuite"/>
           <include name="captureDesc"/>
           <include name="BeforeClass"/>
+          <include name="createPOFromSN_Dynamically" invocation-numbers="0"/>
           <include name="afterClass"/>
         </methods>
 <<<<<<< HEAD
+      </class> <!-- com.BidSubmission.Create_Multi_Tender_BidSubmissionForEachLine_FromPR -->
+=======
 <<<<<<< HEAD
-      </class> <!-- com.testScripts_mjunction.TG1_TC_Indent_02_Creation_with_multiple_Approvers -->
+      </class> <!-- com.PO_Purchase_Order_From_Sanction.PO_01_Create_PO_From_SN_NO_Approval -->
 =======
-      </class> <!-- com.testScripts_mjunction.TG1_TC_GRN_Create3StagesGRN_From_Indent_E2E -->
->>>>>>> 4c5b75b078d5042ba5e72986fb6646038d283c60
+<<<<<<< HEAD
+      </class> <!-- com.Sanction_Note_Creation.SN_03_Create_MSN_From_Completed_Tender -->
 =======
-      </class> <!-- com.testScripts_mjunction.TG1_TC_Evaluation_12_Openingapproval_N_Regression_Evaluationapproval_Y -->
->>>>>>> develop
+<<<<<<< HEAD
+      </class> <!-- com.ProductionDefects.Tender_PD_134591 -->
+=======
+<<<<<<< HEAD
+      </class> <!-- com.BidSubmission.CreateTender_BidSubmission_From_Indent -->
+=======
+<<<<<<< HEAD
+      </class> <!-- com.BidSubmission.CreateTender_BidSubmission_From_Indent -->
+=======
+      </class> <!-- com.ProductionDefects.Tender_PD_132382 -->
+>>>>>>> d0ee82a1b893114825f5eaf0a5b288f89a70dd1c
+>>>>>>> 46af59b515ebd36ce3f7a5b5ea94430f21d6a19c
+>>>>>>> ff73cce0b928ccc95fcefbe567ecc80a9535f434
+>>>>>>> 2afa94cd37ae73a90f8d21d79f624335f4cae25f
+>>>>>>> 2db905cf9242398f20eb7f34445a1adad89e5b13
+>>>>>>> 888c42b9e5f2a2b9119ac4b73304344ed597f202
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

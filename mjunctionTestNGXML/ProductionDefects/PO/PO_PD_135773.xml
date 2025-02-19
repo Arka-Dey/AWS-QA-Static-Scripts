@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Suite">
+<listeners>
+<listener class-name="com.baseClasses.Listener"></listener>
+</listeners>
+    <test name="Test">
+        <parameter name="browserName" value="windowschrome"></parameter>
+        <classes>
+           <parameter name="TestcaseNo" value="4"></parameter>   
+            <class name="com.ProductionDefects.PO_PD_135773"/>
+        </classes>
+    </test> 
+</suite> 
+
+<!--135773	Defect	Verified	Severity - 2	MTI_Prod - As observed in MTI PO Print Preview/ PO PDF, in few POs order decsription not appearing
+
+
+poCreator=GSML_buyer
+poCreator_password=pass@123
+queryPOparam=1747
+
+
+
+  -->

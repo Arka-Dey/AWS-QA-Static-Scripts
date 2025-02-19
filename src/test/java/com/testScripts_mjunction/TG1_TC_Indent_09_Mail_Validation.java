@@ -72,66 +72,63 @@ public class TG1_TC_Indent_09_Mail_Validation extends BaseClass_Web{
 		rfqfromintendcomponentobj.enterIndentNoInSearch();
 		rfqfromintendcomponentobj.VerifyIndentStatus("Pending For Approval");
 		etendercomponentobj.tenderLogout();
-		 
-		
-		
+		 	
 		//Approve the created indent
-		rfqfromintendcomponentobj.IndentapproverLogin();
+		rfqfromintendcomponentobj.ApproverLogin(pdfResultReport.testData.get("Approver1"));
 		rfqfromintendcomponentobj.GoToApprovalworkFlowPendingindentAndSearchTheIndent();
 		rfqfromintendcomponentobj.clickDetailLinkInApprovalListPage();
 		rfqfromintendcomponentobj.Forward_IndentWF_With_ParallelApprovalType(); //forward to test_approver_01, test_approver_02 and test_approver_03(c), min app: 2
-		etendercomponentobj.tenderLogoutOld();
+		etendercomponentobj.tenderLogout();
 		 
 		
 		//Login with test_approver_02 (non coordinator)
-		rfqfromintendcomponentobj.IndentapproverLogin(pdfResultReport.testData.get("Approver2"));
+		rfqfromintendcomponentobj.ApproverLogin(pdfResultReport.testData.get("Approver2"));
 		rfqfromintendcomponentobj.GoToApprovalworkFlowPendingindentAndSearchTheIndent();
 		rfqfromintendcomponentobj.clickDetailLinkInApprovalListPage();
 		rfqfromintendcomponentobj.Approve_Indent_by_NonCoordinators("Indent Process Is Approved by test_approver_02"); 
-		etendercomponentobj.tenderLogoutOld();
+		etendercomponentobj.tenderLogout();
 		
 		//Login with test_approver_03 (coordinator)
-		rfqfromintendcomponentobj.IndentapproverLogin(pdfResultReport.testData.get("Approver3"));
+		rfqfromintendcomponentobj.ApproverLogin(pdfResultReport.testData.get("Approver3"));
 		rfqfromintendcomponentobj.GoToApprovalworkFlowPendingindentAndSearchTheIndent();
 		rfqfromintendcomponentobj.clickDetailLinkInApprovalListPage();
-		rfqfromintendcomponentobj.Forward_IndentWF_With_SequentialApprovalType("Indent Process Is Approved and forwarded by test_approver_03"); 
-		etendercomponentobj.tenderLogoutOld();
-		 
-		
+		rfqfromintendcomponentobj.Forward_IndentWF_With_SequentialApprovalType(); 
+		etendercomponentobj.tenderLogout();
+		 		
 		//Login with test_approver_04 (non coordinator)
-		rfqfromintendcomponentobj.IndentapproverLogin(pdfResultReport.testData.get("Approver4"));
+		rfqfromintendcomponentobj.ApproverLogin(pdfResultReport.testData.get("Approver4"));
 		rfqfromintendcomponentobj.GoToApprovalworkFlowPendingindentAndSearchTheIndent();
 		rfqfromintendcomponentobj.clickDetailLinkInApprovalListPage();
 		rfqfromintendcomponentobj.Approve_Indent_by_NonCoordinators("Indent Process Is Approved by test_approver_04"); 
-		etendercomponentobj.tenderLogoutOld();
+		etendercomponentobj.tenderLogout();
 		
 		//Login with test_approver_05 (non coordinator)
-		rfqfromintendcomponentobj.IndentapproverLogin(pdfResultReport.testData.get("Approver5"));
+		rfqfromintendcomponentobj.ApproverLogin(pdfResultReport.testData.get("Approver5"));
 		rfqfromintendcomponentobj.GoToApprovalworkFlowPendingindentAndSearchTheIndent();
 		rfqfromintendcomponentobj.clickDetailLinkInApprovalListPage();
 		rfqfromintendcomponentobj.Approve_Indent_by_NonCoordinators("Indent Process Is Approved by test_approver_05"); 
-		etendercomponentobj.tenderLogoutOld();
+		etendercomponentobj.tenderLogout();
 		
 		//Login with test_approver_06 (coordinator) revert back to previous approver
-		rfqfromintendcomponentobj.IndentapproverLogin(pdfResultReport.testData.get("Approver6"));
+		rfqfromintendcomponentobj.ApproverLogin(pdfResultReport.testData.get("Approver6"));
 		rfqfromintendcomponentobj.GoToApprovalworkFlowPendingindentAndSearchTheIndent();
 		rfqfromintendcomponentobj.clickDetailLinkInApprovalListPage();
 		rfqfromintendcomponentobj.Revert_Indent_to_PreviousApprover("Indent Process Is Reverted by test_approver_06"); 
-		etendercomponentobj.tenderLogoutOld();
+		etendercomponentobj.tenderLogout();
 		
 		//Login with test_approver_05 (non coordinator)
-		rfqfromintendcomponentobj.IndentapproverLogin(pdfResultReport.testData.get("Approver5"));
+		rfqfromintendcomponentobj.ApproverLogin(pdfResultReport.testData.get("Approver5"));
 		rfqfromintendcomponentobj.GoToApprovalworkFlowPendingindentAndSearchTheIndent();
 		rfqfromintendcomponentobj.clickDetailLinkInApprovalListPage();
 		rfqfromintendcomponentobj.Approve_Indent_by_NonCoordinators("Indent Process Is Approved by test_approver_05 after reverted back by test_approver_06"); 
-		etendercomponentobj.tenderLogoutOld();
+		etendercomponentobj.tenderLogout();
 		
 		//Login with test_approver_06 (coordinator) revert back to previous approver
-		rfqfromintendcomponentobj.IndentapproverLogin(pdfResultReport.testData.get("Approver6"));
+		rfqfromintendcomponentobj.ApproverLogin(pdfResultReport.testData.get("Approver6"));
 		rfqfromintendcomponentobj.GoToApprovalworkFlowPendingindentAndSearchTheIndent();
 		rfqfromintendcomponentobj.clickDetailLinkInApprovalListPage();
 		rfqfromintendcomponentobj.Revert_Indent_to_Creator("Indent Process Is Reverted by test_approver_06"); 
-		etendercomponentobj.tenderLogoutOld();
+		etendercomponentobj.tenderLogout();
 		
 		//Indent creator initiates WF again with 10 approvers in parallel and sequential but recall it before taking decision by any approver
 		rfqfromintendcomponentobj.IndentcreatorLogin();
@@ -142,8 +139,7 @@ public class TG1_TC_Indent_09_Mail_Validation extends BaseClass_Web{
 		rfqfromintendcomponentobj.enterIndentNoInSearch();
 		rfqfromintendcomponentobj.VerifyIndentStatus("Pending For Approval");
 		etendercomponentobj.tenderLogout();
-		
-		
+				
 		//Indent creator recalls WF before taking decision by any approver
 		rfqfromintendcomponentobj.IndentcreatorLogin();
 		rfqfromintendcomponentobj.navigateToIndentListing();
@@ -153,10 +149,7 @@ public class TG1_TC_Indent_09_Mail_Validation extends BaseClass_Web{
 		rfqfromintendcomponentobj.enterIndentNoInSearch();
 		rfqfromintendcomponentobj.VerifyIndentStatus("Draft");
 		etendercomponentobj.tenderLogout();
-		
-		
-		
-		
+				
 		//Indent creator initiates WF again with 10 approvers in parallel and sequential but recall it after taking decision by some approvers
 		rfqfromintendcomponentobj.IndentcreatorLogin();
 		rfqfromintendcomponentobj.navigateToIndentListing();
@@ -168,46 +161,46 @@ public class TG1_TC_Indent_09_Mail_Validation extends BaseClass_Web{
 		etendercomponentobj.tenderLogout();
 		
 		//Login with test_approver_01 (non coordinator)
-		rfqfromintendcomponentobj.IndentapproverLogin(pdfResultReport.testData.get("Approver1"));
+		rfqfromintendcomponentobj.ApproverLogin(pdfResultReport.testData.get("Approver1"));
 		rfqfromintendcomponentobj.GoToApprovalworkFlowPendingindentAndSearchTheIndent();
 		rfqfromintendcomponentobj.clickDetailLinkInApprovalListPage();
 		rfqfromintendcomponentobj.Approve_Indent_by_NonCoordinators("Indent Process Is Approved by test_approver_01"); 
-		etendercomponentobj.tenderLogoutOld();
+		etendercomponentobj.tenderLogout();
 		
 		//Login with test_approver_02 (non coordinator)
-		rfqfromintendcomponentobj.IndentapproverLogin(pdfResultReport.testData.get("Approver2"));
+		rfqfromintendcomponentobj.ApproverLogin(pdfResultReport.testData.get("Approver2"));
 		rfqfromintendcomponentobj.GoToApprovalworkFlowPendingindentAndSearchTheIndent();
 		rfqfromintendcomponentobj.clickDetailLinkInApprovalListPage();
 		rfqfromintendcomponentobj.Approve_Indent_by_NonCoordinators("Indent Process Is Approved by test_approver_02"); 
-		etendercomponentobj.tenderLogoutOld();
+		etendercomponentobj.tenderLogout();
 				
 		//Login with test_approver_03 (coordinator but not WF coordinator)
-		rfqfromintendcomponentobj.IndentapproverLogin(pdfResultReport.testData.get("Approver3"));
+		rfqfromintendcomponentobj.ApproverLogin(pdfResultReport.testData.get("Approver3"));
 		rfqfromintendcomponentobj.GoToApprovalworkFlowPendingindentAndSearchTheIndent();
 		rfqfromintendcomponentobj.clickDetailLinkInApprovalListPage();
 		rfqfromintendcomponentobj.Approve_Indent_by_NonCoordinators("Indent Process Is Approved by test_approver_03"); 
-		etendercomponentobj.tenderLogoutOld();
+		etendercomponentobj.tenderLogout();
 		
 		//Login with test_approver_04 (non coordinator)
-		rfqfromintendcomponentobj.IndentapproverLogin(pdfResultReport.testData.get("Approver4"));
+		rfqfromintendcomponentobj.ApproverLogin(pdfResultReport.testData.get("Approver4"));
 		rfqfromintendcomponentobj.GoToApprovalworkFlowPendingindentAndSearchTheIndent();
 		rfqfromintendcomponentobj.clickDetailLinkInApprovalListPage();
 		rfqfromintendcomponentobj.Approve_Indent_by_NonCoordinators("Indent Process Is Approved by test_approver_04"); 
-		etendercomponentobj.tenderLogoutOld();
+		etendercomponentobj.tenderLogout();
 				
 		//Login with test_approver_05 (non coordinator)
-		rfqfromintendcomponentobj.IndentapproverLogin(pdfResultReport.testData.get("Approver5"));
+		rfqfromintendcomponentobj.ApproverLogin(pdfResultReport.testData.get("Approver5"));
 		rfqfromintendcomponentobj.GoToApprovalworkFlowPendingindentAndSearchTheIndent();
 		rfqfromintendcomponentobj.clickDetailLinkInApprovalListPage();
 		rfqfromintendcomponentobj.Approve_Indent_by_NonCoordinators("Indent Process Is Approved by test_approver_05"); 
-		etendercomponentobj.tenderLogoutOld();
+		etendercomponentobj.tenderLogout();
 				
 		//Login with test_approver_06 (non coordinator) revert back to previous approver
-		rfqfromintendcomponentobj.IndentapproverLogin(pdfResultReport.testData.get("Approver6"));
+		rfqfromintendcomponentobj.ApproverLogin(pdfResultReport.testData.get("Approver6"));
 		rfqfromintendcomponentobj.GoToApprovalworkFlowPendingindentAndSearchTheIndent();
 		rfqfromintendcomponentobj.clickDetailLinkInApprovalListPage();
 		rfqfromintendcomponentobj.Approve_Indent_by_NonCoordinators("Indent Process Is Reverted by test_approver_06"); 
-		etendercomponentobj.tenderLogoutOld();
+		etendercomponentobj.tenderLogout();
 		
 		//Indent creator recalls WF before taking decision by any approver
 		rfqfromintendcomponentobj.IndentcreatorLogin();
@@ -218,8 +211,7 @@ public class TG1_TC_Indent_09_Mail_Validation extends BaseClass_Web{
 		rfqfromintendcomponentobj.enterIndentNoInSearch();
 		rfqfromintendcomponentobj.VerifyIndentStatus("Draft");
 		etendercomponentobj.tenderLogout();
-		
-		
+			
 		//Indent creator initiates WF again with 1 approver
 		rfqfromintendcomponentobj.IndentcreatorLogin();
 		rfqfromintendcomponentobj.navigateToIndentListing();
@@ -231,97 +223,96 @@ public class TG1_TC_Indent_09_Mail_Validation extends BaseClass_Web{
 		etendercomponentobj.tenderLogout();
 		
 		//Login with User_Indent_Approver (non coordinator)
-		rfqfromintendcomponentobj.IndentapproverLogin(pdfResultReport.testData.get("IndentApproverUserName"));
+		rfqfromintendcomponentobj.ApproverLogin(pdfResultReport.testData.get("IndentApproverUserName"));
 		rfqfromintendcomponentobj.GoToApprovalworkFlowPendingindentAndSearchTheIndent();
 		rfqfromintendcomponentobj.clickDetailLinkInApprovalListPage();
-		rfqfromintendcomponentobj.Forward_IndentWF_With_Single_SequentialApprovalType("Indent Process Is Approved by User_Indent_Approver", pdfResultReport.testData.get("User_Approver1"), tendercreationlocators.user2_Indent); 
-		etendercomponentobj.tenderLogoutOld();
+		etendercomponentobj.AddSingleUsersForSequentialApproval_Tender_WF_AfterRecall_Revert(pdfResultReport.testData.get("UserTenderApprover1")); 
+		etendercomponentobj.tenderLogout();
 		
 		//Login with test_approver_01 (non coordinator)
-		rfqfromintendcomponentobj.IndentapproverLogin(pdfResultReport.testData.get("Approver1"));
+		rfqfromintendcomponentobj.ApproverLogin(pdfResultReport.testData.get("Approver1"));
 		rfqfromintendcomponentobj.GoToApprovalworkFlowPendingindentAndSearchTheIndent();
 		rfqfromintendcomponentobj.clickDetailLinkInApprovalListPage();
-		rfqfromintendcomponentobj.Forward_IndentWF_With_Single_SequentialApprovalType("Indent Process Is Approved by test_approver_01", pdfResultReport.testData.get("User_Approver2"), tendercreationlocators.user3_Indent); 
-		etendercomponentobj.tenderLogoutOld();
+		etendercomponentobj.AddSingleUsersForSequentialApproval_Tender_WF_AfterRecall_Revert(pdfResultReport.testData.get("UserTenderApprover1")); 
+		etendercomponentobj.tenderLogout();
 		
 		//Login with test_approver_02 (non coordinator)
-		rfqfromintendcomponentobj.IndentapproverLogin(pdfResultReport.testData.get("Approver2"));
+		rfqfromintendcomponentobj.ApproverLogin(pdfResultReport.testData.get("Approver2"));
 		rfqfromintendcomponentobj.GoToApprovalworkFlowPendingindentAndSearchTheIndent();
 		rfqfromintendcomponentobj.clickDetailLinkInApprovalListPage();
-		rfqfromintendcomponentobj.Forward_IndentWF_With_Single_SequentialApprovalType("Indent Process Is Approved by test_approver_02", pdfResultReport.testData.get("User_Approver3"), tendercreationlocators.user4_Indent); 
-		etendercomponentobj.tenderLogoutOld();
+		etendercomponentobj.AddSingleUsersForSequentialApproval_Tender_WF_AfterRecall_Revert(pdfResultReport.testData.get("UserTenderApprover1")); 
+		etendercomponentobj.tenderLogout();
 		
 		//Login with test_approver_03 (non coordinator)
-		rfqfromintendcomponentobj.IndentapproverLogin(pdfResultReport.testData.get("Approver3"));
+		rfqfromintendcomponentobj.ApproverLogin(pdfResultReport.testData.get("Approver3"));
 		rfqfromintendcomponentobj.GoToApprovalworkFlowPendingindentAndSearchTheIndent();
 		rfqfromintendcomponentobj.clickDetailLinkInApprovalListPage();
-		rfqfromintendcomponentobj.Forward_IndentWF_With_Single_SequentialApprovalType("Indent Process Is Approved by test_approver_03", pdfResultReport.testData.get("User_Approver4"), tendercreationlocators.user5_Indent); 
-		etendercomponentobj.tenderLogoutOld();
+		etendercomponentobj.AddSingleUsersForSequentialApproval_Tender_WF_AfterRecall_Revert(pdfResultReport.testData.get("UserTenderApprover1")); 
+		etendercomponentobj.tenderLogout();
 		
 		//Login with test_approver_04 (non coordinator)
-		rfqfromintendcomponentobj.IndentapproverLogin(pdfResultReport.testData.get("Approver4"));
+		rfqfromintendcomponentobj.ApproverLogin(pdfResultReport.testData.get("Approver4"));
 		rfqfromintendcomponentobj.GoToApprovalworkFlowPendingindentAndSearchTheIndent();
 		rfqfromintendcomponentobj.clickDetailLinkInApprovalListPage();
-		rfqfromintendcomponentobj.Forward_IndentWF_With_Single_SequentialApprovalType("Indent Process Is Approved by test_approver_04", pdfResultReport.testData.get("User_Approver5"), tendercreationlocators.user6_Indent); 
-		etendercomponentobj.tenderLogoutOld();
+		etendercomponentobj.AddSingleUsersForSequentialApproval_Tender_WF_AfterRecall_Revert(pdfResultReport.testData.get("UserTenderApprover1")); 
+		etendercomponentobj.tenderLogout();
 		
 		//Login with test_approver_05 (non coordinator)
-		rfqfromintendcomponentobj.IndentapproverLogin(pdfResultReport.testData.get("Approver5"));
+		rfqfromintendcomponentobj.ApproverLogin(pdfResultReport.testData.get("Approver5"));
 		rfqfromintendcomponentobj.GoToApprovalworkFlowPendingindentAndSearchTheIndent();
 		rfqfromintendcomponentobj.clickDetailLinkInApprovalListPage();
-		rfqfromintendcomponentobj.Forward_IndentWF_With_Single_SequentialApprovalType("Indent Process Is Approved by test_approver_05", pdfResultReport.testData.get("User_Approver6"), tendercreationlocators.user7_Indent); 
-		etendercomponentobj.tenderLogoutOld();
+		etendercomponentobj.AddSingleUsersForSequentialApproval_Tender_WF_AfterRecall_Revert(pdfResultReport.testData.get("UserTenderApprover1")); 
+		etendercomponentobj.tenderLogout();
 		
 		//Login with test_approver_06 (non coordinator)
-		rfqfromintendcomponentobj.IndentapproverLogin(pdfResultReport.testData.get("Approver6"));
+		rfqfromintendcomponentobj.ApproverLogin(pdfResultReport.testData.get("Approver6"));
 		rfqfromintendcomponentobj.GoToApprovalworkFlowPendingindentAndSearchTheIndent();
 		rfqfromintendcomponentobj.clickDetailLinkInApprovalListPage();
-		rfqfromintendcomponentobj.Forward_IndentWF_With_Single_SequentialApprovalType("Indent Process Is Approved by test_approver_06", pdfResultReport.testData.get("User_Approver7"), tendercreationlocators.user8_Indent); 
-		etendercomponentobj.tenderLogoutOld();
+		etendercomponentobj.AddSingleUsersForSequentialApproval_Tender_WF_AfterRecall_Revert(pdfResultReport.testData.get("UserTenderApprover1")); 
+		etendercomponentobj.tenderLogout();
 		 
 		
 		//Login with test_approver_07 (non coordinator)
-		rfqfromintendcomponentobj.IndentapproverLogin(pdfResultReport.testData.get("Approver7"));
+		rfqfromintendcomponentobj.ApproverLogin(pdfResultReport.testData.get("Approver7"));
 		rfqfromintendcomponentobj.GoToApprovalworkFlowPendingindentAndSearchTheIndent();
 		rfqfromintendcomponentobj.clickDetailLinkInApprovalListPage();
-		rfqfromintendcomponentobj.Forward_IndentWF_With_Single_SequentialApprovalType("Indent Process Is Approved by test_approver_07", pdfResultReport.testData.get("User_Approver8"), tendercreationlocators.user9_Indent); 
-		etendercomponentobj.tenderLogoutOld();
+		etendercomponentobj.AddSingleUsersForSequentialApproval_Tender_WF_AfterRecall_Revert(pdfResultReport.testData.get("UserTenderApprover1")); 
+		etendercomponentobj.tenderLogout();
 		
 		//Login with test_approver_08 (non coordinator)
-		rfqfromintendcomponentobj.IndentapproverLogin(pdfResultReport.testData.get("Approver8"));
+		rfqfromintendcomponentobj.ApproverLogin(pdfResultReport.testData.get("Approver8"));
 		rfqfromintendcomponentobj.GoToApprovalworkFlowPendingindentAndSearchTheIndent();
 		rfqfromintendcomponentobj.clickDetailLinkInApprovalListPage();
-		rfqfromintendcomponentobj.Forward_IndentWF_With_Single_SequentialApprovalType("Indent Process Is Approved by test_approver_08", pdfResultReport.testData.get("User_Approver9"), tendercreationlocators.user10_Indent); 
-		etendercomponentobj.tenderLogoutOld();
+		etendercomponentobj.AddSingleUsersForSequentialApproval_Tender_WF_AfterRecall_Revert(pdfResultReport.testData.get("UserTenderApprover1")); 
+		etendercomponentobj.tenderLogout();
 		
 		//Login with test_approver_09 (non coordinator)
-		rfqfromintendcomponentobj.IndentapproverLogin(pdfResultReport.testData.get("Approver9"));
+		rfqfromintendcomponentobj.ApproverLogin(pdfResultReport.testData.get("Approver9"));
 		rfqfromintendcomponentobj.GoToApprovalworkFlowPendingindentAndSearchTheIndent();
 		rfqfromintendcomponentobj.clickDetailLinkInApprovalListPage();
-		rfqfromintendcomponentobj.Forward_IndentWF_With_Single_SequentialApprovalType("Indent Process Is Approved by test_approver_09", pdfResultReport.testData.get("User_Approver10"), tendercreationlocators.user11_Indent ); 
-		etendercomponentobj.tenderLogoutOld();
+		etendercomponentobj.AddSingleUsersForSequentialApproval_Tender_WF_AfterRecall_Revert(pdfResultReport.testData.get("UserTenderApprover1")); 
+		etendercomponentobj.tenderLogout();
 		
 		//Recall by test_approver_09 from test_approver_10 (non coordinator)
-		rfqfromintendcomponentobj.IndentapproverLogin(pdfResultReport.testData.get("Approver9"));
+		rfqfromintendcomponentobj.ApproverLogin(pdfResultReport.testData.get("Approver9"));
 		rfqfromintendcomponentobj.GoToApprovalworkFlowCompletedindentAndSearchTheIndent();
 		rfqfromintendcomponentobj.RecallFromApprovalCompletedListPage("Recall by previous approver"); 
-		etendercomponentobj.tenderLogoutOld();
+		etendercomponentobj.tenderLogout();
 		
 		//Login with test_approver_09 to test_approver_10 again (non coordinator)
-		rfqfromintendcomponentobj.IndentapproverLogin(pdfResultReport.testData.get("Approver9"));
+		rfqfromintendcomponentobj.ApproverLogin(pdfResultReport.testData.get("Approver9"));
 		rfqfromintendcomponentobj.GoToApprovalworkFlowPendingindentAndSearchTheIndent();
 		rfqfromintendcomponentobj.clickDetailLinkInApprovalListPage();
-		rfqfromintendcomponentobj.Forward_IndentWF_With_Single_SequentialApprovalType("Indent Process Is Approved by test_approver_09", pdfResultReport.testData.get("User_Approver10"), tendercreationlocators.user13_Indent ); 
-		etendercomponentobj.tenderLogoutOld();
+		etendercomponentobj.AddSingleUsersForSequentialApproval_Tender_WF_AfterRecall_Revert(pdfResultReport.testData.get("UserTenderApprover1")); 
+		etendercomponentobj.tenderLogout();
 		
 		//Login with test_approver_10 and approve finally (non coordinator)
-		rfqfromintendcomponentobj.IndentapproverLogin(pdfResultReport.testData.get("Approver10"));
+		rfqfromintendcomponentobj.ApproverLogin(pdfResultReport.testData.get("Approver10"));
 		rfqfromintendcomponentobj.GoToApprovalworkFlowPendingindentAndSearchTheIndent();
 		rfqfromintendcomponentobj.clickDetailLinkInApprovalListPage();
 		rfqfromintendcomponentobj.ApproverOverAllComentWithIndentHasBeenApproved(); 
-		etendercomponentobj.tenderLogoutOld();
-				
-				
+		etendercomponentobj.tenderLogout();
+								
 		//Verifying the indent status after approval
 		 rfqfromintendcomponentobj.IndentcreatorLogin();
 		 rfqfromintendcomponentobj.navigateToIndentListing();
@@ -332,9 +323,7 @@ public class TG1_TC_Indent_09_Mail_Validation extends BaseClass_Web{
 		 rfqfromintendcomponentobj.validatePreviewData();
 		 etendercomponentobj.tenderLogout();
 		 
-		 
 			//validate mail
-				etendercomponentobj.openURL();
 				rfqfromintendcomponentobj.adminLogin();
 				rfqfromintendcomponentobj.nevigateToMailDetails();
 				rfqfromintendcomponentobj.validateMailAfterSendForApproval();

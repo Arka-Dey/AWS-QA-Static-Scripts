@@ -3,7 +3,6 @@ package com.testScripts_mjunction;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
@@ -78,7 +77,9 @@ public class TG1_TC_Indent_01_Creation_with_approval extends BaseClass_Web{
 		rfqfromintendcomponentobj.clickDetailLinkInApprovalListPage();
 		rfqfromintendcomponentobj.validateIndentdataAtApproverEnd();   //validate indent data at approver end sectionWise view
 		rfqfromintendcomponentobj.ApproverOverAllComentWithIndentHasBeenApproved();
-		etendercomponentobj.tenderLogoutOld();
+		rfqfromintendcomponentobj.validateGridViewAndListView();     //validate list view and grid view page
+		
+		etendercomponentobj.tenderLogout();
 		
 		//Verifying the indent status after approval
 		rfqfromintendcomponentobj.IndentcreatorLogin();
@@ -89,8 +90,6 @@ public class TG1_TC_Indent_01_Creation_with_approval extends BaseClass_Web{
 		
 		
 		
-		
-	
 	}
 
 }

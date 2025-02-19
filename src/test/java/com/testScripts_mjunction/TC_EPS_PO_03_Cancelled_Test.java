@@ -39,6 +39,7 @@ public class TC_EPS_PO_03_Cancelled_Test extends BaseClass_Web {
 	  
 	  initializeRepository();
 	  etendercomponentobj.openURL();
+	  
 	  posttendercomponentobj.sanction_Creator_Login();
 	  posttendercomponentobj.clickPostTenderProcessLink();
 	  posttendercomponentobj.enterCompleted_TenderId_new() ;
@@ -58,9 +59,8 @@ public class TC_EPS_PO_03_Cancelled_Test extends BaseClass_Web {
 	  posttendercomponentobj.Add_AllTemplate_Items_Submit();
 	  posttendercomponentobj.InitiatePOfromSN();
 	  posttendercomponentobj.EPS_PO_Submission();
-	
 	  posttendercomponentobj.POSaveandApproval();
-	  //posttendercomponentobj.savePoDocNumber();
+	  posttendercomponentobj.savePoDocNumber();
 	  posttendercomponentobj.ApprovalNotRequired();
 	  posttendercomponentobj.verifyPoRefNumberInPoListPage();
 	  posttendercomponentobj.verifyPOStatus("Pending for Acceptance");
@@ -69,11 +69,11 @@ public class TC_EPS_PO_03_Cancelled_Test extends BaseClass_Web {
 	  
 	  etendercomponentobj.bidder_01_Login();
 	  posttendercomponentobj.navigateToPoListingWithBidderUser();
-	  posttendercomponentobj.searchThePoRefNoInPoListPage();
+	  posttendercomponentobj.searchThePoRefNoInPoListPage_SupplierSide();
 	  posttendercomponentobj.clickAcceptPoInDropDown();
 	  posttendercomponentobj.verifySummaryTabAndEnterComment();
 	  posttendercomponentobj.clickAccepPotBtn();
-	  posttendercomponentobj.verifyPOStatusIsAccepted();
+	  posttendercomponentobj.verifyPOStatusIsAccepted_SupplierSide();
 	  etendercomponentobj.tenderLogout();
 	  
 	  posttendercomponentobj.sanction_Creator_Login();
@@ -88,7 +88,7 @@ public class TC_EPS_PO_03_Cancelled_Test extends BaseClass_Web {
 	  posttendercomponentobj.navigateToPurchaseCancelOrderApproval();
 	  posttendercomponentobj.provide_PO_ApproverComment();
 	  posttendercomponentobj.purchaseOrderApproval();
-	  etendercomponentobj.tenderLogoutOld();
+	  etendercomponentobj.tenderLogout();
 	  
 	  posttendercomponentobj.sanction_Creator_Login();
 	  posttendercomponentobj.navigateToPurchasrOrderList();

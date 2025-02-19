@@ -3,7 +3,6 @@ package com.testScripts_mjunction;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
@@ -73,13 +72,14 @@ public class TG1_TC_TenderCreation_01_tender_publish_with_tender_approval extend
 		rfqfromintendcomponentobj.VerifyIndentStatus("Marked For RFQ");
 		etendercomponentobj.tenderLogout();
 		
-		
-//Indent assignment Process (self claim)
+
+
+	//Indent assignment Process (self claim)
 		etendercomponentobj.tendercreatorLogin();
 		rfqfromintendcomponentobj.navigateToIndentAssignment();
 		rfqfromintendcomponentobj.enterIndentNoForSearch();
 		rfqfromintendcomponentobj.Verify_Indent_Assignment_self_Claim();
-		//rfqfromintendcomponentobj.enterIndentNoForSearch();
+		rfqfromintendcomponentobj.enterIndentNoForSearch();
 		rfqfromintendcomponentobj.VerifyIndentStatus_AssignmentListPage("Assigned");
 		rfqfromintendcomponentobj.navigateToCreateRFQFromIndentPage();
 		rfqfromintendcomponentobj.enterIndentNoInSearch_RFQfromIndentPage();
@@ -113,7 +113,7 @@ public class TG1_TC_TenderCreation_01_tender_publish_with_tender_approval extend
 		etendercomponentobj.clickDetailLinkInApprovalListPage();
 		etendercomponentobj.TG1_tenderApprover_dynamicityNew();
 		etendercomponentobj.ApproverOverAllComentWithTenderHasBeenApproved();
-		etendercomponentobj.tenderLogoutOld();
+		etendercomponentobj.tenderLogout();
 				
 	//verifying Published tender status 
 		etendercomponentobj.tendercreatorLogin();

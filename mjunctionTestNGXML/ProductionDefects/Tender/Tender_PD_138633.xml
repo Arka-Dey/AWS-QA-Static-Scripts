@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Suite">
+<listeners>
+<listener class-name="com.baseClasses.Listener"></listener>
+</listeners>
+    <test name="Test">
+        <parameter name="browserName" value="windowschrome"></parameter>
+        <classes>
+           <parameter name="TestcaseNo" value="2"></parameter>   
+            <class name="com.ProductionDefects.Tender_PD_138633"/>
+        </classes>
+    </test> 
+</suite>
+
+
+<!-- /** 138633	Defect	Closed	Severity - 2	RDCIS_Prod - Section Wise Comment by default neither "YES" nor "NO"
+
+TenderCreator=HMEL_CREATOR001
+TenderCreator_Password=pass@123
+Template=Indigenous Tender (Supply & Service Both) V-1.1
+IndentCreator=INDENT_CREATOR_02
+IndentTemplate=Indigenous Indent (Supply & Service Both) V-004
+IndentCreator_Password=pass@123
+
+*/ -->

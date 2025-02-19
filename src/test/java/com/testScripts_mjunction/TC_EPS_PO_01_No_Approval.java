@@ -61,7 +61,7 @@ public class TC_EPS_PO_01_No_Approval extends BaseClass_Web {
 	  posttendercomponentobj.EPS_PO_Submission();
 	
 	  posttendercomponentobj.POSaveandApproval();
-	  //posttendercomponentobj.savePoDocNumber();
+	  posttendercomponentobj.savePoDocNumber();
 	  posttendercomponentobj.ApprovalNotRequired();
 	  posttendercomponentobj.verifyPoRefNumberInPoListPage();
 	  posttendercomponentobj.verifyPOStatus("Pending for Acceptance");
@@ -70,11 +70,11 @@ public class TC_EPS_PO_01_No_Approval extends BaseClass_Web {
 	  
 	  etendercomponentobj.bidder_01_Login();
 	  posttendercomponentobj.navigateToPoListingWithBidderUser();
-	  posttendercomponentobj.searchThePoRefNoInPoListPage();
+	  posttendercomponentobj.searchThePoRefNoInPoListPage_SupplierSide();
 	  posttendercomponentobj.clickAcceptPoInDropDown();
 	  posttendercomponentobj.verifySummaryTabAndEnterComment();
 	  posttendercomponentobj.clickAccepPotBtn();
-	  posttendercomponentobj.verifyPOStatusIsAccepted();
+	  posttendercomponentobj.verifyPOStatusIsAccepted_SupplierSide();
 	  etendercomponentobj.tenderLogout();
 	  
 	  posttendercomponentobj.sanction_Creator_Login();

@@ -109,7 +109,7 @@ public class TG1_TC_Corrigendum_03_DateCorrigendum_withApproval_Livestate extend
 	//verifying pending corrigendum in 2nd approver login	
 		etendercomponentobj.tenderApprover2Login();
 		etendercomponentobj.Verifying_Pendingtender_Corrigendumtab_sequentialWF();
-		etendercomponentobj.tenderLogoutOld();
+		etendercomponentobj.tenderLogout();
 	
 	//Verifying pending corrigendum in 1st approver login and approve the corrigendum 
 		etendercomponentobj.tenderApproverLogin();
@@ -117,7 +117,7 @@ public class TG1_TC_Corrigendum_03_DateCorrigendum_withApproval_Livestate extend
 		etendercomponentobj.clickDetailLinkInApprovalListPage_CorrigendumApproval();
 		etendercomponentobj.provideApproverCommentsForDateScheduleTab();
 		etendercomponentobj.ApproverOverAllComentWithCorrigendumHasBeenApproved();
-		etendercomponentobj.tenderLogoutOld();
+		etendercomponentobj.tenderLogout();
 		
 	//Verifying pending corrigendum in 2nd approver login and approve the corrigendum 
 		etendercomponentobj.tenderApprover2Login();
@@ -125,20 +125,18 @@ public class TG1_TC_Corrigendum_03_DateCorrigendum_withApproval_Livestate extend
 		etendercomponentobj.clickDetailLinkInApprovalListPage_CorrigendumApproval();
 		etendercomponentobj.provideApproverCommentsForDateScheduleTab();
 		etendercomponentobj.ApproverOverAllComentWithCorrigendumHasBeenApproved();
-		etendercomponentobj.tenderLogoutOld();
+		etendercomponentobj.tenderLogout();
 		
 	//Verifying Corrigendum status and corrigendum history
 		etendercomponentobj.tendercreatorLogin();
 		etendercomponentobj.navigateToTenderListing();
 		etendercomponentobj.enterTenderIdInSearch();
-		etendercomponentobj.corrigendumStatus();
+		etendercomponentobj.corrigendumStatus(no);
 		etendercomponentobj.corrigendumStatus_Yes_Hyperlink_Validation();
 		etendercomponentobj.corrigendumNumber_Hyperlink_Validation();
 		etendercomponentobj.corrigendumComparison_Hyperlink_Validation();
 		etendercomponentobj.tenderLogout();
-		
-		
-		
+			
 	}
 
 }

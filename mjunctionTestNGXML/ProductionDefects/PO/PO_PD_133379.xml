@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Suite">
+<listeners>
+<listener class-name="com.baseClasses.Listener"></listener>
+</listeners>
+    <test name="Test">
+        <parameter name="browserName" value="windowschrome"></parameter>
+        <classes>
+           <parameter name="TestcaseNo" value="4"></parameter>   
+            <class name="com.ProductionDefects.PO_PD_133379"/>
+        </classes>
+    </test> 
+</suite> 
+
+<!--133379	Defect	Closed	Severity - 2	Prod_BPPL -  Unable to PRINT PREVIEW in PO (Order No 2681, 2604)
+
+poCreator=GSML_buyer
+poCreator_password=pass@123
+queryPOparam=1747
+
+
+
+  -->

@@ -1,12 +1,11 @@
 package com.components;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Iterator;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -44,8 +43,8 @@ public class ASN_GRNComponent extends BaseClass_Web {
 	public void SelectASNModule() throws Throwable {
 		try {
 			log.info("started executing the method:: SelectASNModule");
-			waitForElement(tendercreationlocators.mainMenuIcon, 100);
-			JSClick(tendercreationlocators.mainMenuIcon, "mainMenuIcon");
+			waitForElement(tendercreationlocators.mainMenuIconSub, 100);
+			JSClick(tendercreationlocators.mainMenuIconSub, "mainMenuIconSub");
 			mouseOver(tendercreationlocators.orderFulfillment);
 			JSClick(tendercreationlocators.createNewASN, "createNewASN");
 			
@@ -494,6 +493,32 @@ public class ASN_GRNComponent extends BaseClass_Web {
 		}
 	}
 	
+	public void VerifyASNStatus(String Status) throws Throwable {
+	try {
+		log.info("started executing the method:: VerifyIndentStatus_AssignmentListPage");
+
+		String txt = text(tendercreationlocators.ASN_status).trim();
+		if(txt.equalsIgnoreCase(Status))
+		{
+			pdfResultReport.addStepDetails("Verify Indent status",
+					"Indent status should be "+Status,
+					"Indent status is '"+txt+"' and successfully verified" + " ", "Pass", "Y");
+		}
+		else
+		{
+			pdfResultReport.addStepDetails("Verify Indent status", "Indent status should be "+Status,
+					"Indent status is '"+txt+"' instead of '"+ Status+"' ", "Fail", "N");
+		}
+		
+		log.info("completed executing the method:: VerifyIndentStatus_AssignmentListPage");
+	} catch (Exception e) {
+		log.fatal("Not able to verify indent status" + e.getMessage());
+		pdfResultReport.addStepDetails("Verify indent status", "Should be able to verify indent status",
+				"Unable to verify indent status" + e.getMessage(), "Fail", "N");
+	}
+		}
+
+	
 	public void clickOnASNList() throws Throwable {
 		try {
 			log.info("started executing the method:: clickOnASNList");
@@ -597,16 +622,15 @@ public class ASN_GRNComponent extends BaseClass_Web {
 			Assert.fail("Failed Due to " + e.getMessage());
 		}
 	}
-
+	
 	@SuppressWarnings("deprecation")
-	public static boolean waitTillSpinnerDisable(WebDriver driver, By by) {
+	public static boolean waitTillSpinnerDisable(WebDriver driver, final By by) {
 		FluentWait<WebDriver> fWait = new FluentWait<WebDriver>(driver);
-		fWait.withTimeout(100, TimeUnit.SECONDS);
-		fWait.pollingEvery(3, TimeUnit.SECONDS);
+		fWait.withTimeout(Duration.ofSeconds(30L));
+		fWait.pollingEvery(Duration.ofSeconds(5L));
 		fWait.ignoring(NoSuchElementException.class);
 
 		Function<WebDriver, Boolean> func = new Function<WebDriver, Boolean>() {
-			@Override
 			public Boolean apply(WebDriver driver) {
 				WebElement element = driver.findElement(by);
 				System.out.println(element.getCssValue("display"));
@@ -743,13 +767,9 @@ public class ASN_GRNComponent extends BaseClass_Web {
 			String createGrn = "//*[contains(text(),'{0}')]/../following-sibling::td//child::button[@data-toggle='dropdown']/..//ul/li/a[contains(text(),'Create Receipt')]";
 
 			driver.findElement(By.xpath(createGrn.replace("{0}", AsnNo))).click();
-
 			//waitForElementToBeVisible(tendercreationlocators.MaterialDetailsBy);
-
-			waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
-
-			waitForObj(2000);
-
+			//waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
+			universalWait();
 			pdfResultReport.addStepDetails("createGrn", "Should Navigate to GRN creation Page",
 					"Successfully Navigated to GRN creation Page" + " ", "Pass", "Y");
 			log.info("completed executing the method:: createGrn");
@@ -820,8 +840,8 @@ public class ASN_GRNComponent extends BaseClass_Web {
 			scrollToElement(tendercreationlocators.grnSaveButton);
 			waitForObj(1000);
 			JSClick(tendercreationlocators.grnSaveButton, "SaveGrnDetails");
-			waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
-			waitForObj(1000);
+			//waitTillSpinnerDisable(ThreadLocalWebdriver.getDriver(), tendercreationlocators.LoadingBy);
+			universalWait();
 
 			pdfResultReport.addStepDetails("saveGrnDetails", "Should Save GRN Details",
 					"Successfully Save GRN Details" + " ", "Pass", "Y");
@@ -1444,8 +1464,8 @@ public class ASN_GRNComponent extends BaseClass_Web {
 			log.info("started executing the method:: CreateASN");
 
 			// String number = String.valueOf(getrandomInterger(1000, 1000000));
-			eTenderComponent.waitForSpinnerToDisappear();
-			waitForObj(5000);
+			//eTenderComponent.waitForSpinnerToDisappear();
+			universalNormalWait();
 			
 			waitForElementToBeVisible(tendercreationlocators.referenceNumbertext);
 			//select(tendercreationlocators.SelectPONum, eTenderComponent.getDataFromPropertiesFile("poDocNum"));
@@ -2448,13 +2468,16 @@ public class ASN_GRNComponent extends BaseClass_Web {
 	public void SearchASNRefInASNList() throws Throwable {
 		try {
 			log.info("started executing the method:: SearchPo");
-			eTenderComponent.waitForSpinnerToDisappear();
-			JSClick(tendercreationlocators.SearchPOINASN, "SearchPOINASN");
+//			eTenderComponent.waitForSpinnerToDisappear();
+			JSClick(tendercreationlocators.typeAnyKeyword_Pending, "SearchPOINASN");
 			waitForObj(3000);
-			clear(tendercreationlocators.SearchPOINASN, "SearchPOINASN");
-			set(tendercreationlocators.SearchPOINASN, ASNREF, "SearchPOINASN");
+			clear(tendercreationlocators.typeAnyKeyword_Pending, "SearchPOINASN");
+			set(tendercreationlocators.typeAnyKeyword_Pending, ASNREF, "SearchPOINASN");
 			String ponum = eTenderComponent.getDataFromPropertiesFile("poDocNum");
 			String ASNNum = text(tendercreationlocators.ASNNum(ponum));
+			 String[] words= ASNNum.split("\\(");
+	    	  ASNNum=words[0].trim();
+
 			eTenderComponent.updateDataIntoPropertyFile("ASNNum", ASNNum);
 			waitForObj(3000);
 			pdfResultReport.addStepDetails("SearchPo", "ASN list with PO number is to searched",
@@ -3282,8 +3305,9 @@ public class ASN_GRNComponent extends BaseClass_Web {
 			waitForObj(2000);
 			JSClick(tendercreationlocators.pending, "pending");
 			waitForObj(15000);
-			waitForElementToBeVisible(tendercreationlocators.Lbl_workflowinbox);
-			click(tendercreationlocators.PendingGRN_Approval, "PendingGRN_Approval");
+			//waitForElementToBeVisible(tendercreationlocators.Lbl_workflowinbox);
+			waitForElementToBeVisible(tendercreationlocators.WorkflowInbox);
+			JSClick(tendercreationlocators.PendingGRN_Approval, "PendingGRN_Approval");
 			waitForObj(4000);
 			set(tendercreationlocators.search, eTenderComponent.getDataFromPropertiesFile("GRNID"), "search");
 			waitForObj(2000);
@@ -3320,7 +3344,7 @@ public class ASN_GRNComponent extends BaseClass_Web {
                     Assert.fail("Failed Due to " + e.getMessage());
 		}
 	}
-	
+	//used in GRN module
 	public void clickDetailLinkInApprovalListPage() throws Throwable {
 		try {
 			log.info("started executing the method:: clickDetailLinkInApprovalListPage");
@@ -3328,7 +3352,7 @@ public class ASN_GRNComponent extends BaseClass_Web {
 			click(tendercreationlocators.ActionButton_approver_tender, "Actionbtn_IndentApprover");
 			//click(tendercreationlocators.Detailbtn_IndentApprover, "Detailbtn_IndentApprover"); //commenting this line due new CR
 			click(tendercreationlocators.detailsSN, "sectionWiseView_IndentApprover");
-			waitForObj(5000);
+			universalWait();
 			waitForElementToBeClickable(tendercreationlocators.poApproverComment);
 			click(tendercreationlocators.poApproverComment, "poApproverComment");
 			String comment = "GRN Process Is Approved";
@@ -4343,7 +4367,7 @@ public void navigateToCreateAsnPage() throws Throwable {
 
 	}
 	
-	private List<String> PoNumbersFromdropdown=null;
+	private List<Object> PoNumbersFromdropdown=null;
 	
 	public void getAllPoNumbersFromDropDown() throws Throwable {
 		try {
@@ -4427,7 +4451,7 @@ public void navigateToCreateAsnPage() throws Throwable {
 	public void VerifyMaterialsDetailsGRN() throws Throwable {
 		try {
 			log.info("started executing the method:: VerifyMaterialsDetails");
-			etendercomponentobj.waitForSpinnerToDisappear();
+			eTenderComponent.waitForSpinnerToDisappear();
 			waitForObj(5000);
 			String ItemCodeUI = text(tendercreationlocators.ItemCodeUi);
 			

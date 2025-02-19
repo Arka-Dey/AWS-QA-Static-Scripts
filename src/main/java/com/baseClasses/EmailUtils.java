@@ -3,21 +3,16 @@ package com.baseClasses;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
-import javax.mail.Flags;
 import javax.mail.Folder;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.NoSuchProviderException;
 import javax.mail.Session;
 import javax.mail.Store;
-import javax.mail.search.FlagTerm;
 import javax.mail.search.SubjectTerm;
 
 import com.components.eTenderComponent;
@@ -115,7 +110,7 @@ public class EmailUtils {
 	public String getSpecificMailBodyContent(Message mail,String bodyContent,String bodyContentlast) {
 		try {
 			return getEmailBody(mail).substring(getEmailBody(mail).indexOf(bodyContent),getEmailBody(mail).indexOf(bodyContentlast)).replaceAll("<br>","");
-		} catch (IOException | MessagingException e) {
+		} catch (Exception e) {
 
 			e.printStackTrace();
 		}

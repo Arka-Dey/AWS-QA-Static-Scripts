@@ -135,7 +135,7 @@ public class TG1_TC_CreateSN_From_Indent_EndToEnd extends BaseClass_Web {
 	//etendercomponentobj.enterTenderIdInSearch_bidsubmission();
 	etendercomponentobj.submittedBid_Tab_Validation();
 	etendercomponentobj.tenderLogoutOld();
-	 
+	
 	//============change will be applied
 	//Evaluation: Cover 1 work flow where opening approval Yes and evaluation approval Yes      
 	etendercomponentobj.tendercreatorLogin();

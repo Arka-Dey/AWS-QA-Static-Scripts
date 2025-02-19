@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Suite">
+<listeners>
+<listener class-name="com.baseClasses.Listener"></listener>
+</listeners>
+    <test name="Test">
+        <parameter name="browserName" value="windowschrome"></parameter>
+        <classes>
+           <parameter name="TestcaseNo" value="10"></parameter>   
+            <class name="com.ProductionDefects.PO_PD_137934"/>
+        </classes>
+    </test> 
+</suite> 
+
+<!--137934	Defect	Closed	Severity - 2	GSML_Prod - Error code : 921111000 found by last approver for po : 3619(RFQ: 3378)
+poCreator=GSML_buyer
+poCreator_password=pass@123
+
+and add approvers in ProductionDefects_static_scripts sheet.
+
+
+  -->

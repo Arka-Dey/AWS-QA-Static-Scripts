@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Suite">
+<listeners>
+<listener class-name="com.baseClasses.Listener"></listener>
+</listeners>
+    <test name="Test">
+        <parameter name="browserName" value="windowschrome"></parameter>
+        <classes>
+           <parameter name="TestcaseNo" value="1"></parameter>   
+            <class name="com.ProductionDefects.Tender_PD_138849"/>
+        </classes>
+    </test> 
+</suite> 
+
+
+<!-- /** HMEL_Proc:- Buyer user unable to download the CS report for tender id : 3179
+
+TenderCreator=IPSITA_RDCIS
+TenderCreator_Password=pass@123
+tenderID=1271
+Supplier=JSL-DUMMY_VENDOR1
+Supplier_Password=pass@123
+ -->
+

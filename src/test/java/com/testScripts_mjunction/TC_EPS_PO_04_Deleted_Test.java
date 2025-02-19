@@ -61,13 +61,9 @@ public class TC_EPS_PO_04_Deleted_Test extends BaseClass_Web {
 	  
 	  posttendercomponentobj.sanction_Creator_Login();
 	  posttendercomponentobj.navigateToPurchasrOrderList();
-	  posttendercomponentobj.verifyPoRefNumberInPoListPage();
+	  posttendercomponentobj.SearchWithPoRefNumberInPoListPage();
 	  posttendercomponentobj.verifyPOStatus("Draft");
-	  
-	  posttendercomponentobj.savePoDocNumberFromPoListpage();
-	  
 	  posttendercomponentobj.deletePO();
-	  posttendercomponentobj.verifyPoRefNumberInPoListPage();
 	  posttendercomponentobj.verifyIndentStatusForCancelledOrDeleted("Deleted");
 	  
 	  etendercomponentobj.tenderLogout();

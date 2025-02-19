@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Suite">
+<listeners>
+<listener class-name="com.baseClasses.Listener"></listener>
+</listeners>
+    <test name="Test">
+        <parameter name="browserName" value="windowschrome"></parameter>
+        <classes>
+           <parameter name="TestcaseNo" value="2"></parameter>   
+            <class name="com.ProductionDefects.SN_PD_134123"/>
+        </classes>
+    </test> 
+</suite> 
+
+<!--134123	Defect	Closed	Severity - 2	SAIL (RDCIS)_Prod - Data is not getting saved when doing RFQ-> SN  -->
